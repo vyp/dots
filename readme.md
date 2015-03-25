@@ -20,8 +20,7 @@
 
 # Contents
 
-The configuration files for each program are under their respectively named
-folders.
+The configuration files for each program are under respectively named folders.
 
 Type of...  | ...Program
 ----------  | ----------
