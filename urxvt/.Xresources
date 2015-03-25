@@ -1,0 +1,92 @@
+! Xft settings
+
+Xft.dpi:       96
+Xft.antialias: true
+Xft.rgba:      rgb
+Xft.hinting:   true
+Xft.hintstyle: hintfull
+
+! URxvt settings
+! URxvt.depth:                32
+URxvt.geometry:       90x30
+URxvt.transparent:    false
+URxvt.urgentOnBell:   true
+URxvt.loginShell:     false
+URxvt.saveLines:      64
+URxvt.internalBorder: 1
+URxvt.lineSpace:      0
+
+! Fonts
+URxvt.allow_bold:  false
+URxvt*font:        -artwiz-limey-medium-r-normal--10-110-75-75-m-50-iso8859-1
+URxvt*italicFont:  -artwiz-limey-medium-r-normal--10-110-75-75-m-50-iso8859-1
+URxvt*boldFont:    -artwiz-limey-medium-r-normal--10-110-75-75-m-50-iso8859-1
+URxvt*letterSpace: 0
+
+! Scrollbar
+URxvt.scrollBar: false
+
+! Perl extensions
+! URxvt.perl-ext-common:      default,matcher
+URxvt.matcher.button:       1
+URxvt.urlLauncher:          firefox
+URxvt.perl-ext-common:      default,clipboard,url-select,keyboard-select
+URxvt.url-select.launcher:  firefox
+URxvt.url-select.underline: true
+URxvt.keysym.M-u:           perl:url-select:select_next
+Urxvt.keysym.M-Escape:      perl:keyboard-select:activate
+URxvt.keysym.M-/:           perl:keyboard-select:search
+
+! Cursor
+URxvt.cursorBlink:     false
+URxvt.cursorUnderline: false
+
+! Xcursor
+! You may want to edit /usr/share/icons/default/index.theme to make sure it
+! inherits this theme, certainly if it is the only one.
+Xcursor.theme: OpenZone_Black
+
+! Pointer
+URxvt.pointerBlank: true
+
+! Base16 Eighties
+! Scheme: Chris Kempson (http://chriskempson.com)
+
+#define base00 #2d2d2d
+#define base01 #393939
+#define base02 #515151
+#define base03 #747369
+#define base04 #a09f93
+#define base05 #d3d0c8
+#define base06 #e8e6df
+#define base07 #f2f0ec
+#define base08 #f2777a
+#define base09 #f99157
+#define base0A #ffcc66
+#define base0B #99cc99
+#define base0C #66cccc
+#define base0D #6699cc
+#define base0E #cc99cc
+#define base0F #d27b53
+
+*.foreground:   base05
+*.background:   base00
+*.cursorColor:  base05
+
+*.color0:       base00
+*.color1:       base08
+*.color2:       base0B
+*.color3:       base0A
+*.color4:       base0D
+*.color5:       base0E
+*.color6:       base0C
+*.color7:       base05
+
+*.color8:       base03
+*.color9:       base09
+*.color10:      base01
+*.color11:      base02
+*.color12:      base04
+*.color13:      base06
+*.color14:      base0F
+*.color15:      base07

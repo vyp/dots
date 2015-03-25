@@ -27,6 +27,7 @@ Program       | Use
 [Firefox]     | Web Browser
 [Git]         | Version Control
 [Pentadactyl] | Web Browser
+[Urxvt]       | Terminal Emulator
 [Vim]         | Text Editor
 [X11]         | Display Server
 [Zsh]         | Shell
@@ -34,6 +35,7 @@ Program       | Use
 [Firefox]:      https://mozilla.org/firefox
 [Git]:          http://git-scm.com/
 [Pentadactyl]:  http://5digits.org/pentadactyl/
+[Urxvt]:        http://software.schmorp.de/pkg/rxvt-unicode.html
 [Vim]:          http://www.vim.org/
 [X11]:          http://www.x.org/wiki/
 [Zsh]:          http://www.zsh.org/
