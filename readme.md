@@ -28,12 +28,14 @@ Program       | Use
 [Git]         | Version Control
 [Pentadactyl] | Web Browser
 [Vim]         | Text Editor
+[X11]         | Display Server
 [Zsh]         | Shell
 
 [Firefox]:      https://mozilla.org/firefox
 [Git]:          http://git-scm.com/
 [Pentadactyl]:  http://5digits.org/pentadactyl/
 [Vim]:          http://www.vim.org/
+[X11]:          http://www.x.org/wiki/
 [Zsh]:          http://www.zsh.org/
 
 # Instructions
