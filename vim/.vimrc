@@ -395,7 +395,6 @@ endif
 call plug#begin('~/.vim/plugged')
 
 " Essential:
-Plug 'godlygeek/tabular'
 Plug 'mattn/emmet-vim'
 Plug 'Shougo/neocomplete'
 Plug 'tpope/vim-repeat'
@@ -403,6 +402,7 @@ Plug 'tpope/vim-surround'
 
 " Extra:
 Plug 'ap/vim-buftabline'
+Plug 'godlygeek/tabular'
 Plug 'Raimondi/delimitMate'
 Plug 'tomtom/tcomment_vim'
 Plug 'wellle/targets.vim'
