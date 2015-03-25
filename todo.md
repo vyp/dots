@@ -1,6 +1,7 @@
 # Todo
 
 - ~~vim-plug snapshot script.~~
+- vim-plug itself.
 - vimrc -- undefined function `JavaScriptFold`, probably because plugins are
   referenced after the filetype section.
 - `.xinitrc`, `.Xresources`.
