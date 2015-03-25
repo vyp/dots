@@ -24,7 +24,11 @@ The configuration files for each program are under respectively named folders.
 
 Type of...  | ...Program
 ----------  | ----------
-Text editor | Vim
+Shell       | [Zsh]
+Text Editor | [Vim]
+
+[Zsh]: http://www.zsh.org/
+[Vim]: http://www.vim.org/
 
 # Install
 
