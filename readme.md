@@ -22,13 +22,15 @@
 
 The configuration files for each program are under respectively named folders.
 
-Type of...  | ...Program
-----------  | ----------
-Shell       | [Zsh]
-Text Editor | [Vim]
+Type of...      | ...Program
+----------      | ----------
+Shell           | [Zsh]
+Text Editor     | [Vim]
+Version Control | [Git]
 
-[Zsh]: http://www.zsh.org/
+[Git]: http://git-scm.com/
 [Vim]: http://www.vim.org/
+[Zsh]: http://www.zsh.org/
 
 # Install
 
