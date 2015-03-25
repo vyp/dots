@@ -32,7 +32,7 @@ Version Control | [Git]
 [Vim]: http://www.vim.org/
 [Zsh]: http://www.zsh.org/
 
-# Install
+# Instructions
 
 *Todo.*
 
