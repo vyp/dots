@@ -107,10 +107,10 @@ xnoremap ; :
 xnoremap <cr> ;
 xnoremap : ;
 
-autocmd CmdwinEnter * nnoremap <cr> <cr>
-autocmd CmdwinEnter * xnoremap <cr> <cr>
-autocmd CmdwinLeave * nnoremap <cr> ;
-autocmd CmdwinLeave * xnoremap <cr> ;
+au CmdwinEnter * nnoremap <cr> <cr>
+au CmdwinEnter * xnoremap <cr> <cr>
+au CmdwinLeave * nnoremap <cr> ;
+au CmdwinLeave * xnoremap <cr> ;
 
 " TODO: Find the opposite of BufReadPost so that <CR> can be reset.
 " autocmd BufReadPost quickfix nnoremap <CR> <CR>
@@ -140,8 +140,8 @@ nnoremap Y y$
 
 nnoremap <leader><leader> <C-^>
 
-" Can't use <Tab> and <S-Tab> since <Tab> is the same as ctrl-i in vim. See
-" http://stackoverflow.com/a/14642074.
+" Can't use <Tab> and <S-Tab> since <Tab> is the same as ctrl-i in vim.
+" See http://stackoverflow.com/a/14642074.
 nnoremap <C-n> :bn<CR>
 nnoremap <C-p> :bp<CR>
 nnoremap <leader>l :ls<CR>:b<space>
@@ -202,11 +202,6 @@ nnoremap <C-t> "*p
 nnoremap <leader>t "+p
 nnoremap <leader>vc :edit ~/.vimrc<CR>
 nnoremap <leader>vz :edit ~/.zshrc<CR>
-
-" TODO: Remove this.
-" nnoremap <leader>cx :!xelatex %<CR>
-" nnoremap <leader>cv :!pandoc --template=$HOME/templates/latex.tex --toc --number-sections -V geometry:margin=1.25in -V fontfamily:libertine -o %f %<CR>
-" nnoremap <leader>cw :!texcount %<CR>
 
 " Center on search {{{2
 " The percentage height of the window at which you wish to define 'the center'.
@@ -361,6 +356,7 @@ au BufRead,BufNewFile *.md set filetype=pandoc.markdown
 au BufRead,BufNewFile *.pd set filetype=pandoc.markdown
 
 function MarkdownOptions()
+  nnoremap <silent> <leader><Tab> :Tabularize /<Bar><CR>
   setl ts=4 sw=4 sts=4
 
   " More characters: ▼ ▾ ▲ ▴
@@ -442,23 +438,8 @@ let g:buftabline_indicators=1
 let g:buftabline_numbers=1
 let g:buftabline_show=1
 
-" 'godlygeek/tabular' {{{2
-" TODO: Move to 'Filetype' section.
-au FileType markdown nnoremap <silent> <leader><Tab> :Tabularize /<Bar><CR>
-
 " 'junegunn/vim-plug' {{{2
-" 'Valloric/YouCompleteMe' takes a long time clone (recursively), so this stops
-" it from potentially timing out and thus failing to install.
-"
-" If it _still_ fails, clone manually:
-"
-"     cd ~/.vim/plugged
-"     git clone https://github.com/Valloric/YouCompleteMe
-"     cd YouCompleteMe
-"     git submodule update --init --recursive
-"
-" Don't forget to compile the ycm_support_libs! (See README.md for how.)
-let g:plug_timeout=1000 "
+let g:plug_timeout=1000
 
 " 'nelstrom/vim-markdown-folding' {{{2
 " let g:markdown_fold_style = 'nested'
@@ -505,18 +486,12 @@ inoremap <expr><Space> pumvisible() ? neocomplete#close_popup() . "\<Space>" : "
 "let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
 "let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
 
-" 'Valloric/YouCompleteMe' {{{2
-" TODO: Remove this plugins' settings.
-" Removes all default blacklists.
-let g:ycm_filetype_blacklist = {}
-let g:ycm_min_num_of_chars_for_completion = 3
 
 " 'vim-pandoc/vim-pandoc-syntax' {{{2
 " Disable underlining of superscript, subscript and strikeout delimited text.
 let g:pandoc#syntax#style#underline_special = 0
 
 " Colors {{{1
-" set background=dark
 " TODO: Change to custom theme.
 colorscheme base16-eighties
 
@@ -531,18 +506,3 @@ hi pandocStrikeout ctermfg=8
 hi pandocStrong ctermfg=14
 hi pandocStrongEmphasis ctermfg=9
 hi pandocStrongInEmphasis ctermfg=14
- 
-" " solarized-light:
-" hi buftablineactive term=NONE cterm=NONE ctermfg=10 ctermbg=0
-" hi buftablinecurrent term=NONE cterm=NONE ctermbg=0
-" hi buftablinefill term=NONE cterm=NONE ctermbg=8
-" hi buftablinehidden term=NONE cterm=NONE ctermbg=8
-" hi folded term=NONE cterm=NONE
-" " hi htmlEntityTherefore ctermfg=1
-" hi matchparen term=NONE cterm=NONE ctermfg=230 ctermbg=5
-" hi pandocBlockQuote ctermfg=13
-" hi pandocEmphasis ctermfg=4
-" hi pandocStrikeout term=NONE cterm=NONE
-" hi pandocStrong ctermfg=3
-" hi pandocStrongEmphasis ctermfg=5
-" hi search term=NONE cterm=NONE ctermfg=230 ctermbg=3
