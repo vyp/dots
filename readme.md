@@ -11,14 +11,17 @@
 >> given the option to use modern editors and see what they choose.
 
 > I'd love to see this experiment only because it would mean that someone
-> would have to make a system where the input fields for every computer
-> program are in vim mode. And I want to use that system.
+> would have to **make a system where the input fields for every computer
+> program are in vim mode. And I want to use that system**.
 
 - [creepingdeathv2; FakingItEveryDay][quote]
 
 [quote]: https://www.reddit.com/r/vim/comments/2ww6fv/this_is_your_brain_on_vim/couym1j
 
 # Contents
+
+The configuration files for each program are under their respectively named
+folders.
 
 Type of...  | ...Program
 ----------  | ----------

@@ -5,7 +5,6 @@ set nocompatible
 filetype plugin indent on
 set encoding=utf-8
 
-" Turn on syntax highlighting.
 syntax enable
 
 " Turn on relative line numbers except for current line and uses absolute line
@@ -21,54 +20,33 @@ set t_md=
 " Enable mouse in all modes.
 set mouse=a
 
-" Show cursor position in the form of ROW,COL at bottom right.
 set ruler
-
-" Highlights current line.
 set cursorline
-
-" Show information of current command at the bottom line.
 set showcmd
 
-" Interactive menu for command line completion. See `:help wildmode` for more.
+" See `:help wildmode` for more.
 set wildmenu
 
 " To be able to remap as <Down> in command mode.
 set wildcharm=<Tab>
 
-" Hide current unsaved buffer when opening new files.
 set hidden
-
-" Open splits below current window, and vertical splits to the right of the
-" current window.
 set splitbelow
 set splitright
-
-" Searching is case-sensitive if a capital is used, otherwise it is not.
 set ignorecase
 set smartcase
-
-" Move cursor to first match as search pattern is typed (without the need to
-" press enter).
 set incsearch
 
-" Carry over indent level at new lines.
 set autoindent
-
-" Backspace works as 'normal'.
 set backspace=2
 
-" Insert spaces when tab key is pressed.
 set expandtab
-
-" Number of spaces inserted when tab key is pressed.
 set tabstop=2
-
-" Number of spaces inserted for indentation.
 set shiftwidth=2
-
-" Number of spaces deleted when backspace key is pressed.
 set softtabstop=2
+
+set textwidth=79
+set colorcolumn=80
 
 " Always show status line.
 set laststatus=2
@@ -79,11 +57,9 @@ set nostartofline
 " As much as possible of the last line in a window will be displayed.
 set display+=lastline
 
-set textwidth=79
-set colorcolumn=80
-
-" set formatoptions+=tc " See `:help fo-table`.
-set formatoptions+=tcroqnj " See `:help fo-table`.
+" See `:help fo-table`.
+" set formatoptions+=tc
+set formatoptions+=tcroqnj
 
 " Less delay when pressing escape.
 set timeoutlen=1000
