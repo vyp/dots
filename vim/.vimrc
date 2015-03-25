@@ -333,46 +333,62 @@ endfunction
 set foldtext=NeatFoldText()
 
 " Filetype {{{1
-" TODO: Fix this, i.e. make it more simpler.
+" CSS {{{2
+function CSSOptions()
+  setl fdm=marker fmr={,}
+endfunction
 
-au BufNewFile,BufRead *.css set fdm=marker fmr={,}
+au filetype css call CSSOptions()
 
-au FileType gitcommit setl tw=72 cc=73
+" Gitcommit {{{2
+function GitcommitOptions()
+  setl tw=72 cc=73
+endfunction
 
-" au FileType html call CheckIfMD()
-"
-" Enables folding in javascript files, from the 'jelera/vim-javascript-syntax'
-" plugin.
-au FileType javascript call JavaScriptFold()
+au filetype gitcommit call GitcommitOptions()
 
+" Javascript {{{2
+function JavascriptOptions()
+  " Enables folding in javascript files, from the
+  " 'jelera/vim-javascript-syntax' plugin.
+  call JavaScriptFold()
+endfunction
+
+au filetype javascript call JavascriptOptions()
+
+" Markdown {{{2
 au BufRead,BufNewFile *.md set filetype=pandoc.markdown
 au BufRead,BufNewFile *.pd set filetype=pandoc.markdown
-au Filetype pandoc.markdown setl ts=4 sw=4 sts=4
 
-" More characters: ▼ ▾ ▲ ▴
-au Filetype pandoc.markdown syntax match htmlEntityalpha /&alpha;/ conceal cchar=α
-au Filetype pandoc.markdown syntax match htmlEntityApprox /&approx;/ conceal cchar=≈
-au Filetype pandoc.markdown syntax match htmlEntitybeta /&beta;/ conceal cchar=β
-au Filetype pandoc.markdown syntax match htmlEntityDegree /&deg;/ conceal cchar=°
-au Filetype pandoc.markdown syntax match htmlEntityDownArrow /&darr;/ conceal cchar=▾
-au Filetype pandoc.markdown syntax match htmlEntityGreaterThan /&gt;/ conceal cchar=>
-au Filetype pandoc.markdown syntax match htmlEntityLeftArrow /&larr;/ conceal cchar=←
-au Filetype pandoc.markdown syntax match htmlEntityLessThan /&lt;/ conceal cchar=<
-au Filetype pandoc.markdown syntax match htmlEntitymicro /&micro;/ conceal cchar=µ
-au Filetype pandoc.markdown syntax match htmlEntityNonBreakingSpace /&nbsp;/ conceal cchar=╌
-au Filetype pandoc.markdown syntax match htmlEntityPi /&pi;/ conceal cchar=π
-au Filetype pandoc.markdown syntax match htmlEntityRightArrow /&rarr;/ conceal cchar=→
-au Filetype pandoc.markdown syntax match htmlEntityUpArrow /&uarr;/ conceal cchar=▴
-au Filetype pandoc.markdown syntax match htmlEntityTherefore /&there4;/ conceal cchar=∴
-au Filetype pandoc.markdown syntax match htmlEntityTimes /&times;/ conceal cchar=×
+function MarkdownOptions()
+  setl ts=4 sw=4 sts=4
 
-au FileType python setl ts=4 sw=4 sts=4
+  " More characters: ▼ ▾ ▲ ▴
+  syntax match htmlEntityalpha /&alpha;/ conceal cchar=α
+  syntax match htmlEntityApprox /&approx;/ conceal cchar=≈
+  syntax match htmlEntitybeta /&beta;/ conceal cchar=β
+  syntax match htmlEntityDegree /&deg;/ conceal cchar=°
+  syntax match htmlEntityDownArrow /&darr;/ conceal cchar=▾
+  syntax match htmlEntityGreaterThan /&gt;/ conceal cchar=>
+  syntax match htmlEntityLeftArrow /&larr;/ conceal cchar=←
+  syntax match htmlEntityLessThan /&lt;/ conceal cchar=<
+  syntax match htmlEntitymicro /&micro;/ conceal cchar=µ
+  syntax match htmlEntityNonBreakingSpace /&nbsp;/ conceal cchar=╌
+  syntax match htmlEntityPi /&pi;/ conceal cchar=π
+  syntax match htmlEntityRightArrow /&rarr;/ conceal cchar=→
+  syntax match htmlEntityUpArrow /&uarr;/ conceal cchar=▴
+  syntax match htmlEntityTherefore /&there4;/ conceal cchar=∴
+  syntax match htmlEntityTimes /&times;/ conceal cchar=×
+endfunction
 
-" function! CheckIfMD()
-"   if match(getline(1,"$"),'<article class="md">') >= 0
-"     set filetype=markdown
-"   endif
-" endfunction
+au filetype pandoc.markdown call MarkdownOptions()
+
+" Python {{{2
+function PythonOptions()
+  setl ts=4 sw=4 sts=4
+endfunction
+
+au filetype python call PythonOptions()
 
 " Extra {{{1
 " Allows to `:q` when opening multiple files via the command line without
