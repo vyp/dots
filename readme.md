@@ -22,13 +22,15 @@
 
 The configuration files for each program are under respectively named folders.
 
-Type of...      | ...Program
-----------      | ----------
-Shell           | [Zsh]
-Text Editor     | [Vim]
-Version Control | [Git]
-Web Browser     | [Pentadactyl]
+Program       | Use
+-------       | ---
+[Firefox]     | Web Browser
+[Git]         | Version Control
+[Pentadactyl] | Web Browser
+[Vim]         | Text Editor
+[Zsh]         | Shell
 
+[Firefox]:      https://mozilla.org/firefox
 [Git]:          http://git-scm.com/
 [Pentadactyl]:  http://5digits.org/pentadactyl/
 [Vim]:          http://www.vim.org/

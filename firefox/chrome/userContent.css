@@ -1,0 +1,56 @@
+/**
+ * @document and @-moz-document do not work if only separated by commas for
+ * defining rules in a common block.
+ */
+
+@document url-prefix(http://doc.rust-lang.org/guide.html) {
+  pre, code {
+    font-family: 'Fantasque Sans Mono', monospace !important;
+  }
+}
+
+@-moz-document url-prefix(http://doc.rust-lang.org/guide.html) {
+  pre, code {
+    font-family: 'Fantasque Sans Mono', monospace !important;
+  }
+}
+
+@document url-prefix(https://twitter.com/) {
+  div.WhoToFollow,
+  div.wtf-module,
+  div.dashboard-right {
+    display: none !important;
+  }
+}
+
+@-moz-document url-prefix(https://twitter.com/) {
+  div.WhoToFollow,
+  div.wtf-module,
+  div.dashboard-right {
+    display: none !important;
+  }
+}
+
+@document url-prefix(http://stackoverflow.com/) {
+  div[id*="careers"] {
+    display: none !important;
+  }
+}
+
+@document url-prefix(https://stackoverflow.com/) {
+  div[id*="careers"] {
+    display: none !important;
+  }
+}
+
+@-moz-document url-prefix(http://stackoverflow.com/) {
+  div[id*="careers"] {
+    display: none !important;
+  }
+}
+
+@-moz-document url-prefix(https://stackoverflow.com/) {
+  div[id*="careers"] {
+    display: none !important;
+  }
+}
