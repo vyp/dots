@@ -1,0 +1,46 @@
+set au=!/ex/buffer,.?
+set defsearch='duckduckgo'
+set editor=vim
+set go-=br
+set go+=n
+
+set! browser.fullscreen.animateUp=0
+set! browser.startup.homepage=http://localhost:3000/
+set! browser.tabs.closeWindowWithLastTab=false
+set! full-screen-api.approval-required=false
+
+nmap -builtin ; :
+nmap -builtin : ;
+
+nmap -builtin d <C-D>
+nmap -builtin u <C-U>
+nmap -builtin <C-D> d
+nmap -builtin <C-U> u
+
+nmap -builtin <C-S-n> :tabm! +1<CR>
+nmap -builtin <C-S-p> :tabm! -1<CR>
+imap -builtin <C-n> <Nop>
+
+nmap -builtin H ^
+nmap -builtin L $
+
+nmap -builtin ,, <C-^>
+nmap -builtin ,b :!acpi -b<CR>
+nmap -builtin ,d :tabopen google define 
+nmap -builtin ,f ;f
+nmap -builtin ,l :ls<CR>:b<space>
+nmap -builtin ,m :set showtabline=never<CR>
+nmap -builtin ,p <C-S-p>
+nmap -builtin ,r :downloads<CR>
+nmap -builtin ,s <C-z>
+nmap -builtin ,t :set showtabline=always<CR>
+" nmap -builtin ,v :set fullvim!<CR>
+nmap -builtin ,z :source ~/.pentadactylrc<CR>
+
+colorscheme base16
+
+hi FontCode -append font-family: 'limey' !important; font-size: 8pt !important; font-weight: normal !important;
+hi FontFixed -append font-family: 'limey' !important; font-size: 8pt !important; font-weight: normal !important;
+hi Normal -append font-family: 'limey' !important; font-size: 8pt !important; font-weight: normal !important;
+hi TabIconNumber display: none !important;
+hi TabNumber display: none !important;

@@ -27,10 +27,12 @@ Type of...      | ...Program
 Shell           | [Zsh]
 Text Editor     | [Vim]
 Version Control | [Git]
+Web Browser     | [Pentadactyl]
 
-[Git]: http://git-scm.com/
-[Vim]: http://www.vim.org/
-[Zsh]: http://www.zsh.org/
+[Git]:          http://git-scm.com/
+[Pentadactyl]:  http://5digits.org/pentadactyl/
+[Vim]:          http://www.vim.org/
+[Zsh]:          http://www.zsh.org/
 
 # Instructions
 
