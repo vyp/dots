@@ -9,3 +9,4 @@
 - ~~`userChrome.css` + `userContent.css`.~~
 - ~~switch columns in table in contents section of readme.~~
 - stuff in `~/.config/`.
+- stuff in `./old/`.

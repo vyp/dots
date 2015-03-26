@@ -29,6 +29,7 @@ Program       | Use
 [Git]         | Version Control
 [GTK+]        | Graphical Toolkit
 [Pentadactyl] | Web Browser
+[Sxhkd]       | Keybindings Manager
 [Urxvt]       | Terminal Emulator
 [Vim]         | Text Editor
 [X11]         | Display Server
@@ -39,6 +40,7 @@ Program       | Use
 [Git]:          http://git-scm.com/
 [GTK+]:         http://www.gtk.org/
 [Pentadactyl]:  http://5digits.org/pentadactyl/
+[Sxhkd]:        https://github.com/baskerville/sxhkd
 [Urxvt]:        http://software.schmorp.de/pkg/rxvt-unicode.html
 [Vim]:          http://www.vim.org/
 [X11]:          http://www.x.org/wiki/

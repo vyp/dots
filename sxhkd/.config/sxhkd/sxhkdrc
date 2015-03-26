@@ -1,0 +1,230 @@
+#
+# bspwm hotkeys
+#
+
+# super + shift + e
+#   pkill panel && bspc quit
+
+super + shift + e
+  bspc quit
+
+super + x
+  bspc window -c
+
+super + ctrl + x
+  bspc window -k
+
+super + t
+  bspc desktop -l next
+
+# alt + t
+#   transset-df -at 0
+
+super + {minus,equal}
+  bspc desktop -{B,E}
+
+super + {space,f}
+  bspc window -t {floating,fullscreen}
+
+super + alt + space
+  bspc window -t pseudo_tiled
+
+super + alt + f
+  bspc desktop -t floating
+
+super + {semicolon,apostrophe}
+  bspc {window,desktop} -f last
+
+# super + semicolon
+#   bspc window -f last
+
+# super + apostrophe
+#   bspc desktop -f last && popup desktopstatus
+
+alt + Tab
+  bspc window -s last && bspc window -f last
+
+super + m
+  bspc window -w last.manual
+
+super + b
+  bspc window -f biggest
+
+super + {_,shift + }{h,j,k,l}
+  bspc window -{f,s} {left,down,up,right}
+
+super + {alt,shift} + semicolon
+  bspc window -f {next,prev}
+
+super + {comma,period}
+  bspc window -f next.{floating,tiled}
+
+alt + u
+  bspc window -f next.urgent
+
+super + alt + {comma,period}
+  bspc desktop -C {backward,forward}
+
+super + {_,shift + }{p,n}
+  bspc {desktop -f,window -d} {prev,next}
+
+# super + {p,n}
+#   bspc desktop -f {prev,next} && popup desktopstatus
+
+# super + shift + {p,n}
+#   bspc window -d {prev,next}
+
+super + alt + {p,n}
+  bspc window -d {prev,next}
+
+super + {a,s,w,d}
+  bspc window -p {left,down,up,right}
+
+super + {_,alt + }c
+  bspc {window -p cancel,desktop -c}
+
+super + {_,alt + }v
+  bspc desktop -F {vertical,horizontal}
+
+# super + shift + v
+#   xdo move -y 13 && xdo resize -h 883
+
+# super + ctrl + v
+#   xdo move -y 291 && xdo resize -h 300
+
+super + alt + {h,j,k,l}
+  bspc window -e {right -10,up +10,up -10,right +10}
+
+super + ctrl + {h,j,k,l}
+  bspc window -e {left -10,down +10,down -10,left +10}
+
+super + ctrl + 9
+  bspc window -r 0.1
+
+super + ctrl + 8
+  bspc window -r 0.2
+
+super + ctrl + 7
+  bspc window -r 0.3
+
+super + ctrl + 6
+  bspc window -r 0.4
+
+super + ctrl + 5
+  bspc window -r 0.5
+
+super + ctrl + 4
+  bspc window -r 0.6
+
+super + ctrl + 3
+  bspc window -r 0.7
+
+super + ctrl + 2
+  bspc window -r 0.8
+
+super + ctrl + 1
+  bspc window -r 0.9
+
+super + alt + {1-9}
+  bspc window -r 0.{1-9}
+
+alt + {h,j,k,l} ; {0-9}
+  bspc window -e {left,down,up,right} 0.{0-9}
+
+super + {_,shift + }{1-9,0}
+  bspc {desktop -f,window -d} ^{1-9,10}
+
+# super + {1-9,0}
+#   bspc desktop -f ^{1-9,10} && popup desktopstatus
+
+# super + shift + {1-9,0}
+#   bspc window -d ^{1-9,10}
+
+super + {_,alt + }{u,i,o}
+  bspc {desktop -f,window -d} next.{urgent,free,occupied}
+
+# super + {u,i,o}
+#   bspc desktop -f next.{urgent,free,occupied} && popup desktopstatus
+
+# super + alt + {u,i,o}
+#   bspc window -d next.{urgent,free,occupied}
+
+super + ctrl + {u,i,o}
+  bspc desktop -f prev.{urgent,free,occupied}
+  # bspc desktop -f prev.{urgent,free,occupied} && popup desktopstatus
+
+super + shift + {u,i,o}
+  bspc window -d prev.{urgent,free,occupied}
+
+~button1
+  bspc pointer -g focus
+
+super + button{1-3}
+  bspc pointer -g {move,resize_side,resize_corner}
+
+super + !button{1-3}
+  bspc pointer -t %i %i
+
+super + @button{1-3}
+  bspc pointer -u
+
+#
+# wm independent hotkeys
+#
+
+super + Return
+  urxvtc
+
+super + alt + Return
+  bspc rule -a urxvt -o floating=true && urxvtc
+
+# super + shift + Return
+#   bspc rule -a urxvt -o floating=true && urxvtc && bspc rule -a \* -o floating=true
+
+super + y
+  bspc rule -a \* -o floating=true
+
+super + slash
+  dmenu_run -fn "-artwiz-cure-medium-r-normal--11-110-75-75-p-90-iso8859-1" -nb '#2d2d2d' -nf '#747369' -sb '#f2777a' -sf '#f2f0ec'
+
+XF86AudioRaiseVolume
+  amixer set Master 2%+ #; \
+  # popup volumebar
+
+XF86AudioLowerVolume
+  amixer set Master 2%- #; \
+  # popup volumebar
+
+XF86AudioMute
+  amixer sset Master toggle #; \
+  # popup volumebar
+
+XF86MonBrightnessUp
+  xbacklight -inc 5 -steps 1
+
+XF86MonBrightnessDown
+  xbacklight -dec 5 -steps 1
+
+alt + n
+  mpc next #; \
+  # popup mstatus
+
+XF86AudioNext
+  mpc next
+
+alt + b
+  mpc prev #; \
+  # popup mstatus
+
+XF86AudioPrev
+  mpc prev
+
+Pause
+  mpc toggle
+
+XF86AudioPlay
+  mpc toggle
+
+# make sxhkd reload its configuration files:
+super + grave
+  pkill -USR1 -x sxhkd
