@@ -1,0 +1,1 @@
+/home/rws/etsi/vim-plug/plug.vim
