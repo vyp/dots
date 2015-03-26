@@ -29,6 +29,7 @@ Program       | Use
 [Git]         | Version Control
 [GTK+]        | Graphical Toolkit
 [MPD]         | Music Server
+[Ncmpcpp]     | MPD Client
 [Pentadactyl] | Web Browser
 [Sxhkd]       | Keybindings Manager
 [Urxvt]       | Terminal Emulator
@@ -42,6 +43,7 @@ Program       | Use
 [Git]:          http://git-scm.com/
 [GTK+]:         http://www.gtk.org/
 [MPD]:          http://www.musicpd.org/
+[Ncmpcpp]:      http://ncmpcpp.rybczak.net/
 [Pentadactyl]:  http://5digits.org/pentadactyl/
 [Sxhkd]:        https://github.com/baskerville/sxhkd
 [Urxvt]:        http://software.schmorp.de/pkg/rxvt-unicode.html
