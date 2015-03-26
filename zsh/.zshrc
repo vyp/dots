@@ -243,7 +243,7 @@ PROMPT="%{$reset_color%} %{$fg[green]%}»%{$reset_color%} "
 
 RPROMPT='%{$reset_color%}%{$fg[blue]%}%(1j.%j.) %{$reset_color%}%{$fg[magenta]%}${vcs_info_msg_0_} %{$reset_color%}%{$fg[cyan]%}%~%{$reset_color%} '
 
-source ~/etsi/old/antigen/antigen.zsh
+source ~/etsi/antigen/antigen.zsh
 
 antigen bundle zsh-users/zsh-syntax-highlighting
 antigen apply

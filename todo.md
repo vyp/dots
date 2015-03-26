@@ -1,5 +1,6 @@
 # Todo
 
+- change how vim-plug is symlinked to prefer a more username agnostic setup?
 - ~~vim-plug snapshot script.~~
 - ~~vim-plug itself.~~
 - ~~vimrc -- undefined function `JavaScriptFold`, probably because plugins are
@@ -9,4 +10,4 @@
 - ~~`userChrome.css` + `userContent.css`.~~
 - ~~switch columns in table in contents section of readme.~~
 - ~~stuff in `~/.config/`.~~
-- stuff in `./old/`.
+- ~~stuff in `./old/`.~~
