@@ -25,6 +25,7 @@ The configuration files for each program are under respectively named folders.
 Program       | Use
 -------       | ---
 [Bspwm]       | Window Manager
+[dircolors]   | Color Setup for `ls`
 [Firefox]     | Web Browser
 [Git]         | Version Control
 [GTK+]        | Graphical Toolkit
@@ -40,6 +41,7 @@ Program       | Use
 [Zsh]         | Shell
 
 [Bspwm]:        https://github.com/baskerville/bspwm
+[dircolors]:    https://www.gnu.org/software/coreutils/manual/html_node/dircolors-invocation.html
 [Firefox]:      https://mozilla.org/firefox
 [Git]:          http://git-scm.com/
 [GTK+]:         http://www.gtk.org/

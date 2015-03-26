@@ -188,7 +188,7 @@ function - {
   fi
 }
 
-eval `dircolors ~/etsi/old/dircolors.ansi-dark`
+eval `dircolors ~/etsi/coreutils/dircolors.ansi-dark`
 
 # 10ms delay (instead of default 400) for key sequences.
 KEYTIMEOUT=1
