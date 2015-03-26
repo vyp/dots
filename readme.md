@@ -28,6 +28,7 @@ Program       | Use
 [Firefox]     | Web Browser
 [Git]         | Version Control
 [GTK+]        | Graphical Toolkit
+[MPD]         | Music Server
 [Pentadactyl] | Web Browser
 [Sxhkd]       | Keybindings Manager
 [Urxvt]       | Terminal Emulator
@@ -40,6 +41,7 @@ Program       | Use
 [Firefox]:      https://mozilla.org/firefox
 [Git]:          http://git-scm.com/
 [GTK+]:         http://www.gtk.org/
+[MPD]:          http://www.musicpd.org/
 [Pentadactyl]:  http://5digits.org/pentadactyl/
 [Sxhkd]:        https://github.com/baskerville/sxhkd
 [Urxvt]:        http://software.schmorp.de/pkg/rxvt-unicode.html
