@@ -24,6 +24,7 @@ The configuration files for each program are under respectively named folders.
 
 Program       | Use
 -------       | ---
+[Bspwm]       | Window Manager
 [Firefox]     | Web Browser
 [Git]         | Version Control
 [GTK+]        | Graphical Toolkit
@@ -33,6 +34,7 @@ Program       | Use
 [X11]         | Display Server
 [Zsh]         | Shell
 
+[Bspwm]:        https://github.com/baskerville/bspwm
 [Firefox]:      https://mozilla.org/firefox
 [Git]:          http://git-scm.com/
 [GTK+]:         http://www.gtk.org/
