@@ -203,70 +203,6 @@ nnoremap <leader>t "+p
 nnoremap <leader>vc :edit ~/.vimrc<CR>
 nnoremap <leader>vz :edit ~/.zshrc<CR>
 
-" Center on search {{{2
-" The percentage height of the window at which you wish to define 'the center'.
-let g:centerlevel = 25
-
-" nnoremap <silent> n nzv:call<space>ScrollToPercent(g:centerlevel)<CR>
-" nnoremap <silent> N Nzv:call<space>ScrollToPercent(g:centerlevel)<CR>
-" nnoremap <silent> <C-o> <C-o>zv:call<space>ScrollToPercent(g:centerlevel)<CR>
-" nnoremap <silent> <C-i> <C-i>zv:call<space>ScrollToPercent(g:centerlevel)<CR>
-
-let g:centeronsearchini = "zv:call ScrollToPercent(g:centerlevel)\<CR>"
-let g:centeronsearch = "zv:call ScrollToPercent(g:centerlevel)\<CR>"
-autocmd InsertEnter * let g:centeronsearch = "\<C-O>zv\<C-O>:call ScrollToPercent(g:centerlevel)\<CR>"
-autocmd InsertLeave * let g:centeronsearch = "zv:call ScrollToPercent(g:centerlevel)\<CR>"
-
-function! s:returnAndCenterMaybe()
-  if getcmdtype() =~ "[/?]" && mode() != "v" && mode() != "\<C-V>"
-    return g:centeronsearch
-  else
-    return ""
-  endif
-endfunction
-
-function s:centerOnOperatorPendingSearch(key)
-  let g:centeronsearch = ""
-  return a:key
-endfunction
-
-" cnoremap <silent> <expr> <CR> "\<CR>" . ( <SID>returnAndCenterMaybe() )
-" onoremap <expr> / <SID>centerOnOperatorPendingSearch("/")
-" onoremap <expr> ? <SID>centerOnOperatorPendingSearch("?")
-" nnoremap / :let<space>g:centeronsearch<space>=<space>g:centeronsearchini<CR>/
-" nnoremap ? :let<space>g:centeronsearch<space>=<space>g:centeronsearchini<CR>?
-
-" Like zz, but allows you to choose a level other than the middle of the window
-" (i.e. at 50).
-"
-" From
-" http://stackoverflow.com/questions/22877483/is-it-possible-to-always-overwrite-a-specific-built-in-command-with-a-particular.
-function ScrollToPercent(percent, ...)
-  let movelines=winheight(0)*a:percent/100
-  
-  if has("float") && type(movelines)==type(0.0)
-    let movelines=float2nr(movelines)
-  endif
-  
-  let oldso=&so
-  execute ":set so=" . movelines
-
-  if exists("a:1")
-    execute "normal! zb"
-  else
-    execute "normal! zt"
-  endif
-
-  execute ":set so=" . oldso
-endfunction
-
-nnoremap <silent> <leader>z :call ScrollToPercent(g:centerlevel)<CR>
-nnoremap z<CR> zt
-nnoremap zt z<CR>
-nnoremap zB zb
-nnoremap <silent> zb :call ScrollToPercent(g:centerlevel, 1)<CR>
-" }}}2
-
 " Status Line {{{1
 set statusline=
 " Buffer number.
@@ -326,77 +262,6 @@ function! NeatFoldText()
 endfunction
 
 set foldtext=NeatFoldText()
-
-" Filetype {{{1
-" CSS {{{2
-function CSSOptions()
-  setl fdm=marker fmr={,}
-endfunction
-
-au filetype css call CSSOptions()
-
-" Gitcommit {{{2
-function GitcommitOptions()
-  setl tw=72 cc=73
-endfunction
-
-au filetype gitcommit call GitcommitOptions()
-
-" Javascript {{{2
-function JavascriptOptions()
-  " Enables folding in javascript files, from the
-  " 'jelera/vim-javascript-syntax' plugin.
-  call JavaScriptFold()
-endfunction
-
-au filetype javascript call JavascriptOptions()
-
-" Markdown {{{2
-au BufRead,BufNewFile *.md set filetype=pandoc.markdown
-au BufRead,BufNewFile *.pd set filetype=pandoc.markdown
-
-function MarkdownOptions()
-  nnoremap <silent> <leader><Tab> :Tabularize /<Bar><CR>
-  setl ts=4 sw=4 sts=4
-
-  " More characters: ▼ ▾ ▲ ▴
-  syntax match htmlEntityalpha /&alpha;/ conceal cchar=α
-  syntax match htmlEntityApprox /&approx;/ conceal cchar=≈
-  syntax match htmlEntitybeta /&beta;/ conceal cchar=β
-  syntax match htmlEntityDegree /&deg;/ conceal cchar=°
-  syntax match htmlEntityDownArrow /&darr;/ conceal cchar=▾
-  syntax match htmlEntityGreaterThan /&gt;/ conceal cchar=>
-  syntax match htmlEntityLeftArrow /&larr;/ conceal cchar=←
-  syntax match htmlEntityLessThan /&lt;/ conceal cchar=<
-  syntax match htmlEntitymicro /&micro;/ conceal cchar=µ
-  syntax match htmlEntityNonBreakingSpace /&nbsp;/ conceal cchar=╌
-  syntax match htmlEntityPi /&pi;/ conceal cchar=π
-  syntax match htmlEntityRightArrow /&rarr;/ conceal cchar=→
-  syntax match htmlEntityUpArrow /&uarr;/ conceal cchar=▴
-  syntax match htmlEntityTherefore /&there4;/ conceal cchar=∴
-  syntax match htmlEntityTimes /&times;/ conceal cchar=×
-endfunction
-
-au filetype pandoc.markdown call MarkdownOptions()
-
-" Python {{{2
-function PythonOptions()
-  setl ts=4 sw=4 sts=4
-endfunction
-
-au filetype python call PythonOptions()
-
-" Extra {{{1
-" Allows to `:q` when opening multiple files via the command line without
-" needing to open all buffers.
-au VimEnter * nested call VisitLastBuffer()
-
-fun! VisitLastBuffer()
-  if (argc() > 1)
-    last
-    rew
-  endif
-endfun
 
 " Plugins {{{1
 " Load matchit.vim, but only if the user hasn't installed a newer version.
@@ -490,6 +355,141 @@ inoremap <expr><Space> pumvisible() ? neocomplete#close_popup() . "\<Space>" : "
 " 'vim-pandoc/vim-pandoc-syntax' {{{2
 " Disable underlining of superscript, subscript and strikeout delimited text.
 let g:pandoc#syntax#style#underline_special = 0
+
+" Filetype {{{1
+" CSS {{{2
+function CSSOptions()
+  setl fdm=marker fmr={,}
+endfunction
+
+au filetype css call CSSOptions()
+
+" Gitcommit {{{2
+function GitcommitOptions()
+  setl tw=72 cc=73
+endfunction
+
+au filetype gitcommit call GitcommitOptions()
+
+" Javascript {{{2
+function JavascriptOptions()
+  " Enables folding in javascript files, from the
+  " 'jelera/vim-javascript-syntax' plugin.
+  call JavaScriptFold()
+endfunction
+
+au filetype javascript call JavascriptOptions()
+
+" Markdown {{{2
+au BufRead,BufNewFile *.md set filetype=pandoc.markdown
+au BufRead,BufNewFile *.pd set filetype=pandoc.markdown
+
+function MarkdownOptions()
+  nnoremap <silent> <leader><Tab> :Tabularize /<Bar><CR>
+  setl ts=4 sw=4 sts=4
+
+  " More characters: ▼ ▾ ▲ ▴
+  syntax match htmlEntityalpha /&alpha;/ conceal cchar=α
+  syntax match htmlEntityApprox /&approx;/ conceal cchar=≈
+  syntax match htmlEntitybeta /&beta;/ conceal cchar=β
+  syntax match htmlEntityDegree /&deg;/ conceal cchar=°
+  syntax match htmlEntityDownArrow /&darr;/ conceal cchar=▾
+  syntax match htmlEntityGreaterThan /&gt;/ conceal cchar=>
+  syntax match htmlEntityLeftArrow /&larr;/ conceal cchar=←
+  syntax match htmlEntityLessThan /&lt;/ conceal cchar=<
+  syntax match htmlEntitymicro /&micro;/ conceal cchar=µ
+  syntax match htmlEntityNonBreakingSpace /&nbsp;/ conceal cchar=╌
+  syntax match htmlEntityPi /&pi;/ conceal cchar=π
+  syntax match htmlEntityRightArrow /&rarr;/ conceal cchar=→
+  syntax match htmlEntityUpArrow /&uarr;/ conceal cchar=▴
+  syntax match htmlEntityTherefore /&there4;/ conceal cchar=∴
+  syntax match htmlEntityTimes /&times;/ conceal cchar=×
+endfunction
+
+au filetype pandoc.markdown call MarkdownOptions()
+
+" Python {{{2
+function PythonOptions()
+  setl ts=4 sw=4 sts=4
+endfunction
+
+au filetype python call PythonOptions()
+
+" Extra {{{1
+" Allows to `:q` when opening multiple files via the command line without
+" needing to open all buffers.
+au VimEnter * nested call VisitLastBuffer()
+
+fun! VisitLastBuffer()
+  if (argc() > 1)
+    last
+    rew
+  endif
+endfun
+
+" Center on search {{{2
+" The percentage height of the window at which you wish to define 'the center'.
+let g:centerlevel = 25
+
+" nnoremap <silent> n nzv:call<space>ScrollToPercent(g:centerlevel)<CR>
+" nnoremap <silent> N Nzv:call<space>ScrollToPercent(g:centerlevel)<CR>
+" nnoremap <silent> <C-o> <C-o>zv:call<space>ScrollToPercent(g:centerlevel)<CR>
+" nnoremap <silent> <C-i> <C-i>zv:call<space>ScrollToPercent(g:centerlevel)<CR>
+
+let g:centeronsearchini = "zv:call ScrollToPercent(g:centerlevel)\<CR>"
+let g:centeronsearch = "zv:call ScrollToPercent(g:centerlevel)\<CR>"
+autocmd InsertEnter * let g:centeronsearch = "\<C-O>zv\<C-O>:call ScrollToPercent(g:centerlevel)\<CR>"
+autocmd InsertLeave * let g:centeronsearch = "zv:call ScrollToPercent(g:centerlevel)\<CR>"
+
+function! s:returnAndCenterMaybe()
+  if getcmdtype() =~ "[/?]" && mode() != "v" && mode() != "\<C-V>"
+    return g:centeronsearch
+  else
+    return ""
+  endif
+endfunction
+
+function s:centerOnOperatorPendingSearch(key)
+  let g:centeronsearch = ""
+  return a:key
+endfunction
+
+" cnoremap <silent> <expr> <CR> "\<CR>" . ( <SID>returnAndCenterMaybe() )
+" onoremap <expr> / <SID>centerOnOperatorPendingSearch("/")
+" onoremap <expr> ? <SID>centerOnOperatorPendingSearch("?")
+" nnoremap / :let<space>g:centeronsearch<space>=<space>g:centeronsearchini<CR>/
+" nnoremap ? :let<space>g:centeronsearch<space>=<space>g:centeronsearchini<CR>?
+
+" Like zz, but allows you to choose a level other than the middle of the window
+" (i.e. at 50).
+"
+" From
+" http://stackoverflow.com/questions/22877483/is-it-possible-to-always-overwrite-a-specific-built-in-command-with-a-particular.
+function ScrollToPercent(percent, ...)
+  let movelines=winheight(0)*a:percent/100
+
+  if has("float") && type(movelines)==type(0.0)
+    let movelines=float2nr(movelines)
+  endif
+
+  let oldso=&so
+  execute ":set so=" . movelines
+
+  if exists("a:1")
+    execute "normal! zb"
+  else
+    execute "normal! zt"
+  endif
+
+  execute ":set so=" . oldso
+endfunction
+
+nnoremap <silent> <leader>z :call ScrollToPercent(g:centerlevel)<CR>
+nnoremap z<CR> zt
+nnoremap zt z<CR>
+nnoremap zB zb
+nnoremap <silent> zb :call ScrollToPercent(g:centerlevel, 1)<CR>
+" }}}2
 
 " Colors {{{1
 " TODO: Change to custom theme.
