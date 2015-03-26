@@ -26,6 +26,7 @@ Program       | Use
 -------       | ---
 [Firefox]     | Web Browser
 [Git]         | Version Control
+[GTK+]        | Graphical Toolkit
 [Pentadactyl] | Web Browser
 [Urxvt]       | Terminal Emulator
 [Vim]         | Text Editor
@@ -34,6 +35,7 @@ Program       | Use
 
 [Firefox]:      https://mozilla.org/firefox
 [Git]:          http://git-scm.com/
+[GTK+]:         http://www.gtk.org/
 [Pentadactyl]:  http://5digits.org/pentadactyl/
 [Urxvt]:        http://software.schmorp.de/pkg/rxvt-unicode.html
 [Vim]:          http://www.vim.org/
