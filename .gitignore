@@ -1,6 +1,3 @@
 # Vim temporary files (will ignore hidden svg files too!).
 *~
 .*.s[a-w][a-z]
-
-# Old stuff that needs to be cleaned.
-old/

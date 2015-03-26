@@ -1,6 +1,13 @@
 # Todo
 
-- change how vim-plug is symlinked to prefer a more username agnostic setup?
+- install script.
+- documentation.
+- mutt.
+- weechat.
+- newsbeuter.
+- colorscheme.
+- ~~change how vim-plug is symlinked to prefer a more username agnostic
+  setup?~~
 - ~~vim-plug snapshot script.~~
 - ~~vim-plug itself.~~
 - ~~vimrc -- undefined function `JavaScriptFold`, probably because plugins are
