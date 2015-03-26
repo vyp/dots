@@ -33,6 +33,7 @@ Program       | Use
 [Urxvt]       | Terminal Emulator
 [Vim]         | Text Editor
 [X11]         | Display Server
+[Zathura]     | Document (PDF) Viewer
 [Zsh]         | Shell
 
 [Bspwm]:        https://github.com/baskerville/bspwm
@@ -44,6 +45,7 @@ Program       | Use
 [Urxvt]:        http://software.schmorp.de/pkg/rxvt-unicode.html
 [Vim]:          http://www.vim.org/
 [X11]:          http://www.x.org/wiki/
+[Zathura]:      https://pwmt.org/projects/zathura/
 [Zsh]:          http://www.zsh.org/
 
 # Instructions
