@@ -29,6 +29,7 @@ Program       | Use
 [Git]         | Version Control
 [GTK+]        | Graphical Toolkit
 [MPD]         | Music Server
+[mpv]         | Video Player
 [Ncmpcpp]     | MPD Client
 [Pentadactyl] | Web Browser
 [Sxhkd]       | Keybindings Manager
@@ -43,6 +44,7 @@ Program       | Use
 [Git]:          http://git-scm.com/
 [GTK+]:         http://www.gtk.org/
 [MPD]:          http://www.musicpd.org/
+[mpv]:          http://mpv.io/
 [Ncmpcpp]:      http://ncmpcpp.rybczak.net/
 [Pentadactyl]:  http://5digits.org/pentadactyl/
 [Sxhkd]:        https://github.com/baskerville/sxhkd
