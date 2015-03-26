@@ -2,6 +2,7 @@
 
 - install script.
 - documentation.
+- rtorrent.
 - mutt.
 - weechat.
 - newsbeuter.
