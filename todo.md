@@ -6,6 +6,7 @@
 - mutt.
 - weechat.
 - newsbeuter.
+- pterosaur for firefox.
 - colorscheme.
 - ~~change how vim-plug is symlinked to prefer a more username agnostic
   setup?~~
