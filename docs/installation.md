@@ -27,7 +27,6 @@
 7.      # Assuming `zsh` was installed in step 6:
         $ chsh -s $(which zsh)
 
-
 8. Log out and log back in to load zsh (`$ exit` from the tty).
 
 9.      $ cd ~/etsi
