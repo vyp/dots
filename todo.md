@@ -10,6 +10,7 @@
 - ranger config?
 - pterosaur for firefox.
 - colorscheme.
+- `./bin/` and `./util/` directories.
 - ~~change how vim-plug is symlinked to prefer a more username agnostic
   setup?~~
 - ~~vim-plug snapshot script.~~
