@@ -2,10 +2,11 @@
 
 - install script.
 - documentation.
-- rtorrent.
+- ~~rtorrent.~~
 - mutt.
 - weechat.
 - newsbeuter.
+- ranger config?
 - pterosaur for firefox.
 - colorscheme.
 - ~~change how vim-plug is symlinked to prefer a more username agnostic
