@@ -73,7 +73,12 @@ $ stow -D vim
 $ stow -R vim
 ```
 
-[GNU Stow]: https://www.gnu.org/software/stow/
+For full instructions, see the documentation in the [`docs`] directory. In
+particular, start with [installation][1].
+
+[GNU Stow]:  https://www.gnu.org/software/stow/
+[`docs`]:    docs
+[1]:         docs/installation.md
 
 # Screenshots
 

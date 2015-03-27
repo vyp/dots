@@ -2,6 +2,7 @@
 
 IGNORE=(
   "antigen/"
+  "docs/"
   "coreutils/"
   "firefox/"
   "vim-plug/"
