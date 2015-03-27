@@ -14,10 +14,11 @@ DIRS="
   ~/.config/bspwm
   ~/.config/mpd
   ~/.config/mpv
-  ~/.pentadactyl/colors
   ~/.config/sxhkd
   ~/.config/zathura
+  ~/.pentadactyl/colors
   ~/.vim/autoload
+  ~/.vim/plugged
 "
 
 containsElement() {

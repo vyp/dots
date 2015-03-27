@@ -2,41 +2,46 @@
 
 1. [Install Arch GNU Linux][1].
 
-2. `# pacman -S git stow`
+2.      # pacman -S git stow
 
 3. [Create a 'normal' user][2] and log in to it.
 
-4. `$ cd ~` (Be sure you are at the home directory.)
+4.      # __Be sure you are at the home directory.__
+        $ cd ~
 
-5. `$ git clone https://github.com/vyp/etsi` (Or mirror:
-   <https://notabug.org/i/etsi>.)
+        # Or from mirror: <https://notabug.org/i/etsi.git>
+        $ git clone https://github.com/vyp/etsi 
 
-6. `$ cd etsi`
+        $ cd etsi
+        $ ./bootstrap
 
-7. `./bootstrap`
-
-8. (Optional) Download the AUR:
+5. (Optional) Download the AUR:
 
         $ mkdir ~/dl
         $ cd ~/dl
         $ git clone -depth=1 git://pkgbuild.com/aur-mirror.git
 
-9. Install packages (all the programs you want, including from the AUR and
+6. Install packages (all the programs you want, including from the AUR and
    whatever other sources...).
 
-10. `$ chsh -s $(which zsh)` (Assuming `zsh` was installed in step 9.)
+7. `$ chsh -s $(which zsh)` (Assuming `zsh` was installed in step 6.)
 
-11. Log out and log back in to load zsh (`$ exit` from the tty).
+8. Log out and log back in to load zsh (`$ exit` from the tty).
 
-12. Copy over personal files and/or font files.
+9.      $ cd ~/etsi
+        $ antigen restore zsh-plugins-snapshot
+        $ ./vim-plugins-snapshot
+        $ cd ~
 
-13. `$ startx`
+10. Copy over personal files and/or font files.
 
-14. `$ firefox`
+11. `$ startx`
 
-15. Install any/all Firefox extensions you want.
+12. `$ firefox`
 
-16. Step 14 will create a profile directory under `~/.mozilla/firefox/` in the
+13. Install any/all Firefox addons you want.
+
+14. Step 12 will create a profile directory under `~/.mozilla/firefox/` in the
     form of `########.default` where the `#`'s are (seemingly) random letters
     and/or numbers. Now the Firefox configuration files can be installed:
 
