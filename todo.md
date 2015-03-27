@@ -1,6 +1,6 @@
 # Todo
 
-- install script.
+- ~~install script.~~
 - documentation.
 - ~~rtorrent.~~
 - mutt.

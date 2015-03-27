@@ -1,0 +1,50 @@
+#!/bin/env bash
+
+IGNORE=(
+  "antigen/"
+  "coreutils/"
+  "firefox/"
+  "vim-plug/"
+)
+
+MAKEDIRS=true
+
+DIRS="
+  ~/.config/bspwm
+  ~/.config/mpd
+  ~/.config/mpv
+  ~/.pentadactyl/colors
+  ~/.config/sxhkd
+  ~/.config/zathura
+  ~/.vim/autoload
+"
+
+containsElement() {
+  local e
+
+  for e in "${@:2}"; do
+    [[ "$e" == "$1" ]] &&
+      return 0
+  done
+
+  return 1
+}
+
+if [ "$MAKEDIRS" = true ]; then
+  for dir in $DIRS; do
+    mkdir -p "${dir}"
+  done
+fi
+
+for dir in */ ; do
+  containsElement "${dir}" "${IGNORE[@]}"
+
+  if [[ $? -eq 1 ]]; then
+    stow "${dir}"
+  fi
+done
+
+git submodule init
+git submodule update --depth 1
+
+ln -s ~/etsi/vim-plug/plug.vim ~/.vim/autoload/plug.vim
