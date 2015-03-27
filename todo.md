@@ -4,6 +4,7 @@
 - documentation.
 - ~~rtorrent.~~
 - mutt.
+- panel.
 - weechat.
 - newsbeuter.
 - ranger config?

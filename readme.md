@@ -60,7 +60,20 @@ Program       | Use
 
 # Instructions
 
-*Todo.*
+With [GNU Stow]:
+
+``` shell
+# Install configuration files for a program (e.g. vim).
+$ stow vim
+
+# Uninstall.
+$ stow -D vim
+
+# Reinstall
+$ stow -R vim
+```
+
+[GNU Stow]: https://www.gnu.org/software/stow/
 
 # Screenshots
 
