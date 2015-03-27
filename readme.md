@@ -69,7 +69,7 @@ $ stow vim
 # Uninstall.
 $ stow -D vim
 
-# Reinstall
+# Reinstall.
 $ stow -R vim
 ```
 
