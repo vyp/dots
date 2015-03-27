@@ -300,9 +300,3 @@ ZSH_HIGHLIGHT_STYLES[path_approx]=fg=yellow
 # spp-tv-universal.eng,ro() { sppc "sop://broker.sopcast.com:3912/148255" ;}
 # spp-tv-axn.eng,ro() { sppc "sop://broker.sopcast.com:3912/148257" ;}
 # spp-tv-axncrime.eng,ro() { sppc "sop://broker.sopcast.com:3912/149261" ;}
-
-# alias ls='ls -p --color=auto'
-# alias sydsiege='livestreamer http://youtu.be/KOJWvZt7a5c best --player mpv'
-# alias abcsydsiege='livestreamer http://youtu.be/nvzpSvyyZis best --player mpv'
-# 
-# eval `dircolors ~/etsi/dircolors.ansi-dark`
