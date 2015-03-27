@@ -24,7 +24,9 @@
 6. Install packages (all the programs you want, including from the AUR and
    whatever other sources...).
 
-7. `$ chsh -s $(which zsh)` (Assuming `zsh` was installed in step 6.)
+7.      # Assuming `zsh` was installed in step 6:
+        $ chsh -s $(which zsh)
+
 
 8. Log out and log back in to load zsh (`$ exit` from the tty).
 
@@ -35,9 +37,9 @@
 
 10. Copy over personal files and/or font files.
 
-11. `$ startx`
+11.     $ startx
 
-12. `$ firefox`
+12.     $ firefox
 
 13. Install any/all Firefox addons you want.
 
