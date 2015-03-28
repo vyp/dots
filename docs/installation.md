@@ -1,6 +1,6 @@
 # Short Version
 
-1. [Install Arch GNU Linux][1].
+1. [Install Arch GNU][1].
 
 2.      # pacman -S git stow sudo
 
