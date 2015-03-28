@@ -1,19 +1,13 @@
-#appcontent,
-#appcontent > #content,
-#appcontent > #content > tabbox > tabpanels {
-	background: #2d2d2d !important;
-}
-
 #browser {
   margin-top: -1px !important;
 }
 
 #main-window[stylish-url="about:blank"]:not([onclose^="PrintUtils"]):not([title^="Source Chart"]):not([chromehidden="menubar toolbar directories extrachrome "]) #content browser:not([src]) {
-	opacity: 0 !important;
+  opacity: 0 !important;
 }
 
 a:active {
-	outline: none !important;
+  outline: none !important;
 }
 
 .tabbrowser-arrowscrollbox > .scrollbutton-up,
@@ -25,53 +19,47 @@ toolbarbutton#new-tab-button,
 .tabs-closebutton-box,
 .tabs-border-bottom,
 .tab-close-button {
-	display: none !important;
+  display: none !important;
 }
 
 tabs#tabbrowser-tabs, tabs#tabbrowser-tabs * {
-	-moz-appearance: none !important;
-	border-radius: 0px !important; 
-	border: none !important;
-	border-bottom: 0px none !important;
-	background-image: none !important;
-	margin-top: 0px !important;
-	max-height: 13px !important;
-	min-height: 13px !important;        
+  -moz-appearance: none !important;
+  border-radius: 0px !important;
+  border: none !important;
+  border-bottom: 0px none !important;
+  background-image: none !important;
+  margin-top: 0px !important;
+  max-height: 13px !important;
+  min-height: 13px !important;
 }
 
 tabs#tabbrowser-tabs {
-	background: #2d2d2d !important;
-	padding-top: 0px !important;
-	margin-left: 0px !important;
-	padding-top: 0px !important;
-	padding-bottom: 0px !important;
-	border-bottom: 0px none !important;
-	text-align: center !important;
+  padding-top: 0px !important;
+  margin-left: 0px !important;
+  padding-top: 0px !important;
+  padding-bottom: 0px !important;
+  border-bottom: 0px none !important;
+  text-align: center !important;
 }
 
 .tabbrowser-tab {
-	max-height: 13px !important;
-	margin-left: 0px !important;
-	padding-top: 2px !important;
-	color: #a09f93 !important;
-	border-bottom: 0px none !important;
-	background: #2d2d2d !important;
-
+  max-height: 13px !important;
+  margin-left: 0px !important;
+  padding-top: 2px !important;
+  border-bottom: 0px none !important;
 }
 
 .tabbrowser-tab[selected=true] {
-	color: #d3d0c8 !important;
-	background: #2d2d2d !important;
-	border-bottom: 0px none !important;
-	box-shadow: none !important;
+  border-bottom: 0px none !important;
+  box-shadow: none !important;
 }
 
 .tabbrowser-tab .tab-text {
-	margin-left: 3px !important;
-	margin-right: 3px !important;
-	margin-top: 2px !important;
-	font-size: 10px !important;
-	font-family: Cure !important;
+  margin-left: 3px !important;
+  margin-right: 3px !important;
+  margin-top: 2px !important;
+  font-size: 10px !important;
+  font-family: Cure !important;
 }
 
 /* Hide the new curved tab edges. */
@@ -86,7 +74,7 @@ tabs#tabbrowser-tabs {
 }
 
 html {
-	overflow: hidden;
+  overflow: hidden;
 }
 
 #urlbar dropmarker,
@@ -96,39 +84,39 @@ html {
 .tab-throbber,
 .tabs-newtab-button,
 .tab-throbber[progress] {
-	display: none !important;
+  display: none !important;
 }
 
 .titlebar-placeholder[type="caption-buttons"] {
-	margin-left: 10px !important;
+  margin-left: 10px !important;
 }
 
 .tabbrowser-tabs:not([drag=detach]) > .tabbrowser-tab:not([pinned])[fadein] {
-	min-width: 30px !important;
-	max-width: 90% !important;
+  min-width: 30px !important;
+  max-width: 90% !important;
 }
 
 .searchbar-engine-image {
-	display: none !important;
+  display: none !important;
 }
 
 .search-go-button {
-	display: none !important;
+  display: none !important;
 }
 
 #nav-bar {
-	background-image: none !important;
-	border: none !important;
-	margin-bottom: 0 !important;
-	padding: 0 !important;
+  background-image: none !important;
+  border: none !important;
+  margin-bottom: 0 !important;
+  padding: 0 !important;
 }
 
 #url-bar {
-	background: none !important;
-	border: none !important;
-	border-radius: 1px 0 0 0 !important;
-	margin: 0 !important;
-	box-shadow: none !important;
+  background: none !important;
+  border: none !important;
+  border-radius: 1px 0 0 0 !important;
+  margin: 0 !important;
+  box-shadow: none !important;
 }
 
 #statusbar-display {
