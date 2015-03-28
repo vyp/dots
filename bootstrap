@@ -5,6 +5,7 @@ IGNORE=(
   "docs/"
   "coreutils/"
   "firefox/"
+  "schemes/"
   "vim-plug/"
   "zathura/"
 )

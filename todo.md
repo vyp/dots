@@ -1,5 +1,6 @@
 # Todo
 
+- stow wrapper for choosing colorscheme + put a prompt for that in bootstrap!
 - ~~install script.~~
 - documentation.
 - ~~rtorrent.~~
