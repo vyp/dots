@@ -6,6 +6,7 @@ IGNORE=(
   "coreutils/"
   "firefox/"
   "vim-plug/"
+  "zathura"
 )
 
 MAKEDIRS=true
