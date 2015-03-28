@@ -59,7 +59,7 @@
 
         $ cd ~/etsi
 
-        # Obviously replace the hashes with whatever the profile directory was
+        # Obviously, replace the hashes with whatever the profile directory was
         # named!
         $ stow -t ~/.mozilla/firefox/########.default firefox
 
