@@ -58,6 +58,9 @@
     and/or numbers. Now the Firefox configuration files can be installed:
 
         $ cd ~/etsi
+
+        # Obviously replace the hashes with whatever the profile directory was
+        # named!
         $ stow -t ~/.mozilla/firefox/########.default firefox
 
 [1]: https://wiki.archlinux.org/index.php/installation_guide
