@@ -47,7 +47,6 @@ tabs#tabbrowser-tabs {
 	padding-bottom: 0px !important;
 	border-bottom: 0px none !important;
 	text-align: center !important;
-	/*box-shadow: inset 0px -4px 2px rgba(0,0,0,0.1) !important;*/
 }
 
 .tabbrowser-tab {
@@ -57,7 +56,6 @@ tabs#tabbrowser-tabs {
 	color: #a09f93 !important;
 	border-bottom: 0px none !important;
 	background: #2d2d2d !important;
-	/*box-shadow: inset 0px -4px 2px rgba(0,0,0,0.1) !important;*/
 
 }
 
@@ -76,15 +74,15 @@ tabs#tabbrowser-tabs {
 	font-family: Cure !important;
 }
 
-/* Hide the new curved tab edges */
+/* Hide the new curved tab edges. */
 .tab-background {
-    opacity: 0 !important;
+  opacity: 0 !important;
 }
 
-/* Hide the little graphic seperator between inactive tabs */
+/* Hide the little graphic seperator between inactive tabs. */
 .tabbrowser-tab:before,
 .tabbrowser-tab:after {
-    visibility: hidden !important;
+  visibility: hidden !important;
 }
 
 html {
@@ -108,7 +106,6 @@ html {
 .tabbrowser-tabs:not([drag=detach]) > .tabbrowser-tab:not([pinned])[fadein] {
 	min-width: 30px !important;
 	max-width: 90% !important;
-	/* max-width: 130px !important; */
 }
 
 .searchbar-engine-image {
@@ -121,7 +118,6 @@ html {
 
 #nav-bar {
 	background-image: none !important;
-	/* background-color: #393939 !important; */
 	border: none !important;
 	margin-bottom: 0 !important;
 	padding: 0 !important;
@@ -133,7 +129,6 @@ html {
 	border-radius: 1px 0 0 0 !important;
 	margin: 0 !important;
 	box-shadow: none !important;
-	/* color: #393939 !important; */
 }
 
 #statusbar-display {
