@@ -6,7 +6,7 @@ IGNORE=(
   "coreutils/"
   "firefox/"
   "vim-plug/"
-  "zathura"
+  "zathura/"
 )
 
 MAKEDIRS=true
@@ -51,3 +51,5 @@ git submodule init
 git submodule update --depth 1
 
 ln -s ~/etsi/vim-plug/plug.vim ~/.vim/autoload/plug.vim
+
+sudo stow -t / zathura

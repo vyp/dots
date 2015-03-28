@@ -11,6 +11,7 @@
 - pterosaur for firefox.
 - colorscheme.
 - `./bin/` and `./util/` directories.
+- figure out how to manage wallpapers (similar to colorschemes).
 - check out https://github.com/hchbaw/opp.zsh.
 - ~~change how vim-plug is symlinked to prefer a more username agnostic
   setup?~~
