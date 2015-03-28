@@ -29,7 +29,7 @@
 
         $ mkdir ~/dl
         $ cd ~/dl
-        $ git clone -depth=1 git://pkgbuild.com/aur-mirror.git
+        $ git clone --depth=1 git://pkgbuild.com/aur-mirror.git
 
 8. Install packages (all the programs you want, including from the AUR and
    whatever other sources...).
