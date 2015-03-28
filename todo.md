@@ -11,6 +11,7 @@
 - pterosaur for firefox.
 - colorscheme.
 - `./bin/` and `./util/` directories.
+- check out https://github.com/hchbaw/opp.zsh.
 - ~~change how vim-plug is symlinked to prefer a more username agnostic
   setup?~~
 - ~~vim-plug snapshot script.~~
