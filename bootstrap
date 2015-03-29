@@ -1,7 +1,10 @@
 #!/bin/env bash
 
+cd ~/etsi
+
 IGNORE=(
   "antigen/"
+  "bin/"
   "docs/"
   "coreutils/"
   "firefox/"
