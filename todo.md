@@ -9,6 +9,7 @@
 - weechat.
 - newsbeuter.
 - ranger config?
+- tmux?
 - pterosaur for firefox.
 - colorscheme.
 - `./bin/` and `./util/` directories.

@@ -492,17 +492,7 @@ nnoremap <silent> zb :call ScrollToPercent(g:centerlevel, 1)<CR>
 " }}}2
 
 " Colors {{{1
-" TODO: Change to custom theme.
-colorscheme base16-eighties
-
 " Highlight groups need to be at the end of vimrc so that they don't get
 " overridden.
 
-" base16-eighties:
-hi pandocBlockQuote ctermfg=12
-hi pandocEmphasis ctermfg=5
-hi pandocEmphasisInStrong ctermfg=5
-hi pandocStrikeout ctermfg=8
-hi pandocStrong ctermfg=14
-hi pandocStrongEmphasis ctermfg=9
-hi pandocStrongInEmphasis ctermfg=14
+source ~/.vim/colors.vim
