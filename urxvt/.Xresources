@@ -1,4 +1,4 @@
-#include "~/.urxvt/colors"
+#include "/home/rws/.urxvt/colors"
 
 ! Xft settings
 Xft.dpi:       96
