@@ -24,7 +24,7 @@ containsElement () {
   return 1
 }
 
-ask() {
+ask () {
   read -p "Choose a colorscheme. Available options are:
 
 $(schemes)
@@ -49,4 +49,16 @@ $(schemes)
   fi
 }
 
-ask
+if [ $# -eq 0 ]; then
+  ask
+else
+  check="schemes/$1/"
+  containsElement "${check}" "${DIRS[@]}"
+
+  if [[ $? -eq 1 ]]; then
+    echo -e "ERROR: There is no theme '$1'!\n"
+    ask
+  else
+    echo -e "You chose $1"
+  fi
+fi
