@@ -19,6 +19,7 @@ DIRS="
   ~/.config/sxhkd
   ~/.config/zathura
   ~/.pentadactyl/colors
+  ~/.urxvt
   ~/.vim/autoload
   ~/.vim/plugged
 "
@@ -36,7 +37,7 @@ containsElement () {
 
 if [ "$MAKEDIRS" = true ]; then
   for dir in $DIRS; do
-    mkdir -p "${dir}"
+    mkdir -pv "${dir}"
   done
 fi
 

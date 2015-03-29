@@ -34,7 +34,7 @@
 8. Install packages (all the programs you want, including from the AUR and
    whatever other sources...).
 
-9. (Assuming `zsh` was installed in step 8:)
+9. Assuming `zsh` was installed in step 8:
 
         $ chsh -s $(which zsh)
 
@@ -55,7 +55,8 @@
 
 16. Step 14 will create a profile directory under `~/.mozilla/firefox/` in the
     form of `########.default` where the `#`'s are (seemingly) random letters
-    and/or numbers. Now the Firefox configuration files can be installed:
+    and/or numbers. Now the rest of the Firefox configuration files can be
+    installed:
 
         $ cd ~/etsi
 
