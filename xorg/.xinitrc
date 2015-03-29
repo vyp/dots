@@ -1,6 +1,6 @@
 #!/bin/sh
 
-xrdb ~/.Xresources &
+xrdb -I$HOME ~/.Xresources &
 
 # Be sure to run `mkfontscale` and then `mkfontdir` in these directories when
 # installing fonts for the first time.
@@ -23,7 +23,6 @@ feh --bg-scale ~/pics/walls//wallhaven-5331.jpg &
 disableInputDevice () {
   if xinput list | grep -q "$1"; then
     device=`xinput list | grep "$2"`
-    # export MSTR=`echo "$device" | sed 's/.*\(\[[a-zA-Z ]\+([0-9]\+)\]\).*/\1/' | sed 's/.*\([0-9]\+\).*/\1/'`
     xinput float `echo "$device" | sed 's/.*\(id=[0-9]\+\).*/\1/' | cut -c 4-`
   fi
 }
