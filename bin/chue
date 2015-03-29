@@ -37,7 +37,6 @@ $(schemes)
   fi
 
   check="schemes/${choice}/"
-
   containsElement "${check}" "${DIRS[@]}"
 
   if [[ $? -eq 1 ]]; then
