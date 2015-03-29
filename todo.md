@@ -1,5 +1,6 @@
 # Todo
 
+- separate out color references in zsh PROMPTs into schemes.
 - stow wrapper for choosing colorscheme + put a prompt for that in bootstrap!
 - ~~install script.~~
 - documentation.
