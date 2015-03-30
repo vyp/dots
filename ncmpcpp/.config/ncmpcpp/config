@@ -224,11 +224,11 @@ song_status_format = {$5{%t} $8by$2 {%a}$5}|{%f}
 ## Note: below variables also support text attributes listed above.
 ##
 #
-#now_playing_prefix = $b
-now_playing_prefix = $r
+now_playing_prefix = $b
+# now_playing_prefix = $r
 #
-#now_playing_suffix = $/b
-now_playing_suffix = $/r
+now_playing_suffix = $/b
+# now_playing_suffix = $/r
 #
 #browser_playlist_prefix = "$2playlist$9 "
 #

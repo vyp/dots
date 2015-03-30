@@ -39,3 +39,7 @@
 *.color13:      base06
 *.color14:      base0F
 *.color15:      base07
+
+ncmpcpp*color11: #ffef79
+ncmpcpp*color13: #f3b6f3
+ncmpcpp*color14: #80ffff
