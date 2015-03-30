@@ -1,6 +1,6 @@
 # Todo
 
-- separate out color references in zsh PROMPTs into schemes.
+- ~~separate out color references in zsh PROMPTs into schemes.~~
 - fix zathura base16-dark colors.
 - stow wrapper for choosing colorscheme + put a prompt for that in bootstrap!
 - ~~install script.~~

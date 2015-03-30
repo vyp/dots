@@ -239,10 +239,12 @@ precmd() {
   vcs_info
 }
 
-# Other possible prompt characters: > » ≻ ➤
-PROMPT="%{$reset_color%} %{$fg[green]%}»%{$reset_color%} "
+source ~/.zpromptcolors
 
-RPROMPT='%{$reset_color%}%{$fg[blue]%}%(1j.%j.) %{$reset_color%}%{$fg[magenta]%}${vcs_info_msg_0_} %{$reset_color%}%{$fg[cyan]%}%~%{$reset_color%} '
+# Other possible prompt characters: > » ≻ ➤
+PROMPT="%{$reset_color%} ${CHAR}»%{$reset_color%} "
+
+RPROMPT='%{$reset_color%}${BGJOBS}%(1j.%j.) %{$reset_color%}${VCS_INFO}${vcs_info_msg_0_} %{$reset_color%}${DIR}%~%{$reset_color%} '
 
 source ~/etsi/antigen/antigen.zsh
 
