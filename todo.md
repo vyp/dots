@@ -1,10 +1,11 @@
 # Todo
 
 - ~~separate out color references in zsh PROMPTs into schemes.~~
-- fix zathura base16-dark colors.
+- ~~fix zathura base16-dark colors.~~
 - stow wrapper for choosing colorscheme + put a prompt for that in bootstrap!
 - ~~install script.~~
 - documentation.
+    - maintainence (updating).
 - ~~rtorrent.~~
 - mutt.
 - panel.
@@ -16,7 +17,9 @@
 - colorscheme.
 - `./bin/` and `./util/` directories.
 - figure out how to manage wallpapers (similar to colorschemes).
+- vim plugins: fugitive, snippets, latex-box.
 - check out https://github.com/hchbaw/opp.zsh.
+- https://github.com/zsh-users/zsh-completions.
 - ~~change how vim-plug is symlinked to prefer a more username agnostic
   setup?~~
 - ~~vim-plug snapshot script.~~
