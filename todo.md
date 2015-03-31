@@ -2,7 +2,8 @@
 
 - ~~separate out color references in zsh PROMPTs into schemes.~~
 - ~~fix zathura base16-dark colors.~~
-- move `.urxvt` directory to `.Xresources.d`.
+- zshrc, sxhkd dmenu, pentadactyl colorscheme, and possibly wallpaper line from
+  `.xinitrc`.
 - stow wrapper for choosing colorscheme + put a prompt for that in bootstrap!
 - ~~install script.~~
 - documentation.
