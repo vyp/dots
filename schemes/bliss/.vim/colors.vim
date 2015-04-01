@@ -18,6 +18,7 @@ if &term =~ "xterm\\|rxvt"
   " Use "\003]12;<color>\007" for gnome-terminal.
 endif
 
+set t_Co=16
 colorscheme default
 
 " hi pandocBlockQuote ctermfg=12
