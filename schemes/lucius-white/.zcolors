@@ -1,8 +1,8 @@
 #!/bin/env zsh
 
 # Urxvt (and family) accepts even '#RRGGBB' format.
-INSERT_PROMPT="#d3d0c8"
-COMMAND_PROMPT="#f99157"
+INSERT_PROMPT="#5f87af"
+COMMAND_PROMPT="#444444"
 
 CHAR="%{$fg[green]%}"
 BGJOBS="%{$fg[blue]%}"
