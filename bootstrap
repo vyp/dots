@@ -60,3 +60,5 @@ ln -s ~/etsi/vim-plug/plug.vim ~/.vim/autoload/plug.vim
 
 sudo stow -t / pacman
 sudo stow -t / zathura
+
+./bin/chue

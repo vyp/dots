@@ -4,7 +4,8 @@
 - ~~fix zathura base16-dark colors.~~
 - ~~zshrc~~, ~~sxhkd dmenu~~, ~~pentadactyl colorscheme~~, and possibly
   wallpaper line from `.xinitrc`.
-- stow wrapper for choosing colorscheme + put a prompt for that in bootstrap!
+- ~~stow wrapper for choosing colorscheme + put a prompt for that in
+  bootstrap!~~
 - ~~install script.~~
 - documentation.
     - maintainence (updating).

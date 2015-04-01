@@ -32,7 +32,7 @@ $(schemes)
 ($FIRST) > " choice
 
   if [[ -z "$choice" ]]; then
-    echo -e "\nYou chose ${FIRST}"
+    stowlink ${FIRST}
     return 0
   fi
 
@@ -43,9 +43,18 @@ $(schemes)
     echo -e "\nERROR: There is no theme '${choice}', try again!\n"
     ask
   else
-    echo -e "\nYou chose ${choice}"
+    stowlink ${choice}
     return 0
   fi
+}
+
+stowlink () {
+  for dir in $DIR; do
+    dir=`echo $dir | awk -F'/' '{print $2}' -`
+    stow -t ~ -d schemes -D $dir
+  done
+
+  stow -t ~ -d schemes $1
 }
 
 if [ $# -eq 0 ]; then
@@ -58,6 +67,6 @@ else
     echo -e "ERROR: There is no theme '$1'!\n"
     ask
   else
-    echo -e "You chose $1"
+    stowlink $1
   fi
 fi
