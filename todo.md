@@ -7,6 +7,7 @@
 - ~~stow wrapper for choosing colorscheme + put a prompt for that in
   bootstrap!~~
 - ~~install script.~~
+- figure out how to stop lucius from folding in javascript files by default.
 - documentation.
     - maintainence (updating).
     - fonts.
