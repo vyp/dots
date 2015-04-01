@@ -26,6 +26,7 @@ Program       | Use
 -------       | ---
 [Bspwm]       | Window Manager
 [dircolors]   | Color Setup for `ls`
+[dmenu]       | Launcher
 [Firefox]     | Web Browser
 [Git]         | Version Control
 [GTK+]        | Graphical Toolkit
@@ -43,6 +44,7 @@ Program       | Use
 
 [Bspwm]:        https://github.com/baskerville/bspwm
 [dircolors]:    https://www.gnu.org/software/coreutils/manual/html_node/dircolors-invocation.html
+[dmenu]:        http://tools.suckless.org/dmenu/
 [Firefox]:      https://mozilla.org/firefox
 [Git]:          http://git-scm.com/
 [GTK+]:         http://www.gtk.org/

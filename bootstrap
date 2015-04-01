@@ -5,6 +5,7 @@ cd ~/etsi
 IGNORE=(
   "antigen/"
   "bin/"
+  "dmenu/"
   "docs/"
   "firefox/"
   "schemes/"

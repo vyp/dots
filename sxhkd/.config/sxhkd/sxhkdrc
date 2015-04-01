@@ -185,7 +185,7 @@ super + y
   bspc rule -a \* -o floating=true
 
 super + slash
-  dmenu_run -fn "-artwiz-cure-medium-r-normal--11-110-75-75-p-90-iso8859-1" -nb '#2d2d2d' -nf '#747369' -sb '#f2777a' -sf '#f2f0ec'
+  ~/.dmenurc
 
 XF86AudioRaiseVolume
   amixer set Master 2%+ #; \
