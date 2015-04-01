@@ -37,7 +37,7 @@ nmap -builtin ,t :set showtabline=always<CR>
 " nmap -builtin ,v :set fullvim!<CR>
 nmap -builtin ,z :source ~/.pentadactylrc<CR>
 
-colorscheme base16
+colorscheme colors
 source ~/.pentadactyl/userChrome.css
 
 hi FontCode -append font-family: 'limey' !important; font-size: 8pt !important; font-weight: normal !important;
