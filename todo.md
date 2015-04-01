@@ -8,6 +8,7 @@
   bootstrap!~~
 - ~~install script.~~
 - figure out how to stop lucius from folding in javascript files by default.
+- add `./bin` to `$PATH`.
 - documentation.
     - maintainence (updating).
     - fonts.
@@ -23,6 +24,7 @@
 - pterosaur for firefox.
 - compton.
 - ~~colorscheme.~~ [1]
+    - configure rest of lucius colorscheme.
 - `./bin/` and `./util/` directories.
 - figure out how to manage wallpapers (similar to colorschemes).
 - vim plugins: fugitive, snippets, latex-box.
