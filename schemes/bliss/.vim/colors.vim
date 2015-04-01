@@ -9,21 +9,21 @@ if &term =~ "xterm\\|rxvt"
 
   " See `:help t_SI` and `:help t_EI`.
   " Insert mode color.
-  let &t_SI = "\<Esc>]12;#d3d0c8\x7"
+  let &t_SI = "\<Esc>]12;#c89a9a\x7"
   " Normal mode color.
-  let &t_EI = "\<Esc>]12;#f99157\x7"
+  let &t_EI = "\<Esc>]12;#eec900\x7"
 
   " Might be needed for resetting color when vim exits.
   " autocmd VimLeave * silent !echo -ne "\033]<color>\007"
   " Use "\003]12;<color>\007" for gnome-terminal.
 endif
 
-colorscheme base16-eighties
+colorscheme default
 
-hi pandocBlockQuote ctermfg=12
-hi pandocEmphasis ctermfg=5
-hi pandocEmphasisInStrong ctermfg=5
-hi pandocStrikeout ctermfg=8
-hi pandocStrong ctermfg=14
-hi pandocStrongEmphasis ctermfg=9
-hi pandocStrongInEmphasis ctermfg=14
+" hi pandocBlockQuote ctermfg=12
+" hi pandocEmphasis ctermfg=5
+" hi pandocEmphasisInStrong ctermfg=5
+" hi pandocStrikeout ctermfg=8
+" hi pandocStrong ctermfg=14
+" hi pandocStrongEmphasis ctermfg=9
+" hi pandocStrongInEmphasis ctermfg=14
