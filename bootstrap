@@ -8,6 +8,7 @@ IGNORE=(
   "dmenu/"
   "docs/"
   "firefox/"
+  "pacman/"
   "schemes/"
   "vim-plug/"
   "zathura/"
@@ -57,4 +58,5 @@ git submodule update --depth 1
 
 ln -s ~/etsi/vim-plug/plug.vim ~/.vim/autoload/plug.vim
 
+sudo stow -t / pacman
 sudo stow -t / zathura
