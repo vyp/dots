@@ -54,7 +54,7 @@ for dir in */ ; do
 done
 
 git submodule init
-git submodule update --depth 1
+git submodule update --depth 2
 
 ln -s ~/etsi/vim-plug/plug.vim ~/.vim/autoload/plug.vim
 
