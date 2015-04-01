@@ -15,6 +15,7 @@
 - panel.
 - weechat.
 - newsbeuter.
+- sxiv?
 - ranger config?
 - tmux?
 - pterosaur for firefox.
