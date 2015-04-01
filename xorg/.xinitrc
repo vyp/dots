@@ -8,7 +8,7 @@ for dir in /usr/share/fonts/artwiz-fonts ~/.fonts/xlsfonts; do
   xset +fp "$dir";
 done && xset fp rehash
 
-# Disables terminal beeps (if otherwise would be produced).
+# Disables terminal beeps (if otherwise they would be produced).
 xset -b
 
 xsetroot -cursor_name left_ptr &

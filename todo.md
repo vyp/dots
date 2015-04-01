@@ -8,6 +8,8 @@
 - ~~install script.~~
 - documentation.
     - maintainence (updating).
+    - fonts.
+    - install packages.
 - ~~rtorrent.~~
 - mutt.
 - panel.
