@@ -190,6 +190,7 @@ function - {
 }
 
 eval `dircolors ~/.dircolors`
+source ~/.zcolors
 
 # 10ms delay (instead of default 400) for key sequences.
 KEYTIMEOUT=1
@@ -198,12 +199,8 @@ HISTFILE=~/.histfile
 HISTSIZE=1000
 SAVEHIST=1000
 
-# Urxvt (and family) accepts even '#RRGGBB' format.
-INSERT_PROMPT="#d3d0c8"
-COMMAND_PROMPT="#f99157"
-
 # Helper for setting color including all kinds of terminals.
-set_prompt_color() {
+set_prompt_color () {
   if [[ $TERM = "linux" ]]; then
     # Nothing.
   elif [[ $TMUX != '' ]]; then
@@ -222,7 +219,7 @@ zle-keymap-select () {
   fi
 }
 
-zle-line-finish() {
+zle-line-finish () {
   set_prompt_color $INSERT_PROMPT
 }
 
@@ -239,11 +236,8 @@ precmd() {
   vcs_info
 }
 
-source ~/.zpromptcolors
-
 # Other possible prompt characters: > » ≻ ➤
 PROMPT="%{$reset_color%} ${CHAR}»%{$reset_color%} "
-
 RPROMPT='%{$reset_color%}${BGJOBS}%(1j.%j.) %{$reset_color%}${VCS_INFO}${vcs_info_msg_0_} %{$reset_color%}${DIR}%~%{$reset_color%} '
 
 source ~/etsi/antigen/antigen.zsh
@@ -254,10 +248,10 @@ antigen apply
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
 
 # Disable underlines.
-ZSH_HIGHLIGHT_STYLES[precommand]=fg=green
+ZSH_HIGHLIGHT_STYLES[precommand]=fg=$ZSH_HIGHLIGHT_STYLES_PRECOMMAND
 ZSH_HIGHLIGHT_STYLES[path]=none
 ZSH_HIGHLIGHT_STYLES[path_prefix]=none
-ZSH_HIGHLIGHT_STYLES[path_approx]=fg=yellow
+ZSH_HIGHLIGHT_STYLES[path_approx]=fg=$ZSH_HIGHLIGHT_STYLES_PATH_APPROX
 
 # # SP_VIDPLAYER=cvlc
 # # SP_VIDPLAYER=vlc
