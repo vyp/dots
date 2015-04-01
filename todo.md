@@ -7,12 +7,13 @@
 - ~~stow wrapper for choosing colorscheme + put a prompt for that in
   bootstrap!~~
 - ~~install script.~~
-- figure out how to stop lucius from folding in javascript files by default.
+- ~~figure out what is causing folding in javascript files by default.~~
 - add `./bin` to `$PATH`.
 - documentation.
     - maintainence (updating).
     - fonts.
     - install packages.
+- change vim fold text.
 - ~~rtorrent.~~
 - mutt.
 - panel.

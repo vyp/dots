@@ -358,6 +358,7 @@ function JavascriptOptions()
   " Enables folding in javascript files, from the
   " 'jelera/vim-javascript-syntax' plugin.
   call JavaScriptFold()
+  set foldlevelstart=99
 endfunction
 
 au filetype javascript call JavascriptOptions()
