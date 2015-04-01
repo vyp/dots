@@ -272,6 +272,8 @@ Plug 'vim-pandoc/vim-pandoc-syntax'
 
 " Theme:
 Plug 'chriskempson/base16-vim'
+Plug 'jonathanfilip/vim-lucius'
+Plug 'morhetz/gruvbox'
 
 call plug#end()
 

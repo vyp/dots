@@ -1,0 +1,13 @@
+#!/bin/env zsh
+
+# Urxvt (and family) accepts even '#RRGGBB' format.
+INSERT_PROMPT="#d3d0c8"
+COMMAND_PROMPT="#f99157"
+
+CHAR="%{$fg[green]%}"
+BGJOBS="%{$fg[blue]%}"
+VCS_INFO="%{$fg[magenta]%}"
+DIR="%{$fg[cyan]%}"
+
+ZSH_HIGHLIGHT_STYLES_PRECOMMAND="green"
+ZSH_HIGHLIGHT_STYLES_PATH_APPROX="yellow"
