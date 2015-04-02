@@ -270,8 +270,10 @@ Plug 'nelstrom/vim-markdown-folding'
 Plug 'rust-lang/rust.vim'
 Plug 'vim-pandoc/vim-pandoc-syntax'
 
-" Theme:
-source ~/.vim/scheme.vim
+" Themes:
+Plug 'chriskempson/base16-vim'
+Plug 'jonathanfilip/vim-lucius'
+Plug 'morhetz/gruvbox'
 
 call plug#end()
 
