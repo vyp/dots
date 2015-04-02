@@ -25,41 +25,41 @@ hi clear
 
 " Foreground colors                                                 {{{2
 " ----------------------------------------------------------------------
-hi b_base00 color: #151515 !important; 
-hi b_base01 color: #202020 !important;     
-hi b_base02 color: #303030 !important; 
-hi b_base03 color: #505050 !important; 
-hi b_base04 color: #b0b0b0 !important; 
-hi b_base05 color: #d0d0d0 !important; 
-hi b_base06 color: #e0e0e0 !important;   
-hi b_base07 color: #f5f5f5 !important;
-hi b_base08 color: #ac4142 !important;
-hi b_base09 color: #d28445 !important;
-hi b_base0A color: #f4bf75 !important;
-hi b_base0B color: #90a959 !important;
-hi b_base0C color: #75b5aa !important;
-hi b_base0D color: #6a9fb5 !important;
-hi b_base0E color: #aa759f !important;
-hi b_base0F color: #8f5536 !important;
+hi b_base00 color: #181818 !important;
+hi b_base01 color: #282828 !important;
+hi b_base02 color: #383838 !important;
+hi b_base03 color: #585858 !important;
+hi b_base04 color: #b8b8b8 !important;
+hi b_base05 color: #d8d8d8 !important;
+hi b_base06 color: #e8e8e8 !important;
+hi b_base07 color: #f8f8f8 !important;
+hi b_base08 color: #ab4642 !important;
+hi b_base09 color: #dc9656 !important;
+hi b_base0A color: #f7ca88 !important;
+hi b_base0B color: #a1b56c !important;
+hi b_base0C color: #86c1b9 !important;
+hi b_base0D color: #7cafc2 !important;
+hi b_base0E color: #ba8baf !important;
+hi b_base0F color: #a16946 !important;
 
-" Backeground colors                                                {{{2
+" Background colors                                                {{{2
 " ----------------------------------------------------------------------
-hi b_base00_b background-color: #151515 !important;
-hi b_base01_b background-color: #202020 !important;
-hi b_base02_b background-color: #303030 !important;
-hi b_base03_b background-color: #505050 !important;
-hi b_base04_b background-color: #b0b0b0 !important;
-hi b_base05_b background-color: #d0d0d0 !important;
-hi b_base06_b background-color: #e0e0e0 !important; 
-hi b_base07_b background-color: #f5f5f5 !important;
-hi b_base08_b background-color: #ac4142 !important; 
-hi b_base09_b background-color: #d28445 !important; 
-hi b_base0A_b background-color: #f4bf75 !important; 
-hi b_base0B_b background-color: #90a959 !important; 
-hi b_base0C_b background-color: #75b5aa !important; 
-hi b_base0D_b background-color: #6a9fb5 !important; 
-hi b_base0E_b background-color: #aa759f !important; 
-hi b_base0F_b background-color: #8f5536 !important; 
+hi b_base00_b background-color: #181818 !important;
+hi b_base01_b background-color: #282828 !important;
+hi b_base02_b background-color: #383838 !important;
+hi b_base03_b background-color: #585858 !important;
+hi b_base04_b background-color: #b8b8b8 !important;
+hi b_base05_b background-color: #d8d8d8 !important;
+hi b_base06_b background-color: #e8e8e8 !important;
+hi b_base07_b background-color: #f8f8f8 !important;
+hi b_base08_b background-color: #ab4642 !important;
+hi b_base09_b background-color: #dc9656 !important;
+hi b_base0A_b background-color: #f7ca88 !important;
+hi b_base0B_b background-color: #a1b56c !important;
+hi b_base0C_b background-color: #86c1b9 !important;
+hi b_base0D_b background-color: #7cafc2 !important;
+hi b_base0E_b background-color: #ba8baf !important;
+hi b_base0F_b background-color: #a16946 !important;
 
 " Font                                                              {{{2
 " ----------------------------------------------------------------------
