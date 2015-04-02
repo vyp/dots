@@ -2,21 +2,21 @@
   #appcontent,
   #appcontent > #content,
   #appcontent > #content > tabbox > tabpanels {
-    background: #2d2d2d !important;
+    background: #ffffff !important;
   }
 
   tabs#tabbrowser-tabs {
-    background: #2d2d2d !important;
+    background: #ffffff !important;
   }
 
   .tabbrowser-tab {
-    color: #a09f93 !important;
-    background: #2d2d2d !important;
+    color: #808080 !important;
+    background: #ffffff !important;
   }
 
   .tabbrowser-tab[selected=true] {
-    color: #d3d0c8 !important;
-    background: #2d2d2d !important;
+    color: #444444 !important;
+    background: #ffffff !important;
   }
 }
 
@@ -24,20 +24,20 @@
   #appcontent,
   #appcontent > #content,
   #appcontent > #content > tabbox > tabpanels {
-    background: #2d2d2d !important;
+    background: #ffffff !important;
   }
 
   tabs#tabbrowser-tabs {
-    background: #2d2d2d !important;
+    background: #ffffff !important;
   }
 
   .tabbrowser-tab {
-    color: #a09f93 !important;
-    background: #2d2d2d !important;
+    color: #808080 !important;
+    background: #ffffff !important;
   }
 
   .tabbrowser-tab[selected=true] {
-    color: #d3d0c8 !important;
-    background: #2d2d2d !important;
+    color: #444444 !important;
+    background: #ffffff !important;
   }
 }
