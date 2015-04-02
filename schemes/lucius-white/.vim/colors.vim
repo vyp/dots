@@ -23,6 +23,10 @@ LuciusWhite
 
 hi conceal term=reverse cterm=reverse
 hi pandocStrikeout ctermfg=242
+hi tabline ctermfg=0 ctermbg=7
+hi tablinefill ctermfg=0 ctermbg=7
+hi pmenusel ctermfg=0 ctermbg=252
+hi tablinesel ctermfg=7 ctermbg=0
 
 " hi pandocBlockQuote ctermfg=12
 " hi pandocEmphasis ctermfg=5
