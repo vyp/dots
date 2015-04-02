@@ -32,6 +32,9 @@
 - compton.
 - ~~colorscheme.~~ [1]
     - configure rest of lucius colorscheme.
+        - dircolors.
+        - zathura.
+        - (and obviously vim, as mentioned above).
 - `./bin/` and `./util/` directories.
 - ~~figure out how to manage wallpapers (similar to colorschemes).~~
 - check out https://github.com/hchbaw/opp.zsh.
