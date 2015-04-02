@@ -285,6 +285,7 @@ let g:buftabline_show=1
 
 " 'junegunn/vim-plug' {{{2
 let g:plug_timeout=1000
+let g:plug_threads=1
 
 " 'nelstrom/vim-markdown-folding' {{{2
 " let g:markdown_fold_style = 'nested'
