@@ -42,7 +42,7 @@ hi b_base0D color: #6a9fb5 !important;
 hi b_base0E color: #aa759f !important;
 hi b_base0F color: #8f5536 !important;
 
-" Backeground colors                                                {{{2
+" Background colors                                                {{{2
 " ----------------------------------------------------------------------
 hi b_base00_b background-color: #151515 !important;
 hi b_base01_b background-color: #202020 !important;
