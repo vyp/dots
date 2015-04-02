@@ -18,7 +18,7 @@ setxkbmap -option 'ctrl:nocaps' &
 xcape -e 'Control_L=Escape' &
 xcape -e 'Control_R=Escape' &
 
-feh --bg-scale ~/pics/walls//wallhaven-5331.jpg &
+feh --bg-scale ~/pics/walls/wallhaven-5331.jpg &
 
 disableInputDevice () {
   if xinput list | grep -q "$1"; then
