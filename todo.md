@@ -26,6 +26,7 @@
 - weechat.
 - newsbeuter.
 - fix more ncmpcpp keybindings.
+- pandoc and latex templates?
 - sxiv?
 - ranger config?
 - tmux?
