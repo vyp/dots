@@ -1,4 +1,4 @@
-# Welcome, Come Inside!
+# Introduction
 
 >> Honestly the real problem is that our first editors are always, notepad,
 >> notepad++, gedit, sublime text, word etc. I'd love to see an experiment done
