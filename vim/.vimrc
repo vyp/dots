@@ -271,9 +271,7 @@ Plug 'rust-lang/rust.vim'
 Plug 'vim-pandoc/vim-pandoc-syntax'
 
 " Theme:
-Plug 'chriskempson/base16-vim'
-Plug 'jonathanfilip/vim-lucius'
-Plug 'morhetz/gruvbox'
+source ~/.vim/scheme.vim
 
 call plug#end()
 

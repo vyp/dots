@@ -1,0 +1,1 @@
+Plug 'jonathanfilip/vim-lucius'
