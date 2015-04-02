@@ -25,41 +25,41 @@ hi clear
 
 " Foreground colors                                                 {{{2
 " ----------------------------------------------------------------------
-hi b_base00 color: #181818 !important;
-hi b_base01 color: #282828 !important;
-hi b_base02 color: #383838 !important;
+hi b_base00 color: #444444 !important;
+hi b_base01 color: #444444 !important;
+hi b_base02 color: #5f87af !important;
 hi b_base03 color: #585858 !important;
 hi b_base04 color: #b8b8b8 !important;
 hi b_base05 color: #d8d8d8 !important;
 hi b_base06 color: #e8e8e8 !important;
 hi b_base07 color: #f8f8f8 !important;
-hi b_base08 color: #ab4642 !important;
-hi b_base09 color: #dc9656 !important;
-hi b_base0A color: #f7ca88 !important;
-hi b_base0B color: #a1b56c !important;
-hi b_base0C color: #86c1b9 !important;
-hi b_base0D color: #7cafc2 !important;
-hi b_base0E color: #ba8baf !important;
-hi b_base0F color: #a16946 !important;
+hi b_base08 color: #af0000 !important;
+hi b_base09 color: #af5f00 !important;
+hi b_base0A color: #af5f00 !important;
+hi b_base0B color: #008700 !important;
+hi b_base0C color: #005faf !important;
+hi b_base0D color: #005faf !important;
+hi b_base0E color: #870087 !important;
+hi b_base0F color: #008787 !important;
 
 " Background colors                                                {{{2
 " ----------------------------------------------------------------------
-hi b_base00_b background-color: #181818 !important;
-hi b_base01_b background-color: #282828 !important;
-hi b_base02_b background-color: #383838 !important;
+hi b_base00_b background-color: #444444 !important;
+hi b_base01_b background-color: #444444 !important;
+hi b_base02_b background-color: #5f87af !important;
 hi b_base03_b background-color: #585858 !important;
 hi b_base04_b background-color: #b8b8b8 !important;
 hi b_base05_b background-color: #d8d8d8 !important;
 hi b_base06_b background-color: #e8e8e8 !important;
 hi b_base07_b background-color: #f8f8f8 !important;
-hi b_base08_b background-color: #ab4642 !important;
-hi b_base09_b background-color: #dc9656 !important;
-hi b_base0A_b background-color: #f7ca88 !important;
-hi b_base0B_b background-color: #a1b56c !important;
-hi b_base0C_b background-color: #86c1b9 !important;
-hi b_base0D_b background-color: #7cafc2 !important;
-hi b_base0E_b background-color: #ba8baf !important;
-hi b_base0F_b background-color: #a16946 !important;
+hi b_base08_b background-color: #af0000 !important;
+hi b_base09_b background-color: #af5f00 !important;
+hi b_base0A_b background-color: #af5f00 !important;
+hi b_base0B_b background-color: #008700 !important;
+hi b_base0C_b background-color: #005faf !important;
+hi b_base0D_b background-color: #005faf !important;
+hi b_base0E_b background-color: #870087 !important;
+hi b_base0F_b background-color: #008787 !important;
 
 " Font                                                              {{{2
 " ----------------------------------------------------------------------
@@ -68,40 +68,40 @@ hi                          FontFixed font-family: Inconsolata !important;
 
 " Status Line                                                       {{{1
 " ----------------------------------------------------------------------
-hi -l=b_base06,b_base02_b   StatusLineNormal    font-size: 16px !important;
-hi -l=b_base09,b_base02_b   StatusLineBroken    font-size: 16px !important;
-hi -l=b_base0B,b_base02_b   StatusLineSecure    font-size: 16px !important;
-hi -l=b_base0B,b_base02_b   StatusLineExtended  font-size: 16px !important;
-hi -l=b_base08,b_base02_b   StatusWarningMsg    font-size: 16px !important;
+hi -l=b_base00,b_base07_b   StatusLineNormal    font-size: 16px !important;
+hi -l=b_base09,b_base07_b   StatusLineBroken    font-size: 16px !important;
+hi -l=b_base0B,b_base07_b   StatusLineSecure    font-size: 16px !important;
+hi -l=b_base0B,b_base07_b   StatusLineExtended  font-size: 16px !important;
+hi -l=b_base08,b_base07_b   StatusWarningMsg    font-size: 16px !important;
                 " Make sure the question output looks nice between each status color
 hi                          StatusQuestion -a color: inherit !important; background-color: inherit !important;
 
 " Command Line                                                      {{{1
 " ----------------------------------------------------------------------
-hi -l=b_base06,b_base02_b   Normal              font-size: 17px !important;
+hi -l=b_base00,b_base07_b   Normal              font-size: 17px !important;
 
-hi -l=b_base09,b_base03_b   CompItem[selected]
+hi -l=b_base09,b_base04_b   CompItem[selected]
                 " background is s_base03
 " hi                          CompItem:nth-child(2n+1) -a background: rgba(0, 43, 54, .04);
-hi -l=b_base07,b_base01_b   CompTitle
+hi -l=b_base03,b_base06_b   CompTitle
 hi                          CompTitleSep height: 0px;
-hi -l=b_base04              CompDesc -a
+hi -l=b_base03              CompDesc -a
 hi -l=b_base09              Preview -a
                 " should be good from here back
-hi -l=b_base06,b_base02_b   Message
-hi -l=b_base0A,b_base01_b   WarningMsg
-hi -l=b_base01,b_base08_b   ErrorMsg
+hi -l=b_base02,b_base06_b   Message
+hi -l=b_base0A,b_base06_b   WarningMsg
+hi -l=b_base07,b_base08_b   ErrorMsg
 hi -l=b_base0D              URL
 hi -l=b_base0D              URLExtra
 hi                          MoreMsg -a color: inherit !important; background-color: inherit !important;
 hi -l=b_base09              Filter -a
-hi -l=b_base06              InfoMsg
-hi -l=b_base06              ModeMsg
-hi -l=b_base07              CmdInput
+hi -l=b_base02              InfoMsg
+hi -l=b_base02              ModeMsg
+hi -l=b_base01              CmdInput
                 " the color of the line where commands are entered 
-hi -l=b_base06,b_base01_b   CmdCmdLine 
+hi -l=b_base01,b_base06_b   CmdCmdLine
                 " figure what these are tk -- also filter and infomsg.
-hi -l=b_base0C,b_base0C_b   CmdErrorMsg
+hi -l=b_base0C,b_base06_b   CmdErrorMsg
 " hi -l=b_base0E,b_base0E_b   Find
 
 " Hints                                                             {{{1
@@ -109,12 +109,12 @@ hi -l=b_base0C,b_base0C_b   CmdErrorMsg
                 " The hint background is s_base3, the outline is s_base03
 hi -l=b_base03              Hint -a outline: 1px solid rgba(0, 43, 54, .5); background: rgba(253, 246, 227, .8);
 hi -l=b_base0D,b_base04_b   HintElem
-hi -l=b_base0D,b_base0F_b   HintActive
+hi -l=b_base07,b_base0F_b   HintActive
 
 " Other                                                             {{{1
 " ----------------------------------------------------------------------
 hi -l=b_base08_b            Bell
-hi -l=b_base09,b_base02_b   NonText -a min-height: 16px; padding-left: 2px;
+hi -l=b_base09,b_base07_b   NonText -a min-height: 16px; padding-left: 2px;
 
 hi -l=b_base0E              Search -a
 hi -l=b_base0C              Title -a
@@ -123,7 +123,7 @@ hi -l=b_base0E              Question
 hi -l=b_base0B              Enabled -a
 hi -l=b_base0E              FrameIndicator -a
 hi -l=b_base02,b_base04_b   LinkInfo -a
-hi -l=b_base0E,b_base0E_b   LineNr
+hi -l=b_base0E,b_base04_b   LineNr
 hi -l=b_base0E              Tag -a
 " hi -l=b_base0E,b_base0E_b   EditorBlink1
 " hi -l=b_base0E              EditorBlink2
