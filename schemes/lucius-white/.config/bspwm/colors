@@ -1,7 +1,7 @@
 #!/bin/sh
 
-bspc config normal_border_color "#2d2d2d"
-bspc config active_border_color "#f2f0ec"
-bspc config focused_border_color "#747369"
-bspc config presel_border_color "#a09f93"
-bspc config urgent_border_color "#f2777a"
+bspc config normal_border_color "#ffffff"
+bspc config active_border_color "#008787"
+bspc config focused_border_color "#005faf"
+bspc config presel_border_color "#af5f00"
+bspc config urgent_border_color "#af0000"
