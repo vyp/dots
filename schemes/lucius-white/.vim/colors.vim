@@ -23,6 +23,7 @@ LuciusWhite
 
 hi conceal term=reverse cterm=reverse
 hi pandocStrikeout ctermfg=242
+
 " hi pandocBlockQuote ctermfg=12
 " hi pandocEmphasis ctermfg=5
 " hi pandocEmphasisInStrong ctermfg=5

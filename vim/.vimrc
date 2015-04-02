@@ -1,7 +1,7 @@
 set nocompatible
 " vim: foldmethod=marker
 
-" Options {{{1
+" Basic {{{1
 filetype plugin indent on
 set encoding=utf-8
 
