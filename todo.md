@@ -24,6 +24,7 @@
 - panel.
 - weechat.
 - newsbeuter.
+- fix more ncmpcpp keybindings.
 - sxiv?
 - ranger config?
 - tmux?

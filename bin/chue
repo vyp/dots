@@ -54,6 +54,16 @@ stowlink () {
     stow -t ~ -d schemes -D $dir
   done
 
+  mkdir -pv ~/.config/bspwm
+  mkdir -pv ~/.config/mpd
+  mkdir -pv ~/.config/mpv
+  mkdir -pv ~/.config/sxhkd
+  mkdir -pv ~/.config/zathura
+  mkdir -pv ~/.pentadactyl/colors
+  mkdir -pv ~/.urxvt
+  mkdir -pv ~/.vim/autoload
+  mkdir -pv ~/.vim/plugged
+
   stow -t ~ -d schemes $1
 }
 
