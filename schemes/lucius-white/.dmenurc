@@ -2,4 +2,4 @@
 
 source ~/etsi/dmenu/dmenurc
 
-dmenu_run -fn "${FONT}" -nb "#2d2d2d" -nf "#747369" -sb "#f2777a" -sf "#f2f0ec"
+dmenu_run -fn "${FONT}" -nb "#ffffff" -nf "#444444" -sb "#008787" -sf "#ffffff"
