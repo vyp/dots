@@ -18,6 +18,7 @@
 *color7:      #ffffff
 *color15:     #ffffff
 
-ncmpcpp*color11: #ffef79
-ncmpcpp*color13: #f3b6f3
-ncmpcpp*color14: #80ffff
+ncmpcpp*color7: #444444
+ncmpcpp*color11: #af0000
+ncmpcpp*color13: #330033
+ncmpcpp*color14: #005faf
