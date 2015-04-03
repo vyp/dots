@@ -18,7 +18,7 @@
       plugins section of vimrc.~~
     - change vim fold text.
     - vim plugins: fugitive, snippets, latex-box.
-    - fix lucius-white colors for windows, ~~buftabline~~ and
+    - fix lucius-white colors for ~~windows~~, ~~buftabline~~ and
       vim-pandoc-syntax.
 - ~~rtorrent.~~
 - mutt.

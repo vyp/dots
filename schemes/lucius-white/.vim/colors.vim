@@ -22,10 +22,12 @@ colorscheme lucius
 LuciusWhite
 
 hi conceal term=reverse cterm=reverse
-hi pandocStrikeout ctermfg=242
+hi pandocStrikeout ctermfg=245
+hi pmenusel ctermfg=0 ctermbg=252
+hi statusline ctermfg=7 ctermbg=0
+hi statuslinenc ctermfg=0 ctermbg=252
 hi tabline ctermfg=0 ctermbg=7
 hi tablinefill ctermfg=0 ctermbg=7
-hi pmenusel ctermfg=0 ctermbg=252
 hi tablinesel ctermfg=7 ctermbg=0
 
 " hi pandocBlockQuote ctermfg=12
