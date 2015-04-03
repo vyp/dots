@@ -10,7 +10,17 @@
         $ cd ~/dl/aur-mirror
         $ git pull
 
-3. AUR packages. (List them with `$ pacman -Qm`.)
+3. AUR packages.
+
+        # List AUR packages.
+        $ pacman -Qm
+
+        # Check for updates to AUR packages (assuming [cower] is installed):
+        $ cower -u
+
+        # N.B. Git AUR packages (i.e. those AUR packages whose names end in
+        # '-git') will obviously not be checked for the latest commit here.
+        # Either check manually or try [pacvcs] for that.
 
 4. Global npm packages:
 
@@ -49,3 +59,5 @@
    automatically require up-to-date addons.)
 
 [news]: https://www.archlinux.org/news/
+[cower]: https://github.com/falconindy/cower
+[pacvcs]: https://gist.github.com/pzl/123e7fea9a580737b92b
