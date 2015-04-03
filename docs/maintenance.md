@@ -24,6 +24,10 @@
 
 4. Global npm packages:
 
+        # Check for updates:
+        $ npm-check-updates -g
+
+        # Install any such updates:
         $ sudo npm update -g
 
 5. vim-plug:
