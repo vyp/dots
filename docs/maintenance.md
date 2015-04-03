@@ -41,6 +41,7 @@
 
         # Similar to the vim plugins, update the `zsh-plugins-snapshot` once
         # confirmed that everything still works:
+
         $ antigen update ~/etsi/zsh-plugins-snapshot
 
 7. Firefox addons (manually). Although this is fairly optional because of
