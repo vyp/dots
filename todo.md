@@ -10,7 +10,9 @@
 - ~~figure out what is causing folding in javascript files by default.~~
 - add `./bin` to `$PATH`.
 - documentation.
-    - maintainence (updating).
+    - maintainence.
+        - ~~updating.~~
+        - files organisation.
     - fonts.
     - installed packages.
 - vim:
@@ -27,6 +29,8 @@
 - weechat.
 - newsbeuter.
 - fix more ncmpcpp keybindings.
+- add script to check for updates to vim plugins (and possibly other git cloned
+  things)?
 - pandoc and latex templates?
 - sxiv?
 - ranger config?
