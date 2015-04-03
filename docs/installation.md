@@ -1,5 +1,3 @@
-# Short Version
-
 1. [Install Arch GNU][1].
 
 2. Switch to [linux-libre][2]. If this is not possible, place your hardware in
