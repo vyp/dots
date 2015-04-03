@@ -24,7 +24,7 @@
 
 7. Check if there are any extra changes for pacman configuration (and if there
    are, you should probably incoporate them into `./pacman/etc/pacman.conf`,
-   because the next step will delete `/etc/pacman.conf`):
+   because the step 9 will delete `/etc/pacman.conf`):
 
         $ diff /etc/pacman.conf ~/etsi/pacman/etc/pacman.conf
 
@@ -55,7 +55,12 @@
 
         $ chsh -s $(which zsh)
 
-13. Log out and log back in to load zsh (`$ exit` from the tty).
+13. Log out and log back in to load zsh:
+
+        # From the tty:
+        $ exit
+
+        # And obviously enter username and password as usual.
 
 14.     $ cd ~/etsi
         $ antigen restore zsh-plugins-snapshot
