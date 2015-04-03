@@ -12,7 +12,7 @@
 - documentation.
     - maintainence (updating).
     - fonts.
-    - install packages.
+    - installed packages.
 - vim:
     - ~~figure out how to abstract away colorscheme plugin information for
       plugins section of vimrc.~~
@@ -39,7 +39,7 @@
         - zathura.
         - (and obviously vim, as mentioned above).
 - `./bin/` and `./util/` directories.
-- possibly remove pacman config?
+- ~~possibly remove pacman config?~~
 - ~~figure out how to manage wallpapers (similar to colorschemes).~~
 - check out https://github.com/hchbaw/opp.zsh.
 - https://github.com/zsh-users/zsh-completions.

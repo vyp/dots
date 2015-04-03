@@ -58,6 +58,7 @@ git submodule update --depth 2
 
 ln -s ~/etsi/vim-plug/plug.vim ~/.vim/autoload/plug.vim
 
+sudo rm -vi /etc/pacman.conf
 sudo stow -t / pacman
 sudo stow -t / zathura
 

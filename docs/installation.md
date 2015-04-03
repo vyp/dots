@@ -22,38 +22,53 @@
         # Or git clone from mirror: <https://notabug.org/i/etsi.git>
         $ git clone https://github.com/vyp/etsi 
 
-        $ cd etsi
+7. Check if there are any extra changes for pacman configuration (and if there
+   are, you should probably incoporate them into `./pacman/etc/pacman.conf`,
+   because the next step will delete `/etc/pacman.conf`):
+
+        $ diff /etc/pacman.conf ~/etsi/pacman/etc/pacman.conf
+
+8. Some ArchHaskell repository keys may need to [added][5] depending on pacman
+   configuration. If there are errors when trying to add such keys, an empty
+   `/root/.gnupg/dirmngr_ldapservers.conf` file [may need to be created][6]:
+
+        $ sudo mkdir -pv /root/.gnupg
+        $ sudo touch /root/.gnupg/dirmngr_ldapservers.conf
+
+9. Preliminary setup:
+
+        $ cd ~/etsi
         $ ./bootstrap
 
-7. (Optional) Download the AUR:
+10. (Optional) Download the AUR:
 
         $ mkdir ~/dl
         $ cd ~/dl
         $ git clone --depth=1 git://pkgbuild.com/aur-mirror.git
 
-8. Install packages (all the programs you want, including from the AUR and
-   whatever other sources...).
+11. Install packages (all the programs you want, including from the AUR and
+    whatever other sources...).
 
-9. Assuming `zsh` was installed in step 8:
+12. Assuming `zsh` was installed in step 11:
 
         $ chsh -s $(which zsh)
 
-10. Log out and log back in to load zsh (`$ exit` from the tty).
+13. Log out and log back in to load zsh (`$ exit` from the tty).
 
-11.     $ cd ~/etsi
+14.     $ cd ~/etsi
         $ antigen restore zsh-plugins-snapshot
         $ ./vim-plugins-snapshot
         $ cd ~
 
-12. Copy over personal files and/or font files.
+15. Copy over personal files and/or font files.
 
-13.     $ startx
+16.     $ startx
 
-14.     $ firefox
+17.     $ firefox
 
-15. Install any/all Firefox addons you want.
+18. Install any/all Firefox addons you want.
 
-16. Step 14 will create a profile directory under `~/.mozilla/firefox/` in the
+19. Step 17 will create a profile directory under `~/.mozilla/firefox/` in the
     form of `########.default` where the `#`'s are (seemingly) random letters
     and/or numbers. Now the rest of the Firefox configuration files can be
     installed:
@@ -68,7 +83,5 @@
 [2]: https://aur.archlinux.org/packages/linux-libre/
 [3]: https://wiki.archlinux.org/index.php/Users_and_groups#Example_adding_a_user
 [4]: https://wiki.archlinux.org/index.php/Sudo#Example_Entries
-
-# Long Version
-
-*Todo.*
+[5]: https://wiki.archlinux.org/index.php/ArchHaskell#Available_repositories
+[6]: https://bbs.archlinux.org/viewtopic.php?id=190380
