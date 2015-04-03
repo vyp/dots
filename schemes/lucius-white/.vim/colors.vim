@@ -22,6 +22,7 @@ colorscheme lucius
 LuciusWhite
 
 hi conceal term=reverse cterm=reverse
+hi folded ctermbg=253
 hi pandocStrikeout ctermfg=245
 hi pmenusel ctermfg=7 ctermbg=244
 hi statusline ctermfg=7 ctermbg=6
