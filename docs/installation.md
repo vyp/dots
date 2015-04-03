@@ -28,9 +28,11 @@
 
         $ diff /etc/pacman.conf ~/etsi/pacman/etc/pacman.conf
 
-8. Some ArchHaskell repository keys may need to [added][5] depending on pacman
-   configuration. If there are errors when trying to add such keys, an empty
-   `/root/.gnupg/dirmngr_ldapservers.conf` file [may need to be created][6]:
+8. Some ArchHaskell repository keys may need to [added and signed][5] depending
+   on pacman configuration. They may also need to be added/signed twice to work
+   [for some reason][6]. If there are errors when trying to add such keys, an
+   empty `/root/.gnupg/dirmngr_ldapservers.conf` file [may need to be
+   created][7]:
 
         $ sudo mkdir -pv /root/.gnupg
         $ sudo touch /root/.gnupg/dirmngr_ldapservers.conf
@@ -84,4 +86,5 @@
 [3]: https://wiki.archlinux.org/index.php/Users_and_groups#Example_adding_a_user
 [4]: https://wiki.archlinux.org/index.php/Sudo#Example_Entries
 [5]: https://wiki.archlinux.org/index.php/ArchHaskell#Available_repositories
-[6]: https://bbs.archlinux.org/viewtopic.php?id=190380
+[6]: https://bbs.archlinux.org/viewtopic.php?id=155889
+[7]: https://bbs.archlinux.org/viewtopic.php?id=190380
