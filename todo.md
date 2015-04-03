@@ -16,7 +16,7 @@
 - vim:
     - ~~figure out how to abstract away colorscheme plugin information for
       plugins section of vimrc.~~
-    - change vim fold text.
+    - ~~change vim fold text.~~
     - vim plugins: fugitive, snippets, latex-box.
     - fix lucius-white colors for ~~windows~~, ~~buftabline~~ and
       vim-pandoc-syntax.

@@ -210,6 +210,7 @@ set statusline+=%-14(%l,%c%V%)
 set statusline+=%<%P
 
 " Folding {{{1
+set fillchars="fold: "
 set foldmethod=syntax
 set foldlevel=99
 set foldlevelstart=99
@@ -228,20 +229,24 @@ nnoremap zu zO
 nnoremap zh [z
 nnoremap zl ]z
 
-" From http://dhruvasagar.com/2013/03/28/vim-better-foldtext
-" TODO: Use something better, possibly more simpler.
-function! NeatFoldText()
-  let line = ' ' . substitute(getline(v:foldstart), '^\s*"\?\s*\|\s*"\?\s*{{' . '{\d*\s*', '', 'g') . ' '
+function! FoldText()
+  let line = ' ' . substitute(getline(v:foldstart), '^\s*"\?\s*\|\s*"\?\s*{{' . '{\d*\s*', '', 'g')
   let lines_count = v:foldend - v:foldstart + 1
-  let lines_count_text = '| ' . printf("%10s", lines_count . ' lines') . ' |'
-  let foldchar = matchstr(&fillchars, 'fold:\zs.')
-  let foldtextstart = strpart('+' . repeat(foldchar, v:foldlevel*2) . line, 0, (winwidth(0)*2)/3)
-  let foldtextend = lines_count_text . repeat(foldchar, 8)
+  let lines_count_text = printf("%10s", lines_count)
+  let foldtextstart = '+' . repeat('-', v:foldlevel*2) . line
+  let rightalignby = winwidth(0) - 79
+
+  if rightalignby < 0
+    let rightalignby = 1
+  endif
+
+  let foldtextend = lines_count_text . repeat(' ', rightalignby)
   let foldtextlength = strlen(substitute(foldtextstart . foldtextend, '.', 'x', 'g')) + &foldcolumn
-  return foldtextstart . repeat(foldchar, winwidth(0)-foldtextlength) . foldtextend
+
+  return foldtextstart . repeat(' ', winwidth(0)-foldtextlength) . foldtextend
 endfunction
 
-set foldtext=NeatFoldText()
+set foldtext=FoldText()
 
 " Plugins {{{1
 " Load matchit.vim, but only if the user hasn't installed a newer version.
