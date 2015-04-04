@@ -33,11 +33,21 @@
 5. vim-plug:
 
         $ cd ~/etsi/vim-plug
+
+        # Check for updates:
+        $ git fetch --dry-run
+
+        # Update:
         $ git pull
 
 6. Antigen:
 
         $ cd ~/etsi/antigen
+
+        # Check for updates:
+        $ git fetch --dry-run
+
+        # Update:
         $ git pull
 
 5. Vim plugins:
