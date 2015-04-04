@@ -284,7 +284,7 @@ call plug#end()
 
 " TODO: +snippets, fugitive.
 
-" Plugin options {{{1
+" Plugin Options {{{1
 " 'ap/vim-buftabline' {{{2
 let g:buftabline_indicators=1
 let g:buftabline_numbers=1
