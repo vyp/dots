@@ -12,6 +12,9 @@ set! full-screen-api.approval-required=false
 nmap -builtin ; :
 nmap -builtin : ;
 
+nmap -builtin <c-o> :1ba<CR>
+nmap -builtin <c-i> :1fo<CR>
+
 nmap -builtin d <C-D>
 nmap -builtin u <C-U>
 nmap -builtin <C-D> d
