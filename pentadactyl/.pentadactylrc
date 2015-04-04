@@ -1,4 +1,4 @@
-set au=!/ex/buffer,.?
+set au=.*
 set defsearch='duckduckgo'
 set editor=vim
 set go-=br
@@ -31,7 +31,7 @@ nmap -builtin ,, <C-^>
 nmap -builtin ,b :!acpi -b<CR>
 nmap -builtin ,d :tabopen google define 
 nmap -builtin ,f ;f
-nmap -builtin ,l :ls<CR>:b<space>
+nmap -builtin ,l :ls<CR>
 nmap -builtin ,m :set showtabline=never<CR>
 nmap -builtin ,p <C-S-p>
 nmap -builtin ,r :downloads<CR>
