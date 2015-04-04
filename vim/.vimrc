@@ -270,6 +270,7 @@ Plug 'tomtom/tcomment_vim'
 Plug 'wellle/targets.vim'
 
 " Syntax:
+Plug 'cespare/vim-toml'
 Plug 'jelera/vim-javascript-syntax'
 Plug 'nelstrom/vim-markdown-folding'
 Plug 'rust-lang/rust.vim'
