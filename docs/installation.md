@@ -22,7 +22,7 @@
 
 7. Check if there are any extra changes for pacman configuration (and if there
    are, you should probably incoporate them into `./pacman/etc/pacman.conf`,
-   because the step 9 will delete `/etc/pacman.conf`):
+   because **step 9 will delete `/etc/pacman.conf`**):
 
         $ diff /etc/pacman.conf ~/etsi/pacman/etc/pacman.conf
 
