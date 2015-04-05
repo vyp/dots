@@ -15,6 +15,10 @@
         - files organisation.
     - fonts.
     - installed packages.
+    - rationalis.
+        - vim.
+        - bspwm.
+        - zsh.
 - vim:
     - ~~figure out how to abstract away colorscheme plugin information for
       plugins section of vimrc.~~
