@@ -26,9 +26,20 @@ This is a major advantage because it means I do not have to compile pandoc
 everytime a new version comes out, which is signficant because pandoc is one of
 the most important packages I use.
 
+However, I can never guarantee that the decision will remain with Arch.
+Although there may be some Arch specific settings, most of the files should be
+compatible with practically any GNU distribution. (But I do not care about BSD,
+Mac, Windows, POSIX etc. So I will not go out of my way to maintain
+compatibility with any of that.) Some distributions I recommend are Debian
+unstable, Gentoo and CRUX.
+
+I also really like [GuixSD][7], or at least the idea behind it, and perhaps one
+day I might even switch to it.
+
 [1]: https://wiki.archlinux.org/index.php/The_Arch_Way
 [2]: installation.md
 [3]: http://therning.org/magnus/
 [4]: https://wiki.archlinux.org/index.php/ArchHaskell
 [5]: https://ivanmiljenovic.wordpress.com/2010/03/15/repeat-after-me-cabal-is-not-a-package-manager/
 [6]: https://hackage.haskell.org/
+[7]: http://www.gnu.org/software/guix/manual/guix.html#GNU-Distribution
