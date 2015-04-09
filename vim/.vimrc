@@ -209,7 +209,7 @@ set statusline+=%-14(%l,%c%V%)
 " File position.
 set statusline+=%<%P
 
-" Folding {{{1
+" Folds {{{1
 set fillchars="fold: "
 set foldmethod=syntax
 set foldlevel=99
