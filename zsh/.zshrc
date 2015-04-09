@@ -10,8 +10,6 @@ autoload -U colors && colors
 autoload edit-command-line
 autoload -Uz vcs_info
 
-cdpath=(~)
-
 bindkey -v
 bindkey -M vicmd v edit-command-line
 
