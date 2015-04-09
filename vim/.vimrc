@@ -75,7 +75,7 @@ set ttimeoutlen=10
 " No / --> Search history will be saved.
 set viminfo='0,@0,f0
 
-" Mappings {{{1
+" Main Mappings {{{1
 nnoremap <Bslash> ,
 xnoremap <Bslash> ,
 let mapleader=","
