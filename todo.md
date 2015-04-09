@@ -23,7 +23,7 @@
         3.  tune
         4.  work
         5.  pdf
-        6.  vid
+        6.  view
         7.  news
         8.  sys
         9.  misc
