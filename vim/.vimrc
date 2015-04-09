@@ -397,6 +397,13 @@ endfunction
 
 au filetype pandoc.markdown call MarkdownOptions()
 
+" Rust {{{2
+function RustOptions()
+  setl ts=2 sw=2 sts=2
+endfunction
+
+au filetype rust call RustOptions()
+
 " Python {{{2
 function PythonOptions()
   setl ts=4 sw=4 sts=4
