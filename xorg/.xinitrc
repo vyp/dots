@@ -1,6 +1,6 @@
 #!/bin/sh
 
-xrdb -I$HOME ~/.Xresources &
+xrdb -I$HOME ~/.Xresources
 
 # Be sure to run `mkfontscale` and then `mkfontdir` in these directories when
 # installing fonts for the first time.
