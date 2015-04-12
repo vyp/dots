@@ -11,7 +11,7 @@
         - bspwm.
         - zsh.
 - vim:
-    - vim plugins: fugitive, snippets, latex-box.
+    - vim plugins: fugitive, snippets, latex-box, tern.
     - lazy load vim plugins (using vim-plug).
     - fix lucius-white colors for ~~windows~~, ~~buftabline~~ and
       vim-pandoc-syntax.
