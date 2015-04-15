@@ -17,17 +17,7 @@
       vim-pandoc-syntax.
 - mutt.
 - panel.
-    - potential desktop names:
-        1.  surf
-        2.  dev
-        3.  music
-        4.  work
-        5.  pdf
-        6.  view
-        7.  news
-        8.  sys
-        9.  misc
-        10. buff
+    - finish battery section.
 - weechat.
 - newsbeuter.
 - fix more ncmpcpp keybindings.

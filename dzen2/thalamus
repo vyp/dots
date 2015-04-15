@@ -1,0 +1,111 @@
+#!/bin/env bash
+
+. ~/etsi/dzen2/variables
+
+NORMIFS=$IFS
+FIELDIFS=':'
+
+while read -r line; do
+  case $line in
+    B*)
+      AC=""
+      AC_STATUS="$(echo ${line} | cut -d' ' -f3)"
+
+      if [[ "$AC_STATUS" == "C"* ]]; then
+        AC="^fg($AC_CLR)^i(${AC_ICON})^fg()"
+      fi
+
+      BATTERY_LVL="$(echo ${line} | cut -d' ' -f4-5 | sed 's/,//g')"
+      battery="${AC} ^i(${BATTERY_ICON}) ${BATTERY_LVL}"
+      ;;
+
+    player)
+      playing="$(mpc status | sed -n 2p | cut -d "[" -f2 | cut -d "]" -f1)"
+
+      if [[ $playing != "playing" ]]; then
+        music="^fg(${NOT_PLAYING_CLR})^i(${MUSIC_ICON}) $(mpc current)^fg()"
+
+      else
+        CURRENT="$(mpc current)"
+        ARTIST="^fg($ARTIST_CLR)$(awk -F' - ' '{print $1}' <<< ${CURRENT})"
+        SONG="$(awk -F' - ' '{print $2}' <<< ${CURRENT})"
+        MOD=""
+
+        if [[ "${SONG}" == *"("*")"* ]]; then
+          MOD="^fg($MOD_CLR)$(sed 's/.*\(([^)]*)\).*/\1/g' <<< ${SONG})"
+          SONG="$(cut -d '(' -f1 <<< ${SONG})"
+        fi
+
+        music="^fg($MUSIC_ICON_CLR)^i(${MUSIC_ICON}) ${ARTIST}^fg($MUSIC_ICON_CLR) - ^fg($SONG_CLR)${SONG}${MOD}^fg()"
+      fi
+      ;;
+
+    T*)
+      time="^i(${TIME_ICON}) ${line:1}"
+      ;;
+
+    W*)
+      workspaces=""
+      IFS=$FIELDIFS
+      set -- ${line#?}
+      while [ $# -gt 0 ] ; do
+        item=$1
+
+        case $item in
+          [OoFfUu]*)
+            name=${item#?}
+
+            case $item in
+              O*)
+                # Focused occupied desktop.
+                FG=$FOCUSED_OCCUPIED_FG
+                BG=$FOCUSED_OCCUPIED_BG
+                ;;
+
+              F*)
+                # Focused free desktop.
+                FG=$FOCUSED_FREE_FG
+                BG=$FOCUSED_FREE_BG
+                ;;
+
+              U*)
+                # Focused urgent desktop.
+                FG=$FOCUSED_URGENT_FG
+                BG=$FOCUSED_URGENT_BG
+                ;;
+
+              o*)
+                # Occupied desktop.
+                FG=$OCCUPIED_FG
+                BG=$OCCUPIED_BG
+                ;;
+
+              f*)
+                # Free desktop.
+                FG=$FREE_FG
+                BG=$FREE_BG
+                ;;
+
+              u*)
+                # Urgent desktop.
+                FG=$URGENT_FG
+                BG=$URGENT_BG
+                ;;
+
+            esac
+            workspaces="${workspaces}^fg(${FG})^bg(${BG}) ${name} ^fg()^bg()"
+            ;;
+
+        esac
+        shift
+      done
+      IFS=$NORMIFS
+      ;;
+
+  esac
+  left="^p(2)^fg($ARCH_ICON_CLR)^i(icons/arch_10x10.xbm)^fg() $music"
+  center="^p(_CENTER)^p(-$CENTER_OFFSET)$workspaces"
+  right="^p(_RIGHT)^p(-$BATTERY_OFFSET)$battery^p(_RIGHT)^p(-$TIME_OFFSET)$time"
+
+  printf "%s\n" "$left$center$right"
+done

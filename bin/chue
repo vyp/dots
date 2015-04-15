@@ -55,6 +55,7 @@ stowlink () {
   done
 
   mkdir -pv ~/.config/bspwm
+  mkdir -pv ~/.config/dzen2
   mkdir -pv ~/.config/mpd
   mkdir -pv ~/.config/mpv
   mkdir -pv ~/.config/sxhkd

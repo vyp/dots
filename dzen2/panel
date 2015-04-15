@@ -1,0 +1,40 @@
+#!/bin/env bash
+
+. ~/etsi/dzen2/variables
+
+if [ $(pgrep -cf panel) -gt 1 ] ; then
+  printf "%s\n" "The panel is already running!" >&2
+  exit 1
+fi
+
+trap 'trap - TERM; kill 0' INT TERM QUIT EXIT
+
+[ -e "$PANEL_FIFO" ] && rm "$PANEL_FIFO"
+mkfifo "$PANEL_FIFO"
+
+bspc config top_padding $TOP_PADDING
+bspc control --subscribe > "$PANEL_FIFO" &
+mpc idleloop player > "$PANEL_FIFO" &
+
+while :; do
+  date +'T'%a' '%e' '%b' '%H:%M:%S > "$PANEL_FIFO"
+  sleep 1s
+done &
+
+while :; do
+  acpi -b > "$PANEL_FIFO"
+  sleep 120s
+done &
+
+cat "$PANEL_FIFO" \
+| \
+~/etsi/dzen2/thalamus \
+| \
+dzen2 \
+  -p \
+  -ta l \
+  -fn "${FONT}" \
+  -fg "$MAIN_FG" \
+  -bg "$MAIN_BG" &
+
+wait
