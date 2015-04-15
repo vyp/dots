@@ -20,7 +20,7 @@
     - potential desktop names:
         1.  surf
         2.  dev
-        3.  tune
+        3.  music
         4.  work
         5.  pdf
         6.  view
