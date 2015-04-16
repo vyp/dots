@@ -8,15 +8,78 @@ FIELDIFS=':'
 while read -r line; do
   case $line in
     B*)
-      AC=""
+      BATTERY_LVL="$(echo ${line} | cut -d' ' -f4 | rev | cut -c 3- | rev)"
+
+      if [[ $BATTERY_LVL -lt 10 ]]; then
+        BATTERY_CLR=$BATTERY_EXLOW
+
+      elif [[ $BATTERY_LVL -lt 25 ]]; then
+        BATTERY_CLR=$BATTERY_VLOW
+
+      elif [[ $BATTERY_LVL -lt 50 ]]; then
+        BATTERY_CLR=$BATTERY_LOW
+
+      elif [[ $BATTERY_LVL -lt 75 ]]; then
+        BATTERY_CLR=$BATTERY_GOOD
+
+      elif [[ $BATTERY_LVL -lt 95 ]]; then
+        BATTERY_CLR=$BATTERY_HIGH
+
+      else
+        BATTERY_CLR=$BATTERY_FULL
+      fi
+
+      if [[ $BATTERY_LVL -lt 10 ]]; then
+        BATTERY_ICO="${BATTERY_ICON}10.xbm"
+
+      elif [[ $BATTERY_LVL -lt 20 ]]; then
+        BATTERY_ICO="${BATTERY_ICON}10.xbm"
+
+      elif [[ $BATTERY_LVL -lt 30 ]]; then
+        BATTERY_ICO="${BATTERY_ICON}20.xbm"
+
+      elif [[ $BATTERY_LVL -lt 40 ]]; then
+        BATTERY_ICO="${BATTERY_ICON}30.xbm"
+
+      elif [[ $BATTERY_LVL -lt 50 ]]; then
+        BATTERY_ICO="${BATTERY_ICON}40.xbm"
+
+      elif [[ $BATTERY_LVL -lt 60 ]]; then
+        BATTERY_ICO="${BATTERY_ICON}50.xbm"
+
+      elif [[ $BATTERY_LVL -lt 70 ]]; then
+        BATTERY_ICO="${BATTERY_ICON}60.xbm"
+
+      elif [[ $BATTERY_LVL -lt 80 ]]; then
+        BATTERY_ICO="${BATTERY_ICON}70.xbm"
+
+      elif [[ $BATTERY_LVL -lt 90 ]]; then
+        BATTERY_ICO="${BATTERY_ICON}80.xbm"
+
+      else
+        BATTERY_ICO="${BATTERY_ICON}90.xbm"
+      fi
+
+      if [[ $BATTERY_LVL -lt 10 ]]; then
+        AC="^fg($URGENT_FG)^bg($BATTERY_CLR)"
+      else
+        AC="^fg($BATTERY_CLR)^bg()"
+      fi
+
       AC_STATUS="$(echo ${line} | cut -d' ' -f3)"
 
       if [[ "$AC_STATUS" == "C"* ]]; then
-        AC="^fg($AC_CLR)^i(${AC_ICON})^fg()"
+        AC="^fg($AC_CLR)^i(${AC_ICON})"
+
+        if [[ $BATTERY_LVL -lt 95 ]]; then
+          AC="${AC}^fg($BATTERY_CLR)^bg()"
+        else
+          AC="${AC}^fg($URGENT_FG)^bg($BATTERY_CLR)"
+        fi
       fi
 
-      BATTERY_LVL="$(echo ${line} | cut -d' ' -f4-5 | sed 's/,//g')"
-      battery="${AC} ^i(${BATTERY_ICON}) ${BATTERY_LVL}"
+      BATTERY_INFO="$(echo ${line} | cut -d' ' -f4-5 | sed 's/,//g')"
+      battery="${AC} ^i(${BATTERY_ICO}) ${BATTERY_INFO}^fg()^bg()"
       ;;
 
     player)
@@ -41,7 +104,7 @@ while read -r line; do
       ;;
 
     T*)
-      time="^i(${TIME_ICON}) ${line:1}"
+      time="^fg($SEPARATOR_CLR)|^fg() ^i(${TIME_ICON}) ${line:1}"
       ;;
 
     W*)
@@ -103,7 +166,7 @@ while read -r line; do
       ;;
 
   esac
-  left="^p(2)^fg($ARCH_ICON_CLR)^i(icons/arch_10x10.xbm)^fg() $music"
+  left="^p(2)^fg($ARCH_ICON_CLR)^i(${ARCH_ICON})^fg() $music"
   center="^p(_CENTER)^p(-$CENTER_OFFSET)$workspaces"
   right="^p(_RIGHT)^p(-$BATTERY_OFFSET)$battery^p(_RIGHT)^p(-$TIME_OFFSET)$time"
 

@@ -17,7 +17,7 @@
       vim-pandoc-syntax.
 - mutt.
 - panel.
-    - finish battery section.
+    - ~~finish battery section.~~
 - weechat.
 - newsbeuter.
 - fix more ncmpcpp keybindings.
