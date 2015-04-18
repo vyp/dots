@@ -69,7 +69,7 @@ while read -r line; do
       AC_STATUS="$(echo ${line} | cut -d' ' -f3)"
 
       if [[ "$AC_STATUS" == "C"* ]]; then
-        AC="^fg($AC_CLR)^i(${AC_ICON})"
+        AC="^fg($AC_CLR)^i(${AC_ICON}) "
 
         if [[ $BATTERY_LVL -lt 95 ]]; then
           AC="${AC}^fg($BATTERY_CLR)^bg()"
@@ -79,7 +79,7 @@ while read -r line; do
       fi
 
       BATTERY_INFO="$(echo ${line} | cut -d' ' -f4-5 | sed 's/,//g')"
-      battery="${AC} ^i(${BATTERY_ICO}) ${BATTERY_INFO}^fg()^bg()"
+      battery="${AC} ^i(${BATTERY_ICO}) ${BATTERY_INFO} ^fg()^bg()"
       ;;
 
     player)
