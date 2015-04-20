@@ -1,5 +1,6 @@
 # Todo
 
+- popup (or something) for brightness/sound.
 - add `./bin` to `$PATH`.
 - documentation.
     - maintainence.
@@ -16,8 +17,6 @@
     - fix lucius-white colors for ~~windows~~, ~~buftabline~~ and
       vim-pandoc-syntax.
 - mutt.
-- panel.
-    - ~~finish battery section.~~
 - weechat.
 - newsbeuter.
 - fix more ncmpcpp keybindings.
