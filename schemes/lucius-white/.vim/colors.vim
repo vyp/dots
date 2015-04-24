@@ -22,7 +22,6 @@ colorscheme lucius
 LuciusWhite
 
 hi buftablineactive ctermfg=7 ctermbg=244
-hi conceal term=reverse cterm=reverse
 hi cursorline ctermbg=254
 hi cursorlinenr ctermfg=241 ctermbg=254
 hi folded ctermbg=254
