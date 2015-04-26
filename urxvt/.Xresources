@@ -33,7 +33,7 @@ URxvt.matcher.button:       1
 URxvt.urlLauncher:          firefox
 URxvt.perl-ext-common:      default,clipboard,url-select,keyboard-select
 URxvt.url-select.launcher:  firefox
-URxvt.url-select.underline: true
+! URxvt.url-select.underline: true
 URxvt.keysym.M-u:           perl:url-select:select_next
 Urxvt.keysym.M-Escape:      perl:keyboard-select:activate
 URxvt.keysym.M-/:           perl:keyboard-select:search

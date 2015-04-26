@@ -1,5 +1,6 @@
 # Todo
 
+- stop broken pipe `thalamus` upon ending X session.
 - popup (or something) for brightness/sound.
 - add `./bin` to `$PATH`.
 - documentation.
@@ -14,8 +15,8 @@
 - vim:
     - vim plugins: fugitive, snippets, latex-box, tern.
     - lazy load vim plugins (using vim-plug).
-    - fix lucius-white colors for ~~windows~~, ~~buftabline~~ and
-      vim-pandoc-syntax.
+    - ~~fix lucius-white colors for windows, buftabline and
+      vim-pandoc-syntax.~~
 - mutt.
 - weechat.
 - newsbeuter.
