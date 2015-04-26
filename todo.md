@@ -1,6 +1,6 @@
 # Todo
 
-- stop broken pipe `thalamus` upon ending X session.
+- ~~stop broken pipe `thalamus` upon ending X session.~~
 - popup (or something) for brightness/sound.
 - add `./bin` to `$PATH`.
 - documentation.

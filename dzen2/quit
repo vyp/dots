@@ -1,0 +1,7 @@
+#!/bin/env bash
+
+for pid in $(pgrep -f panel); do
+  kill ${pid}
+done
+
+bspc quit
