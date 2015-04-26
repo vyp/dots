@@ -485,7 +485,11 @@ nnoremap z<CR> zt
 nnoremap zt z<CR>
 nnoremap zB zb
 nnoremap <silent> zb :call ScrollToPercent(g:centerlevel, 1)<CR>
-" }}}2
+
+" Highlight group under cursor {{{2
+command! SynName echo synIDattr(synID(line("."), col("."), 1), "name")
+command! SynStack echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
+command! SynTrans echo synIDattr(synIDtrans(synID(line('.'), col('.'), 1)), "name")
 
 " Colors {{{1
 " Highlight groups need to be at the end of vimrc so that they don't get
