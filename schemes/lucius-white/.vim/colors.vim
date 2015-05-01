@@ -35,6 +35,7 @@ hi htmlUnderline term=NONE cterm=NONE
 
 hi linenr ctermfg=247 ctermbg=254
 
+hi pandocAutomaticLink ctermfg=3
 hi pandocCodeblock ctermfg=6
 hi pandocEmphasis ctermfg=2
 hi pandocEmphasisInStrong ctermfg=2
