@@ -57,5 +57,6 @@ hi tabline ctermfg=0 ctermbg=7
 hi tablinefill ctermfg=0 ctermbg=7
 hi tablinesel ctermfg=7 ctermbg=6
 
-hi Underlined term=NONE cterm=NONE
+hi underlined term=NONE cterm=NONE
+hi vertsplit ctermbg=7
 hi visualNOS term=NONE cterm=NONE
