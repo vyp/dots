@@ -39,6 +39,7 @@
 - https://github.com/zsh-users/zsh-completions.
 - `printf "\e]710;-schumacher-clean-medium-r-normal--10-100-75-75-c-50-iso646.1991-irv\007\e]11;#202020\007\e]10;#404040\007" && /usr/local/bin/ncmpcpp ; printf "\e]710;-windows-montecarlo-medium-r-normal--11-110-72-72-c-60-microsoft-cp1252\007\e]11;#121212\007\e]10;#e5e5e5\007"`[2]
 - start notera from `.xinitrc`.
+- make essential custom directory locations configurable (options file).
 
 [1]: http://jsbin.com/quxaxaralu/10/edit
 [2]: http://lists.schmorp.de/pipermail/rxvt-unicode/2011q2/001416.html
