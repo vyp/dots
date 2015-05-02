@@ -3,14 +3,18 @@
  * defining rules in a common block.
  */
 
-@document url-prefix(http://doc.rust-lang.org/guide.html) {
-  pre, code {
+@document url-prefix(http://doc.rust-lang.org/guide.html),
+          url-prefix(http://chaijs.com/) {
+  pre,
+  code {
     font-family: 'Fantasque Sans Mono', monospace !important;
   }
 }
 
-@-moz-document url-prefix(http://doc.rust-lang.org/guide.html) {
-  pre, code {
+@-moz-document url-prefix(http://doc.rust-lang.org/guide.html),
+               url-prefix(http://chaijs.com/) {
+  pre,
+  code {
     font-family: 'Fantasque Sans Mono', monospace !important;
   }
 }
