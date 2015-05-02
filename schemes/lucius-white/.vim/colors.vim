@@ -40,6 +40,7 @@ hi pandocCodeblock ctermfg=6
 hi pandocEmphasis ctermfg=2
 hi pandocEmphasisInStrong ctermfg=2
 hi pandocNoFormatted ctermfg=6
+hi pandocNoLabel ctermfg=5
 hi pandocReferenceDefinition ctermfg=1
 hi pandocReferenceDefinitionLabel ctermfg=1
 hi pandocReferenceDefinitionAddress term=NONE cterm=NONE ctermfg=3
