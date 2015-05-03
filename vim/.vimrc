@@ -137,8 +137,11 @@ if v:version >= 700
   au BufLeave * if !&diff | let b:winview = winsaveview() | endif
   au BufEnter * if exists('b:winview') && !&diff | call winrestview(b:winview) | unlet! b:winview | endif
 endif
-nmap <leader>f ysiW
-nmap <leader>fs ysiW*
+
+nmap <leader>d ysiW
+nmap <leader>ds ysiW*
+nnoremap <leader>f mmvipgq`m
+nnoremap <leader>o o<CR>---<CR><CR>
 
 nnoremap <leader>wo :only<CR>
 nnoremap <leader>wu <C-w>_
