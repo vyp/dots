@@ -1,5 +1,5 @@
 typeset -U path
-path=(~/code/bin $path)
+path=(~/code/bin ~/.cabal/bin $path)
 
 export BROWSER=firefox
 export EDITOR=vim
