@@ -5,12 +5,7 @@
 
         $ sudo pacman -Syu
 
-2. (Optional) AUR git repository:
-
-        $ cd ~/dl/aur-mirror
-        $ git pull
-
-3. AUR packages.
+2. AUR packages.
 
         # List AUR packages.
         $ pacman -Qm
@@ -22,7 +17,7 @@
         # '-git') will obviously not be checked for the latest commit here.
         # Either check manually or try [pacvcs] for that.
 
-4. Global npm packages:
+3. Global npm packages:
 
         # Check for updates:
         $ npm-check-updates -g
@@ -30,12 +25,12 @@
         # Install any such updates:
         $ sudo npm update -g
 
-5. Hackage packages:
+4. Hackage packages:
 
         $ cabal update
         $ cabal install world --reinstall
 
-6. vim-plug:
+5. vim-plug:
 
         $ cd ~/etsi/vim-plug
 
@@ -45,7 +40,7 @@
         # Update:
         $ git pull
 
-7. Antigen:
+6. Antigen:
 
         $ cd ~/etsi/antigen
 
@@ -55,7 +50,7 @@
         # Update:
         $ git pull
 
-8. Vim plugins:
+7. Vim plugins:
 
         $ vim +PlugUpdate +only
 
@@ -64,7 +59,7 @@
 
         :PlugSnapshot ~/etsi/vim-plugins-snapshot | only
 
-9. Zsh plugins:
+8. Zsh plugins:
 
         $ antigen update
 
@@ -73,9 +68,9 @@
 
         $ antigen snapshot ~/etsi/zsh-plugins-snapshot
 
-10. Firefox addons (manually). Although this is fairly optional because of
-    Firefox's relatively fast 3 month release cycle. (Each new release will
-    automatically require up-to-date addons.)
+9. Firefox addons (manually). Although this is fairly optional because of
+   Firefox's relatively fast 3 month release cycle. (Each new release will
+   automatically require up-to-date addons.)
 
 [news]: https://www.archlinux.org/news/
 [cower]: https://github.com/falconindy/cower
