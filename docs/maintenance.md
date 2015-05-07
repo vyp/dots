@@ -30,7 +30,12 @@
         # Install any such updates:
         $ sudo npm update -g
 
-5. vim-plug:
+5. Hackage packages:
+
+        $ cabal update
+        $ cabal install --reinstall world
+
+6. vim-plug:
 
         $ cd ~/etsi/vim-plug
 
@@ -40,7 +45,7 @@
         # Update:
         $ git pull
 
-6. Antigen:
+7. Antigen:
 
         $ cd ~/etsi/antigen
 
@@ -50,7 +55,7 @@
         # Update:
         $ git pull
 
-5. Vim plugins:
+8. Vim plugins:
 
         $ vim +PlugUpdate +only
 
@@ -59,7 +64,7 @@
 
         :PlugSnapshot ~/etsi/vim-plugins-snapshot | only
 
-6. Zsh plugins:
+9. Zsh plugins:
 
         $ antigen update
 
@@ -68,9 +73,9 @@
 
         $ antigen snapshot ~/etsi/zsh-plugins-snapshot
 
-7. Firefox addons (manually). Although this is fairly optional because of
-   Firefox's relatively fast 3 month release cycle. (Each new release will
-   automatically require up-to-date addons.)
+10. Firefox addons (manually). Although this is fairly optional because of
+    Firefox's relatively fast 3 month release cycle. (Each new release will
+    automatically require up-to-date addons.)
 
 [news]: https://www.archlinux.org/news/
 [cower]: https://github.com/falconindy/cower
