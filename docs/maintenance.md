@@ -33,7 +33,7 @@
 5. Hackage packages:
 
         $ cabal update
-        $ cabal install --reinstall world
+        $ cabal install world --reinstall
 
 6. vim-plug:
 
