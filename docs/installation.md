@@ -31,40 +31,34 @@
         $ cd ~/etsi
         $ ./bootstrap
 
-9. (Optional) Download the AUR:
+9. Install packages (all the programs you want, including from the AUR and
+   whatever other sources...).
 
-        $ mkdir ~/dl
-        $ cd ~/dl
-        $ git clone --depth=1 git://pkgbuild.com/aur-mirror.git
-
-10. Install packages (all the programs you want, including from the AUR and
-    whatever other sources...).
-
-11. Assuming `zsh` was installed in step 10:
+10. Assuming `zsh` was installed in step 9:
 
         $ chsh -s $(which zsh)
 
-12. Log out and log back in to load zsh:
+11. Log out and log back in to load zsh:
 
         # From the tty:
         $ exit
 
         # And obviously enter username and password as usual.
 
-13.     $ cd ~/etsi
+12.     $ cd ~/etsi
         $ antigen restore zsh-plugins-snapshot
         $ ./vim-plugins-snapshot
         $ cd ~
 
-14. Copy over personal files and/or font files.
+13. Copy over personal files and/or font files.
 
-15.     $ startx
+14.     $ startx
 
-16.     $ firefox
+15.     $ firefox
 
-17. Install any/all Firefox addons you want.
+16. Install any/all Firefox addons you want.
 
-18. Step 16 will create a profile directory under `~/.mozilla/firefox/` in the
+17. Step 15 will create a profile directory under `~/.mozilla/firefox/` in the
     form of `########.default` where the `#`'s are (seemingly) random letters
     and/or numbers. Now the rest of the Firefox configuration files can be
     installed:
