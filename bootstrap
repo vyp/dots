@@ -18,10 +18,12 @@ IGNORE=(
 MAKEDIRS=true
 
 DIRS="
+  ~/.cache/mutt
   ~/.config/bspwm
   ~/.config/dzen2
   ~/.config/mpd
   ~/.config/mpv
+  ~/.config/mutt
   ~/.config/sxhkd
   ~/.config/zathura
   ~/.pentadactyl/colors

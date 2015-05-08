@@ -54,10 +54,12 @@ stowlink () {
     stow -t ~ -d schemes -D $dir
   done
 
+  mkdir -pv ~/.cache/mutt
   mkdir -pv ~/.config/bspwm
   mkdir -pv ~/.config/dzen2
   mkdir -pv ~/.config/mpd
   mkdir -pv ~/.config/mpv
+  mkdir -pv ~/.config/mutt
   mkdir -pv ~/.config/sxhkd
   mkdir -pv ~/.config/zathura
   mkdir -pv ~/.pentadactyl/colors

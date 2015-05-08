@@ -33,6 +33,7 @@ Program       | Use
 [GTK+]        | Graphical Toolkit
 [MPD]         | Music Server
 [mpv]         | Video Player
+[Mutt]        | Email Client
 [Ncmpcpp]     | MPD Client
 [Pacman]      | Package Manager
 [Pentadactyl] | Web Browser
@@ -44,25 +45,26 @@ Program       | Use
 [Zathura]     | Document (PDF) Viewer
 [Zsh]         | Shell
 
-[Bspwm]:        https://github.com/baskerville/bspwm
-[dircolors]:    https://www.gnu.org/software/coreutils/manual/html_node/dircolors-invocation.html
-[dmenu]:        http://tools.suckless.org/dmenu/
-[Dzen]:         http://robm.github.io/dzen/
-[Firefox]:      https://mozilla.org/firefox
-[Git]:          http://git-scm.com/
-[GTK+]:         http://www.gtk.org/
-[MPD]:          http://www.musicpd.org/
-[mpv]:          http://mpv.io/
-[Ncmpcpp]:      http://ncmpcpp.rybczak.net/
-[Pentadactyl]:  http://5digits.org/pentadactyl/
-[Pacman]:       https://www.archlinux.org/pacman/
-[rTorrent]:     http://rakshasa.github.io/rtorrent/
-[Sxhkd]:        https://github.com/baskerville/sxhkd
-[Urxvt]:        http://software.schmorp.de/pkg/rxvt-unicode.html
-[Vim]:          http://www.vim.org/
-[X11]:          http://www.x.org/wiki/
-[Zathura]:      https://pwmt.org/projects/zathura/
-[Zsh]:          http://www.zsh.org/
+[Bspwm]:       https://github.com/baskerville/bspwm
+[dircolors]:   https://www.gnu.org/software/coreutils/manual/html_node/dircolors-invocation.html
+[dmenu]:       http://tools.suckless.org/dmenu/
+[Dzen]:        http://robm.github.io/dzen/
+[Firefox]:     https://mozilla.org/firefox
+[Git]:         http://git-scm.com/
+[GTK+]:        http://www.gtk.org/
+[MPD]:         http://www.musicpd.org/
+[mpv]:         http://mpv.io/
+[Mutt]:        http://www.mutt.org/
+[Ncmpcpp]:     http://ncmpcpp.rybczak.net/
+[Pentadactyl]: http://5digits.org/pentadactyl/
+[Pacman]:      https://www.archlinux.org/pacman/
+[rTorrent]:    http://rakshasa.github.io/rtorrent/
+[Sxhkd]:       https://github.com/baskerville/sxhkd
+[Urxvt]:       http://software.schmorp.de/pkg/rxvt-unicode.html
+[Vim]:         http://www.vim.org/
+[X11]:         http://www.x.org/wiki/
+[Zathura]:     https://pwmt.org/projects/zathura/
+[Zsh]:         http://www.zsh.org/
 
 # Instructions
 
