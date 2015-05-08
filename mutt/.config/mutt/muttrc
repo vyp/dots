@@ -27,3 +27,5 @@ set message_cachedir = '~/.cache/mutt'
 
 # How often to check for new mail (time in seconds).
 set mail_check = 120
+
+source '~/.config/mutt/colors'
