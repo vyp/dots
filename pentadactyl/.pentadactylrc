@@ -5,7 +5,7 @@ set go-=br
 set go+=n
 
 set! browser.fullscreen.animateUp=0
-set! browser.startup.homepage=http://localhost:3000/
+set! browser.startup.homepage="http://localhost:3000/"
 set! browser.tabs.closeWindowWithLastTab=false
 set! full-screen-api.approval-required=false
 
