@@ -1,0 +1,213 @@
+#!/bin/env python
+
+# TODO: Check if song already exists in music folder.
+# TODO: Support trimming files.
+# TODO: List all dependencies (as a part of documentation).
+# TODO: Option to not sort playlists.
+# TODO: Append '/' to a directory variable if not at end?
+
+import os
+import sys
+
+from subprocess import call, check_output
+
+dirs_from_home_dir = True
+
+dl_dir = '/dl/music/'
+editor = os.getenv('EDITOR', 'vim')
+mpd_pid_file = '/.config/mpd/pid'
+music_dir = '/music/'
+playlist_dir = '/.config/mpd/playlists/'
+playlist_ext = 'm3u'
+songs_fname = 'songs'
+status_fname = 'status'
+urls_fname = 'urls'
+
+if dirs_from_home_dir:
+    home = os.getenv('HOME')
+
+    dl_dir = home + dl_dir
+    mpd_pid_file = home + mpd_pid_file
+    music_dir = home + music_dir
+    playlist_dir = home + playlist_dir
+
+songs = dl_dir + songs_fname
+status_file = dl_dir + status_fname
+urls = dl_dir + urls_fname
+
+class cd:
+    def __init__(self, new_path):
+        self.new_path = os.path.expanduser(new_path)
+
+    def __enter__(self):
+        self.saved_path = os.getcwd()
+        os.chdir(self.new_path)
+
+    def __exit__(self, etype, value, traceback):
+        os.chdir(self.saved_path)
+
+def get_title(url):
+    return (check_output(['youtube-dl', '--get-title', url])
+            .decode('utf-8')
+            .rstrip('\n'))
+
+def create_file_ifn(f):
+    if not os.path.isfile(f):
+        call(['touch', f])
+
+def loc(f):
+    return sum(1 for l in open(f))
+
+def dl_ready(f, g):
+    nf = loc(f)
+    ng = loc(g)
+
+    if nf == ng and nf > 0:
+        return True
+    else:
+        return False
+
+def empty_file(f):
+    return os.path.getsize(f) == 0
+
+def gnu_sort(f):
+    call(['sort', f, '-o', f])
+
+def process_songs(sl):
+    pls2sort = []
+
+    def a2pl(playlist, song, pldir, plext):
+        pls2sort.append(playlist)
+
+        with open(pldir + playlist + '.' + plext, 'a') as f:
+            f.write(song + '.ogg' + '\n')
+
+    for song in sl:
+        call([
+            'youtube-dl',
+            '-f',
+            '43',
+            '--no-part',
+            '-o',
+            song['title'] + '.webm',
+            song['url']
+        ])
+
+        call([
+            'ffmpeg',
+            '-i',
+            song['title'] + '.webm',
+            '-vn',
+            '-acodec',
+            'copy',
+            song['title'] + '.ogg',
+        ])
+
+        call([
+            'lltag',
+            '--format',
+            '%a - %t',
+            '--yes',
+            song['title'] + '.ogg',
+        ])
+
+        a2pl('all', song['title'], playlist_dir, playlist_ext)
+
+        for tag in song['tags']:
+            a2pl(tag, song['title'], playlist_dir, playlist_ext)
+
+        call([
+            'mv',
+            '-v',
+            song['title'] + '.ogg',
+            music_dir
+        ])
+
+        call([
+            'rm',
+            '-v',
+            song['title'] + '.webm'
+        ])
+
+        with open(status_file, 'a') as f:
+            f.write(song['title'] + '\n')
+
+    for pl in pls2sort:
+        gnu_sort(playlist_dir + pl + '.' + playlist_ext)
+
+def dl(songs, urls, wdir):
+    song_l = []
+
+    with cd(wdir):
+        with open(songs) as songs_f, open(urls) as urls_f:
+            for song, url in zip(songs_f, urls_f):
+                song = song.rstrip('\n')
+                url = url.rstrip('\n')
+                title = None
+
+                # `tags` actually just means which playlists this song belongs
+                # to.
+
+                tags = None
+
+                if '/' in song:
+                    info = song.split('/')
+                    title = info[0]
+                    tags = list(filter(None, info[1:]))
+
+                else:
+                    title = song
+                    tags = []
+
+                song_l.append({
+                    'tags': tags,
+                    'title': song,
+                    'url': url
+                })
+
+        process_songs(song_l)
+
+def append_titles(orig, dest):
+    titles = []
+
+    with open(orig) as f:
+        for i in range(loc(dest)):
+            f.next()
+
+        for line in f:
+            line = line.rstrip('\n')
+            titles.append(get_title(line))
+
+    for title in titles:
+        with open(dest, 'a') as f:
+            f.write(title + '\n')
+
+create_file_ifn(songs)
+create_file_ifn(status_file)
+create_file_ifn(urls)
+
+while True:
+    if dl_ready(songs, urls):
+        dl(songs, urls, dl_dir)
+        break
+
+    elif empty_file(songs) and empty_file(urls):
+        call([editor, urls, songs])
+
+    elif loc(songs) > loc(urls):
+        print('Songs is longer than urls! Aborting.')
+        sys.exit(0)
+
+    else:
+        append_titles(urls, songs)
+        call([editor, songs, urls])
+
+if os.path.isfile(mpd_pid_file) and not empty_file(mpd_pid_file):
+    call(['mpc', 'update'])
+
+open(songs, 'w').close()
+open(status_file, 'w').close()
+open(urls, 'w').close()
+
+# Send 'bell' signal to terminal to signify completion.
+call(['echo', '-e', '\"\\a\"'])
