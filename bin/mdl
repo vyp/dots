@@ -2,6 +2,7 @@
 
 # TODO: Check if song already exists in music folder.
 # TODO: Support trimming files.
+# TODO: Add documentation (to `../readme.md`).
 # TODO: List all dependencies (as a part of documentation).
 # TODO: Option to not sort playlists.
 # TODO: Append '/' to a directory variable if not at end?
