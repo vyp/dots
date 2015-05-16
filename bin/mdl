@@ -204,6 +204,10 @@ while True:
     elif empty_file(songs) and empty_file(urls):
         call([editor, urls, songs])
 
+        if empty_file(songs) and empty_file(urls):
+            print('Nothing inputted! Aborting.')
+            sys.exit(0)
+
     elif loc(songs) > loc(urls):
         print('Songs is longer than urls! Aborting.')
         sys.exit(0)
