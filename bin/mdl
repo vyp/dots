@@ -1,5 +1,8 @@
 #!/bin/env python
 
+# TODO: Somehow support multiple instances of the script running. Currently,
+# the temporary files serve as bottlenecks.
+
 # TODO: Check if song already exists in music folder.
 # TODO: Support trimming files.
 # TODO: Add documentation (to `../readme.md`).
