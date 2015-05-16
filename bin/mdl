@@ -23,6 +23,7 @@ mpd_pid_file = '/.config/mpd/pid'
 music_dir = '/music/'
 playlist_dir = '/.config/mpd/playlists/'
 playlist_ext = 'm3u'
+snd_urls_fname = 'yourls'
 songs_fname = 'songs'
 status_fname = 'status'
 urls_fname = 'urls'
@@ -35,6 +36,7 @@ if dirs_from_home_dir:
     music_dir = home + music_dir
     playlist_dir = home + playlist_dir
 
+snd_urls_file = dl_dir + snd_urls_fname
 songs = dl_dir + songs_fname
 status_file = dl_dir + status_fname
 urls = dl_dir + urls_fname
@@ -189,6 +191,7 @@ def append_titles(orig, dest):
         with open(dest, 'a') as f:
             f.write(title + '\n')
 
+create_file_ifn(snd_urls_file)
 create_file_ifn(songs)
 create_file_ifn(status_file)
 create_file_ifn(urls)
