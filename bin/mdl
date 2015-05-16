@@ -81,9 +81,12 @@ def process_songs(sl):
     pls2sort = []
 
     def a2pl(playlist, song, pldir, plext):
+        plfile = pldir + playlist + '.' + plext
+
+        create_file_ifn(plfile)
         pls2sort.append(playlist)
 
-        with open(pldir + playlist + '.' + plext, 'a') as f:
+        with open(plfile, 'a') as f:
             f.write(song + '.ogg' + '\n')
 
     for song in sl:
