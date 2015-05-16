@@ -14,6 +14,7 @@ import os
 import sys
 
 from subprocess import call, check_output
+from shutil import copyfile
 
 dirs_from_home_dir = True
 
@@ -202,6 +203,10 @@ while True:
         break
 
     elif empty_file(songs) and empty_file(urls):
+        if not empty_file(snd_urls_file):
+            copyfile(snd_urls_file, urls)
+            open(snd_urls_file, 'w').close()
+
         call([editor, urls, songs])
 
         if empty_file(songs) and empty_file(urls):
