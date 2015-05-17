@@ -52,6 +52,10 @@ class cd:
     def __exit__(self, etype, value, traceback):
         os.chdir(self.saved_path)
 
+def bell():
+    # Send 'bell' signal to terminal.
+    call(['echo', '-e', '\"\\a\"'])
+
 def get_title(url):
     return (check_output(['youtube-dl', '--get-title', url])
             .decode('utf-8')
@@ -223,6 +227,7 @@ while True:
 
     else:
         append_titles(urls, songs)
+        bell()
         call([editor, songs, urls])
 
 if os.path.isfile(mpd_pid_file) and not empty_file(mpd_pid_file):
@@ -232,6 +237,4 @@ open(songs, 'w').close()
 open(status_file, 'w').close()
 open(urls, 'w').close()
 os.remove(lockfile)
-
-# Send 'bell' signal to terminal to signify completion.
-call(['echo', '-e', '\"\\a\"'])
+bell()
