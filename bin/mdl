@@ -17,6 +17,7 @@ dirs_from_home_dir = True
 
 dl_dir = '/dl/music/'
 editor = os.getenv('EDITOR', 'vim')
+lock_fname = 'lock'
 mpd_pid_file = '/.config/mpd/pid'
 music_dir = '/music/'
 playlist_dir = '/.config/mpd/playlists/'
@@ -34,6 +35,7 @@ if dirs_from_home_dir:
     music_dir = home + music_dir
     playlist_dir = home + playlist_dir
 
+lockfile = dl_dir + lock_fname
 snd_urls_file = dl_dir + snd_urls_fname
 songs = dl_dir + songs_fname
 status_file = dl_dir + status_fname
@@ -189,6 +191,11 @@ def append_titles(orig, dest):
         with open(dest, 'a') as f:
             f.write(title + '\n')
 
+if os.path.isfile(lockfile):
+    call([editor, snd_urls_file])
+    sys.exit(0)
+
+create_file_ifn(lockfile)
 create_file_ifn(snd_urls_file)
 create_file_ifn(songs)
 create_file_ifn(status_file)
@@ -224,6 +231,7 @@ if os.path.isfile(mpd_pid_file) and not empty_file(mpd_pid_file):
 open(songs, 'w').close()
 open(status_file, 'w').close()
 open(urls, 'w').close()
+os.remove(lockfile)
 
 # Send 'bell' signal to terminal to signify completion.
 call(['echo', '-e', '\"\\a\"'])
