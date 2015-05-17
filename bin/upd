@@ -53,26 +53,6 @@ ch_aur_ex_git () {
   fi
 }
 
-g_fetch_dr () {
-  cd $1
-  needs_updating="$(git fetch --dry-run)"
-  cd ~/etsi
-
-  if [[ -n "${needs_updating}" ]]; then
-    return true
-  else
-    return false
-  fi
-}
-
-chu_antigen () {
-  return g_fetch_dr ~/etsi/antigen
-}
-
-chu_vim_plug () {
-  return g_fetch_dr ~/etsi/vim-plug
-}
-
 g_chore_commit () {
   git add -A
   echo "chore(${1}): update commit reference" | git commit -eF -
@@ -85,17 +65,27 @@ upd_plugin_manager () {
   g_chore_commit ${1##*/}
 }
 
+g_fetch_dr () {
+  cd $1
+  needs_updating="$(git fetch --dry-run)"
+  cd ~/etsi
+
+  if [[ -n "${needs_updating}" ]]; then
+    upd_plugin_manager $1
+  fi
+}
+
+chu_antigen () {
+  echo "Checking if antigen has updates... [2/3]"
+  g_fetch_dr ~/etsi/antigen
+}
+
+chu_vim_plug () {
+  echo "Checking if vim-plug has updates... [3/3]"
+  g_fetch_dr ~/etsi/vim-plug
+}
+
 ch_if_clean
 ch_aur_ex_git
-
-echo "Checking if antigen has updates... [2/3]"
-
-if [[ chu_antigen ]]; then
-  upd_plugin_manager ~/etsi/antigen
-fi
-
-echo "Checking if vim-plug has updates... [3/3]"
-
-if [[ chu_vim_plug ]]; then
-  upd_plugin_manager ~/etsi/vim-plug
-fi
+chu_antigen
+chu_vim_plug
