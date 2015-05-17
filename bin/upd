@@ -66,12 +66,10 @@ g_fetch_dr () {
 }
 
 chu_antigen () {
-  echo "Checking if antigen has updates... [2/3]"
   return g_fetch_dr ~/etsi/antigen
 }
 
 chu_vim_plug () {
-  echo "Checking if vim-plug has updates... [3/3]"
   return g_fetch_dr ~/etsi/vim-plug
 }
 
@@ -90,9 +88,13 @@ upd_plugin_manager () {
 ch_if_clean
 ch_aur_ex_git
 
+echo "Checking if antigen has updates... [2/3]"
+
 if [[ chu_antigen ]]; then
   upd_plugin_manager ~/etsi/antigen
 fi
+
+echo "Checking if vim-plug has updates... [3/3]"
 
 if [[ chu_vim_plug ]]; then
   upd_plugin_manager ~/etsi/vim-plug
