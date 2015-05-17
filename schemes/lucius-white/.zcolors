@@ -5,6 +5,7 @@ INSERT_PROMPT="#5f87af"
 COMMAND_PROMPT="#444444"
 
 CHAR="%{$fg[green]%}"
+ERROR="%{$fg[red]%}"
 BGJOBS="%{$fg[blue]%}"
 VCS_INFO="%{$fg[magenta]%}"
 DIR="%{$fg[cyan]%}"
