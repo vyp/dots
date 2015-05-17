@@ -56,7 +56,7 @@ ch_aur_ex_git () {
 g_fetch_dr () {
   cd $1
   needs_updating="$(git fetch --dry-run)"
-  popd
+  cd ~/etsi
 
   if [[ -n "${needs_updating}" ]]; then
     return true
@@ -83,7 +83,7 @@ g_chore_commit () {
 upd_plugin_manager () {
   cd $1
   git pull
-  popd
+  cd ~/etsi
   g_chore_commit ${1##*/}
 }
 
