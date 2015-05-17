@@ -1,0 +1,99 @@
+#!/bin/env bash
+
+# TODO: Vim plugins.
+# TODO: Zsh plugins (via antigen).
+# TODO: npm packages.
+# TODO: Hackage packages (via cabal-install).
+# TODO: Check AUR -git packages.
+
+# Obviously run `sudo pacman -Syu` separately before running this script, after
+# checking the news of course!
+
+cd ~/etsi
+
+ch_if_clean () {
+  abort () {
+    echo "ERROR: Working directory is unclean! Aborting."
+    exit 1
+  }
+
+  git diff --exit-code
+
+  if [[ $? -ne 0 ]]; then
+    abort
+  else
+    git diff --cached --exit-code
+
+    if [[ $? -ne 0 ]]; then
+      abort
+    else
+      any_untracked_files="$(git ls-files --other --exclude-standard --directory)"
+
+      if [[ -n "${any_untracked_files}" ]]; then
+        abort
+      fi
+    fi
+  fi
+}
+
+ch_aur_ex_git () {
+  cwr_out="$(cower -u)"
+
+  if [[ -n "${cwr_out}" ]]; then
+    echo "AUR updates available! [1/3]"
+    echo "${cwr_out}"
+    read -p "Continue? (Y/n)" cwr_choice
+
+    if [[ "${cwr_choice}" == "n" ]]; then
+      exit 0
+    fi
+
+  else
+    echo "No AUR updates. (N.B. -git packages NOT checked.) [1/3]"
+  fi
+}
+
+g_fetch_dr () {
+  cd $1
+  needs_updating="$(git fetch --dry-run)"
+  popd
+
+  if [[ -n "${needs_updating}" ]]; then
+    return true
+  else
+    return false
+  fi
+}
+
+chu_antigen () {
+  echo "Checking if antigen has updates... [2/3]"
+  return g_fetch_dr ~/etsi/antigen
+}
+
+chu_vim_plug () {
+  echo "Checking if vim-plug has updates... [3/3]"
+  return g_fetch_dr ~/etsi/vim-plug
+}
+
+g_chore_commit () {
+  git add -A
+  echo "chore(${1}): update commit reference" | git commit -eF -
+}
+
+upd_plugin_manager () {
+  cd $1
+  git pull
+  popd
+  g_chore_commit ${1##*/}
+}
+
+ch_if_clean
+ch_aur_ex_git
+
+if [[ chu_antigen ]]; then
+  upd_plugin_manager ~/etsi/antigen
+fi
+
+if [[ chu_vim_plug ]]; then
+  upd_plugin_manager ~/etsi/vim-plug
+fi
