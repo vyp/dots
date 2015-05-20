@@ -5,6 +5,7 @@
 # TODO: npm packages.
 # TODO: Hackage packages (via cabal-install).
 # TODO: Check AUR -git packages.
+# TODO: Use `git status --porcelain` for `ch_if_clean`?
 
 # Obviously run `sudo pacman -Syu` separately before running this script, after
 # checking the news of course!
