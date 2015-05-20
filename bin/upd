@@ -68,10 +68,11 @@ upd_plugin_manager () {
 
 g_fetch_dr () {
   cd $1
-  needs_updating="$(git fetch --dry-run)"
+  local_hash="$(git log --pretty=%H master | head -n1)"
+  remote_hash="$(git ls-remote origin -h refs/heads/master | cut -f1)"
   cd ~/etsi
 
-  if [[ -n "${needs_updating}" ]]; then
+  if [[ $local_hash != $remote_hash ]]; then
     upd_plugin_manager $1
   fi
 }
