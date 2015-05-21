@@ -201,6 +201,7 @@ def append_titles(orig, dest):
             f.write(title + '\n')
 
 signal.signal(signal.SIGINT, signal_handler)
+signal.signal(signal.SIGTERM, signal_handler)
 
 if os.path.isfile(lockfile):
     call([editor, snd_urls_file])
