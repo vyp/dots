@@ -1,7 +1,8 @@
 #!/bin/env python
 
 # TODO: Check if song already exists in music folder.
-# TODO: Support trimming files.
+# TODO: Support trial and error inputs for trimming files (allow user check if
+# trim is correct somehow.)
 # TODO: Add documentation (to `../readme.md`).
 # TODO: List all dependencies (as a part of documentation).
 # TODO: Option to not sort playlists.
@@ -24,8 +25,10 @@ music_dir = '/music/'
 playlist_dir = '/.config/mpd/playlists/'
 playlist_ext = 'm3u'
 snd_urls_fname = 'yourls'
+snd_trims_fname = 'trims-pending'
 songs_fname = 'songs'
 status_fname = 'status'
+trims_fname = 'trims'
 urls_fname = 'urls'
 
 if dirs_from_home_dir:
@@ -38,8 +41,10 @@ if dirs_from_home_dir:
 
 lockfile = dl_dir + lock_fname
 snd_urls_file = dl_dir + snd_urls_fname
+snd_trims_file = dl_dir + snd_trims_fname
 songs = dl_dir + songs_fname
 status_file = dl_dir + status_fname
+trims = dl_dir + trims_fname
 urls = dl_dir + urls_fname
 
 class cd:
@@ -100,6 +105,71 @@ def process_songs(sl):
         with open(plfile, 'a') as f:
             f.write(song + '.ogg' + '\n')
 
+    def convert_song(name, start, end):
+        if start == False and end == False:
+            # No trimming.
+
+            call([
+                'ffmpeg',
+                '-y',
+                '-i',
+                name + '.webm',
+                '-vn',
+                '-acodec',
+                'copy',
+                name + '.ogg',
+            ])
+
+        elif start != False and end != False:
+            # Trim beginning and end.
+
+            call([
+                'ffmpeg',
+                '-y',
+                '-i',
+                name + '.webm',
+                '-ss',
+                '00:' + start,
+                '-to',
+                '00:' + end,
+                '-vn',
+                '-acodec',
+                'copy',
+                name + '.ogg',
+            ])
+
+        elif start == False:
+            # Trim only end.
+
+            call([
+                'ffmpeg',
+                '-y',
+                '-i',
+                name + '.webm',
+                '-to',
+                '00:' + end,
+                '-vn',
+                '-acodec',
+                'copy',
+                name + '.ogg',
+            ])
+
+        else:
+            # Trim only beginning.
+
+            call([
+                'ffmpeg',
+                '-y',
+                '-i',
+                name + '.webm',
+                '-ss',
+                '00:' + start,
+                '-vn',
+                '-acodec',
+                'copy',
+                name + '.ogg',
+            ])
+
     for song in sl:
         call([
             'youtube-dl',
@@ -111,15 +181,21 @@ def process_songs(sl):
             song['url']
         ])
 
-        call([
-            'ffmpeg',
-            '-i',
-            song['title'] + '.webm',
-            '-vn',
-            '-acodec',
-            'copy',
-            song['title'] + '.ogg',
-        ])
+        if song['trim']:
+            if '-' in song['trim']:
+                trim_times = song['trim'].split('-')
+
+                if trim_times[0]:
+                    convert_song(song['title'], trim_times[0], trim_times[1])
+
+                else:
+                    convert_song(song['title'], False, trim_times[1])
+
+            else:
+                convert_song(song['title'], song['trim'], False)
+
+        else:
+            convert_song(song['title'], False, False)
 
         call([
             'lltag',
@@ -157,10 +233,11 @@ def dl(songs, urls, wdir):
     song_l = []
 
     with cd(wdir):
-        with open(songs) as songs_f, open(urls) as urls_f:
-            for song, url in zip(songs_f, urls_f):
+        with open(songs) as songs_f, open(urls) as urls_f, open(trims) as trims_f:
+            for song, url, trim in zip(songs_f, urls_f, trims_f):
                 song = song.rstrip('\n')
                 url = url.rstrip('\n')
+                trim = trim.rstrip('\n')
                 title = None
 
                 # `tags` actually just means which playlists this song belongs
@@ -180,6 +257,7 @@ def dl(songs, urls, wdir):
                 song_l.append({
                     'tags': tags,
                     'title': song,
+                    'trim': trim,
                     'url': url
                 })
 
@@ -204,13 +282,15 @@ signal.signal(signal.SIGINT, signal_handler)
 signal.signal(signal.SIGTERM, signal_handler)
 
 if os.path.isfile(lockfile):
-    call([editor, snd_urls_file])
+    call([editor, snd_urls_file, snd_trims_file])
     sys.exit(0)
 
 create_file_ifn(lockfile)
 create_file_ifn(snd_urls_file)
+create_file_ifn(snd_trims_file)
 create_file_ifn(songs)
 create_file_ifn(status_file)
+create_file_ifn(trims)
 create_file_ifn(urls)
 
 while True:
@@ -223,7 +303,7 @@ while True:
             copyfile(snd_urls_file, urls)
             open(snd_urls_file, 'w').close()
 
-        call([editor, urls, songs])
+        call([editor, urls, trims, songs])
 
         if empty_file(songs) and empty_file(urls):
             print('Nothing inputted! Aborting.')
@@ -236,7 +316,7 @@ while True:
     else:
         append_titles(urls, songs)
         bell()
-        call([editor, songs, urls])
+        call([editor, songs, trims, urls])
 
 if os.path.isfile(mpd_pid_file) and not empty_file(mpd_pid_file):
     call(['mpc', 'update'])
