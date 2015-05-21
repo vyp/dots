@@ -247,8 +247,8 @@ def process_songs(sl):
                         end_at = ''
 
                         while start_at == '' and end_at == '':
-                            start_at = input('Start at?')
-                            end_at = input('End at?')
+                            start_at = input('Start at? > ')
+                            end_at = input('End at? > ')
 
                         convert_song(song['title'], start_at, end_at)
 
@@ -256,7 +256,7 @@ def process_songs(sl):
                         end_at = ''
 
                         while end_at == '':
-                            end_at = input('End at?')
+                            end_at = input('End at? > ')
 
                         convert_song(song['title'], False, end_at)
 
@@ -264,7 +264,7 @@ def process_songs(sl):
                         start_at = ''
 
                         while start_at == '':
-                            start_at = input('Start at?')
+                            start_at = input('Start at? > ')
 
                         convert_song(song['title'], start_at, False)
 
