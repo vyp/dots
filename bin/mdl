@@ -210,6 +210,7 @@ def process_songs(sl):
         ])
 
         if song['trim']:
+            bell()
             trim_okay = False
 
             if '-' in song['trim']:
