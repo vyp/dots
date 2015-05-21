@@ -376,6 +376,7 @@ if os.path.isfile(mpd_pid_file) and not empty_file(mpd_pid_file):
 
 open(songs, 'w').close()
 open(status_file, 'w').close()
+open(trims, 'w').close()
 open(urls, 'w').close()
 os.remove(lockfile)
 bell()
