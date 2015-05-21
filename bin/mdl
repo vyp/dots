@@ -8,6 +8,7 @@
 # TODO: Append '/' to a directory variable if not at end?
 
 import os
+import signal
 import sys
 
 from subprocess import call, check_output
@@ -51,6 +52,10 @@ class cd:
 
     def __exit__(self, etype, value, traceback):
         os.chdir(self.saved_path)
+
+def signal_handler(signal, frame):
+    os.remove(lockfile)
+    sys.exit(0)
 
 def bell():
     # Send 'bell' signal to terminal.
@@ -194,6 +199,8 @@ def append_titles(orig, dest):
     for title in titles:
         with open(dest, 'a') as f:
             f.write(title + '\n')
+
+signal.signal(signal.SIGINT, signal_handler)
 
 if os.path.isfile(lockfile):
     call([editor, snd_urls_file])
