@@ -1,8 +1,6 @@
 #!/bin/env python
 
 # TODO: Check if song already exists in music folder.
-# TODO: Support trial and error inputs for trimming files (allow user check if
-# trim is correct somehow.)
 # TODO: Add documentation (to `../readme.md`).
 # TODO: List all dependencies (as a part of documentation).
 # TODO: Option to not sort playlists.
@@ -170,6 +168,36 @@ def process_songs(sl):
                 name + '.ogg',
             ])
 
+    def post_process_song(name, tags):
+        call([
+            'lltag',
+            '--format',
+            '%a - %t',
+            '--yes',
+            name + '.ogg',
+        ])
+
+        a2pl('all', name, playlist_dir, playlist_ext)
+
+        for tag in tags:
+            a2pl(tag, name, playlist_dir, playlist_ext)
+
+        call([
+            'mv',
+            '-v',
+            name + '.ogg',
+            music_dir
+        ])
+
+        call([
+            'rm',
+            '-v',
+            name + '.webm'
+        ])
+
+        with open(status_file, 'a') as f:
+            f.write(name + '\n')
+
     for song in sl:
         call([
             'youtube-dl',
@@ -182,49 +210,70 @@ def process_songs(sl):
         ])
 
         if song['trim']:
+            trim_okay = False
+
             if '-' in song['trim']:
                 trim_times = song['trim'].split('-')
 
                 if trim_times[0]:
+                    trim_case = 'both'
                     convert_song(song['title'], trim_times[0], trim_times[1])
 
                 else:
+                    trim_case = 'end'
                     convert_song(song['title'], False, trim_times[1])
 
             else:
+                trim_case = 'start'
                 convert_song(song['title'], song['trim'], False)
+
+            while trim_okay == False:
+                print('Playing song \'' + song['title'] + '\'')
+
+                call([
+                    'mpv',
+                    '--loop=inf',
+                    song['title'] + '.ogg'
+                ])
+
+                okay = input('Is it good? (y/N)')
+
+                if okay == 'y':
+                    trim_okay = True
+
+                else:
+                    if trim_case == 'both':
+                        start_at = ''
+                        end_at = ''
+
+                        while start_at == '' and end_at == '':
+                            start_at = input('Start at?')
+                            end_at = input('End at?')
+
+                        convert_song(song['title'], start_at, end_at)
+
+                    elif trim_case == 'end':
+                        end_at = ''
+
+                        while end_at == '':
+                            end_at = input('End at?')
+
+                        convert_song(song['title'], False, end_at)
+
+                    else:
+                        start_at = ''
+
+                        while start_at == '':
+                            start_at = input('Start at?')
+
+                        convert_song(song['title'], start_at, False)
+
+
+            post_process_song(song['title'], song['tags'])
 
         else:
             convert_song(song['title'], False, False)
-
-        call([
-            'lltag',
-            '--format',
-            '%a - %t',
-            '--yes',
-            song['title'] + '.ogg',
-        ])
-
-        a2pl('all', song['title'], playlist_dir, playlist_ext)
-
-        for tag in song['tags']:
-            a2pl(tag, song['title'], playlist_dir, playlist_ext)
-
-        call([
-            'mv',
-            '-v',
-            song['title'] + '.ogg',
-            music_dir
-        ])
-
-        call([
-            'rm',
-            '-v',
-            song['title'] + '.webm'
-        ])
-
-        with open(status_file, 'a') as f:
-            f.write(song['title'] + '\n')
+            post_process_song(song['title'], song['tags'])
 
     for pl in pls2sort:
         gnu_sort(playlist_dir + pl + '.' + playlist_ext)
@@ -299,9 +348,13 @@ while True:
         break
 
     elif empty_file(songs) and empty_file(urls):
-        if not empty_file(snd_urls_file):
-            copyfile(snd_urls_file, urls)
-            open(snd_urls_file, 'w').close()
+        def copy_non_empty_file(source, dest):
+            if not empty_file(source):
+                copyfile(source, dest)
+                open(source, 'w').close()
+
+        copy_non_empty_file(snd_urls_file, urls)
+        copy_non_empty_file(snd_trims_file, trims)
 
         call([editor, urls, trims, songs])
 
