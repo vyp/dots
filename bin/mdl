@@ -1,8 +1,11 @@
 #!/bin/env python
 
+# TODO: Add overwrite option directly to cli interface.
 # TODO: Add documentation (to `../readme.md`).
 # TODO: List all dependencies (as a part of documentation).
 # TODO: Option to not sort playlists.
+# TODO: Possibly even have some sort of cli interface (instead of needing to
+# edit files)?
 # TODO: Append '/' to a directory variable if not at end?
 
 import os
