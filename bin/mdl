@@ -1,6 +1,5 @@
 #!/bin/env python
 
-# TODO: Add overwrite option directly to cli interface.
 # TODO: Add documentation (to `../readme.md`).
 # TODO: List all dependencies (as a part of documentation).
 # TODO: Option to not sort playlists.
@@ -8,10 +7,25 @@
 # edit files)?
 # TODO: Append '/' to a directory variable if not at end?
 
+"""
+Usage:
+    mdl [-f | --force-overwrite]
+    mdl [-h | --help]
+    mdl [-v | --version]
+
+Options:
+    -f --force-overwrite  Overwrite songs which already exist in the music
+                          directory without asking.
+
+    -h --help             Show this usage text and exit.
+    -v --version          Show version number and exit.
+"""
+
 import os
 import signal
 import sys
 
+from docopt import docopt
 from subprocess import call, check_output
 from shutil import copyfile, move
 
@@ -192,20 +206,24 @@ def process_songs(sl):
 
     for song in sl:
         if os.path.isfile(music_dir + song['title'] + '.ogg'):
-            print('\'' + song['title'] + '\' already exists!')
-
-            overwrite = input('Overwrite? (y/N) > ')
-
-            if overwrite == 'y':
+            if args['--force-overwrite']:
                 os.remove(music_dir + song['title'] + '.ogg')
 
             else:
-                print('Skipping \'' + song['title'] + '\'.')
+                print('\'' + song['title'] + '\' already exists!')
 
-                with open(status_file, 'a') as f:
-                    f.write('SKIPPED/' + name + '\n')
+                overwrite = input('Overwrite? (y/N) > ')
 
-                continue
+                if overwrite == 'y':
+                    os.remove(music_dir + song['title'] + '.ogg')
+
+                else:
+                    print('Skipping \'' + song['title'] + '\'.')
+
+                    with open(status_file, 'a') as f:
+                        f.write('SKIPPED/' + name + '\n')
+
+                    continue
 
         call([
             'youtube-dl',
@@ -337,6 +355,7 @@ def append_titles(orig, dest):
 
 signal.signal(signal.SIGINT, signal_handler)
 signal.signal(signal.SIGTERM, signal_handler)
+args = docopt(__doc__, version = 'mdl 0.1.0')
 
 if os.path.isfile(lockfile):
     call([editor, snd_urls_file, snd_trims_file])
