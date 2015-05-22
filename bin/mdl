@@ -11,7 +11,7 @@ import signal
 import sys
 
 from subprocess import call, check_output
-from shutil import copyfile
+from shutil import copyfile, move
 
 dirs_from_home_dir = True
 
@@ -182,18 +182,8 @@ def process_songs(sl):
         for tag in tags:
             a2pl(tag, name, playlist_dir, playlist_ext)
 
-        call([
-            'mv',
-            '-v',
-            name + '.ogg',
-            music_dir
-        ])
-
-        call([
-            'rm',
-            '-v',
-            name + '.webm'
-        ])
+        move(name + '.ogg', music_dir + name + '.ogg')
+        os.remove(name + '.webm')
 
         with open(status_file, 'a') as f:
             f.write(name + '\n')
