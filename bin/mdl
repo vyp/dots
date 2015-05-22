@@ -302,7 +302,7 @@ def dl(songs, urls, wdir):
 
                 song_l.append({
                     'tags': tags,
-                    'title': song,
+                    'title': title,
                     'trim': trim,
                     'url': url
                 })
