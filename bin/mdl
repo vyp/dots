@@ -122,13 +122,9 @@ def process_songs(sl):
             # No trimming.
 
             call([
-                'ffmpeg',
-                '-y',
-                '-i',
-                name + '.webm',
-                '-vn',
-                '-acodec',
-                'copy',
+                'ffmpeg', '-y',
+                '-i', name + '.webm',
+                '-vn', '-acodec', 'copy',
                 name + '.ogg',
             ])
 
@@ -136,17 +132,11 @@ def process_songs(sl):
             # Trim beginning and end.
 
             call([
-                'ffmpeg',
-                '-y',
-                '-i',
-                name + '.webm',
-                '-ss',
-                '00:' + start,
-                '-to',
-                '00:' + end,
-                '-vn',
-                '-acodec',
-                'copy',
+                'ffmpeg', '-y',
+                '-i', name + '.webm',
+                '-ss', '00:' + start,
+                '-to', '00:' + end,
+                '-vn', '-acodec', 'copy',
                 name + '.ogg',
             ])
 
@@ -154,15 +144,10 @@ def process_songs(sl):
             # Trim only end.
 
             call([
-                'ffmpeg',
-                '-y',
-                '-i',
-                name + '.webm',
-                '-to',
-                '00:' + end,
-                '-vn',
-                '-acodec',
-                'copy',
+                'ffmpeg', '-y',
+                '-i', name + '.webm',
+                '-to', '00:' + end,
+                '-vn', '-acodec', 'copy',
                 name + '.ogg',
             ])
 
@@ -170,24 +155,16 @@ def process_songs(sl):
             # Trim only beginning.
 
             call([
-                'ffmpeg',
-                '-y',
-                '-i',
-                name + '.webm',
-                '-ss',
-                '00:' + start,
-                '-vn',
-                '-acodec',
-                'copy',
+                'ffmpeg', '-y',
+                '-i', name + '.webm',
+                '-ss', '00:' + start,
+                '-vn', '-acodec', 'copy',
                 name + '.ogg',
             ])
 
     def post_process_song(name, tags):
         call([
-            'lltag',
-            '--format',
-            '%a - %t',
-            '--yes',
+            'lltag', '--format', '%a - %t', '--yes',
             name + '.ogg',
         ])
 
@@ -224,12 +201,8 @@ def process_songs(sl):
                     continue
 
         call([
-            'youtube-dl',
-            '-f',
-            '43',
-            '--no-part',
-            '-o',
-            song['title'] + '.webm',
+            'youtube-dl', '-f', '43', '--no-part',
+            '-o', song['title'] + '.webm',
             song['url']
         ])
 
@@ -256,8 +229,7 @@ def process_songs(sl):
                 print('Playing song \'' + song['title'] + '\'')
 
                 call([
-                    'mpv',
-                    '--loop=inf',
+                    'mpv', '--loop=inf',
                     song['title'] + '.ogg'
                 ])
 
