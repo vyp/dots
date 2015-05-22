@@ -201,8 +201,8 @@ source ~/.zcolors
 KEYTIMEOUT=1
 
 HISTFILE=~/.histfile
-HISTSIZE=1000
-SAVEHIST=1000
+HISTSIZE=100000
+SAVEHIST=100000
 
 # Helper for setting color including all kinds of terminals.
 set_prompt_color () {
