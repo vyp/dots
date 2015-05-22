@@ -3,6 +3,7 @@
 # TODO: Add documentation (to `../readme.md`).
 # TODO: List all dependencies (as a part of documentation).
 # TODO: Option to not sort playlists.
+# TODO: Add option for media player used in testing trimming results.
 # TODO: Possibly even have some sort of cli interface (instead of needing to
 # edit files)?
 # TODO: Append '/' to a directory variable if not at end?
