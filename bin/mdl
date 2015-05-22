@@ -1,6 +1,5 @@
 #!/bin/env python
 
-# TODO: Check if song already exists in music folder.
 # TODO: Add documentation (to `../readme.md`).
 # TODO: List all dependencies (as a part of documentation).
 # TODO: Option to not sort playlists.
@@ -189,6 +188,22 @@ def process_songs(sl):
             f.write(name + '\n')
 
     for song in sl:
+        if os.path.isfile(music_dir + song['title'] + '.ogg'):
+            print('\'' + song['title'] + '\' already exists!')
+
+            overwrite = input('Overwrite? (y/N) > ')
+
+            if overwrite == 'y':
+                os.remove(music_dir + song['title'] + '.ogg')
+
+            else:
+                print('Skipping \'' + song['title'] + '\'.')
+
+                with open(status_file, 'a') as f:
+                    f.write('SKIPPED/' + name + '\n')
+
+                continue
+
         call([
             'youtube-dl',
             '-f',
