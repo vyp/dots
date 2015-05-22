@@ -3,6 +3,7 @@
 # TODO: Vim plugins.
 # TODO: Zsh plugins (via antigen).
 # TODO: npm packages.
+# TODO: pip packages.
 # TODO: Hackage packages (via cabal-install).
 # TODO: Check AUR -git packages.
 # TODO: Use `git status --porcelain` for `ch_if_clean`?
