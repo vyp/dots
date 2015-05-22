@@ -9,16 +9,14 @@
 
 """
 Usage:
-    mdl [-f | --force-overwrite]
-    mdl [-h | --help]
-    mdl [-v | --version]
+    mdl [-f]
 
 Options:
-    -f --force-overwrite  Overwrite songs which already exist in the music
-                          directory without asking.
+    -f, --force-overwrite  Overwrite songs which already exist in the music
+                           directory without asking.
 
-    -h --help             Show this usage text and exit.
-    -v --version          Show version number and exit.
+    -h, --help             Show this usage text and exit.
+    -v, --version          Show version number and exit.
 """
 
 import os
@@ -105,7 +103,7 @@ def empty_file(f):
     return os.path.getsize(f) == 0
 
 def gnu_sort(f):
-    call(['sort', f, '-o', f])
+    call(['sort', '-u', f, '-o', f])
 
 def process_songs(sl):
     pls2sort = []
