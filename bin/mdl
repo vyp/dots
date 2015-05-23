@@ -275,15 +275,14 @@ def process_songs(sl):
     for pl in pls2sort:
         gnu_sort(playlist_dir + pl + '.' + playlist_ext)
 
-def dl(songs, urls, wdir):
+def dl(songs, urls, trims, wdir):
     song_l = []
 
     with cd(wdir):
         with open(songs) as songs_f, open(urls) as urls_f, open(trims) as trims_f:
-            for song, url, trim in zip(songs_f, urls_f, trims_f):
+            for song, url in zip(songs_f, urls_f):
                 song = song.rstrip('\n')
                 url = url.rstrip('\n')
-                trim = trim.rstrip('\n')
                 title = None
 
                 # `tags` actually just means which playlists this song belongs
@@ -303,9 +302,15 @@ def dl(songs, urls, wdir):
                 song_l.append({
                     'tags': tags,
                     'title': title,
-                    'trim': trim,
                     'url': url
                 })
+
+            for trim, song in zip(trims_f, song_l):
+                song['trim'] = trim.rstrip('\n')
+
+        for song in song_l:
+            if not 'trim' in song:
+                song['trim'] = ''
 
         process_songs(song_l)
 
@@ -342,7 +347,7 @@ create_file_ifn(urls)
 
 while True:
     if dl_ready(songs, urls):
-        dl(songs, urls, dl_dir)
+        dl(songs, urls, trims, dl_dir)
         break
 
     elif empty_file(songs) and empty_file(urls):
