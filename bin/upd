@@ -88,7 +88,12 @@ chu_vim_plug () {
   g_fetch_dr ~/etsi/vim-plug
 }
 
+upd_vim_plugins () {
+  vim +PlugUpdate +only
+}
+
 ch_if_clean
 ch_aur_ex_git
 chu_antigen
 chu_vim_plug
+upd_vim_plugins
