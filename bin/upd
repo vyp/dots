@@ -57,7 +57,7 @@ ch_aur_ex_git () {
 
 g_chore_commit () {
   git add -A
-  echo "chore(${1}): update commit reference" | git commit -eF -
+  printf "chore(${1}): update commit reference" | git commit -eF -
 }
 
 upd_plugin_manager () {
