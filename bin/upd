@@ -97,3 +97,6 @@ ch_aur_ex_git
 chu_antigen
 chu_vim_plug
 upd_vim_plugins
+
+# Now check if working directory is clean. If `vim-plugins-snapshot` file is
+# modified, form a new chore commit to commit those changes/updates.
