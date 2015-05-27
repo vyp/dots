@@ -4,6 +4,7 @@
 # TODO: pip packages.
 # TODO: Hackage packages (via cabal-install).
 # TODO: Check AUR -git packages.
+# TODO: Use a proper counter system somehow to count progress.
 # TODO: Use `git status --porcelain` for `ch_if_clean`?
 
 # Obviously run `sudo pacman -Syu` separately before running this script, after
