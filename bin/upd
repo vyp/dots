@@ -1,4 +1,4 @@
-#!/bin/env bash
+#!/bin/env zsh
 
 # TODO: pip packages.
 # TODO: Hackage packages (via cabal-install).
