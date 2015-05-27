@@ -2,16 +2,11 @@
 
 - ~~stop broken pipe `thalamus` upon ending X session.~~
 - popup (or something) for brightness/sound.
-- add `./bin` to `$PATH`.
 - documentation.
     - maintainence.
         - files organisation.
     - fonts.
     - installed packages.
-    - rationalis.
-        - vim.
-        - bspwm.
-        - zsh.
 - vim:
     - vim plugins: fugitive, snippets, latex-box, tern.
     - lazy load vim plugins (using vim-plug).
@@ -21,8 +16,6 @@
 - weechat.
 - newsbeuter.
 - fix more ncmpcpp keybindings.
-- add script to check for updates to vim plugins (and possibly other git cloned
-  things)?
 - pandoc and latex templates?
 - sxiv?
 - ranger config?
