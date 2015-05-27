@@ -98,5 +98,7 @@ chu_antigen
 chu_vim_plug
 upd_vim_plugins
 
-# Now check if working directory is clean. If `vim-plugins-snapshot` file is
-# modified, form a new chore commit to commit those changes/updates.
+if [[ `git ls-files -m | grep -cim1 vim-plugins-snapshot` -eq 1 ]]; then
+  git add -A
+  printf "chore(vim-plugins-snapshot): update hash references" | git commit -eF -
+fi
