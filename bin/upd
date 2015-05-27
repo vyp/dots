@@ -1,6 +1,5 @@
 #!/bin/env bash
 
-# TODO: npm packages.
 # TODO: pip packages.
 # TODO: Hackage packages (via cabal-install).
 # TODO: Check AUR -git packages.
@@ -41,7 +40,7 @@ ch_aur_ex_git () {
   cwr_out="$(cower -u)"
 
   if [[ -n "${cwr_out}" ]]; then
-    echo "AUR updates available! [1/5]"
+    echo "AUR updates available! [1/6]"
     echo "${cwr_out}"
     read -p "Continue? (Y/n)" cwr_choice
 
@@ -50,7 +49,7 @@ ch_aur_ex_git () {
     fi
 
   else
-    echo "No AUR updates. (N.B. -git packages NOT checked.) [1/5]"
+    echo "No AUR updates. (N.B. -git packages NOT checked.) [1/6]"
   fi
 }
 
@@ -78,17 +77,17 @@ g_fetch_dr () {
 }
 
 chu_antigen () {
-  echo "Checking if antigen has updates... [4/5]"
+  echo "Checking if antigen has updates... [4/6]"
   g_fetch_dr ~/etsi/antigen
 }
 
 chu_vim_plug () {
-  echo "Checking if vim-plug has updates... [5/5]"
+  echo "Checking if vim-plug has updates... [5/6]"
   g_fetch_dr ~/etsi/vim-plug
 }
 
 upd_zsh_plugins () {
-  echo "Checking for updates to vim plugins... [2/5]"
+  echo "Checking for updates to vim plugins... [2/6]"
 
   if [[ `antigen update | grep -cim1 'Already up-to-date.'` -eq 0 ]]; then
     antigen snapshot ~/etsi/zsh-plugins-snapshot
@@ -98,12 +97,26 @@ upd_zsh_plugins () {
 }
 
 upd_vim_plugins () {
-  echo "Checking for updates to vim plugins... [3/5]"
+  echo "Checking for updates to vim plugins... [3/6]"
   vim +PlugUpdate +only
 
   if [[ `git ls-files -m | grep -cim1 vim-plugins-snapshot` -eq 1 ]]; then
     git add -A
     printf "chore(vim-plugins-snapshot): update hash references" | git commit -eF -
+  fi
+}
+
+upd_npm_packages () {
+  echo "Checking for updates to npm packages... [6/6]"
+  npm_status=`npm-check-updates -g`
+
+  if [[ `echo "${npm_status}" | grep -cim1 'All global packages are up to date'` -eq 0 ]]; then
+    echo "${npm_status}"
+    read -p "Update npm packages? (y/N)" npm_choice
+
+    if [[ "${npm_choice}" == "y" ]]; then
+      sudo npm update -g
+    fi
   fi
 }
 
@@ -113,3 +126,4 @@ upd_zsh_plugins
 upd_vim_plugins
 chu_antigen
 chu_vim_plug
+upd_npm_packages
