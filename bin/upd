@@ -87,7 +87,7 @@ chu_vim_plug () {
 }
 
 upd_zsh_plugins () {
-  echo "Checking for updates to vim plugins... [2/6]"
+  echo "Checking for updates to zsh plugins... [2/6]"
 
   if [[ `antigen update | grep -cim1 'Already up-to-date.'` -eq 0 ]]; then
     antigen snapshot ~/etsi/zsh-plugins-snapshot
