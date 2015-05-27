@@ -1,4 +1,4 @@
-#!/bin/env zsh
+#!/bin/env bash
 
 # TODO: pip packages.
 # TODO: Hackage packages (via cabal-install).
@@ -88,13 +88,24 @@ chu_vim_plug () {
 
 upd_zsh_plugins () {
   echo "Checking for updates to zsh plugins... [2/6]"
-  source ~/etsi/antigen/antigen.zsh
 
-  if [[ `antigen update | grep -cim1 'Already up-to-date.'` -eq 0 ]]; then
-    antigen snapshot ~/etsi/zsh-plugins-snapshot
-    git add -A
-    printf "chore(zsh-plugins-snapshot): update hash references" | git commit -eF -
-  fi
+  for dir in ~/.antigen/repos/*; do
+    if [[ -d "${dir}" ]]; then
+      cd "${dir}"
+      local_hash="$(git log --pretty=%H master | head -n1)"
+      remote_hash="$(git ls-remote origin -h refs/heads/master | cut -f1)"
+
+      if [[ $local_hash != $remote_hash ]]; then
+        source ~/etsi/antigen/antigen.zsh
+        antigen update
+        antigen snapshot ~/etsi/zsh-plugins-snapshot
+        cd ~/etsi
+        git add -A
+        printf "chore(zsh-plugins-snapshot): update hash references" | git commit -eF -
+        break
+      fi
+    fi
+  done
 }
 
 upd_vim_plugins () {
