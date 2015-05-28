@@ -20,7 +20,6 @@
 - sxiv?
 - ranger config?
 - tmux?
-- pterosaur for firefox.
 - compton.
 - ~~colorscheme.~~ [1]
     - configure rest of lucius-white colorscheme.
