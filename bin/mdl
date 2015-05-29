@@ -184,7 +184,8 @@ def process_songs(sl):
             f.write(name + '\n')
 
     for song in sl:
-        if not args['--force-overwrite'] and os.path.isfile(music_dir + song['title'] + '.ogg'):
+        if not args['--force-overwrite'] \
+           and os.path.isfile(music_dir + song['title'] + '.ogg'):
             print('\'' + song['title'] + '\' already exists!')
 
             overwrite = input('Overwrite? (y/N) > ')
