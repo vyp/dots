@@ -1,5 +1,6 @@
 #!/bin/env bash
 
+# TODO: Do antigen things manually.
 # TODO: pip packages.
 # TODO: Hackage packages (via cabal-install).
 # TODO: Check AUR -git packages.
@@ -55,7 +56,7 @@ ch_aur_ex_git () {
 
 g_chore_commit () {
   git add -A
-  printf "chore(${1}): update commit reference" | git commit -eF -
+  echo "chore(${1}): update commit reference" | git commit -eF -
 }
 
 upd_plugin_manager () {
@@ -101,7 +102,7 @@ upd_zsh_plugins () {
         antigen snapshot ~/etsi/zsh-plugins-snapshot
         cd ~/etsi
         git add -A
-        printf "chore(zsh-plugins-snapshot): update hash references" | git commit -eF -
+        echo "chore(zsh-plugins-snapshot): update hash references" | git commit -eF -
         break
       fi
     fi
@@ -114,7 +115,7 @@ upd_vim_plugins () {
 
   if [[ `git ls-files -m | grep -cim1 vim-plugins-snapshot` -eq 1 ]]; then
     git add -A
-    printf "chore(vim-plugins-snapshot): update hash references" | git commit -eF -
+    echo "chore(vim-plugins-snapshot): update hash references" | git commit -eF -
   fi
 }
 
