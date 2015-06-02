@@ -1,7 +1,7 @@
 #!/bin/env bash
 
 # TODO: Do antigen things manually.
-# TODO: It is probably possible to not just simply abort even if working
+# TODO: It is probably possible to not just simply abort even if working the
 # directory is unclean, just make sure nothing is staged for commit, and just
 # stage only the files that need to be commited automatically.
 # TODO: pip packages.
