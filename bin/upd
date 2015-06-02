@@ -58,7 +58,7 @@ ch_aur_ex_git () {
 }
 
 g_chore_commit () {
-  git add -A
+  git add $1
   echo "chore(${1}): update commit reference" | git commit -eF -
 }
 
@@ -104,7 +104,7 @@ upd_zsh_plugins () {
         antigen update
         antigen snapshot ~/etsi/zsh-plugins-snapshot
         cd ~/etsi
-        git add -A
+        git add zsh-plugins-snapshot
         echo "chore(zsh-plugins-snapshot): update hash references" | git commit -eF -
         break
       fi
@@ -117,7 +117,7 @@ upd_vim_plugins () {
   vim +PlugUpdate +only
 
   if [[ `git ls-files -m | grep -cim1 vim-plugins-snapshot` -eq 1 ]]; then
-    git add -A
+    git add vim-plugins-snapshot
     echo "chore(vim-plugins-snapshot): update hash references" | git commit -eF -
   fi
 }
