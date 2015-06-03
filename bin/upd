@@ -110,6 +110,8 @@ upd_zsh_plugins () {
       fi
     fi
   done
+
+  cd ~/etsi
 }
 
 upd_vim_plugins () {
