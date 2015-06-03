@@ -19,6 +19,30 @@
   }
 }
 
+@document url-prefix(http://www.google.com/) {
+  div.gb_ba {
+    display: none !important;
+  }
+}
+
+@document url-prefix(https://www.google.com/) {
+  div.gb_ba {
+    display: none !important;
+  }
+}
+
+@-moz-document url-prefix(http://www.google.com/) {
+  div.gb_ba {
+    display: none !important;
+  }
+}
+
+@-moz-document url-prefix(https://www.google.com/) {
+  div.gb_ba {
+    display: none !important;
+  }
+}
+
 @document url-prefix(http://stackoverflow.com/) {
   div[id*="careers"] {
     display: none !important;
