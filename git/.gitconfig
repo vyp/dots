@@ -4,5 +4,9 @@
   # No 'HTML' emails please, only plain text!
   # HTML emails will be ignored and deleted automatically.
   email = elisp.vim@gmail.com
+
 [core]
   editor = vim
+
+[push]
+	default = matching
