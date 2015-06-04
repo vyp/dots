@@ -1,43 +1,48 @@
 #!/bin/env bash
 
 # TODO: Do antigen things manually.
-# TODO: It is probably possible to not just simply abort even if working the
-# directory is unclean, just make sure nothing is staged for commit, and just
-# stage only the files that need to be commited automatically.
 # TODO: pip packages.
 # TODO: Hackage packages (via cabal-install).
 # TODO: Check AUR -git packages.
 # TODO: Use a proper counter system somehow to count progress.
-# TODO: Use `git status --porcelain` for `ch_if_clean`?
 
 # Obviously run `sudo pacman -Syu` separately before running this script, after
 # checking the news of course!
 
+abort () {
+  echo "ERROR: Working directory is unclean! Aborting."
+  exit 1
+}
+
+trap "abort" TERM
+export TOP_PID=$$
+
 cd ~/etsi
 
 ch_if_clean () {
-  abort () {
-    echo "ERROR: Working directory is unclean! Aborting."
-    exit 1
-  }
+  NORMIFS=$IFS
 
-  git diff --exit-code
+  git status --porcelain | while IFS= read line; do
+    xsc="${line:0:1}"
+    ysc="${line:1:1}"
+    pathsc="${line:3}"
 
-  if [[ $? -ne 0 ]]; then
-    abort
-  else
-    git diff --cached --exit-code
+    if [[ $pathsc == *"zsh-plugins-snapshot"* ]] ||
+       [[ $pathsc == *"vim-plugins-snapshot"* ]] ||
+       [[ $pathsc == *"antigen"* ]] ||
+       [[ $pathsc == *"vim-plug"* ]]; then
+      kill -s TERM $TOP_PID
+      break
 
-    if [[ $? -ne 0 ]]; then
-      abort
     else
-      any_untracked_files="$(git ls-files --other --exclude-standard --directory)"
-
-      if [[ -n "${any_untracked_files}" ]]; then
-        abort
+      if [[ $xsc != " " ]] && [[ $xsc != "?" ]]; then
+        kill -s TERM $TOP_PID
+        break
       fi
     fi
-  fi
+  done
+
+  IFS=$NORMIFS
 }
 
 ch_aur_ex_git () {
