@@ -276,6 +276,7 @@ Plug 'wellle/targets.vim'
 
 " Syntax:
 Plug 'cespare/vim-toml'
+Plug 'digitaltoad/vim-jade'
 Plug 'jelera/vim-javascript-syntax'
 Plug 'nelstrom/vim-markdown-folding'
 Plug 'rust-lang/rust.vim'
