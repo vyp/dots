@@ -99,7 +99,7 @@ while read -r line; do
           SONG="$(cut -d '(' -f1 <<< ${SONG})"
         fi
 
-        music="^fg($MUSIC_ICON_CLR)^i(${MUSIC_ICON}) ${ARTIST//Ø/O}^fg($MUSIC_ICON_CLR) - ^fg($SONG_CLR)${SONG}${MOD}^fg()"
+        music="^fg($MUSIC_ICON_CLR)^i(${MUSIC_ICON}) ${ARTIST}^fg($MUSIC_ICON_CLR) - ^fg($SONG_CLR)${SONG}${MOD}^fg()"
       fi
       ;;
 
@@ -166,7 +166,7 @@ while read -r line; do
       ;;
 
   esac
-  left="^p(2)^fg($ARCH_ICON_CLR)^i(${ARCH_ICON})^fg() $music"
+  left="^p(2)^fg($ARCH_ICON_CLR)^i(${ARCH_ICON})^fg() ${music//Ø/O}"
   center="^p(_CENTER)^p(-$CENTER_OFFSET)$workspaces"
   right="^p(_RIGHT)^p(-$BATTERY_OFFSET)$battery^p(_RIGHT)^p(-$TIME_OFFSET)$time"
 
