@@ -24,7 +24,6 @@ ch_if_clean () {
 
   git status --porcelain | while IFS= read line; do
     xsc="${line:0:1}"
-    ysc="${line:1:1}"
     pathsc="${line:3}"
 
     if [[ $pathsc == *"zsh-plugins-snapshot"* ]] ||
