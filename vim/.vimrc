@@ -82,15 +82,15 @@ let mapleader=","
 
 nnoremap ; :
 nnoremap <cr> ;
-nnoremap : ;
+nnoremap : <cr>
 xnoremap ; :
 xnoremap <cr> ;
-xnoremap : ;
+xnoremap : <cr>
 
-au CmdwinEnter * nnoremap <cr> <cr>
-au CmdwinEnter * xnoremap <cr> <cr>
-au CmdwinLeave * nnoremap <cr> ;
-au CmdwinLeave * xnoremap <cr> ;
+" au CmdwinEnter * nnoremap : <cr>
+" au CmdwinEnter * xnoremap : <cr>
+" au CmdwinLeave * nnoremap <cr> ;
+" au CmdwinLeave * xnoremap <cr> ;
 
 " TODO: Find the opposite of BufReadPost so that <CR> can be reset.
 " autocmd BufReadPost quickfix nnoremap <CR> <CR>
