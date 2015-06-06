@@ -19,25 +19,25 @@
   }
 }
 
-@document url-prefix(http://www.google.com/) {
+@document url-prefix(http://www.google.com) {
   div.gb_ba {
     display: none !important;
   }
 }
 
-@document url-prefix(https://www.google.com/) {
+@document url-prefix(https://www.google.com) {
   div.gb_ba {
     display: none !important;
   }
 }
 
-@-moz-document url-prefix(http://www.google.com/) {
+@-moz-document url-prefix(http://www.google.com) {
   div.gb_ba {
     display: none !important;
   }
 }
 
-@-moz-document url-prefix(https://www.google.com/) {
+@-moz-document url-prefix(https://www.google.com) {
   div.gb_ba {
     display: none !important;
   }
