@@ -264,6 +264,7 @@ call plug#begin('~/.vim/plugged')
 " Essential:
 Plug 'mattn/emmet-vim'
 Plug 'Shougo/neocomplete'
+Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 
@@ -289,7 +290,7 @@ Plug 'morhetz/gruvbox'
 
 call plug#end()
 
-" TODO: +snippets, fugitive.
+" TODO: +snippets.
 
 " Plugin Options {{{1
 " 'ap/vim-buftabline' {{{2
