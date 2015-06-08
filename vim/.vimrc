@@ -189,6 +189,7 @@ nnoremap <leader>vz :edit ~/.zshrc<CR>
 nnoremap <leader>sn :PlugSnapshot ~/etsi/vim-plugins-snapshot<CR>
 
 " Status Line {{{1
+" TODO: Add git branch information using fugitive.
 set statusline=
 " Buffer number.
 set statusline+=%3.3n\ »\ 
@@ -280,6 +281,7 @@ Plug 'cespare/vim-toml'
 Plug 'digitaltoad/vim-jade'
 Plug 'jelera/vim-javascript-syntax'
 Plug 'nelstrom/vim-markdown-folding'
+Plug 'rhysd/vim-crystal'
 Plug 'rust-lang/rust.vim'
 Plug 'vim-pandoc/vim-pandoc-syntax'
 
