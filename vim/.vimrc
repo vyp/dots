@@ -284,6 +284,7 @@ Plug 'nelstrom/vim-markdown-folding'
 Plug 'rhysd/vim-crystal'
 Plug 'rust-lang/rust.vim'
 Plug 'vim-pandoc/vim-pandoc-syntax'
+Plug 'wavded/vim-stylus'
 
 " Themes:
 Plug 'chriskempson/base16-vim'
