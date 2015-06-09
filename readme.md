@@ -38,6 +38,7 @@ Program       | Use
 [Pacman]      | Package Manager
 [Pentadactyl] | Web Browser
 [rTorrent]    | BitTorrent Client
+[SSH]         | Secure Shell
 [Sxhkd]       | Keybindings Manager
 [Urxvt]       | Terminal Emulator
 [Vim]         | Text Editor
@@ -59,6 +60,7 @@ Program       | Use
 [Pentadactyl]: http://5digits.org/pentadactyl/
 [Pacman]:      https://www.archlinux.org/pacman/
 [rTorrent]:    http://rakshasa.github.io/rtorrent/
+[SSH]:         http://www.openssh.com/
 [Sxhkd]:       https://github.com/baskerville/sxhkd
 [Urxvt]:       http://software.schmorp.de/pkg/rxvt-unicode.html
 [Vim]:         http://www.vim.org/
