@@ -48,6 +48,7 @@ alias cb='cp'
 alias cn='cat -n'
 alias cp='cp -v'
 alias cpr='cp -r'
+alias cr='crystal'
 
 # `nl` apparently more standard than `cat -n`.
 alias ds='dirs -p | tail -n +2 | nl'
