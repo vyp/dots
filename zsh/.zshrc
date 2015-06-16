@@ -155,6 +155,8 @@ alias prc='sudo pacman -Rns'
 # (ReMove)
 alias prm='sudo pacman -R'
 
+alias pt='ping -c 3 8.8.8.8; while [[ $? -eq 1 ]]; do ping -c 3 8.8.8.8 && echo -e "\a"; done'
+
 # Synchronize with repositories and then upgrade packages that are out of date
 # on the local system.
 # (Upgrade)
