@@ -82,3 +82,15 @@
     display: none !important;
   }
 }
+
+@document url-prefix(https://www.reddit.com) {
+  aside.read-next {
+    display: none !important;
+  }
+}
+
+@-moz-document url-prefix(https://www.reddit.com) {
+  aside.read-next {
+    display: none !important;
+  }
+}
