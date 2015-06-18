@@ -263,7 +263,9 @@ Plug 'tpope/vim-surround'
 " Extra:
 Plug 'ap/vim-buftabline'
 Plug 'godlygeek/tabular'
+Plug 'honza/vim-snippets'
 Plug 'Raimondi/delimitMate'
+Plug 'SirVer/ultisnips'
 Plug 'tomtom/tcomment_vim'
 Plug 'wellle/targets.vim'
 
@@ -283,8 +285,6 @@ Plug 'jonathanfilip/vim-lucius'
 Plug 'morhetz/gruvbox'
 
 call plug#end()
-
-" TODO: +snippets.
 
 " Plugin Options {{{1
 " 'ap/vim-buftabline' {{{2
@@ -340,6 +340,10 @@ inoremap <expr><Space> pumvisible() ? neocomplete#close_popup() . "\<Space>" : "
 "let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
 "let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
 
+" 'SirVer/ultisnips' {{{2
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-f>"
+let g:UltiSnipsJumpBackwardTrigger="<c-s>"
 
 " 'vim-pandoc/vim-pandoc-syntax' {{{2
 " Disable underlining of superscript, subscript and strikeout delimited text.
