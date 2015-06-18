@@ -87,14 +87,6 @@ xnoremap ; :
 xnoremap <cr> ;
 xnoremap : <cr>
 
-" au CmdwinEnter * nnoremap : <cr>
-" au CmdwinEnter * xnoremap : <cr>
-" au CmdwinLeave * nnoremap <cr> ;
-" au CmdwinLeave * xnoremap <cr> ;
-
-" TODO: Find the opposite of BufReadPost so that <CR> can be reset.
-" autocmd BufReadPost quickfix nnoremap <CR> <CR>
-
 nnoremap - +
 nnoremap + -
 xnoremap - +
@@ -189,7 +181,6 @@ nnoremap <leader>vz :edit ~/.zshrc<CR>
 nnoremap <leader>sn :PlugSnapshot ~/etsi/vim-plugins-snapshot<CR>
 
 " Status Line {{{1
-" TODO: Add git branch information using fugitive.
 set statusline=
 " Buffer number.
 set statusline+=%3.3n\ »\ 
