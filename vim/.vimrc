@@ -263,9 +263,9 @@ Plug 'tpope/vim-surround'
 " Extra:
 Plug 'ap/vim-buftabline'
 Plug 'godlygeek/tabular'
-Plug 'honza/vim-snippets'
+" Plug 'honza/vim-snippets'
 Plug 'Raimondi/delimitMate'
-Plug 'SirVer/ultisnips'
+" Plug 'SirVer/ultisnips'
 Plug 'tomtom/tcomment_vim'
 Plug 'wellle/targets.vim'
 
@@ -341,7 +341,7 @@ inoremap <expr><Space> pumvisible() ? neocomplete#close_popup() . "\<Space>" : "
 "let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
 
 " 'SirVer/ultisnips' {{{2
-let g:UltiSnipsExpandTrigger="<tab>"
+" let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-f>"
 let g:UltiSnipsJumpBackwardTrigger="<c-s>"
 
