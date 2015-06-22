@@ -255,6 +255,8 @@ call plug#begin('~/.vim/plugged')
 
 " Essential:
 Plug 'mattn/emmet-vim'
+" Plug 'honza/vim-snippets'
+" Plug 'SirVer/ultisnips'
 Plug 'Shougo/neocomplete'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
@@ -263,9 +265,7 @@ Plug 'tpope/vim-surround'
 " Extra:
 Plug 'ap/vim-buftabline'
 Plug 'godlygeek/tabular'
-" Plug 'honza/vim-snippets'
 Plug 'Raimondi/delimitMate'
-" Plug 'SirVer/ultisnips'
 Plug 'tomtom/tcomment_vim'
 Plug 'wellle/targets.vim'
 
@@ -342,8 +342,8 @@ inoremap <expr><Space> pumvisible() ? neocomplete#close_popup() . "\<Space>" : "
 
 " 'SirVer/ultisnips' {{{2
 " let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-f>"
-let g:UltiSnipsJumpBackwardTrigger="<c-s>"
+" let g:UltiSnipsJumpForwardTrigger="<c-j>"
+" let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 
 " 'vim-pandoc/vim-pandoc-syntax' {{{2
 " Disable underlining of superscript, subscript and strikeout delimited text.
