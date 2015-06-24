@@ -28,6 +28,7 @@ Program       | Use
 [dircolors]   | Color Setup for `ls`
 [dmenu]       | Launcher
 [Dzen]        | Panel
+[Emacs]       | Text Editor
 [Firefox]     | Web Browser
 [Git]         | Version Control
 [GTK+]        | Graphical Toolkit
@@ -50,6 +51,7 @@ Program       | Use
 [dircolors]:   https://www.gnu.org/software/coreutils/manual/html_node/dircolors-invocation.html
 [dmenu]:       http://tools.suckless.org/dmenu/
 [Dzen]:        http://robm.github.io/dzen/
+[Emacs]:       https://www.gnu.org/software/emacs/
 [Firefox]:     https://mozilla.org/firefox
 [Git]:         http://git-scm.com/
 [GTK+]:        http://www.gtk.org/
