@@ -2,3 +2,6 @@
 *~
 .*.s[a-w][a-z]
 .swp
+
+# Installation directory for emacs packages.
+/.cask
