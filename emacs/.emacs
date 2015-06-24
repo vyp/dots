@@ -1,4 +1,6 @@
 ;; Newbie (basic?) settings. 
+(setq auto-save-default nil)
+(setq create-lockfiles nil)
 
 ;; Does not seem to work...
 (set-face-italic-p 'italic nil)
