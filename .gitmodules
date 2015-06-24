@@ -4,3 +4,6 @@
 [submodule "antigen"]
 	path = antigen
 	url = https://github.com/zsh-users/antigen
+[submodule "cask"]
+	path = cask
+	url = https://github.com/cask/cask
