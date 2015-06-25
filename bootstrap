@@ -8,6 +8,7 @@ IGNORE=(
   "dmenu/"
   "docs/"
   "dzen2/"
+  "emacs-packages/"
   "firefox/"
   "pacman/"
   "schemes/"
@@ -26,6 +27,7 @@ DIRS="
   ~/.config/mutt
   ~/.config/sxhkd
   ~/.config/zathura
+  ~/.emacs.d
   ~/.pentadactyl/colors
   ~/.urxvt
   ~/.vim/autoload
@@ -59,6 +61,7 @@ done
 
 git submodule init
 git submodule update --depth 2
+# emacs --batch -Q -f batch-byte-compile file.el
 
 ln -s ~/etsi/vim-plug/plug.vim ~/.vim/autoload/plug.vim
 

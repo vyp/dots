@@ -5,6 +5,9 @@
 # TODO: Hackage packages (via cabal-install).
 # TODO: Check AUR -git packages.
 # TODO: Use a proper counter system somehow to count progress.
+# TODO: Have update script check for differences between following file and
+# `emacs-packages/goto-chg/goto-chg.el`:
+# http://www.emacswiki.org/emacs/download/goto-chg.el
 
 # Obviously run `sudo pacman -Syu` separately before running this script, after
 # checking the news of course!

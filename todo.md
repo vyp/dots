@@ -1,6 +1,7 @@
 # Todo
 
 - ~~stop broken pipe `thalamus` upon ending X session.~~
+- make a working PKGBUILD for <https://github.com/cosmin/git-hg>.
 - popup (or something) for brightness/sound.
 - documentation.
     - maintainence.

@@ -62,6 +62,7 @@ stowlink () {
   mkdir -pv ~/.config/mutt
   mkdir -pv ~/.config/sxhkd
   mkdir -pv ~/.config/zathura
+  mkdir -pv ~/.emacs.d
   mkdir -pv ~/.pentadactyl/colors
   mkdir -pv ~/.urxvt
   mkdir -pv ~/.vim/autoload

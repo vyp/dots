@@ -1,4 +1,7 @@
-(add-to-list 'load-path "~/etsi/emacs/.emacs.d/packages/evil")
+(add-to-list 'load-path "~/etsi/emacs-packages/undo-tree")
+(add-to-list 'load-path "~/etsi/emacs-packages/goto-chg")
+(add-to-list 'load-path "~/etsi/emacs-packages/evil")
+
 (require 'evil)
 (evil-mode t)
 
