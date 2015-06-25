@@ -7,3 +7,6 @@
 [submodule "emacs-packages/undo-tree"]
 	path = emacs-packages/undo-tree
 	url = http://www.dr-qubit.org/git/undo-tree.git
+[submodule "emacs-packages/evil"]
+	path = emacs-packages/evil
+	url = https://github.com/vyp/evil
