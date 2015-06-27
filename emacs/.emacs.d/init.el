@@ -31,13 +31,13 @@
 
 (global-linum-mode t)
 (global-hl-line-mode t)
-
 (fringe-mode '(1 . 0))
-(setq-default fill-column 80)
 
+(setq-default fill-column 80)
 (define-globalized-minor-mode my-global-fci-mode fci-mode turn-on-fci-mode)
 (my-global-fci-mode t)
 
 ;; Behaviour.
 (setq auto-save-default nil)
 (setq create-lockfiles nil)
+(setq-default auto-fill-function 'do-auto-fill)
