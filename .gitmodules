@@ -10,3 +10,6 @@
 [submodule "emacs-packages/evil"]
 	path = emacs-packages/evil
 	url = https://github.com/vyp/evil
+[submodule "emacs-packages/sunburst"]
+	path = emacs-packages/sunburst
+	url = https://github.com/neomantic/Emacs-Sunburst-Color-Theme

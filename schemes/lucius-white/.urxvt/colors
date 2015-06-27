@@ -1,6 +1,6 @@
 *background:  #ffffff
 *foreground:  #444444
-*cursorColor: #5f87af
+URxvt*cursorColor: #5f87af
 *color0:      #444444
 *color8:      #444444
 *color1:      #af0000
