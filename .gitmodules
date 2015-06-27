@@ -13,3 +13,6 @@
 [submodule "emacs-packages/sunburst"]
 	path = emacs-packages/sunburst
 	url = https://github.com/neomantic/Emacs-Sunburst-Color-Theme
+[submodule "emacs-packages/fill-column-indicator"]
+	path = emacs-packages/fill-column-indicator
+	url = https://github.com/alpaker/Fill-Column-Indicator
