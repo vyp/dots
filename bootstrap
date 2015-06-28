@@ -60,7 +60,7 @@ for dir in */ ; do
 done
 
 git submodule init
-git submodule update --depth 5
+git submodule update --depth 10
 # emacs --batch -Q -f batch-byte-compile file.el
 
 ln -s ~/etsi/vim-plug/plug.vim ~/.vim/autoload/plug.vim
