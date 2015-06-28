@@ -1,5 +1,5 @@
-;; TODO: Vim config like evil mode keybindings.
 ;; TODO: Show trailing spaces/lines, tabs etc.
+;; TODO: Highlight matching parens and similar things.
 ;; TODO: Filesystem navigation, opening files, managing buffers etc.
 ;; TODO: tpope's repeat.vim functionality?
 ;; TODO: surround.vim evil plugin.
@@ -75,7 +75,7 @@
      (top-or-bottom-pos . 0))))
 
 ;; Keybindings.
-(defun minibuffer-keyboard-quit ()
+(defun my-minibuffer-keyboard-quit ()
   "Abort recursive edit.
 In Delete Selection mode, if the mark is active, just deactivate it;
 then it takes a second \\[keyboard-quit] to abort the minibuffer."
@@ -84,25 +84,44 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
       (setq deactivate-mark  t)
     (when (get-buffer "*Completions*") (delete-windows-on "*Completions*"))
     (abort-recursive-edit)))
+
+;; Escape quits emacs things as a vim user would expect.
 (define-key evil-normal-state-map [escape] 'keyboard-quit)
 (define-key evil-visual-state-map [escape] 'keyboard-quit)
-(define-key minibuffer-local-map [escape] 'minibuffer-keyboard-quit)
-(define-key minibuffer-local-ns-map [escape] 'minibuffer-keyboard-quit)
-(define-key minibuffer-local-completion-map [escape] 'minibuffer-keyboard-quit)
-(define-key minibuffer-local-must-match-map [escape] 'minibuffer-keyboard-quit)
-(define-key minibuffer-local-isearch-map [escape] 'minibuffer-keyboard-quit)
+(define-key minibuffer-local-map [escape] 'my-minibuffer-keyboard-quit)
+(define-key minibuffer-local-ns-map [escape] 'my-minibuffer-keyboard-quit)
+(define-key minibuffer-local-completion-map [escape] 'my-minibuffer-keyboard-quit)
+(define-key minibuffer-local-must-match-map [escape] 'my-minibuffer-keyboard-quit)
+(define-key minibuffer-local-isearch-map [escape] 'my-minibuffer-keyboard-quit)
 (global-set-key [escape] 'evil-exit-emacs-state)
 
+;; Paves the way for "," to be used as 'leader'.
 (define-key evil-normal-state-map "\\" 'evil-repeat-find-char-reverse)
 
 (define-key evil-normal-state-map (kbd "C-h") 'evil-window-left)
 (define-key evil-normal-state-map (kbd "C-j") 'evil-window-down)
 (define-key evil-normal-state-map (kbd "C-k") 'evil-window-up)
 (define-key evil-normal-state-map (kbd "C-l") 'evil-window-right)
+(define-key evil-normal-state-map "H" 'evil-first-non-blank)
+(define-key evil-visual-state-map "H" 'evil-first-non-blank)
+(define-key evil-normal-state-map "L" 'evil-end-of-line)
+(define-key evil-visual-state-map "L" 'evil-end-of-line)
+(define-key evil-normal-state-map "M" 'evil-jump-item)
+(define-key evil-operator-state-map "M" 'evil-jump-item)
+(define-key evil-visual-state-map "M" 'evil-jump-item)
 
+(defun my-evil-yank-to-end-of-line ()
+  "Yank from cursor position to end of line."
+  (interactive)
+  (evil-yank (point) (point-at-eol)))
+
+(define-key evil-normal-state-map [tab] 'evil-ex)
+(define-key evil-visual-state-map [tab] 'evil-ex)
 (define-key evil-normal-state-map "gs" 'evil-write)
-(define-key evil-normal-state-map " " 'evil-ex)
+(define-key evil-normal-state-map "Y" 'my-evil-yank-to-end-of-line)
 
+(define-key evil-normal-state-map ",," 'evil-switch-to-windows-last-buffer)
+(define-key evil-normal-state-map ",f" 'fill-paragraph)
 (define-key evil-normal-state-map ",l" 'ibuffer)
 (define-key evil-normal-state-map ",x" 'execute-extended-command)
 (define-key evil-normal-state-map ",z" 'recenter-top-bottom)
