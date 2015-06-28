@@ -1,3 +1,4 @@
+;; TODO: Previous command and search windows vim-setup-like mappings.
 ;; TODO: Show trailing spaces/lines, tabs etc.
 ;; TODO: Highlight matching parens and similar things.
 ;; TODO: Filesystem navigation, opening files, managing buffers etc.
@@ -36,7 +37,7 @@
  `(linum ((t (:foreground, "#666"))))
  `(hl-line ((t (:background, "#222")))))
 (set-face-attribute 'vertical-border nil :foreground "#111")
-(set-face-attribute 'fringe nil :background "#111")
+(set-face-attribute 'fringe nil :background "#222")
 (set-face-attribute 'lazy-highlight nil :foreground "#111")
 (setq fci-rule-color "#222")
 
@@ -47,7 +48,6 @@
    (set-face-attribute face nil :weight 'normal :underline nil))
  (face-list))
 
-(global-linum-mode t)
 (global-hl-line-mode t)
 (fringe-mode '(1 . 0))
 
