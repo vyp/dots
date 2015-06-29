@@ -8,7 +8,23 @@
 ;; TODO: Snippets.
 ;; TODO: Magit.
 ;; TODO: Statusbar colors and customisation.
+;; TODO: Pdf viewing.
+;; TODO: Helm.
 ;; TODO: Learn elisp.
+;; TODO: Terminal/eshell/zsh.
+;; TODO: Pandoc mode.
+;; TODO: Emmet.
+;; TODO: MPD client.
+;; TODO: Image viewer.
+;; TODO: IRC.
+;; TODO: Mail.
+;; TODO: RSS.
+;; TODO: Figure out how to empty messages buffer?
+;; TODO: Bittorrent client.
+;; TODO: Figure out how to gracefully stop emacs daemon on shutdown.
+;; TODO: Highlight TODOs.
+;; TODO: Get previous buffer (",,") mapping to ignore ibuffer buffers.
+;; TODO: Map escape in ibuffer to return to previous buffer.
 
 ;; Plugins.
 ;; TODO: Automatically load all subdirectories (non-recursively) under
@@ -35,6 +51,7 @@
 ;; Theme.
 (load-theme 'sunburst t)
 (custom-set-faces
+ ;; TODO: Remove this linum line sometime.
  `(linum ((t (:foreground, "#666"))))
  `(hl-line ((t (:background, "#222")))))
 (set-face-attribute 'vertical-border nil :foreground "#111")
