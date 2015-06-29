@@ -1,5 +1,4 @@
 ;; TODO: Previous command and search windows vim-setup-like mappings.
-;; TODO: Wrap lines.
 ;; TODO: Escape to exit evil-cmd-mode.
 ;; TODO: Change foreground color of current incsearch.
 ;; TODO: Show trailing spaces/lines, tabs etc.
@@ -53,7 +52,16 @@
  (face-list))
 
 (global-hl-line-mode t)
-(fringe-mode '(1 . 0))
+(fringe-mode '(0 . nil))
+
+;; Enables `gj` and `gk` etc. to move up and down visually wrapped lines.
+(setq line-move-visual nil)
+
+;; Visually wrap long lines at right window edge.
+(global-visual-line-mode t)
+
+;; These get disabled for whatever reason.
+(setq-default visual-line-fringe-indicators t)
 
 (setq-default fill-column 80)
 (define-globalized-minor-mode my-global-fci-mode fci-mode turn-on-fci-mode)
