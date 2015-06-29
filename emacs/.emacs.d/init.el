@@ -1,5 +1,3 @@
-;; TODO: Previous command and search windows vim-setup-like mappings.
-;; TODO: Change foreground color of current incsearch.
 ;; TODO: Show trailing spaces/lines, tabs etc.
 ;; TODO: Highlight matching parens and similar things.
 ;; TODO: Filesystem navigation, opening files, managing buffers etc.
@@ -12,6 +10,7 @@
 ;; TODO: Statusbar colors and customisation.
 ;; TODO: Learn elisp.
 ;; TODO: evil-cross-lines without h and l crossing lines.
+;; TODO: Change foreground color of current incsearch.
 
 ;; Plugins.
 (add-to-list 'load-path "~/etsi/emacs-packages/undo-tree")
@@ -40,6 +39,7 @@
  `(hl-line ((t (:background, "#222")))))
 (set-face-attribute 'vertical-border nil :foreground "#111")
 (set-face-attribute 'fringe nil :background "#222")
+(set-face-attribute 'isearch nil :foreground "#111")
 (set-face-attribute 'lazy-highlight nil :foreground "#111")
 (setq fci-rule-color "#222")
 
@@ -117,6 +117,7 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 
 ;; Paves the way for "," to be used as 'leader'.
 (define-key evil-normal-state-map "\\" 'evil-repeat-find-char-reverse)
+(define-key evil-visual-state-map "\\" 'evil-repeat-find-char-reverse)
 
 (define-key evil-normal-state-map (kbd "C-h") 'evil-window-left)
 (define-key evil-normal-state-map (kbd "C-j") 'evil-window-down)
@@ -140,11 +141,28 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 (define-key evil-normal-state-map "gs" 'evil-write)
 (define-key evil-normal-state-map "Y" 'my-evil-yank-to-end-of-line)
 
+(defun my-evil-command-window-ex ()
+  "Open evil ex command window and move one line up."
+  (interactive)
+  (evil-command-window-ex)
+  (evil-previous-line))
+
+(defun my-evil-command-window-search-forward ()
+  "Open evil search forward command window and move one line up."
+  (interactive)
+  (evil-command-window-search-forward)
+  (evil-previous-line))
+
 (define-key evil-normal-state-map ",," 'evil-switch-to-windows-last-buffer)
+(define-key evil-normal-state-map ",." 'my-evil-command-window-search-forward)
 (define-key evil-normal-state-map ",f" 'fill-paragraph)
+(define-key evil-visual-state-map ",f" 'fill-paragraph)
 (define-key evil-normal-state-map ",l" 'ibuffer)
+(define-key evil-normal-state-map ",q" 'my-evil-command-window-ex)
+(define-key evil-visual-state-map ",q" 'my-evil-command-window-ex)
 (define-key evil-normal-state-map ",we" 'balance-windows)
 (define-key evil-normal-state-map ",x" 'execute-extended-command)
+(define-key evil-visual-state-map ",x" 'execute-extended-command)
 (define-key evil-normal-state-map ",z" 'recenter-top-bottom)
 
 (eval-after-load 'ibuffer
