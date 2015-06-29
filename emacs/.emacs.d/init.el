@@ -1,4 +1,7 @@
 ;; TODO: Previous command and search windows vim-setup-like mappings.
+;; TODO: Wrap lines.
+;; TODO: Escape to exit evil-cmd-mode.
+;; TODO: Change foreground color of current incsearch.
 ;; TODO: Show trailing spaces/lines, tabs etc.
 ;; TODO: Highlight matching parens and similar things.
 ;; TODO: Filesystem navigation, opening files, managing buffers etc.
@@ -10,6 +13,7 @@
 ;; TODO: Magit.
 ;; TODO: Statusbar colors and customisation.
 ;; TODO: Learn elisp.
+;; TODO: evil-cross-lines without h and l crossing lines.
 
 ;; Plugins.
 (add-to-list 'load-path "~/etsi/emacs-packages/undo-tree")
