@@ -9,10 +9,10 @@
 ;; TODO: Magit.
 ;; TODO: Statusbar colors and customisation.
 ;; TODO: Learn elisp.
-;; TODO: evil-cross-lines without h and l crossing lines.
-;; TODO: Change foreground color of current incsearch.
 
 ;; Plugins.
+;; TODO: Automatically load all subdirectories (non-recursively) under
+;; 'emacs-packages'.
 (add-to-list 'load-path "~/etsi/emacs-packages/undo-tree")
 (add-to-list 'load-path "~/etsi/emacs-packages/goto-chg")
 (add-to-list 'load-path "~/etsi/emacs-packages/evil")
@@ -20,7 +20,7 @@
 (add-to-list 'custom-theme-load-path "~/etsi/emacs-packages/themes/sunburst")
 
 (setq evil-want-C-u-scroll t)
-; (setq evil-cross-lines t)
+(setq evil-cross-lines t)
 (setq evil-shift-width 2)
 
 (add-hook 'python-mode-hook
