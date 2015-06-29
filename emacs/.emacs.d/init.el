@@ -1,5 +1,4 @@
 ;; TODO: Previous command and search windows vim-setup-like mappings.
-;; TODO: Escape to exit evil-cmd-mode.
 ;; TODO: Change foreground color of current incsearch.
 ;; TODO: Show trailing spaces/lines, tabs etc.
 ;; TODO: Highlight matching parens and similar things.
@@ -97,6 +96,14 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
     (when (get-buffer "*Completions*") (delete-windows-on "*Completions*"))
     (abort-recursive-edit)))
 
+(defun my-exit-evil-command-window ()
+  "Exit evil command window."
+  (interactive)
+  (other-window -1)
+  (other-window 1)
+  (kill-this-buffer)
+  (evil-window-delete))
+
 ;; Escape quits emacs things as a vim user would expect.
 (define-key evil-normal-state-map [escape] 'keyboard-quit)
 (define-key evil-visual-state-map [escape] 'keyboard-quit)
@@ -106,6 +113,7 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 (define-key minibuffer-local-must-match-map [escape] 'my-minibuffer-keyboard-quit)
 (define-key minibuffer-local-isearch-map [escape] 'my-minibuffer-keyboard-quit)
 (global-set-key [escape] 'evil-exit-emacs-state)
+(evil-define-key 'normal evil-command-window-mode-map [escape] 'my-exit-evil-command-window)
 
 ;; Paves the way for "," to be used as 'leader'.
 (define-key evil-normal-state-map "\\" 'evil-repeat-find-char-reverse)
@@ -135,6 +143,7 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 (define-key evil-normal-state-map ",," 'evil-switch-to-windows-last-buffer)
 (define-key evil-normal-state-map ",f" 'fill-paragraph)
 (define-key evil-normal-state-map ",l" 'ibuffer)
+(define-key evil-normal-state-map ",we" 'balance-windows)
 (define-key evil-normal-state-map ",x" 'execute-extended-command)
 (define-key evil-normal-state-map ",z" 'recenter-top-bottom)
 
