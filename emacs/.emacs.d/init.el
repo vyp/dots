@@ -1,20 +1,18 @@
-;; TODO: Filesystem navigation, opening files, managing buffers etc.
-;; TODO: Figure out how to gracefully stop emacs daemon on shutdown.
-;; TODO: Highlight TODOs.
-;; TODO: Get previous buffer (",,") mapping to ignore ibuffer buffers.
-;; TODO: Map escape in ibuffer to return to previous buffer.
 ;; TODO: Show size column in ibuffer with kB or MB.
-;; TODO: tpope's repeat.vim functionality?
-;; TODO: surround.vim evil plugin.
-;; TODO: Folding.
 ;; TODO: Autocompletion.
 ;; TODO: Snippets.
 ;; TODO: Magit.
-;; TODO: Statusbar colors and customisation.
 ;; TODO: Pdf viewing.
+;; TODO: Filesystem navigation, opening files, managing buffers etc.
 ;; TODO: Helm.
-;; TODO: Learn elisp.
 ;; TODO: Terminal/eshell/zsh.
+;; TODO: Figure out how to gracefully stop emacs daemon on shutdown.
+;; TODO: tpope's repeat.vim functionality?
+;; TODO: surround.vim evil plugin.
+;; TODO: Folding.
+;; TODO: Statusbar colors and customisation.
+;; TODO: Learn elisp.
+;; TODO: Highlight TODOs.
 ;; TODO: Pandoc mode.
 ;; TODO: Emmet.
 ;; TODO: Expand region.
@@ -301,6 +299,7 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
        (kbd "/ X") 'ibuffer-delete-saved-filter-groups
        (kbd "/ \\") 'ibuffer-clear-filter-groups
 
+       [escape] 'ibuffer-quit
        (kbd "q") 'ibuffer-quit
        (kbd "h") 'describe-mode
        (kbd "?") 'describe-mode
