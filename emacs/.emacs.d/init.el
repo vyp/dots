@@ -75,6 +75,9 @@
 
 ;; Visually wrap long lines at right window edge.
 (global-visual-line-mode t)
+(add-hook 'ibuffer-mode-hook
+          (lambda ()
+            (visual-line-mode nil)))
 
 ;; These get disabled for whatever reason.
 (setq-default visual-line-fringe-indicators t)
