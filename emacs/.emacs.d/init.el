@@ -225,7 +225,7 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
        (kbd ".") 'ibuffer-mark-old-buffers
 
        (kbd "d") 'ibuffer-mark-for-delete
-       (kbd "C-d") 'ibuffer-mark-for-delete-backwards
+       (kbd "C-d") 'evil-scroll-down
        (kbd "k") 'evil-previous-line
        (kbd "x") 'ibuffer-do-kill-on-deletion-marks
 
@@ -277,7 +277,7 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
        (kbd "M-p") 'ibuffer-backward-filter-group
        [backtab] 'ibuffer-backward-filter-group
        (kbd "M-j") 'ibuffer-jump-to-filter-group
-       (kbd "C-k") 'ibuffer-kill-line
+       (kbd "C-k") 'evil-window-up
        (kbd "C-y") 'ibuffer-yank
        (kbd "/ S") 'ibuffer-save-filter-groups
        (kbd "/ R") 'ibuffer-switch-to-saved-filter-groups
@@ -304,9 +304,9 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
        (kbd "E") 'ibuffer-do-eval
        (kbd "F") 'ibuffer-do-shell-command-file
        (kbd "I") 'ibuffer-do-query-replace-regexp
-       (kbd "H") 'ibuffer-do-view-other-frame
+       (kbd "H") 'evil-first-non-blank
        (kbd "N") 'ibuffer-do-shell-command-pipe-replace
-       (kbd "M") 'ibuffer-do-toggle-modified
+       (kbd "M") 'evil-jump-item
        (kbd "O") 'ibuffer-do-occur
        (kbd "P") 'ibuffer-do-print
        (kbd "Q") 'ibuffer-do-query-replace
