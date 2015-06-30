@@ -19,7 +19,6 @@
 ;; TODO: IRC.
 ;; TODO: Mail.
 ;; TODO: RSS.
-;; TODO: Figure out how to empty messages buffer?
 ;; TODO: Bittorrent client.
 ;; TODO: Figure out how to gracefully stop emacs daemon on shutdown.
 ;; TODO: Highlight TODOs.
