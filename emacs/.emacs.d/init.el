@@ -1,5 +1,3 @@
-;; TODO: tpope's repeat.vim functionality?
-;; TODO: surround.vim evil plugin.
 ;; TODO: Autocompletion.
 ;; TODO: Snippets.
 ;; TODO: Folding.
@@ -25,13 +23,14 @@
 ;; TODO: Highlight TODOs.
 ;; TODO: Figure out how to show trailing newlines.
 
-;; Plugins.
+;; Packages.
 ;; TODO: Automatically load all subdirectories (non-recursively) under
 ;; 'emacs-packages'.
 (add-to-list 'load-path "~/etsi/emacs-packages/undo-tree")
 (add-to-list 'load-path "~/etsi/emacs-packages/goto-chg")
 (add-to-list 'load-path "~/etsi/emacs-packages/evil")
 (add-to-list 'load-path "~/etsi/emacs-packages/fill-column-indicator")
+(add-to-list 'load-path "~/etsi/emacs-packages/evil-surround")
 (add-to-list 'custom-theme-load-path "~/etsi/emacs-packages/themes/sunburst")
 
 (setq evil-want-C-u-scroll t)
@@ -46,8 +45,7 @@
 (require 'fill-column-indicator)
 (require 'paren)
 (require 'ibuffer)
-
-(evil-mode t)
+(require 'evil-surround)
 
 ;; Appearance.
 (set-face-italic-p 'italic nil)
@@ -371,3 +369,7 @@
        (kbd "C-c C-a") 'ibuffer-auto-mode
        (kbd "C-x 4 RET") 'ibuffer-visit-buffer-other-window
        (kbd "C-x 5 RET") 'ibuffer-visit-buffer-other-frame)))
+
+;; Leftover mode activation.
+(evil-mode t)
+(global-evil-surround-mode t)

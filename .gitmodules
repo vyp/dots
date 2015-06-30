@@ -16,3 +16,6 @@
 [submodule "emacs-packages/themes/sunburst"]
 	path = emacs-packages/themes/sunburst
 	url = https://github.com/neomantic/Emacs-Sunburst-Color-Theme
+[submodule "emacs-packages/evil-surround"]
+	path = emacs-packages/evil-surround
+	url = https://github.com/timcharper/evil-surround
