@@ -1,19 +1,19 @@
+;; TODO: tpope's repeat.vim functionality?
+;; TODO: surround.vim evil plugin.
 ;; TODO: Autocompletion.
 ;; TODO: Snippets.
+;; TODO: Folding.
+;; TODO: Statusbar colors and customisation.
 ;; TODO: Magit.
 ;; TODO: Pdf viewing.
 ;; TODO: Filesystem navigation, opening files, managing buffers etc.
 ;; TODO: Helm.
 ;; TODO: Terminal/eshell/zsh.
-;; TODO: Figure out how to gracefully stop emacs daemon on shutdown.
-;; TODO: tpope's repeat.vim functionality?
-;; TODO: surround.vim evil plugin.
-;; TODO: Folding.
-;; TODO: Statusbar colors and customisation.
-;; TODO: Learn elisp.
-;; TODO: Highlight TODOs.
 ;; TODO: Pandoc mode.
+;; TODO: Use use-package to lazy load packages.
+;; TODO: Figure out how to gracefully stop emacs daemon on shutdown.
 ;; TODO: Emmet.
+;; TODO: Learn elisp.
 ;; TODO: Expand region.
 ;; TODO: Multiple cursors.
 ;; TODO: MPD client.
@@ -22,6 +22,7 @@
 ;; TODO: Mail.
 ;; TODO: RSS.
 ;; TODO: Bittorrent client.
+;; TODO: Highlight TODOs.
 ;; TODO: Figure out how to show trailing newlines.
 
 ;; Plugins.
@@ -144,8 +145,8 @@
 ;; Keybindings.
 (defun my-minibuffer-keyboard-quit ()
   "Abort recursive edit.
-In Delete Selection mode, if the mark is active, just deactivate it;
-then it takes a second \\[keyboard-quit] to abort the minibuffer."
+  In Delete Selection mode, if the mark is active, just deactivate it;
+  then it takes a second \\[keyboard-quit] to abort the minibuffer."
   (interactive)
   (if (and delete-selection-mode transient-mark-mode mark-active)
       (setq deactivate-mark  t)
