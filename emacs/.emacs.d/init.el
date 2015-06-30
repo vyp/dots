@@ -1,6 +1,10 @@
-;; TODO: Show trailing spaces/lines, tabs etc.
 ;; TODO: Highlight matching parens and similar things.
 ;; TODO: Filesystem navigation, opening files, managing buffers etc.
+;; TODO: Figure out how to gracefully stop emacs daemon on shutdown.
+;; TODO: Highlight TODOs.
+;; TODO: Get previous buffer (",,") mapping to ignore ibuffer buffers.
+;; TODO: Map escape in ibuffer to return to previous buffer.
+;; TODO: Show size column in ibuffer with kB or MB.
 ;; TODO: tpope's repeat.vim functionality?
 ;; TODO: surround.vim evil plugin.
 ;; TODO: Folding.
@@ -14,16 +18,15 @@
 ;; TODO: Terminal/eshell/zsh.
 ;; TODO: Pandoc mode.
 ;; TODO: Emmet.
+;; TODO: Expand region.
+;; TODO: Multiple cursors.
 ;; TODO: MPD client.
 ;; TODO: Image viewer.
 ;; TODO: IRC.
 ;; TODO: Mail.
 ;; TODO: RSS.
 ;; TODO: Bittorrent client.
-;; TODO: Figure out how to gracefully stop emacs daemon on shutdown.
-;; TODO: Highlight TODOs.
-;; TODO: Get previous buffer (",,") mapping to ignore ibuffer buffers.
-;; TODO: Map escape in ibuffer to return to previous buffer.
+;; TODO: Figure out how to show trailing newlines.
 
 ;; Plugins.
 ;; TODO: Automatically load all subdirectories (non-recursively) under
@@ -46,18 +49,6 @@
 (require 'fill-column-indicator)
 
 (evil-mode t)
-
-;; Theme.
-(load-theme 'sunburst t)
-(custom-set-faces
- ;; TODO: Remove this linum line sometime.
- `(linum ((t (:foreground, "#666"))))
- `(hl-line ((t (:background, "#222")))))
-(set-face-attribute 'vertical-border nil :foreground "#111")
-(set-face-attribute 'fringe nil :background "#222")
-(set-face-attribute 'isearch nil :foreground "#111")
-(set-face-attribute 'lazy-highlight nil :foreground "#111")
-(setq fci-rule-color "#222")
 
 ;; Appearance.
 (set-face-italic-p 'italic nil)
@@ -84,6 +75,27 @@
 (setq-default fill-column 80)
 (define-globalized-minor-mode my-global-fci-mode fci-mode turn-on-fci-mode)
 (my-global-fci-mode t)
+
+(global-whitespace-mode t)
+(setq whitespace-style '(face tabs trailing))
+
+;; Theme.
+(load-theme 'sunburst t)
+
+;; TODO: Use variables for color codes.
+(custom-set-faces
+ ;; TODO: Remove this linum line sometime.
+ `(linum ((t (:foreground, "#666"))))
+ `(hl-line ((t (:background, "#222")))))
+
+(set-face-attribute 'fringe nil :background "#222")
+(set-face-attribute 'isearch nil :foreground "#111")
+(set-face-attribute 'lazy-highlight nil :foreground "#111")
+(set-face-attribute 'vertical-border nil :foreground "#111")
+(set-face-attribute 'whitespace-tab nil :background "#420e09")
+(set-face-attribute 'whitespace-trailing nil :background "#420e09")
+
+(setq fci-rule-color "#222")
 
 ;; Basic.
 (setq auto-save-default nil)
