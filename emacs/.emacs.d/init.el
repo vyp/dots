@@ -1,4 +1,3 @@
-;; TODO: Highlight matching parens and similar things.
 ;; TODO: Filesystem navigation, opening files, managing buffers etc.
 ;; TODO: Figure out how to gracefully stop emacs daemon on shutdown.
 ;; TODO: Highlight TODOs.
@@ -47,6 +46,7 @@
 
 (require 'evil)
 (require 'fill-column-indicator)
+(require 'paren)
 
 (evil-mode t)
 
@@ -79,6 +79,9 @@
 (global-whitespace-mode t)
 (setq whitespace-style '(face tabs trailing))
 
+(setq show-paren-delay 0)
+(show-paren-mode t)
+
 ;; Theme.
 (load-theme 'sunburst t)
 
@@ -94,6 +97,9 @@
 (set-face-attribute 'vertical-border nil :foreground "#111")
 (set-face-attribute 'whitespace-tab nil :background "#420e09")
 (set-face-attribute 'whitespace-trailing nil :background "#420e09")
+
+(set-face-background 'show-paren-match "blue")
+(set-face-foreground 'show-paren-match "#ddd")
 
 (setq fci-rule-color "#222")
 
