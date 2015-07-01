@@ -24,7 +24,7 @@
 ;; TODO: Figure out how to show trailing newlines.
 ;; TODO: Tab in insert mode should insert two spaces.
 
-;; Packages.
+;;; Packages.
 ;; TODO: Automatically load all subdirectories (non-recursively) under
 ;; 'emacs-packages'. Or otherwise use some elisp to reduce this into a list of
 ;; package names.
@@ -34,6 +34,7 @@
 (add-to-list 'load-path "~/etsi/emacs-packages/fill-column-indicator")
 (add-to-list 'load-path "~/etsi/emacs-packages/evil-surround")
 (add-to-list 'load-path "~/etsi/emacs-packages/auto-complete")
+(add-to-list 'load-path "~/etsi/emacs-packages/auto-complete/.cask/24.5.1/elpa/fuzzy-20150315.619")
 (add-to-list 'load-path "~/etsi/emacs-packages/auto-complete/.cask/24.5.1/elpa/popup-20150626.711")
 (add-to-list 'custom-theme-load-path "~/etsi/emacs-packages/themes/sunburst")
 
@@ -51,16 +52,12 @@
 (require 'ibuffer)
 (require 'evil-surround)
 (require 'auto-complete-config)
-; (require 'company)
 
 ;; Auto-Complete.
 (add-to-list 'ac-dictionary-directories "~/etsi/emacs-packages/auto-complete/dict")
 (ac-config-default)
 
-;; Company mode.
-; (setq company-idle-delay 0)
-
-;; Appearance.
+;;; Appearance.
 (set-face-italic-p 'italic nil)
 (mapc
  (lambda (face)
@@ -113,7 +110,7 @@
               " "
               filename-and-process)))
 
-;; Theme.
+;;; Theme.
 (load-theme 'sunburst t)
 
 ;; TODO: Use variables for color codes.
@@ -134,7 +131,7 @@
 
 (setq fci-rule-color "#222")
 
-;; Basic.
+;;; Basic.
 (setq auto-save-default nil)
 (setq create-lockfiles nil)
 (setq require-final-newline t)
@@ -153,12 +150,11 @@
      (top-or-bottom . bottom)
      (top-or-bottom-pos . 0))))
 
-;; Leftover mode activation.
-; (add-hook 'after-init-hook 'global-company-mode)
+;;; Leftover mode activation.
 (evil-mode t)
 (global-evil-surround-mode t)
 
-;; Keybindings.
+;;; Keybindings.
 (defun my-minibuffer-keyboard-quit ()
   "Abort recursive edit.
   In Delete Selection mode, if the mark is active, just deactivate it;
@@ -237,12 +233,6 @@
 (define-key evil-normal-state-map ",x" 'execute-extended-command)
 (define-key evil-visual-state-map ",x" 'execute-extended-command)
 (define-key evil-normal-state-map ",z" 'recenter-top-bottom)
-
-; (eval-after-load 'company
-;   '(progn
-;      (define-key evil-insert-state-map [tab] 'company-select-next)
-;      (define-key evil-insert-state-map (kbd "TAB") 'company-select-next)))
-; (define-key evil-insert-state-map (kbd "S-<iso-lefttab>") 'company-select-previous)
 
 (eval-after-load 'ibuffer
   '(progn
