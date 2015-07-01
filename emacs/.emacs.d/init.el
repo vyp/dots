@@ -1,4 +1,3 @@
-;; TODO: Autocompletion.
 ;; TODO: Snippets.
 ;; TODO: Folding.
 ;; TODO: Statusbar colors and customisation.
@@ -56,6 +55,7 @@
 ;; Auto-Complete.
 (add-to-list 'ac-dictionary-directories "~/etsi/emacs-packages/auto-complete/dict")
 (ac-config-default)
+(setq ac-use-quick-help nil)
 
 ;;; Appearance.
 (set-face-italic-p 'italic nil)
@@ -233,6 +233,10 @@
 (define-key evil-normal-state-map ",x" 'execute-extended-command)
 (define-key evil-visual-state-map ",x" 'execute-extended-command)
 (define-key evil-normal-state-map ",z" 'recenter-top-bottom)
+
+(eval-after-load 'auto-complete
+  '(progn
+     (define-key evil-insert-state-map (kbd "S-<iso-lefttab>") 'ac-previous)))
 
 (eval-after-load 'ibuffer
   '(progn
