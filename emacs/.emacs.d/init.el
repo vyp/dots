@@ -152,6 +152,12 @@
      (top-or-bottom . bottom)
      (top-or-bottom-pos . 0))))
 
+(defun my-previous-line-advice (&optional CURRENT-COMMAND)
+  (evil-previous-line))
+
+(advice-add 'evil-command-window-ex :after #'my-previous-line-advice)
+(advice-add 'evil-command-window-search-forward :after #'my-previous-line-advice)
+
 ;;; Keybindings.
 (defun my-minibuffer-keyboard-quit ()
   "Abort recursive edit.
@@ -208,25 +214,12 @@
 (define-key evil-normal-state-map "gs" 'evil-write)
 (define-key evil-normal-state-map "Y" 'my-evil-yank-to-end-of-line)
 
-(defun my-evil-command-window-ex ()
-  "Open evil ex command window and move one line up."
-  (interactive)
-  (evil-command-window-ex)
-  (evil-previous-line))
-
-(defun my-evil-command-window-search-forward ()
-  "Open evil search forward command window and move one line up."
-  (interactive)
-  (evil-command-window-search-forward)
-  (evil-previous-line))
-
 (define-key evil-normal-state-map ",," 'evil-switch-to-windows-last-buffer)
-(define-key evil-normal-state-map ",." 'my-evil-command-window-search-forward)
 (define-key evil-normal-state-map ",f" 'fill-paragraph)
 (define-key evil-visual-state-map ",f" 'fill-paragraph)
 (define-key evil-normal-state-map ",l" 'ibuffer)
-(define-key evil-normal-state-map ",q" 'my-evil-command-window-ex)
-(define-key evil-visual-state-map ",q" 'my-evil-command-window-ex)
+(define-key evil-normal-state-map ",q" 'evil-command-window-ex)
+(define-key evil-visual-state-map ",q" 'evil-command-window-ex)
 (define-key evil-normal-state-map ",we" 'balance-windows)
 (define-key evil-normal-state-map ",x" 'execute-extended-command)
 (define-key evil-visual-state-map ",x" 'execute-extended-command)
