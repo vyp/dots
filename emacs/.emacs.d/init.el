@@ -22,15 +22,19 @@
 ;; TODO: Bittorrent client.
 ;; TODO: Highlight TODOs.
 ;; TODO: Figure out how to show trailing newlines.
+;; TODO: Tab in insert mode should insert two spaces.
 
 ;; Packages.
 ;; TODO: Automatically load all subdirectories (non-recursively) under
-;; 'emacs-packages'.
+;; 'emacs-packages'. Or otherwise use some elisp to reduce this into a list of
+;; package names.
 (add-to-list 'load-path "~/etsi/emacs-packages/undo-tree")
 (add-to-list 'load-path "~/etsi/emacs-packages/goto-chg")
 (add-to-list 'load-path "~/etsi/emacs-packages/evil")
 (add-to-list 'load-path "~/etsi/emacs-packages/fill-column-indicator")
 (add-to-list 'load-path "~/etsi/emacs-packages/evil-surround")
+(add-to-list 'load-path "~/etsi/emacs-packages/auto-complete")
+(add-to-list 'load-path "~/etsi/emacs-packages/auto-complete/.cask/24.5.1/elpa/popup-20150626.711")
 (add-to-list 'custom-theme-load-path "~/etsi/emacs-packages/themes/sunburst")
 
 (setq evil-want-C-u-scroll t)
@@ -46,6 +50,15 @@
 (require 'paren)
 (require 'ibuffer)
 (require 'evil-surround)
+(require 'auto-complete-config)
+; (require 'company)
+
+;; Auto-Complete.
+(add-to-list 'ac-dictionary-directories "~/etsi/emacs-packages/auto-complete/dict")
+(ac-config-default)
+
+;; Company mode.
+; (setq company-idle-delay 0)
 
 ;; Appearance.
 (set-face-italic-p 'italic nil)
@@ -140,6 +153,11 @@
      (top-or-bottom . bottom)
      (top-or-bottom-pos . 0))))
 
+;; Leftover mode activation.
+; (add-hook 'after-init-hook 'global-company-mode)
+(evil-mode t)
+(global-evil-surround-mode t)
+
 ;; Keybindings.
 (defun my-minibuffer-keyboard-quit ()
   "Abort recursive edit.
@@ -219,6 +237,12 @@
 (define-key evil-normal-state-map ",x" 'execute-extended-command)
 (define-key evil-visual-state-map ",x" 'execute-extended-command)
 (define-key evil-normal-state-map ",z" 'recenter-top-bottom)
+
+; (eval-after-load 'company
+;   '(progn
+;      (define-key evil-insert-state-map [tab] 'company-select-next)
+;      (define-key evil-insert-state-map (kbd "TAB") 'company-select-next)))
+; (define-key evil-insert-state-map (kbd "S-<iso-lefttab>") 'company-select-previous)
 
 (eval-after-load 'ibuffer
   '(progn
@@ -369,7 +393,3 @@
        (kbd "C-c C-a") 'ibuffer-auto-mode
        (kbd "C-x 4 RET") 'ibuffer-visit-buffer-other-window
        (kbd "C-x 5 RET") 'ibuffer-visit-buffer-other-frame)))
-
-;; Leftover mode activation.
-(evil-mode t)
-(global-evil-surround-mode t)

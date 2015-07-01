@@ -19,3 +19,9 @@
 [submodule "emacs-packages/evil-surround"]
 	path = emacs-packages/evil-surround
 	url = https://github.com/timcharper/evil-surround
+[submodule "emacs-packages/auto-complete"]
+	path = emacs-packages/auto-complete
+	url = https://github.com/auto-complete/auto-complete
+[submodule "emacs-packages/company-mode"]
+	path = emacs-packages/company-mode
+	url = https://github.com/company-mode/company-mode

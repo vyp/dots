@@ -271,19 +271,19 @@ ZSH_HIGHLIGHT_STYLES[path_approx]=fg=$ZSH_HIGHLIGHT_STYLES_PATH_APPROX
 # # SP_VIDPLAYER=(mplayer -cache 8192)
 # SP_VIDPLAYER=(mplayer -cache 131072)
 # # SP_VIDPLAYER=(mpv --cache=8192)
-# 
+#
 # # Wait X seconds to stabilize channel (make it longer if you have a slower
 # # connection).
 # SP_SLEEP=30
-# 
+#
 # # Sopcast port and player port.
 # SP_LOCAL_PORT=55050
 # SP_PLAYER_PORT=55051
-# 
+#
 # # Manually kill sopcast (sometimes it doesnt exit properly and still uses
 # # bandwidth in the background).
 # sppc-kill() { killall sp-sc ;}
-# 
+#
 # # Kills existing connection, starts a new connection, sleep X sec to
 # # stabilize the stream, waits to player to exit and kill itself.
 # sppc() {
