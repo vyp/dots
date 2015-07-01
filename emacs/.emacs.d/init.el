@@ -33,6 +33,7 @@
 (add-to-list 'load-path "~/etsi/emacs-packages/fill-column-indicator")
 (add-to-list 'load-path "~/etsi/emacs-packages/evil-surround")
 (add-to-list 'load-path "~/etsi/emacs-packages/evil-matchit")
+(add-to-list 'load-path "~/etsi/emacs-packages/evil-nerd-commenter")
 (add-to-list 'load-path "~/etsi/emacs-packages/yasnippet")
 (add-to-list 'load-path "~/etsi/emacs-packages/auto-complete")
 (add-to-list 'load-path "~/etsi/emacs-packages/auto-complete/.cask/24.5.1/elpa/fuzzy-20150315.619")
@@ -53,6 +54,7 @@
 (require 'ibuffer)
 (require 'evil-surround)
 (require 'evil-matchit)
+(require 'evil-nerd-commenter)
 (require 'yasnippet)
 (require 'auto-complete-config)
 
@@ -215,6 +217,9 @@
 (define-key evil-visual-state-map [tab] 'evil-ex)
 (define-key evil-normal-state-map "gs" 'evil-write)
 (define-key evil-normal-state-map "Y" 'my-evil-yank-to-end-of-line)
+
+(define-key evil-normal-state-map "gcc" 'evilnc-comment-or-uncomment-lines)
+(define-key evil-visual-state-map "gc" 'comment-or-uncomment-region)
 
 (define-key evil-normal-state-map ",," 'evil-switch-to-windows-last-buffer)
 (define-key evil-normal-state-map ",f" 'fill-paragraph)

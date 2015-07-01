@@ -28,3 +28,6 @@
 [submodule "emacs-packages/evil-matchit"]
 	path = emacs-packages/evil-matchit
 	url = https://github.com/redguardtoo/evil-matchit
+[submodule "emacs-packages/evil-nerd-commenter"]
+	path = emacs-packages/evil-nerd-commenter
+	url = https://github.com/redguardtoo/evil-nerd-commenter
