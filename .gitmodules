@@ -22,3 +22,6 @@
 [submodule "emacs-packages/auto-complete"]
 	path = emacs-packages/auto-complete
 	url = https://github.com/auto-complete/auto-complete
+[submodule "emacs-packages/yasnippet"]
+	path = emacs-packages/yasnippet
+	url = https://github.com/capitaomorte/yasnippet

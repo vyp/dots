@@ -35,6 +35,7 @@
 (add-to-list 'load-path "~/etsi/emacs-packages/auto-complete")
 (add-to-list 'load-path "~/etsi/emacs-packages/auto-complete/.cask/24.5.1/elpa/fuzzy-20150315.619")
 (add-to-list 'load-path "~/etsi/emacs-packages/auto-complete/.cask/24.5.1/elpa/popup-20150626.711")
+(add-to-list 'load-path "~/etsi/emacs-packages/yasnippet")
 (add-to-list 'custom-theme-load-path "~/etsi/emacs-packages/themes/sunburst")
 
 (setq evil-want-C-u-scroll t)
@@ -51,6 +52,7 @@
 (require 'ibuffer)
 (require 'evil-surround)
 (require 'auto-complete-config)
+(require 'yasnippet)
 
 ;; Auto-Complete.
 (add-to-list 'ac-dictionary-directories "~/etsi/emacs-packages/auto-complete/dict")
@@ -149,10 +151,6 @@
      (side-pos . 0)
      (top-or-bottom . bottom)
      (top-or-bottom-pos . 0))))
-
-;;; Leftover mode activation.
-(evil-mode t)
-(global-evil-surround-mode t)
 
 ;;; Keybindings.
 (defun my-minibuffer-keyboard-quit ()
@@ -387,3 +385,8 @@
        (kbd "C-c C-a") 'ibuffer-auto-mode
        (kbd "C-x 4 RET") 'ibuffer-visit-buffer-other-window
        (kbd "C-x 5 RET") 'ibuffer-visit-buffer-other-frame)))
+
+;;; Leftover mode activation.
+(yas-global-mode t)
+(evil-mode t)
+(global-evil-surround-mode t)
