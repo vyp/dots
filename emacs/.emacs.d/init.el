@@ -1,3 +1,5 @@
+;; TODO: Switch away from manual package management because package dependency
+;; handling is probably not practically feasible otherwise...
 ;; TODO: Statusbar colors and customisation.
 ;; TODO: Magit.
 ;; TODO: Pdf viewing.
@@ -30,6 +32,7 @@
 (add-to-list 'load-path "~/etsi/emacs-packages/evil")
 (add-to-list 'load-path "~/etsi/emacs-packages/fill-column-indicator")
 (add-to-list 'load-path "~/etsi/emacs-packages/evil-surround")
+(add-to-list 'load-path "~/etsi/emacs-packages/evil-matchit")
 (add-to-list 'load-path "~/etsi/emacs-packages/yasnippet")
 (add-to-list 'load-path "~/etsi/emacs-packages/auto-complete")
 (add-to-list 'load-path "~/etsi/emacs-packages/auto-complete/.cask/24.5.1/elpa/fuzzy-20150315.619")
@@ -49,6 +52,7 @@
 (require 'paren)
 (require 'ibuffer)
 (require 'evil-surround)
+(require 'evil-matchit)
 (require 'yasnippet)
 (require 'auto-complete-config)
 
@@ -385,3 +389,4 @@
 ;;; Leftover mode activation.
 (evil-mode t)
 (global-evil-surround-mode t)
+(global-evil-matchit-mode t)

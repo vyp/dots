@@ -25,3 +25,6 @@
 [submodule "emacs-packages/yasnippet"]
 	path = emacs-packages/yasnippet
 	url = https://github.com/capitaomorte/yasnippet
+[submodule "emacs-packages/evil-matchit"]
+	path = emacs-packages/evil-matchit
+	url = https://github.com/redguardtoo/evil-matchit
