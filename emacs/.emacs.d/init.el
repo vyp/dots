@@ -1,4 +1,3 @@
-;; TODO: Snippets.
 ;; TODO: Folding.
 ;; TODO: Statusbar colors and customisation.
 ;; TODO: Magit.
@@ -32,10 +31,10 @@
 (add-to-list 'load-path "~/etsi/emacs-packages/evil")
 (add-to-list 'load-path "~/etsi/emacs-packages/fill-column-indicator")
 (add-to-list 'load-path "~/etsi/emacs-packages/evil-surround")
+(add-to-list 'load-path "~/etsi/emacs-packages/yasnippet")
 (add-to-list 'load-path "~/etsi/emacs-packages/auto-complete")
 (add-to-list 'load-path "~/etsi/emacs-packages/auto-complete/.cask/24.5.1/elpa/fuzzy-20150315.619")
 (add-to-list 'load-path "~/etsi/emacs-packages/auto-complete/.cask/24.5.1/elpa/popup-20150626.711")
-(add-to-list 'load-path "~/etsi/emacs-packages/yasnippet")
 (add-to-list 'custom-theme-load-path "~/etsi/emacs-packages/themes/sunburst")
 
 (setq evil-want-C-u-scroll t)
@@ -51,10 +50,10 @@
 (require 'paren)
 (require 'ibuffer)
 (require 'evil-surround)
-(require 'auto-complete-config)
 (require 'yasnippet)
+(require 'auto-complete-config)
 
-;; Auto-Complete.
+(yas-global-mode t)
 (add-to-list 'ac-dictionary-directories "~/etsi/emacs-packages/auto-complete/dict")
 (ac-config-default)
 (setq ac-use-quick-help nil)
@@ -225,6 +224,11 @@
 (define-key evil-visual-state-map ",x" 'execute-extended-command)
 (define-key evil-normal-state-map ",z" 'recenter-top-bottom)
 
+(define-key yas-minor-mode-map (kbd "<tab>") nil)
+(define-key yas-minor-mode-map (kbd "TAB") nil)
+(evil-define-key 'insert yas-minor-mode-map (kbd "C-s") 'yas-expand)
+(evil-define-key 'insert yas-minor-mode-map (kbd "C-f") 'yas-next-field)
+
 (eval-after-load 'auto-complete
   '(progn
      (define-key evil-insert-state-map (kbd "S-<iso-lefttab>") 'ac-previous)))
@@ -380,6 +384,5 @@
        (kbd "C-x 5 RET") 'ibuffer-visit-buffer-other-frame)))
 
 ;;; Leftover mode activation.
-(yas-global-mode t)
 (evil-mode t)
 (global-evil-surround-mode t)
