@@ -1,4 +1,3 @@
-;; TODO: Folding.
 ;; TODO: Statusbar colors and customisation.
 ;; TODO: Magit.
 ;; TODO: Pdf viewing.
