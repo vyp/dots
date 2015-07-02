@@ -1,5 +1,3 @@
-;; TODO: Switch away from manual package management because package dependency
-;; handling is probably not practically feasible otherwise...
 ;; TODO: Statusbar colors and customisation.
 ;; TODO: Magit.
 ;; TODO: Pdf viewing.
@@ -24,22 +22,6 @@
 ;; TODO: Tab in insert mode should insert two spaces.
 
 ;;; Packages.
-;; TODO: Automatically load all subdirectories (non-recursively) under
-;; 'emacs-packages'. Or otherwise use some elisp to reduce this into a list of
-;; package names.
-(add-to-list 'load-path "~/etsi/emacs-packages/undo-tree")
-(add-to-list 'load-path "~/etsi/emacs-packages/goto-chg")
-(add-to-list 'load-path "~/etsi/emacs-packages/evil")
-(add-to-list 'load-path "~/etsi/emacs-packages/fill-column-indicator")
-(add-to-list 'load-path "~/etsi/emacs-packages/evil-surround")
-(add-to-list 'load-path "~/etsi/emacs-packages/evil-matchit")
-(add-to-list 'load-path "~/etsi/emacs-packages/evil-nerd-commenter")
-(add-to-list 'load-path "~/etsi/emacs-packages/yasnippet")
-(add-to-list 'load-path "~/etsi/emacs-packages/auto-complete")
-(add-to-list 'load-path "~/etsi/emacs-packages/auto-complete/.cask/24.5.1/elpa/fuzzy-20150315.619")
-(add-to-list 'load-path "~/etsi/emacs-packages/auto-complete/.cask/24.5.1/elpa/popup-20150626.711")
-(add-to-list 'custom-theme-load-path "~/etsi/emacs-packages/themes/sunburst")
-
 (setq evil-want-C-u-scroll t)
 (setq evil-cross-lines t)
 (setq evil-shift-width 2)
@@ -48,19 +30,25 @@
   (function (lambda ()
     (setq evil-shift-width python-indent))))
 
-(require 'evil)
-(require 'fill-column-indicator)
+(add-to-list 'load-path "~/etsi/el-get")
+(require 'el-get)
+(el-get-bundle tarao/el-get-lock)
+(el-get-bundle! evil)
+(el-get-bundle! evil-matchit)
+(el-get-bundle! evil-nerd-commenter)
+(el-get-bundle! evil-surround)
+(el-get-bundle! fill-column-indicator)
+(el-get-bundle! auto-complete)
+(el-get-bundle! yasnippet)
+(el-get-bundle neomantic/Emacs-Sunburst-Color-Theme)
+(setq el-get-lock-file "~/etsi/el-get.lock")
+
 (require 'paren)
 (require 'ibuffer)
-(require 'evil-surround)
-(require 'evil-matchit)
-(require 'evil-nerd-commenter)
-(require 'yasnippet)
-(require 'auto-complete-config)
 
 (yas-global-mode t)
-(add-to-list 'ac-dictionary-directories "~/etsi/emacs-packages/auto-complete/dict")
-(ac-config-default)
+; (add-to-list 'ac-dictionary-directories "~/etsi/emacs-packages/auto-complete/dict")
+; (ac-config-default)
 (setq ac-use-quick-help nil)
 
 ;;; Appearance.
@@ -117,6 +105,7 @@
               filename-and-process)))
 
 ;;; Theme.
+(add-to-list 'custom-theme-load-path "~/.emacs.d/el-get/Emacs-Sunburst-Color-Theme")
 (load-theme 'sunburst t)
 
 ;; TODO: Use variables for color codes.

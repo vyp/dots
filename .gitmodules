@@ -31,3 +31,6 @@
 [submodule "emacs-packages/evil-nerd-commenter"]
 	path = emacs-packages/evil-nerd-commenter
 	url = https://github.com/redguardtoo/evil-nerd-commenter
+[submodule "el-get"]
+	path = el-get
+	url = https://github.com/dimitri/el-get
