@@ -4,33 +4,6 @@
 [submodule "antigen"]
 	path = antigen
 	url = https://github.com/zsh-users/antigen
-[submodule "emacs-packages/undo-tree"]
-	path = emacs-packages/undo-tree
-	url = http://www.dr-qubit.org/git/undo-tree.git
-[submodule "emacs-packages/evil"]
-	path = emacs-packages/evil
-	url = https://github.com/vyp/evil
-[submodule "emacs-packages/fill-column-indicator"]
-	path = emacs-packages/fill-column-indicator
-	url = https://github.com/alpaker/Fill-Column-Indicator
-[submodule "emacs-packages/themes/sunburst"]
-	path = emacs-packages/themes/sunburst
-	url = https://github.com/neomantic/Emacs-Sunburst-Color-Theme
-[submodule "emacs-packages/evil-surround"]
-	path = emacs-packages/evil-surround
-	url = https://github.com/timcharper/evil-surround
-[submodule "emacs-packages/auto-complete"]
-	path = emacs-packages/auto-complete
-	url = https://github.com/auto-complete/auto-complete
-[submodule "emacs-packages/yasnippet"]
-	path = emacs-packages/yasnippet
-	url = https://github.com/capitaomorte/yasnippet
-[submodule "emacs-packages/evil-matchit"]
-	path = emacs-packages/evil-matchit
-	url = https://github.com/redguardtoo/evil-matchit
-[submodule "emacs-packages/evil-nerd-commenter"]
-	path = emacs-packages/evil-nerd-commenter
-	url = https://github.com/redguardtoo/evil-nerd-commenter
 [submodule "el-get"]
 	path = el-get
 	url = https://github.com/dimitri/el-get
