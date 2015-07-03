@@ -1,6 +1,6 @@
 ;; TODO: Statusbar colors and customisation.
-;; TODO: Magit.
 ;; TODO: Pdf viewing.
+;; TODO: Magit.
 ;; TODO: Filesystem navigation, opening files, managing buffers etc.
 ;; TODO: Helm.
 ;; TODO: Terminal/eshell/zsh.
@@ -47,8 +47,6 @@
 (require 'ibuffer)
 
 (yas-global-mode t)
-; (add-to-list 'ac-dictionary-directories "~/etsi/emacs-packages/auto-complete/dict")
-; (ac-config-default)
 (setq ac-use-quick-help nil)
 
 ;;; Appearance.
