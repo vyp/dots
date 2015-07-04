@@ -1,4 +1,3 @@
-;; TODO: Statusbar colors and customisation.
 ;; TODO: Pdf viewing.
 ;; TODO: Magit.
 ;; TODO: Filesystem navigation, opening files, managing buffers etc.
@@ -20,6 +19,9 @@
 ;; TODO: Highlight TODOs.
 ;; TODO: Figure out how to show trailing newlines.
 ;; TODO: Tab in insert mode should insert two spaces.
+;; TODO: Get "Completion List" buffers to use evil mode bindings.
+;; TODO: Export color theme configuration to scheme specific file.
+;; TODO: Statusbar colors and customisation.
 
 ;;; Packages.
 (setq evil-want-C-u-scroll t)
@@ -50,6 +52,8 @@
 (setq ac-use-quick-help nil)
 
 ;;; Appearance.
+(set-face-attribute 'mode-line nil :box nil)
+(set-face-attribute 'mode-line-inactive nil :box nil)
 (set-face-italic-p 'italic nil)
 (mapc
  (lambda (face)
@@ -115,6 +119,8 @@
 (set-face-attribute 'fringe nil :background "#222")
 (set-face-attribute 'isearch nil :foreground "#111")
 (set-face-attribute 'lazy-highlight nil :foreground "#111")
+(set-face-attribute 'mode-line nil :background "#222" :foreground "#ddd")
+(set-face-attribute 'mode-line-inactive nil :background "#222" :foreground "#666")
 (set-face-attribute 'vertical-border nil :foreground "#111")
 (set-face-attribute 'whitespace-tab nil :background "#420e09")
 (set-face-attribute 'whitespace-trailing nil :background "#420e09")
