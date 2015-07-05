@@ -175,9 +175,6 @@ super + @button{1-3}
 super + Return
   urxvtc
 
-super + e
-  emacsclient -c
-
 super + g
   emacsclient -c
 
@@ -186,9 +183,6 @@ super + alt + Return
 
 # super + shift + Return
 #   bspc rule -a urxvt -o floating=true && urxvtc && bspc rule -a \* -o floating=true
-
-super + ctrl + Return
-  emacsclient -c
 
 super + y
   bspc rule -a \* -o floating=true
