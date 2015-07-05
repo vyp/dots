@@ -1,5 +1,7 @@
 (setq el-get-lock-package-versions
-      '((Emacs-Sunburst-Color-Theme :checksum "e6f8c1593af55a51b64e40a5ff269f5abdb9b4e3")
+      '((pdf-tools :checksum "971ffb85bbce30af257c3c4824e292cb5a00c31d")
+        (let-alist :checksum "b87275d7c09c61ec121e8ecdef6df90e12fcc3cd")
+        (Emacs-Sunburst-Color-Theme :checksum "e6f8c1593af55a51b64e40a5ff269f5abdb9b4e3")
         (evil :checksum "0be7100842e5d469e94578b157cee141cd147b88")
         (goto-chg :checksum "50e58f9e6bb0b8b8e3a24ed817ff78512a770448")
         (auto-complete :checksum "dd5dc3d41c5acafac3202f4213baa7c2f198772d")

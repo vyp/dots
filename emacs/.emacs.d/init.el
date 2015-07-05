@@ -1,4 +1,4 @@
-;; TODO: Pdf viewing.
+;;; Main todos.
 ;; TODO: Magit.
 ;; TODO: Filesystem navigation, opening files, managing buffers etc.
 ;; TODO: Helm.
@@ -15,13 +15,17 @@
 ;; TODO: IRC.
 ;; TODO: Mail.
 ;; TODO: RSS.
+
+;;; Lower priority todos.
 ;; TODO: Bittorrent client.
-;; TODO: Highlight TODOs.
-;; TODO: Figure out how to show trailing newlines.
-;; TODO: Tab in insert mode should insert two spaces.
-;; TODO: Get "Completion List" buffers to use evil mode bindings.
+;; TODO: Use evil-mode-like keybindings for pdf-view-mode.
+;; TODO: Remove right fringe in pdf-view-mode.
+;; TODO: Get "Completion List", `list-packages`, "Compile-log" buffers to use
+;; evil mode bindings.
 ;; TODO: Export color theme configuration to scheme specific file.
 ;; TODO: Statusbar colors and customisation.
+;; TODO: Highlight TODOs.
+;; TODO: Figure out how to show trailing newlines.
 
 ;;; Packages.
 (setq evil-want-C-u-scroll t)
@@ -42,6 +46,9 @@
 (el-get-bundle! fill-column-indicator)
 (el-get-bundle! auto-complete)
 (el-get-bundle! yasnippet)
+; (el-get-bundle funkenblatt/EPDF)
+(el-get-bundle let-alist)
+(el-get-bundle pdf-tools)
 (el-get-bundle neomantic/Emacs-Sunburst-Color-Theme)
 (setq el-get-lock-file "~/etsi/el-get.lock")
 
@@ -105,6 +112,23 @@
               (mode 16 16 :left :elide)
               " "
               filename-and-process)))
+
+;; Doc-view.
+; (require 'doc-view)
+; (require 'pdf-util)
+; (setq doc-view-resolution 150)
+; (setq doc-view-continuous t)
+
+; (define-key doc-view-mode-map (kbd "j") 'doc-view-next-line-or-next-page)
+; (define-key doc-view-mode-map (kbd "k") 'doc-view-previous-line-or-previous-page)
+; (define-key doc-view-mode-map (kbd "h") 'image-backward-hscroll)
+; (define-key doc-view-mode-map (kbd "l") 'image-forward-hscroll)
+
+;; PDF Tools.
+(pdf-tools-install)
+
+;; Associate .pdf files with pdf-view-mode.
+(add-to-list 'auto-mode-alist '("\\.pdf\\'" . pdf-view-mode))
 
 ;;; Theme.
 (add-to-list 'custom-theme-load-path "~/.emacs.d/el-get/Emacs-Sunburst-Color-Theme")
@@ -214,7 +238,15 @@
 (define-key evil-normal-state-map "gcc" 'evilnc-comment-or-uncomment-lines)
 (define-key evil-visual-state-map "gc" 'comment-or-uncomment-region)
 
+(defun my-evil-edit-dot-emacs ()
+  "Edit .emacs (or init.el) file."
+  (interactive)
+  (evil-edit "~/etsi/emacs/.emacs.d/init.el"))
+
 (define-key evil-normal-state-map ",," 'evil-switch-to-windows-last-buffer)
+(define-key evil-normal-state-map ",bd" 'kill-this-buffer)
+(define-key evil-normal-state-map ",ee" 'my-evil-edit-dot-emacs)
+(define-key evil-normal-state-map ",el" 'el-get-lock)
 (define-key evil-normal-state-map ",f" 'fill-paragraph)
 (define-key evil-visual-state-map ",f" 'fill-paragraph)
 (define-key evil-normal-state-map ",l" 'ibuffer)
