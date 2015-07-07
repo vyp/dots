@@ -1,0 +1,5 @@
+#!/bin/env bash
+
+source ~/etsi/dmenu/dmenurc
+
+dmenu_run -fn "${FONT}" -nb "#ffffff" -nf "#444444" -sb "#008787" -sf "#ffffff"

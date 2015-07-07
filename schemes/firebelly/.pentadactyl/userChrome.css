@@ -1,0 +1,43 @@
+@document url-prefix(chrome) {
+  #appcontent,
+  #appcontent > #content,
+  #appcontent > #content > tabbox > tabpanels {
+    background: #ffffff !important;
+  }
+
+  tabs#tabbrowser-tabs {
+    background: #ffffff !important;
+  }
+
+  .tabbrowser-tab {
+    color: #8a8a8a !important;
+    background: #ffffff !important;
+  }
+
+  .tabbrowser-tab[selected=true] {
+    color: #444444 !important;
+    background: #ffffff !important;
+  }
+}
+
+@-moz-document url-prefix(chrome) {
+  #appcontent,
+  #appcontent > #content,
+  #appcontent > #content > tabbox > tabpanels {
+    background: #ffffff !important;
+  }
+
+  tabs#tabbrowser-tabs {
+    background: #ffffff !important;
+  }
+
+  .tabbrowser-tab {
+    color: #8a8a8a !important;
+    background: #ffffff !important;
+  }
+
+  .tabbrowser-tab[selected=true] {
+    color: #444444 !important;
+    background: #ffffff !important;
+  }
+}
