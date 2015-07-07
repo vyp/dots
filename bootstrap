@@ -8,7 +8,7 @@ IGNORE=(
   "dmenu/"
   "docs/"
   "dzen2/"
-  "emacs-packages/"
+  "el-get/"
   "firefox/"
   "pacman/"
   "schemes/"

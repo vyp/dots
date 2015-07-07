@@ -175,7 +175,10 @@
    `(whitespace-tab
      ((t (:background, c7))))
    `(whitespace-trailing
-     ((t (:background, c7)))))
+     ((t (:background, c7))))
+
+   `(sh-quoted-exec
+     ((t (:foreground, c4)))))
 
   (setq fci-rule-color g1))
 
@@ -198,6 +201,13 @@
      (top-or-bottom . bottom)
      (top-or-bottom-pos . 0))))
 
+;;; Hooks.
+(add-hook 'evil-visual-state-entry-hook
+          (lambda () (setq-local global-hl-line-mode nil)))
+(add-hook 'evil-visual-state-exit-hook
+          (lambda () (setq-local global-hl-line-mode t)))
+
+;;; Advice.
 (defun my-previous-line-advice (&optional CURRENT-COMMAND)
   (evil-previous-line))
 
