@@ -47,16 +47,7 @@
 (el-get-bundle! yasnippet)
 (el-get-bundle let-alist)
 (el-get-bundle pdf-tools)
-; (el-get-bundle neomantic/Emacs-Sunburst-Color-Theme)
-; (el-get-bundle greduan/emacs-theme-gruvbox)
-; (el-get-bundle color-theme-sanityinc-tomorrow)
-; (el-get-bundle color-theme-darktooth)
-; (el-get-bundle base16)
-; (el-get-bundle color-theme-zenburn)
-; (el-get-bundle soothe-theme)
-; (el-get-bundle! owainlewis/emacs-color-themes)
 (el-get-bundle startling/firebelly)
-; (el-get-bundle ccann/badger-theme)
 (setq el-get-lock-file "~/etsi/el-get.lock")
 
 (require 'paren)
@@ -127,38 +118,67 @@
 (add-to-list 'auto-mode-alist '("\\.pdf\\'" . pdf-view-mode))
 
 ;;; Theme.
-; (add-to-list 'custom-theme-load-path "~/.emacs.d/el-get/Emacs-Sunburst-Color-Theme")
-; (add-to-list 'custom-theme-load-path "~/.emacs.d/el-get/emacs-theme-gruvbox")
 (add-to-list 'custom-theme-load-path "~/.emacs.d/el-get/firebelly")
-; (add-to-list 'custom-theme-load-path "~/.emacs.d/el-get/badger-theme")
-; (add-to-list 'custom-theme-load-path "~/.emacs.d/el-get/color-theme-sanityinc-tomorrow")
-;; (if (daemonp)
-;;     (add-hook 'after-make-frame-functions
-;;               (lambda (frame)
-;;               (select-frame frame)
-;;                 (load-theme 'sanityinc-tomorrow-night t)))
-;;     (load-theme 'sanityinc-tomorrow-night t))
 (load-theme 'firebelly t)
 
-;; TODO: Use variables for color codes.
-;; (custom-set-faces
-;;  ;; TODO: Remove this linum line sometime.
-;;  `(linum ((t (:foreground, "#666"))))
-;;  `(hl-line ((t (:background, "#222")))))
+;; Some themes may need the following method to load instead.
+; (if (daemonp)
+;     (add-hook 'after-make-frame-functions
+;               (lambda (frame)
+;               (select-frame frame)
+;                 (load-theme 'sanityinc-tomorrow-night t)))
+;     (load-theme 'sanityinc-tomorrow-night t))
 
-;; (set-face-attribute 'fringe nil :background "#222")
-;; (set-face-attribute 'isearch nil :foreground "#111")
-;; (set-face-attribute 'lazy-highlight nil :foreground "#111")
-;; (set-face-attribute 'mode-line nil :background "#222" :foreground "#ddd")
-;; (set-face-attribute 'mode-line-inactive nil :background "#222" :foreground "#666")
-;; (set-face-attribute 'vertical-border nil :foreground "#111")
-;; (set-face-attribute 'whitespace-tab nil :background "#420e09")
-;; (set-face-attribute 'whitespace-trailing nil :background "#420e09")
+(let
+  ((c0 "#ac4142")
+   (c1 "#d28445")
+   (c2 "#f4bf75")
+   (c3 "#90a959")
+   (c4 "#75b5aa")
+   (c5 "#6a9fb5")
+   (c6 "#aa759f")
+   (c7 "#8f5536")
 
-;; (set-face-background 'show-paren-match "blue")
-;; (set-face-foreground 'show-paren-match "#ddd")
+   (g0 "#222222")
+   (g1 "#292929")
+   (g2 "#444444")
+   (g3 "#555555")
+   (g4 "#666666")
+   (g5 "#777777")
+   (g6 "#888888")
+   (g7 "#999999"))
 
-;; (setq fci-rule-color "#222")
+  (custom-set-faces
+   `(cursor
+     ((t (:background, c0))))
+   `(font-lock-comment-delimiter-face
+     ((t (:foreground, g2))))
+   `(font-lock-string-face
+     ((t (:background, g0))))
+   `(font-lock-variable-name-face
+     ((t (:foreground, c0))))
+   `(fringe
+     ((t (:background, g1))))
+   `(hl-line
+     ((t (:background, g1))))
+   `(isearch
+     ((t (:background, c2 :foreground, g0))))
+   `(lazy-highlight
+     ((t (:background, c5 :foreground, g0))))
+   `(linum
+     ((t (:background, g0 :foreground, g2))))
+   `(show-paren-match
+     ((t (:background, c5 :foreground, g0))))
+   `(trailing-whitespace
+     ((t (:background, c7))))
+   `(vertical-border
+     ((t (:background, g0))))
+   `(whitespace-tab
+     ((t (:background, c7))))
+   `(whitespace-trailing
+     ((t (:background, c7)))))
+
+  (setq fci-rule-color g1))
 
 ;;; Basic.
 (setq auto-save-default nil)
