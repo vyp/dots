@@ -9,6 +9,8 @@
 ;; TODO: Learn elisp.
 ;; TODO: Expand region.
 ;; TODO: Multiple cursors.
+;; TODO: Flycheck.
+;; TODO: Paredit.
 ;; TODO: MPD client.
 ;; TODO: Image viewer.
 ;; TODO: IRC.
