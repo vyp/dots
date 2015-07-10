@@ -4,6 +4,6 @@
 [submodule "antigen"]
 	path = antigen
 	url = https://github.com/zsh-users/antigen
-[submodule "el-get"]
-	path = el-get
-	url = https://github.com/dimitri/el-get
+[submodule "quelpa"]
+	path = quelpa
+	url = https://github.com/quelpa/quelpa

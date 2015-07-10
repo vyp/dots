@@ -1,4 +1,4 @@
-# Vim temporary files (will ignore hidden svg files too!).
+# Text editor temporary files (will ignore hidden svg files too!).
 *~
 .*.s[a-w][a-z]
 .swp

@@ -8,9 +8,9 @@ IGNORE=(
   "dmenu/"
   "docs/"
   "dzen2/"
-  "el-get/"
   "firefox/"
   "pacman/"
+  "quelpa/"
   "schemes/"
   "vim-plug/"
   "zathura/"
@@ -62,11 +62,6 @@ done
 
 git submodule init
 git submodule update --depth 10
-
-# Make sure to install https://github.com/cask/cask first before doing emacs
-# things because the auto-complete package for emacs needs cask as a build
-# dependency.
-# emacs --batch -Q -f batch-byte-compile file.el
 
 ln -s ~/etsi/vim-plug/plug.vim ~/.vim/autoload/plug.vim
 

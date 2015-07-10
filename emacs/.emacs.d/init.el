@@ -38,20 +38,78 @@
   (function (lambda ()
     (setq evil-shift-width python-indent))))
 
-(add-to-list 'load-path "~/etsi/el-get")
-(require 'el-get)
-(el-get-bundle tarao/el-get-lock)
-(el-get-bundle! evil)
-(el-get-bundle! evil-matchit)
-(el-get-bundle! evil-nerd-commenter)
-(el-get-bundle! evil-surround)
-(el-get-bundle! fill-column-indicator)
-(el-get-bundle! auto-complete)
-(el-get-bundle! yasnippet)
-(el-get-bundle pdf-tools)
-(el-get-bundle startling/firebelly)
-(setq el-get-lock-file "~/etsi/el-get.lock")
-(el-get-lock)
+(defvar quelpa-ci-dir "~/etsi/quelpa")
+(setq quelpa-update-melpa-p nil)
+
+(unless (require 'quelpa nil t)
+  (load (concat quelpa-ci-dir "/bootstrap.el"))
+  (require 'quelpa))
+
+(quelpa
+ '(evil
+   :fetcher hg
+   :url "https://bitbucket.org/lyro/evil"))
+
+(quelpa
+ '(evil-matchit
+   :fetcher github
+   :repo "redguardtoo/evil-matchit"))
+
+(quelpa
+ '(evil-nerd-commenter
+   :fetcher github
+   :repo "redguardtoo/evil-nerd-commenter"))
+
+(quelpa
+ '(evil-surround
+   :fetcher github
+   :repo "timcharper/evil-surround"
+   :old-names (surround)))
+
+(quelpa
+ '(fill-column-indicator
+   :fetcher github
+   :repo "alpaker/Fill-Column-Indicator"))
+
+(quelpa
+ '(auto-complete
+   :fetcher github
+   :repo "auto-complete/auto-complete"
+   :files ("*.el" "dict")))
+
+(quelpa
+ '(yasnippet
+   :fetcher github
+   :repo "capitaomorte/yasnippet"
+   :files ("yasnippet.el" "snippets")))
+
+;; TODO: Might need let-alist recipe too.
+
+; (setq pdf-info-epdfinfo-program
+;       (concat quelpa-build-dir "/pdf-tools/server/epdfinfo"))
+
+(quelpa
+ '(pdf-tools
+   :fetcher github
+   :repo "politza/pdf-tools"
+   :files ("lisp/*.el"
+           "README"
+           ("build" "Makefile")
+           ("build" "server")
+           (:exclude "lisp/tablist.el" "lisp/tablist-filter.el"))))
+
+(quelpa
+ '(firebelly-theme
+   :fetcher github
+   :repo "startling/firebelly"))
+
+(require 'evil)
+(require 'evil-matchit)
+(require 'evil-nerd-commenter)
+(require 'evil-surround)
+(require 'fill-column-indicator)
+(require 'auto-complete)
+(require 'yasnippet)
 
 (require 'paren)
 (require 'ibuffer)
