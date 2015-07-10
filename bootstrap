@@ -10,7 +10,6 @@ IGNORE=(
   "dzen2/"
   "firefox/"
   "pacman/"
-  "quelpa/"
   "schemes/"
   "vim-plug/"
   "zathura/"

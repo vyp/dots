@@ -38,12 +38,20 @@
   (function (lambda ()
     (setq evil-shift-width python-indent))))
 
-(defvar quelpa-ci-dir "~/etsi/quelpa")
 (setq quelpa-update-melpa-p nil)
+(setq package-archives nil)
+(package-initialize)
 
-(unless (require 'quelpa nil t)
-  (load (concat quelpa-ci-dir "/bootstrap.el"))
-  (require 'quelpa))
+;; Bootstrap quelpa (the package manager) if needed.
+(if (require 'quelpa nil t)
+    (quelpa
+     '(quelpa
+       :fetcher github
+       :repo "quelpa/quelpa"))
+
+  (with-temp-buffer
+    (url-insert-file-contents "https://raw.github.com/quelpa/quelpa/master/bootstrap.el")
+    (eval-buffer)))
 
 (quelpa
  '(evil
@@ -63,8 +71,7 @@
 (quelpa
  '(evil-surround
    :fetcher github
-   :repo "timcharper/evil-surround"
-   :old-names (surround)))
+   :repo "timcharper/evil-surround"))
 
 (quelpa
  '(fill-column-indicator
@@ -82,11 +89,6 @@
    :fetcher github
    :repo "capitaomorte/yasnippet"
    :files ("yasnippet.el" "snippets")))
-
-;; TODO: Might need let-alist recipe too.
-
-; (setq pdf-info-epdfinfo-program
-;       (concat quelpa-build-dir "/pdf-tools/server/epdfinfo"))
 
 (quelpa
  '(pdf-tools
