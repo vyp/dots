@@ -27,6 +27,7 @@
 ;; TODO: Statusbar colors and customisation.
 ;; TODO: Highlight TODOs.
 ;; TODO: Figure out how to show trailing newlines.
+;; TODO: wellle/targets.vim ?
 
 ;;; Packages.
 (setq evil-want-C-u-scroll t)
@@ -50,6 +51,7 @@
 (el-get-bundle pdf-tools)
 (el-get-bundle startling/firebelly)
 (setq el-get-lock-file "~/etsi/el-get.lock")
+(el-get-lock)
 
 (require 'paren)
 (require 'ibuffer)
@@ -217,6 +219,16 @@
 (advice-add 'evil-command-window-search-forward :after #'my-previous-line-advice)
 
 ;;; Keybindings.
+
+;; The way this works with evil mode/vim style keybindings everywhere is that
+;; the following bindings are generically defined, so that they go wherever evil
+;; mode is enabled. But then they are selectively overwritten for particular
+;; special [1] modes in the files in the `kb` directory.
+;;
+;; This is esentially a shortcut for only allowing the following basic mappings
+;; to apply to text and prog modes.
+;; http://www.gnu.org/software/emacs/manual/html_node/elisp/Basic-Major-Modes.html#index-special_002dmode
+
 (defun my-minibuffer-keyboard-quit ()
   "Abort recursive edit.
   In Delete Selection mode, if the mark is active, just deactivate it;
