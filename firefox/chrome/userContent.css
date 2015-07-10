@@ -94,3 +94,15 @@
     display: none !important;
   }
 }
+
+@document url-prefix(http://ergoemacs.org/) {
+  nav.n1 {
+    animation: none !important;
+  }
+}
+
+@-moz-document url-prefix(http://ergoemacs.org/) {
+  nav.n1 {
+    animation: none !important;
+  }
+}
