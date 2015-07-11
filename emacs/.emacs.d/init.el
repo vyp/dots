@@ -16,11 +16,12 @@
 ;; TODO: IRC.
 ;; TODO: Mail.
 ;; TODO: RSS.
+;; TODO: Fix "*Packages*" buffer colours.
 
 ;;; Lower priority todos.
 ;; TODO: Use evil-mode-like keybindings for pdf-view-mode.
-;; TODO: Get "Completion List", `list-packages`, "Compile-log" buffers to use
-;; evil mode bindings.
+;; TODO: Get "Completion List", "Packages", "Compile-log", "Messages" buffers to
+;; use evil mode bindings.
 ;; TODO: Remove right fringe in pdf-view-mode.
 ;; TODO: Bittorrent client.
 ;; TODO: Export color theme configuration to scheme specific file.
@@ -99,6 +100,34 @@
            ("build" "Makefile")
            ("build" "server")
            (:exclude "lisp/tablist.el" "lisp/tablist-filter.el"))))
+
+(quelpa
+ '(magit
+   :fetcher github
+   :repo "magit/magit"
+   :files ("lisp/magit-utils.el"
+           "lisp/magit-section.el"
+           "lisp/magit-git.el"
+           "lisp/magit-mode.el"
+           "lisp/magit-process.el"
+           "lisp/magit-core.el"
+           "lisp/magit-diff.el"
+           "lisp/magit-wip.el"
+           "lisp/magit-apply.el"
+           "lisp/magit-log.el"
+           "lisp/magit.el"
+           "lisp/magit-sequence.el"
+           "lisp/magit-commit.el"
+           "lisp/magit-remote.el"
+           "lisp/magit-bisect.el"
+           "lisp/magit-stash.el"
+           "lisp/magit-blame.el"
+           "lisp/magit-ediff.el"
+           "lisp/magit-extras.el"
+           "lisp/git-rebase.el"
+           "Documentation/magit.texi"
+           "Documentation/AUTHORS.md"
+           "COPYING")))
 
 (quelpa
  '(firebelly-theme
