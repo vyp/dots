@@ -1,4 +1,5 @@
 ;;; Main todos.
+;; TODO: Visually wrap long lines at character instead of word.
 ;; TODO: Magit.
 ;; TODO: Filesystem navigation, opening files, managing buffers etc.
 ;; TODO: Helm.
@@ -54,6 +55,13 @@
     (url-insert-file-contents "https://raw.github.com/quelpa/quelpa/master/bootstrap.el")
     (eval-buffer)))
 
+;; So that quelpa updates package-build too when doing `quelpa-upgrade`.
+(quelpa
+ '(package-build
+   :fetcher github
+   :repo "milkypostman/melpa"
+   :files ("package-build.el")))
+
 (quelpa
  '(evil
    :fetcher hg
@@ -89,7 +97,7 @@
  '(yasnippet
    :fetcher github
    :repo "capitaomorte/yasnippet"
-   :files ("yasnippet.el" "snippets")))
+   :files ("yasnippet.el")))
 
 (quelpa
  '(pdf-tools
@@ -99,7 +107,8 @@
            "README"
            ("build" "Makefile")
            ("build" "server")
-           (:exclude "lisp/tablist.el" "lisp/tablist-filter.el"))))
+           (:exclude "lisp/tablist.el"
+                     "lisp/tablist-filter.el"))))
 
 (quelpa
  '(magit
@@ -145,7 +154,6 @@
 (require 'paren)
 (require 'ibuffer)
 
-(yas-global-mode t)
 (setq ac-use-quick-help nil)
 
 ;;; Appearance.
@@ -210,7 +218,6 @@
 (add-to-list 'auto-mode-alist '("\\.pdf\\'" . pdf-view-mode))
 
 ;;; Theme.
-(add-to-list 'custom-theme-load-path "~/.emacs.d/el-get/firebelly")
 (load-theme 'firebelly t)
 
 ;; Some themes may need the following method to load instead.
@@ -293,6 +300,12 @@
      (side-pos . 0)
      (top-or-bottom . bottom)
      (top-or-bottom-pos . 0))))
+
+;; Yasnippet official snippets.
+(setq yas-snippet-dirs
+      '("~/etsi/yasnippet-snippets"))
+
+(yas-global-mode t)
 
 ;;; Hooks.
 (add-hook 'evil-visual-state-entry-hook
@@ -377,7 +390,7 @@
 (define-key evil-visual-state-map "gc" 'comment-or-uncomment-region)
 
 (defun my-evil-edit-dot-emacs ()
-  "Edit .emacs (or init.el) file."
+  "Edit emacs init file."
   (interactive)
   (evil-edit "~/etsi/emacs/.emacs.d/init.el"))
 

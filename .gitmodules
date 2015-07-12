@@ -4,3 +4,6 @@
 [submodule "antigen"]
 	path = antigen
 	url = https://github.com/zsh-users/antigen
+[submodule "yasnippet-snippets"]
+	path = yasnippet-snippets
+	url = https://github.com/AndreaCrotti/yasnippet-snippets
