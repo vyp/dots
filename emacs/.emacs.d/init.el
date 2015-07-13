@@ -87,17 +87,22 @@
    :fetcher github
    :repo "alpaker/Fill-Column-Indicator"))
 
+;; (quelpa
+;;  '(auto-complete
+;;    :fetcher github
+;;    :repo "auto-complete/auto-complete"
+;;    :files ("*.el" "dict")))
+
 (quelpa
- '(auto-complete
+ '(company
    :fetcher github
-   :repo "auto-complete/auto-complete"
-   :files ("*.el" "dict")))
+   :repo "company-mode/company-mode"))
 
 (quelpa
  '(yasnippet
    :fetcher github
    :repo "capitaomorte/yasnippet"
-   :files ("yasnippet.el")))
+   :files ("yasnippet.el" "snippets")))
 
 (quelpa
  '(pdf-tools
@@ -148,13 +153,16 @@
 (require 'evil-nerd-commenter)
 (require 'evil-surround)
 (require 'fill-column-indicator)
-(require 'auto-complete)
+; (require 'auto-complete)
+(require 'company)
 (require 'yasnippet)
 
 (require 'paren)
 (require 'ibuffer)
 
-(setq ac-use-quick-help nil)
+(setq company-idle-delay 0)
+(add-hook 'after-init-hook 'global-company-mode)
+; (setq ac-use-quick-help nil)
 
 ;;; Appearance.
 (set-face-attribute 'mode-line nil :box nil)
@@ -216,6 +224,15 @@
 
 ;; Associate .pdf files with pdf-view-mode.
 (add-to-list 'auto-mode-alist '("\\.pdf\\'" . pdf-view-mode))
+
+;; Magit.
+(custom-set-faces
+ `(magit-section-heading
+   ((t (:weight, 'normal))))
+ `(magit-section-highlight
+   ((t (:weight, 'normal))))
+ `(magit-diff-file-heading
+   ((t (:weight, 'normal)))))
 
 ;;; Theme.
 (load-theme 'firebelly t)
@@ -388,6 +405,7 @@
 
 (define-key evil-normal-state-map "gcc" 'evilnc-comment-or-uncomment-lines)
 (define-key evil-visual-state-map "gc" 'comment-or-uncomment-region)
+(define-key evil-normal-state-map "gm" 'magit-status)
 
 (defun my-evil-edit-dot-emacs ()
   "Edit emacs init file."
@@ -409,17 +427,48 @@
 (define-key evil-visual-state-map ",x" 'execute-extended-command)
 (define-key evil-normal-state-map ",z" 'recenter-top-bottom)
 
-(define-key yas-minor-mode-map (kbd "<tab>") nil)
-(define-key yas-minor-mode-map (kbd "TAB") nil)
-(evil-define-key 'insert yas-minor-mode-map (kbd "C-s") 'yas-expand)
-(evil-define-key 'insert yas-minor-mode-map (kbd "C-f") 'yas-next-field)
+(evil-define-key 'insert yas-minor-mode-map (kbd "<tab>") nil)
+(evil-define-key 'insert yas-minor-mode-map (kbd "TAB") nil)
 
-(eval-after-load 'auto-complete
+;; (eval-after-load 'auto-complete
+;;   '(progn
+;;      (define-key evil-insert-state-map (kbd "S-<iso-lefttab>") 'ac-previous)))
+
+;; (defun my-company-yas-expand ()
+;;   "Yasnippet expand even if there is a company mode popup."
+;;   (interactive)
+;;   (evil-normal-state)
+;;   (evil-append)
+;;   (yas-expand))
+
+(eval-after-load 'company
   '(progn
-     (define-key evil-insert-state-map (kbd "S-<iso-lefttab>") 'ac-previous)))
+     (define-key evil-insert-state-map [tab] 'company-select-next)
+     (define-key evil-insert-state-map (kbd "TAB") 'company-select-next)
+     (define-key evil-insert-state-map (kbd "S-<iso-lefttab>") 'company-select-previous)
+     ;; (evil-define-key 'insert yas-minor-mode-map (kbd "C-s") 'my-company-yas-expand)
+     (evil-define-key 'insert yas-minor-mode-map (kbd "C-f") 'yas-next-field)
+     (evil-define-key 'insert company-capf-minor-mode-map (kbd "C-w") 'evil-delete-backward-word)))
 
 (add-to-list 'load-path "~/etsi/emacs/.emacs.d/kb")
 (require 'ibuffer-kb)
+
+(evil-set-initial-state 'magit-mode 'normal)
+(evil-set-initial-state 'magit-status-mode 'normal)
+(evil-set-initial-state 'magit-diff-mode 'normal)
+(evil-set-initial-state 'magit-log-mode 'normal)
+
+(evil-define-key 'normal magit-mode-map
+  "j" 'magit-goto-next-section
+  "k" 'magit-goto-previous-section)
+
+(evil-define-key 'normal magit-log-mode-map
+  "j" 'magit-goto-next-section
+  "k" 'magit-goto-previous-section)
+
+(evil-define-key 'normal magit-diff-mode-map
+  "j" 'magit-goto-next-section
+  "k" 'magit-goto-previous-section)
 
 ;;; Leftover mode activation.
 (evil-mode t)
