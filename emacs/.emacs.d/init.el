@@ -98,11 +98,11 @@
    :fetcher github
    :repo "company-mode/company-mode"))
 
-(quelpa
- '(yasnippet
-   :fetcher github
-   :repo "capitaomorte/yasnippet"
-   :files ("yasnippet.el" "snippets")))
+;; (quelpa
+;;  '(yasnippet
+;;    :fetcher github
+;;    :repo "capitaomorte/yasnippet"
+;;    :files ("yasnippet.el" "snippets")))
 
 (quelpa
  '(pdf-tools
@@ -155,7 +155,7 @@
 (require 'fill-column-indicator)
 ; (require 'auto-complete)
 (require 'company)
-(require 'yasnippet)
+; (require 'yasnippet)
 
 (require 'paren)
 (require 'ibuffer)
@@ -319,10 +319,10 @@
      (top-or-bottom-pos . 0))))
 
 ;; Yasnippet official snippets.
-(setq yas-snippet-dirs
-      '("~/etsi/yasnippet-snippets"))
+;; (setq yas-snippet-dirs
+;;       '("~/etsi/yasnippet-snippets"))
 
-(yas-global-mode t)
+;; (yas-global-mode t)
 
 ;;; Hooks.
 (add-hook 'evil-visual-state-entry-hook
@@ -427,8 +427,8 @@
 (define-key evil-visual-state-map ",x" 'execute-extended-command)
 (define-key evil-normal-state-map ",z" 'recenter-top-bottom)
 
-(evil-define-key 'insert yas-minor-mode-map (kbd "<tab>") nil)
-(evil-define-key 'insert yas-minor-mode-map (kbd "TAB") nil)
+; (evil-define-key 'insert yas-minor-mode-map (kbd "<tab>") nil)
+; (evil-define-key 'insert yas-minor-mode-map (kbd "TAB") nil)
 
 ;; (eval-after-load 'auto-complete
 ;;   '(progn
@@ -443,12 +443,14 @@
 
 (eval-after-load 'company
   '(progn
-     (define-key evil-insert-state-map [tab] 'company-select-next)
-     (define-key evil-insert-state-map (kbd "TAB") 'company-select-next)
-     (define-key evil-insert-state-map (kbd "S-<iso-lefttab>") 'company-select-previous)
+     (define-key evil-insert-state-map (kbd "C-n") 'company-select-next)
+     ; (define-key evil-insert-state-map [tab] 'company-select-next)
+     ; (define-key evil-insert-state-map (kbd "TAB") 'company-select-next)
+     ; (define-key evil-insert-state-map (kbd "S-<iso-lefttab>") 'company-select-previous)))
+     (define-key evil-insert-state-map (kbd "C-p") 'company-select-previous)))
      ;; (evil-define-key 'insert yas-minor-mode-map (kbd "C-s") 'my-company-yas-expand)
-     (evil-define-key 'insert yas-minor-mode-map (kbd "C-f") 'yas-next-field)
-     (evil-define-key 'insert company-capf-minor-mode-map (kbd "C-w") 'evil-delete-backward-word)))
+     ; (evil-define-key 'insert yas-minor-mode-map (kbd "C-f") 'yas-next-field)
+     ; (evil-define-key 'insert company-capf-minor-mode-map (kbd "C-w") 'evil-delete-backward-word)))
 
 (add-to-list 'load-path "~/etsi/emacs/.emacs.d/kb")
 (require 'ibuffer-kb)
