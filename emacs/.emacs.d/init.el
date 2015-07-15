@@ -1,5 +1,6 @@
 ;;; Main todos.
 ;; TODO: Visually wrap long lines at character instead of word.
+;; TODO: Map backslash to reverse fFtT.
 ;; TODO: Magit.
 ;; TODO: Filesystem navigation, opening files, managing buffers etc.
 ;; TODO: Helm.
@@ -98,11 +99,11 @@
    :fetcher github
    :repo "company-mode/company-mode"))
 
-;; (quelpa
-;;  '(yasnippet
-;;    :fetcher github
-;;    :repo "capitaomorte/yasnippet"
-;;    :files ("yasnippet.el" "snippets")))
+(quelpa
+ '(yasnippet
+   :fetcher github
+   :repo "capitaomorte/yasnippet"
+   :files ("yasnippet.el" "snippets")))
 
 (quelpa
  '(pdf-tools
@@ -155,7 +156,7 @@
 (require 'fill-column-indicator)
 ; (require 'auto-complete)
 (require 'company)
-; (require 'yasnippet)
+(require 'yasnippet)
 
 (require 'paren)
 (require 'ibuffer)
@@ -319,10 +320,10 @@
      (top-or-bottom-pos . 0))))
 
 ;; Yasnippet official snippets.
-;; (setq yas-snippet-dirs
-;;       '("~/etsi/yasnippet-snippets"))
+(setq yas-snippet-dirs
+      '("~/etsi/yasnippet-snippets"))
 
-;; (yas-global-mode t)
+(yas-global-mode t)
 
 ;;; Hooks.
 (add-hook 'evil-visual-state-entry-hook
@@ -441,13 +442,26 @@
 ;;   (evil-append)
 ;;   (yas-expand))
 
+(evil-define-key 'insert yas-minor-mode-map (kbd "C-s") 'yas-expand)
+(evil-define-key 'insert yas-minor-mode-map (kbd "C-n") 'yas-next-field)
+(evil-define-key 'insert yas-minor-mode-map (kbd "C-p") 'yas-prev-field)
+
 (eval-after-load 'company
   '(progn
-     (define-key evil-insert-state-map (kbd "C-n") 'company-select-next)
+     ;; Disable default mappings.
+     (define-key yas-minor-mode-map (kbd "<tab>") nil)
+     (define-key yas-minor-mode-map (kbd "TAB") nil)
+     (define-key company-active-map [tab] nil)
+     (define-key company-active-map (kbd "TAB") nil)
+     (define-key company-active-map "\C-w" nil)
+     (define-key company-active-map "\C-s" nil)
+
+     (evil-define-key 'insert company-mode-map [tab] 'company-complete-common-or-cycle)
      ; (define-key evil-insert-state-map [tab] 'company-select-next)
      ; (define-key evil-insert-state-map (kbd "TAB") 'company-select-next)
      ; (define-key evil-insert-state-map (kbd "S-<iso-lefttab>") 'company-select-previous)))
-     (define-key evil-insert-state-map (kbd "C-p") 'company-select-previous)))
+     (evil-define-key 'insert company-mode-map (kbd "S-<iso-lefttab>") 'company-select-previous)
+     (evil-define-key 'insert company-active-map (kbd "C-w") 'evil-delete-backward-word)))
      ;; (evil-define-key 'insert yas-minor-mode-map (kbd "C-s") 'my-company-yas-expand)
      ; (evil-define-key 'insert yas-minor-mode-map (kbd "C-f") 'yas-next-field)
      ; (evil-define-key 'insert company-capf-minor-mode-map (kbd "C-w") 'evil-delete-backward-word)))
