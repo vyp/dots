@@ -54,6 +54,7 @@ stowlink () {
     stow -t ~ -d schemes -D $dir
   done
 
+  mkdir -pv ~/.backup
   mkdir -pv ~/.cache/mutt
   mkdir -pv ~/.config/bspwm
   mkdir -pv ~/.config/dzen2

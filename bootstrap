@@ -18,6 +18,7 @@ IGNORE=(
 MAKEDIRS=true
 
 DIRS="
+  ~/.backup
   ~/.cache/mutt
   ~/.config/bspwm
   ~/.config/dzen2
