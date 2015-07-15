@@ -95,7 +95,7 @@
  '(yasnippet
    :fetcher github
    :repo "capitaomorte/yasnippet"
-   :files ("yasnippet.el" "snippets")))
+   :files ("yasnippet.el")))
 
 (quelpa
  '(pdf-tools
