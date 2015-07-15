@@ -1,5 +1,4 @@
 ;;; Main todos.
-;; TODO: Map backslash to reverse fFtT.
 ;; TODO: Magit.
 ;; TODO: Filesystem navigation, opening files, managing buffers etc.
 ;; TODO: Helm.
