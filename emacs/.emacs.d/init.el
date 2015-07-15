@@ -1,36 +1,45 @@
-;;; Main todos.
+;;;; Todos.
+;;; Special.
 ;; TODO: Magit.
 ;; TODO: Filesystem navigation, opening files, managing buffers etc.
 ;; TODO: Helm.
 ;; TODO: Terminal/eshell/zsh.
 ;; TODO: Pandoc mode.
-;; TODO: Use use-package to lazy load packages.
-;; TODO: Emmet.
-;; TODO: Learn elisp.
-;; TODO: Expand region.
-;; TODO: Multiple cursors.
-;; TODO: Flycheck.
-;; TODO: Paredit.
 ;; TODO: MPD client.
 ;; TODO: Image viewer.
 ;; TODO: IRC.
 ;; TODO: Mail.
 ;; TODO: RSS.
-;; TODO: Fix "*Packages*" buffer colours.
-
-;;; Lower priority todos.
-;; TODO: Use evil-mode-like keybindings for pdf-view-mode.
-;; TODO: Get "Completion List", "Packages", "Compile-log", "Messages" buffers to
-;; use evil mode bindings.
-;; TODO: Remove right fringe in pdf-view-mode.
 ;; TODO: Bittorrent client.
-;; TODO: Export color theme configuration to scheme specific file.
-;; TODO: Statusbar colors and customisation.
+
+;;; Behaviour.
+;; TODO: Expand region.
+;; TODO: Emmet.
+;; TODO: Flycheck.
+;; TODO: Paredit.
+;; TODO: Multiple cursors.
+;; TODO: Highlight trailing newlines.
 ;; TODO: Highlight TODOs.
-;; TODO: Figure out how to show trailing newlines.
 ;; TODO: wellle/targets.vim ?
 
-;;; Packages.
+;;; Keybindings.
+;; TODO: pdf-view-mode.
+;; TODO: "Completion List", "Packages", "Compile-log", "Messages" buffers.
+
+;;; Appearance.
+;; TODO: Remove right fringe in pdf-view-mode.
+;; TODO: Statusbar colors and customisation.
+
+;;; Theme.
+;; TODO: Remove bold references from redbelly.
+;; TODO: Fix "*Packages*" buffer colours.
+;; TODO: Visual search and replace colours.
+;; TODO: Export theme configuration to scheme specific file.
+
+;;; Other.
+;; TODO: Learn elisp.
+
+;;;; Packages.
 (setq evil-want-C-u-scroll t)
 (setq evil-cross-lines t)
 (setq evil-shift-width 2)
@@ -137,9 +146,9 @@
            "COPYING")))
 
 (quelpa
- '(firebelly-theme
+ '(redbelly-theme
    :fetcher github
-   :repo "startling/firebelly"))
+   :repo "vyp/redbelly"))
 
 (require 'evil)
 (require 'evil-matchit)
@@ -155,7 +164,7 @@
 (setq company-idle-delay 0)
 (add-hook 'after-init-hook 'global-company-mode)
 
-;;; Appearance.
+;;;; Appearance.
 (set-face-attribute 'mode-line nil :box nil)
 (set-face-attribute 'mode-line-inactive nil :box nil)
 (set-face-italic-p 'italic nil)
@@ -189,7 +198,7 @@
 (setq show-paren-delay 0)
 (show-paren-mode t)
 
-;; Ibuffer.
+;;; Ibuffer.
 ;; Use human readable Size column instead of original one.
 (define-ibuffer-column size-h
   (:name "Size" :inline t)
@@ -210,13 +219,13 @@
               " "
               filename-and-process)))
 
-;; PDF Tools.
+;;; PDF Tools.
 (pdf-tools-install)
 
 ;; Associate .pdf files with pdf-view-mode.
 (add-to-list 'auto-mode-alist '("\\.pdf\\'" . pdf-view-mode))
 
-;; Magit.
+;;; Magit.
 (custom-set-faces
  `(magit-section-heading
    ((t (:weight, 'normal))))
@@ -225,72 +234,10 @@
  `(magit-diff-file-heading
    ((t (:weight, 'normal)))))
 
-;;; Theme.
-(load-theme 'firebelly t)
+;;;; Theme.
+(load-theme 'redbelly t)
 
-;; Some themes may need the following method to load instead.
-; (if (daemonp)
-;     (add-hook 'after-make-frame-functions
-;               (lambda (frame)
-;               (select-frame frame)
-;                 (load-theme 'firebelly t)))
-;     (load-theme 'firebelly t))
-
-(let
-  ((c0 "#ac4142")
-   (c1 "#d28445")
-   (c2 "#f4bf75")
-   (c3 "#90a959")
-   (c4 "#75b5aa")
-   (c5 "#6a9fb5")
-   (c6 "#aa759f")
-   (c7 "#8f5536")
-
-   (g0 "#222222")
-   (g1 "#292929")
-   (g2 "#444444")
-   (g3 "#555555")
-   (g4 "#666666")
-   (g5 "#777777")
-   (g6 "#888888")
-   (g7 "#999999"))
-
-  (custom-set-faces
-   `(cursor
-     ((t (:background, c0))))
-   `(font-lock-comment-delimiter-face
-     ((t (:foreground, g2))))
-   `(font-lock-string-face
-     ((t (:background, g0))))
-   `(font-lock-variable-name-face
-     ((t (:foreground, c0))))
-   `(fringe
-     ((t (:background, g1))))
-   `(hl-line
-     ((t (:background, g1))))
-   `(isearch
-     ((t (:background, c2 :foreground, g0))))
-   `(lazy-highlight
-     ((t (:background, c5 :foreground, g0))))
-   `(linum
-     ((t (:background, g0 :foreground, g2))))
-   `(show-paren-match
-     ((t (:background, c5 :foreground, g0))))
-   `(trailing-whitespace
-     ((t (:background, c7))))
-   `(vertical-border
-     ((t (:background, g0))))
-   `(whitespace-tab
-     ((t (:background, c7))))
-   `(whitespace-trailing
-     ((t (:background, c7))))
-
-   `(sh-quoted-exec
-     ((t (:foreground, c4)))))
-
-  (setq fci-rule-color g1))
-
-;;; Basic.
+;;;; Basic.
 (setq auto-save-default nil)
 (setq create-lockfiles nil)
 (setq backup-directory-alist `(("." . "~/.backup")))
@@ -315,26 +262,27 @@
      (top-or-bottom . bottom)
      (top-or-bottom-pos . 0))))
 
-;; Yasnippet official snippets.
+;;; Yasnippet official snippets.
 (setq yas-snippet-dirs
       '("~/etsi/yasnippet-snippets"))
 
 (yas-global-mode t)
 
-;;; Hooks.
+;;;; Hooks.
+;; Disable hl-line-mode in evil visual state.
 (add-hook 'evil-visual-state-entry-hook
           (lambda () (setq-local global-hl-line-mode nil)))
 (add-hook 'evil-visual-state-exit-hook
           (lambda () (setq-local global-hl-line-mode t)))
 
-;;; Advice.
+;;;; Advice.
 (defun my-previous-line-advice (&optional CURRENT-COMMAND)
   (evil-previous-line))
 
 (advice-add 'evil-command-window-ex :after #'my-previous-line-advice)
 (advice-add 'evil-command-window-search-forward :after #'my-previous-line-advice)
 
-;;; Keybindings.
+;;;; Keybindings.
 
 ;; The way this works with evil mode/vim style keybindings everywhere is that
 ;; the following bindings are generically defined, so that they go wherever evil
@@ -345,6 +293,7 @@
 ;; to apply to text and prog modes.
 ;; http://www.gnu.org/software/emacs/manual/html_node/elisp/Basic-Major-Modes.html#index-special_002dmode
 
+;;; Basic.
 (defun my-minibuffer-keyboard-quit ()
   "Abort recursive edit.
   In Delete Selection mode, if the mark is active, just deactivate it;
@@ -400,10 +349,7 @@
 (define-key evil-normal-state-map "gs" 'evil-write)
 (define-key evil-normal-state-map "Y" 'my-evil-yank-to-end-of-line)
 
-(define-key evil-normal-state-map "gcc" 'evilnc-comment-or-uncomment-lines)
-(define-key evil-visual-state-map "gc" 'comment-or-uncomment-region)
-(define-key evil-normal-state-map "gm" 'magit-status)
-
+;;; Leader layer.
 (defun my-evil-edit-dot-emacs ()
   "Edit emacs init file."
   (interactive)
@@ -423,6 +369,13 @@
 (define-key evil-visual-state-map ",x" 'execute-extended-command)
 (define-key evil-normal-state-map ",z" 'recenter-top-bottom)
 
+;;; Generic special.
+(define-key evil-normal-state-map "gcc" 'evilnc-comment-or-uncomment-lines)
+(define-key evil-visual-state-map "gc" 'comment-or-uncomment-region)
+(define-key evil-normal-state-map "gm" 'magit-status)
+
+;;; Special.
+;; Company mode and Yasnippet.
 (evil-define-key 'insert yas-minor-mode-map (kbd "C-s") 'yas-expand)
 (evil-define-key 'insert yas-minor-mode-map (kbd "C-n") 'yas-next-field)
 (evil-define-key 'insert yas-minor-mode-map (kbd "C-p") 'yas-prev-field)
@@ -441,9 +394,7 @@
      (evil-define-key 'insert company-mode-map (kbd "S-<iso-lefttab>") 'company-select-previous)
      (evil-define-key 'insert company-active-map (kbd "C-w") 'evil-delete-backward-word)))
 
-(add-to-list 'load-path "~/etsi/emacs/.emacs.d/kb")
-(require 'ibuffer-kb)
-
+;; Magit.
 (evil-set-initial-state 'magit-mode 'normal)
 (evil-set-initial-state 'magit-status-mode 'normal)
 (evil-set-initial-state 'magit-diff-mode 'normal)
@@ -461,7 +412,11 @@
   "j" 'magit-goto-next-section
   "k" 'magit-goto-previous-section)
 
-;;; Leftover mode activation.
+;; Other.
+(add-to-list 'load-path "~/etsi/emacs/.emacs.d/kb")
+(require 'ibuffer-kb)
+
+;;;; Leftover mode activation.
 (evil-mode t)
 (global-evil-surround-mode t)
 (global-evil-matchit-mode t)
