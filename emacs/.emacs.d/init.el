@@ -293,6 +293,12 @@
 ;;; Basic.
 (setq auto-save-default nil)
 (setq create-lockfiles nil)
+(setq backup-directory-alist `(("." . "~/.backup")))
+(setq backup-by-copying t)
+(setq delete-old-versions t
+      kept-new-versions 6
+      kept-old-versions 2
+      version-control t)
 (setq require-final-newline t)
 
 (setq-default auto-fill-function 'do-auto-fill)
