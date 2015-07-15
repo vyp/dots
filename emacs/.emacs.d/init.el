@@ -406,7 +406,6 @@
 (define-key evil-normal-state-map ",," 'evil-switch-to-windows-last-buffer)
 (define-key evil-normal-state-map ",bd" 'kill-this-buffer)
 (define-key evil-normal-state-map ",ee" 'my-evil-edit-dot-emacs)
-(define-key evil-normal-state-map ",el" 'el-get-lock)
 (define-key evil-normal-state-map ",f" 'fill-paragraph)
 (define-key evil-visual-state-map ",f" 'fill-paragraph)
 (define-key evil-normal-state-map ",l" 'ibuffer)
