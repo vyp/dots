@@ -360,6 +360,7 @@
 (define-key evil-normal-state-map ",ee" 'my-evil-edit-dot-emacs)
 (define-key evil-normal-state-map ",f" 'fill-paragraph)
 (define-key evil-visual-state-map ",f" 'fill-paragraph)
+(define-key evil-normal-state-map ",h" 'help)
 (define-key evil-normal-state-map ",l" 'ibuffer)
 (define-key evil-normal-state-map ",q" 'evil-command-window-ex)
 (define-key evil-visual-state-map ",q" 'evil-command-window-ex)
