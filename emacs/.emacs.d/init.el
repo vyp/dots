@@ -88,12 +88,6 @@
    :fetcher github
    :repo "alpaker/Fill-Column-Indicator"))
 
-;; (quelpa
-;;  '(auto-complete
-;;    :fetcher github
-;;    :repo "auto-complete/auto-complete"
-;;    :files ("*.el" "dict")))
-
 (quelpa
  '(company
    :fetcher github
@@ -154,7 +148,6 @@
 (require 'evil-nerd-commenter)
 (require 'evil-surround)
 (require 'fill-column-indicator)
-; (require 'auto-complete)
 (require 'company)
 (require 'yasnippet)
 
@@ -163,7 +156,6 @@
 
 (setq company-idle-delay 0)
 (add-hook 'after-init-hook 'global-company-mode)
-; (setq ac-use-quick-help nil)
 
 ;;; Appearance.
 (set-face-attribute 'mode-line nil :box nil)
@@ -428,20 +420,6 @@
 (define-key evil-visual-state-map ",x" 'execute-extended-command)
 (define-key evil-normal-state-map ",z" 'recenter-top-bottom)
 
-; (evil-define-key 'insert yas-minor-mode-map (kbd "<tab>") nil)
-; (evil-define-key 'insert yas-minor-mode-map (kbd "TAB") nil)
-
-;; (eval-after-load 'auto-complete
-;;   '(progn
-;;      (define-key evil-insert-state-map (kbd "S-<iso-lefttab>") 'ac-previous)))
-
-;; (defun my-company-yas-expand ()
-;;   "Yasnippet expand even if there is a company mode popup."
-;;   (interactive)
-;;   (evil-normal-state)
-;;   (evil-append)
-;;   (yas-expand))
-
 (evil-define-key 'insert yas-minor-mode-map (kbd "C-s") 'yas-expand)
 (evil-define-key 'insert yas-minor-mode-map (kbd "C-n") 'yas-next-field)
 (evil-define-key 'insert yas-minor-mode-map (kbd "C-p") 'yas-prev-field)
@@ -457,14 +435,8 @@
      (define-key company-active-map "\C-s" nil)
 
      (evil-define-key 'insert company-mode-map [tab] 'company-complete-common-or-cycle)
-     ; (define-key evil-insert-state-map [tab] 'company-select-next)
-     ; (define-key evil-insert-state-map (kbd "TAB") 'company-select-next)
-     ; (define-key evil-insert-state-map (kbd "S-<iso-lefttab>") 'company-select-previous)))
      (evil-define-key 'insert company-mode-map (kbd "S-<iso-lefttab>") 'company-select-previous)
      (evil-define-key 'insert company-active-map (kbd "C-w") 'evil-delete-backward-word)))
-     ;; (evil-define-key 'insert yas-minor-mode-map (kbd "C-s") 'my-company-yas-expand)
-     ; (evil-define-key 'insert yas-minor-mode-map (kbd "C-f") 'yas-next-field)
-     ; (evil-define-key 'insert company-capf-minor-mode-map (kbd "C-w") 'evil-delete-backward-word)))
 
 (add-to-list 'load-path "~/etsi/emacs/.emacs.d/kb")
 (require 'ibuffer-kb)
