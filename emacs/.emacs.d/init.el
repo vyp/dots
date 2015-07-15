@@ -1,5 +1,4 @@
 ;;; Main todos.
-;; TODO: Visually wrap long lines at character instead of word.
 ;; TODO: Map backslash to reverse fFtT.
 ;; TODO: Magit.
 ;; TODO: Filesystem navigation, opening files, managing buffers etc.
