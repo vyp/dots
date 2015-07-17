@@ -94,6 +94,9 @@ while read -r line; do
         SONG="$(awk -F' - ' '{print $2}' <<< ${CURRENT})"
         MOD=""
 
+        # TODO: Check for ".ft"'s too in the track field, so to colour secondary
+        # artists too, differently from the track name itself.
+
         if [[ "${SONG}" == *"("*")"* ]]; then
           MOD="^fg($MOD_CLR)$(sed 's/.*\(([^)]*)\).*/\1/g' <<< ${SONG})"
           SONG="$(cut -d '(' -f1 <<< ${SONG})"
