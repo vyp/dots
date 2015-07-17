@@ -2,6 +2,7 @@
 ;;; Special.
 ;; TODO: Magit.
 ;; TODO: Filesystem navigation, opening files, managing buffers etc.
+;; TODO: Ido.
 ;; TODO: Helm.
 ;; TODO: Terminal/eshell/zsh.
 ;; TODO: Pandoc mode.
@@ -13,6 +14,8 @@
 ;; TODO: Bittorrent client.
 
 ;;; Behaviour.
+;; TODO: Switch to using recipes directly from melpa repo instead of defining
+;; them in config.
 ;; TODO: Expand region.
 ;; TODO: Emmet.
 ;; TODO: Flycheck.
@@ -33,6 +36,7 @@
 
 ;;; Theme.
 ;; TODO: Remove bold references from redbelly.
+;; TODO: Company mode colours.
 ;; TODO: Fix "*Packages*" buffer colours.
 ;; TODO: Visual search and replace colours.
 ;; TODO: Export theme configuration to scheme specific file.
