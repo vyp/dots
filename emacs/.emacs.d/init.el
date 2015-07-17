@@ -30,6 +30,7 @@
 ;; TODO: "Completion List", "Packages", "Compile-log", "Messages" buffers.
 
 ;;; Appearance.
+;; TODO: Report company mode popup bug on right window edge?
 ;; TODO: Disable fill column indicator in magit mode buffers?
 ;; TODO: Remove right fringe in pdf-view-mode.
 ;; TODO: Statusbar colors and customisation.

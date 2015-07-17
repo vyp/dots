@@ -1,5 +1,7 @@
 #!/bin/env bash
 
+# TODO: Rename `schemes` directory to `themes`?
+
 cd ~/etsi
 
 DIR="schemes/*/"
