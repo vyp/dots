@@ -106,3 +106,15 @@
     animation: none !important;
   }
 }
+
+@document url-prefix(https://github.com/) {
+  div.new-user-avatar-cta {
+    display: none !important;
+  }
+}
+
+@-moz-document url-prefix(https://github.com/) {
+  div.new-user-avatar-cta {
+    display: none !important;
+  }
+}
