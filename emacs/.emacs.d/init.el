@@ -340,27 +340,10 @@
      (evil-define-key 'insert company-mode-map (kbd "S-<iso-lefttab>") 'company-select-previous)
      (evil-define-key 'insert company-active-map (kbd "C-w") 'evil-delete-backward-word)))
 
-;; Magit.
-(evil-set-initial-state 'magit-mode 'normal)
-(evil-set-initial-state 'magit-status-mode 'normal)
-(evil-set-initial-state 'magit-diff-mode 'normal)
-(evil-set-initial-state 'magit-log-mode 'normal)
-
-(evil-define-key 'normal magit-mode-map
-  "j" 'magit-goto-next-section
-  "k" 'magit-goto-previous-section)
-
-(evil-define-key 'normal magit-log-mode-map
-  "j" 'magit-goto-next-section
-  "k" 'magit-goto-previous-section)
-
-(evil-define-key 'normal magit-diff-mode-map
-  "j" 'magit-goto-next-section
-  "k" 'magit-goto-previous-section)
-
 ;; Other.
 (add-to-list 'load-path "~/etsi/emacs/.emacs.d/kb")
 (require 'ibuffer-kb)
+(require 'magit-kb)
 
 ;;;; Leftover mode activation.
 (evil-mode t)
