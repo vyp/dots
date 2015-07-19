@@ -21,6 +21,7 @@
 ;; TODO: Multiple cursors.
 ;; TODO: Highlight trailing newlines.
 ;; TODO: Highlight TODOs.
+;; TODO: Transposing.
 ;; TODO: wellle/targets.vim ?
 
 ;;; Keybindings.
@@ -88,10 +89,10 @@
 (quelpa 'pdf-tools)
 (quelpa 'magit)
 
-(quelpa
- '(redbelly-theme
-   :fetcher github
-   :repo "vyp/redbelly"))
+;; (quelpa
+;;  '(redbelly-theme
+;;    :fetcher github
+;;    :repo "vyp/redbelly"))
 
 (require 'evil)
 (require 'evil-matchit)
@@ -178,6 +179,7 @@
    ((t (:weight, 'normal)))))
 
 ;;;; Theme.
+(add-to-list 'custom-theme-load-path "~/hak/redbelly")
 (load-theme 'redbelly t)
 
 ;;;; Basic.
