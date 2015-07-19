@@ -14,8 +14,6 @@
 ;; TODO: Bittorrent client.
 
 ;;; Behaviour.
-;; TODO: Switch to using recipes directly from melpa repo instead of defining
-;; them in config.
 ;; TODO: Expand region.
 ;; TODO: Emmet.
 ;; TODO: Flycheck.
@@ -44,6 +42,8 @@
 
 ;;; Other.
 ;; TODO: Learn elisp.
+;; TODO: Completely switch back to el-get instead of quelpa:
+;; https://github.com/milkypostman/melpa/issues/2944
 
 ;;;; Packages.
 (setq evil-want-C-u-scroll t)
@@ -70,41 +70,14 @@
     (eval-buffer)))
 
 ;; So that quelpa updates package-build too when doing `quelpa-upgrade`.
-(quelpa
- '(package-build
-   :fetcher github
-   :repo "milkypostman/melpa"
-   :files ("package-build.el")))
+(quelpa 'package-build)
 
-(quelpa
- '(evil
-   :fetcher hg
-   :url "https://bitbucket.org/lyro/evil"))
-
-(quelpa
- '(evil-matchit
-   :fetcher github
-   :repo "redguardtoo/evil-matchit"))
-
-(quelpa
- '(evil-nerd-commenter
-   :fetcher github
-   :repo "redguardtoo/evil-nerd-commenter"))
-
-(quelpa
- '(evil-surround
-   :fetcher github
-   :repo "timcharper/evil-surround"))
-
-(quelpa
- '(fill-column-indicator
-   :fetcher github
-   :repo "alpaker/Fill-Column-Indicator"))
-
-(quelpa
- '(company
-   :fetcher github
-   :repo "company-mode/company-mode"))
+(quelpa 'evil)
+(quelpa 'evil-matchit)
+(quelpa 'evil-nerd-commenter)
+(quelpa 'evil-surround)
+(quelpa 'fill-column-indicator)
+(quelpa 'company)
 
 (quelpa
  '(yasnippet
@@ -112,44 +85,8 @@
    :repo "capitaomorte/yasnippet"
    :files ("yasnippet.el")))
 
-(quelpa
- '(pdf-tools
-   :fetcher github
-   :repo "politza/pdf-tools"
-   :files ("lisp/*.el"
-           "README"
-           ("build" "Makefile")
-           ("build" "server")
-           (:exclude "lisp/tablist.el"
-                     "lisp/tablist-filter.el"))))
-
-(quelpa
- '(magit
-   :fetcher github
-   :repo "magit/magit"
-   :files ("lisp/magit-utils.el"
-           "lisp/magit-section.el"
-           "lisp/magit-git.el"
-           "lisp/magit-mode.el"
-           "lisp/magit-process.el"
-           "lisp/magit-core.el"
-           "lisp/magit-diff.el"
-           "lisp/magit-wip.el"
-           "lisp/magit-apply.el"
-           "lisp/magit-log.el"
-           "lisp/magit.el"
-           "lisp/magit-sequence.el"
-           "lisp/magit-commit.el"
-           "lisp/magit-remote.el"
-           "lisp/magit-bisect.el"
-           "lisp/magit-stash.el"
-           "lisp/magit-blame.el"
-           "lisp/magit-ediff.el"
-           "lisp/magit-extras.el"
-           "lisp/git-rebase.el"
-           "Documentation/magit.texi"
-           "Documentation/AUTHORS.md"
-           "COPYING")))
+(quelpa 'pdf-tools)
+(quelpa 'magit)
 
 (quelpa
  '(redbelly-theme
