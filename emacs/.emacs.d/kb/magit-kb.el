@@ -170,16 +170,16 @@
        "x"  'magit-stash-drop)
 
      (evil-define-key 'normal magit-status-mode-map
-       "jz" 'magit-jump-to-stashes
-       "jt" 'magit-jump-to-tracked
-       "jn" 'magit-jump-to-untracked
-       "ju" 'magit-jump-to-unstaged
-       "js" 'magit-jump-to-staged
-       "jf" 'magit-jump-to-unpulled
-       "jp" 'magit-jump-to-unpushed)
+       "Jz" 'magit-jump-to-stashes
+       "Jt" 'magit-jump-to-tracked
+       "Jn" 'magit-jump-to-untracked
+       "Ju" 'magit-jump-to-unstaged
+       "Js" 'magit-jump-to-staged
+       "Jf" 'magit-jump-to-unpulled
+       "Jp" 'magit-jump-to-unpushed)
 
      (evil-define-key 'normal magit-untracked-section-map
-       "k"  'magit-discard
+       "x"  'magit-discard
        "s"  'magit-stage)
 
      (evil-define-key 'normal magit-refs-mode-map
@@ -187,16 +187,16 @@
 
      (evil-define-key 'normal magit-branch-section-map
        "\r" 'magit-visit-ref
-       "k"  'magit-branch-delete
+       "x"  'magit-branch-delete
        "R"  'magit-branch-rename)
 
      (evil-define-key 'normal magit-remote-section-map
-       "k"  'magit-remote-remove
+       "x"  'magit-remote-remove
        "R"  'magit-remote-rename)
 
      (evil-define-key 'normal magit-tag-section-map
        "\r" 'magit-visit-ref
-       "k"  'magit-tag-delete)
+       "x"  'magit-tag-delete)
 
      (evil-define-key 'normal git-commit-mode-map
        ; (kbd "M-p")     'git-commit-prev-message
