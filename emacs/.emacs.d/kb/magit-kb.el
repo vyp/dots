@@ -152,22 +152,22 @@
        "q"        'magit-log-select-quit)
        ; "\C-c\C-k" 'magit-log-select-quit)
 
-     ; (evil-define-key 'normal magit-commit-section-map
-     ;   "\r" 'magit-show-commit
-     ;   "a"  'magit-cherry-apply
-     ;   "v"  'magit-revert-no-commit)
+     (evil-define-key 'normal magit-commit-section-map
+       "\r" 'magit-show-commit
+       "a"  'magit-cherry-apply
+       ",v"  'magit-revert-no-commit)
 
-     ; (evil-define-key 'normal magit-module-commit-section-map
-     ;   "\r" 'magit-show-commit)
+     (evil-define-key 'normal magit-module-commit-section-map
+       "\r" 'magit-show-commit)
 
      (evil-define-key 'normal magit-stashes-section-map
-       "k"  'magit-stash-clear)
+       "x"  'magit-stash-clear)
 
      (evil-define-key 'normal magit-stash-section-map
        "\r" 'magit-stash-show
        "a"  'magit-stash-apply
-       "A"  'magit-stash-pop
-       "k"  'magit-stash-drop)
+       "p"  'magit-stash-pop
+       "x"  'magit-stash-drop)
 
      (evil-define-key 'normal magit-status-mode-map
        "jz" 'magit-jump-to-stashes
