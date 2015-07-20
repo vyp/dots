@@ -42,7 +42,7 @@
        "c" 'magit-commit-popup
        "d" 'magit-diff-popup
        "D" 'magit-diff-refresh-popup
-       "\C-c" 'magit-dispatch-popup
+       ",." 'magit-dispatch-popup
        ; "e" 'magit-ediff-dwim
        ; "E" 'magit-ediff-popup
        ",f" 'magit-fetch-popup
@@ -84,8 +84,8 @@
 
      (evil-define-key 'normal magit-blame-mode-map
        "\r" 'magit-show-commit
-       "\s" 'magit-diff-show-or-scroll-up
-       (kbd "S-SPC") 'magit-diff-show-or-scroll-down
+       (kbd "S-SPC") 'magit-diff-show-or-scroll-up
+       "\s" 'magit-diff-show-or-scroll-down
        ",b"  'magit-blame-popup
        "\C-n"  'magit-blame-next-chunk
        "\C-f"  'magit-blame-next-chunk-same-commit
@@ -96,12 +96,12 @@
        ",ch" 'magit-blame-copy-hash)
 
      (evil-define-key 'normal magit-diff-mode-map
-       "\C-c\C-d" 'magit-diff-while-committing
-       "\C-c\C-b" 'magit-go-backward
-       "\C-c\C-f" 'magit-go-forward
-       "\s" 'scroll-up
-       "\d" 'scroll-down
-       "j" 'magit-jump-to-diffstat-or-diff)
+       "\C-c" 'magit-diff-while-committing
+       "\C-s" 'magit-go-backward
+       "\C-f" 'magit-go-forward
+       "\s" 'scroll-down
+       (kbd "S-SPC") 'scroll-up
+       "J" 'magit-jump-to-diffstat-or-diff)
 
      ; (evil-define-key 'normal magit-file-section-map
      ;   [C-return] 'magit-diff-visit-file-worktree
