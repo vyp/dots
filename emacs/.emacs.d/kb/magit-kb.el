@@ -214,24 +214,18 @@
      (evil-define-key 'normal git-rebase-mode-map
        [remap undo] 'git-rebase-undo
        (kbd "RET") 'git-rebase-show-commit
-       (kbd "SPC") 'magit-diff-show-or-scroll-up
-       (kbd "x")   'git-rebase-exec
-       (kbd "c")   'git-rebase-pick
+       (kbd "S-SPC") 'magit-diff-show-or-scroll-up
+       (kbd "SPC") 'magit-diff-show-or-scroll-down
+       (kbd "c")   'git-rebase-exec
+       (kbd "p")   'git-rebase-pick
        (kbd "r")   'git-rebase-reword
-       (kbd "w")   'git-rebase-reword
-       (kbd "e")   'git-rebase-edit
+       (kbd ",ed")   'git-rebase-edit
        (kbd "s")   'git-rebase-squash
-       (kbd "f")   'git-rebase-fixup
-       (kbd "y")   'git-rebase-insert
-       (kbd "k")   'git-rebase-kill-line
-       (kbd "C-k") 'git-rebase-kill-line
-       (kbd "p")   'git-rebase-backward-line
-       (kbd "n")   'forward-line
-       ; (kbd "M-p")      'git-rebase-move-line-up
-       ; (kbd "M-n")      'git-rebase-move-line-down
-       (kbd "M-<up>")   'git-rebase-move-line-up
-       (kbd "M-<down>") 'git-rebase-move-line-down
-       (kbd "C-x C-t")  'git-rebase-move-line-up)
+       (kbd ",f")   'git-rebase-fixup
+       (kbd "i")   'git-rebase-insert
+       (kbd "x")   'git-rebase-kill-line
+       (kbd "K")      'git-rebase-move-line-up
+       (kbd "J")      'git-rebase-move-line-down)
 
      (evil-define-key 'normal with-editor-mode-map
        "\C-c\C-c"                   'with-editor-finish
