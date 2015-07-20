@@ -199,17 +199,17 @@
        "x"  'magit-tag-delete)
 
      (evil-define-key 'normal git-commit-mode-map
-       ; (kbd "M-p")     'git-commit-prev-message
-       ; (kbd "M-n")     'git-commit-next-message
-       (kbd "C-c C-d") 'magit-diff-while-committing
-       (kbd "C-c C-s") 'git-commit-signoff
-       (kbd "C-c C-a") 'git-commit-ack
-       (kbd "C-c C-t") 'git-commit-test
-       (kbd "C-c C-r") 'git-commit-review
-       (kbd "C-c C-o") 'git-commit-cc
-       (kbd "C-c C-p") 'git-commit-reported
-       (kbd "C-c C-i") 'git-commit-suggested
-       (kbd "C-c M-s") 'git-commit-save-message)
+       (kbd "C-p")     'git-commit-prev-message
+       (kbd "C-n")     'git-commit-next-message
+       (kbd "C-c") 'magit-diff-while-committing
+       (kbd "C-s") 'git-commit-signoff
+       (kbd "C-a") 'git-commit-ack
+       (kbd "C-t") 'git-commit-test
+       (kbd "C-r") 'git-commit-review
+       ",c" 'git-commit-cc)
+       ; (kbd "C-c C-p") 'git-commit-reported
+       ; (kbd "C-c C-i") 'git-commit-suggested
+       ; (kbd "C-c M-s") 'git-commit-save-message)
 
      (evil-define-key 'normal git-rebase-mode-map
        [remap undo] 'git-rebase-undo
