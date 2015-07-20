@@ -64,11 +64,11 @@
        "s" 'magit-stage-file
        "S" 'magit-stage-modified
        "u" 'magit-unstage-file
-       "U" 'magit-reset-index
+       ",ri" 'magit-reset-index
        ; "V" 'magit-revert-popup
        ; "w" 'magit-am-popup
        ; "W" 'magit-patch-popup
-       "x" 'magit-reset
+       ",rs" 'magit-reset
        ; "y" 'magit-show-refs-popup
        ; "Y" 'magit-cherry
        "z" 'magit-stash-popup
@@ -103,16 +103,16 @@
        (kbd "S-SPC") 'scroll-up
        "J" 'magit-jump-to-diffstat-or-diff)
 
-     ; (evil-define-key 'normal magit-file-section-map
-     ;   [C-return] 'magit-diff-visit-file-worktree
-     ;   "\r" 'magit-diff-visit-file
-     ;   "a"  'magit-apply
-     ;   "k"  'magit-discard
-     ;   "K"  'magit-file-untrack
-     ;   "R"  'magit-file-rename
-     ;   "s"  'magit-stage
-     ;   "u"  'magit-unstage
-     ;   "v"  'magit-reverse)
+     (evil-define-key 'normal magit-file-section-map
+       [C-return] 'magit-diff-visit-file-worktree
+       "\r" 'magit-diff-visit-file
+       "a"  'magit-apply
+       "x"  'magit-discard
+       "U"  'magit-file-untrack
+       "R"  'magit-file-rename
+       "s"  'magit-stage
+       "u"  'magit-unstage
+       ",v"  'magit-reverse)
 
      ; (evil-define-key 'normal magit-hunk-section-map
      ;   [C-return] 'magit-diff-visit-file-worktree
