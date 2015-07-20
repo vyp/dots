@@ -138,8 +138,8 @@
        ",v"  'magit-reverse)
 
      (evil-define-key 'normal magit-log-mode-map
-       "\C-c\C-b" 'magit-go-backward
-       "\C-c\C-f" 'magit-go-forward
+       "\C-s" 'magit-go-backward
+       "\C-f" 'magit-go-forward
        "+" 'magit-log-show-more-commits
        "q" 'magit-log-bury-buffer)
 
@@ -147,7 +147,7 @@
        ; "\C-c\C-b" 'undefined
        ; "\C-c\C-f" 'undefined
        ; "."        'magit-log-select-pick
-       "e"        'magit-log-select-pick
+       "\s"        'magit-log-select-pick
        ; "\C-c\C-c" 'magit-log-select-pick
        "q"        'magit-log-select-quit)
        ; "\C-c\C-k" 'magit-log-select-quit)
