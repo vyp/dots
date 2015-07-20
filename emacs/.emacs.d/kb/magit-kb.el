@@ -12,13 +12,13 @@
      (evil-set-initial-state 'with-editor-mode 'normal)
 
      (evil-define-key 'normal magit-mode-map
-       "\t"    'magit-section-toggle
-       [C-tab] 'magit-section-cycle
-       [M-tab] 'magit-section-cycle-diffs
-       [s-tab] 'magit-section-cycle-global
+       "\s"    'magit-section-toggle
+       (kbd "C-SPC") 'magit-section-cycle
+       (kbd "M-SPC") 'magit-section-cycle-diffs
+       (kbd "S-SPC") 'magit-section-cycle-global
        "^"    'magit-section-up
-       "n"    'magit-section-forward
-       "p"    'magit-section-backward
+       "J"    'magit-section-forward
+       "K"    'magit-section-backward
        ; "\M-n" 'magit-section-forward-sibling
        ; "\M-p" 'magit-section-backward-sibling
        "+"    'magit-diff-more-context
@@ -37,40 +37,37 @@
        "q" 'magit-mode-bury-buffer
        "$" 'magit-process
        "A" 'magit-cherry-pick-popup
-       "b" 'magit-branch-popup
-       "B" 'magit-bisect-popup
+       ; "b" 'magit-branch-popup
+       ; "B" 'magit-bisect-popup
        "c" 'magit-commit-popup
        "d" 'magit-diff-popup
        "D" 'magit-diff-refresh-popup
-       "h" 'magit-dispatch-popup
-       "?" 'magit-dispatch-popup
-       "\C-c\C-c" 'magit-dispatch-popup
-       "\C-c\C-e" 'magit-dispatch-popup
-       "e" 'magit-ediff-dwim
-       "E" 'magit-ediff-popup
-       "f" 'magit-fetch-popup
-       "F" 'magit-pull-popup
+       "\C-c" 'magit-dispatch-popup
+       ; "e" 'magit-ediff-dwim
+       ; "E" 'magit-ediff-popup
+       ; "f" 'magit-fetch-popup
+       "p" 'magit-pull-popup
        "i" 'magit-gitignore
        "I" 'magit-gitignore-locally
-       "l" 'magit-log-popup
-       "L" 'magit-toggle-margin
+       "o" 'magit-log-popup
+       ; "L" 'magit-toggle-margin
        "m" 'magit-merge-popup
-       "M" 'magit-remote-popup
+       "R" 'magit-remote-popup
        "o" 'magit-submodule-popup
        "P" 'magit-push-popup
        "r" 'magit-rebase-popup
-       "t" 'magit-tag-popup
-       "T" 'magit-notes-popup
-       [M-return] 'magit-dired-jump
-       "\s"       'magit-diff-show-or-scroll-up
-       "\d"       'magit-diff-show-or-scroll-down
+       ",t" 'magit-tag-popup
+       ; "T" 'magit-notes-popup
+       ; [M-return] 'magit-dired-jump
+       ; "\s"       'magit-diff-show-or-scroll-up
+       ; "\d"       'magit-diff-show-or-scroll-down
        "s" 'magit-stage-file
        "S" 'magit-stage-modified
        "u" 'magit-unstage-file
        "U" 'magit-reset-index
-       "V" 'magit-revert-popup
-       "w" 'magit-am-popup
-       "W" 'magit-patch-popup
+       ; "V" 'magit-revert-popup
+       ; "w" 'magit-am-popup
+       ; "W" 'magit-patch-popup
        "x" 'magit-reset
        "y" 'magit-show-refs-popup
        "Y" 'magit-cherry
@@ -78,10 +75,10 @@
        "Z" 'magit-stash-popup
        ":" 'magit-git-command
        "!" 'magit-run-popup
-       "\C-xa"  'magit-add-change-log-entry
-       "\C-x4a" 'magit-add-change-log-entry-other-window
-       "\C-w"   'magit-copy-as-kill
-       "\M-w"   'magit-copy-buffer-thing-as-kill
+       ; "\C-xa"  'magit-add-change-log-entry
+       ; "\C-x4a" 'magit-add-change-log-entry-other-window
+       ; "\C-w"   'magit-copy-as-kill
+       ; "\M-w"   'magit-copy-buffer-thing-as-kill
        [remap evil-previous-line] 'evil-previous-visual-line
        [remap evil-next-line] 'evil-next-visual-line)
 

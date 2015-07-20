@@ -17,6 +17,7 @@
 ;; TODO: Expand region.
 ;; TODO: Emmet.
 ;; TODO: Flycheck.
+;; TODO: Deft.
 ;; TODO: Paredit.
 ;; TODO: Multiple cursors.
 ;; TODO: Highlight trailing newlines.
