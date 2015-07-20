@@ -114,15 +114,15 @@
        "u"  'magit-unstage
        ",v"  'magit-reverse)
 
-     ; (evil-define-key 'normal magit-hunk-section-map
-     ;   [C-return] 'magit-diff-visit-file-worktree
-     ;   "\r" 'magit-diff-visit-file
-     ;   "a"  'magit-apply
-     ;   "C"  'magit-commit-add-log
-     ;   "k"  'magit-discard
-     ;   "s"  'magit-stage
-     ;   "u"  'magit-unstage
-     ;   "v"  'magit-reverse)
+     (evil-define-key 'normal magit-hunk-section-map
+       [C-return] 'magit-diff-visit-file-worktree
+       "\r" 'magit-diff-visit-file
+       "a"  'magit-apply
+       "C"  'magit-commit-add-log
+       "x"  'magit-discard
+       "s"  'magit-stage
+       "u"  'magit-unstage
+       ",v"  'magit-reverse)
 
      ; (evil-define-key 'normal magit-unstaged-section-map
      ;   "\r" 'magit-diff-unstaged
