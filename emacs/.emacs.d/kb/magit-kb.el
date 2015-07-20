@@ -130,12 +130,12 @@
        "s"  'magit-stage
        "u"  'magit-unstage)
 
-     ; (evil-define-key 'normal magit-staged-section-map
-     ;   "\r" 'magit-diff-unstaged
-     ;   "k"  'magit-discard
-     ;   "s"  'magit-stage
-     ;   "u"  'magit-unstage
-     ;   "v"  'magit-reverse)
+     (evil-define-key 'normal magit-staged-section-map
+       "\r" 'magit-diff-unstaged
+       "x"  'magit-discard
+       "s"  'magit-stage
+       "u"  'magit-unstage
+       ",v"  'magit-reverse)
 
      (evil-define-key 'normal magit-log-mode-map
        "\C-c\C-b" 'magit-go-backward
