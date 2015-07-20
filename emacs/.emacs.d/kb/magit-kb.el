@@ -228,9 +228,9 @@
        (kbd "J")      'git-rebase-move-line-down)
 
      (evil-define-key 'normal with-editor-mode-map
-       "\C-c\C-c"                   'with-editor-finish
+       "\C-f"                       'with-editor-finish
        [remap server-edit]          'with-editor-finish
-       "\C-c\C-k"                   'with-editor-cancel
+       "\C-c"                       'with-editor-cancel
        [remap kill-buffer]          'with-editor-cancel
        [remap ido-kill-buffer]      'with-editor-cancel
        [remap iswitchb-kill-buffer] 'with-editor-cancel)))
