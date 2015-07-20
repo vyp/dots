@@ -16,11 +16,11 @@
        (kbd "C-SPC") 'magit-section-cycle
        (kbd "M-SPC") 'magit-section-cycle-diffs
        (kbd "S-SPC") 'magit-section-cycle-global
-       "^"    'magit-section-up
-       "J"    'magit-section-forward
-       "K"    'magit-section-backward
-       ; "\M-n" 'magit-section-forward-sibling
-       ; "\M-p" 'magit-section-backward-sibling
+       "K"    'magit-section-up
+       "\C-n"    'magit-section-forward
+       "\C-p"    'magit-section-backward
+       "\C-f" 'magit-section-forward-sibling
+       "\C-s" 'magit-section-backward-sibling
        "+"    'magit-diff-more-context
        "-"    'magit-diff-less-context
        "0"    'magit-diff-default-context
@@ -28,16 +28,16 @@
        "2"    'magit-section-show-level-2
        "3"    'magit-section-show-level-3
        "4"    'magit-section-show-level-4
-       "\M-1" 'magit-section-show-level-1-all
-       "\M-2" 'magit-section-show-level-2-all
-       "\M-3" 'magit-section-show-level-3-all
-       "\M-4" 'magit-section-show-level-4-all
+       ; "\M-1" 'magit-section-show-level-1-all
+       ; "\M-2" 'magit-section-show-level-2-all
+       ; "\M-3" 'magit-section-show-level-3-all
+       ; "\M-4" 'magit-section-show-level-4-all
        "g" 'magit-refresh
        "G" 'magit-refresh-all
        "q" 'magit-mode-bury-buffer
        "$" 'magit-process
        "A" 'magit-cherry-pick-popup
-       ; "b" 'magit-branch-popup
+       ",b" 'magit-branch-popup
        ; "B" 'magit-bisect-popup
        "c" 'magit-commit-popup
        "d" 'magit-diff-popup
@@ -45,7 +45,7 @@
        "\C-c" 'magit-dispatch-popup
        ; "e" 'magit-ediff-dwim
        ; "E" 'magit-ediff-popup
-       ; "f" 'magit-fetch-popup
+       ",f" 'magit-fetch-popup
        "p" 'magit-pull-popup
        "i" 'magit-gitignore
        "I" 'magit-gitignore-locally
@@ -53,14 +53,14 @@
        ; "L" 'magit-toggle-margin
        "m" 'magit-merge-popup
        "R" 'magit-remote-popup
-       "o" 'magit-submodule-popup
+       ",s" 'magit-submodule-popup
        "P" 'magit-push-popup
        "r" 'magit-rebase-popup
        ",t" 'magit-tag-popup
        ; "T" 'magit-notes-popup
        ; [M-return] 'magit-dired-jump
-       ; "\s"       'magit-diff-show-or-scroll-up
-       ; "\d"       'magit-diff-show-or-scroll-down
+       "\C-," 'magit-diff-show-or-scroll-up
+       "\C-." 'magit-diff-show-or-scroll-down
        "s" 'magit-stage-file
        "S" 'magit-stage-modified
        "u" 'magit-unstage-file
@@ -69,8 +69,8 @@
        ; "w" 'magit-am-popup
        ; "W" 'magit-patch-popup
        "x" 'magit-reset
-       "y" 'magit-show-refs-popup
-       "Y" 'magit-cherry
+       ; "y" 'magit-show-refs-popup
+       ; "Y" 'magit-cherry
        "z" 'magit-stash-popup
        "Z" 'magit-stash-popup
        ":" 'magit-git-command
@@ -85,15 +85,15 @@
      (evil-define-key 'normal magit-blame-mode-map
        "\r" 'magit-show-commit
        "\s" 'magit-diff-show-or-scroll-up
-       "\d" 'magit-diff-show-or-scroll-down
-       "b"  'magit-blame-popup
-       "n"  'magit-blame-next-chunk
-       "N"  'magit-blame-next-chunk-same-commit
-       "p"  'magit-blame-previous-chunk
-       "P"  'magit-blame-previous-chunk-same-commit
+       (kbd "S-SPC") 'magit-diff-show-or-scroll-down
+       ",b"  'magit-blame-popup
+       "\C-n"  'magit-blame-next-chunk
+       "\C-f"  'magit-blame-next-chunk-same-commit
+       "\C-p"  'magit-blame-previous-chunk
+       "\C-s"  'magit-blame-previous-chunk-same-commit
        "q"  'magit-blame-quit
-       "t"  'magit-blame-toggle-headings
-       "\M-w" 'magit-blame-copy-hash)
+       ",t"  'magit-blame-toggle-headings
+       ",ch" 'magit-blame-copy-hash)
 
      (evil-define-key 'normal magit-diff-mode-map
        "\C-c\C-d" 'magit-diff-while-committing
