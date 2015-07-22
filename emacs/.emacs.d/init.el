@@ -102,6 +102,7 @@
 (require 'fill-column-indicator)
 (require 'company)
 (require 'yasnippet)
+; (require 'magit)
 
 (require 'paren)
 (require 'ibuffer)
@@ -344,7 +345,7 @@
 ;; Other.
 (add-to-list 'load-path "~/etsi/emacs/.emacs.d/kb")
 (require 'ibuffer-kb)
-(require 'magit-kb)
+; (require 'magit-kb)
 
 ;;;; Leftover mode activation.
 (evil-mode t)
