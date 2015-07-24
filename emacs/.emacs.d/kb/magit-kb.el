@@ -268,6 +268,19 @@
        "\C-c"                       'with-editor-cancel
        [remap kill-buffer]          'with-editor-cancel
        [remap ido-kill-buffer]      'with-editor-cancel
-       [remap iswitchb-kill-buffer] 'with-editor-cancel)))
+       [remap iswitchb-kill-buffer] 'with-editor-cancel)
+
+     (define-key magit-diff-mode-map "j" nil)
+     (define-key magit-file-section-map "k" nil)
+     (define-key magit-file-section-map "x" 'magit-discard)
+     (define-key magit-hunk-section-map "k" nil)
+     (define-key magit-unstaged-section-map "k" nil)
+     (define-key magit-staged-section-map "k" nil)
+     (define-key magit-stash-section-map "k" nil)
+     (define-key magit-stashes-section-map "k" nil)
+     (define-key magit-untracked-section-map "k" nil)
+     (define-key magit-branch-section-map "k" nil)
+     (define-key magit-remote-section-map "k" nil)
+     (define-key magit-tag-section-map "k" nil)))
 
 (provide 'magit-kb)

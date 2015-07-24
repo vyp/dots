@@ -51,6 +51,8 @@
 (setq evil-want-C-u-scroll t)
 (setq evil-cross-lines t)
 (setq evil-shift-width 2)
+(setq evil-split-window-below t)
+(setq evil-vsplit-window-right t)
 
 (add-hook 'python-mode-hook
   (function (lambda ()
@@ -102,7 +104,7 @@
 (require 'fill-column-indicator)
 (require 'company)
 (require 'yasnippet)
-; (require 'magit)
+(require 'magit)
 
 (require 'paren)
 (require 'ibuffer)
@@ -345,7 +347,7 @@
 ;; Other.
 (add-to-list 'load-path "~/etsi/emacs/.emacs.d/kb")
 (require 'ibuffer-kb)
-; (require 'magit-kb)
+(require 'magit-kb)
 
 ;;;; Leftover mode activation.
 (evil-mode t)
