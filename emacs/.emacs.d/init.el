@@ -26,6 +26,7 @@
 ;; TODO: wellle/targets.vim ?
 
 ;;; Keybindings.
+;; TODO: Allow `gg` in ibuffer by removing `g` for refresh.
 ;; TODO: pdf-view-mode.
 ;; TODO: "Completion List", "Packages", "Compile-log", "Messages" buffers.
 
@@ -273,8 +274,8 @@
 (evil-define-key 'normal evil-command-window-mode-map [escape] 'my-exit-evil-command-window)
 
 ;; Paves the way for "," to be used as 'leader'.
-(define-key evil-normal-state-map "\\" 'evil-repeat-find-char-reverse)
-(define-key evil-visual-state-map "\\" 'evil-repeat-find-char-reverse)
+; (define-key evil-normal-state-map "\\" 'evil-repeat-find-char-reverse)
+; (define-key evil-visual-state-map "\\" 'evil-repeat-find-char-reverse)
 
 (define-key evil-normal-state-map (kbd "C-h") 'evil-window-left)
 (define-key evil-normal-state-map (kbd "C-j") 'evil-window-down)
@@ -304,20 +305,20 @@
   (interactive)
   (evil-edit "~/etsi/emacs/.emacs.d/init.el"))
 
-(define-key evil-normal-state-map ",," 'evil-switch-to-windows-last-buffer)
-(define-key evil-normal-state-map ",d" 'kill-this-buffer)
-(define-key evil-normal-state-map ",ee" 'my-evil-edit-dot-emacs)
-(define-key evil-normal-state-map ",f" 'fill-paragraph)
-(define-key evil-visual-state-map ",f" 'fill-paragraph)
-(define-key evil-normal-state-map ",l" 'ibuffer)
-(define-key evil-normal-state-map ",m" 'help)
-(define-key evil-normal-state-map ",q" 'evil-command-window-ex)
-(define-key evil-visual-state-map ",q" 'evil-command-window-ex)
-(define-key evil-normal-state-map ",we" 'balance-windows)
-(define-key evil-normal-state-map ",wo" 'delete-other-windows)
-(define-key evil-normal-state-map ",x" 'execute-extended-command)
-(define-key evil-visual-state-map ",x" 'execute-extended-command)
-(define-key evil-normal-state-map ",z" 'recenter-top-bottom)
+(define-key evil-normal-state-map "\s," 'evil-switch-to-windows-last-buffer)
+(define-key evil-normal-state-map "\sd" 'kill-this-buffer)
+(define-key evil-normal-state-map "\see" 'my-evil-edit-dot-emacs)
+(define-key evil-normal-state-map "\sf" 'fill-paragraph)
+(define-key evil-visual-state-map "\sf" 'fill-paragraph)
+(define-key evil-normal-state-map "\sl" 'ibuffer)
+(define-key evil-normal-state-map "\sm" 'help)
+(define-key evil-normal-state-map "\sq" 'evil-command-window-ex)
+(define-key evil-visual-state-map "\sq" 'evil-command-window-ex)
+(define-key evil-normal-state-map "\swe" 'balance-windows)
+(define-key evil-normal-state-map "\swo" 'delete-other-windows)
+(define-key evil-normal-state-map "\sx" 'execute-extended-command)
+(define-key evil-visual-state-map "\sx" 'execute-extended-command)
+(define-key evil-normal-state-map "\sz" 'recenter-top-bottom)
 
 ;;; Generic special.
 (define-key evil-normal-state-map "gcc" 'evilnc-comment-or-uncomment-lines)
@@ -347,7 +348,7 @@
 ;; Other.
 (add-to-list 'load-path "~/etsi/emacs/.emacs.d/kb")
 (require 'ibuffer-kb)
-(require 'magit-kb)
+; (require 'magit-kb)
 
 ;;;; Leftover mode activation.
 (evil-mode t)
