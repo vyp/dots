@@ -23,6 +23,7 @@
 ;; TODO: Highlight trailing newlines.
 ;; TODO: Highlight TODOs.
 ;; TODO: Transposing.
+;; TODO: Javascript mode 2 space indentation instead of 4 space.
 ;; TODO: wellle/targets.vim ?
 
 ;;; Keybindings.
@@ -273,9 +274,8 @@
 (global-set-key [escape] 'evil-exit-emacs-state)
 (evil-define-key 'normal evil-command-window-mode-map [escape] 'my-exit-evil-command-window)
 
-;; Paves the way for "," to be used as 'leader'.
-; (define-key evil-normal-state-map "\\" 'evil-repeat-find-char-reverse)
-; (define-key evil-visual-state-map "\\" 'evil-repeat-find-char-reverse)
+(define-key evil-normal-state-map "\\" 'evil-switch-to-windows-last-buffer)
+(define-key evil-visual-state-map "\\" 'evil-switch-to-windows-last-buffer)
 
 (define-key evil-normal-state-map (kbd "C-h") 'evil-window-left)
 (define-key evil-normal-state-map (kbd "C-j") 'evil-window-down)
@@ -294,8 +294,8 @@
   (interactive)
   (evil-yank (point) (point-at-eol)))
 
-(define-key evil-normal-state-map [tab] 'evil-ex)
-(define-key evil-visual-state-map [tab] 'evil-ex)
+(define-key evil-normal-state-map "g;" 'evil-ex)
+(define-key evil-visual-state-map "g;" 'evil-ex)
 (define-key evil-normal-state-map "gs" 'evil-write)
 (define-key evil-normal-state-map "Y" 'my-evil-yank-to-end-of-line)
 
@@ -305,7 +305,7 @@
   (interactive)
   (evil-edit "~/etsi/emacs/.emacs.d/init.el"))
 
-(define-key evil-normal-state-map "\s," 'evil-switch-to-windows-last-buffer)
+(define-key evil-normal-state-map "\s\s" 'recenter-top-bottom)
 (define-key evil-normal-state-map "\sd" 'kill-this-buffer)
 (define-key evil-normal-state-map "\see" 'my-evil-edit-dot-emacs)
 (define-key evil-normal-state-map "\sf" 'fill-paragraph)
@@ -318,7 +318,6 @@
 (define-key evil-normal-state-map "\swo" 'delete-other-windows)
 (define-key evil-normal-state-map "\sx" 'execute-extended-command)
 (define-key evil-visual-state-map "\sx" 'execute-extended-command)
-(define-key evil-normal-state-map "\sz" 'recenter-top-bottom)
 
 ;;; Generic special.
 (define-key evil-normal-state-map "gcc" 'evilnc-comment-or-uncomment-lines)

@@ -273,6 +273,7 @@
      (define-key magit-diff-mode-map "j" nil)
      (define-key magit-file-section-map "k" nil)
      (define-key magit-file-section-map "x" 'magit-discard)
+     ;; (define-key magit-mode-map "/" 'evil-search-forward)
      (define-key magit-hunk-section-map "k" nil)
      (define-key magit-unstaged-section-map "k" nil)
      (define-key magit-staged-section-map "k" nil)
