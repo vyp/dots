@@ -307,7 +307,7 @@
 
 (define-key evil-normal-state-map "\s\s" 'recenter-top-bottom)
 (define-key evil-normal-state-map "\sd" 'kill-this-buffer)
-(define-key evil-normal-state-map "\see" 'my-evil-edit-dot-emacs)
+(define-key evil-normal-state-map "\sei" 'my-evil-edit-dot-emacs)
 (define-key evil-normal-state-map "\sf" 'evil-fill-and-move)
 (define-key evil-visual-state-map "\sf" 'evil-fill-and-move)
 (define-key evil-normal-state-map "\sh" 'help)
