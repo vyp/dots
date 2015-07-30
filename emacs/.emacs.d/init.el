@@ -316,6 +316,8 @@
 (define-key evil-normal-state-map (kbd "SPC l") 'ibuffer)
 (define-key evil-normal-state-map (kbd "SPC q") 'evil-command-window-ex)
 (define-key evil-visual-state-map (kbd "SPC q") 'evil-command-window-ex)
+(define-key evil-normal-state-map (kbd "SPC s") 'evil-window-split)
+(define-key evil-normal-state-map (kbd "SPC v") 'evil-window-vsplit)
 (define-key evil-normal-state-map (kbd "SPC we") 'balance-windows)
 (define-key evil-normal-state-map (kbd "SPC wo") 'delete-other-windows)
 (define-key evil-normal-state-map (kbd "SPC x") 'execute-extended-command)
