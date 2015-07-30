@@ -28,6 +28,14 @@ Emacs.menuBar: 0
 Emacs.toolBar: 0
 Emacs.verticalScrollBars: off
 Emacs.font: -artwiz-limey-medium-r-normal--10-110-75-75-m-50-iso8859-1
+Emacs.italicFont: -artwiz-limey-medium-r-normal--10-110-75-75-m-50-iso8859-1
+Emacs.boldFont: -artwiz-limey-medium-r-normal--10-110-75-75-m-50-iso8859-1
+
+! TODO: Ideally fonts should be able to be changed without affecting the working
+! git directory (i.e. making it "unclean").
+! emacs.font: Fantasque Sans Mono-8
+! emacs.italicFont: Fantasque Sans Mono-8
+! emacs.boldFont: Fantasque Sans Mono-8
 
 ! Scrollbar
 URxvt.scrollBar: false
