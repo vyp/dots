@@ -308,7 +308,7 @@
   (evil-edit "~/etsi/emacs/.emacs.d/init.el"))
 
 (define-key evil-normal-state-map (kbd "SPC SPC") 'recenter-top-bottom)
-(define-key evil-normal-state-map (kbd "SPC d") 'kill-this-buffer)
+(define-key evil-normal-state-map (kbd "SPC dl") 'kill-this-buffer)
 (define-key evil-normal-state-map (kbd "SPC ei") 'my-evil-edit-dot-emacs)
 (define-key evil-normal-state-map (kbd "SPC f") 'evil-fill-and-move)
 (define-key evil-visual-state-map (kbd "SPC f") 'evil-fill-and-move)
