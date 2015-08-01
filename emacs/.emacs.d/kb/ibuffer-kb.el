@@ -2,6 +2,8 @@
   '(progn
      (evil-set-initial-state 'ibuffer-mode 'normal)
      (evil-define-key 'normal ibuffer-mode-map
+       (kbd "h") 'evil-backward-char
+       (kbd "l") 'evil-forward-char
        (kbd "0") 'digit-argument
        (kbd "1") 'digit-argument
        (kbd "2") 'digit-argument
@@ -14,7 +16,7 @@
        (kbd "9") 'digit-argument
 
        (kbd "m") 'ibuffer-mark-forward
-       (kbd "\st") 'ibuffer-toggle-marks
+       (kbd "SPC t") 'ibuffer-toggle-marks
        (kbd "u") 'ibuffer-unmark-forward
        (kbd "=") 'ibuffer-diff-with-file
        (kbd "J") 'ibuffer-jump-to-buffer
@@ -78,20 +80,20 @@
 
        (kbd "C-n") 'ibuffer-forward-filter-group
        (kbd "C-p") 'ibuffer-backward-filter-group
-       (kbd "\sj") 'ibuffer-jump-to-filter-group
+       (kbd "SPC j") 'ibuffer-jump-to-filter-group
        (kbd "C-y") 'ibuffer-yank
-       (kbd "\sf S") 'ibuffer-save-filter-groups
-       (kbd "\sf R") 'ibuffer-switch-to-saved-filter-groups
-       (kbd "\sf X") 'ibuffer-delete-saved-filter-groups
-       (kbd "\sf \\") 'ibuffer-clear-filter-groups
+       (kbd "SPC f S") 'ibuffer-save-filter-groups
+       (kbd "SPC f R") 'ibuffer-switch-to-saved-filter-groups
+       (kbd "SPC f X") 'ibuffer-delete-saved-filter-groups
+       (kbd "SPC f \\") 'ibuffer-clear-filter-groups
 
        [escape] 'ibuffer-quit
        (kbd "q") 'ibuffer-quit
-       "\s." 'describe-mode
+       "SPC ." 'describe-mode
 
-       (kbd "\sr n") 'ibuffer-mark-by-name-regexp
-       (kbd "\sr m") 'ibuffer-mark-by-mode-regexp
-       (kbd "\sr f") 'ibuffer-mark-by-file-name-regexp
+       (kbd "SPC r n") 'ibuffer-mark-by-name-regexp
+       (kbd "SPC r m") 'ibuffer-mark-by-mode-regexp
+       (kbd "SPC r f") 'ibuffer-mark-by-file-name-regexp
 
        (kbd "C-t") 'ibuffer-visit-tags-table
 
@@ -118,7 +120,7 @@
        (kbd "X") 'ibuffer-do-shell-command-pipe
 
        ;; 'ibuffer-do-kill-lines is the function deleted here.
-       (kbd "\sc") 'ibuffer-copy-filename-as-kill
+       (kbd "SPC c") 'ibuffer-copy-filename-as-kill
 
        (kbd "RET") 'ibuffer-visit-buffer
        ; (kbd "C-x C-f") 'ibuffer-find-file
