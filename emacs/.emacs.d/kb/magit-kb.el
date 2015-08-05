@@ -29,7 +29,6 @@
        (kbd "C-SPC") 'magit-section-cycle
        (kbd "M-SPC") 'magit-section-cycle-diffs
        (kbd "S-SPC") 'magit-section-cycle-global
-       "k" 'evil-previous-line
        "K"    'magit-section-up
        "\C-n"    'magit-section-forward
        "\C-p"    'magit-section-backward
@@ -97,7 +96,6 @@
        ; [remap evil-next-line] 'evil-next-visual-line)
 
      (evil-define-key 'normal magit-blame-mode-map
-       ; "k" 'evil-previous-line
        "\r" 'magit-show-commit
        (kbd "S-SPC") 'magit-diff-show-or-scroll-up
        "\s" 'magit-diff-show-or-scroll-down
@@ -111,7 +109,6 @@
        ",ch" 'magit-blame-copy-hash)
 
      (evil-define-key 'normal magit-diff-mode-map
-       "k" 'evil-previous-line
        "\C-c" 'magit-diff-while-committing
        "\C-s" 'magit-go-backward
        "\C-f" 'magit-go-forward
@@ -120,7 +117,6 @@
        "J" 'magit-jump-to-diffstat-or-diff)
 
      (evil-define-key 'normal magit-file-section-map
-       ; "k" 'evil-previous-line
        [C-return] 'magit-diff-visit-file-worktree
        "\r" 'magit-diff-visit-file
        "a"  'magit-apply
@@ -132,7 +128,6 @@
        ",v"  'magit-reverse)
 
      (evil-define-key 'normal magit-hunk-section-map
-       ; "k" 'evil-previous-line
        [C-return] 'magit-diff-visit-file-worktree
        "\r" 'magit-diff-visit-file
        "a"  'magit-apply
@@ -143,14 +138,12 @@
        ",v"  'magit-reverse)
 
      (evil-define-key 'normal magit-unstaged-section-map
-       ; "k" 'evil-previous-line
        "\r" 'magit-diff-unstaged
        "x"  'magit-discard
        "s"  'magit-stage
        "u"  'magit-unstage)
 
      (evil-define-key 'normal magit-staged-section-map
-       ; "k" 'evil-previous-line
        "\r" 'magit-diff-unstaged
        "x"  'magit-discard
        "s"  'magit-stage
@@ -158,14 +151,12 @@
        ",v"  'magit-reverse)
 
      (evil-define-key 'normal magit-log-mode-map
-       "k" 'evil-previous-line
        "\C-s" 'magit-go-backward
        "\C-f" 'magit-go-forward
        "+" 'magit-log-show-more-commits
        "q" 'magit-log-bury-buffer)
 
      (evil-define-key 'normal magit-log-select-mode-map
-       ; "k" 'evil-previous-line
        ; "\C-c\C-b" 'undefined
        ; "\C-c\C-f" 'undefined
        ; "."        'magit-log-select-pick
@@ -175,28 +166,23 @@
        ; "\C-c\C-k" 'magit-log-select-quit)
 
      (evil-define-key 'normal magit-commit-section-map
-       ; "k" 'evil-previous-line
        "\r" 'magit-show-commit
        "a"  'magit-cherry-apply
        ",v"  'magit-revert-no-commit)
 
      (evil-define-key 'normal magit-module-commit-section-map
-       ; "k" 'evil-previous-line
        "\r" 'magit-show-commit)
 
      (evil-define-key 'normal magit-stashes-section-map
-       ; "k" 'evil-previous-line
        "x"  'magit-stash-clear)
 
      (evil-define-key 'normal magit-stash-section-map
-       ; "k" 'evil-previous-line
        "\r" 'magit-stash-show
        "a"  'magit-stash-apply
        "p"  'magit-stash-pop
        "x"  'magit-stash-drop)
 
      (evil-define-key 'normal magit-status-mode-map
-       ; "k" 'evil-previous-line
        (kbd ",g z") 'magit-jump-to-stashes
        (kbd ",g t") 'magit-jump-to-tracked
        (kbd ",g n") 'magit-jump-to-untracked
@@ -206,32 +192,26 @@
        (kbd ",g P") 'magit-jump-to-unpushed)
 
      (evil-define-key 'normal magit-untracked-section-map
-       ; "k" 'evil-previous-line
        "x"  'magit-discard
        "s"  'magit-stage)
 
      (evil-define-key 'normal magit-refs-mode-map
-       ; "k" 'evil-previous-line
        "\C-y" 'magit-refs-set-show-commit-count)
 
      (evil-define-key 'normal magit-branch-section-map
-       ; "k" 'evil-previous-line
        "\r" 'magit-visit-ref
        "x"  'magit-branch-delete
        "R"  'magit-branch-rename)
 
      (evil-define-key 'normal magit-remote-section-map
-       ; "k" 'evil-previous-line
        "x"  'magit-remote-remove
        "R"  'magit-remote-rename)
 
      (evil-define-key 'normal magit-tag-section-map
-       ; "k" 'evil-previous-line
        "\r" 'magit-visit-ref
        "x"  'magit-tag-delete)
 
      (evil-define-key 'normal git-commit-mode-map
-       ; "k" 'evil-previous-line
        (kbd "C-p")     'git-commit-prev-message
        (kbd "C-n")     'git-commit-next-message
        (kbd "C-c") 'magit-diff-while-committing
@@ -245,7 +225,6 @@
        ; (kbd "C-c M-s") 'git-commit-save-message)
 
      (evil-define-key 'normal git-rebase-mode-map
-       ; "k" 'evil-previous-line
        [remap undo] 'git-rebase-undo
        (kbd "RET") 'git-rebase-show-commit
        (kbd "S-SPC") 'magit-diff-show-or-scroll-up
@@ -262,7 +241,6 @@
        (kbd "J")      'git-rebase-move-line-down)
 
      (evil-define-key 'normal with-editor-mode-map
-       ; "k" 'evil-previous-line
        "\C-f"                       'with-editor-finish
        [remap server-edit]          'with-editor-finish
        "\C-c"                       'with-editor-cancel
