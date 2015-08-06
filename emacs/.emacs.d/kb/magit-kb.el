@@ -25,7 +25,7 @@
      (evil-set-initial-state 'magit-tag-section 'normal)
 
      (evil-define-key 'normal magit-mode-map
-       "\s"    'magit-section-toggle
+       ;; "\s"    'magit-section-toggle
        (kbd "C-SPC") 'magit-section-cycle
        (kbd "M-SPC") 'magit-section-cycle-diffs
        (kbd "S-SPC") 'magit-section-cycle-global
@@ -98,7 +98,7 @@
      (evil-define-key 'normal magit-blame-mode-map
        "\r" 'magit-show-commit
        (kbd "S-SPC") 'magit-diff-show-or-scroll-up
-       "\s" 'magit-diff-show-or-scroll-down
+       ;; "\s" 'magit-diff-show-or-scroll-down
        ",b"  'magit-blame-popup
        "\C-n"  'magit-blame-next-chunk
        "\C-f"  'magit-blame-next-chunk-same-commit
@@ -112,7 +112,7 @@
        "\C-c" 'magit-diff-while-committing
        "\C-s" 'magit-go-backward
        "\C-f" 'magit-go-forward
-       "\s" 'scroll-down
+       ;; "\s" 'scroll-down
        (kbd "S-SPC") 'scroll-up
        "J" 'magit-jump-to-diffstat-or-diff)
 
@@ -160,7 +160,7 @@
        ; "\C-c\C-b" 'undefined
        ; "\C-c\C-f" 'undefined
        ; "."        'magit-log-select-pick
-       "\s"        'magit-log-select-pick
+       ;; "\s"        'magit-log-select-pick
        ; "\C-c\C-c" 'magit-log-select-pick
        "q"        'magit-log-select-quit)
        ; "\C-c\C-k" 'magit-log-select-quit)
