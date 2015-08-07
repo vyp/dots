@@ -71,6 +71,7 @@ alias gcem='git commit --edit -m "$(git log --format=%B --reverse HEAD..HEAD@{1}
 alias gch='git checkout'
 alias gchu='git fetch --dry-run'
 alias gd='git diff'
+alias gds='git diff --staged'
 alias ge='git status --short | while read first rest; do if [[ $first == *"M"* ]] || [[ $first == *"A"* ]] || [[ $first == *"?"* ]]; then echo $rest; fi; done | awk '"'"'{print $NF}'"'"' | while read gspath; do [[ ${gspath: -1} == "/" ]] || echo $gspath; done | while read filepath; do [[ -e $filepath ]] && echo $filepath; done | while read existingfile; do [[ "$(file -bL $existingfile)" == *"text"* ]] && echo $existingfile; done | xargs bash -c '"'"'</dev/tty $EDITOR "$@"'"'"' i'
 alias gi='grep -i'
 alias gir='grep -ir'
