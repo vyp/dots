@@ -76,16 +76,11 @@ set ttimeoutlen=10
 set viminfo='0,@0,f0
 
 " Main Mappings {{{1
-nnoremap <Bslash> ,
-xnoremap <Bslash> ,
-let mapleader=","
+nnoremap <Bslash> <C-^>
+let mapleader=" "
 
-nnoremap ; :
-nnoremap <cr> ;
-nnoremap : <cr>
-xnoremap ; :
-xnoremap <cr> ;
-xnoremap : <cr>
+nnoremap g; :
+xnoremap g; :
 
 nnoremap - +
 nnoremap + -
@@ -95,9 +90,9 @@ nnoremap q; q:k
 xnoremap q; q:k
 nnoremap q/ q/k
 nnoremap gs :w<CR>
-nnoremap <leader>s <C-z>
-nnoremap <silent> <leader>n :nohls<CR>
-nnoremap <silent> <leader>m :set<space>hlsearch!<CR>
+" nnoremap <leader>s <C-z>
+" nnoremap <silent> <leader>n :nohls<CR>
+nnoremap <silent> <leader>s :set<space>hlsearch!<CR>
 
 nnoremap <leader>k H
 nnoremap <leader>j L
@@ -109,8 +104,6 @@ onoremap M %
 nnoremap M %
 xnoremap M %
 nnoremap Y y$
-
-nnoremap <leader><leader> <C-^>
 
 " Can't use <Tab> and <S-Tab> since <Tab> is the same as ctrl-i in vim.
 " See http://stackoverflow.com/a/14642074.
@@ -134,7 +127,6 @@ endif
 nmap <leader>d ysiW
 nmap <leader>ds ysiW*
 nnoremap <leader>f mmvipgq`m
-nnoremap <leader>o o<CR>---<CR><CR>
 
 nnoremap <leader>wo :only<CR>
 nnoremap <leader>wu <C-w>_
@@ -212,9 +204,9 @@ set foldmethod=syntax
 set foldlevel=99
 set foldlevelstart=99
 
-nnoremap <space> za
-nnoremap <leader><space> zM
-nnoremap z<space> zR
+" nnoremap <space> za
+" nnoremap <leader><space> zM
+" nnoremap z<space> zR
 
 " 'co' for 'Close all folds and Open Cursor fold'.
 nnoremap co zMzv
