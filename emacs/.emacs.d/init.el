@@ -290,6 +290,7 @@
 (define-key evil-normal-state-map "M" 'evil-jump-item)
 (define-key evil-operator-state-map "M" 'evil-jump-item)
 (define-key evil-visual-state-map "M" 'evil-jump-item)
+(define-key evil-normal-state-map (vconcat "z" [return]) 'evil-scroll-line-to-top)
 
 (defun my-evil-yank-to-end-of-line ()
   "Yank from cursor position to end of line."
@@ -310,8 +311,8 @@
 (define-key evil-normal-state-map (kbd "SPC SPC") 'recenter-top-bottom)
 (define-key evil-normal-state-map (kbd "SPC dl") 'kill-this-buffer)
 (define-key evil-normal-state-map (kbd "SPC ei") 'my-evil-edit-dot-emacs)
-(define-key evil-normal-state-map (kbd "SPC f") 'evil-fill-and-move)
-(define-key evil-visual-state-map (kbd "SPC f") 'evil-fill-and-move)
+(define-key evil-normal-state-map (kbd "SPC f") 'fill-paragraph)
+(define-key evil-visual-state-map (kbd "SPC f") 'evil-fill)
 (define-key evil-normal-state-map (kbd "SPC h") 'help)
 (define-key evil-normal-state-map (kbd "SPC l") 'ibuffer)
 (define-key evil-normal-state-map (kbd "SPC q") 'evil-command-window-ex)
