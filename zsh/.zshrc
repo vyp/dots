@@ -35,7 +35,6 @@ alias ,,,,='urxvtc && urxvtc && urxvtc && urxvtc'
 alias ,,,='urxvtc && urxvtc && urxvtc'
 alias ,,='urxvtc && urxvtc'
 alias ,='urxvtc'
-alias ,l='ls -p --color=auto'
 alias ab='acpi -b'
 
 # By /u/pentothal --
