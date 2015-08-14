@@ -118,3 +118,29 @@
     display: none !important;
   }
 }
+
+@document url-prefix(https://gitlab.com/) {
+  pre,
+  code,
+  pre code,
+  .file-content.code pre,
+  .file-content.code code,
+  .file-content.code pre code,
+  .file-content.code .line-numbers,
+  .file-content.code .line-numbers * {
+    font-family: monospace !important;
+  }
+}
+
+@-moz-document url-prefix(https://gitlab.com/) {
+  pre,
+  code,
+  pre code,
+  .file-content.code pre,
+  .file-content.code code,
+  .file-content.code pre code,
+  .file-content.code .line-numbers,
+  .file-content.code .line-numbers * {
+    font-family: monospace !important;
+  }
+}
