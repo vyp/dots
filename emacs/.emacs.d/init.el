@@ -203,6 +203,7 @@
 (setq-default indent-tabs-mode nil)
 (setq-default tab-width 2)
 
+(evil-declare-ignore-repeat 'recenter-top-bottom)
 (setq recenter-positions '(0.25))
 (mouse-avoidance-mode 'banish)
 (custom-set-variables
