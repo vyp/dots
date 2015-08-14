@@ -6,7 +6,7 @@ HEIGHT=12
 TOP_PADDING=$((HEIGHT - 1))
 FONT="-artwiz-cure-medium-r-normal--11-110-75-75-p-90-iso8859-1"
 
-CENTER_OFFSET=147
+CENTER_OFFSET=95
 BATTERY_OFFSET=94
 TIME_OFFSET=122
 BATTERY_OFFSET=$((BATTERY_OFFSET + TIME_OFFSET))
@@ -16,5 +16,7 @@ MUSIC_ICON="$HOME/etsi/dzen2/icons/phones.xbm"
 AC_ICON="$HOME/etsi/dzen2/icons/ac_01.xbm"
 BATTERY_ICON="$HOME/etsi/dzen2/icons/battery"
 TIME_ICON="$HOME/etsi/dzen2/icons/clock.xbm"
+WS_FILLED_ICON="$HOME/etsi/dzen2/icons/xbm8x8/full.xbm"
+WS_EMPTY_ICON="$HOME/etsi/dzen2/icons/xbm8x8/empty.xbm"
 
 . ~/.config/dzen2/colors

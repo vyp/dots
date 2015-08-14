@@ -123,43 +123,37 @@ while read -r line; do
 
             case $item in
               O*)
-                # Focused occupied desktop.
-                FG=$FOCUSED_OCCUPIED_FG
-                BG=$FOCUSED_OCCUPIED_BG
+                FG=$FOCUSED_OCCUPIED_CLR
+                WS_ICON=$WS_FILLED_ICON
                 ;;
 
               F*)
-                # Focused free desktop.
-                FG=$FOCUSED_FREE_FG
-                BG=$FOCUSED_FREE_BG
+                FG=$FOCUSED_FREE_CLR
+                WS_ICON=$WS_FILLED_ICON
                 ;;
 
               U*)
-                # Focused urgent desktop.
-                FG=$FOCUSED_URGENT_FG
-                BG=$FOCUSED_URGENT_BG
+                FG=$FOCUSED_URGENT_CLR
+                WS_ICON=$WS_FILLED_ICON
                 ;;
 
               o*)
-                # Occupied desktop.
-                FG=$OCCUPIED_FG
-                BG=$OCCUPIED_BG
+                FG=$OCCUPIED_CLR
+                WS_ICON=$WS_EMPTY_ICON
                 ;;
 
               f*)
-                # Free desktop.
-                FG=$FREE_FG
-                BG=$FREE_BG
+                FG=$FREE_CLR
+                WS_ICON=$WS_EMPTY_ICON
                 ;;
 
               u*)
-                # Urgent desktop.
-                FG=$URGENT_FG
-                BG=$URGENT_BG
+                FG=$URGENT_CLR
+                WS_ICON=$WS_FILLED_ICON
                 ;;
 
             esac
-            workspaces="${workspaces}^fg(${FG})^bg(${BG}) ${name} ^fg()^bg()"
+            workspaces="${workspaces}^fg(${FG})^bg(${WS_BG_CLR}) ^i(${WS_ICON}) ^fg()^bg()"
             ;;
 
         esac
