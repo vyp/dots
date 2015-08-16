@@ -29,7 +29,8 @@
 ;;; Keybindings.
 ;; TODO: Allow `gg` in ibuffer by removing `g` for refresh.
 ;; TODO: pdf-view-mode.
-;; TODO: "Completion List", "Packages", "Compile-log", "Messages" buffers.
+;; TODO: "Completion List", "Packages", "Compile-log", "Messages", "Backtrace"
+;; buffers.
 
 ;;; Appearance.
 ;; TODO: Report company mode popup bug on right window edge?
