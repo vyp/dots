@@ -61,6 +61,7 @@
   (function (lambda ()
     (setq evil-shift-width python-indent))))
 
+(setq async-bytecomp-allowed-packages nil)
 (setq quelpa-update-melpa-p nil)
 (setq package-archives nil)
 (package-initialize)
@@ -100,10 +101,13 @@
 ;;    :fetcher github
 ;;    :repo "vyp/redbelly"))
 
-(quelpa
- '(evil-quick-scope
-   :fetcher github
-   :repo "vyp/evil-quick-scope"))
+;; (quelpa
+;;  '(evil-quick-scope
+;;    :fetcher github
+;;    :repo "vyp/evil-quick-scope"))
+
+(add-to-list 'load-path "~/hak/evil-quick-scope/")
+(load "evil-quick-scope")
 
 (require 'evil)
 (require 'evil-matchit)
