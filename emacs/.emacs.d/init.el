@@ -100,6 +100,11 @@
 ;;    :fetcher github
 ;;    :repo "vyp/redbelly"))
 
+(quelpa
+ '(evil-quick-scope
+   :fetcher github
+   :repo "vyp/evil-quick-scope"))
+
 (require 'evil)
 (require 'evil-matchit)
 (require 'evil-nerd-commenter)
@@ -108,6 +113,7 @@
 (require 'company)
 (require 'yasnippet)
 (require 'magit)
+(require 'evil-quick-scope)
 
 (require 'paren)
 (require 'ibuffer)
@@ -184,6 +190,15 @@
    ((t (:weight, 'normal))))
  `(magit-diff-file-heading
    ((t (:weight, 'normal)))))
+
+(defun turn-on-evil-quick-scope-mode ()
+  "Unconditionally turn on evil-quick-scope-mode."
+  (evil-quick-scope-mode t))
+
+(define-globalized-minor-mode my-global-evil-quick-scope-mode
+  evil-quick-scope-mode turn-on-evil-quick-scope-mode)
+
+(my-global-evil-quick-scope-mode t)
 
 ;;;; Theme.
 (add-to-list 'custom-theme-load-path "~/hak/redbelly")
