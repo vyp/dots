@@ -61,7 +61,6 @@
   (function (lambda ()
     (setq evil-shift-width python-indent))))
 
-(setq async-bytecomp-allowed-packages nil)
 (setq quelpa-update-melpa-p nil)
 (setq package-archives nil)
 (package-initialize)
