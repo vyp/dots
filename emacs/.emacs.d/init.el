@@ -105,6 +105,8 @@
 ;;    :fetcher github
 ;;    :repo "vyp/evil-quick-scope"))
 
+(quelpa 'ov)
+
 (add-to-list 'load-path "~/hak/evil-quick-scope/")
 (load "evil-quick-scope")
 
