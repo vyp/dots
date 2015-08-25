@@ -19,6 +19,7 @@
 ;; TODO: Flycheck.
 ;; TODO: Deft.
 ;; TODO: Paredit.
+;; TODO: Smartparens and evil-smartparens.
 ;; TODO: Multiple cursors.
 ;; TODO: Highlight trailing newlines.
 ;; TODO: Highlight TODOs.
