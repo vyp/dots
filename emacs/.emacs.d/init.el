@@ -48,7 +48,8 @@
 
 ;;; Other.
 ;; TODO: Learn elisp.
-;; TODO: Completely switch back to el-get instead of quelpa:
+;; TODO: Switch to using local files from git submodules for quelpa.
+;; ~~TODO: Completely switch back to el-get instead of quelpa:~~
 ;; https://github.com/milkypostman/melpa/issues/2944
 
 ;;;; Packages.
