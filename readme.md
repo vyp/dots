@@ -5,7 +5,7 @@
 >> on little children wherein their first editor is vim, every input into the
 >> computer is via vim (posting a comment on facebook, reddit, typing something
 >> out, you name it).
- 
+
 >> I'd like to see how long it would take a kid to be fluent enough to own
 >> everyone with his/her vim skills and after learning vim I'd like him to be
 >> given the option to use modern editors and see what they choose.
