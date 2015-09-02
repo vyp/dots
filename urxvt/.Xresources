@@ -19,17 +19,27 @@ URxvt.lineSpace:      0
 
 ! Fonts
 URxvt.allow_bold:  false
-URxvt*font:        -artwiz-limey-medium-r-normal--10-110-75-75-m-50-iso8859-1
-URxvt*italicFont:  -artwiz-limey-medium-r-normal--10-110-75-75-m-50-iso8859-1
-URxvt*boldFont:    -artwiz-limey-medium-r-normal--10-110-75-75-m-50-iso8859-1
-URxvt*letterSpace: 0
+! URxvt*font:        -artwiz-limey-medium-r-normal--10-110-75-75-m-50-iso8859-1
+! URxvt*italicFont:  -artwiz-limey-medium-r-normal--10-110-75-75-m-50-iso8859-1
+! URxvt*boldFont:    -artwiz-limey-medium-r-normal--10-110-75-75-m-50-iso8859-1
+! URxvt*font:        xft:Fantasque Sans Mono:style=Regular:size=8
+! URxvt*italicFont:  xft:Fantasque Sans Mono:style=Regular:size=8
+! URxvt*boldFont:    xft:Fantasque Sans Mono:style=Regular:size=8
+URxvt*font:        xft:Fira Mono:style=Regular:size=8
+URxvt*italicFont:  xft:Fira Mono:style=Regular:size=8
+URxvt*boldFont:    xft:Fira Mono:style=Regular:size=8
+URxvt*letterSpace: -2
 
 Emacs.menuBar: 0
 Emacs.toolBar: 0
 Emacs.verticalScrollBars: off
-Emacs.font: -artwiz-limey-medium-r-normal--10-110-75-75-m-50-iso8859-1
-Emacs.italicFont: -artwiz-limey-medium-r-normal--10-110-75-75-m-50-iso8859-1
-Emacs.boldFont: -artwiz-limey-medium-r-normal--10-110-75-75-m-50-iso8859-1
+! Emacs.font: -artwiz-limey-medium-r-normal--10-110-75-75-m-50-iso8859-1
+! Emacs.italicFont: -artwiz-limey-medium-r-normal--10-110-75-75-m-50-iso8859-1
+! Emacs.boldFont: -artwiz-limey-medium-r-normal--10-110-75-75-m-50-iso8859-1
+Emacs.font:       Fira Mono-7.5:style=regular:width=condensed
+Emacs.italicFont: Fira Mono-7.5:style=regular:width=condensed
+Emacs.boldFont:   Fira Mono-7.5:style=regular:width=condensed
+! Emacs*letterSpace: -2
 
 ! TODO: Ideally fonts should be able to be changed without affecting the working
 ! git directory (i.e. making it "unclean").
