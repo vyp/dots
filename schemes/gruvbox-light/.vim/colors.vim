@@ -1,3 +1,23 @@
+" Change cursor color for insert mode. Not sure if options exist for other
+" modes. (Doesn't seem to.)
+" Apparently only for xterm/rxvt/terminator/gnome-terminal.
+" From http://vim.wikia.com/wiki/Configuring_the_cursor.
+if &term =~ "xterm\\|rxvt"
+  " Use for changing cursor color at vim startup. (For example if your prompt's
+  " cursor color is not the same as the desired normal mode color.)
+  " silent !echo -ne "\033]12;\<color>\007"
+
+  " See `:help t_SI` and `:help t_EI`.
+  " Insert mode color.
+  let &t_SI = "\<Esc>]12;#928374\x7"
+  " Normal mode color.
+  let &t_EI = "\<Esc>]12;#3c3836\x7"
+
+  " Might be needed for resetting color when vim exits.
+  " autocmd VimLeave * silent !echo -ne "\033]<color>\007"
+  " Use "\003]12;<color>\007" for gnome-terminal.
+endif
+
 colorscheme gruvbox
 
 " hi pandocBlockQuote ctermfg=12

@@ -210,38 +210,38 @@ HISTFILE=~/.histfile
 HISTSIZE=1000000
 SAVEHIST=1000000
 
-# # Helper for setting color including all kinds of terminals.
-# set_prompt_color () {
-#   if [[ $TERM = "linux" ]]; then
-#     # Nothing.
-#   elif [[ $TMUX != '' ]]; then
-#     printf '\033Ptmux;\033\033]12;%b\007\033\\' "$1"
-#   else
-#     echo -ne "\033]12;$1\007"
-#   fi
-# }
-# 
-# # Change cursor color basing on vi mode.
-# zle-keymap-select () {
-#   if [ $KEYMAP = vicmd ]; then
-#     set_prompt_color $COMMAND_PROMPT
-#   else
-#     set_prompt_color $INSERT_PROMPT
-#   fi
-# }
-# 
-# zle-line-finish () {
-#   set_prompt_color $INSERT_PROMPT
-# }
-# 
-# zle-line-init () {
-#   zle -K viins
-#   set_prompt_color $INSERT_PROMPT
-# }
-# 
-# zle -N zle-keymap-select
-# zle -N zle-line-init
-# zle -N zle-line-finish
+# Helper for setting color including all kinds of terminals.
+set_prompt_color () {
+  if [[ $TERM = "linux" ]]; then
+    # Nothing.
+  elif [[ $TMUX != '' ]]; then
+    printf '\033Ptmux;\033\033]12;%b\007\033\\' "$1"
+  else
+    echo -ne "\033]12;$1\007"
+  fi
+}
+
+# Change cursor color basing on vi mode.
+zle-keymap-select () {
+  if [ $KEYMAP = vicmd ]; then
+    set_prompt_color $COMMAND_PROMPT
+  else
+    set_prompt_color $INSERT_PROMPT
+  fi
+}
+
+zle-line-finish () {
+  set_prompt_color $INSERT_PROMPT
+}
+
+zle-line-init () {
+  zle -K viins
+  set_prompt_color $INSERT_PROMPT
+}
+
+zle -N zle-keymap-select
+zle -N zle-line-init
+zle -N zle-line-finish
 
 precmd() {
   vcs_info
