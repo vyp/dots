@@ -1,3 +1,9 @@
+! ncmpcpp*color11: #ffef79
+! ncmpcpp*color13: #f3b6f3
+! ncmpcpp*color14: #80ffff
+
+URxvt*cursorColor: #3c3836
+
 ! hard contrast: *background: #f9f5d7
 *background: #fbf1c7
 ! soft contrast: *background: #f2e5bc
@@ -57,7 +63,3 @@ URxvt.color245: #928374
 URxvt.color246: #a89984
 URxvt.color248: #bdae93
 URxvt.color250: #d5c4a1
-
-ncmpcpp*color11: #ffef79
-ncmpcpp*color13: #f3b6f3
-ncmpcpp*color14: #80ffff
