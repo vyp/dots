@@ -40,6 +40,7 @@ colorscheme gruvbox
 
 " TODO: Autocompletion popup.
 " TODO: TODO keyword.
+" TODO: Matching parentheses (and other matching glyphs for matchit.vim etc).
 hi buftablineactive ctermfg=246 ctermbg=223
 hi error ctermfg=1 ctermbg=NONE
 hi visual term=NONE cterm=NONE ctermbg=223
