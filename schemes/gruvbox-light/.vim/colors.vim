@@ -5,7 +5,7 @@
 if &term =~ "xterm\\|rxvt"
   " Use for changing cursor color at vim startup. (For example if your prompt's
   " cursor color is not the same as the desired normal mode color.)
-  " silent !echo -ne "\033]12;\<color>\007"
+  silent !echo -ne "\033]12;\#3c3836\007"
 
   " See `:help t_SI` and `:help t_EI`.
   " Insert mode color.
