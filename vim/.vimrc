@@ -416,6 +416,9 @@ au filetype python call PythonOptions()
 au VimEnter * nested call VisitLastBuffer()
 
 fun! VisitLastBuffer()
+  startinsert
+  call feedkeys('')
+
   if (argc() > 1)
     last
     rew

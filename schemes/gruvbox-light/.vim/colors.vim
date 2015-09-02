@@ -5,7 +5,17 @@
 if &term =~ "xterm\\|rxvt"
   " Use for changing cursor color at vim startup. (For example if your prompt's
   " cursor color is not the same as the desired normal mode color.)
-  silent !echo -ne "\033]12;\#3c3836\007"
+  " silent !echo -ne "\033]12;\<color>\007"
+  "
+  " That might change the terminal contents after exiting vim though. Another
+  " potential method may be:
+  "
+  "     au VimEnter * nested call FixCursorColorUponStartup()
+  "
+  "     fun! FixCursorColorUponStartup()
+  "       startinsert
+  "       call feedkeys('')
+  "     endfun
 
   " See `:help t_SI` and `:help t_EI`.
   " Insert mode color.
