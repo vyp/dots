@@ -170,7 +170,7 @@ nnoremap <C-t> "*p
 nnoremap <leader>t "+p
 nnoremap <leader>vc :edit ~/.vimrc<CR>
 nnoremap <leader>vz :edit ~/.zshrc<CR>
-nnoremap <leader>sn :PlugSnapshot ~/etsi/vim-plugins-snapshot<CR>
+nnoremap <leader>gp :PlugSnapshot ~/etsi/vim-plugins-snapshot<CR>
 
 " Status Line {{{1
 set statusline=
@@ -478,7 +478,7 @@ function ScrollToPercent(percent, ...)
   execute ":set so=" . oldso
 endfunction
 
-nnoremap <silent> <leader>z :call ScrollToPercent(g:centerlevel)<CR>
+nnoremap <silent> <leader><leader> :call ScrollToPercent(g:centerlevel)<CR>
 nnoremap z<CR> zt
 nnoremap zt z<CR>
 nnoremap zB zb
