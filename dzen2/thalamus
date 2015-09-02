@@ -139,7 +139,7 @@ while read -r line; do
 
               o*)
                 FG=$OCCUPIED_CLR
-                WS_ICON=$WS_EMPTY_ICON
+                WS_ICON=$WS_OCCUPIED_ICON
                 ;;
 
               f*)
@@ -149,7 +149,7 @@ while read -r line; do
 
               u*)
                 FG=$URGENT_CLR
-                WS_ICON=$WS_FILLED_ICON
+                WS_ICON=$WS_OCCUPIED_ICON
                 ;;
 
             esac
