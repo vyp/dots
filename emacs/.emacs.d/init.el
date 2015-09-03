@@ -109,7 +109,7 @@
 
 (quelpa 'ov)
 
-(add-to-list 'load-path "~/hak/evil-quick-scope/")
+(add-to-list 'load-path "~/gh/evil-quick-scope/")
 (load "evil-quick-scope")
 
 (require 'evil)
@@ -162,6 +162,8 @@
 (setq show-paren-delay 0)
 (show-paren-mode t)
 
+(setq-default line-spacing 0)
+
 ;;; Ibuffer.
 ;; Use human readable Size column instead of original one.
 (define-ibuffer-column size-h
@@ -208,7 +210,7 @@
 (my-global-evil-quick-scope-mode t)
 
 ;;;; Theme.
-(add-to-list 'custom-theme-load-path "~/hak/redbelly")
+(add-to-list 'custom-theme-load-path "~/gh/redbelly")
 (load-theme 'redbelly t)
 
 ;;;; Basic.
