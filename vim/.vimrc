@@ -9,10 +9,10 @@ syntax enable
 
 " Turn on relative line numbers except for current line and uses absolute line
 " numbers for insert mode.
-set number
-set relativenumber
-au InsertEnter * :set number norelativenumber
-au InsertLeave * :set number relativenumber
+" set number
+" set relativenumber
+" au InsertEnter * :set number norelativenumber
+" au InsertLeave * :set number relativenumber
 
 " Disable faux bold.
 set t_md=
