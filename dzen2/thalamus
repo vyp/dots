@@ -1,6 +1,6 @@
 #!/bin/env bash
 
-. ~/etsi/dzen2/variables
+. ~/ui/dzen2/variables
 
 NORMIFS=$IFS
 FIELDIFS=':'

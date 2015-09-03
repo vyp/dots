@@ -1,6 +1,6 @@
 #!/bin/env bash
 
-. ~/etsi/dzen2/variables
+. ~/ui/dzen2/variables
 
 if [ $(pgrep -cf panel) -gt 1 ] ; then
   printf "%s\n" "The panel is already running!" >&2
@@ -28,7 +28,7 @@ done &
 
 cat "$PANEL_FIFO" \
 | \
-~/etsi/dzen2/thalamus \
+~/ui/dzen2/thalamus \
 | \
 dzen2 \
   -p \

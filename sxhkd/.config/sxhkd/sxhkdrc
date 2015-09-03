@@ -6,7 +6,7 @@
 #   pkill panel && bspc quit
 
 super + shift + e
-  ~/etsi/dzen2/quit
+  ~/ui/dzen2/quit
 
 super + x
   bspc window -c

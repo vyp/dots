@@ -11,13 +11,13 @@ BATTERY_OFFSET=94
 TIME_OFFSET=122
 BATTERY_OFFSET=$((BATTERY_OFFSET + TIME_OFFSET))
 
-ARCH_ICON="$HOME/etsi/dzen2/icons/arch_10x10.xbm"
-MUSIC_ICON="$HOME/etsi/dzen2/icons/phones.xbm"
-AC_ICON="$HOME/etsi/dzen2/icons/ac_01.xbm"
-BATTERY_ICON="$HOME/etsi/dzen2/icons/battery"
-TIME_ICON="$HOME/etsi/dzen2/icons/clock.xbm"
-WS_FILLED_ICON="$HOME/etsi/dzen2/icons/pacman.xbm"
-WS_EMPTY_ICON="$HOME/etsi/dzen2/icons/xbm8x8/empty.xbm"
-WS_OCCUPIED_ICON="$HOME/etsi/dzen2/icons/ghost.xbm"
+ARCH_ICON="$HOME/ui/dzen2/icons/arch_10x10.xbm"
+MUSIC_ICON="$HOME/ui/dzen2/icons/phones.xbm"
+AC_ICON="$HOME/ui/dzen2/icons/ac_01.xbm"
+BATTERY_ICON="$HOME/ui/dzen2/icons/battery"
+TIME_ICON="$HOME/ui/dzen2/icons/clock.xbm"
+WS_FILLED_ICON="$HOME/ui/dzen2/icons/pacman.xbm"
+WS_EMPTY_ICON="$HOME/ui/dzen2/icons/xbm8x8/empty.xbm"
+WS_OCCUPIED_ICON="$HOME/ui/dzen2/icons/ghost.xbm"
 
 . ~/.config/dzen2/colors

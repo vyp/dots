@@ -2,7 +2,7 @@
 
 # TODO: Rename `schemes` directory to `themes`?
 
-cd ~/etsi
+cd ~/ui
 
 DIR="schemes/*/"
 DIRS=($DIR)

@@ -1,5 +1,5 @@
 typeset -U path
-path=(~/etsi/bin ~/code/bin ~/.cabal/bin ~/.gem/ruby/2.2.0/bin $path)
+path=(~/ui/bin ~/code/bin ~/.cabal/bin ~/.gem/ruby/2.2.0/bin $path)
 
 export BROWSER=firefox
 export EDITOR=vim

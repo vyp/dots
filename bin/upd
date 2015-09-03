@@ -20,7 +20,7 @@ abort () {
 trap "abort" TERM
 export TOP_PID=$$
 
-cd ~/etsi
+cd ~/ui
 
 ch_if_clean () {
   NORMIFS=$IFS
@@ -72,7 +72,7 @@ g_chore_commit () {
 upd_plugin_manager () {
   cd $1
   git pull
-  cd ~/etsi
+  cd ~/ui
   g_chore_commit ${1##*/}
 }
 
@@ -80,7 +80,7 @@ g_fetch_dr () {
   cd $1
   local_hash="$(git log --pretty=%H master | head -n1)"
   remote_hash="$(git ls-remote origin -h refs/heads/master | cut -f1)"
-  cd ~/etsi
+  cd ~/ui
 
   if [[ $local_hash != $remote_hash ]]; then
     upd_plugin_manager $1
@@ -89,12 +89,12 @@ g_fetch_dr () {
 
 chu_antigen () {
   echo "Checking if antigen has updates... [4/6]"
-  g_fetch_dr ~/etsi/antigen
+  g_fetch_dr ~/ui/antigen
 }
 
 chu_vim_plug () {
   echo "Checking if vim-plug has updates... [5/6]"
-  g_fetch_dr ~/etsi/vim-plug
+  g_fetch_dr ~/ui/vim-plug
 }
 
 upd_zsh_plugins () {
@@ -107,10 +107,10 @@ upd_zsh_plugins () {
       remote_hash="$(git ls-remote origin -h refs/heads/master | cut -f1)"
 
       if [[ $local_hash != $remote_hash ]]; then
-        source ~/etsi/antigen/antigen.zsh
+        source ~/ui/antigen/antigen.zsh
         antigen update
-        antigen snapshot ~/etsi/zsh-plugins-snapshot
-        cd ~/etsi
+        antigen snapshot ~/ui/zsh-plugins-snapshot
+        cd ~/ui
         git add zsh-plugins-snapshot
         git commit --edit -m "chore(zsh-plugins-snapshot): update hash references"
         break
@@ -118,7 +118,7 @@ upd_zsh_plugins () {
     fi
   done
 
-  cd ~/etsi
+  cd ~/ui
 }
 
 upd_vim_plugins () {

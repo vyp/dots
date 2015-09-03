@@ -37,7 +37,7 @@
 
 6. vim-plug:
 
-        $ cd ~/etsi/vim-plug
+        $ cd ~/ui/vim-plug
 
         # Check for updates:
         $ git fetch --dry-run
@@ -47,7 +47,7 @@
 
 7. Antigen:
 
-        $ cd ~/etsi/antigen
+        $ cd ~/ui/antigen
 
         # Check for updates:
         $ git fetch --dry-run
@@ -62,7 +62,7 @@
         # If there are updates, first check if everything still works, but
         # ultimately be sure to update `vim-plugins-snapshot` from vim:
 
-        :PlugSnapshot ~/etsi/vim-plugins-snapshot | only
+        :PlugSnapshot ~/ui/vim-plugins-snapshot | only
 
 9. Zsh plugins:
 
@@ -71,7 +71,7 @@
         # Similar to the vim plugins, update the `zsh-plugins-snapshot` once
         # confirmed that everything still works:
 
-        $ antigen snapshot ~/etsi/zsh-plugins-snapshot
+        $ antigen snapshot ~/ui/zsh-plugins-snapshot
 
 10. Firefox addons (manually). Although this is fairly optional because of
     Firefox's relatively fast 3 month release cycle. (Each new release will

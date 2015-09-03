@@ -21,4 +21,4 @@ bspc config auto_cancel true
 
 . ~/.config/bspwm/colors
 
-~/etsi/dzen2/panel &
+~/ui/dzen2/panel &

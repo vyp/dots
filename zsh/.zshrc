@@ -251,7 +251,7 @@ precmd() {
 PROMPT="%{$reset_color%} %(?.${CHAR}.${ERROR})»%{$reset_color%} "
 RPROMPT='%{$reset_color%}${BGJOBS}%(1j.%j.) %{$reset_color%}${VCS_INFO}${vcs_info_msg_0_} %{$reset_color%}${DIR}%~%{$reset_color%} '
 
-source ~/etsi/antigen/antigen.zsh
+source ~/ui/antigen/antigen.zsh
 
 antigen bundle zsh-users/zsh-syntax-highlighting
 antigen apply

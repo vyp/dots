@@ -16,19 +16,17 @@
 
         # __Be sure you are at the home directory.__
         $ cd ~
-
-        # Or git clone from mirror: <https://notabug.org/i/etsi.git>
-        $ git clone https://github.com/vyp/etsi 
+        $ git clone https://github.com/vyp/ui
 
 7. Check if there are any extra changes for pacman configuration (and if there
    are, you should probably incoporate them into `./pacman/etc/pacman.conf`,
    because **step 8 will delete `/etc/pacman.conf`**):
 
-        $ diff /etc/pacman.conf ~/etsi/pacman/etc/pacman.conf
+        $ diff /etc/pacman.conf ~/ui/pacman/etc/pacman.conf
 
 8. Preliminary setup:
 
-        $ cd ~/etsi
+        $ cd ~/ui
         $ ./bootstrap
 
 9. Install packages (all the programs you want, including from the AUR and
@@ -45,7 +43,7 @@
 
         # And obviously enter username and password as usual.
 
-12.     $ cd ~/etsi
+12.     $ cd ~/ui
         $ antigen restore zsh-plugins-snapshot
         $ ./vim-plugins-snapshot
         $ cd ~
@@ -63,7 +61,7 @@
     and/or numbers. Now the rest of the Firefox configuration files can be
     installed:
 
-        $ cd ~/etsi
+        $ cd ~/ui
 
         # Obviously, replace the hashes with whatever the profile directory was
         # named!

@@ -1,6 +1,6 @@
 #!/bin/env bash
 
-cd ~/etsi
+cd ~/ui
 
 IGNORE=(
   "antigen/"
@@ -12,6 +12,7 @@ IGNORE=(
   "pacman/"
   "schemes/"
   "vim-plug/"
+  "yasnippet-snippets/"
   "zathura/"
 )
 
@@ -63,7 +64,7 @@ done
 git submodule init
 git submodule update --depth 10
 
-ln -s ~/etsi/vim-plug/plug.vim ~/.vim/autoload/plug.vim
+ln -s ~/ui/vim-plug/plug.vim ~/.vim/autoload/plug.vim
 
 sudo rm -vi /etc/pacman.conf
 sudo stow -t / pacman

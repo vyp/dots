@@ -239,7 +239,7 @@
 
 ;;; Yasnippet official snippets.
 (setq yas-snippet-dirs
-      '("~/etsi/yasnippet-snippets"))
+      '("~/ui/yasnippet-snippets"))
 
 (yas-global-mode t)
 
@@ -330,7 +330,7 @@
 (defun my-evil-edit-dot-emacs ()
   "Edit emacs init file."
   (interactive)
-  (evil-edit "~/etsi/emacs/.emacs.d/init.el"))
+  (evil-edit "~/ui/emacs/.emacs.d/init.el"))
 
 (define-key evil-normal-state-map (kbd "SPC SPC") 'recenter-top-bottom)
 (define-key evil-normal-state-map (kbd "SPC dl") 'kill-this-buffer)
@@ -374,7 +374,7 @@
      (evil-define-key 'insert company-active-map (kbd "C-w") 'evil-delete-backward-word)))
 
 ;; Other.
-(add-to-list 'load-path "~/etsi/emacs/.emacs.d/kb")
+(add-to-list 'load-path "~/ui/emacs/.emacs.d/kb")
 (require 'ibuffer-kb)
 ; (require 'magit-kb)
 

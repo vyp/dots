@@ -1,5 +1,5 @@
 #!/bin/env bash
 
-source ~/etsi/dmenu/dmenurc
+source ~/ui/dmenu/dmenurc
 
 dmenu_run -fn "${FONT}" -nb "#2d2d2d" -nf "#747369" -sb "#f2777a" -sf "#f2f0ec"
