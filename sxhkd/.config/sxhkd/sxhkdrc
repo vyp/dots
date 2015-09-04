@@ -59,9 +59,6 @@ super + {alt,shift} + semicolon
 super + {comma,period}
   bspc window -f next.{floating,tiled}
 
-alt + u
-  bspc window -f next.urgent
-
 super + alt + {comma,period}
   bspc desktop -C {backward,forward}
 
@@ -140,8 +137,15 @@ super + {_,shift + }{1-9,0}
 # super + shift + {1-9,0}
 #   bspc window -d ^{1-9,10}
 
-super + {_,alt + }{u,i,o}
-  bspc {desktop -f,window -d} next.{urgent,free,occupied}
+super + u
+  bspc desktop -f next.urgent; \
+  bspc window -f next.urgent
+
+super + alt + u
+  bspc window -d next.urgent
+
+super + {_,alt + }{i,o}
+  bspc {desktop -f,window -d} next.{free,occupied}
 
 # super + {u,i,o}
 #   bspc desktop -f next.{urgent,free,occupied} && popup desktopstatus
