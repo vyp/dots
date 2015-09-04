@@ -3,9 +3,10 @@
 ! Xft settings
 Xft.dpi:       96
 Xft.antialias: true
-Xft.rgba:      rgb
 Xft.hinting:   true
 Xft.hintstyle: hintfull
+Xft.lcdfilter: lcddefault
+Xft.rgba:      rgb
 
 ! URxvt settings
 ! URxvt.depth:                32
@@ -18,34 +19,36 @@ URxvt.internalBorder: 1
 URxvt.lineSpace:      0
 
 ! Fonts
-URxvt.allow_bold:  false
-! URxvt*font:        -artwiz-limey-medium-r-normal--10-110-75-75-m-50-iso8859-1
-! URxvt*italicFont:  -artwiz-limey-medium-r-normal--10-110-75-75-m-50-iso8859-1
-! URxvt*boldFont:    -artwiz-limey-medium-r-normal--10-110-75-75-m-50-iso8859-1
-! URxvt*font:        xft:Fantasque Sans Mono:style=Regular:size=8
-! URxvt*italicFont:  xft:Fantasque Sans Mono:style=Regular:size=8
-! URxvt*boldFont:    xft:Fantasque Sans Mono:style=Regular:size=8
-URxvt*font:        xft:Fira Mono:style=Regular:size=8
-URxvt*italicFont:  xft:Fira Mono:style=Regular:size=8
-URxvt*boldFont:    xft:Fira Mono:style=Regular:size=8
 URxvt*letterSpace: -2
+! URxvt*allow_bold: false
+! URxvt*font:       -artwiz-limey-medium-r-normal--10-110-75-75-m-50-iso8859-1
+! URxvt*italicFont: -artwiz-limey-medium-r-normal--10-110-75-75-m-50-iso8859-1
+! URxvt*boldFont:   -artwiz-limey-medium-r-normal--10-110-75-75-m-50-iso8859-1
+! URxvt*font:       xft:Fantasque Sans Mono:style=Regular:size=8
+! URxvt*italicFont: xft:Fantasque Sans Mono:style=Regular:size=8
+! URxvt*boldFont:   xft:Fantasque Sans Mono:style=Regular:size=8
+URxvt*font:       xft:Fira Mono:style=Regular:size=8
+URxvt*italicFont: xft:Fira Mono:style=Regular:size=8
+URxvt*boldFont:   xft:Fira Mono:style=Bold:size=8
 
-Emacs.menuBar: 0
-Emacs.toolBar: 0
-Emacs.verticalScrollBars: off
-! Emacs.font: -artwiz-limey-medium-r-normal--10-110-75-75-m-50-iso8859-1
-! Emacs.italicFont: -artwiz-limey-medium-r-normal--10-110-75-75-m-50-iso8859-1
-! Emacs.boldFont: -artwiz-limey-medium-r-normal--10-110-75-75-m-50-iso8859-1
-Emacs.font:       Fira Mono-7.5:style=regular:width=condensed
-Emacs.italicFont: Fira Mono-7.5:style=regular:width=condensed
-Emacs.boldFont:   Fira Mono-7.5:style=regular:width=condensed
-! Emacs*letterSpace: -2
-
-! TODO: Ideally fonts should be able to be changed without affecting the working
-! git directory (i.e. making it "unclean").
-! emacs.font: Fantasque Sans Mono-8
+! emacs*allow_bold: false
+emacs.menuBar: 0
+emacs.toolBar: 0
+emacs.verticalScrollBars: off
+! emacs.font:       -artwiz-limey-medium-r-normal--10-110-75-75-m-50-iso8859-1
+! emacs.italicFont: -artwiz-limey-medium-r-normal--10-110-75-75-m-50-iso8859-1
+! emacs.boldFont:   -artwiz-limey-medium-r-normal--10-110-75-75-m-50-iso8859-1
+! emacs.font:       Fira Mono-7.9:style=regular:width=condensed
+! emacs.italicFont: Fira Mono-7.9:style=regular:width=condensed
+! emacs.boldFont:   Fira Mono-7.9:style=bold:width=condensed
+emacs.font:       Fira Mono-7.9:style=regular
+emacs.italicFont: Fira Mono-7.9:style=regular
+emacs.boldFont:   Fira Mono-7.9:style=bold
+! emacs.font:       Fantasque Sans Mono-8
 ! emacs.italicFont: Fantasque Sans Mono-8
-! emacs.boldFont: Fantasque Sans Mono-8
+! emacs.boldFont:   Fantasque Sans Mono-8
+! emacs*letterSpace: -2
+
 
 ! Scrollbar
 URxvt.scrollBar: false
