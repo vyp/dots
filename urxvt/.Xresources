@@ -38,9 +38,9 @@ emacs.verticalScrollBars: off
 ! emacs.font:       -artwiz-limey-medium-r-normal--10-110-75-75-m-50-iso8859-1
 ! emacs.italicFont: -artwiz-limey-medium-r-normal--10-110-75-75-m-50-iso8859-1
 ! emacs.boldFont:   -artwiz-limey-medium-r-normal--10-110-75-75-m-50-iso8859-1
-! emacs.font:       Fira Mono-7.9:style=regular:width=condensed
-! emacs.italicFont: Fira Mono-7.9:style=regular:width=condensed
-! emacs.boldFont:   Fira Mono-7.9:style=bold:width=condensed
+! emacs.font:       Fira Mono-7.9:style=regular:width=condensed:pixelsize=10:spacing=80
+! emacs.italicFont: Fira Mono-7.9:style=regular:width=condensed:pixelsize=10:spacing=80
+! emacs.boldFont:   Fira Mono-7.9:style=bold:width=condensed:pixelsize=10:spacing=80
 emacs.font:       Fira Mono-7.9:style=regular
 emacs.italicFont: Fira Mono-7.9:style=regular
 emacs.boldFont:   Fira Mono-7.9:style=bold

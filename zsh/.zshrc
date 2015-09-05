@@ -32,7 +32,6 @@ zstyle ':vcs_info:git*' formats "%b"
 zstyle ':vcs_info:*' enable git
 
 # Aliases
-
 alias ,,,,='urxvtc && urxvtc && urxvtc && urxvtc'
 alias ,,,='urxvtc && urxvtc && urxvtc'
 alias ,,='urxvtc && urxvtc'
@@ -109,13 +108,11 @@ alias ltr='ls -trp --color=auto'
 alias md='mkdir -pv'
 alias mi='mediainfo'
 alias mk='make'
-# alias mkd='make -f ~/templates/pdf.mk'
 alias ml='mpv --loop=inf'
 alias mn='mpv --no-video --loop=inf'
 alias mutt='mutt -F ~/.config/mutt/muttrc'
 alias mv='mv -v'
-# alias n='cd ~/gh/notera && [[ -n $(pgrep notera) ]] && npm restart || npm start && popd > /dev/null'
-alias ncmpcpp='[[ $TERM = "linux" ]] && ncmpcpp -c ~/.config/ncmpcpp/config || urxvtc -name ncmpcpp -e ncmpcpp -c ~/.config/ncmpcpp/config'
+alias ncmpcpp='ncmpcpp -c ~/.config/ncmpcpp/config'
 alias npm='npm --no-color'
 alias p8='ping 8.8.8.8'
 alias pc='pandoc'
@@ -176,7 +173,10 @@ alias sd='mpc stop; mpd --kill; sudo shutdown now'
 alias se='sudoedit'
 alias sm='ls ~/music | grep -i'
 alias t='tail'
+
+# TODO: Use git grep instead if inside git repository directory.
 alias todo='grep -rI -A 2 --exclude-dir={.git,antigen,bower_components,node_modules,vim-plug} --exclude="colors.penta" TODO:'
+
 alias v='vim'
 alias vc='vim ~/.vimrc'
 alias vz='vim ~/.zshrc'
