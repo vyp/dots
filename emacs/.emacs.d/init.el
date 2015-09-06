@@ -39,13 +39,6 @@
 ;; TODO: Remove right fringe in pdf-view-mode.
 ;; TODO: Statusbar colors and customisation.
 
-;;; Theme.
-;; TODO: Remove bold references from redbelly.
-;; TODO: Company mode colours.
-;; TODO: Fix "*Packages*" buffer colours.
-;; TODO: Visual search and replace colours.
-;; TODO: Export theme configuration to scheme specific file.
-
 ;;; Other.
 ;; TODO: Learn elisp.
 ;; TODO: Switch to using local files from git submodules for quelpa.
@@ -97,16 +90,7 @@
 (quelpa 'pdf-tools)
 (quelpa 'magit)
 
-;; (quelpa
-;;  '(redbelly-theme
-;;    :fetcher github
-;;    :repo "vyp/redbelly"))
-
-;; (quelpa
-;;  '(evil-quick-scope
-;;    :fetcher github
-;;    :repo "vyp/evil-quick-scope"))
-
+;; Dependency for manual installation of evil-quick-scope.
 (quelpa 'ov)
 
 (add-to-list 'load-path "~/gh/evil-quick-scope/")
@@ -132,6 +116,7 @@
 (set-face-attribute 'mode-line nil :box nil)
 (set-face-attribute 'mode-line-inactive nil :box nil)
 (set-face-italic-p 'italic nil)
+
 (mapc
  (lambda (face)
    (set-face-attribute face nil :weight 'normal :underline nil))
@@ -157,12 +142,10 @@
 (my-global-fci-mode t)
 
 (global-whitespace-mode t)
-(setq whitespace-style '(face tabs trailing))
+(setq whitespace-style '(face empty tabs trailing))
 
 (setq show-paren-delay 0)
 (show-paren-mode t)
-
-(setq-default line-spacing 0)
 
 ;;; Ibuffer.
 ;; Use human readable Size column instead of original one.
@@ -210,8 +193,18 @@
 (my-global-evil-quick-scope-mode t)
 
 ;;;; Theme.
-(add-to-list 'custom-theme-load-path "~/gh/redbelly")
-(load-theme 'redbelly t)
+(add-to-list 'load-path "~/gh/themes/gruvbox-emacs")
+(add-to-list 'custom-theme-load-path "~/gh/themes/gruvbox-emacs")
+
+(if (daemonp)
+    (add-hook 'after-make-frame-functions
+              (lambda (frame)
+                (with-selected-frame frame
+                  (load-theme 'gruvbox-light t))))
+  (load-theme 'gruvbox-light t))
+
+;; (setq gruvbox-light-contrast "soft")
+;; (setq gruvbox-dark-contrast "soft")
 
 ;;;; Basic.
 (setq auto-save-default nil)

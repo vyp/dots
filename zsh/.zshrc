@@ -175,6 +175,8 @@ alias sm='ls ~/music | grep -i'
 alias t='tail'
 
 # TODO: Use git grep instead if inside git repository directory.
+# Probably also use tput to highlight the instances of "TODO" in some way and
+# change this into a small shell script.
 alias todo='grep -rI -A 2 --exclude-dir={.git,antigen,bower_components,node_modules,vim-plug} --exclude="colors.penta" TODO:'
 
 alias v='vim'
