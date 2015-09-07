@@ -255,60 +255,12 @@ precmd() {
 PROMPT="%{$reset_color%} %(?.${CHAR}.${ERROR})»%{$reset_color%} "
 RPROMPT='%{$reset_color%}${BGJOBS}%(1j.%j.) %{$reset_color%}${VCS_INFO}${vcs_info_msg_0_} %{$reset_color%}${DIR}%~%{$reset_color%} '
 
-source ~/ui/antigen/antigen.zsh
-
-antigen bundle zsh-users/zsh-syntax-highlighting
-antigen apply
+source ~/ui/vendor/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
 
-# Disable underlines.
+# Disable underlines for zsh-syntax-highlighting.
 ZSH_HIGHLIGHT_STYLES[precommand]=fg=$ZSH_HIGHLIGHT_STYLES_PRECOMMAND
 ZSH_HIGHLIGHT_STYLES[path]=none
 ZSH_HIGHLIGHT_STYLES[path_prefix]=none
 ZSH_HIGHLIGHT_STYLES[path_approx]=fg=$ZSH_HIGHLIGHT_STYLES_PATH_APPROX
-
-# # SP_VIDPLAYER=cvlc
-# # SP_VIDPLAYER=vlc
-# # SP_VIDPLAYER=(vlc --control=lirc)
-# # SP_VIDPLAYER=mplayer
-# # SP_VIDPLAYER=(mplayer -cache 8192)
-# SP_VIDPLAYER=(mplayer -cache 131072)
-# # SP_VIDPLAYER=(mpv --cache=8192)
-#
-# # Wait X seconds to stabilize channel (make it longer if you have a slower
-# # connection).
-# SP_SLEEP=30
-#
-# # Sopcast port and player port.
-# SP_LOCAL_PORT=55050
-# SP_PLAYER_PORT=55051
-#
-# # Manually kill sopcast (sometimes it doesnt exit properly and still uses
-# # bandwidth in the background).
-# sppc-kill() { killall sp-sc ;}
-#
-# # Kills existing connection, starts a new connection, sleep X sec to
-# # stabilize the stream, waits to player to exit and kill itself.
-# sppc() {
-#   killall sp-sc &>/dev/null
-#   (sp-sc "$1" $SP_LOCAL_PORT $SP_PLAYER_PORT &>/dev/null &)
-#   sleep $SP_SLEEP
-#   ($SP_VIDPLAYER http://localhost:$SP_PLAYER_PORT)
-#   wait
-#   killall sp-sc
-# }
-
-#### eng = english, ro = romanian, esp = espanol/spanish
-# added on February 06, 2014
-# spp-doc-explorer.eng,ro() { sppc "sop://broker.sopcast.com:3912/149269" ;}
-# spp-doc-history.eng,ro() { sppc "sop://broker.sopcast.com:3912/148253" ;}
-# spp-doc-history2.eng,ro() { sppc "sop://broker.sopcast.com:3912/149268" ;}
-# spp-doc-natgeo.eng,ro() { sppc "sop://broker.sopcast.com:3912/148248" ;}
-# spp-doc-natgeowild.eng,ro() { sppc "sop://broker.sopcast.com:3912/148259" ;}
-# spp-doc-nature.eng,ro() { sppc "sop://broker.sopcast.com:3912/149267" ;}
-# spp-movie-hbo.eng,ro() { sppc "sop://broker.sopcast.com:3912/148883" ;}
-# spp-movie-hbo2.eng,ro() { sppc "sop://broker.sopcast.com:3912/120702" ;}
-# spp-tv-universal.eng,ro() { sppc "sop://broker.sopcast.com:3912/148255" ;}
-# spp-tv-axn.eng,ro() { sppc "sop://broker.sopcast.com:3912/148257" ;}
-# spp-tv-axncrime.eng,ro() { sppc "sop://broker.sopcast.com:3912/149261" ;}

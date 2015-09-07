@@ -1,5 +1,6 @@
 #!/bin/env bash
 
+# NOTE: This script is outdated because antigen has been removed. FIXME
 # TODO: Do antigen things manually.
 # TODO: pip packages.
 # TODO: Hackage packages (via cabal-install).

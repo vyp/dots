@@ -3,7 +3,6 @@
 cd ~/ui
 
 IGNORE=(
-  "antigen/"
   "bin/"
   "dmenu/"
   "docs/"
@@ -12,6 +11,7 @@ IGNORE=(
   "pacman/"
   "schemes/"
   "vim-plug/"
+  "vendor/"
   "yasnippet-snippets/"
   "zathura/"
 )

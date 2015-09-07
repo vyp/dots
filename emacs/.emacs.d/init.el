@@ -14,6 +14,7 @@
 ;; TODO: Bittorrent client.
 
 ;;; Behaviour.
+;; TODO: Follow vcs symlinks to destination automatically.
 ;; TODO: Expand region.
 ;; TODO: Emmet.
 ;; TODO: Flycheck.
