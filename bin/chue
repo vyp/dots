@@ -1,7 +1,5 @@
 #!/bin/env bash
 
-# TODO: Rename `schemes` directory to `themes`?
-
 cd ~/ui
 
 DIR="schemes/*/"
@@ -65,7 +63,6 @@ stowlink () {
   mkdir -pv ~/.config/mutt
   mkdir -pv ~/.config/sxhkd
   mkdir -pv ~/.config/zathura
-  mkdir -pv ~/.emacs.d
   mkdir -pv ~/.emacs.d/kb
   mkdir -pv ~/.pentadactyl/colors
   mkdir -pv ~/.urxvt

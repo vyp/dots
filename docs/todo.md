@@ -4,7 +4,6 @@
 - pandoc and latex templates?
 - `~/music/playlists` directory.
 - ~~`./bin/`~~ and `./bin/util/` directories.
-- rename `schemes` directory to `themes`?
 - explore more zsh plugin management options other than antigen.
 - check out https://github.com/hchbaw/opp.zsh.
 - https://github.com/zsh-users/zsh-completions.
