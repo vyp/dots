@@ -1,14 +1,10 @@
-1. [Install Arch GNU][1].
-
-2. Switch to [linux-libre][2]. If this is not possible, place your hardware in
-   a fire and get new hardware that can run linux-libre **before continuing any
-   further**.
+1. [Install Arch][1].
 
 3.      # pacman -S git stow sudo
 
-4. [Create a 'normal' user][3].
+4. [Create a 'normal' user][2].
 
-5. [Add such user to sudoers][4]:
+5. [Add such user to sudoers][3]:
 
         # visudo /etc/sudoers
 
@@ -68,6 +64,5 @@
         $ stow -t ~/.mozilla/firefox/########.default firefox
 
 [1]: https://wiki.archlinux.org/index.php/installation_guide
-[2]: https://aur.archlinux.org/packages/linux-libre/
-[3]: https://wiki.archlinux.org/index.php/Users_and_groups#Example_adding_a_user
-[4]: https://wiki.archlinux.org/index.php/Sudo#Example_Entries
+[2]: https://wiki.archlinux.org/index.php/Users_and_groups#Example_adding_a_user
+[3]: https://wiki.archlinux.org/index.php/Sudo#Example_Entries

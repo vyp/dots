@@ -85,8 +85,8 @@ $ stow -D vim
 $ stow -R vim
 ```
 
-For full instructions, see the documentation in the [`docs`] directory. In
-particular, start with [installation][1].
+~~For full instructions, see the documentation in the [`docs`] directory. In
+particular, start with [installation][1].~~ Fully outdated rn.
 
 [GNU Stow]:  https://www.gnu.org/software/stow/
 [`docs`]:    docs
