@@ -9,7 +9,7 @@ IGNORE=(
   "dzen2/"
   "firefox/"
   "pacman/"
-  "schemes/"
+  "themes/"
   "vendor/"
   "zathura/"
 )
@@ -26,7 +26,6 @@ DIRS="
   ~/.config/mutt
   ~/.config/sxhkd
   ~/.config/zathura
-  ~/.emacs.d
   ~/.emacs.d/kb
   ~/.pentadactyl/colors
   ~/.urxvt
