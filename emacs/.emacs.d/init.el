@@ -15,6 +15,7 @@
 
 ;;; Behaviour.
 ;; TODO: Follow vcs symlinks to destination automatically.
+;; TODO: Check out https://github.com/mrkkrp/vimish-fold.
 ;; TODO: Expand region.
 ;; TODO: Emmet.
 ;; TODO: Flycheck.

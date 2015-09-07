@@ -252,7 +252,7 @@ precmd() {
 }
 
 # Other possible prompt characters: > » ≻ ➤ ─ ━
-PROMPT="%{$reset_color%} %(?.${CHAR}━━━.${ERROR}━━━)%{$reset_color%}%b "
+PROMPT="%{$reset_color%} %(?.${CHAR}.${ERROR})━━━%{$reset_color%}%b "
 RPROMPT='%{$reset_color%}${BGJOBS}%(1j.%j.) %{$reset_color%}${VCS_INFO}${vcs_info_msg_0_} %{$reset_color%}${DIR}%~%{$reset_color%} '
 
 source ~/ui/vendor/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
