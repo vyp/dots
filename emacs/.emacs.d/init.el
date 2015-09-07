@@ -234,9 +234,7 @@
      (top-or-bottom-pos . 0))))
 
 ;;; Yasnippet official snippets.
-(setq yas-snippet-dirs
-      '("~/ui/yasnippet-snippets"))
-
+(setq yas-snippet-dirs '("~/ui/vendor/emacs/yasnippet-snippets"))
 (yas-global-mode t)
 
 ;;;; Hooks.

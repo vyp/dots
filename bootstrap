@@ -10,9 +10,7 @@ IGNORE=(
   "firefox/"
   "pacman/"
   "schemes/"
-  "vim-plug/"
   "vendor/"
-  "yasnippet-snippets/"
   "zathura/"
 )
 
@@ -64,7 +62,7 @@ done
 git submodule init
 git submodule update --depth 10
 
-ln -s ~/ui/vim-plug/plug.vim ~/.vim/autoload/plug.vim
+ln -s ~/ui/vendor/vim/vim-plug/plug.vim ~/.vim/autoload/plug.vim
 
 sudo rm -vi /etc/pacman.conf
 sudo stow -t / pacman
