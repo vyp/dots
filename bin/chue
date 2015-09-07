@@ -2,11 +2,11 @@
 
 cd ~/ui
 
-DIR="schemes/*/"
+DIR="themes/*/"
 DIRS=($DIR)
 FIRST=`echo "${DIRS[@]:0:1}" | awk -F'/' '{print $2}' -`
 
-schemes () {
+themes () {
   for dir in $DIR; do
     dir=`echo $dir | awk -F'/' '{print $2}' -`
     echo "- $dir"
@@ -27,7 +27,7 @@ containsElement () {
 ask () {
   read -p "Choose a colorscheme. Available options are:
 
-$(schemes)
+$(themes)
 
 ($FIRST) > " choice
 
@@ -36,7 +36,7 @@ $(schemes)
     return 0
   fi
 
-  check="schemes/${choice}/"
+  check="themes/${choice}/"
   containsElement "${check}" "${DIRS[@]}"
 
   if [[ $? -eq 1 ]]; then
@@ -51,7 +51,7 @@ $(schemes)
 stowlink () {
   for dir in $DIR; do
     dir=`echo $dir | awk -F'/' '{print $2}' -`
-    stow -t ~ -d schemes -D $dir
+    stow -t ~ -d themes -D $dir
   done
 
   mkdir -pv ~/.backup
@@ -69,13 +69,13 @@ stowlink () {
   mkdir -pv ~/.vim/autoload
   mkdir -pv ~/.vim/plugged
 
-  stow -t ~ -d schemes $1
+  stow -t ~ -d themes $1
 }
 
 if [ $# -eq 0 ]; then
   ask
 else
-  check="schemes/$1/"
+  check="themes/$1/"
   containsElement "${check}" "${DIRS[@]}"
 
   if [[ $? -eq 1 ]]; then
