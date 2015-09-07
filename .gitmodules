@@ -1,3 +1,9 @@
 [submodule "vendor/zsh/zsh-syntax-highlighting"]
 	path = vendor/zsh/zsh-syntax-highlighting
 	url = https://github.com/zsh-users/zsh-syntax-highlighting
+[submodule "vendor/vim/vim-plug"]
+	path = vendor/vim/vim-plug
+	url = https://github.com/junegunn/vim-plug
+[submodule "vendor/emacs/yasnippet-snippets"]
+	path = vendor/emacs/yasnippet-snippets
+	url = https://github.com/AndreaCrotti/yasnippet-snippets/
