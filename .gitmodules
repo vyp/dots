@@ -7,3 +7,9 @@
 [submodule "vendor/emacs/yasnippet-snippets"]
 	path = vendor/emacs/yasnippet-snippets
 	url = https://github.com/AndreaCrotti/yasnippet-snippets/
+[submodule "vendor/emacs/package-build"]
+	path = vendor/emacs/package-build
+	url = https://github.com/milkypostman/melpa
+[submodule "vendor/emacs/quelpa"]
+	path = vendor/emacs/quelpa
+	url = https://github.com/quelpa/quelpa
