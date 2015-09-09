@@ -52,19 +52,6 @@
 (global-whitespace-mode t)
 (setq whitespace-style '(face empty tabs trailing))
 
-;;; Theme.
-;; (setq gruvbox-light-contrast "soft")
-;; (setq gruvbox-dark-contrast "soft")
-(add-to-list 'load-path "~/gh/themes/gruvbox-emacs")
-(add-to-list 'custom-theme-load-path "~/gh/themes/gruvbox-emacs")
-
-(if (daemonp)
-    (add-hook 'after-make-frame-functions
-              (lambda (frame)
-                (with-selected-frame frame
-                  (load-theme 'gruvbox-light t))))
-  (load-theme 'gruvbox-light t))
-
 ;;;; Packages.
 (setq package-archives nil)
 (setq quelpa-update-melpa-p nil)
@@ -129,21 +116,22 @@
  (require 'evil-custom-keybindings)
  (evil-mode t))
 
-(use-package
- evil-quick-scope
- :quelpa ((evil-quick-scope
-           :fetcher url
-           :url "~/gh/evil-quick-scope/evil-quick-scope.el"))
+(eval
+ `(use-package
+    evil-quick-scope
+    :quelpa ((evil-quick-scope
+              :fetcher git
+              :url ,(expand-file-name "~/gh/evil-quick-scope")))
 
- :config
- (defun turn-on-evil-quick-scope-mode ()
-   "Unconditionally turn on evil-quick-scope-mode."
-   (evil-quick-scope-mode t))
+    :config
+    (defun turn-on-evil-quick-scope-mode ()
+      "Unconditionally turn on evil-quick-scope-mode."
+      (evil-quick-scope-mode t))
 
- (define-globalized-minor-mode my-global-evil-quick-scope-mode
-   evil-quick-scope-mode turn-on-evil-quick-scope-mode)
+    (define-globalized-minor-mode my-global-evil-quick-scope-mode
+      evil-quick-scope-mode turn-on-evil-quick-scope-mode)
 
- (my-global-evil-quick-scope-mode t))
+    (my-global-evil-quick-scope-mode t)))
 
 (use-package
  evil-matchit :quelpa
@@ -246,3 +234,14 @@
 ;;  (evil-set-initial-state 'magit-tag-section 'normal)
 ;;
 ;;  (require 'magit-custom-keybindings))
+
+;;;; Theme.
+(add-to-list 'load-path "~/gh/themes/gruvbox-emacs")
+(add-to-list 'custom-theme-load-path "~/gh/themes/gruvbox-emacs")
+
+(if (daemonp)
+    (add-hook 'after-make-frame-functions
+              (lambda (frame)
+                (with-selected-frame frame
+                  (load-theme 'gruvbox-light t))))
+  (load-theme 'gruvbox-light t))

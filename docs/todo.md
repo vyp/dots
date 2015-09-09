@@ -4,6 +4,7 @@
 
 - Behaviour.
     - Move package-build to lib directory.
+    - Put everything locally like John Wiegley does.
     - Fix tab keybinding for evil-normal-state.
     - Put the configuration for the modes that come with emacs under use-package
       forms too. (global-hl-line-mode, fringe-mode, mouse-avoidance-mode
