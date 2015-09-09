@@ -213,44 +213,36 @@
  :mode ("\\.pdf\\'" . pdf-view-mode)
  :config (pdf-tools-install))
 
-(use-package
- magit
- :disabled t
- :quelpa
- :commands magit-status
-
- :config
- (custom-set-faces
-  `(magit-section-heading
-    ((t (:weight, 'normal))))
-  `(magit-section-highlight
-    ((t (:weight, 'normal))))
-  `(magit-diff-file-heading
-    ((t (:weight, 'normal)))))
-
- ;; TODO: Change the appropriate modes to start at motion state.
- (evil-set-initial-state 'magit-mode 'normal)
- (evil-set-initial-state 'magit-blame-mode 'normal)
- (evil-set-initial-state 'magit-diff-mode 'normal)
- (evil-set-initial-state 'magit-log-mode 'normal)
- (evil-set-initial-state 'magit-log-select-mode 'normal)
- (evil-set-initial-state 'magit-refs-mode 'normal)
- (evil-set-initial-state 'magit-status-mode 'normal)
- (evil-set-initial-state 'git-commit-mode 'normal)
- (evil-set-initial-state 'git-rebase-mode 'normal)
- (evil-set-initial-state 'with-editor-mode 'normal)
-
- (evil-set-initial-state 'magit-file-section 'normal)
- (evil-set-initial-state 'magit-hunk-section 'normal)
- (evil-set-initial-state 'magit-unstaged-section 'normal)
- (evil-set-initial-state 'magit-staged-section 'normal)
- (evil-set-initial-state 'magit-commit-section 'normal)
- (evil-set-initial-state 'magit-module-commit-section 'normal)
- (evil-set-initial-state 'magit-stashes-section 'normal)
- (evil-set-initial-state 'magit-stash-section 'normal)
- (evil-set-initial-state 'magit-untracked-section 'normal)
- (evil-set-initial-state 'magit-branch-section 'normal)
- (evil-set-initial-state 'magit-remote-section 'normal)
- (evil-set-initial-state 'magit-tag-section 'normal)
-
- (require 'magit-custom-keybindings))
+;; (use-package
+;;  magit
+;;  :disabled t
+;;  :quelpa
+;;  :commands magit-status
+;;
+;;  :config
+;;  ;; TODO: Change the appropriate modes to start at motion state.
+;;  (evil-set-initial-state 'magit-mode 'normal)
+;;  (evil-set-initial-state 'magit-blame-mode 'normal)
+;;  (evil-set-initial-state 'magit-diff-mode 'normal)
+;;  (evil-set-initial-state 'magit-log-mode 'normal)
+;;  (evil-set-initial-state 'magit-log-select-mode 'normal)
+;;  (evil-set-initial-state 'magit-refs-mode 'normal)
+;;  (evil-set-initial-state 'magit-status-mode 'normal)
+;;  (evil-set-initial-state 'git-commit-mode 'normal)
+;;  (evil-set-initial-state 'git-rebase-mode 'normal)
+;;  (evil-set-initial-state 'with-editor-mode 'normal)
+;;
+;;  (evil-set-initial-state 'magit-file-section 'normal)
+;;  (evil-set-initial-state 'magit-hunk-section 'normal)
+;;  (evil-set-initial-state 'magit-unstaged-section 'normal)
+;;  (evil-set-initial-state 'magit-staged-section 'normal)
+;;  (evil-set-initial-state 'magit-commit-section 'normal)
+;;  (evil-set-initial-state 'magit-module-commit-section 'normal)
+;;  (evil-set-initial-state 'magit-stashes-section 'normal)
+;;  (evil-set-initial-state 'magit-stash-section 'normal)
+;;  (evil-set-initial-state 'magit-untracked-section 'normal)
+;;  (evil-set-initial-state 'magit-branch-section 'normal)
+;;  (evil-set-initial-state 'magit-remote-section 'normal)
+;;  (evil-set-initial-state 'magit-tag-section 'normal)
+;;
+;;  (require 'magit-custom-keybindings))
