@@ -144,3 +144,15 @@
     font-family: monospace !important;
   }
 }
+
+@document url-prefix(http://pastebin.com/) {
+  div#abrpm {
+    display: none !important;
+  }
+}
+
+@-moz-document url-prefix(http://pastebin.com/) {
+  div#abrpm {
+    display: none !important;
+  }
+}
