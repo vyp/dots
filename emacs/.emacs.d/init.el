@@ -62,8 +62,10 @@
 ;; Bootstrap quelpa if needed.
 (unless (require 'quelpa nil t)
   (unless (require 'package-build nil t)
-    (package-install-file "~/ui/vendor/emacs/package-build/package-build.el"))
-  (package-install-file "~/ui/vendor/emacs/quelpa/quelpa.el"))
+    (package-install-file
+     (expand-file-name "~/ui/vendor/emacs/package-build/package-build.el")))
+  (package-install-file
+   (expand-file-name "~/ui/vendor/emacs/quelpa/quelpa.el")))
 
 (quelpa
  '(quelpa-use-package
@@ -119,9 +121,12 @@
 (eval
  `(use-package
     evil-quick-scope
-    :quelpa ((evil-quick-scope
-              :fetcher git
-              :url ,(expand-file-name "~/gh/evil-quick-scope")))
+    :disabled t
+
+    :quelpa
+    ((evil-quick-scope
+      :fetcher git
+      :url ,(expand-file-name "~/gh/evil-quick-scope")))
 
     :config
     (defun turn-on-evil-quick-scope-mode ()
@@ -155,10 +160,11 @@
 
 (use-package
  yasnippet
- :quelpa ((yasnippet
-           :fetcher github
-           :repo    "capitaomorte/yasnippet"
-           :files   ("yasnippet.el")))
+ :quelpa
+ ((yasnippet
+   :fetcher github
+   :repo    "capitaomorte/yasnippet"
+   :files   ("yasnippet.el")))
 
  :init
  (setq yas-snippet-dirs '("~/ui/vendor/emacs/yasnippet-snippets"))
