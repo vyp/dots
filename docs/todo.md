@@ -57,6 +57,7 @@
 
 ## Other
 
+- make enter key act like control if pressed as part of a chord.
 - pandoc and latex templates?
 - `~/music/playlists` directory.
 - `./contrib` directory.
