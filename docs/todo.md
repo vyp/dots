@@ -35,6 +35,7 @@
       buffers.
 
 - Appearance.
+    - indicate-buffer-boundaries.
     - Report company mode popup bug on right window edge?
     - Disable fill column indicator in magit mode buffers?
     - Remove right fringe in pdf-view-mode.
