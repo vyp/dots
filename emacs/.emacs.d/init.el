@@ -66,6 +66,9 @@
 
 (require 'quelpa-use-package)
 
+;; Configure libraries.
+(use-package ov :defer t :quelpa (:upgrade t))
+
 (use-package paren
   :demand
   :init (setq show-paren-delay 0)
