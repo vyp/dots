@@ -3,11 +3,7 @@
 ## Emacs
 
 - Behaviour.
-    - Put everything locally like John Wiegley does.
     - Fix tab keybinding for evil-normal-state.
-    - Put the configuration for the modes that come with emacs under use-package
-      forms too. (global-hl-line-mode, fringe-mode, mouse-avoidance-mode
-      (avoid.el) and global-whitespace-mode)
     - Rename all the custom-keybindings modules to
       "my-custom-<package-name>-keybindings"?
     - Follow vcs symlinks to destination automatically.

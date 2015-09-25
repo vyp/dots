@@ -14,33 +14,8 @@
 (setq-default indent-tabs-mode nil)
 (setq-default tab-width 2)
 
+;; TODO: Find out if this has an impact on load times at all.
 (add-to-list 'load-path "~/ui/emacs/.emacs.d/custom-keybindings")
-
-;; Banish the vile mouse to the bottom right corner of the emacs window.
-(mouse-avoidance-mode 'banish)
-(custom-set-variables
- '(mouse-avoidance-banish-position
-   '((frame-or-window . frame)
-     (side . right)
-     (side-pos . 0)
-     (top-or-bottom . bottom)
-     (top-or-bottom-pos . 0))))
-
-;;; Appearance
-(global-hl-line-mode t)
-(fringe-mode '(0 . nil))
-
-;; Enables `gj` and `gk` and co to move up and down visually wrapped lines.
-(setq line-move-visual nil)
-
-;; Visually wrap long lines at right window edge.
-(global-visual-line-mode t)
-
-;; These get disabled for whatever reason.
-(setq-default visual-line-fringe-indicators t)
-
-(global-whitespace-mode t)
-(setq whitespace-style '(face empty tabs trailing))
 
 ;;; Packages.
 (setq package-archives       nil
@@ -50,6 +25,7 @@
 (require 'package)
 (package-initialize)
 
+;; Bootstrap quelpa.
 ;; TODO: Possibly change these from doing `package-install-file` to just
 ;; `load-file`?
 (unless (require 'package-build nil t)
@@ -74,20 +50,51 @@
 ;; Configure libraries.
 (use-package ov :defer t :quelpa)
 
+;; Built-in minor modes.
+(use-package avoid
+  :demand t
+  :config
+  ;; Banish the vile mouse to the bottom right corner of the emacs window.
+  (mouse-avoidance-mode 'banish)
+  (custom-set-variables
+   '(mouse-avoidance-banish-position
+     '((frame-or-window . frame)
+       (side . right)
+       (side-pos . 0)
+       (top-or-bottom . bottom)
+       (top-or-bottom-pos . 0)))))
+
+(use-package fringe
+  :demand t :config (fringe-mode '(0 . nil)))
+
+(use-package hl-line
+  :demand t :config (global-hl-line-mode t))
+
 (use-package paren
-  :demand
+  :demand t
   :init (setq show-paren-delay 0)
   :config (show-paren-mode t))
 
-(use-package fill-column-indicator
-  :demand :quelpa
-  :init (setq-default fill-column 80)
+(use-package simple
+  :demand t
   :config
-  (define-globalized-minor-mode my-global-fci-mode fci-mode turn-on-fci-mode)
-  (my-global-fci-mode t))
+  ;; Enables `gj` and `gk` and co to move up and down visually wrapped lines.
+  (setq line-move-visual nil)
 
+  ;; Visually wrap long lines at right window edge.
+  (global-visual-line-mode t)
+
+  ;; These get disabled for whatever reason.
+  (setq-default visual-line-fringe-indicators t))
+
+(use-package whitespace
+  :demand t
+  :init (setq whitespace-style '(face empty tabs trailing))
+  :config (global-whitespace-mode t))
+
+;; Evil mode and evil mode related packages.
 (use-package evil
-  :demand :quelpa
+  :demand t :quelpa
   :init
   (setq evil-want-C-u-scroll t
         evil-cross-lines t
@@ -117,6 +124,12 @@
   (require 'evil-custom-keybindings)
   (evil-mode t))
 
+(use-package evil-matchit
+  :quelpa :config (global-evil-matchit-mode t))
+
+(use-package evil-nerd-commenter
+  :quelpa :commands evilnc-comment-or-uncomment-lines)
+
 (use-package evil-quick-scope
   :disabled t :quelpa
   :config
@@ -129,21 +142,23 @@
 
   (my-global-evil-quick-scope-mode t))
 
-(use-package evil-matchit
-  :quelpa :config (global-evil-matchit-mode t))
-
-(use-package evil-nerd-commenter
-  :quelpa :commands evilnc-comment-or-uncomment-lines)
-
 (use-package evil-surround
   :quelpa :config (global-evil-surround-mode t))
 
+;; Other third party minor mode packages.
 (use-package company
   :quelpa
   :init
   (setq company-idle-delay 0)
   (add-hook 'after-init-hook 'global-company-mode)
   :config (require 'company-custom-keybindings))
+
+(use-package fill-column-indicator
+  :demand t :quelpa
+  :init (setq-default fill-column 80)
+  :config
+  (define-globalized-minor-mode my-global-fci-mode fci-mode turn-on-fci-mode)
+  (my-global-fci-mode t))
 
 (use-package yasnippet
   :quelpa
@@ -152,6 +167,7 @@
   (yas-global-mode t)
   (require 'yasnippet-custom-keybindings))
 
+;; Built-in major modes.
 (use-package ibuffer
   :commands ibuffer
   :config
@@ -171,15 +187,15 @@
      ((> (buffer-size) 1000)    (format "%7.1fk" (/ (buffer-size) 1000.0)))
      (t                         (format "%8d"       (buffer-size)))))
 
-  (setq ibuffer-formats
-        '((mark modified read-only " "
-                (name 18 18 :left :elide) " "
-                (size-h 9 -1 :right) "  "
-                (mode 16 16 :left :elide) " "
-                filename-and-process)))
+  (setq ibuffer-formats '((mark modified read-only " "
+                                (name 18 18 :left :elide) " "
+                                (size-h 9 -1 :right) "  "
+                                (mode 16 16 :left :elide) " "
+                                filename-and-process)))
 
   (require 'ibuffer-custom-keybindings))
 
+;; Third party major mode packages.
 (use-package pdf-tools
   :disabled t
   :mode ("\\.pdf\\'" . pdf-view-mode)
@@ -218,17 +234,6 @@
 ;;
 ;;  (require 'magit-custom-keybindings))
 
-;;; Theme.
-(add-to-list 'load-path "~/gh/themes/gruvbox-emacs")
-(add-to-list 'custom-theme-load-path "~/gh/themes/gruvbox-emacs")
-
-(if (daemonp)
-    (add-hook 'after-make-frame-functions
-              (lambda (frame)
-                (with-selected-frame frame
-                  (load-theme 'gruvbox-light t))))
-  (load-theme 'gruvbox-light t))
-
 ;;; Fonts.
 ;; Disable italic and underlines.
 (set-face-attribute 'mode-line nil :box nil)
@@ -238,3 +243,15 @@
 (mapc (lambda (face)
         (set-face-attribute face nil :weight 'normal :underline nil))
       (face-list))
+
+;;; Theme.
+(let ((theme-path "~/gh/themes/gruvbox-emacs"))
+  (dolist (list '(load-path custom-theme-load-path))
+    (add-to-list list theme-path)))
+
+(if (daemonp)
+    (add-hook 'after-make-frame-functions
+              (lambda (frame)
+                (with-selected-frame frame
+                  (load-theme 'gruvbox-light t))))
+  (load-theme 'gruvbox-light t))
