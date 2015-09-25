@@ -1,0 +1,4 @@
+(package-build
+ :fetcher url
+ :files ("package-build.el")
+ :url "~/ui/vendor/emacs/package-build")

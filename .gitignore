@@ -1,7 +1,43 @@
-# Text editor temporary files (will ignore hidden svg files too!).
-*~
-.*.s[a-w][a-z]
-.swp
+# -*- mode: gitignore; -*-
+# Evil mode because it is using hg instead of git.
+/vendor/emacs/evil
 
-# Emacs compiled lisp files.
+# Emacs.
+*~
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
 *.elc
+auto-save-list
+tramp
+.\#*
+
+## Org-mode.
+.org-id-locations
+*_archive
+
+## Flymake-mode.
+*_flymake.*
+
+## Eshell files.
+/eshell/history
+/eshell/lastdir
+
+## Elpa packages.
+/elpa/
+
+## Reftex files.
+*.rel
+
+## AUCTeX auto folder.
+/auto/
+
+## Cask packages.
+.cask/
+
+# Vim.
+[._]*.s[a-w][a-z]
+[._]s[a-w][a-z]
+*.un~
+Session.vim
+.netrwhist

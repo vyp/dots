@@ -1,0 +1,3 @@
+(goto-chg
+ :fetcher url
+ :url "~/ui/vendor/emacs/goto-chg")

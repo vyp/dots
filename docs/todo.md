@@ -3,10 +3,7 @@
 ## Emacs
 
 - Behaviour.
-    - Move package-build to lib directory.
     - Put everything locally like John Wiegley does.
-    - Separate out the quelpa recipes from the use-package forms so that local
-      packages can be used more 'cleanly'.
     - Fix tab keybinding for evil-normal-state.
     - Put the configuration for the modes that come with emacs under use-package
       forms too. (global-hl-line-mode, fringe-mode, mouse-avoidance-mode
@@ -24,7 +21,7 @@
     - Multiple cursors.
     - Highlight trailing newlines.
     - Highlight TODOs.
-    - Transposing.
+    - Transposing (including words).
     - Javascript mode 2 space indentation instead of 4 space.
     - wellle/targets.vim ?
 

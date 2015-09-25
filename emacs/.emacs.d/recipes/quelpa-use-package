@@ -1,0 +1,3 @@
+(quelpa-use-package
+ :fetcher url
+ :url "~/ui/vendor/emacs/quelpa-use-package")

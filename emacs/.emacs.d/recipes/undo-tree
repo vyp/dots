@@ -1,0 +1,3 @@
+(undo-tree
+ :fetcher url
+ :url "~/ui/vendor/emacs/undo-tree")
