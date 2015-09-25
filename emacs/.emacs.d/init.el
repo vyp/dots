@@ -72,7 +72,7 @@
   :config (show-paren-mode t))
 
 (use-package fill-column-indicator
-  :demand :quelpa
+  :demand :quelpa (:upgrade t)
   :init (setq-default fill-column 80)
   :config
   (define-globalized-minor-mode my-global-fci-mode fci-mode turn-on-fci-mode)
@@ -143,10 +143,7 @@
 
 (use-package yasnippet
   :quelpa (:upgrade t)
-
-  :init
-  (setq yas-snippet-dirs '("~/ui/vendor/emacs/yasnippet-snippets"))
-
+  :init (setq yas-snippet-dirs '("~/ui/vendor/emacs/yasnippet-snippets"))
   :config
   (yas-global-mode t)
   (require 'yasnippet-custom-keybindings))

@@ -1,0 +1,4 @@
+(fill-column-indicator
+ :fetcher url
+ :files ("fill-column-indicator.el")
+ :url "~/ui/vendor/emacs/Fill-Column-Indicator")

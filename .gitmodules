@@ -43,3 +43,6 @@
 [submodule "vendor/emacs/yasnippet"]
 	path = vendor/emacs/yasnippet
 	url = https://github.com/capitaomorte/yasnippet
+[submodule "vendor/emacs/Fill-Column-Indicator"]
+	path = vendor/emacs/Fill-Column-Indicator
+	url = https://github.com/alpaker/Fill-Column-Indicator
