@@ -1,0 +1,4 @@
+(yasnippet
+ :fetcher url
+ :files ("yasnippet.el")
+ :url "~/ui/vendor/emacs/yasnippet")

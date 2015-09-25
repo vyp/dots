@@ -110,7 +110,7 @@
   (evil-mode t))
 
 (use-package evil-quick-scope
-  :disabled t
+  :disabled t :quelpa (:upgrade t)
 
   :config
   (defun turn-on-evil-quick-scope-mode ()
@@ -123,31 +123,26 @@
   (my-global-evil-quick-scope-mode t))
 
 (use-package evil-matchit
-  :quelpa
+  :quelpa (:upgrade t)
   :config (global-evil-matchit-mode t))
 
 (use-package evil-nerd-commenter
-  :quelpa
+  :quelpa (:upgrade t)
   :commands evilnc-comment-or-uncomment-lines)
 
 (use-package evil-surround
-  :quelpa
+  :quelpa (:upgrade t)
   :config (global-evil-surround-mode t))
 
 (use-package company
-  :quelpa
+  :quelpa (:upgrade t)
   :init
   (setq company-idle-delay 0)
   (add-hook 'after-init-hook 'global-company-mode)
-
   :config (require 'company-custom-keybindings))
 
 (use-package yasnippet
-  :quelpa
-  ((yasnippet
-    :fetcher github
-    :repo    "capitaomorte/yasnippet"
-    :files   ("yasnippet.el")))
+  :quelpa (:upgrade t)
 
   :init
   (setq yas-snippet-dirs '("~/ui/vendor/emacs/yasnippet-snippets"))
@@ -185,7 +180,7 @@
   (require 'ibuffer-custom-keybindings))
 
 (use-package pdf-tools
-  :quelpa
+  :disabled t
   :mode ("\\.pdf\\'" . pdf-view-mode)
   :config (pdf-tools-install))
 

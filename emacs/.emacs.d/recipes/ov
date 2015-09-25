@@ -1,0 +1,3 @@
+(ov
+ :fetcher url
+ :url "~/ui/vendor/emacs/ov.el")

@@ -25,3 +25,21 @@
 [submodule "vendor/emacs/undo-tree"]
 	path = vendor/emacs/undo-tree
 	url = http://www.dr-qubit.org/git/undo-tree.git
+[submodule "vendor/emacs/ov.el"]
+	path = vendor/emacs/ov.el
+	url = https://github.com/ShingoFukuyama/ov.el
+[submodule "vendor/emacs/evil-matchit"]
+	path = vendor/emacs/evil-matchit
+	url = https://github.com/redguardtoo/evil-matchit
+[submodule "vendor/emacs/evil-nerd-commenter"]
+	path = vendor/emacs/evil-nerd-commenter
+	url = https://github.com/redguardtoo/evil-nerd-commenter
+[submodule "vendor/emacs/evil-surround"]
+	path = vendor/emacs/evil-surround
+	url = https://github.com/timcharper/evil-surround
+[submodule "vendor/emacs/company-mode"]
+	path = vendor/emacs/company-mode
+	url = https://github.com/company-mode/company-mode
+[submodule "vendor/emacs/yasnippet"]
+	path = vendor/emacs/yasnippet
+	url = https://github.com/capitaomorte/yasnippet

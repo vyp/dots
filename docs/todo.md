@@ -27,7 +27,6 @@
 
 - Keybindings.
     - Allow `gg` in ibuffer by removing `g` for refresh.
-    - pdf-view-mode.
     - "Completion List", "Packages", "Compile-log", "Messages", "Backtrace"
       buffers.
 
@@ -52,6 +51,8 @@
     - Mail.
     - RSS.
     - Bittorrent client.
+    - Figure out installation method for pdf-tools (whether to use guix, or to
+      use quelpa...).
 
 ## Other
 
