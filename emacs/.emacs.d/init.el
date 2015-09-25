@@ -43,12 +43,15 @@
 (setq whitespace-style '(face empty tabs trailing))
 
 ;;; Packages.
-(setq package-archives nil)
-(setq quelpa-update-melpa-p nil)
+(setq package-archives       nil
+      quelpa-update-melpa-p  nil
+      quelpa-upgrade-p       t)
 
 (require 'package)
 (package-initialize)
 
+;; TODO: Possibly change these from doing `package-install-file` to just
+;; `load-file`?
 (unless (require 'package-build nil t)
   (package-install-file
    (expand-file-name "~/ui/vendor/emacs/package-build/package-build.el")))
@@ -57,17 +60,19 @@
   (package-install-file
    (expand-file-name "~/gh/forks/quelpa/quelpa.el")))
 
+;; TODO: Find out if the presence of both `(require 'quelpa)` and `(require
+;; 'quelpa-use-package)` here is detrimental to startup times.
 (require 'quelpa)
 (add-to-list
  'quelpa-melpa-recipe-dirs (expand-file-name "~/ui/emacs/.emacs.d/recipes"))
 
-(quelpa 'quelpa :upgrade t)
-(quelpa 'quelpa-use-package :upgrade t)
+(quelpa 'quelpa)
+(quelpa 'quelpa-use-package)
 
 (require 'quelpa-use-package)
 
 ;; Configure libraries.
-(use-package ov :defer t :quelpa (:upgrade t))
+(use-package ov :defer t :quelpa)
 
 (use-package paren
   :demand
@@ -75,14 +80,14 @@
   :config (show-paren-mode t))
 
 (use-package fill-column-indicator
-  :demand :quelpa (:upgrade t)
+  :demand :quelpa
   :init (setq-default fill-column 80)
   :config
   (define-globalized-minor-mode my-global-fci-mode fci-mode turn-on-fci-mode)
   (my-global-fci-mode t))
 
 (use-package evil
-  :demand :quelpa (:upgrade t)
+  :demand :quelpa
   :init
   (setq evil-want-C-u-scroll t
         evil-cross-lines t
@@ -113,8 +118,7 @@
   (evil-mode t))
 
 (use-package evil-quick-scope
-  :disabled t :quelpa (:upgrade t)
-
+  :disabled t :quelpa
   :config
   (defun turn-on-evil-quick-scope-mode ()
     "Unconditionally turn on evil-quick-scope-mode."
@@ -126,26 +130,23 @@
   (my-global-evil-quick-scope-mode t))
 
 (use-package evil-matchit
-  :quelpa (:upgrade t)
-  :config (global-evil-matchit-mode t))
+  :quelpa :config (global-evil-matchit-mode t))
 
 (use-package evil-nerd-commenter
-  :quelpa (:upgrade t)
-  :commands evilnc-comment-or-uncomment-lines)
+  :quelpa :commands evilnc-comment-or-uncomment-lines)
 
 (use-package evil-surround
-  :quelpa (:upgrade t)
-  :config (global-evil-surround-mode t))
+  :quelpa :config (global-evil-surround-mode t))
 
 (use-package company
-  :quelpa (:upgrade t)
+  :quelpa
   :init
   (setq company-idle-delay 0)
   (add-hook 'after-init-hook 'global-company-mode)
   :config (require 'company-custom-keybindings))
 
 (use-package yasnippet
-  :quelpa (:upgrade t)
+  :quelpa
   :init (setq yas-snippet-dirs '("~/ui/vendor/emacs/yasnippet-snippets"))
   :config
   (yas-global-mode t)
