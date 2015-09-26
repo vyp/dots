@@ -77,15 +77,16 @@
 
 (use-package simple
   :demand t
-  :config
+  :init
   ;; Enables `gj` and `gk` and co to move up and down visually wrapped lines.
   (setq line-move-visual nil)
 
-  ;; Visually wrap long lines at right window edge.
-  (global-visual-line-mode t)
-
   ;; These get disabled for whatever reason.
-  (setq-default visual-line-fringe-indicators t))
+  (setq-default visual-line-fringe-indicators t)
+
+  :config
+  ;; Visually wrap long lines at right window edge.
+  (global-visual-line-mode t))
 
 (use-package whitespace
   :demand t
@@ -195,7 +196,7 @@
 
   (require 'ibuffer-custom-keybindings))
 
-;; Third party major mode packages.
+;; Third party major modes.
 (use-package pdf-tools
   :disabled t
   :mode ("\\.pdf\\'" . pdf-view-mode)
