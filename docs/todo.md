@@ -6,7 +6,6 @@
     - Fix tab keybinding for evil-normal-state.
     - Rename all the custom-keybindings modules to
       "my-custom-<package-name>-keybindings"?
-    - Follow vcs symlinks to destination automatically.
     - Check out https://github.com/mrkkrp/vimish-fold.
     - Expand region.
     - Emmet.

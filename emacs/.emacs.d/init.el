@@ -1,14 +1,15 @@
 ;;; Basic.
 (setq auto-save-default       nil
-      create-lockfiles        nil
       backup-directory-alist  `(("." . "~/.backup"))
       backup-by-copying       t
+      create-lockfiles        nil
       delete-old-versions     t
       kept-new-versions       6
       kept-old-versions       2
-      version-control         t
       require-final-newline   t
-      recenter-positions      '(0.25))
+      recenter-positions      '(0.25)
+      vc-follow-symlinks      t
+      version-control         t)
 
 (setq-default auto-fill-function 'do-auto-fill)
 (setq-default indent-tabs-mode nil)
