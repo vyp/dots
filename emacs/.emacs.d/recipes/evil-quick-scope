@@ -1,3 +1,3 @@
 (evil-quick-scope
- :fetcher url
+ :fetcher file
  :url "~/gh/evil-quick-scope")

@@ -1,4 +1,4 @@
 (quelpa
- :fetcher url
+ :fetcher file
  :files ("quelpa.el")
  :url "~/gh/forks/quelpa")
