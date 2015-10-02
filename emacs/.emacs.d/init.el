@@ -15,7 +15,6 @@
 (setq-default indent-tabs-mode nil)
 (setq-default tab-width 2)
 
-;; TODO: Find out if this has an impact on load times at all.
 (add-to-list 'load-path "~/ui/emacs/.emacs.d/custom-keybindings")
 
 ;;; Packages.
