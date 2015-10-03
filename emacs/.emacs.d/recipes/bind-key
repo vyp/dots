@@ -1,4 +1,0 @@
-(bind-key
- :fetcher file
- :files ("bind-key.el")
- :url "~/ui/vendor/emacs/use-package")

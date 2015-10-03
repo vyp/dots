@@ -1,3 +1,0 @@
-(diminish
- :fetcher file
- :url "~/ui/vendor/emacs/diminish")

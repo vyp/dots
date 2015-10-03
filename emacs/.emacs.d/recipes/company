@@ -1,3 +1,0 @@
-(company
- :fetcher file
- :url "~/ui/vendor/emacs/company-mode")

@@ -1,3 +1,0 @@
-(evil-matchit
- :fetcher file
- :url "~/ui/vendor/emacs/evil-matchit")

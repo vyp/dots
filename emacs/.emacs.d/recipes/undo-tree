@@ -1,3 +1,0 @@
-(undo-tree
- :fetcher file
- :url "~/ui/vendor/emacs/undo-tree")

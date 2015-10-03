@@ -1,4 +1,0 @@
-(use-package
- :fetcher file
- :files ("use-package.el")
- :url "~/ui/vendor/emacs/use-package")

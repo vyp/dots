@@ -39,8 +39,9 @@
 ;; TODO: Find out if the presence of both `(require 'quelpa)` and `(require
 ;; 'quelpa-use-package)` here is detrimental to startup times.
 (require 'quelpa)
-(add-to-list
- 'quelpa-melpa-recipe-dirs (expand-file-name "~/ui/emacs/.emacs.d/recipes"))
+(load-file (expand-file-name "~/ui/emacs/.emacs.d/recipe-list.el"))
+(require 'recipe-list)
+(add-to-list 'quelpa-melpa-recipe-stores recipe-list)
 
 (quelpa 'quelpa)
 (quelpa 'quelpa-use-package)

@@ -1,3 +1,0 @@
-(evil-surround
- :fetcher file
- :url "~/ui/vendor/emacs/evil-surround")

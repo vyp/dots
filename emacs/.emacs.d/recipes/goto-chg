@@ -1,3 +1,0 @@
-(goto-chg
- :fetcher file
- :url "~/ui/vendor/emacs/goto-chg")

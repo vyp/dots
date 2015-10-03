@@ -1,3 +1,0 @@
-(evil-nerd-commenter
- :fetcher file
- :url "~/ui/vendor/emacs/evil-nerd-commenter")
