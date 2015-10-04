@@ -15,8 +15,9 @@ cdpath=(~)
 bindkey -v
 bindkey -M vicmd v edit-command-line
 
-setopt HIST_IGNORE_DUPS
-setopt HIST_IGNORE_SPACE
+setopt hist_ignore_all_dups
+setopt hist_ignore_dups
+setopt hist_ignore_space
 setopt autocd extendedglob
 setopt autocd
 setopt autopushd
