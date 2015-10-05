@@ -34,7 +34,7 @@
 
 (unless (require 'quelpa nil t)
   (package-install-file
-   (expand-file-name "~/gh/forks/quelpa/quelpa.el")))
+   (expand-file-name "~/ui/vendor/emacs/quelpa/quelpa.el")))
 
 ;; TODO: Find out if the presence of both `(require 'quelpa)` and `(require
 ;; 'quelpa-use-package)` here is detrimental to startup times.

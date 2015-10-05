@@ -54,7 +54,7 @@
    (quelpa
     :fetcher file
     :files ("quelpa.el")
-    :path "~/gh/forks/quelpa")
+    :path "~/ui/vendor/emacs/quelpa")
 
    (quelpa-use-package
     :fetcher file
