@@ -42,6 +42,10 @@
     :fetcher file
     :path "~/ui/vendor/emacs/goto-chg")
 
+   (haskell-mode
+    :fetcher file
+    :path "~/ui/vendor/emacs/haskell-mode")
+
    (ov
     :fetcher file
     :path "~/ui/vendor/emacs/ov.el")

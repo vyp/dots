@@ -46,3 +46,6 @@
 [submodule "vendor/emacs/Fill-Column-Indicator"]
 	path = vendor/emacs/Fill-Column-Indicator
 	url = https://github.com/alpaker/Fill-Column-Indicator
+[submodule "vendor/emacs/haskell-mode"]
+	path = vendor/emacs/haskell-mode
+	url = https://github.com/haskell/haskell-mode

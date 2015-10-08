@@ -17,6 +17,19 @@
 
 (add-to-list 'load-path "~/ui/emacs/.emacs.d/custom-keybindings")
 
+;; TODO: Place miscellaneous functions like this as a separate library file that
+;; use-package loads as a library when needed.
+;; (defun x-urgency-hint (frame arg &optional source)
+;;   "Enable or disables urgency hint for the frame FRAME.
+;; Set ARG to non-nil to enable urgency hint, nil to disable."
+;;   (let* ((wm-hints (append (x-window-property
+;;                             "WM_HINTS" frame "WM_HINTS" source nil t) nil))
+;;          (flags (car wm-hints)))
+;;     (setcar wm-hints (if arg
+;;                          (logior flags #x100)
+;;                        (logand flags (lognot #x100))))
+;;     (x-change-window-property "WM_HINTS" wm-hints frame "WM_HINTS" 32 t)))
+
 ;;; Packages.
 (setq package-archives       nil
       quelpa-update-melpa-p  nil
@@ -198,6 +211,11 @@
   (require 'ibuffer-custom-keybindings))
 
 ;; Third party major modes.
+(use-package haskell-mode
+  :defer t :quelpa
+  :init
+  (add-hook 'haskell-mode-hook 'turn-on-haskell-indent))
+
 (use-package pdf-tools
   :disabled t
   :mode ("\\.pdf\\'" . pdf-view-mode)
