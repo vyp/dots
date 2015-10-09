@@ -1,3 +1,6 @@
+;; NOTE: WIP! Do not use!
+;; Guix builds it, but there are missing runtime dependencies.
+
 (define-module (my-packages python-qutebrowser)
   #:use-module (gnu packages python)
   #:use-module (guix packages)
