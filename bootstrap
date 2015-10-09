@@ -8,6 +8,7 @@ IGNORE=(
   "docs/"
   "dzen2/"
   "firefox/"
+  "guix/"
   "pacman/"
   "themes/"
   "vendor/"
