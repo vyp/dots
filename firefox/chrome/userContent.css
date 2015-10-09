@@ -70,7 +70,8 @@
 @document url-prefix(https://twitter.com/) {
   div.WhoToFollow,
   div.wtf-module,
-  div.dashboard-right {
+  div.dashboard-right,
+  div#above-timeline-prompt {
     display: none !important;
   }
 }
@@ -78,7 +79,8 @@
 @-moz-document url-prefix(https://twitter.com/) {
   div.WhoToFollow,
   div.wtf-module,
-  div.dashboard-right {
+  div.dashboard-right,
+  div#above-timeline-prompt {
     display: none !important;
   }
 }
