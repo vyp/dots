@@ -1,6 +1,3 @@
-typeset -U path
-path=(~/sc/bin ~/ui/bin ~/.guix-profile/bin ~/.cabal/bin $path)
-
 export BROWSER=firefox
 export EDITOR=vim
 export GUIX_PACKAGE_PATH=$HOME/ui/guix
