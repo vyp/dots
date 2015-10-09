@@ -30,8 +30,8 @@
    (arguments
     '(#:phases (alist-delete 'configure %standard-phases)
       #:tests? #f ;; No tests.
-      #:make-flags
-      (list "CC=gcc" (string-append "PREFIX=" (assoc-ref %outputs "out")))))
+      #:make-flags (list "CC=gcc" (string-append
+                                   "PREFIX=" (assoc-ref %outputs "out")))))
    (home-page "https://github.com/baskerville/sxhkd")
    (synopsis "Simple X hotkey daemon")
    (description "sxhkd is a simple X hotkey daemon with a powerful and compact

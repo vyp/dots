@@ -31,8 +31,8 @@
    (arguments
     '(#:phases (alist-delete 'configure %standard-phases)
       #:tests? #f ;; No tests.
-      #:make-flags
-      (list "CC=gcc" (string-append "PREFIX=" (assoc-ref %outputs "out")))))
+      #:make-flags (list "CC=gcc" (string-append
+                                   "PREFIX=" (assoc-ref %outputs "out")))))
    (home-page "https://github.com/baskerville/bspwm")
    (synopsis "Tiling window manager based on binary space partitioning")
    (description "bspwm is a tiling window manager that represents windows as the

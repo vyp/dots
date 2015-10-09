@@ -1,8 +1,5 @@
 [user]
   name = rws
-
-  # No 'HTML' emails please, only plain text!
-  # HTML emails will be ignored and deleted automatically.
   email = elisp.vim@gmail.com
 
 [core]
@@ -10,3 +7,10 @@
 
 [push]
   default = matching
+
+[sendemail]
+  smtpEncryption = tls
+  smtpServer = smtp.gmail.com
+  smtpUser = elisp.vim@gmail.com
+  smtpServerPort = 587
+  suppresscc = self
