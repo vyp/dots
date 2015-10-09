@@ -12,6 +12,7 @@
    (version "0.9")
    (source
     (origin
+     (file-name (string-append name "-" version ".tar.gz"))
      (method url-fetch)
      (uri (string-append
            "https://github.com/baskerville/bspwm/archive/"
@@ -29,7 +30,7 @@
       ("xcb-util-wm" ,xcb-util-wm)))
    (arguments
     '(#:phases (alist-delete 'configure %standard-phases)
-      #:tests? #f
+      #:tests? #f ;; No tests.
       #:make-flags
       (list "CC=gcc" (string-append "PREFIX=" (assoc-ref %outputs "out")))))
    (home-page "https://github.com/baskerville/bspwm")
