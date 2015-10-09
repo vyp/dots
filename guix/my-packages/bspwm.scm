@@ -1,28 +1,29 @@
-(define-module (sxhkd)
-  #:use-module (gnu packages asciidoc)
+(define-module (my-packages bspwm)
+  #:use-module (my-packages sxhkd)
   #:use-module (gnu packages xorg)
   #:use-module (guix packages)
   #:use-module (guix download)
   #:use-module (guix build-system gnu)
   #:use-module (guix licenses))
 
-(define-public sxhkd
+(define-public bspwm
   (package
-   (name "sxhkd")
-   (version "0.5.5")
+   (name "bspwm")
+   (version "0.9")
    (source
     (origin
      (method url-fetch)
      (uri (string-append
-           "https://github.com/baskerville/sxhkd/archive/"
+           "https://github.com/baskerville/bspwm/archive/"
            version ".tar.gz"))
      (sha256
       (base32
-       "04s3y2bq9502gw72jj3y2zsh96yj3qg2av3zsa8ahd2farvrysg6"))))
+       "1pig0h2jk8wipyz90j69c4bk37bfyq60asnn0v0bqld2p2vjvyqy"))))
    (build-system gnu-build-system)
    (inputs
-    `(("asciidoc" ,asciidoc)
-      ("libxcb" ,libxcb)
+    `(("libxcb" ,libxcb)
+      ("libxinerama" ,libxinerama)
+      ("sxhkd" ,sxhkd)
       ("xcb-util" ,xcb-util)
       ("xcb-util-keysyms" ,xcb-util-keysyms)
       ("xcb-util-wm" ,xcb-util-wm)))
@@ -31,7 +32,8 @@
       #:tests? #f
       #:make-flags
       (list "CC=gcc" (string-append "PREFIX=" (assoc-ref %outputs "out")))))
-   (home-page "https://github.com/baskerville/sxhkd")
-   (synopsis "Simple X hotkey daemon")
-   (description "Simple X hotkey daemon.")
+   (home-page "https://github.com/baskerville/bspwm")
+   (synopsis "Tiling window manager based on binary space partitioning")
+   (description "bspwm is a tiling window manager that represents windows as the
+leaves of a full binary tree.")
    (license bsd-2)))

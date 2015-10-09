@@ -1,4 +1,4 @@
-(define-module (python-qutebrowser)
+(define-module (my-packages python-qutebrowser)
   #:use-module (gnu packages python)
   #:use-module (guix packages)
   #:use-module (guix download)
@@ -22,7 +22,7 @@
    (inputs
     `(("python-setuptools" ,python-setuptools)))
    (home-page "https://pypi.python.org/pypi/colorama")
-   (synopsis "Cross-platform colored terminal text.")
+   (synopsis "Cross-platform colored terminal text")
    (description "Cross-platform colored terminal text.")
    (license bsd-3)))
 
@@ -67,7 +67,7 @@
     `(("python-setuptools" ,python-setuptools)
       ("python-markupsafe" ,python-markupsafe)))
    (home-page "http://jinja.pocoo.org/")
-   (synopsis "Python template engine.")
+   (synopsis "Python template engine")
    (description
     "A small but fast and easy to use stand-alone template engine written in
 pure python.")
@@ -113,7 +113,7 @@ pure python.")
    (arguments '(#:test-target "check"))
    (home-page "http://fdik.org/pyPEG2")
    (synopsis "An intrinsic PEG Parser-Interpreter for Python")
-   (description "An intrinsic PEG Parser-Interpreter for Python")
+   (description "An intrinsic PEG Parser-Interpreter for Python.")
    (license gpl2)))
 
 (define-public python-qutebrowser
@@ -151,7 +151,7 @@ pure python.")
    (arguments `(#:tests? #f))
    (home-page "http://www.qutebrowser.org/")
    (synopsis
-    "A keyboard-driven, vim-like browser based on PyQt5 and QtWebKit.")
+    "A keyboard-driven, vim-like browser based on PyQt5 and QtWebKit")
    (description
     "A keyboard-driven, vim-like browser based on PyQt5 and QtWebKit.")
    (license gpl3)))
