@@ -1,7 +1,6 @@
-;; NOTE: WIP! Do not use!
-;; Guix builds it, but there are missing runtime dependencies.
+;; TODO: qt5, pyqt5 inputs.
 
-(define-module (my-packages python-qutebrowser)
+(define-module (wip python-qutebrowser)
   #:use-module (gnu packages python)
   #:use-module (guix packages)
   #:use-module (guix download)
