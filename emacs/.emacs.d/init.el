@@ -2,6 +2,7 @@
 (setq auto-save-default       nil
       backup-directory-alist  `(("." . "~/.backup"))
       backup-by-copying       t
+      blink-cursor-mode       nil
       create-lockfiles        nil
       delete-old-versions     t
       kept-new-versions       6
