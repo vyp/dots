@@ -184,6 +184,40 @@
   (require 'yasnippet-custom-keybindings))
 
 ;; Built-in major modes.
+(use-package erc
+  :commands erc
+  :config
+  ;; Michael Markert has some good urgency hint settings:
+  ;; Source: <https://github.com/cofi/dotfiles/blob/master/emacs.d/config/cofi-erc.el>
+  ;; (defun cofi/erc-find-erc-frame ()
+  ;;   (cl-find-if (p (string= (frame-parameter x 'name) "ERC")) (frame-list)))
+
+  ;; (defun cofi/erc-frame-urgency (&rest ignore)
+  ;;   (x-urgency-hint (cofi/erc-find-erc-frame) t)
+  ;;   nil)
+
+  ;; (add-hook 'erc-text-matched-hook #'cofi/erc-frame-urgency)
+
+  ;; (defun cofi/erc-urgency-on-nick ()
+  ;;   (let ((s (buffer-substring-no-properties (point-min) (point-max))))
+  ;;     (when (string-match-p (format "\\b%s\\b" (erc-current-nick)) s)
+  ;;       (cofi/erc-frame-urgency))))
+
+  ;; (setq ercn-notify-rules
+  ;;       '((current-nick . all)
+  ;;         (keyword . all)
+  ;;         (query-buffer . all)))
+
+  ;; (add-hook 'ercn-notify 'cofi/erc-frame-urgency)
+
+  ;; (add-hook 'erc-insert-post-hook #'cofi/erc-urgency-on-nick)
+
+  ;; TODO: Logging.
+  ;; TODO: Don't automatically scroll down on new message.
+  ;; TODO: Comment color non-messages (people joining/quiting).
+  ;; TODO: Urgency hint and highlight on nick mentions.
+  )
+
 (use-package ibuffer
   :commands ibuffer
   :config
