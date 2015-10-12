@@ -1,157 +1,22 @@
 #!/bin/env bash
 
-# NOTE: This script is outdated because antigen has been removed and vim-plug
-# has been moved. FIXME
-#
-# TODO: Do antigen things manually.
-# TODO: pip packages.
-# TODO: Hackage packages (via cabal-install).
-# TODO: Check AUR -git packages.
-# TODO: Use a proper counter system somehow to count progress.
-# TODO: Have update script check for differences between following file and
-# `emacs-packages/goto-chg/goto-chg.el`:
-# http://www.emacswiki.org/emacs/download/goto-chg.el
+# Dependencies:
+# - git
+# - mercurial
 
-# Obviously run `sudo pacman -Syu` separately before running this script, after
-# checking the news of course!
+ROOT=~/ui
+THIRD_PARTY_PACKAGES=$ROOT/vendor
+EMACS_PACKAGES_DIR=$THIRD_PARTY_PACKAGES/emacs
 
-abort () {
-  echo "ERROR: Working directory is unclean! Aborting."
-  exit 1
-}
+DL_HG_PACKAGES=$ROOT/bin/misc/dl-hg-packages
+echo '#!/bin/env bash' > $DL_HG_PACKAGES
+cd $EMACS_PACKAGES_DIR/evil
+hg pull -u
+NEW_ID=$(hg --debug id -i)
+ORIGIN='https://bitbucket.org/lyro/evil'
+printf "cd ${EMACS_PACKAGES_DIR/$HOME/\~}\nhg clone -r ${NEW_ID} ${ORIGIN}\n" \
+       >> $DL_HG_PACKAGES
 
-trap "abort" TERM
-export TOP_PID=$$
-
-cd ~/ui
-
-ch_if_clean () {
-  NORMIFS=$IFS
-
-  git status --porcelain | while IFS= read line; do
-    xsc="${line:0:1}"
-    pathsc="${line:3}"
-
-    if [[ $pathsc == *"zsh-plugins-snapshot"* ]] ||
-       [[ $pathsc == *"vim-plugins-snapshot"* ]] ||
-       [[ $pathsc == *"antigen"* ]] ||
-       [[ $pathsc == *"vim-plug"* ]]; then
-      kill -s TERM $TOP_PID
-      break
-
-    else
-      if [[ $xsc != " " ]] && [[ $xsc != "?" ]]; then
-        kill -s TERM $TOP_PID
-        break
-      fi
-    fi
-  done
-
-  IFS=$NORMIFS
-}
-
-ch_aur_ex_git () {
-  cwr_out="$(cower -u)"
-
-  if [[ -n "${cwr_out}" ]]; then
-    echo "AUR updates available! [1/6]"
-    echo "${cwr_out}"
-    read -p "Continue? (Y/n)" cwr_choice
-
-    if [[ "${cwr_choice}" == "n" ]]; then
-      exit 0
-    fi
-
-  else
-    echo "No AUR updates. (N.B. -git packages NOT checked.) [1/6]"
-  fi
-}
-
-g_chore_commit () {
-  git add $1
-  git commit --edit -m "chore(${1}): update commit reference"
-}
-
-upd_plugin_manager () {
-  cd $1
-  git pull
-  cd ~/ui
-  g_chore_commit ${1##*/}
-}
-
-g_fetch_dr () {
-  cd $1
-  local_hash="$(git log --pretty=%H master | head -n1)"
-  remote_hash="$(git ls-remote origin -h refs/heads/master | cut -f1)"
-  cd ~/ui
-
-  if [[ $local_hash != $remote_hash ]]; then
-    upd_plugin_manager $1
-  fi
-}
-
-chu_antigen () {
-  echo "Checking if antigen has updates... [4/6]"
-  g_fetch_dr ~/ui/antigen
-}
-
-chu_vim_plug () {
-  echo "Checking if vim-plug has updates... [5/6]"
-  g_fetch_dr ~/ui/vim-plug
-}
-
-upd_zsh_plugins () {
-  echo "Checking for updates to zsh plugins... [2/6]"
-
-  for dir in ~/.antigen/repos/*; do
-    if [[ -d "${dir}" ]]; then
-      cd "${dir}"
-      local_hash="$(git log --pretty=%H master | head -n1)"
-      remote_hash="$(git ls-remote origin -h refs/heads/master | cut -f1)"
-
-      if [[ $local_hash != $remote_hash ]]; then
-        source ~/ui/antigen/antigen.zsh
-        antigen update
-        antigen snapshot ~/ui/zsh-plugins-snapshot
-        cd ~/ui
-        git add zsh-plugins-snapshot
-        git commit --edit -m "chore(zsh-plugins-snapshot): update hash references"
-        break
-      fi
-    fi
-  done
-
-  cd ~/ui
-}
-
-upd_vim_plugins () {
-  echo "Checking for updates to vim plugins... [3/6]"
-  vim +PlugUpdate +only
-
-  if [[ `git ls-files -m | grep -cim1 vim-plugins-snapshot` -eq 1 ]]; then
-    git add vim-plugins-snapshot
-    git commit --edit -m "chore(vim-plugins-snapshot): update hash references"
-  fi
-}
-
-upd_npm_packages () {
-  echo "Checking for updates to npm packages... [6/6]"
-  npm_status=`npm-check-updates -g`
-
-  if [[ `echo "${npm_status}" | grep -cim1 'All global packages are up to date'` -eq 0 ]]; then
-    echo "${npm_status}"
-    read -p "Update npm packages? (y/N)" npm_choice
-
-    if [[ "${npm_choice}" == "y" ]]; then
-      sudo npm update -g
-    fi
-  fi
-}
-
-ch_if_clean
-ch_aur_ex_git
-upd_zsh_plugins
-upd_vim_plugins
-chu_antigen
-chu_vim_plug
-upd_npm_packages
+cd $EMACS_PACKAGES_DIR
+find . -maxdepth 1 -mindepth 1 -type d \
+     -exec bash -c 'cd "$0"; [[ -f ".git" ]] && git pull' {} \;

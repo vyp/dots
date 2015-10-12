@@ -209,7 +209,6 @@
   ;;         (query-buffer . all)))
 
   ;; (add-hook 'ercn-notify 'cofi/erc-frame-urgency)
-
   ;; (add-hook 'erc-insert-post-hook #'cofi/erc-urgency-on-nick)
 
   ;; TODO: Logging.
