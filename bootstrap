@@ -63,8 +63,10 @@ done
 # submodules because they are developed by yours truly. This ties into giving
 # directory structure information.
 
+# TODO: Run `dl-hg-packages` script somewhere here.
+
 git submodule init
-git submodule update --depth 10
+git submodule update
 
 ln -s ~/ui/vendor/vim/vim-plug/plug.vim ~/.vim/autoload/plug.vim
 
