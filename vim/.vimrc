@@ -200,6 +200,8 @@ set statusline+=%-14(%l,%c%V%)
 set statusline+=%<%P
 
 " Folds {{{1
+" TODO: Bring back folding functionality. (keybindings have been forgetten or
+" stuffed up somehow)
 set fillchars="fold: "
 set foldmethod=syntax
 set foldlevel=99
@@ -247,11 +249,7 @@ endif
 call plug#begin('~/.vim/plugged')
 
 " Essential:
-Plug 'mattn/emmet-vim'
-" Plug 'honza/vim-snippets'
-" Plug 'SirVer/ultisnips'
 Plug 'Shougo/neocomplete'
-Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 
@@ -263,19 +261,10 @@ Plug 'tomtom/tcomment_vim'
 Plug 'wellle/targets.vim'
 
 " Syntax:
-Plug 'cespare/vim-toml'
-Plug 'digitaltoad/vim-jade'
-Plug 'jelera/vim-javascript-syntax'
 Plug 'nelstrom/vim-markdown-folding'
 Plug 'ntpeters/vim-better-whitespace'
-Plug 'rhysd/vim-crystal'
-Plug 'rust-lang/rust.vim'
-Plug 'vim-pandoc/vim-pandoc-syntax'
-Plug 'wavded/vim-stylus'
 
 " Themes:
-Plug 'chriskempson/base16-vim'
-Plug 'jonathanfilip/vim-lucius'
 Plug 'morhetz/gruvbox'
 
 call plug#end()
@@ -367,34 +356,6 @@ function JavascriptOptions()
 endfunction
 
 au filetype javascript call JavascriptOptions()
-
-" Markdown {{{2
-au BufRead,BufNewFile *.md set filetype=pandoc.markdown
-au BufRead,BufNewFile *.pd set filetype=pandoc.markdown
-
-function MarkdownOptions()
-  nnoremap <silent> <leader><Tab> :Tabularize /<Bar><CR>
-  setl ts=4 sw=4 sts=4
-
-  " More characters: ▼ ▾ ▲ ▴
-  syntax match htmlEntityalpha /&alpha;/ conceal cchar=α
-  syntax match htmlEntityApprox /&approx;/ conceal cchar=≈
-  syntax match htmlEntitybeta /&beta;/ conceal cchar=β
-  syntax match htmlEntityDegree /&deg;/ conceal cchar=°
-  syntax match htmlEntityDownArrow /&darr;/ conceal cchar=▾
-  syntax match htmlEntityGreaterThan /&gt;/ conceal cchar=>
-  syntax match htmlEntityLeftArrow /&larr;/ conceal cchar=←
-  syntax match htmlEntityLessThan /&lt;/ conceal cchar=<
-  syntax match htmlEntitymicro /&micro;/ conceal cchar=µ
-  syntax match htmlEntityNonBreakingSpace /&nbsp;/ conceal cchar=╌
-  syntax match htmlEntityPi /&pi;/ conceal cchar=π
-  syntax match htmlEntityRightArrow /&rarr;/ conceal cchar=→
-  syntax match htmlEntityUpArrow /&uarr;/ conceal cchar=▴
-  syntax match htmlEntityTherefore /&there4;/ conceal cchar=∴
-  syntax match htmlEntityTimes /&times;/ conceal cchar=×
-endfunction
-
-au filetype pandoc.markdown call MarkdownOptions()
 
 " Rust {{{2
 function RustOptions()
