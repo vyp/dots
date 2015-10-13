@@ -11,6 +11,9 @@ takes a second \\[keyboard-quit] to abort the minibuffer."
 (defun my-exit-evil-command-window ()
   "Exit evil command window."
   (interactive)
+  ;; For whatever reason, moving to the previous window and back again means
+  ;; after quitting this command window, it will properly go back to the
+  ;; previous window. Otherwise it seems to go to some other unintuitive window.
   (other-window -1)
   (other-window 1)
   (kill-this-buffer)

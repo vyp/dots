@@ -41,6 +41,7 @@ colorscheme gruvbox
 " TODO: Autocompletion popup.
 hi buftablineactive ctermfg=246 ctermbg=223
 hi error ctermfg=1 ctermbg=NONE
+hi link shtodo vimtodo
 hi vimtodo ctermfg=136 ctermbg=223
 hi visual term=NONE cterm=NONE ctermbg=223
 hi visualnos term=NONE cterm=NONE ctermbg=223
