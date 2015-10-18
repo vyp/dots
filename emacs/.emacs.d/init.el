@@ -40,14 +40,12 @@
 (package-initialize)
 
 ;; Bootstrap quelpa.
-;; TODO: Possibly change these from doing `package-install-file` to just
-;; `load-file`?
 (unless (require 'package-build nil t)
-  (package-install-file
+  (load-file
    (expand-file-name "~/ui/vendor/emacs/package-build/package-build.el")))
 
 (unless (require 'quelpa nil t)
-  (package-install-file
+  (load-file
    (expand-file-name "~/ui/vendor/emacs/quelpa/quelpa.el")))
 
 ;; TODO: Find out if the presence of both `(require 'quelpa)` and `(require
