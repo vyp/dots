@@ -1,3 +1,3 @@
 #!/bin/env bash
 cd ~/ui/vendor/emacs
-hg clone -r b209337622441b276985491314f320acd64c60ba https://bitbucket.org/lyro/evil
+hg clone -r 09d1e27bb12a4a3859a963b8992567be06171b83 https://bitbucket.org/lyro/evil
