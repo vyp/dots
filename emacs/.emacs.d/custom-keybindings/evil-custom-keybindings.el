@@ -55,8 +55,10 @@ takes a second \\[keyboard-quit] to abort the minibuffer."
   (interactive)
   (evil-yank (point) (point-at-eol)))
 
-(define-key evil-normal-state-map "g;" 'evil-ex)
-(define-key evil-visual-state-map "g;" 'evil-ex)
+(define-key evil-normal-state-map ";" 'evil-ex)
+(define-key evil-visual-state-map ";" 'evil-ex)
+(define-key evil-normal-state-map "'" 'evil-repeat-find-char)
+(define-key evil-visual-state-map "'" 'evil-repeat-find-char)
 (define-key evil-normal-state-map "gs" 'evil-write)
 (define-key evil-normal-state-map "Y"  'my-evil-yank-to-end-of-line)
 
@@ -85,6 +87,6 @@ takes a second \\[keyboard-quit] to abort the minibuffer."
 (define-key evil-normal-state-map (kbd "SPC l") 'ibuffer)
 (define-key evil-normal-state-map "gcc"         'evilnc-comment-or-uncomment-lines)
 (define-key evil-visual-state-map "gc"          'comment-or-uncomment-region)
-(define-key evil-normal-state-map "gm"          'magit-status)
+;; (define-key evil-normal-state-map "gm"          'magit-status)
 
 (provide 'evil-custom-keybindings)
