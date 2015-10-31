@@ -55,10 +55,9 @@ takes a second \\[keyboard-quit] to abort the minibuffer."
   (interactive)
   (evil-yank (point) (point-at-eol)))
 
-(define-key evil-normal-state-map ";" 'evil-ex)
-(define-key evil-visual-state-map ";" 'evil-ex)
-(define-key evil-normal-state-map "'" 'evil-repeat-find-char)
-(define-key evil-visual-state-map "'" 'evil-repeat-find-char)
+(define-key evil-motion-state-map "'" 'evil-ex)
+(define-key evil-normal-state-map "'" 'evil-ex)
+(define-key evil-visual-state-map "'" 'evil-ex)
 (define-key evil-normal-state-map "gs" 'evil-write)
 (define-key evil-normal-state-map "Y"  'my-evil-yank-to-end-of-line)
 
