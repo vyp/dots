@@ -7,8 +7,8 @@
 # The command to rollback a git submodule is NOT `git checkout` as it is for
 # normal files, but rather you have to run `git reset --hard HEAD@{1}` from the
 # directory of the submodule.
-# TODO: Figure out the command for mercurial. (Think it might something like `hg
-# update -r <rev-id>`.)
+# TODO: Figure out the equivalent command for mercurial. (Think it might
+# something like `hg update -r <rev-id>`.)
 
 ROOT=~/ui
 THIRD_PARTY_PACKAGES=$ROOT/vendor
@@ -25,4 +25,6 @@ printf "cd ${EMACS_PACKAGES_DIR/$HOME/\~}\nhg clone -r ${NEW_ID} ${ORIGIN}\n" \
 
 cd $EMACS_PACKAGES_DIR
 find . -maxdepth 1 -mindepth 1 -type d \
-     -exec bash -c 'cd "$0"; [[ -f ".git" ]] && git pull' {} \;
+     -exec bash -c \
+     'cd "$0"; [[ -f ".git" ]] && printf "Updating  ${0/.\//}: " && git pull' \
+     {} \;
