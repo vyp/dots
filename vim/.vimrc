@@ -80,10 +80,8 @@ set viminfo='0,@0,f0
 nnoremap <Bslash> <C-^>
 let mapleader=" "
 
-nnoremap ; :
-xnoremap ; :
-nnoremap ' ;
-xnoremap ' ;
+nnoremap ' :
+xnoremap ' :
 
 nnoremap - +
 nnoremap + -
