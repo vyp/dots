@@ -18,6 +18,10 @@
 
 [quote]: https://www.reddit.com/r/vim/comments/2ww6fv/this_is_your_brain_on_vim/couym1j
 
+**Disclaimer:** Despite that quote, there is nothing special here. Just trying
+to use vim-like keybindings for everything and everywhere possible, and these
+quotes serve as further inspiration.
+
 # Contents
 
 The configuration files for each program are under respectively named folders.
@@ -85,12 +89,10 @@ $ stow -D vim
 $ stow -R vim
 ```
 
-~~For full instructions, see the documentation in the [`docs`] directory. In
-particular, start with [installation][1].~~ Fully outdated rn.
+These are just basic instructions. Methods/scripts for automatic installation
+and maintainence are being worked on (slowly).
 
-[GNU Stow]:  https://www.gnu.org/software/stow/
-[`docs`]:    docs
-[1]:         docs/installation.md
+[GNU Stow]: https://www.gnu.org/software/stow/
 
 # Screenshots
 
@@ -98,10 +100,10 @@ particular, start with [installation][1].~~ Fully outdated rn.
 
 # License
 
-All my brain extensions are [free software] wherever and whenever it applies:
-you can redistribute and/or modify them under the terms of the GNU Affero
-General Public License as published by the Free Software Foundation, either
-version 3 of the License, or (at your option) any later version.
+Anything and everything here is [free software] wherever and whenever it
+applies: you can redistribute and/or modify them under the terms of the GNU
+Affero General Public License as published by the Free Software Foundation,
+either version 3 of the License, or (at your option) any later version.
 
 They are distributed in the hope that it will be useful, but WITHOUT ANY
 WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A

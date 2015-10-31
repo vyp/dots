@@ -1,9 +1,18 @@
 # Todo
 
+## Documentation
+
+- installation.
+    - installed packages.
+- maintainence.
+    - updating.
+    - files/directory structure.
+- fonts.
+
 ## Emacs
 
 - Behaviour.
-    - Fix tab keybinding for evil-normal-state.
+    - Fix tab keybinding for evil-insert-state.
     - Rename all the custom-keybindings modules to
       "my-custom-<package-name>-keybindings"?
     - Check out https://github.com/mrkkrp/vimish-fold.
@@ -52,35 +61,10 @@
 ## Other
 
 - make enter key act like control if pressed as part of a chord.
-- pandoc and latex templates?
-- `~/music/playlists` directory.
+- make vim config more simplified.
 - `./contrib` directory.
-- explore more zsh plugin management options other than antigen.
 - check out https://github.com/hchbaw/opp.zsh.
 - https://github.com/zsh-users/zsh-completions.
-
-[1]
-
-    printf
-    "\e]710;-schumacher-clean-medium-r-normal--10-100-75-75-c-50-iso646.1991-irv\007\e]11;#202020\007\e]10;#404040\007"
-    && /usr/local/bin/ncmpcpp ; printf
-    "\e]710;-windows-montecarlo-medium-r-normal--11-110-72-72-c-60-microsoft-cp1252\007\e]11;#121212\007\e]10;#e5e5e5\007"
-
-- documentation.
-    - maintainence.
-        - files organisation.
-    - fonts.
-    - installed packages.
-- make vim config more simplified.
-- set ff=unix for vim.
-
-- ~~mutt.~~
-- ~~weechat.~~
-- ~~newsbeuter.~~
-- ~~fix more ncmpcpp keybindings.~~
-- ~~sxiv?~~
-- ~~ranger config?~~
-- ~~tmux?~~
-- ~~compton.~~
-
-[1]: http://lists.schmorp.de/pipermail/rxvt-unicode/2011q2/001416.html
+- explore more zsh plugin management options other than antigen?
+- pandoc and latex templates?
+- `~/music/playlists` directory.
