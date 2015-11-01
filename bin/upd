@@ -1,8 +1,9 @@
 #!/bin/env bash
 
 # Dependencies:
-# - git
 # - mercurial
+# - git
+# - vim
 
 # The command to rollback a git submodule is NOT `git checkout` as it is for
 # normal files, but rather you have to run `git reset --hard HEAD@{1}` from the
@@ -16,6 +17,7 @@ EMACS_PACKAGES_DIR=$THIRD_PARTY_PACKAGES/emacs
 
 DL_HG_PACKAGES=$ROOT/bin/misc/dl-hg-packages
 echo '#!/bin/env bash' > $DL_HG_PACKAGES
+printf "Updating $(tput bold)evil:$(tput sgr0) "
 cd $EMACS_PACKAGES_DIR/evil
 hg pull -u
 NEW_ID=$(hg --debug id -i)
@@ -29,4 +31,8 @@ find . -maxdepth 1 -mindepth 1 -type d \
      'cd "$0"; [[ -f ".git" ]] && printf "Updating $(tput bold)${0/.\//}:$(tput sgr0) " && git pull' \
      {} \;
 
+printf "Updating $(tput bold)vim-plug:$(tput sgr0) "
+cd $THIRD_PARTY_PACKAGES/vim/vim-plug
+git pull
+cd $ROOT
 vim +PlugUpdate +only
