@@ -10,8 +10,7 @@ set! browser.startup.homepage="http://localhost:3000/"
 set! browser.tabs.closeWindowWithLastTab=false
 set! full-screen-api.approval-required=false
 
-nmap -builtin g; :
-" nmap -builtin : ;
+nmap -builtin \' :
 
 nmap -builtin <c-o> :1ba<CR>
 nmap -builtin <c-i> :1fo<CR>
@@ -25,21 +24,19 @@ nmap -builtin <C-S-n> :tabm! +1<CR>
 nmap -builtin <C-S-p> :tabm! -1<CR>
 imap -builtin <C-n> <Nop>
 
+nmap -builtin D :downloads<CR>
 nmap -builtin H ^
 nmap -builtin L $
 
 nmap -builtin \\ <C-^>
-nmap -builtin <space>b :!acpi -b<CR>
 nmap -builtin <space>d :tabopen google define 
 nmap -builtin <space>f ;f
 nmap -builtin <space>l :ls<CR>
 nmap -builtin <space>m :set showtabline=never<CR>
-nmap -builtin <space>o :downloads<CR>
 nmap -builtin <space>p <C-S-p>
 nmap -builtin <space>s <C-z>
 nmap -builtin <space>t :set showtabline=always<CR>
-" nmap -builtin ,v :set fullvim!<CR>
-nmap -builtin ,z :source ~/.pentadactylrc<CR>
+nmap -builtin <space>z :source ~/.pentadactylrc<CR>
 
 colorscheme colors
 source ~/.pentadactyl/userChrome.css
