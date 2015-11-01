@@ -18,8 +18,7 @@ Plug 'ap/vim-buftabline'
 " TODO: Check out 'junegunn/vim-easy-align'.
 Plug 'godlygeek/tabular'
 Plug 'Raimondi/delimitMate'
-" TODO: Switch to 'tpope/vim-commentary'?
-Plug 'tomtom/tcomment_vim'
+Plug 'tpope/vim-commentary'
 Plug 'wellle/targets.vim'
 
 " Syntax:
@@ -40,7 +39,7 @@ let g:buftabline_show=1
 let delimitMate_expand_cr=2
 let delimitMate_expand_space=1
 " Disable autocompleting quote pairs.
-let delimitMate_quotes = ""
+let delimitMate_quotes=""
 
 " 'junegunn/vim-plug' {{{2
 let g:plug_timeout=1000
