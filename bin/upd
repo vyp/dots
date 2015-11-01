@@ -28,3 +28,5 @@ find . -maxdepth 1 -mindepth 1 -type d \
      -exec bash -c \
      'cd "$0"; [[ -f ".git" ]] && printf "Updating $(tput bold)${0/.\//}:$(tput sgr0) " && git pull' \
      {} \;
+
+vim +PlugUpdate +only
