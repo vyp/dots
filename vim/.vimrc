@@ -1,6 +1,50 @@
 set nocompatible
 " vim: foldmethod=marker
 
+" Plugins {{{1
+" Load matchit.vim, but only if the user hasn't installed a newer version.
+if !exists('g:loaded_matchit') && findfile('plugin/matchit.vim', &rtp) ==# ''
+  runtime! macros/matchit.vim
+endif
+
+call plug#begin('~/.vim/plugged')
+
+" Essential:
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-surround'
+
+" Extra:
+Plug 'ap/vim-buftabline'
+" TODO: Check out 'junegunn/vim-easy-align'.
+Plug 'godlygeek/tabular'
+Plug 'Raimondi/delimitMate'
+" TODO: Switch to 'tpope/vim-commentary'?
+Plug 'tomtom/tcomment_vim'
+Plug 'wellle/targets.vim'
+
+" Syntax:
+Plug 'ntpeters/vim-better-whitespace'
+
+" Themes:
+Plug 'morhetz/gruvbox'
+
+call plug#end()
+
+" Plugin Options {{{1
+" 'ap/vim-buftabline' {{{2
+let g:buftabline_indicators=1
+let g:buftabline_numbers=1
+let g:buftabline_show=1
+
+" 'Raimondi/delimitMate' {{{2
+let delimitMate_expand_cr=2
+let delimitMate_expand_space=1
+" Disable autocompleting quote pairs.
+let delimitMate_quotes = ""
+
+" 'junegunn/vim-plug' {{{2
+let g:plug_timeout=1000
+
 " Basic {{{1
 filetype plugin indent on
 set encoding=utf-8
@@ -148,13 +192,14 @@ nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
+inoremap <C-l> <Esc>l%%a
 
 cnoremap <C-t> <C-e>
 cnoremap <C-e> <Down>
 
 " Allows opening files from the directory of the currently opened buffer
 " quickly.
-" From http://vimcasts.org/episodes/the-edit-command/.
+" From <http://vimcasts.org/episodes/the-edit-command/>.
 cnoremap %% <C-R>=fnameescape(expand('%:h')).'/'<cr>
 nnoremap <leader>ew :e <C-R>=fnameescape(expand('%:h')).'/'<cr>
 nnoremap <leader>en :e ~/notes/
@@ -167,6 +212,7 @@ nnoremap <leader>co "+y
 xnoremap <leader>co "+y
 
 " Removes default key binding, see `:help tag-stack`.
+" TODO: Fix these keybindings to make them more 'normal' (if possible).
 nnoremap <C-t> "*p
 nnoremap <leader>t "+p
 nnoremap <leader>vc :edit ~/.vimrc<CR>
@@ -240,98 +286,6 @@ endfunction
 
 set foldtext=FoldText()
 
-" Plugins {{{1
-" Load matchit.vim, but only if the user hasn't installed a newer version.
-if !exists('g:loaded_matchit') && findfile('plugin/matchit.vim', &rtp) ==# ''
-  runtime! macros/matchit.vim
-endif
-
-call plug#begin('~/.vim/plugged')
-
-" Essential:
-Plug 'Shougo/neocomplete'
-Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-surround'
-
-" Extra:
-Plug 'ap/vim-buftabline'
-Plug 'godlygeek/tabular'
-Plug 'Raimondi/delimitMate'
-Plug 'tomtom/tcomment_vim'
-Plug 'wellle/targets.vim'
-
-" Syntax:
-Plug 'nelstrom/vim-markdown-folding'
-Plug 'ntpeters/vim-better-whitespace'
-
-" Themes:
-Plug 'morhetz/gruvbox'
-
-call plug#end()
-
-" Plugin Options {{{1
-" 'ap/vim-buftabline' {{{2
-let g:buftabline_indicators=1
-let g:buftabline_numbers=1
-let g:buftabline_show=1
-
-" 'junegunn/vim-plug' {{{2
-let g:plug_timeout=1000
-
-" 'nelstrom/vim-markdown-folding' {{{2
-" let g:markdown_fold_style = 'nested'
-let g:markdown_fold_override_foldtext = 0
-
-" 'Raimondi/delimitMate' {{{2
-let delimitMate_expand_cr=1
-inoremap <C-l> <Esc>l%%a
-
-" 'Shougo/neocomplete' {{{2
-let g:acp_enableAtStartup = 0
-let g:neocomplete#enable_at_startup = 1
-let g:neocomplete#enable_smart_case = 1
-let g:neocomplete#sources#syntax#min_keyword_length = 4
-
-" <CR>: close popup and save indent.
-inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
-function! s:my_cr_function()
-  return neocomplete#close_popup() . "\<CR>"
-endfunction
-
-" <TAB>: completion.
-inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
-
-" <C-h>, <BS>: close popup and delete backword char.
-" inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
-" inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
-
-" Close popup by <Space>.
-inoremap <expr><Space> pumvisible() ? neocomplete#close_popup() . "\<Space>" : "\<Space>"
-
-" TODO: Enable omni completion.
-" autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-" autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-" autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-" autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-" autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-
-" Enable heavy omni completion.
-" if !exists('g:neocomplete#sources#omni#input_patterns')
-"   let g:neocomplete#sources#omni#input_patterns = {}
-" endif
-"let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
-"let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
-"let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
-
-" 'SirVer/ultisnips' {{{2
-" let g:UltiSnipsExpandTrigger="<tab>"
-" let g:UltiSnipsJumpForwardTrigger="<c-j>"
-" let g:UltiSnipsJumpBackwardTrigger="<c-k>"
-
-" 'vim-pandoc/vim-pandoc-syntax' {{{2
-" Disable underlining of superscript, subscript and strikeout delimited text.
-let g:pandoc#syntax#style#underline_special = 0
-
 " Filetype {{{1
 " CSS {{{2
 function CSSOptions()
@@ -346,16 +300,6 @@ function GitcommitOptions()
 endfunction
 
 au filetype gitcommit call GitcommitOptions()
-
-" Javascript {{{2
-function JavascriptOptions()
-  " Enables folding in javascript files, from the
-  " 'jelera/vim-javascript-syntax' plugin.
-  call JavaScriptFold()
-  set foldlevelstart=99
-endfunction
-
-au filetype javascript call JavascriptOptions()
 
 " Rust {{{2
 function RustOptions()
