@@ -60,8 +60,8 @@ for dir in */ ; do
 done
 
 # TODO: Also mkdir ~/gh and clone some appropriate repos. These don't have to be
-# submodules because they are developed by yours truly. This ties into giving
-# directory structure information.
+# submodules because they are developed by me. This ties into giving directory
+# structure information.
 
 # TODO: Run `dl-hg-packages` script somewhere here.
 

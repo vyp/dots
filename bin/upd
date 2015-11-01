@@ -26,5 +26,5 @@ printf "cd ${EMACS_PACKAGES_DIR/$HOME/\~}\nhg clone -r ${NEW_ID} ${ORIGIN}\n" \
 cd $EMACS_PACKAGES_DIR
 find . -maxdepth 1 -mindepth 1 -type d \
      -exec bash -c \
-     'cd "$0"; [[ -f ".git" ]] && printf "Updating  ${0/.\//}: " && git pull' \
+     'cd "$0"; [[ -f ".git" ]] && printf "Updating $(tput bold)${0/.\//}:$(tput sgr0) " && git pull' \
      {} \;
