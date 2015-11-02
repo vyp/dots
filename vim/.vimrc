@@ -149,6 +149,9 @@ nnoremap M %
 xnoremap M %
 nnoremap Y y$
 
+nnoremap ZZ <nop>
+nnoremap ZQ <nop>
+
 " Can't use <Tab> and <S-Tab> since <Tab> is the same as ctrl-i in vim.
 " See http://stackoverflow.com/a/14642074.
 nnoremap <C-n> :bn<CR>
