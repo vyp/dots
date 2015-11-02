@@ -28,7 +28,7 @@ DIRS="
   ~/.config/mutt
   ~/.config/sxhkd
   ~/.config/zathura
-  ~/.emacs.d/kb
+  ~/.emacs.d
   ~/.pentadactyl/colors
   ~/.urxvt
   ~/.vim/autoload
