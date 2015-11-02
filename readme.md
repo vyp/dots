@@ -52,7 +52,7 @@ Program       | Use
 [Bspwm]:       https://github.com/baskerville/bspwm
 [dircolors]:   https://www.gnu.org/software/coreutils/manual/html_node/dircolors-invocation.html
 [dmenu]:       http://tools.suckless.org/dmenu/
-[Dzen]:        http://robm.github.io/dzen/
+[Dzen]:        https://robm.github.io/dzen/
 [Emacs]:       https://www.gnu.org/software/emacs/
 [Firefox]:     https://mozilla.org/firefox
 [Git]:         http://git-scm.com/
@@ -60,9 +60,9 @@ Program       | Use
 [MPD]:         http://www.musicpd.org/
 [mpv]:         http://mpv.io/
 [Ncmpcpp]:     http://ncmpcpp.rybczak.net/
-[Pentadactyl]: http://5digits.org/pentadactyl/
 [Pacman]:      https://www.archlinux.org/pacman/
-[rTorrent]:    http://rakshasa.github.io/rtorrent/
+[Pentadactyl]: http://5digits.org/pentadactyl/
+[rTorrent]:    https://rakshasa.github.io/rtorrent/
 [Sxhkd]:       https://github.com/baskerville/sxhkd
 [Urxvt]:       http://software.schmorp.de/pkg/rxvt-unicode.html
 [Vim]:         http://www.vim.org/
