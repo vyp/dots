@@ -35,4 +35,5 @@ printf "Updating $(tput bold)vim-plug:$(tput sgr0) "
 cd $THIRD_PARTY_PACKAGES/vim/vim-plug
 git pull
 cd $ROOT
-vim +PlugUpdate +only
+# `norm D` to see the changes, if any.
+vim +PlugUpdate +only "+norm D"
