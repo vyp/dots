@@ -245,22 +245,20 @@ set statusline+=%-14(%l,%c%V%)
 set statusline+=%<%P
 
 " Folds {{{1
-" TODO: Bring back folding functionality. (keybindings have been forgetten or
-" stuffed up somehow)
 set fillchars="fold: "
 set foldmethod=syntax
 set foldlevel=99
 set foldlevelstart=99
 
-" nnoremap <space> za
-" nnoremap <leader><space> zM
-" nnoremap z<space> zR
+nnoremap <c-f> za
+nnoremap <leader>z zM
+nnoremap z<space> zR
 
 " 'co' for 'Close all folds and Open Cursor fold'.
 nnoremap co zMzv
 
-nnoremap <C-s> zkzMzv
-nnoremap <C-f> zjzMzv
+nnoremap <c-s> zkzMzv
+nnoremap <c-m> zjzMzv
 nnoremap zp zC
 nnoremap zu zO
 nnoremap zh [z
@@ -271,7 +269,7 @@ function! FoldText()
   let lines_count = v:foldend - v:foldstart + 1
   let lines_count_text = printf("%10s", lines_count)
   let foldtextstart = '+' . repeat('-', v:foldlevel*2) . line
-  let rightalignby = winwidth(0) - 79
+  let rightalignby = winwidth(0) - 80
 
   if rightalignby < 0
     let rightalignby = 1
