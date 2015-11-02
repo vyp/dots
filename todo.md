@@ -12,6 +12,7 @@
 ## Emacs
 
 - Behaviour.
+    - Indent by 2 spaces instead of 4 for shell-script-mode.
     - Fix tab keybinding for evil-insert-state.
     - Rename all the custom-keybindings modules to
       "my-custom-<package-name>-keybindings"?

@@ -9,6 +9,7 @@ IGNORE=(
   "dzen2/"
   "firefox/"
   "guix/"
+  "misc/"
   "pacman/"
   "themes/"
   "vendor/"
@@ -64,6 +65,7 @@ done
 # structure information.
 
 # TODO: Run `dl-hg-packages` script somewhere here.
+# TODO: Run vim plugins init script somewhere here.
 
 git submodule init
 git submodule update

@@ -15,7 +15,7 @@ ROOT=~/ui
 THIRD_PARTY_PACKAGES=$ROOT/vendor
 EMACS_PACKAGES_DIR=$THIRD_PARTY_PACKAGES/emacs
 
-DL_HG_PACKAGES=$ROOT/bin/misc/dl-hg-packages
+DL_HG_PACKAGES=$ROOT/misc/dl-hg-packages
 echo '#!/bin/env bash' > $DL_HG_PACKAGES
 printf "Updating $(tput bold)evil:$(tput sgr0) "
 cd $EMACS_PACKAGES_DIR/evil
