@@ -15,6 +15,15 @@ ROOT=~/ui
 THIRD_PARTY_PACKAGES=$ROOT/vendor
 EMACS_PACKAGES_DIR=$THIRD_PARTY_PACKAGES/emacs
 
+update-git-packages () {
+  cd "${1}"
+  find . -maxdepth 1 -mindepth 1 -type d \
+       -exec bash -c \
+       'cd "$0"; [[ -f ".git" ]] && printf "Updating $(tput bold)${0/.\//}:$(tput sgr0) " && git pull' \
+       {} \;
+  cd $ROOT
+}
+
 DL_HG_PACKAGES=$ROOT/misc/dl-hg-packages
 echo '#!/bin/env bash' > $DL_HG_PACKAGES
 printf "Updating $(tput bold)evil:$(tput sgr0) "
@@ -25,15 +34,9 @@ ORIGIN='https://bitbucket.org/lyro/evil'
 printf "cd ${EMACS_PACKAGES_DIR/$HOME/\~}\nhg clone -r ${NEW_ID} ${ORIGIN}\n" \
        >> $DL_HG_PACKAGES
 
-cd $EMACS_PACKAGES_DIR
-find . -maxdepth 1 -mindepth 1 -type d \
-     -exec bash -c \
-     'cd "$0"; [[ -f ".git" ]] && printf "Updating $(tput bold)${0/.\//}:$(tput sgr0) " && git pull' \
-     {} \;
+for dir in $THIRD_PARTY_PACKAGES/*/; do
+  update-git-packages "${dir}"
+done
 
-printf "Updating $(tput bold)vim-plug:$(tput sgr0) "
-cd $THIRD_PARTY_PACKAGES/vim/vim-plug
-git pull
-cd $ROOT
 # `norm D` to see the changes, if any.
 vim +PlugUpdate +only "+norm D"
