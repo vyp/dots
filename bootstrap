@@ -2,20 +2,6 @@
 
 cd ~/ui
 
-IGNORE=(
-  "bin/"
-  "dmenu/"
-  "docs/"
-  "dzen2/"
-  "firefox/"
-  "guix/"
-  "misc/"
-  "pacman/"
-  "themes/"
-  "vendor/"
-  "zathura/"
-)
-
 MAKEDIRS=true
 
 DIRS="
@@ -35,17 +21,6 @@ DIRS="
   ~/.vim/plugged
 "
 
-containsElement () {
-  local e
-
-  for e in "${@:2}"; do
-    [[ "$e" == "$1" ]] &&
-      return 0
-  done
-
-  return 1
-}
-
 if [ "$MAKEDIRS" = true ]; then
   for dir in $DIRS; do
     mkdir -pv "${dir}"
@@ -53,11 +28,7 @@ if [ "$MAKEDIRS" = true ]; then
 fi
 
 for dir in */ ; do
-  containsElement "${dir}" "${IGNORE[@]}"
-
-  if [[ $? -eq 1 ]]; then
-    stow "${dir}"
-  fi
+  stow "${dir}"
 done
 
 # TODO: Also mkdir ~/gh and clone some appropriate repos. These don't have to be
@@ -71,9 +42,5 @@ git submodule init
 git submodule update
 
 ln -s ~/ui/vendor/vim/vim-plug/plug.vim ~/.vim/autoload/plug.vim
-
-sudo rm -vi /etc/pacman.conf
-sudo stow -t / pacman
-sudo stow -t / zathura
 
 ./bin/chue
