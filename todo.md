@@ -69,7 +69,6 @@
 - fix bspwm keybindings.
 - rename 'dzen2' directory to 'dzen'?
 - remove pacman config.
-- remove mutt config.
 - `./contrib` directory.
 - check out https://github.com/hchbaw/opp.zsh.
 - https://github.com/zsh-users/zsh-completions.

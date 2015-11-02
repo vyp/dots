@@ -38,7 +38,6 @@ Program       | Use
 [GTK+]        | Graphical Toolkit
 [MPD]         | Music Server
 [mpv]         | Video Player
-[Mutt]        | Email Client
 [Ncmpcpp]     | MPD Client
 [Pacman]      | Package Manager
 [Pentadactyl] | Web Browser
@@ -60,7 +59,6 @@ Program       | Use
 [GTK+]:        http://www.gtk.org/
 [MPD]:         http://www.musicpd.org/
 [mpv]:         http://mpv.io/
-[Mutt]:        http://www.mutt.org/
 [Ncmpcpp]:     http://ncmpcpp.rybczak.net/
 [Pentadactyl]: http://5digits.org/pentadactyl/
 [Pacman]:      https://www.archlinux.org/pacman/
