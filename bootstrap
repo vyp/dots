@@ -1,31 +1,7 @@
 #!/bin/bash
 
 cd ~/ui
-
-MAKEDIRS=true
-
-DIRS="
-  ~/.backup
-  ~/.cache/mutt
-  ~/.config/bspwm
-  ~/.config/dzen2
-  ~/.config/mpd
-  ~/.config/mpv
-  ~/.config/mutt
-  ~/.config/sxhkd
-  ~/.config/zathura
-  ~/.emacs.d
-  ~/.pentadactyl/colors
-  ~/.urxvt
-  ~/.vim/autoload
-  ~/.vim/plugged
-"
-
-if [ "$MAKEDIRS" = true ]; then
-  for dir in $DIRS; do
-    mkdir -pv "${dir}"
-  done
-fi
+./misc/make-default-directories
 
 for dir in */ ; do
   stow "${dir}"

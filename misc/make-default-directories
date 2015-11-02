@@ -1,0 +1,22 @@
+#!/bin/bash
+
+DIRS="
+  ~/.backup
+  ~/.cache/mutt
+  ~/.config/bspwm
+  ~/.config/dzen2
+  ~/.config/mpd
+  ~/.config/mpv
+  ~/.config/mutt
+  ~/.config/sxhkd
+  ~/.config/zathura
+  ~/.emacs.d
+  ~/.pentadactyl/colors
+  ~/.urxvt
+  ~/.vim/autoload
+  ~/.vim/plugged
+"
+
+for dir in $DIRS; do
+  mkdir -pv "${dir}"
+done

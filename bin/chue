@@ -54,22 +54,7 @@ stowlink () {
     stow -t ~ -d themes -D $dir
   done
 
-  # Dry this list and the one in ../bootstrap into one script/function.
-  mkdir -pv ~/.backup
-  mkdir -pv ~/.cache/mutt
-  mkdir -pv ~/.config/bspwm
-  mkdir -pv ~/.config/dzen2
-  mkdir -pv ~/.config/mpd
-  mkdir -pv ~/.config/mpv
-  mkdir -pv ~/.config/mutt
-  mkdir -pv ~/.config/sxhkd
-  mkdir -pv ~/.config/zathura
-  mkdir -pv ~/.emacs.d
-  mkdir -pv ~/.pentadactyl/colors
-  mkdir -pv ~/.urxvt
-  mkdir -pv ~/.vim/autoload
-  mkdir -pv ~/.vim/plugged
-
+  ./misc/make-default-directories
   stow -t ~ -d themes $1
 }
 
