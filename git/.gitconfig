@@ -1,9 +1,10 @@
 [user]
-  name = rws
+  name = xd1le
   email = elisp.vim@gmail.com
 
 [core]
   editor = vim
+  excludesfile = '~/.gitignore.global'
 
 [push]
   default = matching

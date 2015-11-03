@@ -68,7 +68,6 @@
 - make vim config more simplified.
 - fix bspwm keybindings.
 - remove pacman config.
-- global gitignore file.
 - `./contrib` directory.
 - check out https://github.com/hchbaw/opp.zsh.
 - https://github.com/zsh-users/zsh-completions.
