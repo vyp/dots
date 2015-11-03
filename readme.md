@@ -31,7 +31,7 @@ Program       | Use
 [Bspwm]       | Window Manager
 [dircolors]   | Color Setup for `ls`
 [dmenu]       | Launcher
-[Dzen]        | Panel
+[Dzen2]       | Panel
 [Emacs]       | Text Editor
 [Firefox]     | Web Browser
 [Git]         | Version Control
@@ -52,7 +52,7 @@ Program       | Use
 [Bspwm]:       https://github.com/baskerville/bspwm
 [dircolors]:   https://www.gnu.org/software/coreutils/manual/html_node/dircolors-invocation.html
 [dmenu]:       http://tools.suckless.org/dmenu/
-[Dzen]:        https://robm.github.io/dzen/
+[Dzen2]:       https://robm.github.io/dzen/
 [Emacs]:       https://www.gnu.org/software/emacs/
 [Firefox]:     https://mozilla.org/firefox
 [Git]:         http://git-scm.com/
