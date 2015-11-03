@@ -67,7 +67,6 @@
     - simplify 'centeronsearch' part.
 - fix bspwm keybindings.
 - rename 'chue' to 'set-theme'?
-- remove the old update script at misc/upd.
 - move dzen2/quit to misc/quit?
 - rename 'dzen2/thalamus' to 'dzen2/assemble'?
 - `./contrib` directory.
