@@ -248,10 +248,10 @@
   :init
   (add-hook 'haskell-mode-hook 'turn-on-haskell-indent))
 
-(use-package pdf-tools
-  :disabled t
-  :mode ("\\.pdf\\'" . pdf-view-mode)
-  :config (pdf-tools-install))
+;; (use-package pdf-tools
+;;   :disabled t
+;;   :mode ("\\.pdf\\'" . pdf-view-mode)
+;;   :config (pdf-tools-install))
 
 ;; (use-package magit
 ;;  :disabled t
