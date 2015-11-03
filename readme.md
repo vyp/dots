@@ -29,13 +29,11 @@ The configuration files for each program are under respectively named folders.
 Program       | Use
 -------       | ---
 [Bspwm]       | Window Manager
-[dircolors]   | Color Setup for `ls`
 [dmenu]       | Launcher
 [Dzen2]       | Panel
 [Emacs]       | Text Editor
 [Firefox]     | Web Browser
 [Git]         | Version Control
-[GTK+]        | Graphical Toolkit
 [MPD]         | Music Server
 [mpv]         | Video Player
 [Ncmpcpp]     | MPD Client
@@ -45,17 +43,15 @@ Program       | Use
 [Urxvt]       | Terminal Emulator
 [Vim]         | Text Editor
 [X11]         | Display Server
-[Zathura]     | Document (PDF) Viewer
+[Zathura]     | Document Viewer
 [Zsh]         | Shell
 
 [Bspwm]:       https://github.com/baskerville/bspwm
-[dircolors]:   https://www.gnu.org/software/coreutils/manual/html_node/dircolors-invocation.html
 [dmenu]:       http://tools.suckless.org/dmenu/
 [Dzen2]:       https://robm.github.io/dzen/
 [Emacs]:       https://www.gnu.org/software/emacs/
 [Firefox]:     https://mozilla.org/firefox
 [Git]:         http://git-scm.com/
-[GTK+]:        http://www.gtk.org/
 [MPD]:         http://www.musicpd.org/
 [mpv]:         http://mpv.io/
 [Ncmpcpp]:     http://ncmpcpp.rybczak.net/
@@ -90,15 +86,33 @@ and maintainence are being worked on (slowly).
 
 # License
 
-Anything and everything here is [free software] wherever and whenever it
-applies: you can redistribute and/or modify them under the terms of the GNU
-Affero General Public License as published by the Free Software Foundation,
-either version 3 of the License, or (at your option) any later version.
+You are allowed to do whatever you like with these dotfiles, because that is
+what they are, (mainly) just settings and not software. (If in doubt, treat it
+as a program and consider it [free software] licensed under the GNU Affero
+General Public License as described below.)
 
-They are distributed in the hope that it will be useful, but WITHOUT ANY
+Of course, do not just blindly copy large portions of my personally tailored
+settings. Understand what a particular section does and copy things atomically,
+adjusting to your personal needs. But this is not a legally binding restriction,
+just advice.
+
+They are distributed primarily for my personal convenience but also in the hope
+that they will be useful, but WITHOUT ANY WARRANTY; without even the implied
+warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. So I am not
+liable if my settings cause damage to your system in any way. (Consider that my
+settings may assume things which your system does not have or take into
+account.)
+
+---
+
+All 'scripts' or programs found here though can only be redistributed and/or
+modified under the terms of the GNU Affero General Public License as published
+by the Free Software Foundation, either version 3 of the License, or (at your
+option) any later version.
+
+They are distributed in the hope that they will be useful, but WITHOUT ANY
 WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
-PARTICULAR PURPOSE. BE CAREFUL and dance with these beasts At YOUR OWN RISK.
-See the GNU Affero General Public License for more details.
+PARTICULAR PURPOSE. See the GNU Affero General Public License for more details.
 
 You should have received a copy of the GNU Affero General Public License within
 this repository in a file in the root directory named `license`. If not, see
