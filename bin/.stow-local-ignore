@@ -1,1 +1,3 @@
+# Unfortunately this file is also added to the $PATH. (Although of course
+# attempting to run it will not work because it is not executable.)
 .*
