@@ -2,6 +2,7 @@
 
 ## Documentation
 
+- how stow works and how the dotfiles are managed in general.
 - installation.
     - installed packages.
 - maintainence.

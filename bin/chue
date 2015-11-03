@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# TODO: This is seriously a horrible 'hack' of a script, even for shell script's
+# standards. Fix it so that it just tries to stow the first argument, if the
+# directory exists.
+
 cd ~/ui
 
 DIR="themes/*/"
@@ -49,11 +53,20 @@ $(themes)
 }
 
 stowlink () {
+  # TODO: Possibly use --override option instead of unstowing every theme?
   for dir in $DIR; do
     dir=`echo $dir | awk -F'/' '{print $2}' -`
     stow -t ~ -d themes -D $dir
   done
 
+  # These directories are made everytime before stowing so that stow does not
+  # create *directory* symlinks.
+  #
+  # While this is a small issue, I find it preferable so that it leaves the door
+  # # open to putting other (non-symlinked) files in these directories, whereas
+  # otherwise it would be a bit of a hassle.
+  #
+  # The disadvantage is that a list of these directories have to be maintained.
   ./misc/make-default-directories
   stow -t ~ -d themes $1
 }
