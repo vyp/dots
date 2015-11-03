@@ -1,20 +1,14 @@
 #!/bin/bash
 
-DIRS="
-  ~/.backup
-  ~/.config/bspwm
-  ~/.config/dzen2
-  ~/.config/mpd
-  ~/.config/mpv
-  ~/.config/sxhkd
-  ~/.config/zathura
-  ~/.emacs.d
-  ~/.pentadactyl/colors
-  ~/.urxvt
-  ~/.vim/autoload
-  ~/.vim/plugged
-"
-
-for dir in $DIRS; do
-  mkdir -pv "${dir}"
-done
+mkdir -pv ~/.backup
+mkdir -pv ~/.config/bspwm
+mkdir -pv ~/.config/dzen2
+mkdir -pv ~/.config/mpd
+mkdir -pv ~/.config/mpv
+mkdir -pv ~/.config/sxhkd
+mkdir -pv ~/.config/zathura
+mkdir -pv ~/.emacs.d
+mkdir -pv ~/.pentadactyl/colors
+mkdir -pv ~/.urxvt
+mkdir -pv ~/.vim/autoload
+mkdir -pv ~/.vim/plugged

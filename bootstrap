@@ -1,7 +1,14 @@
 #!/bin/bash
 
 cd ~/ui
+# TODO: Probably do not need this as it will be called in chue anyway.
 ./misc/make-default-directories
+
+# TODO: Run this with a default theme so that it happens automatically without
+# any need for user input.
+./bin/chue
+
+# TODO: Run `make` somewhere here.
 
 for dir in */ ; do
   stow "${dir}"
@@ -18,5 +25,3 @@ git submodule init
 git submodule update
 
 ln -s ~/ui/vendor/vim/vim-plug/plug.vim ~/.vim/autoload/plug.vim
-
-./bin/chue

@@ -88,10 +88,6 @@ and maintainence are being worked on (slowly).
 
 [GNU Stow]: https://www.gnu.org/software/stow/
 
-# Screenshots
-
-*Todo.*
-
 # License
 
 Anything and everything here is [free software] wherever and whenever it

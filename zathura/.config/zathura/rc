@@ -1,0 +1,7 @@
+set font "cure 8"
+
+map d scroll half-down
+map u scroll half-up
+
+set recolor         "false"
+set recolor-keephue "true"

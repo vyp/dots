@@ -61,12 +61,11 @@
 
 ## Other
 
-- Makefile for applications without any ability to 'import' parts of config, so
-  that the config file with the correct theme colours can be created (for
-  zathura for example).
 - make enter key act like control if pressed as part of a chord.
 - make vim config more simplified.
+    - simplify 'centeronsearch' part.
 - fix bspwm keybindings.
+- rename 'chue' to 'set-theme'?
 - `./contrib` directory.
 - check out https://github.com/hchbaw/opp.zsh.
 - https://github.com/zsh-users/zsh-completions.
