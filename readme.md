@@ -39,7 +39,6 @@ Program       | Use
 [MPD]         | Music Server
 [mpv]         | Video Player
 [Ncmpcpp]     | MPD Client
-[Pacman]      | Package Manager
 [Pentadactyl] | Web Browser
 [rTorrent]    | BitTorrent Client
 [Sxhkd]       | Keybindings Manager
@@ -60,7 +59,6 @@ Program       | Use
 [MPD]:         http://www.musicpd.org/
 [mpv]:         http://mpv.io/
 [Ncmpcpp]:     http://ncmpcpp.rybczak.net/
-[Pacman]:      https://www.archlinux.org/pacman/
 [Pentadactyl]: http://5digits.org/pentadactyl/
 [rTorrent]:    https://rakshasa.github.io/rtorrent/
 [Sxhkd]:       https://github.com/baskerville/sxhkd

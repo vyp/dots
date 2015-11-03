@@ -67,7 +67,6 @@
 - make enter key act like control if pressed as part of a chord.
 - make vim config more simplified.
 - fix bspwm keybindings.
-- remove pacman config.
 - `./contrib` directory.
 - check out https://github.com/hchbaw/opp.zsh.
 - https://github.com/zsh-users/zsh-completions.
