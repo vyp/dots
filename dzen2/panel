@@ -28,7 +28,7 @@ done &
 
 cat "$PANEL_FIFO" \
 | \
-~/ui/dzen2/thalamus \
+~/ui/dzen2/assemble \
 | \
 dzen2 \
   -p \

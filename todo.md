@@ -67,7 +67,6 @@
     - simplify 'centeronsearch' part.
 - fix bspwm keybindings.
 - move dzen2/quit to misc/quit?
-- rename 'dzen2/thalamus' to 'dzen2/assemble'?
 - `./contrib` directory.
 - check out https://github.com/hchbaw/opp.zsh.
 - https://github.com/zsh-users/zsh-completions.
