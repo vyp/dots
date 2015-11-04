@@ -3,9 +3,9 @@
 cd ~/ui
 ./misc/make-config-directories
 
-# TODO: Run this with a default theme so that it happens automatically without
-# any need for user input.
-./bin/set-theme
+# For automatic setup with a default theme, but this can be manually changed
+# later without affecting the state of the git repository.
+./bin/set-theme gruvbox-light
 
 # TODO: Run `make` somewhere here.
 
