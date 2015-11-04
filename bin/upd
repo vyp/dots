@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # Dependencies:
-# - mercurial
 # - git
+# - mercurial
 # - vim
 
 # The command to rollback a git submodule is NOT `git checkout` as it is for
@@ -25,7 +25,7 @@ update-git-packages () {
 }
 
 DL_HG_PACKAGES=$ROOT/misc/dl-hg-packages
-echo '#!/bin/env bash' > $DL_HG_PACKAGES
+echo '#!/bin/bash' > $DL_HG_PACKAGES
 printf "Updating $(tput bold)evil:$(tput sgr0) "
 cd $EMACS_PACKAGES_DIR/evil
 hg pull -u
