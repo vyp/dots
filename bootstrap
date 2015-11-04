@@ -1,12 +1,12 @@
 #!/bin/bash
 
 cd ~/ui
-# TODO: Probably do not need this as it will be called in chue anyway.
+# TODO: Probably do not need this as it will be called in set-theme anyway.
 ./misc/make-default-directories
 
 # TODO: Run this with a default theme so that it happens automatically without
 # any need for user input.
-./bin/chue
+./bin/set-theme
 
 # TODO: Run `make` somewhere here.
 

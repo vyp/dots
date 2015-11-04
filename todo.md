@@ -66,7 +66,6 @@
 - make vim config more simplified.
     - simplify 'centeronsearch' part.
 - fix bspwm keybindings.
-- rename 'chue' to 'set-theme'?
 - move dzen2/quit to misc/quit?
 - rename 'dzen2/thalamus' to 'dzen2/assemble'?
 - `./contrib` directory.
