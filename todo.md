@@ -60,8 +60,12 @@
     - Figure out installation method for pdf-tools (whether to use guix, or to
       use quelpa...).
 
+## Vim
+
+- simplify 'centeronsearch' part.
+- simplify/fix clipboard/paste keybindings.
+- tab colour from red to grey for gruvbox-light.
+
 ## Other
 
-- make vim config more simplified.
-    - simplify 'centeronsearch' part.
 - pandoc and latex templates?
