@@ -2,11 +2,8 @@
 # bspwm hotkeys
 #
 
-# super + shift + e
-#   pkill panel && bspc quit
-
 super + shift + e
-  ~/ui/dzen2/quit
+  ~/ui/misc/quit
 
 super + x
   bspc window -c
@@ -16,9 +13,6 @@ super + ctrl + x
 
 super + t
   bspc desktop -l next
-
-# alt + t
-#   transset-df -at 0
 
 super + {minus,equal}
   bspc desktop -{B,E}
