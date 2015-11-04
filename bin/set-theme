@@ -67,7 +67,7 @@ stowlink () {
   # otherwise it would be a bit of a hassle.
   #
   # The disadvantage is that a list of these directories have to be maintained.
-  ./misc/make-default-directories
+  ./misc/make-config-directories
   stow -t ~ -d themes $1
 }
 

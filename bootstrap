@@ -2,7 +2,7 @@
 
 cd ~/ui
 # TODO: Probably do not need this as it will be called in set-theme anyway.
-./misc/make-default-directories
+./misc/make-config-directories
 
 # TODO: Run this with a default theme so that it happens automatically without
 # any need for user input.
