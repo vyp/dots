@@ -62,7 +62,7 @@
 
 ## Other
 
-- make enter key act like control if pressed as part of a chord.
+- make enter key act like super if pressed as part of a chord.
 - make vim config more simplified.
     - simplify 'centeronsearch' part.
 - `./contrib` directory.

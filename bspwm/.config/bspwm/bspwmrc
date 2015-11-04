@@ -4,6 +4,7 @@
 # bspc config border_width 2
 # bspc config window_gap 0
 
+# TODO: Change desktop names to numbers.
 bspc monitor -d surf dev work pdf music view news sys misc buff
 
 for desktop in $(bspc query -D); do
