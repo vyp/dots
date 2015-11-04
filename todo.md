@@ -64,9 +64,4 @@
 
 - make vim config more simplified.
     - simplify 'centeronsearch' part.
-- `./contrib` directory.
-- check out https://github.com/hchbaw/opp.zsh.
-- https://github.com/zsh-users/zsh-completions.
-- explore more zsh plugin management options other than antigen?
 - pandoc and latex templates?
-- `~/music/playlists` directory.
