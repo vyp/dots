@@ -4,10 +4,11 @@
 # - git
 # - mercurial
 # - vim
-
+#
 # The command to rollback a git submodule is NOT `git checkout` as it is for
 # normal files, but rather you have to run `git reset --hard HEAD@{1}` from the
 # directory of the submodule.
+#
 # TODO: Figure out the equivalent command for mercurial. (Think it might
 # something like `hg update -r <rev-id>`.)
 
@@ -38,5 +39,5 @@ for dir in $THIRD_PARTY_PACKAGES/*/; do
   update-git-packages "${dir}"
 done
 
-# `norm D` to see the changes, if any.
-vim +PlugUpdate +only "+norm D"
+vim +PlugUpdate +only +PlugDiff "+if getline(1) == 'No updates.'" +q +else \
+  "+PlugSnapshot ~/ui/vendor/vim/plugins" "+e #" +endif

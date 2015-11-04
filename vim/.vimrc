@@ -219,7 +219,6 @@ nnoremap <C-t> "*p
 nnoremap <leader>t "+p
 nnoremap <leader>vc :edit ~/.vimrc<CR>
 nnoremap <leader>vz :edit ~/.zshrc<CR>
-nnoremap <leader>gp :PlugSnapshot ~/ui/vendor/vim/plugins<CR>
 
 " Status Line {{{1
 set statusline=
