@@ -1,86 +1,15 @@
 #!/bin/bash
 
-# TODO: This is seriously a horrible 'hack' of a script, even for shell script's
-# standards. Fix it so that it just tries to stow the first argument, if the
-# directory exists.
-
 cd ~/ui
 
-DIR="themes/*/"
-DIRS=($DIR)
-FIRST=`echo "${DIRS[@]:0:1}" | awk -F'/' '{print $2}' -`
-
-themes () {
-  for dir in $DIR; do
-    dir=`echo $dir | awk -F'/' '{print $2}' -`
-    echo "- $dir"
-  done
-}
-
-containsElement () {
-  local e
-
-  for e in "${@:2}"; do
-    [[ "$e" == "$1" ]] &&
-      return 0
-  done
-
-  return 1
-}
-
-ask () {
-  read -p "Choose a colorscheme. Available options are:
-
-$(themes)
-
-($FIRST) > " choice
-
-  if [[ -z "$choice" ]]; then
-    stowlink ${FIRST}
-    return 0
-  fi
-
-  check="themes/${choice}/"
-  containsElement "${check}" "${DIRS[@]}"
-
-  if [[ $? -eq 1 ]]; then
-    echo -e "\nERROR: There is no theme '${choice}', try again!\n"
-    ask
-  else
-    stowlink ${choice}
-    return 0
-  fi
-}
-
-stowlink () {
-  # TODO: Possibly use --override option instead of unstowing every theme?
-  for dir in $DIR; do
-    dir=`echo $dir | awk -F'/' '{print $2}' -`
-    stow -t ~ -d themes -D $dir
-  done
-
-  # These directories are made everytime before stowing so that stow does not
-  # create *directory* symlinks.
-  #
-  # While this is a small issue, I find it preferable so that it leaves the door
-  # # open to putting other (non-symlinked) files in these directories, whereas
-  # otherwise it would be a bit of a hassle.
-  #
-  # The disadvantage is that a list of these directories have to be maintained.
-  ./misc/make-config-directories
-  stow -t ~ -d themes $1
-}
-
-if [ $# -eq 0 ]; then
-  ask
+if [[ $# -eq 0 ]]; then
+  echo 'Usage: set-theme theme'
+  exit 1
 else
-  check="themes/$1/"
-  containsElement "${check}" "${DIRS[@]}"
-
-  if [[ $? -eq 1 ]]; then
-    echo -e "ERROR: There is no theme '$1'!\n"
-    ask
+  if [[ -d "./themes/$1" ]]; then
+    stow --override='.*' -t ~ -d themes "$1"
   else
-    stowlink $1
+    echo "Error: No theme '$1' found."
+    exit 1
   fi
 fi
