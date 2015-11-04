@@ -1,6 +1,4 @@
-# Todo
-
-## Documentation
+# Documentation
 
 - how stow works and how the dotfiles are managed in general.
 - installation.
@@ -10,7 +8,7 @@
     - files/directory structure.
 - fonts.
 
-## Emacs
+# Emacs
 
 - Behaviour.
     - Indent by 2 spaces instead of 4 for shell-script-mode.
@@ -60,12 +58,12 @@
     - Figure out installation method for pdf-tools (whether to use guix, or to
       use quelpa...).
 
-## Vim
+# Vim
 
 - simplify 'centeronsearch' part.
 - simplify/fix clipboard/paste keybindings.
 - tab colour from red to grey for gruvbox-light.
 
-## Other
+# Other
 
 - pandoc and latex templates?
