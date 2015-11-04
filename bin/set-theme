@@ -5,11 +5,9 @@ cd ~/ui
 if [[ $# -eq 0 ]]; then
   echo 'Usage: set-theme theme'
   exit 1
+elif [[ -d "./themes/$1" ]]; then
+  stow --override='.*' -t ~ -d themes "$1"
 else
-  if [[ -d "./themes/$1" ]]; then
-    stow --override='.*' -t ~ -d themes "$1"
-  else
-    echo "Error: No theme '$1' found."
-    exit 1
-  fi
+  echo "Error: No theme '$1' found."
+  exit 1
 fi
