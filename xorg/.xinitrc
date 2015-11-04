@@ -17,6 +17,13 @@ synclient HorizTwoFingerScroll=1 &
 setxkbmap -option 'ctrl:nocaps' &
 xcape -e 'Control_L=Escape' &
 xcape -e 'Control_R=Escape' &
+setxkbmap -option 'lv3:rwin_switch' &
+spare_modifier='Hyper_L'
+xmodmap -e "keycode 36 = $spare_modifier" &
+xmodmap -e "remove Mod4 = $spare_modifier" &
+xmodmap -e "add Mod3 = $spare_modifier" &
+xmodmap -e 'keycode any = Return' &
+xcape -e "$spare_modifier=Return" &
 
 . ~/.fehsetrootrc &
 
