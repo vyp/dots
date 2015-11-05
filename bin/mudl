@@ -1,0 +1,16 @@
+#!/bin/bash
+
+# Dependencies:
+# - youtube-dl
+# - ffmpeg
+# - lltag
+# - mpd and mpc (optional)
+
+dl_dir="$HOME/dl/music"
+
+if [[ ! -d $dl_dir ]]; then
+  read -p "Download directory '$dl_dir' does not exist, create it? (y/N)" \
+       createp
+  [[ "${createp}" == "y" ]] && mkdir -pv $dl_dur || echo 'Aborting download' \
+                                                         && exit 1
+fi
