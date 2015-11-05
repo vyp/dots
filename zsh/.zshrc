@@ -136,7 +136,9 @@ alias sd='mpc stop; mpd --kill; sudo shutdown now'
 alias se='sudoedit'
 alias sm='ls ~/music | grep -i'
 alias t='tail'
-alias todo='git grep -I -A 2 -E '\''TODO:|FIXME:'\'
+# The single quotes in the search patterns ensure that the line itself is not
+# listed in the search results.
+alias todo='git grep -I -A 2 -e T''ODO: -e F''IXME:'
 alias v='vim'
 alias vc='vim ~/.vimrc'
 alias vz='vim ~/.zshrc'
@@ -151,15 +153,15 @@ function - {
   fi
 }
 
-eval `dircolors ~/.dircolors`
-source ~/.zcolors
-
 # 10ms delay (instead of default 400) for key sequences.
 KEYTIMEOUT=1
 
 HISTFILE=~/.histfile
 HISTSIZE=1000000
 SAVEHIST=1000000
+
+eval `dircolors ~/.dircolors`
+source ~/.zcolors
 
 # Helper for setting color including all kinds of terminals.
 set_prompt_color () {
