@@ -1,4 +1,4 @@
-#!/bin/env zsh
+#!/bin/zsh
 
 # Urxvt (and family) accepts even '#RRGGBB' format.
 INSERT_PROMPT="#928374"

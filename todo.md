@@ -58,6 +58,20 @@
     - Figure out installation method for pdf-tools (whether to use guix, or to
       use quelpa...).
 
+# Themes
+
+## Gruvbox-light
+
+- pentadactyl.
+
+## Redbelly
+
+- probably everything except emacs.
+
+# Vim
+
+- simplify 'centeronsearch' part?
+
 # Other
 
 - remove pacman alias from zshrc (and also other arch linux related things).
@@ -65,7 +79,3 @@
 - use relative paths in scripts by first cd'ing to the directory the script is
   located in: <http://stackoverflow.com/a/246128/4093264>
 - pandoc and latex templates?
-
-# Vim
-
-- simplify 'centeronsearch' part?

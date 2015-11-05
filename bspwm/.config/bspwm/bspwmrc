@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # Does not seem to work even though it is in the example config:
 # bspc config border_width 2

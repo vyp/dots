@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 bspc config normal_border_color "#222222"
 bspc config active_border_color "#aa759f"

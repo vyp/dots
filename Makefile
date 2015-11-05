@@ -1,6 +1,6 @@
 # Not a Makefile for everything here, but only for certain programs that require
 # a simple build system for their configs.
-
+#
 # TODO: Explain why this is needed, possibly with a link to a documentation file
 # explaining the reason in more detail.
 
