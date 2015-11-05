@@ -32,7 +32,7 @@ zstyle :compinstall filename '~/.zshrc'
 zstyle ':vcs_info:git*' formats "%b"
 zstyle ':vcs_info:*' enable git
 
-# Aliases
+# Aliases.
 alias ,,,,='urxvtc && urxvtc && urxvtc && urxvtc'
 alias ,,,='urxvtc && urxvtc && urxvtc'
 alias ,,='urxvtc && urxvtc'
@@ -88,7 +88,7 @@ alias grr='grep -r'
 alias grs='git reset'
 alias gs='git status'
 alias gsh='git show'
-# TODO: Add 'gshd' alias for 'git show HEAD'.
+alias gshd='git show HEAD'
 alias h='head'
 alias info='info --vi-keys'
 alias j='jobs'
