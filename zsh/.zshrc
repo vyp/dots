@@ -126,7 +126,7 @@ alias pn='ping -c 3 8.8.8.8'
 # randomly. Alerts when internet connection is back up.
 alias pt='ping -c 3 8.8.8.8; while [[ $? -eq 1 ]]; do ping -c 3 8.8.8.8 && echo -e "\a"; done'
 alias q='exit'
-alias rm='rm -v'
+alias rm='rm -vI'
 alias rmdir='rmdir -v'
 alias rr='ranger'
 alias s='sed'
