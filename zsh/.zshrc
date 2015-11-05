@@ -49,7 +49,8 @@ alias cpr='cp -r'
 alias cr='crystal'
 # `nl` apparently more standard than `cat -n`.
 alias ds='dirs -p | tail -n +2 | nl'
-alias dsv='dirs -v'
+# TODO: Figure out a command that only deletes up to the *oldest* (?) current
+# directory listing. Probably even make the 'k' aliases make use of it.
 alias dt='dirs -c'
 alias e='emacsclient -c'
 alias er='emacsclient -e "(kill-emacs)" && emacs --daemon'
@@ -70,14 +71,12 @@ alias gchu='git fetch --dry-run'
 alias gcvu='git commit -m "chore(vendor): update"'
 alias gd='git diff'
 alias gds='git diff --staged'
-# Edit 'dirty' or untracked files (in relation to their git status) with
-# $EDITOR.
-#
-# TODO: Should probably make it so it *doesn't* edit untracked files.
-alias ge='git status --short | while read first rest; do if [[ $first == *"M"* ]] || [[ $first == *"A"* ]] || [[ $first == *"?"* ]]; then echo $rest; fi; done | awk '"'"'{print $NF}'"'"' | while read gspath; do [[ ${gspath: -1} == "/" ]] || echo $gspath; done | while read filepath; do [[ -e $filepath ]] && echo $filepath; done | while read existingfile; do [[ "$(file -bL $existingfile)" == *"text"* ]] && echo $existingfile; done | xargs bash -c '"'"'</dev/tty $EDITOR "$@"'"'"' i'
+# Edit 'dirty' files (in relation to their git status) with $EDITOR.
+alias ge='git status --short | while read first rest; do if [[ $first == *"M"* ]] || [[ $first == *"A"* ]]; then echo $rest; fi; done | awk '"'"'{print $NF}'"'"' | while read gspath; do [[ ${gspath: -1} == "/" ]] || echo $gspath; done | while read filepath; do [[ -e $filepath ]] && echo $filepath; done | while read existingfile; do [[ "$(file -bL $existingfile)" == *"text"* ]] && echo $existingfile; done | xargs bash -c '"'"'</dev/tty $EDITOR "$@"'"'"' i'
 alias gi='grep -i'
 alias gir='grep -ir'
 alias gl='git log'
+# List authors/contributors and their email addresses for a git repository.
 alias glem='git log --format="%an %ae" | sort | uniq'
 alias gm='git merge'
 alias gmnoff='git merge --no-ff'
