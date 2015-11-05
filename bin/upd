@@ -16,22 +16,25 @@ ROOT=~/ui
 THIRD_PARTY_PACKAGES=$ROOT/vendor
 EMACS_PACKAGES_DIR=$THIRD_PARTY_PACKAGES/emacs
 
+append-date-line-to-log () {
+  echo "--- ${1^} --- $(date)" >> $ROOT/update-log
+}
+
 update-git-packages () {
-  cd "${1}"
-  find . -maxdepth 1 -mindepth 1 -type d \
-       -exec bash -c \
-       'cd "$0"; [[ -f ".git" ]] && printf "Updating $(tput bold)${0/.\//}:$(tput sgr0) " && git pull' \
-       {} \;
+  cd "$1"
+  append-date-line-to-log "$(basename ${1})"
+  find . -maxdepth 1 -mindepth 1 -type d -exec bash -c \
+       'cd "$0"; [[ -f ".git" ]] && git pull &' {} \; | tee -a $ROOT/update-log
   cd $ROOT
 }
 
 DL_HG_PACKAGES=$ROOT/misc/dl-hg-packages
-echo '#!/bin/bash' > $DL_HG_PACKAGES
-printf "Updating $(tput bold)evil:$(tput sgr0) "
 cd $EMACS_PACKAGES_DIR/evil
-hg pull -u
+append-date-line-to-log evil
+hg pull -u | tee -a $ROOT/update-log
 NEW_ID=$(hg --debug id -i)
 ORIGIN='https://bitbucket.org/lyro/evil'
+echo '#!/bin/bash' > $DL_HG_PACKAGES
 printf "cd ${EMACS_PACKAGES_DIR/$HOME/\~}\nhg clone -r ${NEW_ID} ${ORIGIN}\n" \
        >> $DL_HG_PACKAGES
 cd $ROOT

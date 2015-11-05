@@ -5,6 +5,9 @@
 # Generated configs (via `make`).
 /zathura/.config/zathura/zathurarc
 
+# Logs.
+/update-log
+
 # Emacs.
 *~
 \#*\#
