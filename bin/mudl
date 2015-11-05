@@ -5,6 +5,7 @@
 # - ffmpeg
 # - lltag
 # - mpd and mpc (optional)
+# - some $EDITOR defined
 
 dl_dir="$HOME/dl/music"
 tmp_dir_name='tmp'
@@ -13,8 +14,13 @@ tmp_n=1
 if [[ ! -d $dl_dir ]]; then
   read -p "Download directory '$dl_dir' does not exist, create it? (y/N)" \
        createp
-  [[ "${createp}" == "y" ]] && mkdir -pv $dl_dur || echo 'Aborting download.' \
-                                                         && exit 1
+
+  if [[ "${createp}" == "y" ]]; then
+    mkdir -pv $dl_dir
+  else
+    echo 'Aborting download.'
+    exit 1
+  fi
 fi
 
 while [[ -d "${dl_dir}/${tmp_dir_name}$tmp_n" ]]; do
