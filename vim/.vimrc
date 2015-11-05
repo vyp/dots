@@ -260,7 +260,7 @@ nnoremap z<space> zR
 nnoremap co zMzv
 
 nnoremap <c-s> zkzMzv
-nnoremap <c-m> zjzMzv
+nnoremap <c-g> zjzMzv
 nnoremap zp zC
 nnoremap zu zO
 nnoremap zh [z
