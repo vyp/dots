@@ -136,10 +136,7 @@ alias sd='mpc stop; mpd --kill; sudo shutdown now'
 alias se='sudoedit'
 alias sm='ls ~/music | grep -i'
 alias t='tail'
-# TODO: Use git grep instead.
-# Probably also use tput to highlight the instances of "TODO" in some way and
-# change this into a small shell script.
-alias todo='grep -rI -A 2 --exclude-dir={.git,antigen,bower_components,node_modules,vim-plug} --exclude="colors.penta" TODO:'
+alias todo='git grep -I -A 2 -E '\''TODO:|FIXME:'\'
 alias v='vim'
 alias vc='vim ~/.vimrc'
 alias vz='vim ~/.zshrc'
