@@ -60,7 +60,6 @@
 
 # Vim
 
-- simplify/fix clipboard/paste keybindings.
 - tab colour from red to grey for gruvbox-light.
 - simplify 'centeronsearch' part?
 

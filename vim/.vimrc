@@ -208,15 +208,11 @@ nnoremap <leader>en :e ~/notes/
 nnoremap <leader>es :sp <C-R>=fnameescape(expand('%:h')).'/'<cr>
 nnoremap <leader>ev :vsp <C-R>=fnameescape(expand('%:h')).'/'<cr>
 
-nnoremap <leader>cp "*y
 xnoremap <leader>cp "*y
-nnoremap <leader>co "+y
 xnoremap <leader>co "+y
+nnoremap <leader>p "*p
+nnoremap <leader>o "+p
 
-" Removes default key binding, see `:help tag-stack`.
-" TODO: Fix these keybindings to make them more 'normal' (if possible).
-nnoremap <C-t> "*p
-nnoremap <leader>t "+p
 nnoremap <leader>vc :edit ~/.vimrc<CR>
 nnoremap <leader>vz :edit ~/.zshrc<CR>
 
