@@ -34,10 +34,10 @@ NEW_ID=$(hg --debug id -i)
 ORIGIN='https://bitbucket.org/lyro/evil'
 printf "cd ${EMACS_PACKAGES_DIR/$HOME/\~}\nhg clone -r ${NEW_ID} ${ORIGIN}\n" \
        >> $DL_HG_PACKAGES
+cd $ROOT
 
 for dir in $THIRD_PARTY_PACKAGES/*/; do
   update-git-packages "${dir}"
 done
 
-vim +PlugUpdate +only +PlugDiff "+if getline(1) == 'No updates.'" +q +else \
-  "+PlugSnapshot ~/ui/vendor/vim/plugins" "+e #" +endif
+vim -S ./misc/update-vim-plugins.vim
