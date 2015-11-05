@@ -7,10 +7,18 @@
 # - mpd and mpc (optional)
 
 dl_dir="$HOME/dl/music"
+tmp_dir_name='tmp'
+tmp_n=1
 
 if [[ ! -d $dl_dir ]]; then
   read -p "Download directory '$dl_dir' does not exist, create it? (y/N)" \
        createp
-  [[ "${createp}" == "y" ]] && mkdir -pv $dl_dur || echo 'Aborting download' \
+  [[ "${createp}" == "y" ]] && mkdir -pv $dl_dur || echo 'Aborting download.' \
                                                          && exit 1
 fi
+
+while [[ -d "${dl_dir}/${tmp_dir_name}$tmp_n" ]]; do
+  tmp_n=$(($tmp_n + 1))
+done
+
+mkdir -pv "${dl_dir}/${tmp_dir_name}$tmp_n"
