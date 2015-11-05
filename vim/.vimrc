@@ -134,8 +134,6 @@ nnoremap q; q:k
 xnoremap q; q:k
 nnoremap q/ q/k
 nnoremap gs :w<CR>
-" nnoremap <leader>s <C-z>
-" nnoremap <silent> <leader>n :nohls<CR>
 nnoremap <silent> <leader>s :set<space>hlsearch!<CR>
 
 nnoremap <leader>k H
@@ -153,26 +151,11 @@ nnoremap ZZ <nop>
 nnoremap ZQ <nop>
 
 " Can't use <Tab> and <S-Tab> since <Tab> is the same as ctrl-i in vim.
-" See http://stackoverflow.com/a/14642074.
+" See <http://stackoverflow.com/a/14642074>.
 nnoremap <C-n> :bn<CR>
 nnoremap <C-p> :bp<CR>
 nnoremap <leader>l :ls<CR>:b<space>
 nnoremap <leader>bs :cex []<BAR>bufdo vimgrepadd @@g %<BAR>cw<s-left><s-left><right>
-nnoremap <Right> :bn<CR>
-nnoremap <Left> :bp<CR>
-nnoremap <Up> :ls<CR>:b<space>
-nnoremap <Down> <C-^>
-" nnoremap <leader>bx :w<CR>:bd<CR>
-
-" When switching buffers, preserve window view.
-" From http://vim.wikia.com/wiki/Avoid_scrolling_when_switch_buffers.
-if v:version >= 700
-  au BufLeave * if !&diff | let b:winview = winsaveview() | endif
-  au BufEnter * if exists('b:winview') && !&diff | call winrestview(b:winview) | unlet! b:winview | endif
-endif
-
-nmap <leader>d ysiW
-nmap <leader>ds ysiW*
 nnoremap <leader>f mmvipgq`m
 
 nnoremap <leader>wo :only<CR>
@@ -204,7 +187,6 @@ cnoremap <C-e> <Down>
 " From <http://vimcasts.org/episodes/the-edit-command/>.
 cnoremap %% <C-R>=fnameescape(expand('%:h')).'/'<cr>
 nnoremap <leader>ew :e <C-R>=fnameescape(expand('%:h')).'/'<cr>
-nnoremap <leader>en :e ~/notes/
 nnoremap <leader>es :sp <C-R>=fnameescape(expand('%:h')).'/'<cr>
 nnoremap <leader>ev :vsp <C-R>=fnameescape(expand('%:h')).'/'<cr>
 
@@ -215,6 +197,13 @@ nnoremap <leader>o "+p
 
 nnoremap <leader>vc :edit ~/.vimrc<CR>
 nnoremap <leader>vz :edit ~/.zshrc<CR>
+
+" These only exist as a potential bonus for keyboards where the arrow keys are
+" actually on or near the home row (such as the Poker II).
+nnoremap <Right> :bn<CR>
+nnoremap <Left> :bp<CR>
+nnoremap <Up> :ls<CR>:b<space>
+nnoremap <Down> <C-^>
 
 " Status Line {{{1
 set statusline=
@@ -325,6 +314,13 @@ fun! VisitLastBuffer()
     rew
   endif
 endfun
+
+" When switching buffers, preserve window view.
+" From <http://vim.wikia.com/wiki/Avoid_scrolling_when_switch_buffers>.
+if v:version >= 700
+  au BufLeave * if !&diff | let b:winview = winsaveview() | endif
+  au BufEnter * if exists('b:winview') && !&diff | call winrestview(b:winview) | unlet! b:winview | endif
+endif
 
 " Center on search {{{2
 " The percentage height of the window at which you wish to define 'the center'.
