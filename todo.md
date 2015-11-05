@@ -74,7 +74,6 @@
 
 # Other
 
-- try adding emacs daemon startup back to .zprofile
 - use relative paths in scripts by first cd'ing to the directory the script is
   located in: <http://stackoverflow.com/a/246128/4093264>
 - pandoc and latex templates?

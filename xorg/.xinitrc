@@ -39,10 +39,6 @@ tchscrinput="Atmel Atmel maXTouch Digitizer"
 disableInputDevice "Poker II" "AT Translated Set 2 keyboard"
 disableInputDevice "$tchscrinput" "$tchscrinput"
 
-# Because mainly only use gui emacs, and seems to make login slower if put in
-# ~/.zprofile, even with the ampersand at the end.
-emacs --daemon &
-
 urxvtd &
 sxhkd &
 
