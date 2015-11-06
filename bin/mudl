@@ -12,15 +12,22 @@ set -u
 set -e
 
 dl_dir="${HOME}/dl/music"
+music_dir="${HOME}/music"
 tmp_dir_name='tmp'
 tmp_n=1
 
 namef='name'
 playlistf='playlists'
+playlist_dir="${HOME}/.config/mpd/playlists"
 trimf='trim'
 # Poor man's boolean.
 trimp='true'
 urlf='url'
+
+add-to-playlist () {
+  echo "${2}.ogg" >> "${playlist_dir}/${1}.m3u"
+  sort -u "${playlist_dir}/${1}.m3u" -o "${playlist_dir}/${1}.m3u"
+}
 
 bell () {
   echo -e "\a"
@@ -111,11 +118,19 @@ while [[ $trimp == 'true' ]]; do
       $EDITOR $trimf
     fi
   else
-    # No trimming -> Can automatically convert and proceed without any need for
-    # checking.
+    # No trimming -> automatically convert and proceed without asking for
+    # confirmation.
     ffmpeg -y -i "${name}.webm" -vn -acodec copy "${name}.ogg"
     trimp='false'
   fi
+done
+
+lltag --format '%a - %t' --yes "${name}.ogg"
+[[ ! -d $playlist_dir ]] && mkdir -pv $playlist_dir
+add-to-playlist all "$name"
+
+for playlist in $(< $playlistf); do
+  add-to-playlist $playlist "$name"
 done
 
 cleanup
