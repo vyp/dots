@@ -51,6 +51,9 @@ alias cr='crystal'
 alias ds='dirs -p | tail -n +2 | nl'
 # TODO: Figure out a command that only deletes up to the *oldest* (?) current
 # directory listing. Probably even make the 'k' aliases make use of it.
+#
+# (Maybe even see if there's a way to prevent consecutive duplicated entries to
+# the dirs list?)
 alias dt='dirs -c'
 alias e='emacsclient -c'
 alias er='emacsclient -e "(kill-emacs)" && emacs --daemon'
