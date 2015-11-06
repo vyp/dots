@@ -7,9 +7,38 @@
 # - mpd and mpc (optional)
 # - some $EDITOR defined
 
-dl_dir="$HOME/dl/music"
+set -u
+set -e
+
+dl_dir="${HOME}/dl/music"
 tmp_dir_name='tmp'
 tmp_n=1
+
+namef='name'
+playlistf='playlists'
+trimf='trim'
+urlf='url'
+
+bell () {
+  echo -e "\a"
+}
+
+cleanup () {
+  remove-file-if-exists "$namef" "$playlistf" "$trimf" "$urlf"
+  local current_dir="$(pwd)"
+  cd ..
+  rmdir -v "$current_dir"
+}
+
+get-title () {
+  echo "$(youtube-dl --get-title ${1})"
+}
+
+remove-file-if-exists () {
+  for file in "$@"; do
+    [[ -f "$file" ]] && rm -v "$file"
+  done
+}
 
 if [[ ! -d $dl_dir ]]; then
   read -p "Download directory '$dl_dir' does not exist, create it? (y/N)" \
@@ -28,3 +57,18 @@ while [[ -d "${dl_dir}/${tmp_dir_name}$tmp_n" ]]; do
 done
 
 mkdir -pv "${dl_dir}/${tmp_dir_name}$tmp_n"
+cd "${dl_dir}/${tmp_dir_name}$tmp_n"
+
+if [[ $# -eq 0 ]]; then
+  $EDITOR $urlf
+  get-title "$(< $urlf)" > $namef
+  bell
+  $EDITOR $namef $playlistf $trimf
+else
+  echo "$1" > $urlf
+  get-title "$1" > $namef
+  bell
+  $EDITOR $namef $playlistf $trimf
+fi
+
+cleanup
