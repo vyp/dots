@@ -4,7 +4,7 @@
 # - youtube-dl.
 # - ffmpeg.
 # - lltag.
-# - mpd and mpc (optional, probably).
+# - mpd and mpc (optional).
 # - mpv (or some other media player to test trims).
 # - Some $EDITOR defined.
 
@@ -12,17 +12,19 @@ set -u
 set -e
 
 dl_dir="${HOME}/dl/music"
+mpd_pidf="${HOME}/.config/mpd/pid"
 music_dir="${HOME}/music"
+playlist_dir="${HOME}/.config/mpd/playlists"
 tmp_dir_name='tmp'
-tmp_n=1
 
 namef='name'
 playlistf='playlists'
-playlist_dir="${HOME}/.config/mpd/playlists"
 trimf='trim'
+urlf='url'
+
+tmp_n=1
 # Poor man's boolean.
 trimp='true'
-urlf='url'
 
 add-to-playlist () {
   echo "${2}.ogg" >> "${playlist_dir}/${1}.m3u"
@@ -33,6 +35,8 @@ bell () {
   echo -e "\a"
 }
 
+# In a separate function in case I can get TRAP working properly... (if the
+# internet connection suddenly dies or something).
 cleanup () {
   remove-file-if-exists "$namef" "$playlistf" "$trimf" "$urlf"
   local current_dir="$(pwd)"
@@ -133,4 +137,8 @@ for playlist in $(< $playlistf); do
   add-to-playlist $playlist "$name"
 done
 
+mv -v "${name}.ogg" "${music_dir}"
+rm -v "${name}.webm"
+[[ -s "$mpd_pidf" ]] && mpc update
 cleanup
+bell
