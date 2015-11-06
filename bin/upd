@@ -11,8 +11,10 @@
 #
 # TODO: Figure out the equivalent command for mercurial. (Think it might
 # something like `hg update -r <rev-id>`.)
+#
+# TODO: Use lowercase variable names.
 
-ROOT=~/ui
+ROOT="${HOME}/ui"
 THIRD_PARTY_PACKAGES=$ROOT/vendor
 EMACS_PACKAGES_DIR=$THIRD_PARTY_PACKAGES/emacs
 
