@@ -17,6 +17,8 @@ synclient HorizTwoFingerScroll=1 &
 setxkbmap -option 'ctrl:nocaps' &
 xcape -e 'Control_L=Escape' &
 xcape -e 'Control_R=Escape' &
+# TODO: The following does not seem to work anymore?! Figure out why, it may be
+# because xmodmap has a state...
 setxkbmap -option 'lv3:rwin_switch' &
 spare_modifier='Hyper_L'
 xmodmap -e "keycode 36 = $spare_modifier" &
