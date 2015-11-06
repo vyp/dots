@@ -11,7 +11,6 @@
 #
 # TODO: Figure out the equivalent command for mercurial. (Think it might
 # something like `hg update -r <rev-id>`.)
-#
 # TODO: Use lowercase variable names.
 
 ROOT="${HOME}/ui"
@@ -19,7 +18,7 @@ THIRD_PARTY_PACKAGES=$ROOT/vendor
 EMACS_PACKAGES_DIR=$THIRD_PARTY_PACKAGES/emacs
 
 append-date-line-to-log () {
-  echo "--- ${1^} --- $(date)" >> $ROOT/update-log
+  echo "=== ${1^} === $(date)" >> $ROOT/update-log
 }
 
 update-git-packages () {

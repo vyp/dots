@@ -1,0 +1,7 @@
+#!/bin/bash
+root="${HOME}/ui"
+echo "--- $(basename $(pwd)) ---" | tee -a ${root}/update-log
+# TODO: Show the appropriate commit messages and diffs so that `git pull -q` can
+# be done in upd so that all update information output is from this post-merge
+# script. That would also allow all the vim plugins to managed (more) by
+# submodules rather than vim-plug.
