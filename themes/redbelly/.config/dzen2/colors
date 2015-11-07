@@ -3,7 +3,6 @@
 # Panel.
 MAIN_FG='#999999'
 MAIN_BG='#222222'
-ARCH_ICON_CLR='#6a9fb5'
 SEPARATOR_CLR='#555555'
 
 ## Music.
