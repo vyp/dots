@@ -11,36 +11,35 @@
 #
 # TODO: Figure out the equivalent command for mercurial. (Think it might
 # something like `hg update -r <rev-id>`.)
-# TODO: Use lowercase variable names.
 
-ROOT="${HOME}/ui"
-THIRD_PARTY_PACKAGES=$ROOT/vendor
-EMACS_PACKAGES_DIR=$THIRD_PARTY_PACKAGES/emacs
+root="${HOME}/ui"
+third_party_packages=$root/vendor
+emacs_packages_dir=$third_party_packages/emacs
 
 append-date-line-to-log () {
-  echo "=== ${1^} === $(date)" >> $ROOT/update-log
+  echo "=== ${1^} === $(date)" >> $root/update-log
 }
 
 update-git-packages () {
   cd "$1"
   append-date-line-to-log "$(basename ${1})"
   find . -maxdepth 1 -mindepth 1 -type d -exec bash -c \
-       'cd "$0"; [[ -f ".git" ]] && git pull &' {} \; | tee -a $ROOT/update-log
-  cd $ROOT
+       'cd "$0"; [[ -f ".git" ]] && git pull &' {} \; | tee -a $root/update-log
+  cd $root
 }
 
-DL_HG_PACKAGES=$ROOT/misc/dl-hg-packages
-cd $EMACS_PACKAGES_DIR/evil
+dl_hg_packages=$root/misc/dl-hg-packages
+cd $emacs_packages_dir/evil
 append-date-line-to-log evil
-hg pull -u | tee -a $ROOT/update-log
-NEW_ID=$(hg --debug id -i)
-ORIGIN='https://bitbucket.org/lyro/evil'
-echo '#!/bin/bash' > $DL_HG_PACKAGES
-printf "cd ${EMACS_PACKAGES_DIR/$HOME/\~}\nhg clone -r ${NEW_ID} ${ORIGIN}\n" \
-       >> $DL_HG_PACKAGES
-cd $ROOT
+hg pull -u | tee -a $root/update-log
+new_id=$(hg --debug id -i)
+origin='https://bitbucket.org/lyro/evil'
+echo '#!/bin/bash' > $dl_hg_packages
+printf "cd ${emacs_packages_dir/$HOME/\~}\nhg clone -r ${new_id} ${origin}\n" \
+       >> $dl_hg_packages
+cd $root
 
-for dir in $THIRD_PARTY_PACKAGES/*/; do
+for dir in $third_party_packages/*/; do
   update-git-packages "${dir}"
 done
 
