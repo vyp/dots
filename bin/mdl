@@ -73,21 +73,11 @@ done
 mkdir -pv "${dl_dir}/${tmp_dir_name}$tmp_n"
 cd "${dl_dir}/${tmp_dir_name}$tmp_n"
 
-if [[ ! -d $playlist_dir ]]; then
-  mkdir -pv $playlist_dir
-else
-  # List any already existing playlists to make it easier to select additions
-  # for the current download.
-  printf "\n" >> "${playlistf}.tmp"
-
-  for playlist in $playlist_dir/*.m3u; do
-    printf "$(basename ${playlist%.*}) " >> "${playlistf}.tmp"
-  done
-
-  printf "\n" >> "${playlistf}.tmp"
-  fold -w 80 -s "${playlistf}.tmp" > $playlistf
-  rm "${playlistf}.tmp"
-fi
+# List any already existing playlists to make it easier to select additions for
+# the current download.
+[[ ! -d $playlist_dir ]] && mkdir -pv $playlist_dir || printf \
+  "\n$(ls $playlist_dir | sed -e 's:\.[^./]*$::' | tr '\n' ' ')\n" | fold -w \
+  80 -s | sed 's/ *$//' > $playlistf
 
 if [[ $# -eq 0 ]]; then
   $EDITOR $urlf
