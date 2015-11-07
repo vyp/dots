@@ -73,7 +73,22 @@ done
 mkdir -pv "${dl_dir}/${tmp_dir_name}$tmp_n"
 cd "${dl_dir}/${tmp_dir_name}$tmp_n"
 
-# TODO: Somehow list already existing playlists?
+if [[ ! -d $playlist_dir ]]; then
+  mkdir -pv $playlist_dir
+else
+  # List any already existing playlists to make it easier to select additions
+  # for the current download.
+  printf "\n" >> "${playlistf}.tmp"
+
+  for playlist in $playlist_dir/*.m3u; do
+    printf "$(basename ${playlist%.*}) " >> "${playlistf}.tmp"
+  done
+
+  printf "\n" >> "${playlistf}.tmp"
+  fold -w 80 -s "${playlistf}.tmp" > $playlistf
+  rm "${playlistf}.tmp"
+fi
+
 if [[ $# -eq 0 ]]; then
   $EDITOR $urlf
   get-title "$(< $urlf)" > $namef
@@ -131,10 +146,9 @@ while [[ $trimp == 'true' ]]; do
 done
 
 lltag --format '%a - %t' --yes "${name}.ogg"
-[[ ! -d $playlist_dir ]] && mkdir -pv $playlist_dir
 add-to-playlist all "$name"
 
-for playlist in $(< $playlistf); do
+for playlist in $(head -n 1 $playlistf); do
   add-to-playlist $playlist "$name"
 done
 
