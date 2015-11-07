@@ -14,21 +14,13 @@ xset -b
 xsetroot -cursor_name left_ptr &
 synclient HorizTwoFingerScroll=1 &
 
-setxkbmap -option 'ctrl:nocaps' &
-xcape -e 'Control_L=Escape' &
-xcape -e 'Control_R=Escape' &
-# TODO: The following does not seem to work anymore?! Figure out why, it may be
-# because xmodmap has a state...
-#
-# - There's definitely some notion of state going on here, on some boots, the
-#   enter key does not even work, but then reboot and then it *does* work.
-setxkbmap -option 'lv3:rwin_switch' &
-spare_modifier='Hyper_L'
-xmodmap -e "keycode 36 = $spare_modifier" &
-xmodmap -e "remove Mod4 = $spare_modifier" &
-xmodmap -e "add Mod3 = $spare_modifier" &
-xmodmap -e 'keycode any = Return' &
-xcape -e "$spare_modifier=Return" &
+setxkbmap -option ''
+setxkbmap -option 'ctrl:nocaps'
+xmodmap -e 'keycode 36 = Super_R'
+xmodmap -e 'keycode any = Return'
+xcape -e 'Super_R=Return'
+xcape -e 'Control_L=Escape'
+xcape -e 'Control_R=Escape'
 
 . ~/.fehsetrootrc &
 
