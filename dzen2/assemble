@@ -162,9 +162,8 @@ while read -r line; do
       ;;
 
   esac
-  left="^p(2)${music//Ø/O}"
+  left="^p(2)$(sed -e's/é/e/g' <<< ${music//Ø/O})"
   center="^p(_CENTER)^p(-$CENTER_OFFSET)$workspaces"
   right="^p(_RIGHT)^p(-$BATTERY_OFFSET)$battery^p(_RIGHT)^p(-$TIME_OFFSET)$time"
-
   printf "%s\n" "$left$center$right"
 done
