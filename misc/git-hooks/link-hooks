@@ -25,7 +25,8 @@ if [[ $# -gt 0 ]] && [[ "$1" == "-d" ]]; then
 else
   for hook in $hooks; do
     for place in $places_to_hook; do
-      ln -v -s "$hook" "${place}/$(basename $hook)"
+      [[ -f "${place}/$(basename $hook)" ]] || ln -v -s "$hook" \
+        "${place}/$(basename $hook)"
     done
   done
 fi
