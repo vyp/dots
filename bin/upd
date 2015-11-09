@@ -21,8 +21,7 @@ dl_hg_packages=$root/misc/dl-hg-packages
 cd $emacs_packages_dir/evil
 
 if hg incoming -q; then
-  [[ -f $update_log ]] || echo '# vim: ft=git' >> $update_log
-  hg pull -u | tee -a $update_log
+  hg pull -u
   new_id=$(hg --debug id -i)
   origin='https://bitbucket.org/lyro/evil'
   echo '#!/bin/bash' > $dl_hg_packages
