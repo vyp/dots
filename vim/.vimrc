@@ -7,24 +7,27 @@ if !exists('g:loaded_matchit') && findfile('plugin/matchit.vim', &rtp) ==# ''
   runtime! macros/matchit.vim
 endif
 
+" Technically this directory does not exist, but I think some sort of
+" `plug#begin` line is still needed.
 call plug#begin('~/.vim/plugged')
 
+" TODO: See if it is possible to use vimscript to factor out the common dirname.
 " Essential:
-Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-surround'
+Plug '~/ui/vendor/vim/vim-repeat'
+Plug '~/ui/vendor/vim/vim-surround'
 
 " Extra:
-Plug 'ap/vim-buftabline'
+Plug '~/ui/vendor/vim/vim-buftabline'
 " TODO: Check out 'junegunn/vim-easy-align'.
-Plug 'Raimondi/delimitMate'
-Plug 'tpope/vim-commentary'
-Plug 'wellle/targets.vim'
+Plug '~/ui/vendor/vim/delimitMate'
+Plug '~/ui/vendor/vim/vim-commentary'
+Plug '~/ui/vendor/vim/targets.vim'
 
 " Syntax:
-Plug 'ntpeters/vim-better-whitespace'
+Plug '~/ui/vendor/vim/vim-better-whitespace'
 
 " Themes:
-Plug 'morhetz/gruvbox'
+Plug '~/ui/vendor/vim/gruvbox'
 
 call plug#end()
 

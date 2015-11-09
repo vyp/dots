@@ -32,5 +32,3 @@ if hg incoming -q; then
 fi
 
 find $root -type f -name '.git' -execdir bash -c 'git pull -q &' \; | tee
-cd $root
-vim -S ./misc/update-vim-plugins.vim
