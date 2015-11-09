@@ -13,4 +13,4 @@ DIR="%{$fg[cyan]%}"
 ZSH_HIGHLIGHT_STYLES_PRECOMMAND="green"
 ZSH_HIGHLIGHT_STYLES_PATH_APPROX="yellow"
 
-source ~/.vim/plugged/gruvbox/gruvbox_256palette.sh
+source ~/ui/vendor/vim/gruvbox/gruvbox_256palette.sh
