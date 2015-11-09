@@ -49,3 +49,27 @@
 [submodule "vendor/emacs/haskell-mode"]
 	path = vendor/emacs/haskell-mode
 	url = https://github.com/haskell/haskell-mode
+[submodule "vendor/vim/vim-repeat"]
+	path = vendor/vim/vim-repeat
+	url = https://github.com/tpope/vim-repeat
+[submodule "vendor/vim/vim-surround"]
+	path = vendor/vim/vim-surround
+	url = https://github.com/tpope/vim-surround
+[submodule "vendor/vim/vim-buftabline"]
+	path = vendor/vim/vim-buftabline
+	url = https://github.com/ap/vim-buftabline
+[submodule "vendor/vim/delimitMate"]
+	path = vendor/vim/delimitMate
+	url = https://github.com/Raimondi/delimitMate
+[submodule "vendor/vim/vim-commentary"]
+	path = vendor/vim/vim-commentary
+	url = https://github.com/tpope/vim-commentary
+[submodule "vendor/vim/targets.vim"]
+	path = vendor/vim/targets.vim
+	url = https://github.com/wellle/targets.vim
+[submodule "vendor/vim/vim-better-whitespace"]
+	path = vendor/vim/vim-better-whitespace
+	url = https://github.com/ntpeters/vim-better-whitespace
+[submodule "vendor/vim/gruvbox"]
+	path = vendor/vim/gruvbox
+	url = https://github.com/morhetz/gruvbox
