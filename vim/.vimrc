@@ -16,7 +16,6 @@ Plug 'tpope/vim-surround'
 " Extra:
 Plug 'ap/vim-buftabline'
 " TODO: Check out 'junegunn/vim-easy-align'.
-Plug 'godlygeek/tabular'
 Plug 'Raimondi/delimitMate'
 Plug 'tpope/vim-commentary'
 Plug 'wellle/targets.vim'

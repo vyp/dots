@@ -8,7 +8,6 @@ PLUG_HOME=~/.vim/plugged
 
 cd $PLUG_HOME/delimitMate/ && git reset --hard 8bc47fd
 cd $PLUG_HOME/gruvbox/ && git reset --hard e4ba7ab
-cd $PLUG_HOME/tabular/ && git reset --hard 60f2564
 cd $PLUG_HOME/targets.vim/ && git reset --hard d111928
 cd $PLUG_HOME/vim-better-whitespace/ && git reset --hard c77ffda
 cd $PLUG_HOME/vim-buftabline/ && git reset --hard 9d513e1
