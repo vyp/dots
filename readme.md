@@ -86,36 +86,16 @@ and maintainence are being worked on (slowly).
 
 # License
 
-You are allowed to do whatever you like with these dotfiles, because that is
-what they are, (mainly) just settings and not software. (If in doubt, treat it
-as a program and consider it [free software] licensed under the GNU Affero
-General Public License as described below.)
+[Free software]: can redistribute and/or modify under the terms of the GNU
+Affero General Public License as published by the Free Software Foundation,
+either version 3 of the License, or (at your option) any later version.
 
-Of course, do not just blindly copy large portions of my personally tailored
-settings. Understand what a particular section does and copy things atomically,
-adjusting to your personal needs. But this is not a legally binding restriction,
-just advice.
-
-They are distributed primarily for my personal convenience but also in the hope
-that they will be useful, but WITHOUT ANY WARRANTY; without even the implied
-warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. So I am not
-liable if my settings cause damage to your system in any way. (Consider that my
-settings may assume things which your system does not have or take into
-account.)
-
----
-
-All 'scripts' or programs found here though can only be redistributed and/or
-modified under the terms of the GNU Affero General Public License as published
-by the Free Software Foundation, either version 3 of the License, or (at your
-option) any later version.
-
-They are distributed in the hope that they will be useful, but WITHOUT ANY
-WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
-PARTICULAR PURPOSE. See the GNU Affero General Public License for more details.
+Distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR
+PURPOSE. See the GNU Affero General Public License for more details.
 
 You should have received a copy of the GNU Affero General Public License within
 this repository in a file in the root directory named `license`. If not, see
 <http://www.gnu.org/licenses/>.
 
-[free software]: https://www.gnu.org/philosophy/free-sw.html
+[Free software]: https://www.gnu.org/philosophy/free-sw.html
