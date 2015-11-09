@@ -1,7 +1,37 @@
 #!/bin/bash
+
 root="${HOME}/ui"
-echo "--- $(basename $(pwd)) ---" | tee -a ${root}/update-log
-# TODO: Show the appropriate commit messages and diffs so that `git pull -q` can
-# be done in upd so that all update information output is from this post-merge
-# script. That would also allow all the vim plugins to managed (more) by
-# submodules rather than vim-plug.
+update_log=$root/update-log
+package="$(basename $(pwd))"
+
+center-print () {
+  local max_width=80
+  local padding=1
+  local width=${#1}
+  local fill_char_length=$(( ($max_width - ($width + 2 * $padding)) / 2 ))
+  print-fill-chars $fill_char_length
+  # The 'padding' is put here manually.
+  printf " $1 "
+  print-fill-chars $fill_char_length
+  printf "\n"
+}
+
+print-fill-chars () {
+  local fill_char='_'
+
+  for ((i = 0 ; i < $1 ; i++ )); do
+    printf $fill_char
+  done
+}
+
+[[ -s $update_log ]] && printf "\n" >> $update_log || echo '# vim: ft=git' >> \
+  $update_log
+center-print "$package -- $(date +'%d/%m/%y %H:%M:%S')" >> $update_log
+git diff --stat HEAD@{1} HEAD >> $update_log
+printf "\n" >> $update_log
+git log @{1}.. >> $update_log
+printf "\n" >> $update_log
+git diff HEAD@{1} HEAD >> $update_log
+echo "Updated $(tput bold)${package}:$(tput sgr0)"
+git log --pretty=format:"%Cgreen%h %Cblue%s %Creset(%Cred%cr%Creset)" @{1}..
+git diff --stat HEAD@{1} HEAD

@@ -13,34 +13,24 @@
 # something like `hg update -r <rev-id>`.)
 
 root="${HOME}/ui"
+update_log=$root/update-log
 third_party_packages=$root/vendor
 emacs_packages_dir=$third_party_packages/emacs
 
-append-date-line-to-log () {
-  echo "=== ${1^} === $(date)" >> $root/update-log
-}
-
-update-git-packages () {
-  cd "$1"
-  append-date-line-to-log "$(basename ${1})"
-  find . -maxdepth 1 -mindepth 1 -type d -exec bash -c \
-       'cd "$0"; [[ -f ".git" ]] && git pull &' {} \; | tee -a $root/update-log
-  cd $root
-}
-
 dl_hg_packages=$root/misc/dl-hg-packages
 cd $emacs_packages_dir/evil
-append-date-line-to-log evil
-hg pull -u | tee -a $root/update-log
-new_id=$(hg --debug id -i)
-origin='https://bitbucket.org/lyro/evil'
-echo '#!/bin/bash' > $dl_hg_packages
-printf "cd ${emacs_packages_dir/$HOME/\~}\nhg clone -r ${new_id} ${origin}\n" \
-       >> $dl_hg_packages
+
+if hg incoming -q; then
+  [[ -f $update_log ]] || echo '# vim: ft=git' >> $update_log
+  hg pull -u | tee -a $update_log
+  new_id=$(hg --debug id -i)
+  origin='https://bitbucket.org/lyro/evil'
+  echo '#!/bin/bash' > $dl_hg_packages
+  printf \
+    "cd ${emacs_packages_dir/$HOME/\~}\nhg clone -r ${new_id} ${origin}\n" >> \
+    $dl_hg_packages
+fi
+
+find $root -type f -name '.git' -execdir bash -c 'git pull -q &' \; | tee
 cd $root
-
-for dir in $third_party_packages/*/; do
-  update-git-packages "${dir}"
-done
-
 vim -S ./misc/update-vim-plugins.vim
