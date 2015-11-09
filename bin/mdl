@@ -121,12 +121,7 @@ while [[ $trimp == 'true' ]]; do
 
     mpv --no-video --loop=inf "${name}.ogg"
     read -p "Is it good? (y/N)" trim_status
-
-    if [[ "$trim_status" == "y" ]]; then
-      trimp='false'
-    else
-      $EDITOR $trimf
-    fi
+    [[ "$trim_status" == "y" ]] && trimp='false' || $EDITOR $trimf
   else
     # No trimming -> automatically convert and proceed without asking for
     # confirmation.
