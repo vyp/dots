@@ -10,6 +10,10 @@
 # Emacs
 
 - Behaviour.
+    - There is a little unexpected behaviour after an update. If a
+      'dependency-only' package is updated, it will *not* be rebuilt unless the
+      package that depends on it is also updated. Obviously, this may cause
+      breakages, but the package.el library in emacs 25 may already solve this..
     - Indent by 2 spaces instead of 4 for shell-script-mode.
     - Fix tab keybinding for evil-insert-state.
     - Rename all the custom-keybindings modules to
