@@ -2,12 +2,10 @@
 
 cd ~/ui
 ./misc/make-config-directories
-
 # For automatic setup with a default theme, but this can be manually changed
 # later without affecting the state of the git repository.
 ./bin/set-theme gruvbox-light
-
-# TODO: Run `make` somewhere here.
+make
 
 for dir in */ ; do
   stow "${dir}"
@@ -21,5 +19,4 @@ done
 
 git submodule init
 git submodule update
-
 ln -s ~/ui/vendor/vim/vim-plug/plug.vim ~/.vim/autoload/plug.vim
