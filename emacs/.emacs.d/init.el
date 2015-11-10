@@ -56,6 +56,7 @@
 (add-to-list 'quelpa-melpa-recipe-stores recipe-list)
 
 (quelpa 'quelpa)
+(quelpa 'use-package)
 (quelpa 'quelpa-use-package)
 
 (require 'quelpa-use-package)
@@ -297,6 +298,7 @@
       (face-list))
 
 ;;; Theme.
+;; TODO: Put this under /themes/gruvbox-light directory.
 (let ((theme-path "~/gh/themes/gruvbox-emacs"))
   (dolist (list '(load-path custom-theme-load-path))
     (add-to-list list theme-path)))
