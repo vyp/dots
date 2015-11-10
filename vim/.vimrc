@@ -10,23 +10,22 @@ endif
 " Technically this directory does not exist, but I think some sort of
 " `plug#begin` line is still needed.
 call plug#begin('~/.vim/plugged')
+let plugins_dir = "~/ui/vendor/vim/"
 
-" TODO: See if it is possible to use vimscript to factor out the common dirname.
-" Essential:
-Plug '~/ui/vendor/vim/vim-repeat'
-Plug '~/ui/vendor/vim/vim-surround'
+Plug plugins_dir.'vim-repeat'
+Plug plugins_dir.'vim-surround'
 
 " Extra:
-Plug '~/ui/vendor/vim/vim-buftabline'
-Plug '~/ui/vendor/vim/delimitMate'
-Plug '~/ui/vendor/vim/vim-commentary'
-Plug '~/ui/vendor/vim/targets.vim'
+Plug plugins_dir.'vim-buftabline'
+Plug plugins_dir.'delimitMate'
+Plug plugins_dir.'vim-commentary'
+Plug plugins_dir.'targets.vim'
 
 " Syntax:
-Plug '~/ui/vendor/vim/vim-better-whitespace'
+Plug plugins_dir.'vim-better-whitespace'
 
 " Themes:
-Plug '~/ui/vendor/vim/gruvbox'
+Plug plugins_dir.'gruvbox'
 
 call plug#end()
 
