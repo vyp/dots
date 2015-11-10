@@ -1,4 +1,5 @@
 #!/bin/bash
+# See </docs/themes.md>.
 
 cd ~/ui
 
