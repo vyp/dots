@@ -1,7 +1,25 @@
 #!/bin/bash
 
 cd ~/ui
-./misc/make-config-directories
+# The primary reason for this is so that stow will not create symlink
+# *directories*. Apparently this solves a potential subsequent linking problem
+# (with stow) as described in ff444eb, although I am not sure (anymore) if that
+# is really a problem or a false flag.
+#
+# The disadvantage with this is that this list has to be maintained, so it is
+# probably preferable to remove this somehow, *if possible*.
+mkdir -pv ~/.config/bspwm
+mkdir -pv ~/.config/dzen2
+mkdir -pv ~/.config/mpd
+mkdir -pv ~/.config/mpv
+mkdir -pv ~/.config/sxhkd
+mkdir -pv ~/.config/zathura
+mkdir -pv ~/.emacs.d
+mkdir -pv ~/.pentadactyl/colors
+mkdir -pv ~/.urxvt
+mkdir -pv ~/.vim/autoload
+# Other directories.
+mkdir -pv ~/.backup
 # For automatic setup with a default theme, but this can be manually changed
 # later without affecting the state of the (git) repository.
 ./bin/set-theme gruvbox-light
