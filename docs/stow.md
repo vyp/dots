@@ -41,8 +41,8 @@ but the wrapper would have to have knowledge of which dotfiles correspond to
 which application. By using stow, this is already taken care of because the
 dotfiles are already organised in separate directories.
 
-Of course, you could just put all the dotfiles in one single directory if you
-wanted to.
+Of course, you can still use stow and put all the dotfiles in one single
+directory if you wanted to.
 
 # Extras
 
@@ -56,8 +56,8 @@ $ stow -D <directory>
 
 It is noteworthy to mention that stow can also be told to ignore particular
 files/directories to ignore. i.e. They will not be symlinked. This is useful if
-there are dotfiles particular to an application that *do not need* to be
-symlinked above.
+there are dotfiles particular to an application that *do not need to be
+symlinked above*.
 
 This can be done using a `.stow-local-ignore` file in the root of the
 application specific directory. So for vim, its dotfiles are located in the
