@@ -6,4 +6,4 @@
 (define-key yas-minor-mode-map (kbd "<tab>") nil)
 (define-key yas-minor-mode-map (kbd "TAB") nil)
 
-(provide 'yasnippet-custom-keybindings)
+(provide 'my-custom-yasnippet-keybindings)

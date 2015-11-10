@@ -16,7 +16,7 @@
 (setq-default indent-tabs-mode nil)
 (setq-default tab-width 2)
 
-(add-to-list 'load-path "~/ui/emacs/.emacs.d/custom-keybindings")
+(add-to-list 'load-path "~/ui/emacs/.emacs.d/my-custom-keybindings")
 
 ;; TODO: Place miscellaneous functions like this as a separate library file that
 ;; use-package loads as a library when needed.
@@ -135,7 +135,7 @@
   (advice-add 'evil-command-window-ex :after #'my-previous-line-advice)
   (advice-add 'evil-command-window-search-forward :after #'my-previous-line-advice)
 
-  (require 'evil-custom-keybindings)
+  (require 'my-custom-evil-keybindings)
   (evil-mode t))
 
 (use-package evil-matchit
@@ -165,7 +165,7 @@
   :init
   (setq company-idle-delay 0)
   (add-hook 'after-init-hook 'global-company-mode)
-  :config (require 'company-custom-keybindings))
+  :config (require 'my-custom-company-keybindings))
 
 (use-package fill-column-indicator
   :demand t :quelpa
@@ -179,7 +179,7 @@
   :init (setq yas-snippet-dirs '("~/ui/vendor/emacs/yasnippet-snippets"))
   :config
   (yas-global-mode t)
-  (require 'yasnippet-custom-keybindings))
+  (require 'my-custom-yasnippet-keybindings))
 
 ;; Built-in major modes.
 (use-package erc
@@ -240,7 +240,7 @@
                                 (mode 16 16 :left :elide) " "
                                 filename-and-process)))
 
-  (require 'ibuffer-custom-keybindings))
+  (require 'my-custom-ibuffer-keybindings))
 
 ;; Third party major modes.
 (use-package haskell-mode
@@ -284,7 +284,7 @@
 ;;  (evil-set-initial-state 'magit-remote-section 'normal)
 ;;  (evil-set-initial-state 'magit-tag-section 'normal)
 ;;
-;;  (require 'magit-custom-keybindings))
+;;  (require 'my-custom-magit-keybindings))
 
 ;;; Fonts.
 ;; Disable italic and underlines.

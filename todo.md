@@ -16,8 +16,6 @@
       breakages, but the package.el library in emacs 25 may already solve this..
     - Indent by 2 spaces instead of 4 for shell-script-mode.
     - Fix tab keybinding for evil-insert-state.
-    - Rename all the custom-keybindings modules to
-      "my-custom-<package-name>-keybindings"?
     - Check out https://github.com/mrkkrp/vimish-fold.
     - Expand region.
     - Emmet.

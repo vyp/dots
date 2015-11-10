@@ -232,4 +232,4 @@
 (define-key magit-remote-section-map "k" nil)
 (define-key magit-tag-section-map "k" nil)
 
-(provide 'magit-custom-keybindings)
+(provide 'my-custom-magit-keybindings)

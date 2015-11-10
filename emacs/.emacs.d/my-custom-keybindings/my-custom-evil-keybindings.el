@@ -105,4 +105,4 @@ takes a second \\[keyboard-quit] to abort the minibuffer."
 (define-key evil-visual-state-map "gc"          'comment-or-uncomment-region)
 ;; (define-key evil-normal-state-map "gm"          'magit-status)
 
-(provide 'evil-custom-keybindings)
+(provide 'my-custom-evil-keybindings)

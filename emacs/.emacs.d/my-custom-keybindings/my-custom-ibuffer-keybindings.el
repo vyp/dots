@@ -129,4 +129,4 @@
   ;; (kbd "C-x 4 RET") 'ibuffer-visit-buffer-other-window
   ;; (kbd "C-x 5 RET") 'ibuffer-visit-buffer-other-frame)
 
-(provide 'ibuffer-custom-keybindings)
+(provide 'my-custom-ibuffer-keybindings)
