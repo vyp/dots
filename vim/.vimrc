@@ -18,7 +18,6 @@ Plug '~/ui/vendor/vim/vim-surround'
 
 " Extra:
 Plug '~/ui/vendor/vim/vim-buftabline'
-" TODO: Check out 'junegunn/vim-easy-align'.
 Plug '~/ui/vendor/vim/delimitMate'
 Plug '~/ui/vendor/vim/vim-commentary'
 Plug '~/ui/vendor/vim/targets.vim'
