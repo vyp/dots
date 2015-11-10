@@ -29,9 +29,10 @@ print-fill-chars () {
 center-print "$package -- $(date +'%d/%m/%y %H:%M:%S')" >> $update_log
 git diff --stat HEAD@{1} HEAD >> $update_log
 printf "\n" >> $update_log
-git log @{1}.. >> $update_log
+git log @{1}.. --reverse >> $update_log
 printf "\n" >> $update_log
 git diff HEAD@{1} HEAD >> $update_log
 echo "Updated $(tput bold)${package}:$(tput sgr0)"
-git log --pretty=format:"%Cgreen%h %Cblue%s %Creset(%Cred%cr%Creset)" @{1}..
+git log --pretty=format:"%Cgreen%h %Cblue%s %Creset(%Cred%cr%Creset)" @{1}.. \
+  --reverse
 git diff --stat HEAD@{1} HEAD
