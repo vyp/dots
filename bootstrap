@@ -1,6 +1,7 @@
 #!/bin/bash
 
-cd ~/ui
+root="${HOME}/ui"
+cd $root
 # The primary reason for this is so that stow will not create symlink
 # *directories*. Apparently this solves a potential subsequent linking problem
 # (with stow) as described in ff444eb, although I am not sure (anymore) if that
@@ -29,10 +30,15 @@ for dir in */ ; do
   stow "${dir}"
 done
 
-# TODO: Also mkdir ~/gh and clone some appropriate repos. These don't have to be
-# submodules because they are developed by me. This ties into giving directory
-# structure information.
-
+mkdir -pv ~/dl/music
+mkdir -pv ~/gh/forks
+mkdir -pv ~/gh/themes
+cd ~/gh
+git clone https://github.com/vyp/evil-quick-scope
+cd themes
+git clone https://github.com/vyp/gruvbox-emacs
+git clone https://github.com/vyp/redbelly
+cd $root
 ./misc/dl-hg-packages
 git submodule init
 git submodule update
