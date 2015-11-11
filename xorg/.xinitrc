@@ -22,7 +22,7 @@ xcape -e 'Super_R=Return'
 xcape -e 'Control_L=Escape'
 xcape -e 'Control_R=Escape'
 
-. ~/.fehsetrootrc &
+[ -s ~/.set-wallpaper ] && . ~/.set-wallpaper &
 
 disableInputDevice () {
   if xinput list | grep -q "$1"; then
