@@ -42,4 +42,5 @@ cd $root
 ./misc/dl-hg-packages
 git submodule init
 git submodule update
+./misc/git-hooks/link-hooks
 ln -s ~/ui/vendor/vim/vim-plug/plug.vim ~/.vim/autoload/plug.vim
