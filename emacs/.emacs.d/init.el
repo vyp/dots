@@ -16,7 +16,8 @@
 (setq-default indent-tabs-mode nil)
 (setq-default tab-width 2)
 
-(add-to-list 'load-path "~/ui/emacs/.emacs.d/my-custom-keybindings")
+(dolist (path '("~/ui/emacs/.emacs.d/my-custom-keybindings" "~/.emacs.d/lisp"))
+  (add-to-list 'load-path path))
 
 ;; TODO: Place miscellaneous functions like this as a separate library file that
 ;; use-package loads as a library when needed.
@@ -298,14 +299,4 @@
       (face-list))
 
 ;;; Theme.
-;; TODO: Put this under /themes/gruvbox-light directory.
-(let ((theme-path "~/gh/themes/gruvbox-emacs"))
-  (dolist (list '(load-path custom-theme-load-path))
-    (add-to-list list theme-path)))
-
-(if (daemonp)
-    (add-hook 'after-make-frame-functions
-              (lambda (frame)
-                (with-selected-frame frame
-                  (load-theme 'gruvbox-light t))))
-  (load-theme 'gruvbox-light t))
+(require 'my-currently-chosen-theme)
