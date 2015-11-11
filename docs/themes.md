@@ -22,10 +22,9 @@ Therefore only choose programs that do!
 
 # Why
 
-I find myself wanting switching themes/colours quite often (even if only
-'temporarily') and it would not make sense to commit a new choice everytime I
-change my mind because it does not necessarily mean that the previous choice was
-'incorrect' or 'bad'.
+I find myself wanting to switch themes/colours quite often. It would not make
+sense to commit a new choice everytime I change my mind because that does not
+necessarily mean that the previous choice was 'incorrect' or 'bad'.
 
 # How
 
