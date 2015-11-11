@@ -123,9 +123,7 @@ alias rm='rm -vI'
 alias rmdir='rmdir -v'
 alias rr='ranger'
 alias s='sed'
-# TODO: Figure out a more 'graceful' method of stopping mpd (it probably
-# exists).
-alias sd='mpc stop; mpd --kill; sudo shutdown now'
+alias sd='[[ -s ~/.config/mpd/pid ]] && mpc stop && mpd --kill; sudo shutdown now'
 alias se='sudoedit'
 alias sm='ls ~/music | grep -i'
 alias t='tail'
