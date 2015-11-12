@@ -5,7 +5,6 @@
 - maintainence.
     - updating.
     - files/directory structure.
-- fonts.
 
 # Emacs
 

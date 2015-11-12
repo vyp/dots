@@ -1,16 +1,9 @@
 #!/bin/sh
 
 xrdb -I$HOME ~/.Xresources
-
-# Be sure to run `mkfontscale` and then `mkfontdir` in these directories when
-# installing fonts for the first time.
-for dir in /usr/share/fonts/artwiz-fonts ~/.fonts/xlsfonts; do
-  xset +fp "$dir";
-done && xset fp rehash
-
-# Disables terminal beeps (if otherwise they would be produced).
+xset +fp ~/.fonts/artwiz
+xset fp rehash
 xset -b
-
 xsetroot -cursor_name left_ptr &
 synclient HorizTwoFingerScroll=1 &
 

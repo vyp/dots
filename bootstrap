@@ -21,27 +21,30 @@ mkdir -pv ~/.icons
 mkdir -pv ~/.pentadactyl/colors
 mkdir -pv ~/.urxvt
 mkdir -pv ~/.vim/autoload
-# Other directories.
-mkdir -pv ~/.backup
 # For automatic setup with a default theme, but this can be manually changed
 # later without affecting the state of the (git) repository.
 ./bin/set-theme gruvbox-light
 make
-
-for dir in */ ; do
-  stow "${dir}"
-done
-
+for dir in */ ; do stow "${dir}"; done
+# Other directories.
+mkdir -pv ~/.backup
 # For rtorrent, but may be removed later.
 mkdir -pv ~/dl/torrents/session
 mkdir -pv ~/dl/torrents/watch
-
 mkdir -pv ~/dl/music
 mkdir -pv ~/gh/forks
 mkdir -pv ~/gh/themes
 cd ~/gh
 git clone https://github.com/vyp/evil-quick-scope
-cd themes
+git clone https://github.com/vyp/ui.assets
+cd ui.assets
+mkdir -pv ~/.fonts/artwiz
+for dir in */ ; do stow "${dir}"; done
+cd ~/.fonts/artwiz
+mkfontscale
+mkfontdir
+fc-cache -fv
+cd ~/gh/themes
 git clone https://github.com/vyp/gruvbox-emacs
 git clone https://github.com/vyp/redbelly
 cd $root
