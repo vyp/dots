@@ -39,7 +39,7 @@ git clone https://github.com/vyp/evil-quick-scope
 git clone https://github.com/vyp/ui.assets
 cd ui.assets
 mkdir -pv ~/.fonts/artwiz
-for dir in */ ; do stow "${dir}"; done
+for dir in */ ; do stow -t ~ "${dir}"; done
 cd ~/.fonts/artwiz
 mkfontscale
 mkfontdir
