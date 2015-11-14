@@ -5,6 +5,15 @@
 # - mercurial
 # - vim
 #
+# NOTE: If it is the first time updating after a new clone, one should run the
+# following instead of running this script:
+#
+#     git submodule foreach -q 'git checkout $(git config -f \
+#     $toplevel/.gitmodules submodule.$name.branch || echo master)'
+#
+# This is because all the submodules will be in a 'detached HEAD' state, so the
+# "git pull"'s in this script will not work.
+#
 # The command to rollback a git submodule is NOT `git checkout` as it is for
 # normal files, but rather you have to run `git reset --hard HEAD@{1}` from the
 # directory of the submodule.
