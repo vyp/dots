@@ -15,6 +15,7 @@ mkdir -pv ~/.config/fontconfig
 mkdir -pv ~/.config/mpd
 mkdir -pv ~/.config/mpv
 mkdir -pv ~/.config/ncmpcpp
+mkdir -pv ~/.config/qutebrowser
 mkdir -pv ~/.config/sxhkd
 mkdir -pv ~/.config/zathura
 mkdir -pv ~/.emacs.d/lisp

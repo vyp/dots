@@ -38,6 +38,7 @@ Program       | Use
 [mpv]         | Video Player
 [Ncmpcpp]     | MPD Client
 [Pentadactyl] | Web Browser
+[Qutebrowser] | Web Browser
 [rTorrent]    | BitTorrent Client
 [Sxhkd]       | Keybindings Manager
 [Urxvt]       | Terminal Emulator
@@ -56,6 +57,7 @@ Program       | Use
 [mpv]:         http://mpv.io/
 [Ncmpcpp]:     http://ncmpcpp.rybczak.net/
 [Pentadactyl]: http://5digits.org/pentadactyl/
+[Qutebrowser]: https://github.com/The-Compiler/qutebrowser
 [rTorrent]:    https://rakshasa.github.io/rtorrent/
 [Sxhkd]:       https://github.com/baskerville/sxhkd
 [Urxvt]:       http://software.schmorp.de/pkg/rxvt-unicode.html
