@@ -49,7 +49,6 @@ git clone https://github.com/vyp/gruvbox-emacs
 git clone https://github.com/vyp/redbelly
 cd $root
 ./misc/dl-hg-packages
-git submodule init
-git submodule update
+git submodule update --init --recursive
 ./misc/git-hooks/link-hooks
 ln -s ~/ui/vendor/vim/vim-plug/plug.vim ~/.vim/autoload/plug.vim
