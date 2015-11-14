@@ -39,4 +39,4 @@ if hg incoming -q; then
     $dl_hg_packages
 fi
 
-find $root -type f -name '.git' -execdir bash -c 'git pull -q &' \; | tee
+git submodule foreach -q 'git pull -q &' | tee
