@@ -1,4 +1,5 @@
 #include ".urxvt/colors"
+#include "ui/xorg/fonts"
 
 ! Xft settings
 Xft.dpi:       96
@@ -18,59 +19,29 @@ URxvt.saveLines:      64
 URxvt.internalBorder: 1
 URxvt.lineSpace:      0
 
-! Fonts
-URxvt*letterSpace: -2
-! URxvt*allow_bold: false
-! URxvt*font:       -artwiz-limey-medium-r-normal--10-110-75-75-m-50-iso8859-1
-! URxvt*italicFont: -artwiz-limey-medium-r-normal--10-110-75-75-m-50-iso8859-1
-! URxvt*boldFont:   -artwiz-limey-medium-r-normal--10-110-75-75-m-50-iso8859-1
-! URxvt*font:       xft:Fantasque Sans Mono:style=Regular:size=8
-! URxvt*italicFont: xft:Fantasque Sans Mono:style=Regular:size=8
-! URxvt*boldFont:   xft:Fantasque Sans Mono:style=Regular:size=8
-URxvt*font:       xft:Fira Mono:style=Regular:size=8
-URxvt*italicFont: xft:Fira Mono:style=Regular:size=8
-URxvt*boldFont:   xft:Fira Mono:style=Bold:size=8
+! Scrollbar
+URxvt.scrollBar: false
 
-! emacs*allow_bold: false
 emacs.menuBar: 0
 emacs.toolBar: 0
 emacs.verticalScrollBars: off
-! emacs.font:       -artwiz-limey-medium-r-normal--10-110-75-75-m-50-iso8859-1
-! emacs.italicFont: -artwiz-limey-medium-r-normal--10-110-75-75-m-50-iso8859-1
-! emacs.boldFont:   -artwiz-limey-medium-r-normal--10-110-75-75-m-50-iso8859-1
-! emacs.font:       Fira Mono-7.9:style=regular:width=condensed:pixelsize=10:spacing=80
-! emacs.italicFont: Fira Mono-7.9:style=regular:width=condensed:pixelsize=10:spacing=80
-! emacs.boldFont:   Fira Mono-7.9:style=bold:width=condensed:pixelsize=10:spacing=80
-emacs.font:       Fira Mono-7.9:style=regular
-emacs.italicFont: Fira Mono-7.9:style=regular
-emacs.boldFont:   Fira Mono-7.9:style=bold
-! emacs.font:       Fantasque Sans Mono-8
-! emacs.italicFont: Fantasque Sans Mono-8
-! emacs.boldFont:   Fantasque Sans Mono-8
-! emacs*letterSpace: -2
-
-
-! Scrollbar
-URxvt.scrollBar: false
 
 ! Perl extensions
 ! URxvt.perl-ext-common:      default,matcher
 URxvt.matcher.button:       1
-URxvt.urlLauncher:          firefox
+! URxvt.urlLauncher:          firefox
 URxvt.perl-ext-common:      default,clipboard,url-select,keyboard-select
-URxvt.url-select.launcher:  firefox
+! URxvt.url-select.launcher:  firefox
 ! URxvt.url-select.underline: true
-URxvt.keysym.M-u:           perl:url-select:select_next
-Urxvt.keysym.M-Escape:      perl:keyboard-select:activate
-URxvt.keysym.M-/:           perl:keyboard-select:search
+! URxvt.keysym.M-u:           perl:url-select:select_next
+! Urxvt.keysym.M-Escape:      perl:keyboard-select:activate
+! URxvt.keysym.M-/:           perl:keyboard-select:search
 
 ! Cursor
 URxvt.cursorBlink:     false
 URxvt.cursorUnderline: false
 
 ! Xcursor
-! You may want to edit /usr/share/icons/default/index.theme to make sure it
-! inherits this theme, certainly if it is the only one.
 Xcursor.theme: OpenZone_Black
 
 ! Pointer
