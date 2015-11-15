@@ -24,6 +24,7 @@ setopt autopushd
 # unsetopt beep
 setopt no_beep
 setopt prompt_subst
+unset SSH_ASKPASS
 
 zle -N edit-command-line
 
