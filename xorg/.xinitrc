@@ -25,7 +25,6 @@ disableInputDevice () {
 }
 
 tchscrinput="Atmel Atmel maXTouch Digitizer"
-
 disableInputDevice "Poker II" "AT Translated Set 2 keyboard"
 disableInputDevice "$tchscrinput" "$tchscrinput"
 
