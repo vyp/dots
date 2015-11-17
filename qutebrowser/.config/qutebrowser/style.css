@@ -1,0 +1,61 @@
+::-webkit-scrollbar {
+  width:  0px;
+  height: 0px;
+}
+
+/* Set default sans-serif font. */
+@font-face {
+  font-family: Arial;
+  src: local("Noto Sans");
+}
+
+@font-face {
+  font-family: freesans;
+  src: local("Noto Sans");
+}
+
+@font-face {
+  font-family: "Helvetica Neue";
+  src: local("Noto Sans");
+}
+
+@font-face {
+  font-family: Helvetica;
+  src: local("Noto Sans");
+}
+
+@font-face {
+  font-family: liberationsans;
+  src: local("Noto Sans");
+}
+
+@font-face {
+  font-family: "Liberation Sans";
+  src: local("Noto Sans");
+}
+
+@font-face {
+  font-family: "Segoe UI";
+  src: local("Noto Sans");
+}
+
+/* Set default monospace font. */
+@font-face {
+  font-family: Consolas;
+  src: local("Fira Mono");
+}
+
+@font-face {
+  font-family: Courier;
+  src: local("Fira Mono");
+}
+
+@font-face {
+  font-family: "Liberation Mono";
+  src: local("Fira Mono");
+}
+
+@font-face {
+  font-family: Menlo;
+  src: local("Fira Mono");
+}
