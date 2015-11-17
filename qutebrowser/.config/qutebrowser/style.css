@@ -5,6 +5,11 @@
 
 /* Set default sans-serif font. */
 @font-face {
+  font-family: arial;
+  src: local("Noto Sans");
+}
+
+@font-face {
   font-family: Arial;
   src: local("Noto Sans");
 }
@@ -15,12 +20,17 @@
 }
 
 @font-face {
-  font-family: "Helvetica Neue";
+  font-family: helvetica;
   src: local("Noto Sans");
 }
 
 @font-face {
   font-family: Helvetica;
+  src: local("Noto Sans");
+}
+
+@font-face {
+  font-family: "Helvetica Neue";
   src: local("Noto Sans");
 }
 
@@ -36,6 +46,11 @@
 
 @font-face {
   font-family: "Segoe UI";
+  src: local("Noto Sans");
+}
+
+@font-face {
+  font-family: verdana;
   src: local("Noto Sans");
 }
 
