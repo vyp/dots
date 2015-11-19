@@ -49,7 +49,6 @@
   (load-file
    (expand-file-name "~/ui/vendor/emacs/quelpa/quelpa.el")))
 
-(require 'quelpa) ;; TODO: Figure out if this line is really needed.
 (load-file (expand-file-name "~/ui/emacs/.emacs.d/recipe-list.el"))
 (add-to-list 'quelpa-melpa-recipe-stores recipe-list)
 
