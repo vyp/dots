@@ -20,6 +20,7 @@ mkdir -pv ~/.config/sxhkd
 mkdir -pv ~/.config/zathura
 mkdir -pv ~/.emacs.d/lisp
 mkdir -pv ~/.icons
+mkdir -pv ~/.nixpkgs
 mkdir -pv ~/.pentadactyl/colors
 mkdir -pv ~/.urxvt
 mkdir -pv ~/.vim/autoload

@@ -72,7 +72,7 @@
 # Other
 
 - make a 'set-font' script (see 11bcc78).
-- vim with +clipboard in nixos.
+- stow ignore vim swap files, and all the other emacs/vim temporary files.
 - use relative paths in scripts by first cd'ing to the directory the script is
   located in: <http://stackoverflow.com/a/246128/4093264> ?
 - log evil updates ?
