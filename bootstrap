@@ -50,6 +50,8 @@ fc-cache -fv
 cd ~/gh/themes
 git clone https://github.com/vyp/gruvbox-emacs
 git clone https://github.com/vyp/redbelly
+cd ~/gh/forks
+git clone https://github.com/vyp/qutebrowser
 cd $root
 ./misc/dl-hg-packages
 git submodule update --init --recursive
