@@ -31,4 +31,5 @@ disableInputDevice "$tchscrinput" "$tchscrinput"
 urxvtd &
 sxhkd &
 
+[[ -S /tmp/bspwm_0_0-socket ]] && rm /tmp/bspwm_0_0-socket
 exec bspwm
