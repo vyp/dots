@@ -58,6 +58,7 @@
 
 ## Gruvbox-light
 
+- move qutebrowser theme to themes directory => Makefile.
 - pentadactyl.
 
 ## Redbelly
