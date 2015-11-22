@@ -72,7 +72,6 @@
 
 # Other
 
-- stow ignore vim swap files, and all the other emacs/vim temporary files.
 - shell => search command history.
 - use relative paths in scripts by first cd'ing to the directory the script is
   located in: <http://stackoverflow.com/a/246128/4093264> ?
