@@ -59,6 +59,10 @@
 ## Gruvbox-light
 
 - move qutebrowser theme to themes directory => Makefile.
+    - this can probably only happen after
+      <https://github.com/The-Compiler/qutebrowser/issues/499> or
+      <https://github.com/The-Compiler/qutebrowser/issues/381> because the
+      [colors] section will be re-added after every update anyway.
 - pentadactyl.
 
 ## Redbelly
