@@ -2,7 +2,6 @@
 # Evil mode because it is using hg instead of git.
 /vendor/emacs/evil
 
-/xorg/fonts
 # Generated configs (via `make`).
 /zathura/.config/zathura/zathurarc
 

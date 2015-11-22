@@ -1,5 +1,5 @@
 #include ".urxvt/colors"
-#include "ui/xorg/fonts"
+#include ".Xresources.d/fonts"
 
 ! Xft settings
 Xft.dpi:       96

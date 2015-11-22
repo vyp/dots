@@ -24,9 +24,11 @@ mkdir -pv ~/.nixpkgs
 mkdir -pv ~/.pentadactyl/colors
 mkdir -pv ~/.urxvt
 mkdir -pv ~/.vim/autoload
-# For automatic setup with a default theme, but this can be manually changed
-# later without affecting the state of the (git) repository.
+mkdir -pv ~/.Xresources.d
+# For automatic setup with a default theme and font, but these can be manually
+# changed later without affecting the state of the (git) repository.
 ./bin/set-theme gruvbox-light
+./bin/set-font fira-mono 9
 make
 for dir in */ ; do stow "${dir}"; done
 # Other directories.

@@ -1,0 +1,13 @@
+#!/bin/bash
+
+cd ~/ui
+
+if [[ $# -le 1 ]]; then
+  echo 'Usage: set-font font size'
+  exit 1
+elif [[ -d "./fonts/$1-$2" ]]; then
+  stow --override='.*' -t ~ -d fonts "$1-$2"
+else
+  echo "Error: No theme '$1-$2' found."
+  exit 1
+fi
