@@ -184,6 +184,7 @@
 (use-package erc
   :commands erc
   :config
+  (add-hook 'erc-mode-hook (lambda () (setq auto-fill-function nil)))
   ;; Michael Markert has some good urgency hint settings:
   ;; Source: <https://github.com/cofi/dotfiles/blob/master/emacs.d/config/cofi-erc.el>
   ;; (defun cofi/erc-find-erc-frame ()
