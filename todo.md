@@ -76,6 +76,8 @@
 
 # Other
 
+- add limey to fonts options => figure out size issue (because it's bitmap
+  anyway), and find out if it required negative letter space..
 - shell => search command history.
 - use relative paths in scripts by first cd'ing to the directory the script is
   located in: <http://stackoverflow.com/a/246128/4093264> ?

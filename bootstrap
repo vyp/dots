@@ -39,6 +39,7 @@ mkdir -pv ~/dl/torrents/watch
 mkdir -pv ~/dl/music
 mkdir -pv ~/gh/forks
 mkdir -pv ~/gh/themes
+mkdir -pv ~/sc/store
 cd ~/gh
 git clone https://github.com/vyp/evil-quick-scope
 git clone https://github.com/vyp/ui.assets
@@ -52,8 +53,8 @@ fc-cache -fv
 cd ~/gh/themes
 git clone https://github.com/vyp/gruvbox-emacs
 git clone https://github.com/vyp/redbelly
-cd ~/gh/forks
-git clone https://github.com/vyp/qutebrowser
+cd ~/sc/store
+git clone https://github.com/The-Compiler/qutebrowser
 cd $root
 ./misc/dl-hg-packages
 git submodule update --init --recursive
