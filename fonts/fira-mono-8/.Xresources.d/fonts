@@ -1,0 +1,27 @@
+! vim: ft=xdefaults
+URxvt*letterSpace: -2
+! URxvt*allow_bold: false
+! URxvt*font:       -artwiz-limey-medium-r-normal--10-110-75-75-m-50-iso8859-1
+! URxvt*italicFont: -artwiz-limey-medium-r-normal--10-110-75-75-m-50-iso8859-1
+! URxvt*boldFont:   -artwiz-limey-medium-r-normal--10-110-75-75-m-50-iso8859-1
+! URxvt*font:       xft:Fantasque Sans Mono:style=Regular:size=8
+! URxvt*italicFont: xft:Fantasque Sans Mono:style=Regular:size=8
+! URxvt*boldFont:   xft:Fantasque Sans Mono:style=Regular:size=8
+URxvt*font:       xft:Fira Mono:style=Regular:size=8
+URxvt*italicFont: xft:Fira Mono:style=Regular:size=8
+URxvt*boldFont:   xft:Fira Mono:style=Bold:size=8
+
+! emacs*allow_bold: false
+! emacs.font:       -artwiz-limey-medium-r-normal--10-110-75-75-m-50-iso8859-1
+! emacs.italicFont: -artwiz-limey-medium-r-normal--10-110-75-75-m-50-iso8859-1
+! emacs.boldFont:   -artwiz-limey-medium-r-normal--10-110-75-75-m-50-iso8859-1
+! emacs.font:       Fira Mono-7.9:style=regular:width=condensed:pixelsize=10:spacing=80
+! emacs.italicFont: Fira Mono-7.9:style=regular:width=condensed:pixelsize=10:spacing=80
+! emacs.boldFont:   Fira Mono-7.9:style=bold:width=condensed:pixelsize=10:spacing=80
+emacs.font:       Fira Mono-7.9:style=regular
+emacs.italicFont: Fira Mono-7.9:style=regular
+emacs.boldFont:   Fira Mono-7.9:style=bold
+! emacs.font:       Fantasque Sans Mono-8
+! emacs.italicFont: Fantasque Sans Mono-8
+! emacs.boldFont:   Fantasque Sans Mono-8
+! emacs*letterSpace: -2
