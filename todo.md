@@ -76,9 +76,13 @@
 
 # Other
 
+- qutebrowser git clone in bootstrap script should somehow correspond/checkout
+  to the correct commit.
 - add limey to fonts options => figure out size issue (because it's bitmap
   anyway), and find out if it required negative letter space..
+- implement failsafe to open plain xterm if default xinitrc fails to load.
 - shell => search command history.
+- remove gtk settings.
 - use relative paths in scripts by first cd'ing to the directory the script is
   located in: <http://stackoverflow.com/a/246128/4093264> ?
 - log evil updates ?
