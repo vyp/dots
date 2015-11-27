@@ -63,6 +63,8 @@
       <https://github.com/The-Compiler/qutebrowser/issues/499> or
       <https://github.com/The-Compiler/qutebrowser/issues/381> because the
       [colors] section will be re-added after every update anyway.
+- remove coloured backgrounds from different status bar types, and make them
+  coloured foregrounds instead.
 - pentadactyl.
 
 ## Redbelly
@@ -81,6 +83,8 @@
 - add limey to fonts options => figure out size issue (because it's bitmap
   anyway), and find out if it required negative letter space..
 - implement failsafe to open plain xterm if default xinitrc fails to load.
+- make the vim swap file section in the global gitignore (and gitignores of
+  other repositories) the same as the one in this repository.
 - shell => search command history.
 - remove gtk settings.
 - use relative paths in scripts by first cd'ing to the directory the script is
