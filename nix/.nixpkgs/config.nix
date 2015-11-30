@@ -9,5 +9,6 @@ with import <nixpkgs> {};
     });
 
     rustcMiserve = callPackage ../packages/rustcMiserve.nix {};
+    rustcLatestServo = callPackage ../packages/rustcLatestServo.nix {};
   };
 }

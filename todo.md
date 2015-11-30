@@ -78,6 +78,7 @@
 
 # Other
 
+- copy over the patch and generic.nix files for custom rustc nix expressions?
 - qutebrowser git clone in bootstrap script should somehow correspond/checkout
   to the correct commit.
 - add limey to fonts options => figure out size issue (because it's bitmap

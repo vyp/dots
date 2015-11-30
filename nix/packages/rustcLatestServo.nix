@@ -1,18 +1,13 @@
 # Please make sure to check if rustfmt still builds when updating nightly.
 
-# Non-rust dependencies needed for miserve are:
-# - glib
-# - freetype
-# - zlib
-# - X11/Xlib
 { stdenv, callPackage }:
 
 callPackage <nixos/pkgs/development/compilers/rustc/generic.nix> {
-  shortVersion = "2015-09-02";
+  shortVersion = "2015-11-26";
   isRelease = false;
   forceBundledLLVM = true;
-  srcRev = "cb9323ec096dbc4b3766b770309102c7e2ed9875";
-  srcSha = "0d2a4pvagrcgrigf4hhr4m0h7f97nrkq6hk7cym3hr2wgvwi5k3r";
+  srcRev = "1805bba399805d8fd8e85e23c31a0580f21533cb";
+  srcSha = "08d7sih8nsmc0p161wjp6z13x5bkjjqkvhzk4r20pjg4bw7a10hh";
 
   /* Rust is bootstrapped from an earlier built version. We need
   to fetch these earlier versions, which vary per platform.
