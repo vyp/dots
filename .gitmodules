@@ -73,3 +73,6 @@
 [submodule "vendor/vim/gruvbox"]
 	path = vendor/vim/gruvbox
 	url = https://github.com/morhetz/gruvbox
+[submodule "vendor/emacs/rust-mode"]
+	path = vendor/emacs/rust-mode
+	url = https://github.com/rust-lang/rust-mode

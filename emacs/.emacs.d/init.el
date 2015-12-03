@@ -248,6 +248,10 @@
   :init
   (add-hook 'haskell-mode-hook 'turn-on-haskell-indent))
 
+(use-package rust-mode
+  :defer t :quelpa
+  :mode ("\\.rs\\'" . rust-mode))
+
 ;; (use-package pdf-tools
 ;;   :disabled t
 ;;   :mode ("\\.pdf\\'" . pdf-view-mode)

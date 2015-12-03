@@ -64,6 +64,11 @@
     :fetcher file
     :path "~/ui/vendor/emacs/quelpa-use-package")
 
+   (rust-mode
+    :fetcher file
+    :files ("rust-mode.el")
+    :path "~/ui/vendor/emacs/rust-mode")
+
    (undo-tree
     :fetcher file
     :path "~/ui/vendor/emacs/undo-tree")
