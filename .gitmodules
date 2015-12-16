@@ -19,9 +19,6 @@
 [submodule "vendor/emacs/use-package"]
 	path = vendor/emacs/use-package
 	url = https://github.com/jwiegley/use-package
-[submodule "vendor/emacs/diminish"]
-	path = vendor/emacs/diminish
-	url = https://github.com/emacsmirror/diminish
 [submodule "vendor/emacs/undo-tree"]
 	path = vendor/emacs/undo-tree
 	url = http://www.dr-qubit.org/git/undo-tree.git
