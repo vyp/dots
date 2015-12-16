@@ -73,3 +73,6 @@
 [submodule "vendor/emacs/rust-mode"]
 	path = vendor/emacs/rust-mode
 	url = https://github.com/rust-lang/rust-mode
+[submodule "vendor/emacs/diminish.el"]
+	path = vendor/emacs/diminish.el
+	url = https://github.com/myrjola/diminish.el

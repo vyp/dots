@@ -11,7 +11,7 @@
 
    (diminish
     :fetcher file
-    :path "~/ui/vendor/emacs/diminish")
+    :path "~/ui/vendor/emacs/diminish.el")
 
    (evil
     :fetcher file
