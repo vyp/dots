@@ -10,10 +10,11 @@
 3. All configuration is **declarative**\*.
     - **Reproducible**.
     - **Minimal** -- If everything is declarative, there should be nothing
-        excess installed or configured, meaning less wasted space.
+        excess installed or configured.
 4. **Free formats** only, preferring **plain text** formats.
     - **Sustainability**:
-        - The data does not die if the current tool or implementation does.
+        - The data does not necessarily die if the current tool or
+          implementation does.
         - Simpler formats have a higher chance of being readable and usable many
           years into the future as technology evolves.
 
@@ -26,7 +27,7 @@ Also note that these are the *goals*, and that this repository may not currently
 reflect this philosophy completely. There is still a lot of work to be done to
 achieve these goals. However, I am confident it is possible.
 
-\* Obviously except for things like passwords or private keys. (*Even if
+\*Obviously except for things like passwords or private keys. (*Even if
 encrypted*. Because technology may evolve in unpredictable or unprecedented ways
 that nullify current encryption/security algorithms. For example, quantum
 computers, in which case your attacker suddenly has a zero day.)
@@ -57,7 +58,6 @@ Program       | Use
 [Sxhkd]       | Keybindings Manager
 [Urxvt]       | Terminal Emulator
 [Vim]         | Text Editor
-[X11]         | Display Server
 [Zathura]     | Document Viewer
 [Zsh]         | Shell
 
@@ -77,7 +77,6 @@ Program       | Use
 [Sxhkd]:       https://github.com/baskerville/sxhkd
 [Urxvt]:       http://software.schmorp.de/pkg/rxvt-unicode.html
 [Vim]:         http://www.vim.org/
-[X11]:         http://www.x.org/wiki/
 [Zathura]:     https://pwmt.org/projects/zathura/
 [Zsh]:         http://www.zsh.org/
 
