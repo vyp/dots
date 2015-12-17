@@ -1,26 +1,39 @@
-# Introduction
+# Philosophy / Goals
 
->> Honestly the real problem is that our first editors are always, notepad,
->> notepad++, gedit, sublime text, word etc. I'd love to see an experiment done
->> on little children wherein their first editor is vim, every input into the
->> computer is via vim (posting a comment on facebook, reddit, typing something
->> out, you name it).
+1. Everything, or at least amap, is **[free software]**.
+2. Everything can be keyboard controlled via **vim-like keybindings**.
+    - Comfortable, possibly also reduces risk of [RSI].
+    - Less visual clutter if things can be accessed via keybindings without
+      needing a visible onscreen icon to click on, meaning less cognitive
+      overhead.
+    - Efficiency and speed.
+3. All configuration is **declarative**\*.
+    - **Reproducible**.
+    - **Minimal** -- If everything is declarative, there should be nothing
+        excess installed or configured, meaning less wasted space.
+4. **Free formats** only, preferring **plain text** formats.
+    - **Sustainability**:
+        - The data does not die if the current tool or implementation does.
+        - Simpler formats have a higher chance of being readable and usable many
+          years into the future as technology evolves.
 
->> I'd like to see how long it would take a kid to be fluent enough to own
->> everyone with his/her vim skills and after learning vim I'd like him to be
->> given the option to use modern editors and see what they choose.
+Note that this is only for *me*. It may not necessarily work for you, especially
+if your workflow is significantly different. For example, if you use the [GNU
+Image Manipulation Program][GIMP] a lot, point 2 does not make much sense for
+it.
 
-> I'd love to see this experiment only because it would mean that someone
-> would have to **make a system where the input fields for every computer
-> program are in vim mode. And I want to use that system**.
+Also note that these are the *goals*, and that this repository may not currently
+reflect this philosophy completely. There is still a lot of work to be done to
+achieve these goals. However, I am confident it is possible.
 
-- [creepingdeathv2; FakingItEveryDay][quote]
+\* Obviously except for things like passwords or private keys. (*Even if
+encrypted*. Because technology may evolve in unpredictable or unprecedented ways
+that nullify current encryption/security algorithms. For example, quantum
+computers, in which case your attacker suddenly has a zero day.)
 
-[quote]: https://www.reddit.com/r/vim/comments/2ww6fv/this_is_your_brain_on_vim/couym1j
-
-**Disclaimer:** Despite that quote, there is nothing special here. Just trying
-to use vim-like keybindings for everything and everywhere possible, and these
-quotes serve as further inspiration.
+[free software]: https://www.gnu.org/philosophy/free-sw.html
+[RSI]:           https://en.wikipedia.org/wiki/Repetitive_strain_injury
+[GIMP]:          https://www.gimp.org/
 
 # Contents
 
@@ -90,9 +103,9 @@ and maintainence are being worked on (slowly).
 
 # License
 
-[Free software]: can redistribute and/or modify under the terms of the GNU
-Affero General Public License as published by the Free Software Foundation,
-either version 3 of the License, or (at your option) any later version.
+Free software: can redistribute and/or modify under the terms of the GNU Affero
+General Public License as published by the Free Software Foundation, either
+version 3 of the License, or (at your option) any later version.
 
 Distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;
 without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR
@@ -101,5 +114,3 @@ PURPOSE. See the GNU Affero General Public License for more details.
 You should have received a copy of the GNU Affero General Public License within
 this repository in a file in the root directory named `license`. If not, see
 <http://www.gnu.org/licenses/>.
-
-[Free software]: https://www.gnu.org/philosophy/free-sw.html
