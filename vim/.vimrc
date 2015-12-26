@@ -198,13 +198,6 @@ nnoremap <leader>o "+p
 nnoremap <leader>vc :edit ~/.vimrc<CR>
 nnoremap <leader>vz :edit ~/.zshrc<CR>
 
-" These only exist as a potential bonus for keyboards where the arrow keys are
-" actually on or near the home row (such as the Poker II).
-nnoremap <Right> :bn<CR>
-nnoremap <Left> :bp<CR>
-nnoremap <Up> :ls<CR>:b<space>
-nnoremap <Down> <C-^>
-
 " Status Line {{{1
 set statusline=
 " Buffer number.
