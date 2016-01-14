@@ -79,6 +79,8 @@
 
 # Other
 
+- use git fetch and then git reset to update instead of git pull because git
+  pull fails on history rewrites!
 - copy over the patch and generic.nix files for custom rustc nix expressions?
 - qutebrowser git clone in bootstrap script should somehow correspond/checkout
   to the correct commit.
