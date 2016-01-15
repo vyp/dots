@@ -21,21 +21,22 @@
 # something like `hg update -r <rev-id>`.)
 
 root="${HOME}/ui"
-update_log=$root/update-log
-third_party_packages=$root/vendor
-emacs_packages_dir=$third_party_packages/emacs
+update_log="${root}/update-log"
+third_party_packages="${root}/vendor"
+emacs_packages_dir="${third_party_packages}/emacs"
 
-dl_hg_packages=$root/misc/dl-hg-packages
-cd $emacs_packages_dir/evil
+dl_hg_packages="${root}/misc/dl-hg-packages"
+cd "${emacs_packages_dir}/evil"
 
 if hg incoming -q; then
   hg pull -u
-  new_id=$(hg --debug id -i)
+  new_id="$(hg --debug id -i)"
   origin='https://bitbucket.org/lyro/evil'
-  echo '#!/bin/bash' > $dl_hg_packages
+  echo '#!/bin/bash' > "$dl_hg_packages"
   printf \
-    "cd ${emacs_packages_dir/$HOME/\~}\nhg clone -r ${new_id} ${origin}\n" >> \
-    $dl_hg_packages
+    "cd ${emacs_packages_dir/$HOME/\~}\nhg clone -r $new_id ${origin}\n" >> \
+    "$dl_hg_packages"
 fi
 
-git submodule foreach -q 'git pull -q &' | tee
+cd "$root"
+git submodule --quiet foreach "${root}/misc/update-git-repo $update_log &" | tee

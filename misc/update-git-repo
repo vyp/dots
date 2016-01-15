@@ -1,0 +1,99 @@
+#!/bin/bash
+
+# Dependencies:
+# - git
+
+set -e
+readonly package="$(basename $PWD)"
+readonly bold=$(tput bold)
+readonly rs=$(tput sgr0)
+
+usage() {
+	cat <<- EOF
+	usage: $0 [OPTION] [LOGFILE]
+	
+	Updates current branch of git repository and prints a summary of commit
+	messages and files changed from any new updates. Optionally specify a path to
+	log more detailed information about the updates.
+	
+	OPTIONS:
+	  -h --help  Show this help.
+	EOF
+}
+
+indicate-failure() {
+  local exit_code=$?
+  local red=$(tput setaf 1)
+  [[ $exit_code -ne 0 ]] \
+    && echo "$red$bold$package$rs$red failed with $exit_code$rs" \
+    || exit 0
+}
+
+print-fill-chars () {
+  local fill_char='_'
+
+  for ((i = 0 ; i < $1 ; i++ )); do
+    printf $fill_char
+  done
+}
+
+center-print () {
+  local max_width=80
+  local padding=1
+  local width=${#1}
+  local fill_char_length=$(( ($max_width - ($width + 2 * $padding)) / 2 ))
+  print-fill-chars $fill_char_length
+  # The 'padding' is put here manually.
+  printf " $1 "
+  print-fill-chars $fill_char_length
+  printf "\n"
+}
+
+log() {
+  local update_log="$1"
+  local new_commits_no="$2"
+  [[ -s "$update_log" ]] \
+    && printf "\n" >> "$update_log" \
+    || echo '# vim: ft=git' >> "$update_log"
+  center-print "$package [${new_commits_no}] $(date +'%d/%m/%y %H:%M:%S')" >> \
+    "$update_log"
+  git diff --stat HEAD@{1} HEAD >> "$update_log"
+  printf "\n" >> "$update_log"
+  git log @{1}.. --reverse >> "$update_log"
+  printf "\n" >> "$update_log"
+  git diff HEAD@{1} HEAD >> "$update_log"
+}
+
+print-to-screen() {
+  local new_commits_no="$1"
+  echo "Updated $bold$package$rs [${new_commits_no}]:"
+  git log --pretty=format:"%Cgreen%h %Cblue%s %Creset(%Cred%cr%Creset)" @{1}.. \
+    --reverse
+  git diff --stat HEAD@{1} HEAD
+}
+
+main() {
+  if [[ "$1" == '-h' ]] || [[ "$1" == '--help' ]]; then
+    usage
+    exit 0
+  fi
+
+  # In case it's ever needed, the command to get the default *remote* branch is:
+  #
+  #     git remote show origin \
+  #       | grep 'HEAD branch:' \
+  #       | while read a b branch; do echo "$branch"; done
+
+  local ref="origin/$(git symbolic-ref --short HEAD)"
+  git fetch --all --tags --quiet
+  local new_commits="$(git rev-list HEAD...$ref --count)"
+
+  if [[ "$new_commits" -ne 0 ]]; then
+    git reset --hard --quiet "$ref"
+    [[ -n "$1" ]] && log "$1" "$new_commits"
+    print-to-screen "$new_commits"
+  fi
+}
+
+trap indicate-failure EXIT
+main "$@"
