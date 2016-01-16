@@ -89,6 +89,8 @@
   other repositories) the same as the one in this repository.
 - shell => search command history.
 - remove gtk settings.
+- rewrite upd script to only update emacs packages if :files (from recipe)
+  changed.
 - use relative paths in scripts by first cd'ing to the directory the script is
   located in: <http://stackoverflow.com/a/246128/4093264> ?
     - OR, use environment variables instead ??
