@@ -16,6 +16,10 @@ usage() {
 	messages and files changed from any new updates. Optionally specify a path to
 	log more detailed information about the updates.
 	
+	WARNING: This script runs \`git reset --hard ...\`, probably meaning loss of
+	any local untracked content. Highly recommend to understand what the script
+	does before running it!
+	
 	OPTIONS:
 	  -h --help  Show this help.
 	EOF
