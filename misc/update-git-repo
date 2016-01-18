@@ -73,6 +73,7 @@ print-to-screen() {
   echo "Updated $bold$package$rs [${new_commits_no}]:"
   git log --pretty=format:"%Cgreen%h %Cblue%s %Creset(%Cred%cr%Creset)" @{1}.. \
     --reverse
+  printf "\n"
   git diff --stat HEAD@{1} HEAD
 }
 
