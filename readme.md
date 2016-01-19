@@ -58,6 +58,7 @@ Program       | Use
 [Sxhkd]       | Keybindings Manager
 [Urxvt]       | Terminal Emulator
 [Vim]         | Text Editor
+[xmonad]      | Window Manager
 [Zathura]     | Document Viewer
 [Zsh]         | Shell
 
@@ -77,6 +78,7 @@ Program       | Use
 [Sxhkd]:       https://github.com/baskerville/sxhkd
 [Urxvt]:       http://software.schmorp.de/pkg/rxvt-unicode.html
 [Vim]:         http://www.vim.org/
+[xmonad]:      http://xmonad.org/
 [Zathura]:     https://pwmt.org/projects/zathura/
 [Zsh]:         http://www.zsh.org/
 
