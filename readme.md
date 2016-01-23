@@ -54,7 +54,6 @@ Program       | Use
 [Pentadactyl] | Web Browser
 [Qutebrowser] | Web Browser
 [rTorrent]    | BitTorrent Client
-[Stow]        | Symlink/Dotfiles Manager
 [Sxhkd]       | Keybindings Manager
 [Urxvt]       | Terminal Emulator
 [Vim]         | Text Editor
@@ -74,7 +73,6 @@ Program       | Use
 [Pentadactyl]: http://5digits.org/pentadactyl/
 [Qutebrowser]: https://github.com/The-Compiler/qutebrowser
 [rTorrent]:    https://rakshasa.github.io/rtorrent/
-[Stow]:        https://www.gnu.org/software/stow/
 [Sxhkd]:       https://github.com/baskerville/sxhkd
 [Urxvt]:       http://software.schmorp.de/pkg/rxvt-unicode.html
 [Vim]:         http://www.vim.org/
@@ -84,7 +82,7 @@ Program       | Use
 
 # Instructions
 
-With [GNU] Stow:
+With [GNU][1] [Stow][2]:
 
 ``` shell
 # Install configuration files for a program (e.g. vim).
@@ -100,7 +98,8 @@ $ stow -R vim
 These are just basic instructions. Methods/scripts for automatic installation
 and maintainence are being worked on (slowly).
 
-[GNU]: https://gnu.org/
+[1]: https://gnu.org/
+[2]: https://www.gnu.org/software/stow/
 
 # License
 
