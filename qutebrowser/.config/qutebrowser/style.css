@@ -77,7 +77,8 @@
 
 code,
 code *,
-div.diff-content span.c {
+div.diff-content span.c,
+div.diff-content span.c1 {
   font-style: normal !important;
 }
 
