@@ -13,6 +13,7 @@ import XMonad
 -- TODO: Preselect new window placement?
 -- TODO: Theme/colours (e.g. window border colour) in a different file.
 -- TODO: Panel!
+-- TODO: Rebind Mod-q to just `xmonad --restart`.
 
 myTerminal = "urxvtc"
 myModMask  = mod4Mask
