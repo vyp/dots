@@ -11,11 +11,20 @@ import XMonad
 -- TODO: Check/fix keybindings. (Is it possible to have 'hydra-like'
 -- keybindings?)
 -- TODO: Preselect new window placement?
--- TODO: Theme/colours => window border colour.
+-- TODO: Theme/colours (e.g. window border colour) in a different file.
 -- TODO: Panel!
 
+myTerminal = "urxvtc"
+myModMask  = mod4Mask
+
+myBorderWidth = 2
+myNormalBorderColor  = "#fbf1c7"
+myFocusedBorderColor = "#d5c4a1"
+
 main = xmonad defaultConfig
-    { terminal    = "urxvtc"
-    , modMask     = mod4Mask
-    , borderWidth = 2
+    { terminal    = myTerminal
+    , modMask     = myModMask
+    , borderWidth = myBorderWidth
+    , normalBorderColor  = myNormalBorderColor
+    , focusedBorderColor = myFocusedBorderColor
     }
