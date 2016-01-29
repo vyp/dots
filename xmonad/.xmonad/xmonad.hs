@@ -23,7 +23,7 @@ myNormalBorderColor  = "#fbf1c7"
 myFocusedBorderColor = "#d5c4a1"
 
 myWorkspaces = ["1","2","3","4","5","6","7","8","9"]
-myKeys       = \c -> mkKeymap c
+myKeys       = \c -> mkKeymap c $
     [ ("M-<Return>", spawn $ XMonad.terminal c)
     , ("M-/",        spawn "dmenu_run")
     , ("M-x",        kill)
@@ -43,25 +43,9 @@ myKeys       = \c -> mkKeymap c
     , ("M-.",        sendMessage $ IncMasterN (-1))
     , ("M-q",        spawn "xmonad --restart")
     , ("M-S-q",      io $ exitWith ExitSuccess)
-    , ("M-1",        windows $ W.greedyView "1")
-    , ("M-2",        windows $ W.greedyView "2")
-    , ("M-3",        windows $ W.greedyView "3")
-    , ("M-4",        windows $ W.greedyView "4")
-    , ("M-5",        windows $ W.greedyView "5")
-    , ("M-6",        windows $ W.greedyView "6")
-    , ("M-7",        windows $ W.greedyView "7")
-    , ("M-8",        windows $ W.greedyView "8")
-    , ("M-9",        windows $ W.greedyView "9")
-    , ("M-S-1",      windows $ W.shift "1")
-    , ("M-S-2",      windows $ W.shift "2")
-    , ("M-S-3",      windows $ W.shift "3")
-    , ("M-S-4",      windows $ W.shift "4")
-    , ("M-S-5",      windows $ W.shift "5")
-    , ("M-S-6",      windows $ W.shift "6")
-    , ("M-S-7",      windows $ W.shift "7")
-    , ("M-S-8",      windows $ W.shift "8")
-    , ("M-S-9",      windows $ W.shift "9")
-    ]
+    ] ++
+    [ ("M-" ++ x,   windows $ W.greedyView x) | x <- map show [1..9] ] ++
+    [ ("M-S-" ++ x, windows $ W.shift x)      | x <- map show [1..9] ]
 
 main = xmonad $ defaultConfig
     { terminal           = myTerminal
