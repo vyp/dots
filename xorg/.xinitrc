@@ -29,7 +29,7 @@ disableInputDevice "Poker II" "AT Translated Set 2 keyboard"
 disableInputDevice "$tchscrinput" "$tchscrinput"
 
 urxvtd &
-exec xmonad
+exec ~/.xmonad/xmonad
 # sxhkd &
 
 # [[ -S /tmp/bspwm_0_0-socket ]] && rm /tmp/bspwm_0_0-socket

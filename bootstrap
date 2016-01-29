@@ -24,6 +24,7 @@ mkdir -pv ~/.nixpkgs
 mkdir -pv ~/.pentadactyl/colors
 mkdir -pv ~/.urxvt
 mkdir -pv ~/.vim/autoload
+mkdir -pv ~/.xmonad
 mkdir -pv ~/.Xresources.d
 # For automatic setup with a default theme and font, but these can be manually
 # changed later without affecting the state of the (git) repository.
@@ -60,3 +61,7 @@ cd $root
 git submodule update --init --recursive
 ./misc/git-hooks/link-hooks
 ln -s ~/ui/vendor/vim/vim-plug/plug.vim ~/.vim/autoload/plug.vim
+cd ~/.xmonad
+# This requires that an appropriate haskell environment has been set up
+# (currently by nix). Not sure if the current installation process covers that.
+ghc xmonad.hs
