@@ -1,5 +1,4 @@
 -- TODO: Next/previous occupied/free/urgent workspace.
--- TODO: 10 workspaces.
 -- TODO: Go back to previous workspace if win + the number of the current
 -- workspace is pressed. Allows for quick switching/toggling of workspace views.
 -- TODO: Cartesian window navigation/movement.
@@ -22,7 +21,7 @@ myBorderWidth        = 2
 myNormalBorderColor  = "#fbf1c7"
 myFocusedBorderColor = "#d5c4a1"
 
-myWorkspaces = ["1","2","3","4","5","6","7","8","9"]
+myWorkspaces = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"]
 myKeys       = \c -> mkKeymap c $
     [ ("M-<Return>", spawn $ XMonad.terminal c)
     , ("M-/",        spawn "dmenu_run")
@@ -44,8 +43,8 @@ myKeys       = \c -> mkKeymap c $
     , ("M-q",        spawn "xmonad --restart")
     , ("M-S-q",      io $ exitWith ExitSuccess)
     ] ++
-    [ ("M-" ++ x,   windows $ W.greedyView x) | x <- map show [1..9] ] ++
-    [ ("M-S-" ++ x, windows $ W.shift x)      | x <- map show [1..9] ]
+    [ ("M-" ++ x,   windows $ W.greedyView x) | x <- map show [0..9] ] ++
+    [ ("M-S-" ++ x, windows $ W.shift x)      | x <- map show [0..9] ]
 
 main = xmonad $ defaultConfig
     { terminal           = myTerminal
@@ -54,4 +53,5 @@ main = xmonad $ defaultConfig
     , normalBorderColor  = myNormalBorderColor
     , focusedBorderColor = myFocusedBorderColor
     , keys               = myKeys
+    , workspaces         = myWorkspaces
     }
