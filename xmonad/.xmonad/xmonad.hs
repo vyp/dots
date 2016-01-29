@@ -1,6 +1,4 @@
 -- TODO: Next/previous occupied/free/urgent workspace.
--- TODO: Go back to previous workspace if win + the number of the current
--- workspace is pressed. Allows for quick switching/toggling of workspace views.
 -- TODO: Cartesian window navigation/movement.
 -- TODO: Change ratio/height of windows vertically?
 -- TODO: 'Easymotion'-esque window navigation?
@@ -10,6 +8,7 @@
 
 import System.Exit
 import XMonad
+import XMonad.Actions.CycleWS
 import XMonad.Util.EZConfig
 
 import qualified XMonad.StackSet as W
@@ -43,8 +42,8 @@ myKeys       = \c -> mkKeymap c $
     , ("M-q",        spawn "xmonad --restart")
     , ("M-S-q",      io $ exitWith ExitSuccess)
     ] ++
-    [ ("M-" ++ x,   windows $ W.greedyView x) | x <- map show [0..9] ] ++
-    [ ("M-S-" ++ x, windows $ W.shift x)      | x <- map show [0..9] ]
+    [ ("M-" ++ x,   toggleOrView x)      | x <- map show [0..9] ] ++
+    [ ("M-S-" ++ x, windows $ W.shift x) | x <- map show [0..9] ]
 
 main = xmonad $ defaultConfig
     { terminal           = myTerminal
