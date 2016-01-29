@@ -59,12 +59,6 @@ myKeys       = \c -> mkKeymap c $
     , ("M-C-i",   moveTo  Prev EmptyWS)
     , ("M-C-S-o", shiftTo Prev NonEmptyWS)
     , ("M-C-S-i", shiftTo Prev EmptyWS)
-    -- The following bindings unfortunately do not work because state of
-    -- emptiness is first changed before doing `moveTo`.
-    -- , ("M-M1-o",   shiftTo Next NonEmptyWS >> moveTo Next NonEmptyWS)
-    -- , ("M-M1-i",   shiftTo Next EmptyWS    >> moveTo Next EmptyWS)
-    -- , ("M-C-M1-o", shiftTo Prev NonEmptyWS >> moveTo Prev NonEmptyWS)
-    -- , ("M-C-M1-i", shiftTo Prev EmptyWS    >> moveTo Prev EmptyWS)
     ]
 
 main = xmonad $ defaultConfig
