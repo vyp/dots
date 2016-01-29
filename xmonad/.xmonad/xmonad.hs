@@ -42,9 +42,9 @@ myKeys       = \c -> mkKeymap c $
     , ("M-q",        spawn "xmonad --restart")
     , ("M-S-q",      io $ exitWith ExitSuccess)
     ] ++
-    [ (k++i, f i)
+    [ (p++i, f i)
         | i <- map show [0..9]
-        , (f, k) <- [(toggleOrView, "M-"), (windows . W.shift, "M-S-")] ] ++
+        , (f, p) <- [(toggleOrView, "M-"), (windows . W.shift, "M-S-")] ] ++
     [ ("M-n",     nextWS)
     , ("M-p",     prevWS)
     , ("M-S-n",   shiftToNext)
