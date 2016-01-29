@@ -45,16 +45,26 @@ myKeys       = \c -> mkKeymap c $
     [ (k++i, f i)
         | i <- map show [0..9]
         , (f, k) <- [(toggleOrView, "M-"), (windows . W.shift, "M-S-")] ] ++
-    [ ("M-n",   nextWS)
-    , ("M-p",   prevWS)
-    , ("M-S-n", shiftToNext)
-    , ("M-S-p", shiftToPrev)
-    , ("M-o",   moveTo  Next NonEmptyWS)
-    , ("M-i",   moveTo  Next EmptyWS)
-    , ("M-S-o", shiftTo Next NonEmptyWS)
-    , ("M-S-i", shiftTo Next EmptyWS)
-    , ("M-C-o", moveTo  Prev NonEmptyWS)
-    , ("M-C-i", moveTo  Prev EmptyWS)
+    [ ("M-n",     nextWS)
+    , ("M-p",     prevWS)
+    , ("M-S-n",   shiftToNext)
+    , ("M-S-p",   shiftToPrev)
+    , ("M-M1-n",  shiftToNext >> nextWS)
+    , ("M-M1-p",  shiftToPrev >> prevWS)
+    , ("M-o",     moveTo  Next NonEmptyWS)
+    , ("M-i",     moveTo  Next EmptyWS)
+    , ("M-S-o",   shiftTo Next NonEmptyWS)
+    , ("M-S-i",   shiftTo Next EmptyWS)
+    , ("M-C-o",   moveTo  Prev NonEmptyWS)
+    , ("M-C-i",   moveTo  Prev EmptyWS)
+    , ("M-C-S-o", shiftTo Prev NonEmptyWS)
+    , ("M-C-S-i", shiftTo Prev EmptyWS)
+    -- The following bindings unfortunately do not work because state of
+    -- emptiness is first changed before doing `moveTo`.
+    -- , ("M-M1-o",   shiftTo Next NonEmptyWS >> moveTo Next NonEmptyWS)
+    -- , ("M-M1-i",   shiftTo Next EmptyWS    >> moveTo Next EmptyWS)
+    -- , ("M-C-M1-o", shiftTo Prev NonEmptyWS >> moveTo Prev NonEmptyWS)
+    -- , ("M-C-M1-i", shiftTo Prev EmptyWS    >> moveTo Prev EmptyWS)
     ]
 
 main = xmonad $ defaultConfig
