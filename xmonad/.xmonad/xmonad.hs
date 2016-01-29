@@ -42,8 +42,9 @@ myKeys       = \c -> mkKeymap c $
     , ("M-q",        spawn "xmonad --restart")
     , ("M-S-q",      io $ exitWith ExitSuccess)
     ] ++
-    [ ("M-" ++ x,   toggleOrView x)      | x <- map show [0..9] ] ++
-    [ ("M-S-" ++ x, windows $ W.shift x) | x <- map show [0..9] ]
+    [ (k++i, f i)
+        | i <- map show [0..9]
+        , (f, k) <- [(toggleOrView, "M-"), (windows . W.shift, "M-S-")] ]
 
 main = xmonad $ defaultConfig
     { terminal           = myTerminal
