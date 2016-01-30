@@ -1,5 +1,4 @@
 -- TODO: Focus next urgent window.
--- TODO: Cartesian window navigation/movement.
 -- TODO: Change ratio/height of windows vertically?
 -- TODO: 'Easymotion'-esque window navigation?
 -- TODO: Preselect new window placement?
@@ -9,6 +8,8 @@
 import System.Exit
 import XMonad
 import XMonad.Actions.CycleWS
+import XMonad.Layout.LayoutModifier
+import XMonad.Layout.WindowNavigation
 import XMonad.Util.EZConfig
 
 import qualified XMonad.StackSet as W
@@ -28,14 +29,18 @@ myKeys       = \c -> mkKeymap c $
     , ("M-r",        sendMessage NextLayout)
     , ("M-C-r",      setLayout $ XMonad.layoutHook c)
     , ("M-e",        refresh)
-    , ("M-j",        windows W.focusDown)
-    , ("M-k",        windows W.focusUp)
-    , ("M-S-j",      windows W.swapDown)
-    , ("M-S-k",      windows W.swapUp)
+    , ("M-h",        sendMessage $ Go L)
+    , ("M-j",        sendMessage $ Go D)
+    , ("M-k",        sendMessage $ Go U)
+    , ("M-l",        sendMessage $ Go R)
+    , ("M-S-h",      sendMessage $ Swap L)
+    , ("M-S-j",      sendMessage $ Swap D)
+    , ("M-S-k",      sendMessage $ Swap U)
+    , ("M-S-l",      sendMessage $ Swap R)
     , ("M-m",        windows W.focusMaster)
     , ("M-S-m",      windows W.swapMaster)
-    , ("M-h",        sendMessage Shrink)
-    , ("M-l",        sendMessage Expand)
+    , ("M-M1-h",     sendMessage Shrink)
+    , ("M-M1-l",     sendMessage Expand)
     , ("M-t",        withFocused $ windows . W.sink)
     , ("M-,",        sendMessage $ IncMasterN 1)
     , ("M-.",        sendMessage $ IncMasterN (-1))
@@ -61,12 +66,22 @@ myKeys       = \c -> mkKeymap c $
     , ("M-C-S-i", shiftTo Prev EmptyWS)
     ]
 
+myLayout = navigable tiled ||| navigable (Mirror tiled) ||| Full
+  where
+    navigable :: LayoutClass l w => l w -> ModifiedLayout WindowNavigation l w
+    navigable = configurableNavigation noNavigateBorders
+    tiled     = Tall nmaster delta ratio
+    nmaster   = 1
+    ratio     = 1/2
+    delta     = 3/100
+
 main = xmonad $ defaultConfig
     { terminal           = myTerminal
     , modMask            = myModMask
     , borderWidth        = myBorderWidth
     , normalBorderColor  = myNormalBorderColor
     , focusedBorderColor = myFocusedBorderColor
-    , keys               = myKeys
     , workspaces         = myWorkspaces
+    , keys               = myKeys
+    , layoutHook         = myLayout
     }
