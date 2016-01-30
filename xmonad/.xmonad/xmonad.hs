@@ -17,14 +17,6 @@ import XMonad.Util.EZConfig
 
 import qualified XMonad.StackSet as W
 
-myTerminal   = "urxvtc"
-myModMask    = mod4Mask
-myWorkspaces = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"]
-
-myBorderWidth        = 2
-myNormalBorderColor  = "#fbf1c7"
-myFocusedBorderColor = "#d5c4a1"
-
 myKeys = \c -> mkKeymap c $
     [ ("M-<Return>", spawn $ XMonad.terminal c)
     , ("M-/",        spawn "dmenu_run")
@@ -90,12 +82,12 @@ myLayout = mkToggle (single NBFULL)
     slaves    = []
 
 main = xmonad $ withUrgencyHookC NoUrgencyHook myUrgencyConfig $ defaultConfig
-    { terminal           = myTerminal
-    , modMask            = myModMask
-    , workspaces         = myWorkspaces
-    , borderWidth        = myBorderWidth
-    , normalBorderColor  = myNormalBorderColor
-    , focusedBorderColor = myFocusedBorderColor
+    { terminal           = "urxvtc"
+    , modMask            = mod4Mask
+    , workspaces         = (map show [1..9]) ++ ["0"]
+    , borderWidth        = 2
+    , normalBorderColor  = "#fbf1c7"
+    , focusedBorderColor = "#d5c4a1"
     , keys               = myKeys
     , layoutHook         = myLayout
     }
