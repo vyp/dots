@@ -1,4 +1,3 @@
--- TODO: Focus next urgent window.
 -- TODO: Change ratio/height of windows vertically?
 -- TODO: 'Easymotion'-esque window navigation?
 -- TODO: Preselect new window placement?
@@ -8,6 +7,7 @@
 import System.Exit
 import XMonad
 import XMonad.Actions.CycleWS
+import XMonad.Hooks.UrgencyHook
 import XMonad.Layout.LayoutModifier
 import XMonad.Layout.WindowNavigation
 import XMonad.Util.EZConfig
@@ -16,12 +16,12 @@ import qualified XMonad.StackSet as W
 
 myTerminal = "urxvtc"
 myModMask  = mod4Mask
+myWorkspaces = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"]
 
 myBorderWidth        = 2
 myNormalBorderColor  = "#fbf1c7"
 myFocusedBorderColor = "#d5c4a1"
 
-myWorkspaces = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"]
 myKeys       = \c -> mkKeymap c $
     [ ("M-<Return>", spawn $ XMonad.terminal c)
     , ("M-/",        spawn "dmenu_run")
@@ -42,6 +42,7 @@ myKeys       = \c -> mkKeymap c $
     , ("M-M1-h",     sendMessage Shrink)
     , ("M-M1-l",     sendMessage Expand)
     , ("M-t",        withFocused $ windows . W.sink)
+    , ("M-u",        focusUrgent)
     , ("M-,",        sendMessage $ IncMasterN 1)
     , ("M-.",        sendMessage $ IncMasterN (-1))
     , ("M-q",        spawn "xmonad --restart")
@@ -75,13 +76,15 @@ myLayout = navigable tiled ||| navigable (Mirror tiled) ||| Full
     ratio     = 1/2
     delta     = 3/100
 
-main = xmonad $ defaultConfig
+main = xmonad $ withUrgencyHookC NoUrgencyHook urgencyConfig
+    { suppressWhen = Focused
+    } $ defaultConfig
     { terminal           = myTerminal
     , modMask            = myModMask
+    , workspaces         = myWorkspaces
     , borderWidth        = myBorderWidth
     , normalBorderColor  = myNormalBorderColor
     , focusedBorderColor = myFocusedBorderColor
-    , workspaces         = myWorkspaces
     , keys               = myKeys
     , layoutHook         = myLayout
     }
