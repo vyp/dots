@@ -1,4 +1,3 @@
--- TODO: Change ratio/height of windows vertically?
 -- TODO: 'Easymotion'-esque window navigation?
 -- TODO: Preselect new window placement?
 -- TODO: Theme/colours (e.g. window border colour) in a different file.
@@ -9,20 +8,21 @@ import XMonad
 import XMonad.Actions.CycleWS
 import XMonad.Hooks.UrgencyHook
 import XMonad.Layout.LayoutModifier
+import XMonad.Layout.ResizableTile
 import XMonad.Layout.WindowNavigation
 import XMonad.Util.EZConfig
 
 import qualified XMonad.StackSet as W
 
-myTerminal = "urxvtc"
-myModMask  = mod4Mask
+myTerminal   = "urxvtc"
+myModMask    = mod4Mask
 myWorkspaces = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"]
 
 myBorderWidth        = 2
 myNormalBorderColor  = "#fbf1c7"
 myFocusedBorderColor = "#d5c4a1"
 
-myKeys       = \c -> mkKeymap c $
+myKeys = \c -> mkKeymap c $
     [ ("M-<Return>", spawn $ XMonad.terminal c)
     , ("M-/",        spawn "dmenu_run")
     , ("M-x",        kill)
@@ -40,6 +40,8 @@ myKeys       = \c -> mkKeymap c $
     , ("M-m",        windows W.focusMaster)
     , ("M-S-m",      windows W.swapMaster)
     , ("M-M1-h",     sendMessage Shrink)
+    , ("M-M1-j",     sendMessage MirrorShrink)
+    , ("M-M1-k",     sendMessage MirrorExpand)
     , ("M-M1-l",     sendMessage Expand)
     , ("M-t",        withFocused $ windows . W.sink)
     , ("M-u",        focusUrgent)
@@ -71,13 +73,14 @@ myLayout = navigable tiled ||| navigable (Mirror tiled) ||| Full
   where
     navigable :: LayoutClass l w => l w -> ModifiedLayout WindowNavigation l w
     navigable = configurableNavigation noNavigateBorders
-    tiled     = Tall nmaster delta ratio
+    tiled     = ResizableTall nmaster delta ratio slaves
     nmaster   = 1
-    ratio     = 1/2
     delta     = 3/100
+    ratio     = 1/2
+    slaves    = []
 
 main = xmonad $ withUrgencyHookC NoUrgencyHook urgencyConfig
-    { suppressWhen = Focused
+    { suppressWhen       = Focused
     } $ defaultConfig
     { terminal           = myTerminal
     , modMask            = myModMask
