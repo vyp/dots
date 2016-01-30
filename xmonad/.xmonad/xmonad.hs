@@ -8,6 +8,9 @@ import XMonad
 import XMonad.Actions.CycleWS
 import XMonad.Hooks.UrgencyHook
 import XMonad.Layout.LayoutModifier
+import XMonad.Layout.MultiToggle
+import XMonad.Layout.MultiToggle.Instances
+import XMonad.Layout.Reflect
 import XMonad.Layout.ResizableTile
 import XMonad.Layout.WindowNavigation
 import XMonad.Util.EZConfig
@@ -29,6 +32,7 @@ myKeys = \c -> mkKeymap c $
     , ("M-r",        sendMessage NextLayout)
     , ("M-C-r",      setLayout $ XMonad.layoutHook c)
     , ("M-e",        refresh)
+    , ("M-f",        sendMessage $ Toggle NBFULL)
     , ("M-h",        sendMessage $ Go L)
     , ("M-j",        sendMessage $ Go D)
     , ("M-k",        sendMessage $ Go U)
@@ -45,6 +49,8 @@ myKeys = \c -> mkKeymap c $
     , ("M-M1-l",     sendMessage Expand)
     , ("M-t",        withFocused $ windows . W.sink)
     , ("M-u",        focusUrgent)
+    , ("M-v",        sendMessage $ Toggle REFLECTX)
+    , ("M-S-v",      sendMessage $ Toggle REFLECTY)
     , ("M-,",        sendMessage $ IncMasterN 1)
     , ("M-.",        sendMessage $ IncMasterN (-1))
     , ("M-q",        spawn "xmonad --restart")
@@ -69,7 +75,10 @@ myKeys = \c -> mkKeymap c $
     , ("M-C-S-i", shiftTo Prev EmptyWS)
     ]
 
-myLayout = navigable tiled ||| navigable (Mirror tiled) ||| Full
+myLayout = mkToggle (single NBFULL)
+    . mkToggle (single REFLECTY)
+    . mkToggle (single REFLECTX)
+    $ navigable tiled ||| navigable (Mirror tiled) ||| Full
   where
     navigable :: LayoutClass l w => l w -> ModifiedLayout WindowNavigation l w
     navigable = configurableNavigation noNavigateBorders
