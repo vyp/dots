@@ -59,7 +59,8 @@ myKeys = \c -> mkKeymap c $
     [ (p++i, f i)
         | i <- map show [0..9]
         , (f, p) <- [(toggleOrView, "M-"), (windows . W.shift, "M-S-")] ] ++
-    [ ("M-n",     nextWS)
+    [ ("M-\\",    toggleWS)
+    , ("M-n",     nextWS)
     , ("M-p",     prevWS)
     , ("M-S-n",   shiftToNext)
     , ("M-S-p",   shiftToPrev)
