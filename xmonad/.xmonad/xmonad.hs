@@ -89,9 +89,7 @@ myLayout = mkToggle (single NBFULL)
     ratio     = 1/2
     slaves    = []
 
-main = xmonad $ withUrgencyHookC NoUrgencyHook urgencyConfig
-    { suppressWhen       = Focused
-    } $ defaultConfig
+main = xmonad $ withUrgencyHookC NoUrgencyHook myUrgencyConfig $ defaultConfig
     { terminal           = myTerminal
     , modMask            = myModMask
     , workspaces         = myWorkspaces
@@ -101,3 +99,5 @@ main = xmonad $ withUrgencyHookC NoUrgencyHook urgencyConfig
     , keys               = myKeys
     , layoutHook         = myLayout
     }
+  where
+    myUrgencyConfig = urgencyConfig { suppressWhen = Focused }
