@@ -1,5 +1,5 @@
--- TODO: 'Easymotion'-esque window navigation?
--- TODO: Preselect new window placement?
+-- TODO: Tabbed layout.
+-- TODO: Grid Layout.
 -- TODO: Theme/colours (e.g. window border colour) in a different file.
 -- TODO: Panel!
 
