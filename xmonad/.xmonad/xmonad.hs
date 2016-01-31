@@ -1,10 +1,11 @@
--- TODO: Open urxvtc in floating mode.
 -- TODO: Theme/colours (e.g. window border colour) in a different file.
 -- TODO: Panel!
 
 import System.Exit
 import XMonad
 import XMonad.Actions.CycleWS
+import XMonad.Hooks.ManageHelpers
+import XMonad.Hooks.ToggleHook
 import XMonad.Hooks.UrgencyHook
 import XMonad.Layout.Grid
 import XMonad.Layout.LayoutModifier
@@ -18,8 +19,9 @@ import XMonad.Util.EZConfig
 
 import qualified XMonad.StackSet as W
 
-myKeys = \c -> mkKeymap c $
-    [ ("M-<Return>",              spawn $ XMonad.terminal c)
+myKeys c = mkKeymap c $
+    [ ("M-<Return>",              launchTerminal)
+    , ("M-M1-<Return>",           hookNext "centerFloat" True >> launchTerminal)
     , ("M-/",                     spawn "dmenu_run")
     , ("M-x",                     kill)
     , ("M-r",                     sendMessage NextLayout)
@@ -77,6 +79,8 @@ myKeys = \c -> mkKeymap c $
         ["M-S-.","<XF86AudioNext>","M-S-,","<XF86AudioPrev>","<Pause>","<XF86AudioPlay>"]
         (concatMap (replicate 2) ["next", "prev", "toggle"])
     ]
+  where
+    launchTerminal = spawn $ XMonad.terminal c
 
 myLayout = mkToggle (single NBFULL)
     . mkToggle (single REFLECTY)
@@ -103,6 +107,7 @@ main = xmonad $ withUrgencyHookC NoUrgencyHook myUrgencyConfig $ defaultConfig
     , focusedBorderColor = "#d5c4a1"
     , keys               = myKeys
     , layoutHook         = myLayout
+    , manageHook         = toggleHook "centerFloat" doCenterFloat
     }
   where
     myUrgencyConfig = urgencyConfig { suppressWhen = Focused }
