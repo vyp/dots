@@ -26,14 +26,6 @@ myKeys = \c -> mkKeymap c $
     , ("M-C-r",      setLayout $ XMonad.layoutHook c)
     , ("M-e",        refresh)
     , ("M-f",        sendMessage $ Toggle NBFULL)
-    , ("M-h",        sendMessage $ Go L)
-    , ("M-j",        sendMessage $ Go D)
-    , ("M-k",        sendMessage $ Go U)
-    , ("M-l",        sendMessage $ Go R)
-    , ("M-S-h",      sendMessage $ Swap L)
-    , ("M-S-j",      sendMessage $ Swap D)
-    , ("M-S-k",      sendMessage $ Swap U)
-    , ("M-S-l",      sendMessage $ Swap R)
     , ("M-m",        windows W.focusMaster)
     , ("M-S-m",      windows W.swapMaster)
     , ("M-M1-h",     sendMessage Shrink)
@@ -64,8 +56,12 @@ myKeys = \c -> mkKeymap c $
     , ("M-C-S-o",    shiftTo Prev NonEmptyWS)
     , ("M-C-S-i",    shiftTo Prev EmptyWS)
     ] ++
+    [ (p ++ k, sendMessage $ f d)
+        | (k, d) <- zip ["h", "j", "k", "l"] [L, D, U, R]
+        , (f, p) <- [(Go, "M-"), (Swap, "M-S-")]
+    ] ++
     [ (p ++ i, f i)
-        | i <- map show [0..9]
+        | i      <- map show [0..9]
         , (f, p) <- [(toggleOrView, "M-"), (windows . W.shift, "M-S-")]
     ]
 
