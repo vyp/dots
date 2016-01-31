@@ -1,5 +1,4 @@
--- TODO: Tabbed layout.
--- TODO: Grid Layout.
+-- TODO: Move/swap left/right in tabbed layout (otherwise it's pretty useless).
 -- TODO: Theme/colours (e.g. window border colour) in a different file.
 -- TODO: Panel!
 
@@ -7,6 +6,7 @@ import System.Exit
 import XMonad
 import XMonad.Actions.CycleWS
 import XMonad.Hooks.UrgencyHook
+import XMonad.Layout.Grid
 import XMonad.Layout.LayoutModifier
 import XMonad.Layout.MultiToggle
 import XMonad.Layout.MultiToggle.Instances
@@ -68,7 +68,10 @@ myKeys = \c -> mkKeymap c $
 myLayout = mkToggle (single NBFULL)
     . mkToggle (single REFLECTY)
     . mkToggle (single REFLECTX)
-    $ navigable tiled ||| navigable (Mirror tiled) ||| simpleTabbed
+    $ navigable tiled
+    ||| navigable Grid
+    ||| navigable (Mirror tiled)
+    ||| simpleTabbed
   where
     navigable :: LayoutClass l w => l w -> ModifiedLayout WindowNavigation l w
     navigable = configurableNavigation noNavigateBorders
