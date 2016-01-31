@@ -12,6 +12,7 @@ import XMonad.Layout.MultiToggle
 import XMonad.Layout.MultiToggle.Instances
 import XMonad.Layout.Reflect
 import XMonad.Layout.ResizableTile
+import XMonad.Layout.Tabbed
 import XMonad.Layout.WindowNavigation
 import XMonad.Util.EZConfig
 
@@ -71,7 +72,7 @@ myKeys = \c -> mkKeymap c $
 myLayout = mkToggle (single NBFULL)
     . mkToggle (single REFLECTY)
     . mkToggle (single REFLECTX)
-    $ navigable tiled ||| navigable (Mirror tiled) ||| Full
+    $ navigable tiled ||| navigable (Mirror tiled) ||| simpleTabbed
   where
     navigable :: LayoutClass l w => l w -> ModifiedLayout WindowNavigation l w
     navigable = configurableNavigation noNavigateBorders
