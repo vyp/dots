@@ -1,5 +1,4 @@
 -- TODO: Open urxvtc in floating mode.
--- TODO: Move/swap left/right in tabbed layout (otherwise it's pretty useless).
 -- TODO: Theme/colours (e.g. window border colour) in a different file.
 -- TODO: Panel!
 
@@ -29,6 +28,10 @@ myKeys = \c -> mkKeymap c $
     , ("M-f",                     sendMessage $ Toggle NBFULL)
     , ("M-m",                     windows W.focusMaster)
     , ("M-S-m",                   windows W.swapMaster)
+    , ("M-d",                     windows W.focusDown)
+    , ("M-a",                     windows W.focusUp)
+    , ("M-S-d",                   windows W.swapDown)
+    , ("M-S-a",                   windows W.swapUp)
     , ("M-M1-h",                  sendMessage Shrink)
     , ("M-M1-j",                  sendMessage MirrorShrink)
     , ("M-M1-k",                  sendMessage MirrorExpand)
