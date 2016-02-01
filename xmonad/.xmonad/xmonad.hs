@@ -98,7 +98,7 @@ myLayout = mkToggle (single NBFULL)
     ratio     = 1/2
     slaves    = []
 
-main = xmonad $ withUrgencyHookC NoUrgencyHook myUrgencyConfig $ defaultConfig
+main = xmonad $ withUrgencyHookC myUrgencyHook myUrgencyConfig $ defaultConfig
     { terminal           = "urxvtc"
     , modMask            = mod4Mask
     , workspaces         = (map show [1..9]) ++ ["0"]
@@ -111,3 +111,4 @@ main = xmonad $ withUrgencyHookC NoUrgencyHook myUrgencyConfig $ defaultConfig
     }
   where
     myUrgencyConfig = urgencyConfig { suppressWhen = Focused }
+    myUrgencyHook   = BorderUrgencyHook { urgencyBorderColor = "#cc241d" }
