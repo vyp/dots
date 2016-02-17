@@ -1,22 +1,22 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-PANEL_FIFO=/tmp/panel-fifo
+panel_fifo=/tmp/my-custom-panel-fifo
 
-HEIGHT=12
-TOP_PADDING=$((HEIGHT - 1))
-FONT="-artwiz-cure-medium-r-normal--11-110-75-75-p-90-iso8859-1"
+panel_height=12
+top_padding=$((panel_height - 1))
+font="-artwiz-cure-medium-r-normal--11-110-75-75-p-90-iso8859-1"
 
-CENTER_OFFSET=95
-BATTERY_OFFSET=94
-TIME_OFFSET=122
-BATTERY_OFFSET=$((BATTERY_OFFSET + TIME_OFFSET))
+center_offset=95
+battery_offset=94
+time_offset=122
+battery_offset=$((battery_offset + time_offset))
 
-MUSIC_ICON="$HOME/ui/dzen2/icons/phones.xbm"
-AC_ICON="$HOME/ui/dzen2/icons/ac_01.xbm"
-BATTERY_ICON="$HOME/ui/dzen2/icons/battery"
-TIME_ICON="$HOME/ui/dzen2/icons/clock.xbm"
-WS_FILLED_ICON="$HOME/ui/dzen2/icons/pacman.xbm"
-WS_EMPTY_ICON="$HOME/ui/dzen2/icons/xbm8x8/empty.xbm"
-WS_OCCUPIED_ICON="$HOME/ui/dzen2/icons/ghost.xbm"
+music_icon="$HOME/ui/dzen2/icons/phones.xbm"
+ac_icon="$HOME/ui/dzen2/icons/ac_01.xbm"
+battery_icon="$HOME/ui/dzen2/icons/battery"
+time_icon="$HOME/ui/dzen2/icons/clock.xbm"
+ws_filled_icon="$HOME/ui/dzen2/icons/pacman.xbm"
+ws_empty_icon="$HOME/ui/dzen2/icons/xbm8x8/empty.xbm"
+ws_occupied_icon="$HOME/ui/dzen2/icons/ghost.xbm"
 
 . ~/.config/dzen2/colors

@@ -28,9 +28,6 @@ tchscrinput="Atmel Atmel maXTouch Digitizer"
 disableInputDevice "Poker II" "AT Translated Set 2 keyboard"
 disableInputDevice "$tchscrinput" "$tchscrinput"
 
+[ ! -e /tmp/my-custom-panel-fifo ] && mkfifo /tmp/my-custom-panel-fifo
 urxvtd &
 exec xmonad
-# sxhkd &
-
-# [[ -S /tmp/bspwm_0_0-socket ]] && rm /tmp/bspwm_0_0-socket
-# exec bspwm

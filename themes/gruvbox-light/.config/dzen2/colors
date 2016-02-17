@@ -1,33 +1,33 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Panel.
-MAIN_FG='#3c3836'
-MAIN_BG='#fbf1c7'
-SEPARATOR_CLR='#ebdbb2'
+main_fg='#3c3836'
+main_bg='#fbf1c7'
+separator_clr='#ebdbb2'
 
 ## Music.
-ARTIST_CLR='#cc241d'
-SONG_CLR='#458588'
-MOD_CLR='#d65d0e'
-MUSIC_ICON_CLR='#b16286'
-NOT_PLAYING_CLR='#928374'
+artist_clr='#cc241d'
+song_clr='#458588'
+mod_clr='#d65d0e'
+music_icon_clr='#b16286'
+not_playing_clr='#928374'
 
 ## Workspaces.
-WS_BG_CLR='#fbf1c7'
+ws_bg_clr='#fbf1c7'
 
-FOCUSED_OCCUPIED_CLR='#928374'
-FOCUSED_FREE_CLR='#928374'
-FOCUSED_URGENT_CLR='#cc241d'
+focused_occupied_clr='#928374'
+focused_free_clr='#928374'
+focused_urgent_clr='#cc241d'
 
-OCCUPIED_CLR='#928374'
-FREE_CLR='#d5c4a1'
-URGENT_CLR='#cc241d'
+occupied_clr='#928374'
+free_clr='#d5c4a1'
+urgent_clr='#cc241d'
 
 ## Battery.
-AC_CLR='#d65d0e'
-BATTERY_EXLOW='#cc241d'
-BATTERY_VLOW='#d65d0e'
-BATTERY_LOW='#d79921'
-BATTERY_GOOD='#98971a'
-BATTERY_HIGH='#689d6a'
-BATTERY_FULL='#458588'
+ac_clr='#d65d0e'
+battery_exlow='#cc241d'
+battery_vlow='#d65d0e'
+battery_low='#d79921'
+battery_good='#98971a'
+battery_high='#689d6a'
+battery_full='#458588'

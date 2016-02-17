@@ -1,9 +1,10 @@
--- TODO: Theme/colours (e.g. window border colour) in a different file.
--- TODO: Panel!
-
+import Data.List (isPrefixOf)
+import System.Directory
 import System.Exit
 import XMonad
 import XMonad.Actions.CycleWS
+import XMonad.Hooks.DynamicLog
+import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.ManageHelpers
 import XMonad.Hooks.ToggleHook
 import XMonad.Hooks.UrgencyHook
@@ -16,6 +17,7 @@ import XMonad.Layout.ResizableTile
 import XMonad.Layout.Tabbed
 import XMonad.Layout.WindowNavigation
 import XMonad.Util.EZConfig
+import XMonad.Util.Run
 
 import qualified XMonad.StackSet as W
 
@@ -40,6 +42,7 @@ myKeys c = mkKeymap c $
     , ("M-M1-l",                  sendMessage Expand)
     , ("M-t",                     withFocused $ windows . W.sink)
     , ("M-u",                     focusUrgent)
+    , ("M-b",                     sendMessage ToggleStruts)
     , ("M-v",                     sendMessage $ Toggle REFLECTX)
     , ("M-S-v",                   sendMessage $ Toggle REFLECTY)
     , ("M-,",                     sendMessage $ IncMasterN 1)
@@ -66,15 +69,18 @@ myKeys c = mkKeymap c $
     , ("<XF86AudioMute>",         spawn "amixer sset Master toggle")
     , ("<XF86MonBrightnessUp>",   spawn "xbacklight -inc 5 -steps 1")
     , ("<XF86MonBrightnessDown>", spawn "xbacklight -dec 5 -steps 1")
-    ] ++
+    ]
+    ++
     [ (p ++ k, sendMessage $ f d)
         | (k, d) <- zip ["h", "j", "k", "l"] [L, D, U, R]
         , (f, p) <- [(Go, "M-"), (Swap, "M-S-")]
-    ] ++
+    ]
+    ++
     [ (p ++ i, f i)
         | i      <- map show [0..9]
         , (f, p) <- [(toggleOrView, "M-"), (windows . W.shift, "M-S-")]
-    ] ++
+    ]
+    ++
     [ (k, spawn $ "mpc " ++ a) | (k, a) <- zip
         ["M-S-.","<XF86AudioNext>","M-S-,","<XF86AudioPrev>","<Pause>","<XF86AudioPlay>"]
         (concatMap (replicate 2) ["next", "prev", "toggle"])
@@ -82,7 +88,8 @@ myKeys c = mkKeymap c $
   where
     launchTerminal = spawn $ XMonad.terminal c
 
-myLayout = mkToggle (single NBFULL)
+myLayout = avoidStruts
+    $ mkToggle (single NBFULL)
     . mkToggle (single REFLECTY)
     . mkToggle (single REFLECTX)
     $ navigable tiled
@@ -98,17 +105,69 @@ myLayout = mkToggle (single NBFULL)
     ratio     = 1/2
     slaves    = []
 
-main = xmonad $ withUrgencyHookC myUrgencyHook myUrgencyConfig $ defaultConfig
-    { terminal           = "urxvtc"
-    , modMask            = mod4Mask
-    , workspaces         = (map show [1..9]) ++ ["0"]
-    , borderWidth        = 2
-    , normalBorderColor  = "#fbf1c7"
-    , focusedBorderColor = "#d5c4a1"
-    , keys               = myKeys
-    , layoutHook         = myLayout
-    , manageHook         = toggleHook "centerFloat" doCenterFloat
-    }
-  where
-    myUrgencyConfig = urgencyConfig { suppressWhen = Focused }
-    myUrgencyHook   = BorderUrgencyHook { urgencyBorderColor = "#cc241d" }
+-- Place following dzen related functions under separate module?
+dzenIcon :: String -> String
+dzenIcon icon = "^i(" ++ icon ++ ".xbm)"
+
+idIcon :: WorkspaceId -> String
+idIcon wsid = ["mail","web","code","term","docs","art","pics","media","note","cpu"]
+    !! (read wsid)
+
+dzenBackground :: String
+dzenBackground = "#fbf1c7"
+
+dzenForeground :: String -> String -> String
+dzenForeground fg = dzenColor fg dzenBackground
+
+dzenFocus :: String -> String
+dzenFocus = dzenForeground "#1d2021"
+
+dzenOccupy :: String -> String
+dzenOccupy = dzenForeground "#a89984"
+
+dzenFree :: String -> String
+dzenFree = dzenForeground "#ebdbb2"
+
+dzenUrgent :: String -> String
+dzenUrgent = dzenForeground "#cc241d"
+
+layoutIcon :: String -> String
+layoutIcon layout
+    | layout == "ResizableTall"        = "tall"
+    | layout == "Grid"                 = "grid"
+    | layout == "Mirror ResizableTall" = "layout_mirror_tall"
+    | "Tabbed" `isPrefixOf` layout     = "mouse_01"
+    | otherwise                        = "layout_full"
+
+main = do
+    h      <- getHomeDirectory
+    handle <- spawnPipe (h ++ "/ui/dzen2/panel")
+    xmonad $ withUrgencyHookC myUrgencyHook myUrgencyConfig $ defaultConfig
+        { terminal           = "urxvtc"
+        , modMask            = mod4Mask
+        , workspaces         = (map show [1..9]) ++ ["0"]
+        , borderWidth        = 2
+        , normalBorderColor  = "#fbf1c7"
+        , focusedBorderColor = "#d5c4a1"
+        , keys               = myKeys
+        , layoutHook         = myLayout
+        , manageHook         = myManageHook
+        , handleEventHook    = docksEventHook
+        , logHook            = dynamicLogWithPP defaultPP
+            -- Is it possible to somehow factor out these same endings here?
+            { ppCurrent         = dzenFocus  . dzenIcon . ((h ++ i) ++) . idIcon
+            , ppHidden          = dzenOccupy . dzenIcon . ((h ++ i) ++) . idIcon
+            , ppHiddenNoWindows = dzenFree   . dzenIcon . ((h ++ i) ++) . idIcon
+            , ppUrgent          = dzenUrgent . dzenIcon . ((h ++ i) ++) . idIcon
+            , ppSep             = ","
+            , ppWsSep           = "  "
+            , ppTitle           = const ""
+            , ppLayout          = dzenIcon . ((h ++ i) ++) . layoutIcon
+            , ppOutput          = hPutStrLn handle
+            }
+        }
+      where
+        i               = "/ui/dzen2/icons/"
+        myUrgencyConfig = urgencyConfig { suppressWhen = Focused }
+        myUrgencyHook   = BorderUrgencyHook { urgencyBorderColor = "#cc241d" }
+        myManageHook    = manageDocks <+> toggleHook "centerFloat" doCenterFloat

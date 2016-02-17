@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 . ~/ui/dzen2/variables
 
@@ -9,32 +9,32 @@ fi
 
 trap 'trap - TERM; kill 0' INT TERM QUIT EXIT
 
-[ -e "$PANEL_FIFO" ] && rm "$PANEL_FIFO"
-mkfifo "$PANEL_FIFO"
+# Will come.
+# mpc idleloop player > "$panel_fifo" &
 
-bspc config top_padding $TOP_PADDING
-bspc control --subscribe > "$PANEL_FIFO" &
-mpc idleloop player > "$PANEL_FIFO" &
+while read line; do
+  echo "W$line" > "$panel_fifo"
+done < "/dev/stdin" &
 
 while :; do
-  date +'T'%a' '%e' '%b' '%H:%M:%S > "$PANEL_FIFO"
+  date +'T'%a' '%e' '%b' '%H:%M:%S > "$panel_fifo"
   sleep 1s
 done &
 
 while :; do
-  acpi -b > "$PANEL_FIFO"
+  acpi -b > "$panel_fifo"
   sleep 120s
 done &
 
-cat "$PANEL_FIFO" \
+tail -f "$panel_fifo" \
 | \
-~/ui/dzen2/assemble \
+~/ui/dzen2/processor \
 | \
 dzen2 \
   -p \
   -ta l \
-  -fn "${FONT}" \
-  -fg "$MAIN_FG" \
-  -bg "$MAIN_BG" &
+  -fn "${font}" \
+  -fg "$main_fg" \
+  -bg "$main_bg" &
 
 wait

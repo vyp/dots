@@ -95,3 +95,9 @@
   located in: <http://stackoverflow.com/a/246128/4093264> ?
     - OR, use environment variables instead ??
 - pandoc and latex templates?
+- switch to <https://github.com/gstk/siji> for better panel icons. but to do
+  this requires a bar with fallback font because dzen cannot do fallback fonts.
+  but lemonbar is not good enough because it doesn't give the same sort of
+  positional formatting power that dzen does, which is required to prevent
+  jittering of the text everytime the text width of the time changes (which is
+  often because seconds are shown).
