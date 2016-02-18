@@ -101,3 +101,5 @@
   positional formatting power that dzen does, which is required to prevent
   jittering of the text everytime the text width of the time changes (which is
   often because seconds are shown).
+    - this could possibly be worked around though by making the time displayed
+      in a fixed width fallback font.
