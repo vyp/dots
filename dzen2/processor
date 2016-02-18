@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-# TODO: Make all variables here lowercase (except environment variables maybe).
-
 . ~/ui/dzen2/variables
 
 while read -r line; do
