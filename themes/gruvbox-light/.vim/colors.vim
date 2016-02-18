@@ -33,6 +33,7 @@ colorscheme gruvbox
 hi buftablineactive ctermfg=246 ctermbg=223
 hi error ctermfg=1 ctermbg=NONE
 hi link extrawhitespace cursorcolumn
+hi link conftodo vimtodo
 hi link lisptodo vimtodo
 hi link maketodo vimtodo
 hi link shtodo vimtodo
