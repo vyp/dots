@@ -2,6 +2,7 @@
 
 xrdb -I$HOME ~/.Xresources
 xset +fp ~/.fonts/artwiz
+xset +fp ~/.fonts/siji
 xset fp rehash
 xset -b
 xsetroot -cursor_name left_ptr &

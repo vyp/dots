@@ -1,7 +1,9 @@
 ! vim: ft=xdefaults
-URxvt*font:       xft:Fira Mono:style=Regular:size=9
+URxvt*font:       xft:Fira Mono:style=Regular:size=9,\
+                  -wuncon-siji-medium-r-normal--10-100-75-75-c-80-iso10646-1
 URxvt*italicFont: xft:Fira Mono:style=Regular:size=9
 URxvt*boldFont:   xft:Fira Mono:style=Bold:size=9
-emacs.font:       Fira Mono-9:style=regular
+emacs.font:       Fira Mono-9:style=regular,\
+                  -wuncon-siji-medium-r-normal--10-100-75-75-c-80-iso10646-1
 emacs.italicFont: Fira Mono-9:style=regular
 emacs.boldFont:   Fira Mono-9:style=bold

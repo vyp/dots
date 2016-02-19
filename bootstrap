@@ -46,8 +46,12 @@ git clone 'https://gitlab.com/fi/evil-quick-scope.git'
 git clone 'https://gitlab.com/fi/ui.assets.git'
 cd ui.assets
 mkdir -pv ~/.fonts/artwiz
+mkdir -pv ~/.fonts/siji
 for dir in */ ; do stow -t ~ "${dir}"; done
 cd ~/.fonts/artwiz
+mkfontscale
+mkfontdir
+cd ~/.fonts/siji
 mkfontscale
 mkfontdir
 fc-cache -fv
