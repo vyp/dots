@@ -1,13 +1,13 @@
 # Philosophy / Goals
 
 1. Everything is **[free software]**.
-2. Everything can be keyboard controlled via **vim-like keybindings**.
+2. Everything can be keyboard controlled via **vim-like keybindings**\*.
     - Comfortable, possibly also reduces risk of [RSI].
     - Less visual clutter if things can be accessed via keybindings without
       needing a visible onscreen icon to click on, meaning less cognitive
       overhead.
     - Efficiency and speed.
-3. All configuration is **declarative**\*.
+3. All configuration is **declarative**\*\*.
     - **Reproducible**.
     - **Minimal** -- If everything is declarative, there should be nothing
         excess installed or configured.
@@ -27,8 +27,16 @@ Also note that these are the *goals*, and that this repository may not currently
 reflect this philosophy completely. There is still a lot of work to be done to
 achieve these goals. However, I am confident it is possible.
 
-\*Obviously except for things like passwords or private keys.
+\*The reason there is an Emacs directory is because, ironically enough, I have
+decided to switch to Emacs for a more unified vim-keybinding like experience
+(thanks to [Evil mode]). As you know, Emacs is an "operating system" in which
+you can control mostly everything via the keyboard, making it ideal for my
+purposes. As a consequence, while there is a vimrc, it is very simplified and
+only used as a backup/very quick use editor.
 
+\*\*Obviously except for things like passwords or private keys.
+
+[Evil mode]:     https://bitbucket.org/lyro/evil/wiki/Home
 [free software]: https://www.gnu.org/philosophy/free-sw.html
 [RSI]:           https://en.wikipedia.org/wiki/Repetitive_strain_injury
 [GIMP]:          https://www.gimp.org/
