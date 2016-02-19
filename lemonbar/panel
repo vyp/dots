@@ -1,0 +1,43 @@
+#!/usr/bin/env bash
+
+. ~/ui/lemonbar/variables
+
+if [ $(pgrep -cf 'my-custom-panel') -gt 1 ] ; then
+  printf "%s\n" "The panel is already running!" >&2
+  exit 1
+fi
+
+trap 'trap - TERM; kill 0' INT TERM QUIT EXIT
+
+# TODO: Incorporate mpd information into panel.
+# mpc idleloop player > "$panel_fifo" &
+
+while read line; do
+  echo "W$line" > "$panel_fifo"
+done < "/dev/stdin" &
+
+while :; do
+  date +'T'%a' '%e' '%b' '%H:%M:%S > "$panel_fifo"
+  sleep 1s
+done &
+
+while :; do
+  acpi -b > "$panel_fifo"
+  sleep 120s
+done &
+
+tail -f "$panel_fifo" \
+| \
+~/ui/lemonbar/formatter \
+| \
+lemonbar \
+  -g 'x12' \
+  -f "$primary_font" \
+  -f "$secondary_font" \
+  -f "$tertiary_font" \
+  -p \
+  -n 'my-custom-panel' \
+  -B "$main_bg" \
+  -F "$main_fg" &
+
+wait

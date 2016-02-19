@@ -1,0 +1,92 @@
+#!/usr/bin/env bash
+
+. ~/ui/lemonbar/variables
+
+while read -r line; do
+  case $line in
+    B*)
+      battery_lvl="$(echo ${line} | cut -d' ' -f4 | rev | cut -c 3- | rev)"
+
+      if [[ $battery_lvl -lt 10 ]]; then
+        battery_clr=$battery_exlow
+
+      elif [[ $battery_lvl -lt 25 ]]; then
+        battery_clr=$battery_vlow
+
+      elif [[ $battery_lvl -lt 50 ]]; then
+        battery_clr=$battery_low
+
+      elif [[ $battery_lvl -lt 75 ]]; then
+        battery_clr=$battery_good
+
+      elif [[ $battery_lvl -lt 95 ]]; then
+        battery_clr=$battery_high
+
+      else
+        battery_clr=$battery_full
+      fi
+
+      if [[ $battery_lvl -lt 20 ]]; then
+        battery_ico=""
+
+      elif [[ $battery_lvl -lt 30 ]]; then
+        battery_ico=""
+
+      elif [[ $battery_lvl -lt 40 ]]; then
+        battery_ico=""
+
+      elif [[ $battery_lvl -lt 50 ]]; then
+        battery_ico=""
+
+      elif [[ $battery_lvl -lt 60 ]]; then
+        battery_ico=""
+
+      elif [[ $battery_lvl -lt 70 ]]; then
+        battery_ico=""
+
+      elif [[ $battery_lvl -lt 80 ]]; then
+        battery_ico=""
+
+      elif [[ $battery_lvl -lt 90 ]]; then
+        battery_ico=""
+
+      else
+        battery_ico=""
+      fi
+
+      if [[ $battery_lvl -lt 10 ]]; then
+        ac="%{F$main_bg}%{B$battery_clr}"
+      else
+        ac="%{F$battery_clr}%{B-}"
+      fi
+
+      ac_status="$(echo ${line} | cut -d' ' -f3)"
+
+      if [[ "$ac_status" == "C"* ]]; then
+        ac="%{F$ac_clr}"
+
+        if [[ $battery_lvl -lt 95 ]]; then
+          ac="${ac}%{F$battery_clr}"
+        else
+          ac="${ac}%{F$main_bg}%{B$battery_clr}"
+        fi
+      fi
+
+      battery_info="$(echo ${line} | cut -d' ' -f4-5 | sed 's/,//g')"
+      battery="%{T3}${ac}%{T} %{T3}${battery_ico}%{T} ${battery_info//%/%%} %{F-}%{B-}"
+      ;;
+
+    T*)
+      date=${line%' '*}
+      current_time=${line##*' '}
+      datetime="%{T3}%{T} ${date:1} %{T3}%{T} %{T2}${current_time}%{T}"
+      ;;
+
+    W*)
+      workspaces=${line%%','*}
+      layout=${line#*','}
+      ;;
+
+  esac
+  printf "%s \n" "%{l}%{B#427b58}%{F#8ec07c} %{T3}%{T} %{F-}%{B-} ${layout}%{c}${workspaces:1}%{r}$battery $datetime"
+done

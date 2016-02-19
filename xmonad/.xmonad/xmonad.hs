@@ -82,8 +82,9 @@ myKeys c = mkKeymap c $
     ]
     ++
     [ (k, spawn $ "mpc " ++ a) | (k, a) <- zip
-        ["M-S-.","<XF86AudioNext>","M-S-,","<XF86AudioPrev>","<Pause>","<XF86AudioPlay>"]
-        (concatMap (replicate 2) ["next", "prev", "toggle"])
+        [ "M-S-.", "<XF86AudioNext>", "M-S-,"
+        , "<XF86AudioPrev>", "<Pause>", "<XF86AudioPlay>"
+        ] (concatMap (replicate 2) ["next", "prev", "toggle"])
     ]
   where
     launchTerminal = spawn $ XMonad.terminal c
@@ -105,43 +106,41 @@ myLayout = avoidStruts
     ratio     = 1/2
     slaves    = []
 
--- Place following dzen related functions under separate module?
-dzenIcon :: String -> String
-dzenIcon icon = "^i(" ++ icon ++ ".xbm)"
+barIcon :: String -> String
+barIcon icon = "%{T3}" ++ icon ++ "%{T}"
 
 idIcon :: WorkspaceId -> String
-idIcon wsid = ["mail","web","code","term","docs","art","pics","media","note","cpu"]
-    !! (read wsid)
+idIcon wsid =
+    [ "\57759", "\57791", "\57961", "\57839", "\57813"
+    , "\57897", "\57845", "\57831", "\57892", "\57766"
+    ] !! (read wsid)
 
-dzenBackground :: String
-dzenBackground = "#fbf1c7"
+barForeground :: String -> String -> String
+barForeground fg text = "%{F" ++ fg ++ "}" ++ text ++ "%{F-}"
 
-dzenForeground :: String -> String -> String
-dzenForeground fg = dzenColor fg dzenBackground
+barFocus :: String -> String
+barFocus = barForeground "#1d2021"
 
-dzenFocus :: String -> String
-dzenFocus = dzenForeground "#1d2021"
+barOccupy :: String -> String
+barOccupy = barForeground "#a89984"
 
-dzenOccupy :: String -> String
-dzenOccupy = dzenForeground "#a89984"
+barFree :: String -> String
+barFree = barForeground "#ebdbb2"
 
-dzenFree :: String -> String
-dzenFree = dzenForeground "#ebdbb2"
-
-dzenUrgent :: String -> String
-dzenUrgent = dzenForeground "#cc241d"
+barUrgent :: String -> String
+barUrgent = barForeground "#cc241d"
 
 layoutIcon :: String -> String
 layoutIcon layout
-    | layout == "ResizableTall"        = "tall"
-    | layout == "Grid"                 = "grid"
-    | layout == "Mirror ResizableTall" = "layout_mirror_tall"
-    | "Tabbed" `isPrefixOf` layout     = "mouse_01"
-    | otherwise                        = "layout_full"
+    | layout == "ResizableTall"        = "\57346"
+    | layout == "Grid"                 = "\57349"
+    | layout == "Mirror ResizableTall" = "\57347"
+    | "Tabbed" `isPrefixOf` layout     = "\57758"
+    | otherwise                        = "\57350"
 
 main = do
-    h      <- getHomeDirectory
-    handle <- spawnPipe (h ++ "/ui/dzen2/panel")
+    home <- getHomeDirectory
+    h    <- spawnPipe (home ++ "/ui/lemonbar/panel")
     xmonad $ withUrgencyHookC myUrgencyHook myUrgencyConfig $ defaultConfig
         { terminal           = "urxvtc"
         , modMask            = mod4Mask
@@ -154,20 +153,19 @@ main = do
         , manageHook         = myManageHook
         , handleEventHook    = docksEventHook
         , logHook            = dynamicLogWithPP defaultPP
-            -- Is it possible to somehow factor out these same endings here?
-            { ppCurrent         = dzenFocus  . dzenIcon . ((h ++ i) ++) . idIcon
-            , ppHidden          = dzenOccupy . dzenIcon . ((h ++ i) ++) . idIcon
-            , ppHiddenNoWindows = dzenFree   . dzenIcon . ((h ++ i) ++) . idIcon
-            , ppUrgent          = dzenUrgent . dzenIcon . ((h ++ i) ++) . idIcon
+            { ppCurrent         = barFocus  . barIdIcon
+            , ppHidden          = barOccupy . barIdIcon
+            , ppHiddenNoWindows = barFree   . barIdIcon
+            , ppUrgent          = barUrgent . barIdIcon
             , ppSep             = ","
             , ppWsSep           = "  "
             , ppTitle           = const ""
-            , ppLayout          = dzenIcon . ((h ++ i) ++) . layoutIcon
-            , ppOutput          = hPutStrLn handle
+            , ppLayout          = barIcon . layoutIcon
+            , ppOutput          = hPutStrLn h
             }
         }
       where
-        i               = "/ui/dzen2/icons/"
+        barIdIcon       = barIcon . idIcon
         myUrgencyConfig = urgencyConfig { suppressWhen = Focused }
         myUrgencyHook   = BorderUrgencyHook { urgencyBorderColor = "#cc241d" }
         myManageHook    = manageDocks <+> toggleHook "centerFloat" doCenterFloat

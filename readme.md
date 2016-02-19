@@ -39,12 +39,11 @@ The configuration files for each program are under respectively named folders.
 
 Program       | Use
 -------       | ---
-[Bspwm]       | Window Manager
 [dmenu]       | Launcher
-[Dzen2]       | Panel
 [Emacs]       | Text Editor
 [Firefox]     | Web Browser
 [Git]         | Version Control
+[Lemonbar]    | Panel
 [MPD]         | Music Server
 [mpv]         | Video Player
 [Ncmpcpp]     | MPD Client
@@ -58,12 +57,11 @@ Program       | Use
 [Zathura]     | Document Viewer
 [Zsh]         | Shell
 
-[Bspwm]:       https://github.com/baskerville/bspwm
 [dmenu]:       http://tools.suckless.org/dmenu/
-[Dzen2]:       https://robm.github.io/dzen/
 [Emacs]:       https://www.gnu.org/software/emacs/
 [Firefox]:     https://mozilla.org/firefox
 [Git]:         http://git-scm.com/
+[Lemonbar]:    https://github.com/LemonBoy/bar
 [MPD]:         http://www.musicpd.org/
 [mpv]:         http://mpv.io/
 [Ncmpcpp]:     http://ncmpcpp.rybczak.net/
