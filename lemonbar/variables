@@ -2,7 +2,6 @@
 
 panel_fifo=/tmp/my-custom-panel-fifo
 primary_font='-artwiz-cure-medium-r-normal--11-110-75-75-p-90-iso8859-1'
-secondary_font='-artwiz-limey-medium-r-normal--10-110-75-75-m-50-iso8859-1'
-tertiary_font='-wuncon-siji-medium-r-normal--10-100-75-75-c-80-iso10646-1'
+secondary_font='-wuncon-siji-medium-r-normal--10-100-75-75-c-80-iso10646-1'
 
 . ~/ui/lemonbar/colors

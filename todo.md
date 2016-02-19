@@ -79,9 +79,6 @@
 
 # Other
 
-- use cure font for time too in panel, because the fixed with limey vs cure just
-  looks too ugly. however, have to use an ugly 'hackish' way to do this
-  properly..
 - use environment variables for theme settings, as much as possible.
     - btw, xmonad and the panel's settings have gruvbox-light theme settings
       hardcoded into them, which obviously needs to be fixed, most likely by

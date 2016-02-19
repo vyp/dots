@@ -34,7 +34,6 @@ lemonbar \
   -g 'x12' \
   -f "$primary_font" \
   -f "$secondary_font" \
-  -f "$tertiary_font" \
   -p \
   -n 'my-custom-panel' \
   -B "$main_bg" \

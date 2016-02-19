@@ -107,7 +107,7 @@ myLayout = avoidStruts
     slaves    = []
 
 barIcon :: String -> String
-barIcon icon = "%{T3}" ++ icon ++ "%{T}"
+barIcon icon = "%{T2}" ++ icon ++ "%{T}"
 
 idIcon :: WorkspaceId -> String
 idIcon wsid =
