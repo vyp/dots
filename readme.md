@@ -58,7 +58,6 @@ Program       | Use
 [Pentadactyl] | Web Browser
 [Qutebrowser] | Web Browser
 [rTorrent]    | BitTorrent Client
-[Sxhkd]       | Keybindings Manager
 [Urxvt]       | Terminal Emulator
 [Vim]         | Text Editor
 [xmonad]      | Window Manager
@@ -76,7 +75,6 @@ Program       | Use
 [Pentadactyl]: http://5digits.org/pentadactyl/
 [Qutebrowser]: https://github.com/The-Compiler/qutebrowser
 [rTorrent]:    https://rakshasa.github.io/rtorrent/
-[Sxhkd]:       https://github.com/baskerville/sxhkd
 [Urxvt]:       http://software.schmorp.de/pkg/rxvt-unicode.html
 [Vim]:         http://www.vim.org/
 [xmonad]:      http://xmonad.org/
