@@ -109,26 +109,14 @@ myLayout = avoidStruts
 barIcon :: String -> String
 barIcon icon = "%{T2}" ++ icon ++ "%{T}"
 
-idIcon :: WorkspaceId -> String
-idIcon wsid =
+barId :: WorkspaceId -> String
+barId id =
     [ "\57759", "\57791", "\57961", "\57839", "\57813"
     , "\57897", "\57845", "\57831", "\57892", "\57766"
-    ] !! (read wsid)
+    ] !! (read id)
 
-barForeground :: String -> String -> String
-barForeground fg text = "%{F" ++ fg ++ "}" ++ text ++ "%{F-}"
-
-barFocus :: String -> String
-barFocus = barForeground "#1d2021"
-
-barOccupy :: String -> String
-barOccupy = barForeground "#a89984"
-
-barFree :: String -> String
-barFree = barForeground "#ebdbb2"
-
-barUrgent :: String -> String
-barUrgent = barForeground "#cc241d"
+barForeground :: String -> WorkspaceId -> String
+barForeground fg id = "%{F" ++ fg ++ "}" ++ barIcon (barId id) ++ "%{F-}"
 
 layoutIcon :: String -> String
 layoutIcon layout
@@ -153,10 +141,10 @@ main = do
         , manageHook         = myManageHook
         , handleEventHook    = docksEventHook
         , logHook            = dynamicLogWithPP defaultPP
-            { ppCurrent         = barFocus  . barIdIcon
-            , ppHidden          = barOccupy . barIdIcon
-            , ppHiddenNoWindows = barFree   . barIdIcon
-            , ppUrgent          = barUrgent . barIdIcon
+            { ppCurrent         = barForeground "#1d2021"
+            , ppHidden          = barForeground "#a89984"
+            , ppHiddenNoWindows = barForeground "#ebdbb2"
+            , ppUrgent          = barForeground "#cc241d"
             , ppSep             = ","
             , ppWsSep           = "  "
             , ppTitle           = const ""
@@ -165,7 +153,6 @@ main = do
             }
         }
       where
-        barIdIcon       = barIcon . idIcon
         myUrgencyConfig = urgencyConfig { suppressWhen = Focused }
         myUrgencyHook   = BorderUrgencyHook { urgencyBorderColor = "#cc241d" }
         myManageHook    = manageDocks <+> toggleHook "centerFloat" doCenterFloat
