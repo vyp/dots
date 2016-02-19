@@ -1,6 +1,6 @@
 # Philosophy / Goals
 
-1. Everything, or at least amap, is **[free software]**.
+1. Everything is **[free software]**.
 2. Everything can be keyboard controlled via **vim-like keybindings**.
     - Comfortable, possibly also reduces risk of [RSI].
     - Less visual clutter if things can be accessed via keybindings without
@@ -27,10 +27,7 @@ Also note that these are the *goals*, and that this repository may not currently
 reflect this philosophy completely. There is still a lot of work to be done to
 achieve these goals. However, I am confident it is possible.
 
-\*Obviously except for things like passwords or private keys. (*Even if
-encrypted*. Because technology may evolve in unpredictable or unprecedented ways
-that nullify current encryption/security algorithms. For example, quantum
-computers, in which case your attacker suddenly has a zero day.)
+\*Obviously except for things like passwords or private keys.
 
 [free software]: https://www.gnu.org/philosophy/free-sw.html
 [RSI]:           https://en.wikipedia.org/wiki/Repetitive_strain_injury
