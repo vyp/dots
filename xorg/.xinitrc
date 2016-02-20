@@ -30,5 +30,6 @@ disableInputDevice "Poker II" "AT Translated Set 2 keyboard"
 disableInputDevice "$tchscrinput" "$tchscrinput"
 
 [ ! -e /tmp/my-custom-panel-fifo ] && mkfifo /tmp/my-custom-panel-fifo
+[ ! -s ~/.config/mpd/pid ] && mpd
 urxvtd &
 exec xmonad
