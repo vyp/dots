@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # See </docs/themes.md>.
 
 cd ~/ui

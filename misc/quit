@@ -1,5 +1,6 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
+# TODO: Remove this because not suing bspwm anymore.
 # The only reason this script exists is because I am not sure how to put this in
 # for loop in sxhkdrc (as in it does not seem to work).
 
