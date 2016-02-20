@@ -29,10 +29,10 @@ achieve these goals. However, I am confident it is possible.
 
 \*The reason there is an Emacs directory is because, ironically enough, I have
 decided to switch to Emacs for a more unified vim-keybinding like experience
-(thanks to [Evil mode]). As you know, Emacs is an "operating system" in which
-you can control mostly everything via the keyboard, making it ideal for my
-purposes. As a consequence, while there is a vimrc, it has become very
-simplified and only used as a backup/very quick use editor.
+(made possible thanks to [Evil mode]). As you know, Emacs is an "operating
+system" in which you can control mostly everything via the keyboard, making it
+ideal for my purposes. As a consequence, while there is a vimrc, it has become
+very simplified and only used as a backup/very quick use editor.
 
 \*\*Obviously except for things like passwords or private keys.
 
