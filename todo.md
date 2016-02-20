@@ -79,10 +79,8 @@
 
 # Other
 
-- quick vim keybinding to open $HISTFILE.
-    - not for emacs because this is only for being able to quickly open it when
-      editing the command line by pressing `v` in normal mode (and doing that
-      opens terminal vim).
+- git grep for inappropriate shebangs and replace them with more appropriate
+  ones.
 - use environment variables for theme settings, as much as possible.
     - btw, xmonad and the panel's settings have gruvbox-light theme settings
       hardcoded into them, which obviously needs to be fixed, most likely by

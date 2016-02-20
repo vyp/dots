@@ -195,6 +195,7 @@ xnoremap <leader>co "+y
 nnoremap <leader>p "*p
 nnoremap <leader>o "+p
 
+nnoremap <leader>eh :edit $HISTFILE<CR>
 nnoremap <leader>vc :edit ~/.vimrc<CR>
 nnoremap <leader>vz :edit ~/.zshrc<CR>
 
