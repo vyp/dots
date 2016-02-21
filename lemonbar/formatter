@@ -85,12 +85,11 @@ while read -r line; do
       if [[ $playing != "playing" ]]; then
         music="%{F$not_playing_clr}$music_icon $(mpc current)%{F-}"
       else
-        # TODO: The following stuffs up when ` ft. ` is in parentheses, fix it.
         current=$(mpc current)
         artist=${current%' - '*}
         not_artist=${current##*' - '}
         track=$(grep -oP '.+?(?= ft\. |\(|\z)' <<< $not_artist | sed -n 1p)
-        feat=$(grep -oP '( ft\. [^(]*|\z)' <<< $not_artist)
+        feat=$(grep -oP '( ft\. [^(]*|\z)' <<< ${not_artist%'('*})
         mod=$(grep -oP '\(.*' <<< $not_artist)
         music="%{F$music_icon_clr}$music_icon %{F$artist_clr}${artist}%{F$not_playing_clr} - %{F$track_clr}${track}%{F$feat_clr}${feat}%{F$mod_clr}${mod}%{F-}"
       fi
