@@ -9,8 +9,19 @@ fi
 
 trap 'trap - TERM; kill 0' INT TERM QUIT EXIT
 
-# TODO: Incorporate mpd information into panel.
-# mpc idleloop player > "$panel_fifo" &
+mpcidle () {
+  mpc idleloop player > /tmp/.my-custom-panel-file
+  pollmpdpid
+}
+
+pollmpdpid () {
+  while [[ ! -s ~/.config/mpd/pid ]]; do sleep 30s; done
+  mpcidle
+}
+
+mpcidle &
+tail -f /tmp/.my-custom-panel-file 2> /dev/null \
+  | while read line; do echo $line > "$panel_fifo"; done &
 
 while read line; do
   echo "W$line" > "$panel_fifo"

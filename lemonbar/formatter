@@ -76,6 +76,26 @@ while read -r line; do
       battery="%{T2}${ac}%{T} %{T2}${battery_ico}%{T} ${battery_info//%/%%} %{F-}%{B-}"
       ;;
 
+    player)
+      # Truncate the fake 'pipe'.
+      printf '' > /tmp/.my-custom-panel-file
+      music_icon='%{T2}%{T}'
+      playing="$(mpc status | sed -n 2p | cut -d "[" -f2 | cut -d "]" -f1)"
+
+      if [[ $playing != "playing" ]]; then
+        music="%{F$not_playing_clr}$music_icon $(mpc current)%{F-}"
+      else
+        # TODO: The following stuffs up when ` ft. ` is in parentheses, fix it.
+        current=$(mpc current)
+        artist=${current%' - '*}
+        not_artist=${current##*' - '}
+        track=$(grep -oP '.+?(?= ft\. |\(|\z)' <<< $not_artist | sed -n 1p)
+        feat=$(grep -oP '( ft\. [^(]*|\z)' <<< $not_artist)
+        mod=$(grep -oP '\(.*' <<< $not_artist)
+        music="%{F$music_icon_clr}$music_icon %{F$artist_clr}${artist}%{F$not_playing_clr} - %{F$track_clr}${track}%{F$feat_clr}${feat}%{F$mod_clr}${mod}%{F-}"
+      fi
+      ;;
+
     T*)
       date=${line%' '*}
       current_time=${line##*' '}
@@ -87,6 +107,9 @@ while read -r line; do
       layout=${line#*','}
       ;;
 
+    *)
+      :
+
   esac
-  printf "%s\n" "%{l}%{B#427b58}%{F#8ec07c} %{T2}%{T} %{F-}%{B-} ${layout}%{c}${workspaces:1}%{r}$battery $datetime%{r}$current_time "
+  printf "%s\n" "%{l}%{B#427b58}%{F#8ec07c} %{T2}%{T} %{F-}%{B-} ${layout} ${music}%{c}${workspaces:1}%{r}$battery $datetime%{r}$current_time "
 done
