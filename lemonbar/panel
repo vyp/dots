@@ -10,7 +10,7 @@ fi
 trap 'trap - TERM; kill 0' INT TERM QUIT EXIT
 
 mpcidle () {
-  mpc idleloop player > /tmp/.my-custom-panel-file
+  mpc idleloop player > "$panel_file"
   pollmpdpid
 }
 
@@ -20,7 +20,7 @@ pollmpdpid () {
 }
 
 mpcidle &
-tail -f /tmp/.my-custom-panel-file 2> /dev/null \
+tail -f "$panel_file" 2> /dev/null \
   | while read line; do echo $line > "$panel_fifo"; done &
 
 while read line; do

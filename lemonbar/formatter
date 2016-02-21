@@ -48,7 +48,7 @@ while read -r line; do
       ;;
     player)
       # Truncate the fake 'pipe'.
-      printf '' > /tmp/.my-custom-panel-file
+      printf '' > "$panel_file"
       music_icon='%{T2}%{T}'
       playing="$(mpc status | sed -n 2p | cut -d "[" -f2 | cut -d "]" -f1)"
 
