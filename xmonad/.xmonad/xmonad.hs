@@ -24,7 +24,7 @@ import qualified XMonad.StackSet as W
 myKeys c = mkKeymap c $
     [ ("M-<Return>",              launchTerminal)
     , ("M-M1-<Return>",           hookNext "centerFloat" True >> launchTerminal)
-    , ("M-/",                     spawn "dmenu_run")
+    , ("M-/",                     launchDmenu)
     , ("M-x",                     kill)
     , ("M-r",                     sendMessage NextLayout)
     , ("M-C-r",                   setLayout $ XMonad.layoutHook c)
@@ -88,6 +88,9 @@ myKeys c = mkKeymap c $
     ]
   where
     launchTerminal = spawn $ XMonad.terminal c
+    launchDmenu = spawn "dmenu_run\
+        \ -fn '-artwiz-cure-medium-r-normal--11-110-75-75-p-90-iso8859-1'\
+        \ -nb '#fbf1c7' -nf '#3c3836' -sb '#ebdbb2' -sf '#3c3836'"
 
 myLayout = avoidStruts
     $ mkToggle (single NBFULL)

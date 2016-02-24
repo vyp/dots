@@ -79,7 +79,6 @@
 
 # Other
 
-- fix dmenurc nonsense.
 - git grep for inappropriate shebangs and replace them with more appropriate
   ones.
 - use environment variables for theme settings, as much as possible.

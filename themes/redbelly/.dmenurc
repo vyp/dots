@@ -1,5 +1,0 @@
-#!/bin/bash
-
-source ~/ui/dmenu/dmenurc
-
-dmenu_run -fn "${FONT}" -nb "#222222" -nf "#999999" -sb "#75b5aa" -sf "#222222"
