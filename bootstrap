@@ -9,14 +9,11 @@ cd $root
 #
 # The disadvantage with this is that this list has to be maintained, so it is
 # probably preferable to remove this somehow, *if possible*.
-mkdir -pv ~/.config/bspwm
-mkdir -pv ~/.config/dzen2
 mkdir -pv ~/.config/fontconfig
 mkdir -pv ~/.config/mpd
 mkdir -pv ~/.config/mpv
 mkdir -pv ~/.config/ncmpcpp
 mkdir -pv ~/.config/qutebrowser
-mkdir -pv ~/.config/sxhkd
 mkdir -pv ~/.config/zathura
 mkdir -pv ~/.emacs.d/lisp
 mkdir -pv ~/.icons
