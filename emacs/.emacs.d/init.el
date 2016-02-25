@@ -183,6 +183,7 @@
 ;; Built-in major modes.
 (use-package erc
   :commands erc
+  :init (setq erc-header-line-format nil)
   :config
   (add-hook 'erc-mode-hook (lambda () (setq auto-fill-function nil)))
   ;; Michael Markert has some good urgency hint settings:
