@@ -1,4 +1,5 @@
 ;;; Basic.
+;; TODO: Put these all under their appropriate use-package forms too.
 (setq auto-save-default       nil
       backup-directory-alist  `(("." . "~/.backup"))
       backup-by-copying       t
