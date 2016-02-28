@@ -13,8 +13,8 @@ with import <nixpkgs> {};
     #     (path: type: (toString path) != (toString ~/sc/store/qutebrowser/.git)) ~/sc/store/qutebrowser;
     # });
 
-    rustcLatestServo = callPackage ../packages/rustcLatestServo.nix {};
-    rustcMiserve = callPackage ../packages/rustcMiserve.nix {};
-    rustcNightly = callPackage ../packages/rustcNightly.nix {};
+    # rustcLatestServo = callPackage ../packages/rustcLatestServo.nix {};
+    # rustcMiserve = callPackage ../packages/rustcMiserve.nix {};
+    # rustcNightly = callPackage ../packages/rustcNightly.nix {};
   };
 }
