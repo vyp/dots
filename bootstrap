@@ -39,8 +39,8 @@ mkdir -pv ~/gh/forks
 mkdir -pv ~/gh/themes
 mkdir -pv ~/sc/store
 cd ~/gh
-git clone 'https://gitlab.com/fi/evil-quick-scope.git'
-git clone 'https://gitlab.com/fi/ui.assets.git'
+git clone 'https://github.com/vyp/evil-quick-scope'
+git clone 'https://github.com/vyp/ui.assets'
 cd ui.assets
 mkdir -pv ~/.fonts/artwiz
 mkdir -pv ~/.fonts/siji
@@ -53,8 +53,8 @@ mkfontscale
 mkfontdir
 fc-cache -fv
 cd ~/gh/themes
-git clone 'https://gitlab.com/fi/gruvbox-emacs.git'
-git clone 'https://gitlab.com/fi/redbelly.git'
+git clone 'https://github.com/vyp/gruvbox-emacs'
+git clone 'https://github.com/vyp/redbelly'
 cd ~/sc/store
 git clone 'https://github.com/The-Compiler/qutebrowser'
 cd $root
