@@ -75,7 +75,6 @@
 # Vim
 
 - simplify 'centeronsearch' part?
-- junegunn/vim-easy-align ?
 
 # Other
 
