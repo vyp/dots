@@ -1,14 +1,14 @@
-set default-bg              "#151515" #00
-set default-fg              "#202020" #01
+set default-bg              "#ffffff" #00
+set default-fg              "#000000" #01
 
-set statusbar-fg            "#B0B0B0" #04
-set statusbar-bg            "#202020" #01
+set statusbar-fg            "#000000" #04
+set statusbar-bg            "#ffffff" #01
 
-set inputbar-bg             "#151515" #00
-set inputbar-fg             "#B0B0B0" #02
+set inputbar-bg             "#ffffff" #00
+set inputbar-fg             "#000000" #02
 
-set notification-error-bg   "#AC4142" #08
-set notification-error-fg   "#151515" #00
+set notification-error-bg   "#ff0000" #08
+set notification-error-fg   "#ffffff" #00
 
 set notification-warning-bg "#AC4142" #08
 set notification-warning-fg "#151515" #00
