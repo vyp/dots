@@ -97,3 +97,11 @@ div.file-content.code *,
 div.diff-content * {
   font-size: 16px !important;
 }
+
+figure figcaption {
+  white-space: normal !important;
+}
+
+div._s15 {
+  display: none;
+}
