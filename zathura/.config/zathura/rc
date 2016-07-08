@@ -1,7 +1,9 @@
-set font "cure 8"
+# set font "cure 8"
+set font "Fira Mono 10"
 
 map d scroll half-down
 map u scroll half-up
 
+set page-padding    0
 set recolor         "false"
 set recolor-keephue "true"
