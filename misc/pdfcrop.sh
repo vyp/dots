@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# Please don't actually use this. Works but makes a lot of undocumented
+# NOTE: Please don't actually use this! Works but makes a lot of undocumented
 # assumptions iirc. Put here just to save it, got it from SO somewhere.
 # TODO: Document those assumptions ^^.
 
