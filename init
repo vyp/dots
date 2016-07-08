@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# TODO: Put some order into this abomination of a script. :|
+
 root="${HOME}/ui"
 cd $root
 # The primary reason for this is so that stow will not create symlink
