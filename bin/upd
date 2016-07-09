@@ -32,7 +32,7 @@ if hg incoming -q; then
   hg pull -u
   new_id="$(hg --debug id -i)"
   origin='https://bitbucket.org/lyro/evil'
-  echo '#!/bin/bash' > "$dl_hg_packages"
+  echo '#!/usr/bin/env bash' > "$dl_hg_packages"
   printf \
     "cd ${emacs_packages_dir/$HOME/\~}\nhg clone -r $new_id ${origin}\n" >> \
     "$dl_hg_packages"
