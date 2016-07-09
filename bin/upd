@@ -40,3 +40,40 @@ fi
 
 cd "$root"
 git submodule --quiet foreach "${root}/misc/update-git-repo $update_log &" | tee
+
+# Sometimes the above command for whatever reason seems to update a submodule's
+# submodule even if the (top-level) submodule does not have an up-to-date
+# reference to its submodule (and --recursive is not passed, as seen). "(new
+# commits, modified content)" or something like that, as opposed to just "(new
+# commits)", is usually the indicator of this happening.
+#
+# This needs to not happen because otherwise it will not be reproducible, the
+# submodule's state/reference will be 'dirty', and git will not checkout the
+# appropriate revision. To fix it:
+#
+# 1. First cd to the submodule which needs to fix its dirty submodule reference.
+#
+# 2. `git diff` to see the sub-submodule's old commit reference, which is the
+#    one you wish to change it to so that the dirty reference is fixed.
+#
+# 3. cd to the sub-submodule and git checkout to that old revision.
+#
+# 4. Running `git status` from the top-level submodule should now show a clean
+#    working directory. But running `git status` from the sub-submodule should
+#    show it's in a 'detached HEAD' state, which may mean a subsequent `upd` may
+#    not work properly.
+#
+#    To 'reconcile' this detached HEAD as the default branch (assuming it is
+#    'master', otherwise change as appropriate), do the following from the
+#    sub-submodule's directory:
+#
+#        $ git branch temp # Assuming branch 'temp' does not exist!
+#        $ git checkout temp
+#        $ git branch -f master temp
+#        $ git checkout master
+#        $ git branch -d temp
+#
+#    Above take from the excellent SO answer:
+#    <http://stackoverflow.com/a/5772882>, consult it for detailed explanation.
+#
+# TODO: Detect and fix the above potential situation automatically.
