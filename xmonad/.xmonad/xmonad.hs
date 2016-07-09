@@ -126,6 +126,7 @@ barId id =
 barForeground :: String -> WorkspaceId -> String
 barForeground fg id = "%{F" ++ fg ++ "}" ++ barIcon (barId id) ++ "%{F-}"
 
+-- TODO: Reflecting layouts changes their name, so == is not good enough!
 layoutIcon :: String -> String
 layoutIcon layout
     | layout == "ResizableTall"        = "\57346"
