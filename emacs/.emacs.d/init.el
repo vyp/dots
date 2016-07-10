@@ -1,36 +1,5 @@
-;; TODO: Put these all under their appropriate use-package forms too.
-(setq auto-save-default       nil
-      backup-directory-alist  `(("." . "~/.backup"))
-      backup-by-copying       t
-      blink-cursor-mode       nil
-      create-lockfiles        nil
-      delete-old-versions     t
-      kept-new-versions       6
-      kept-old-versions       2
-      require-final-newline   t
-      recenter-positions      '(0.25)
-      vc-follow-symlinks      t
-      version-control         t)
-
-(setq-default auto-fill-function 'do-auto-fill)
-(setq-default indent-tabs-mode nil)
-(setq-default tab-width 2)
-
 (dolist (path '("~/ui/emacs/.emacs.d/my-custom-keybindings" "~/.emacs.d/lisp"))
   (add-to-list 'load-path path))
-
-;; TODO: Place miscellaneous functions like this as a separate library file that
-;; use-package loads as a library when needed.
-;; (defun x-urgency-hint (frame arg &optional source)
-;;   "Enable or disables urgency hint for the frame FRAME.
-;; Set ARG to non-nil to enable urgency hint, nil to disable."
-;;   (let* ((wm-hints (append (x-window-property
-;;                             "WM_HINTS" frame "WM_HINTS" source nil t) nil))
-;;          (flags (car wm-hints)))
-;;     (setcar wm-hints (if arg
-;;                          (logior flags #x100)
-;;                        (logand flags (lognot #x100))))
-;;     (x-change-window-property "WM_HINTS" wm-hints frame "WM_HINTS" 32 t)))
 
 ;; Packages
 ;; ________
@@ -81,6 +50,32 @@
        (top-or-bottom . bottom)
        (top-or-bottom-pos . 0)))))
 
+(use-package files
+  :demand t
+  :init
+  (setq auto-save-default      nil
+        backup-directory-alist `(("." . "~/.backup"))
+        backup-by-copying      t
+        create-lockfiles       nil
+        delete-old-versions    t
+        kept-new-versions      6
+        kept-old-versions      2
+        require-final-newline  t
+        version-control        t)
+
+  ;; From `buffer.c'.
+  (setq-default auto-fill-function 'do-auto-fill)
+  (setq-default tab-width 2)
+  ;; From `indent.c'.
+  (setq-default indent-tabs-mode nil))
+
+(use-package frame
+  :demand t
+  :init
+  (setq blink-cursor-mode nil)
+  ;; Actually part of window.el but window.el does not provide 'window.
+  (setq recenter-positions '(0.25)))
+
 (use-package fringe
   :demand t :config (fringe-mode '(0 . nil)))
 
@@ -97,13 +92,15 @@
   :init
   ;; Enables `gj` and `gk` and co to move up and down visually wrapped lines.
   (setq line-move-visual nil)
-
   ;; These get disabled for whatever reason.
   (setq-default visual-line-fringe-indicators t)
-
   :config
   ;; Visually wrap long lines at right window edge.
   (global-visual-line-mode t))
+
+(use-package vc-hooks
+  :demand t
+  :init (setq vc-follow-symlinks t))
 
 (use-package whitespace
   :demand t
@@ -222,6 +219,18 @@
   ;; TODO: Don't automatically scroll down on new message.
   ;; TODO: Comment color non-messages (people joining/quiting).
   ;; TODO: Urgency hint and highlight on nick mentions.
+  ;; TODO: Place miscellaneous functions like this as a separate library file
+  ;; that use-package loads as a library when needed.
+  ;; (defun x-urgency-hint (frame arg &optional source)
+  ;;   "Enable or disables urgency hint for the frame FRAME.
+  ;; Set ARG to non-nil to enable urgency hint, nil to disable."
+  ;;   (let* ((wm-hints (append (x-window-property
+  ;;                             "WM_HINTS" frame "WM_HINTS" source nil t) nil))
+  ;;          (flags (car wm-hints)))
+  ;;     (setcar wm-hints (if arg
+  ;;                          (logior flags #x100)
+  ;;                        (logand flags (lognot #x100))))
+  ;;     (x-change-window-property "WM_HINTS" wm-hints frame "WM_HINTS" 32 t)))
   )
 
 (use-package ibuffer
