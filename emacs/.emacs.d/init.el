@@ -111,7 +111,7 @@
   :config (global-whitespace-mode t))
 
 ;; Evil Mode and Evil Mode Related Packages
-;; ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+;; ========================================
 (use-package evil
   :demand t :quelpa
   :init
@@ -165,7 +165,7 @@
   :quelpa :config (global-evil-surround-mode t))
 
 ;; Other Third Party Minor Mode Packages
-;; ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+;; =====================================
 (use-package company
   :quelpa
   :init
