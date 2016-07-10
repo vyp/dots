@@ -107,8 +107,8 @@
   :init (setq whitespace-style '(face empty tabs trailing))
   :config (global-whitespace-mode t))
 
-;; Evil Mode and Evil Mode Related Packages
-;; ========================================
+;; Evil
+;; ====
 (use-package evil
   :demand t :quelpa
   :init
