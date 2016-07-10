@@ -1,4 +1,3 @@
-;; # Basic.
 ;; TODO: Put these all under their appropriate use-package forms too.
 (setq auto-save-default       nil
       backup-directory-alist  `(("." . "~/.backup"))
@@ -33,7 +32,9 @@
 ;;                        (logand flags (lognot #x100))))
 ;;     (x-change-window-property "WM_HINTS" wm-hints frame "WM_HINTS" 32 t)))
 
-;; # Packages.
+;; Packages
+;; ________
+;;
 (setq package-archives       nil
       quelpa-update-melpa-p  nil
       quelpa-upgrade-p       t)
@@ -41,7 +42,8 @@
 (require 'package)
 (package-initialize)
 
-;; ## Bootstrap quelpa.
+;; Bootstrap Quelpa
+;; ================
 (unless (require 'package-build nil t)
   (load-file
    (expand-file-name "~/ui/vendor/emacs/package-build/package-build.el")))
@@ -60,14 +62,16 @@
 
 (require 'quelpa-use-package)
 
-;; ## Configure libraries.
+;; Configure Libraries
+;; ===================
 (use-package ov :defer t :quelpa)
 
-;; ## Built-in minor modes.
+;; Built-in Minor Modes
+;; ====================
 (use-package avoid
   :demand t
   :config
-  ;; Banish the vile mouse to the bottom right corner of the emacs window.
+  ;; Moves mouse to the bottom right corner of the emacs window.
   (mouse-avoidance-mode 'banish)
   (custom-set-variables
    '(mouse-avoidance-banish-position
@@ -106,7 +110,8 @@
   :init (setq whitespace-style '(face empty tabs trailing))
   :config (global-whitespace-mode t))
 
-;; Evil mode and evil mode related packages.
+;; Evil Mode and Evil Mode Related Packages
+;; ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 (use-package evil
   :demand t :quelpa
   :init
@@ -159,7 +164,8 @@
 (use-package evil-surround
   :quelpa :config (global-evil-surround-mode t))
 
-;; ## Other third party minor mode packages.
+;; Other Third Party Minor Mode Packages
+;; ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 (use-package company
   :quelpa
   :init
@@ -181,7 +187,8 @@
   (yas-global-mode t)
   (require 'my-custom-yasnippet-keybindings))
 
-;; ## Built-in major modes.
+;; Built-in Major Modes
+;; ====================
 (use-package erc
   :commands erc
   :init (setq erc-header-line-format nil)
@@ -244,7 +251,8 @@
 
   (require 'my-custom-ibuffer-keybindings))
 
-;; ## Third party major modes.
+;; Third Party Major Modes
+;; =======================
 (use-package haskell-mode
   :defer t :quelpa
   :init
@@ -292,7 +300,9 @@
 ;;
 ;;  (require 'my-custom-magit-keybindings))
 
-;; # Fonts.
+;; Fonts
+;; _____
+;;
 ;; Disable italic and underlines.
 (set-face-attribute 'mode-line nil :box nil)
 (set-face-attribute 'mode-line-inactive nil :box nil)
@@ -302,5 +312,7 @@
         (set-face-attribute face nil :weight 'normal :underline nil))
       (face-list))
 
-;; # Theme.
+;; Theme
+;; _____
+;;
 (require 'my-currently-chosen-theme)
