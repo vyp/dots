@@ -12,19 +12,18 @@ set -u
 set -e
 
 dl_dir="${HOME}/dl/music"
-mpd_pidf="${HOME}/.config/mpd/pid"
+mpd_pid_f="${HOME}/.config/mpd/pid"
 music_dir="${HOME}/music"
 playlist_dir="${HOME}/.config/mpd/playlists"
 tmp_dir_name='tmp'
 
-namef='name'
-playlistf='playlists'
-trimf='trim'
+name_f='name'
+playlist_f='playlists'
+trim_f='trim'
 urlf='url'
 
 tmp_n=1
-# Poor man's boolean.
-trimp='true'
+trimp_p='true'
 
 add-to-playlist () {
   echo "${2}.ogg" >> "${playlist_dir}/${1}.m3u"
@@ -38,7 +37,7 @@ bell () {
 # In a separate function in case I can get TRAP working properly... (if the
 # internet connection suddenly dies or something).
 cleanup () {
-  remove-file-if-exists "$namef" "$playlistf" "$trimf" "$urlf"
+  remove-file-if-exists "$name_f" "$playlist_f" "$trim_f" "$urlf"
   local current_dir="$(pwd)"
   cd ..
   rmdir -v "$current_dir"
@@ -77,28 +76,28 @@ cd "${dl_dir}/${tmp_dir_name}$tmp_n"
 # the current download.
 [[ ! -d $playlist_dir ]] && mkdir -pv $playlist_dir || printf \
   "\n$(ls $playlist_dir | sed -e 's:\.[^./]*$::' | tr '\n' ' ')\n" | fold -w \
-  80 -s | sed 's/ *$//' > $playlistf
+  80 -s | sed 's/ *$//' > $playlist_f
 
 if [[ $# -eq 0 ]]; then
   $EDITOR $urlf
-  get-title "$(< $urlf)" > $namef
+  get-title "$(< $urlf)" > $name_f
   bell
-  $EDITOR $namef $playlistf $trimf
+  $EDITOR $name_f $playlist_f $trim_f
 else
   echo "$1" > $urlf
-  get-title "$1" > $namef
+  get-title "$1" > $name_f
   bell
-  $EDITOR $namef $playlistf $trimf
+  $EDITOR $name_f $playlist_f $trim_f
 fi
 
-name="$(< $namef)"
+name="$(< $name_f)"
 # TODO: Download the generally less in size .ogg files instead?
 youtube-dl -f 43 --no-part -o "${name}.webm" "$(< $urlf)"
 bell
 
-while [[ $trimp == 'true' ]]; do
-  if [[ -s $trimf ]]; then
-    trim_times="$(< $trimf)"
+while [[ $trimp_p == 'true' ]]; do
+  if [[ -s $trim_f ]]; then
+    trim_times="$(< $trim_f)"
 
     if [[ "$trim_times" == *"-"* ]]; then
       trim_start="$(awk -F '-' '{print $1}' <<< $trim_times)"
@@ -121,24 +120,24 @@ while [[ $trimp == 'true' ]]; do
 
     mpv --no-video --loop=inf "${name}.ogg"
     read -p "Is it good? (y/N)" trim_status
-    [[ "$trim_status" == "y" ]] && trimp='false' || $EDITOR $trimf
+    [[ "$trim_status" == "y" ]] && trimp_p='false' || $EDITOR $trim_f
   else
     # No trimming -> automatically convert and proceed without asking for
     # confirmation.
     ffmpeg -y -i "${name}.webm" -vn -acodec copy "${name}.ogg"
-    trimp='false'
+    trimp_p='false'
   fi
 done
 
 lltag --format '%a - %t' --yes "${name}.ogg"
 add-to-playlist all "$name"
 
-for playlist in $(head -n 1 $playlistf); do
+for playlist in $(head -n 1 $playlist_f); do
   add-to-playlist $playlist "$name"
 done
 
 mv -v "${name}.ogg" "${music_dir}"
 rm -v "${name}.webm"
-[[ -s "$mpd_pidf" ]] && mpc update
+[[ -s "$mpd_pid_f" ]] && mpc update
 cleanup
 bell
