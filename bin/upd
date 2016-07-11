@@ -22,6 +22,8 @@
 # of any such differences is made aware of to the user.
 #     - This will obviously need to be done in elisp, most likely.
 #
+# TODO: Only update emacs packages if there's changes to the files under :files.
+#
 # TODO: Figure out the equivalent command for mercurial. (Think it might be
 # something like `hg update -r <rev-id>`.)
 
