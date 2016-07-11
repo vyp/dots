@@ -4,9 +4,9 @@
 ;; Packages
 ;; ________
 ;;
-(setq package-archives       nil
-      quelpa-update-melpa-p  nil
-      quelpa-upgrade-p       t)
+(setq package-archives nil
+      quelpa-update-melpa-p nil
+      quelpa-upgrade-p t)
 
 (require 'package)
 (package-initialize)
@@ -73,7 +73,7 @@
   :demand t
   :init
   (setq blink-cursor-mode nil)
-  ;; Actually part of window.el but window.el does not provide 'window.
+  ;; Actually part of window.el but window.el does not provide 'window..
   (setq recenter-positions '(0.25)))
 
 (use-package fringe
@@ -161,8 +161,8 @@
 (use-package evil-surround
   :quelpa :config (global-evil-surround-mode t))
 
-;; Other Third Party Minor Mode Packages
-;; =====================================
+;; Other Third Party Minor Modes
+;; =============================
 (use-package company
   :quelpa
   :init
@@ -252,11 +252,10 @@
      ((> (buffer-size) 1000)    (format "%7.1fk" (/ (buffer-size) 1000.0)))
      (t                         (format "%8d"       (buffer-size)))))
 
-  (setq ibuffer-formats '((mark modified read-only " "
-                                (name 18 18 :left :elide) " "
-                                (size-h 9 -1 :right) "  "
-                                (mode 16 16 :left :elide) " "
-                                filename-and-process)))
+  (setq ibuffer-formats
+        '((mark modified read-only " " (name 18 18 :left :elide) " "
+                (size-h 9 -1 :right) "  " (mode 16 16 :left :elide) " "
+                filename-and-process)))
 
   (require 'my-custom-ibuffer-keybindings))
 
