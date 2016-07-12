@@ -78,8 +78,6 @@
 
 # Other
 
-- git grep for inappropriate shebangs and replace them with more appropriate
-  ones.
 - use environment variables for theme settings, as much as possible.
     - btw, xmonad and the panel's settings have gruvbox-light theme settings
       hardcoded into them, which obviously needs to be fixed, most likely by
