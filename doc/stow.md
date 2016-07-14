@@ -5,28 +5,17 @@ after visiting its homepage.
 
 While Stow refers to itself as a "package installation manager", for the
 purposes of managing dotfiles, it may be easier to think of it as a 'symlink
-manager'. I use it because it is significantly easier to use the `stow` command
-instead of manually using `ln -s` on every file (or writing a script that
-symlinks everything).
+manager'.
 
 # How
 
-For the purposes of managing dotfiles, although maybe not technically correct,
-stow by default takes a directory as an argument. Taking the `vim` directory for
-example (from the root of this repository):
-
-``` shell
-$ stow vim
-```
-
-run from the root of the repository will symlink everything in the `vim`
-directory to the directory *above* the *current* directory. Assume for example
-you have your dotfiles repository in the `~/dotfiles` directory, in this case
-stow will symlink `~/dotfiles/vim/.vimrc` to `~/.vimrc`. i.e. The directory
-*above* `~/dotfiles`, which is `~`.
+e.g. Running `stow vim` from the root of the repository will symlink everything
+in the `vim` directory to the directory *above* the *current* directory. For
+example, if your dotfiles repository is at `~/dotfiles`, stow will symlink
+`~/dotfiles/vim/.vimrc` to `~/.vimrc`.
 
 Do not confuse this for thinking that stow will symlink the `~/dotfiles/vim`
-directory itself (to `~/vim`).
+directory itself (i.e. to `~/vim`).
 
 # Advantages
 
@@ -44,37 +33,25 @@ dotfiles are already organised in separate directories.
 Of course, you can still use stow and put all the dotfiles in one single
 directory if you wanted to.
 
-# Extras
-
-## Uninstallation
+# Uninstallation
 
 ``` shell
 $ stow -D <directory>
 ```
 
-## Ignoring
+# Ignoring
 
-It is noteworthy to mention that stow can also be told to ignore particular
-files/directories to ignore. i.e. They will not be symlinked. This is useful if
-there are dotfiles particular to an application that *do not need to be
-symlinked above*.
+Stow can be told to ignore particular files/directories so that they will not be
+symlinked. This is useful if there are dotfiles particular to an application
+that do not need to be symlinked above.
 
-This can be done using a `.stow-local-ignore` file in the root of the
-application specific directory. So for vim, its dotfiles are located in the
-`vim` directory (which is `~/dotfiles/vim` on the filesystem following from the
-above examples), so the stow ignore file will be at `vim/.stow-local-ignore`
-(`~/dotfiles/vim/.stow-local-ignore`).
+This is done with a `.stow-local-ignore` file in the root of the application
+specific directory. e.g. Following the above example, the stow ignore file for
+vim should be at `vim/.stow-local-ignore` (`~/dotfiles/vim/.stow-local-ignore`).
 
 The file should have PCREs (one on each line) signifying paths to files or
-directories that should be ignored. So for example to ignore *everything* in a
-particular directory, the file can just have:
-
-```
-.*
-```
+directories that should be ignored. e.g. Put `.*` to ignore everything in a
+particular directory.
 
 Everything after a `#` on a line is considered a comment. The
 `.stow-local-ignore` file itself is also ignored.
-
-Search this repository for a few more examples. And of course consult the
-official documentation for more information.

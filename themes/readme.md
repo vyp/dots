@@ -1,0 +1,27 @@
+# What
+
+The `themes` directory is special in that it does not directly contain configs
+or files, but rather further directories which contain *theme-specific* configs.
+
+Idea is that it would be nice to be able to switch themes *without affecting the
+state of the repository*. i.e. Being able to change the themes of applications
+without making the git status 'dirty'.
+
+But what does it mean to change the 'theme' of an application? Basically just
+change the colours. Obviously this depends on the application and whether or not
+it provides a declarative way to set colours.
+
+# How
+
+</bin/set-theme>
+
+The idea is to stow config files which only have theme-specific settings, and
+then the main configuration files will 'source'/'import' (or similar) the
+*symlinks* of these files, instead of the files themselves directly. This means
+that the main configuration files will source the currently stowed theme files,
+and thus load the correct theme.
+
+## Gotchas
+
+As you may have guessed, the above would not be possible for an application that
+does not provide a way to 'source' or 'import' another configuration file.

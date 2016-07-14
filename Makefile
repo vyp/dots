@@ -1,5 +1,5 @@
 # Not a Makefile for everything here, but only for certain programs that require
-# a simple build system for their configs. See </doc/themes.md>.
+# a simple build system for their configs. :| See </themes/readme.md>.
 
 ZATHURA=zathura
 ZATHURARC=$(ZATHURA)/.config/zathura/zathurarc
