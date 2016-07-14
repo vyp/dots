@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# See </docs/themes.md>.
+# See </doc/themes.md>.
 
 cd ~/ui
 

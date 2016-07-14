@@ -51,8 +51,6 @@
     - Mail.
     - RSS.
     - Bittorrent client.
-    - Figure out installation method for pdf-tools (whether to use guix, or to
-      use quelpa...).
 
 # Themes
 

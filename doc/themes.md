@@ -29,7 +29,7 @@ necessarily mean that the previous choice was 'incorrect' or 'bad'.
 # How
 
 The `bin/set-theme` script is a small stow wrapper that makes it easier to
-dynamically switch themes. (See </docs/stow.md> for how stow works.)
+dynamically switch themes. (See </doc/stow.md> for how stow works.)
 
 The idea is to stow config files which only have theme-specific settings, and
 then the main configuration files will 'source'/'import' (or similar) the
