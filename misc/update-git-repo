@@ -70,7 +70,7 @@ log() {
 
 print-to-screen() {
   local new_commits_no="$1"
-  echo "Updated $bold$package$rs [${new_commits_no}]:"
+  echo "$bold$package$rs [${new_commits_no}]:"
   git log --pretty=format:"%Cgreen%h %Cblue%s %Creset(%Cred%cr%Creset)" @{1}.. \
     --reverse
   printf "\n"
