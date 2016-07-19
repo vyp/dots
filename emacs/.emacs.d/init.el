@@ -320,6 +320,8 @@
         (set-face-attribute face nil :weight 'normal :underline nil))
       (face-list))
 
+(add-to-list 'default-frame-alist '(font . "Input-9"))
+
 ;; Theme
 ;; _____
 ;;

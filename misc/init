@@ -1,9 +1,8 @@
 #!/usr/bin/env bash
 
-# TODO: Put some order into this abomination of a script. :|
-
 root="${HOME}/ui"
 cd $root
+
 # The primary reason for this is so that stow will not create symlink
 # *directories*. Apparently this solves a potential subsequent linking problem
 # (with stow) as described in ff444eb, although I am not sure (anymore) if that
@@ -25,12 +24,13 @@ mkdir -pv ~/.urxvt
 mkdir -pv ~/.vim/autoload
 mkdir -pv ~/.xmonad
 mkdir -pv ~/.Xresources.d
-# For automatic setup with a default theme and font, but these can be manually
-# changed later without affecting the state of the (git) repository.
+
 ./bin/set-theme gruvbox-light
-./bin/set-font fira-mono 9
+./bin/set-font input-9
+
 make
 for dir in */ ; do stow "${dir}"; done
+
 # Other directories.
 mkdir -pv ~/.backup
 # For rtorrent, but may be removed later.
@@ -39,29 +39,21 @@ mkdir -pv ~/dl/torrents/watch
 mkdir -pv ~/dl/music
 mkdir -pv ~/gh/forks
 mkdir -pv ~/gh/themes
-mkdir -pv ~/sc/store
+
 cd ~/gh
 git clone 'https://github.com/vyp/evil-quick-scope'
-git clone 'https://github.com/vyp/ui.assets'
-cd ui.assets
-mkdir -pv ~/.fonts/artwiz
-mkdir -pv ~/.fonts/siji
+git clone 'https://github.com/vyp/ui-bin'
+cd ui-bin
+mkdir -pv ~/.fonts
 for dir in */ ; do stow -t ~ "${dir}"; done
-cd ~/.fonts/artwiz
-mkfontscale
-mkfontdir
-cd ~/.fonts/siji
-mkfontscale
-mkfontdir
 fc-cache -fv
+
 cd ~/gh/themes
 git clone 'https://github.com/vyp/gruvbox-emacs'
 git clone 'https://github.com/vyp/redbelly'
-cd ~/sc/store
-git clone 'https://github.com/The-Compiler/qutebrowser'
+
 cd $root
 ./misc/dl-hg-packages
 git submodule update --init --recursive
-./misc/git-hooks/link-hooks
 ln -s ~/ui/vendor/vim/vim-plug/plug.vim ~/.vim/autoload/plug.vim
 xmonad --recompile

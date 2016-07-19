@@ -2,12 +2,12 @@
 
 cd ~/ui
 
-if [[ $# -le 1 ]]; then
-  echo 'Usage: set-font font size'
+if [[ $# -eq 0 ]]; then
+  echo 'Error: No font given.'
   exit 1
-elif [[ -d "./fonts/$1-$2" ]]; then
-  stow --override='.*' -t ~ -d fonts "$1-$2"
+elif [[ -d "./fonts/$1" ]]; then
+  stow --override='.*' -t ~ -d fonts "$1"
 else
-  echo "Error: No theme '$1-$2' found."
+  echo "Error: No font '$1' found."
   exit 1
 fi

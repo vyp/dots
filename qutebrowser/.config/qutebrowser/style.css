@@ -3,7 +3,18 @@
   height: 0px;
 }
 
-/* Set default sans-serif font. */
+/* Default serif font. */
+@font-face {
+  font-family: serif;
+  src: local("Alegreya");
+}
+
+/* Default sans-serif font. */
+@font-face {
+  font-family: sans-serif;
+  src: local("Noto Sans");
+}
+
 @font-face {
   font-family: arial;
   src: local("Noto Sans");
@@ -54,25 +65,30 @@
   src: local("Noto Sans");
 }
 
-/* Set default monospace font. */
+/* Default monospace font. */
+@font-face {
+  font-family: monospace;
+  src: local("Code New Roman");
+}
+
 @font-face {
   font-family: Consolas;
-  src: local("Fira Mono");
+  src: local("Code New Roman");
 }
 
 @font-face {
   font-family: Courier;
-  src: local("Fira Mono");
+  src: local("Code New Roman");
 }
 
 @font-face {
   font-family: "Liberation Mono";
-  src: local("Fira Mono");
+  src: local("Code New Roman");
 }
 
 @font-face {
   font-family: Menlo;
-  src: local("Fira Mono");
+  src: local("Code New Roman");
 }
 
 code,
