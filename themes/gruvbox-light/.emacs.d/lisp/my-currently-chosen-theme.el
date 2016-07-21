@@ -1,4 +1,4 @@
-(let ((theme-path "~/gh/themes/gruvbox-emacs"))
+(let ((theme-path "~/gh/gruvbox-emacs"))
   (dolist (list '(load-path custom-theme-load-path))
     (add-to-list list theme-path)))
 

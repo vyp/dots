@@ -80,11 +80,6 @@
     - btw, xmonad and the panel's settings have gruvbox-light theme settings
       hardcoded into them, which obviously needs to be fixed, most likely by
       this.
-- remove fonts directory because i don't really care about being able to switch
-  fonts as easily as themes, because usage has determined that they are much
-  more static choices.
-    - actually the different sizes at least are useful because different
-      machines/displays/resolutions require different settings.
 - copy over the patch and generic.nix files for custom rustc nix expressions?
 - qutebrowser git clone in bootstrap script should somehow correspond/checkout
   to the correct commit.

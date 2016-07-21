@@ -1,4 +1,4 @@
-(let ((theme-path "~/gh/themes/redbelly"))
+(let ((theme-path "~/gh/redbelly"))
   (dolist (list '(load-path custom-theme-load-path))
     (add-to-list list theme-path)))
 

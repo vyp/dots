@@ -38,7 +38,6 @@ mkdir -pv ~/dl/torrents/session
 mkdir -pv ~/dl/torrents/watch
 mkdir -pv ~/dl/music
 mkdir -pv ~/gh/forks
-mkdir -pv ~/gh/themes
 
 cd ~/gh
 git clone 'https://github.com/vyp/evil-quick-scope'
@@ -48,7 +47,7 @@ mkdir -pv ~/.fonts
 for dir in */ ; do stow -t ~ "${dir}"; done
 fc-cache -fv
 
-cd ~/gh/themes
+cd ~/gh
 git clone 'https://github.com/vyp/gruvbox-emacs'
 git clone 'https://github.com/vyp/redbelly'
 
