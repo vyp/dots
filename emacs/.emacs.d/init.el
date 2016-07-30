@@ -182,7 +182,8 @@
         ac-use-menu-map t
         ac-use-quick-help nil)
   :config
-  (add-to-list 'ac-dictionary-directories "~/sc/el/auto-complete/dict")
+  (add-to-list
+   'ac-dictionary-directories "~/ui/vendor/emacs/auto-complete/dict")
   (ac-config-default)
   (define-key ac-completing-map "\r" nil)
   (define-key ac-menu-map "\r" nil)
