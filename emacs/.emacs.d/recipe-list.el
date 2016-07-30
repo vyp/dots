@@ -10,10 +10,6 @@
     :files ("bind-key.el")
     :path "~/ui/vendor/emacs/use-package")
 
-   (company
-    :fetcher file
-    :path "~/ui/vendor/emacs/company-mode")
-
    (diminish
     :fetcher file
     :path "~/ui/vendor/emacs/diminish.el")

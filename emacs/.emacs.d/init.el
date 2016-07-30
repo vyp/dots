@@ -1,4 +1,6 @@
-(dolist (path '("~/ui/emacs/.emacs.d/my-custom-keybindings" "~/.emacs.d/lisp"))
+(dolist (path
+         '("~/ui/emacs/.emacs.d/my-custom-keybindings"
+           "~/.emacs.d/lisp"))
   (add-to-list 'load-path path))
 
 ;; Packages
@@ -185,13 +187,6 @@
   (evil-define-key 'insert ac-menu-map (kbd "C-p") 'ac-previous)
   (evil-define-key 'insert ac-menu-map (kbd "C-n") 'ac-next)
   (evil-define-key 'insert ac-completing-map "\t" 'ac-complete))
-
-(use-package company
-  :disabled t :quelpa
-  :init
-  (setq company-idle-delay 0)
-  (add-hook 'after-init-hook 'global-company-mode)
-  :config (require 'my-custom-company-keybindings))
 
 (use-package fill-column-indicator
   :demand t :quelpa
