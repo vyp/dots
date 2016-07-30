@@ -1,6 +1,11 @@
 (setq
  recipe-list
- '((bind-key
+ '((auto-complete
+    :fetcher file
+    :files ("*.el")
+    :path "~/ui/vendor/emacs/auto-complete")
+
+   (bind-key
     :fetcher file
     :files ("bind-key.el")
     :path "~/ui/vendor/emacs/use-package")
@@ -38,6 +43,11 @@
     :files ("fill-column-indicator.el")
     :path "~/ui/vendor/emacs/Fill-Column-Indicator")
 
+   (fuzzy
+    :fetcher file
+    :files ("fuzzy.el")
+    :path "~/ui/vendor/emacs/fuzzy-el")
+
    (goto-chg
     :fetcher file
     :path "~/ui/vendor/emacs/goto-chg")
@@ -54,6 +64,11 @@
     :fetcher file
     :files ("package-build.el")
     :path "~/ui/vendor/emacs/package-build")
+
+   (popup
+    :fetcher file
+    :files ("popup.el")
+    :path "~/ui/vendor/emacs/popup-el")
 
    (quelpa
     :fetcher file

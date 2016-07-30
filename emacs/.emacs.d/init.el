@@ -31,9 +31,11 @@
 
 (require 'quelpa-use-package)
 
-;; Configure Libraries
-;; ===================
-(use-package ov :defer t :quelpa)
+;; Libraries
+;; =========
+(use-package fuzzy :defer t :quelpa)
+(use-package ov    :defer t :quelpa)
+(use-package popup :defer t :quelpa)
 
 ;; Built-in Minor Modes
 ;; ====================
@@ -163,8 +165,29 @@
 
 ;; Other Third Party Minor Modes
 ;; =============================
+(use-package auto-complete-config
+  :demand t :quelpa
+  :init
+  (setq ac-auto-show-menu 0.4
+        ac-auto-start 3
+        ac-candidate-menu-min 0
+        ac-delay 0.2
+        ac-disable-inline t
+        ac-show-menu-immediately-on-auto-complete t
+        ac-use-menu-map t
+        ac-use-quick-help nil)
+  :config
+  (add-to-list 'ac-dictionary-directories "~/sc/el/auto-complete/dict")
+  (ac-config-default)
+  (define-key ac-completing-map "\r" nil)
+  (define-key ac-menu-map "\r" nil)
+  (define-key ac-menu-map (kbd "S-<iso-lefttab>") 'ac-previous)
+  (evil-define-key 'insert ac-menu-map (kbd "C-p") 'ac-previous)
+  (evil-define-key 'insert ac-menu-map (kbd "C-n") 'ac-next)
+  (evil-define-key 'insert ac-completing-map "\t" 'ac-complete))
+
 (use-package company
-  :quelpa
+  :disabled t :quelpa
   :init
   (setq company-idle-delay 0)
   (add-hook 'after-init-hook 'global-company-mode)
@@ -178,7 +201,7 @@
   (my-global-fci-mode t))
 
 (use-package yasnippet
-  :quelpa
+  :disabled t :quelpa
   :init (setq yas-snippet-dirs '("~/ui/vendor/emacs/yasnippet-snippets"))
   :config
   (yas-global-mode t)

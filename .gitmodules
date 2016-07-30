@@ -76,3 +76,12 @@
 [submodule "vendor/emacs/diminish.el"]
 	path = vendor/emacs/diminish.el
 	url = https://github.com/myrjola/diminish.el
+[submodule "vendor/emacs/fuzzy-el"]
+	path = vendor/emacs/fuzzy-el
+	url = https://github.com/auto-complete/fuzzy-el
+[submodule "vendor/emacs/popup-el"]
+	path = vendor/emacs/popup-el
+	url = https://github.com/auto-complete/popup-el
+[submodule "vendor/emacs/auto-complete"]
+	path = vendor/emacs/auto-complete
+	url = https://github.com/auto-complete/auto-complete
