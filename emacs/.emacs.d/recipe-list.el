@@ -10,6 +10,11 @@
     :files ("bind-key.el")
     :path "~/ui/vendor/emacs/use-package")
 
+   (dash
+    :fetcher file
+    :files ("dash.el")
+    :path "~/ui/vendor/emacs/dash.el")
+
    (diminish
     :fetcher file
     :path "~/ui/vendor/emacs/diminish.el")
@@ -66,6 +71,10 @@
     :files ("popup.el")
     :path "~/ui/vendor/emacs/popup-el")
 
+   (powerline
+    :fetcher file
+    :path "~/ui/vendor/emacs/powerline")
+
    (quelpa
     :fetcher file
     :files ("quelpa.el")
@@ -79,6 +88,15 @@
     :fetcher file
     :files ("rust-mode.el")
     :path "~/ui/vendor/emacs/rust-mode")
+
+   (s
+    :fetcher file
+    :files ("s.el")
+    :path "~/ui/vendor/emacs/s.el")
+
+   (spaceline
+    :fetcher file
+    :path "~/ui/vendor/emacs/spaceline")
 
    (undo-tree
     :fetcher file

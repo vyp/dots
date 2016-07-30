@@ -82,3 +82,15 @@
 [submodule "vendor/emacs/auto-complete"]
 	path = vendor/emacs/auto-complete
 	url = https://github.com/auto-complete/auto-complete
+[submodule "vendor/emacs/spaceline"]
+	path = vendor/emacs/spaceline
+	url = https://github.com/TheBB/spaceline
+[submodule "vendor/emacs/dash.el"]
+	path = vendor/emacs/dash.el
+	url = https://github.com/magnars/dash.el
+[submodule "vendor/emacs/powerline"]
+	path = vendor/emacs/powerline
+	url = https://github.com/milkypostman/powerline
+[submodule "vendor/emacs/s.el"]
+	path = vendor/emacs/s.el
+	url = https://github.com/magnars/s.el

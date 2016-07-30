@@ -35,9 +35,12 @@
 
 ;; Libraries
 ;; =========
-(use-package fuzzy :defer t :quelpa)
-(use-package ov    :defer t :quelpa)
-(use-package popup :defer t :quelpa)
+(use-package dash      :defer t :quelpa)
+(use-package fuzzy     :defer t :quelpa)
+(use-package ov        :defer t :quelpa)
+(use-package popup     :defer t :quelpa)
+(use-package powerline :defer t :quelpa)
+(use-package s         :defer t :quelpa)
 
 ;; Built-in Minor Modes
 ;; ====================
@@ -194,6 +197,15 @@
   :config
   (define-globalized-minor-mode my-global-fci-mode fci-mode turn-on-fci-mode)
   (my-global-fci-mode t))
+
+(use-package spaceline-config
+  :demand t :quelpa
+  :init
+  (setq spaceline-highlight-face-func 'spaceline-highlight-face-evil-state)
+  :config
+  (spaceline-spacemacs-theme)
+  (setq spaceline-buffer-size-p nil
+        spaceline-minor-modes-p nil))
 
 (use-package yasnippet
   :disabled t :quelpa
