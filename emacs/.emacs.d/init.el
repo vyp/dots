@@ -1,6 +1,7 @@
 (dolist (path
          '("~/ui/emacs/.emacs.d/my-custom-keybindings"
-           "~/.emacs.d/lisp"))
+           "~/.emacs.d/lisp"
+           "~/ui/vendor/emacs/nyan-mode"))
   (add-to-list 'load-path path))
 
 ;; Packages
@@ -199,6 +200,10 @@
   (define-globalized-minor-mode my-global-fci-mode fci-mode turn-on-fci-mode)
   (my-global-fci-mode t))
 
+(use-package nyan-mode
+  :demand t ; :quelpa
+  :config (nyan-mode t))
+
 (use-package spaceline-config
   :demand t :quelpa
   :init
@@ -206,7 +211,8 @@
   :config
   (spaceline-spacemacs-theme)
   (setq spaceline-buffer-size-p nil
-        spaceline-minor-modes-p nil))
+        spaceline-minor-modes-p nil
+        spaceline-nyan-cat-p t))
 
 (use-package yasnippet
   :disabled t :quelpa

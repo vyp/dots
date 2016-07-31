@@ -94,3 +94,6 @@
 [submodule "vendor/emacs/s.el"]
 	path = vendor/emacs/s.el
 	url = https://github.com/magnars/s.el
+[submodule "vendor/emacs/nyan-mode"]
+	path = vendor/emacs/nyan-mode
+	url = https://github.com/TeMPOraL/nyan-mode

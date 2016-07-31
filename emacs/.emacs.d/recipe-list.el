@@ -57,6 +57,11 @@
     :fetcher file
     :path "~/ui/vendor/emacs/haskell-mode")
 
+   ;; (nyan-mode
+   ;;  :fetcher file
+   ;;  :files ("nyan-mode.el" "img" "mus")
+   ;;  :path "~/ui/vendor/emacs/nyan-mode")
+
    (ov
     :fetcher file
     :path "~/ui/vendor/emacs/ov.el")
