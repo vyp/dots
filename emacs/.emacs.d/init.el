@@ -348,13 +348,12 @@
 ;; Fonts
 ;; _____
 ;;
-;; Disable italic and underlines.
 (set-face-attribute 'mode-line nil :box nil)
 (set-face-attribute 'mode-line-inactive nil :box nil)
-(set-face-italic 'italic nil)
 
+;; Disable underlines.
 (mapc (lambda (face)
-        (set-face-attribute face nil :weight 'normal :underline nil))
+        (set-face-attribute face nil :underline nil))
       (face-list))
 
 (add-to-list 'default-frame-alist '(font . "Input-9"))
