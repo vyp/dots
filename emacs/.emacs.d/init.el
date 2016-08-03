@@ -41,6 +41,7 @@
 (use-package ov        :defer t :quelpa)
 (use-package popup     :defer t :quelpa)
 (use-package powerline :defer t :quelpa)
+(use-package spaceline :defer t :quelpa)
 (use-package s         :defer t :quelpa)
 
 ;; Built-in Minor Modes
