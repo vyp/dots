@@ -62,6 +62,10 @@
    ;;  :files ("nyan-mode.el" "img" "mus")
    ;;  :path "~/ui/vendor/emacs/nyan-mode")
 
+   (org-bullets
+    :fetcher file
+    :path "~/ui/vendor/emacs/org-bullets")
+
    (ov
     :fetcher file
     :path "~/ui/vendor/emacs/ov.el")

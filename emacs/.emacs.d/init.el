@@ -36,13 +36,14 @@
 
 ;; Libraries
 ;; =========
-(use-package dash      :defer t :quelpa)
-(use-package fuzzy     :defer t :quelpa)
-(use-package ov        :defer t :quelpa)
-(use-package popup     :defer t :quelpa)
-(use-package powerline :defer t :quelpa)
-(use-package spaceline :defer t :quelpa)
-(use-package s         :defer t :quelpa)
+(use-package dash        :defer t :quelpa)
+(use-package fuzzy       :defer t :quelpa)
+(use-package org-bullets :defer t :quelpa)
+(use-package ov          :defer t :quelpa)
+(use-package popup       :defer t :quelpa)
+(use-package powerline   :defer t :quelpa)
+(use-package spaceline   :defer t :quelpa)
+(use-package s           :defer t :quelpa)
 
 ;; Built-in Minor Modes
 ;; ====================
@@ -296,6 +297,14 @@
                 filename-and-process)))
 
   (require 'my-custom-ibuffer-keybindings))
+
+(use-package org
+  :defer t
+  :init
+  (setq org-startup-indent t
+        org-hide-emphasis-markers t)
+  :config
+  (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
 
 ;; Third Party Major Modes
 ;; =======================
