@@ -304,7 +304,10 @@
   (setq org-startup-indent t
         org-hide-emphasis-markers t)
   :config
-  (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
+  (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
+  (set-face-bold 'org-level-1 t)
+  (set-face-bold 'org-level-2 t)
+  (set-face-bold 'org-level-3 t))
 
 ;; Third Party Major Modes
 ;; =======================
@@ -355,7 +358,12 @@
 ;;
 ;;  (require 'my-custom-magit-keybindings))
 
-;; Fonts
+;; Theme
+;; _____
+;;
+(require 'my-currently-chosen-theme)
+
+;; Faces
 ;; _____
 ;;
 (set-face-attribute 'mode-line nil :box nil)
@@ -366,9 +374,7 @@
         (set-face-attribute face nil :underline nil))
       (face-list))
 
-(add-to-list 'default-frame-alist '(font . "Input-9"))
-
-;; Theme
-;; _____
+;; Font
+;; ____
 ;;
-(require 'my-currently-chosen-theme)
+(add-to-list 'default-frame-alist '(font . "Input-9"))
