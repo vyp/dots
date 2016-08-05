@@ -65,6 +65,10 @@ takes a second \\[keyboard-quit] to abort the minibuffer."
   (interactive)
   (evil-yank (point) (point-at-eol)))
 
+(define-key evil-motion-state-map "+" 'text-scale-increase)
+(define-key evil-normal-state-map "+" 'text-scale-increase)
+(define-key evil-motion-state-map "-" 'text-scale-decrease)
+(define-key evil-normal-state-map "-" 'text-scale-decrease)
 (define-key evil-motion-state-map "'" 'evil-ex)
 (define-key evil-normal-state-map "'" 'evil-ex)
 (define-key evil-visual-state-map "'" 'evil-ex)
