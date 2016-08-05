@@ -9,21 +9,13 @@
 # Emacs
 
 - Behaviour.
-    - Indent by 2 spaces instead of 4 for shell-script-mode.
-    - Fix tab keybinding for evil-insert-state.
-    - Anzu and evil-anzu.
-    - Check out https://github.com/mrkkrp/vimish-fold.
+    - Check out https://github.com/mrkkrp/vimish-fold
     - Expand region.
     - Emmet.
-    - Flycheck.
-    - Deft.
-    - Paredit.
-    - Smartparens and evil-smartparens.
-    - Multiple cursors.
+    - lispyville.
     - Highlight trailing newlines.
     - Highlight TODOs.
     - Transposing (including words).
-    - Javascript mode 2 space indentation instead of 4 space.
     - wellle/targets.vim ?
 
 - Keybindings.
@@ -32,16 +24,12 @@
       buffers.
 
 - Appearance.
-    - indicate-buffer-boundaries.
-    - Report company mode popup bug on right window edge?
-    - Disable fill column indicator in magit mode buffers?
-    - Remove right fringe in pdf-view-mode.
-    - Statusbar colors and customisation.
-        - Smart mode line?
+    - Total number of lines in mode line.
+    - Anzu and evil-anzu.
 
 - Special.
-    - Magit.
     - Filesystem navigation, opening files, managing buffers etc.
+    - Magit.
     - Ido.
     - Helm.
     - Terminal/eshell/zsh.
@@ -66,14 +54,6 @@
     - remove coloured backgrounds from different status bar types, and make them
       coloured foregrounds instead.
 - pentadactyl.
-
-## Redbelly
-
-- probably everything except emacs.
-
-# Vim
-
-- simplify 'centeronsearch' part?
 
 # Other
 
