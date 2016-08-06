@@ -301,7 +301,8 @@
 (use-package org
   :defer t
   :init
-  (setq org-catch-invisible-edits 'smart
+  (setq org-adapt-indentation t
+        org-catch-invisible-edits 'smart
         org-ellipsis "…"
         org-hide-emphasis-markers t
         org-startup-indent t)
