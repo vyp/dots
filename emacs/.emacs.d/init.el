@@ -311,7 +311,9 @@
   (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
   (set-face-bold 'org-level-1 t)
   (set-face-bold 'org-level-2 t)
-  (set-face-bold 'org-level-3 t))
+  (set-face-bold 'org-level-3 t)
+  (evil-define-key 'normal org-mode-map
+    (kbd "SPC tl") 'org-toggle-link-display))
 
 ;; Third Party Major Modes
 ;; =======================
