@@ -17,7 +17,6 @@
 - wellle/targets.vim
 
 *** Org
-- Line height.
 - Enable auto-complete.
 - Arrow-less keybindings for list/header manipulation/movement.
 - 'Focus' the outline/folding (around point).

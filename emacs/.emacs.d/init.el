@@ -335,8 +335,9 @@ using `org-meta-return' though."
    (lambda ()
      (progn
        (turn-off-fci-mode)
-       (text-scale-increase 1)
-       (org-bullets-mode 1))))
+       (setq-local line-spacing '0.2)
+       (org-bullets-mode 1)
+       (text-scale-increase 1))))
   (add-hook 'post-command-hook 'my-org-set-list-item-p-fill-prefix)
   (evil-define-key 'normal org-mode-map
     (kbd "SPC tl") 'org-toggle-link-display)
