@@ -17,7 +17,6 @@
 - wellle/targets.vim
 
 *** Org
-- Variable pitch font and increased font size.
 - Line height.
 - Enable auto-complete.
 - Arrow-less keybindings for list/header manipulation/movement.

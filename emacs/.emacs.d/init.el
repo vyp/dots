@@ -335,6 +335,7 @@ using `org-meta-return' though."
    (lambda ()
      (progn
        (turn-off-fci-mode)
+       (text-scale-increase 1)
        (org-bullets-mode 1))))
   (add-hook 'post-command-hook 'my-org-set-list-item-p-fill-prefix)
   (evil-define-key 'normal org-mode-map
