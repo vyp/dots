@@ -101,6 +101,7 @@ takes a second \\[keyboard-quit] to abort the minibuffer."
 (define-key evil-normal-state-map (kbd "SPC SPC") 'recenter-top-bottom)
 (define-key evil-motion-state-map (kbd "SPC ei")  'my-evil-edit-dot-emacs)
 (define-key evil-normal-state-map (kbd "SPC ei")  'my-evil-edit-dot-emacs)
+(define-key evil-normal-state-map (kbd "SPC ds")  'just-one-space)
 (define-key evil-normal-state-map (kbd "SPC f")   'fill-paragraph)
 (define-key evil-motion-state-map (kbd "SPC h")   'help)
 (define-key evil-normal-state-map (kbd "SPC h")   'help)
