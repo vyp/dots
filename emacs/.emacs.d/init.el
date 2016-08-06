@@ -328,7 +328,12 @@ using `org-meta-return' though."
             (setq-local fill-prefix nil))
           (setq-local my-org-list-item-fill-last-line-number ln)))))
   :config
-  (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
+  (add-hook
+   'org-mode-hook
+   (lambda ()
+     (progn
+       (turn-off-fci-mode)
+       (org-bullets-mode 1))))
   (add-hook 'post-command-hook 'my-org-set-list-item-p-fill-prefix)
   (evil-define-key 'normal org-mode-map
     (kbd "SPC tl") 'org-toggle-link-display)

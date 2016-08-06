@@ -18,7 +18,6 @@
 
 *** Org
 - Change header bullets order.
-- Remove fci-mode.
 - How much to fold on startup.
 - Variable pitch font and increased font size.
 - Enable auto-complete.
