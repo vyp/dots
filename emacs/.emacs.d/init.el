@@ -71,13 +71,7 @@
         kept-new-versions      6
         kept-old-versions      2
         require-final-newline  t
-        version-control        t)
-
-  ;; From `buffer.c'.
-  (setq-default auto-fill-function 'do-auto-fill)
-  (setq-default tab-width 2)
-  ;; From `indent.c'.
-  (setq-default indent-tabs-mode nil))
+        version-control        t))
 
 (use-package frame
   :demand t
@@ -100,6 +94,12 @@
 (use-package simple
   :demand t
   :init
+  ;; (setq fill-indent-according-to-mode t)
+  ;; From `buffer.c'.
+  (setq-default auto-fill-function 'do-auto-fill)
+  (setq-default tab-width 2)
+  ;; From `indent.c'.
+  (setq-default indent-tabs-mode nil)
   ;; Enables `gj` and `gk` and co to move up and down visually wrapped lines.
   (setq line-move-visual nil)
   ;; These get disabled for whatever reason.
