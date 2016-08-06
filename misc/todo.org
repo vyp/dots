@@ -17,7 +17,6 @@
 - wellle/targets.vim
 
 *** Org
-- Change fill-prefix if in item.
 - Change header bullets order.
 - Remove fci-mode.
 - How much to fold on startup.

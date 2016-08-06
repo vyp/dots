@@ -307,13 +307,34 @@
         org-hide-emphasis-markers t
         org-src-fontify-natively t
         org-startup-indented t)
+  :preface
+  (defvar-local my-org-list-item-fill-last-line-number 0)
+
+  (defun my-org-set-list-item-p-fill-prefix ()
+    "Sets fill-prefix accordingly so that auto-fill properly
+hanging indents long list lines.
+
+Will not work when typing in a new list item from scratch without
+using `org-meta-return' though."
+    (when (eq 'org-mode major-mode)
+      (let ((ln (line-number-at-pos)))
+        (when (not (eq my-org-list-item-fill-last-line-number ln))
+          (if (org-at-item-p)
+              (let ((l (thing-at-point 'line t)))
+                (string-match org-list-full-item-re l)
+                (setq-local
+                 fill-prefix
+                 (make-string (length (match-string-no-properties 0 l)) ?\s)))
+            (setq-local fill-prefix nil))
+          (setq-local my-org-list-item-fill-last-line-number ln)))))
   :config
   (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
+  (add-hook 'post-command-hook 'my-org-set-list-item-p-fill-prefix)
+  (evil-define-key 'normal org-mode-map
+    (kbd "SPC tl") 'org-toggle-link-display)
   (set-face-bold 'org-level-1 t)
   (set-face-bold 'org-level-2 t)
-  (set-face-bold 'org-level-3 t)
-  (evil-define-key 'normal org-mode-map
-    (kbd "SPC tl") 'org-toggle-link-display))
+  (set-face-bold 'org-level-3 t))
 
 ;; Third Party Major Modes
 ;; =======================
