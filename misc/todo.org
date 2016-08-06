@@ -18,8 +18,8 @@
 
 *** Org
 - Change header bullets order.
-- How much to fold on startup.
 - Variable pitch font and increased font size.
+- Line height.
 - Enable auto-complete.
 - Arrow-less keybindings for list/header manipulation/movement.
 - 'Focus' the outline/folding (around point).

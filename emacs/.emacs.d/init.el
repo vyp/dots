@@ -306,6 +306,7 @@
         org-ellipsis "…"
         org-hide-emphasis-markers t
         org-src-fontify-natively t
+        org-startup-folded 'nofold
         org-startup-indented t)
   :preface
   (defvar-local my-org-list-item-fill-last-line-number 0)
