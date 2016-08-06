@@ -301,8 +301,9 @@
 (use-package org
   :defer t
   :init
-  (setq org-startup-indent t
-        org-hide-emphasis-markers t)
+  (setq org-catch-invisible-edits 'smart
+        org-hide-emphasis-markers t
+        org-startup-indent t)
   :config
   (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
   (set-face-bold 'org-level-1 t)
