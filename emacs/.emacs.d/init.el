@@ -302,6 +302,7 @@
   :defer t
   :init
   (setq org-catch-invisible-edits 'smart
+        org-ellipsis "…"
         org-hide-emphasis-markers t
         org-startup-indent t)
   :config
