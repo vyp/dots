@@ -305,7 +305,7 @@
         org-catch-invisible-edits 'smart
         org-ellipsis "…"
         org-hide-emphasis-markers t
-        org-startup-indent t)
+        org-startup-indented t)
   :config
   (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
   (set-face-bold 'org-level-1 t)
