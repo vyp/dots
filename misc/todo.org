@@ -17,7 +17,6 @@
 - wellle/targets.vim
 
 *** Org
-- Change header bullets order.
 - Variable pitch font and increased font size.
 - Line height.
 - Enable auto-complete.

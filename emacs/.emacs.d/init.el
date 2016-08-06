@@ -302,6 +302,7 @@
   :defer t
   :init
   (setq org-adapt-indentation t
+        org-bullets-bullet-list '("▣" "◉" "✠" "➤")
         org-catch-invisible-edits 'smart
         org-ellipsis "…"
         org-hide-emphasis-markers t
