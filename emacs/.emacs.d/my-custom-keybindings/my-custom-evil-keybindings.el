@@ -65,6 +65,14 @@ takes a second \\[keyboard-quit] to abort the minibuffer."
   (interactive)
   (evil-yank (point) (point-at-eol)))
 
+(defun my-insert-two-spaces ()
+  (interactive)
+  (insert "  "))
+
+(defun my-insert-one-space ()
+  (interactive)
+  (insert " "))
+
 (define-key evil-motion-state-map "+" 'text-scale-increase)
 (define-key evil-normal-state-map "+" 'text-scale-increase)
 (define-key evil-motion-state-map "-" 'text-scale-decrease)
@@ -75,6 +83,10 @@ takes a second \\[keyboard-quit] to abort the minibuffer."
 (define-key evil-normal-state-map "gs" 'evil-write)
 (define-key evil-motion-state-map "Y"  'my-evil-yank-to-end-of-line)
 (define-key evil-normal-state-map "Y"  'my-evil-yank-to-end-of-line)
+(define-key evil-normal-state-map (kbd "C-SPC") 'my-insert-two-spaces)
+(define-key evil-insert-state-map (kbd "C-SPC") 'my-insert-two-spaces)
+(define-key evil-normal-state-map (kbd "M-SPC") 'my-insert-one-space)
+(define-key evil-insert-state-map (kbd "M-SPC") 'my-insert-one-space)
 
 ;; Leader layer.
 (defun my-evil-edit-dot-emacs ()
