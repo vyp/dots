@@ -1,0 +1,5 @@
+* Goals
+
+1. [[https://www.gnu.org/philosophy/free-sw.html][*Free Software*]]
+2. *Vim-like Keybindings*
+3. *Declarative Configuration*
