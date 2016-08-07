@@ -19,8 +19,6 @@
 *** Org
 - Arrow-less keybindings for list/header manipulation/movement.
 - 'Focus' the outline/folding (around point).
-- "M-o" and "M-O" keybindings for entering new heading/list item.
-- bind "S-RET" to "M-RET" and bind "SPC tc" to =org-table-copy-down=.
 - Preview images inline.
 - Use xelatex in latex/pdf export instead of pdflatex.
 

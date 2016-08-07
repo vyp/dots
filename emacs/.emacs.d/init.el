@@ -332,6 +332,7 @@
         org-src-fontify-natively t
         org-startup-folded 'nofold
         org-startup-indented t)
+
   :preface
   (defvar-local my-org-list-item-fill-last-line-number 0)
 
@@ -352,6 +353,29 @@ using `org-meta-return' though."
                  (make-string (length (match-string-no-properties 0 l)) ?\s)))
             (setq-local fill-prefix nil))
           (setq-local my-org-list-item-fill-last-line-number ln)))))
+
+  (defun my-org-evil-meta-return-above ()
+    (interactive)
+    (if (org-at-heading-or-item-p)
+        (progn
+          (evil-insert-line 0)
+          (org-meta-return))
+      (call-interactively 'org-table-copy-down)))
+
+  (defun my-org-evil-meta-return-below ()
+    (interactive)
+    (if (org-at-heading-or-item-p)
+        (progn
+          (evil-append-line 0)
+          (org-meta-return))
+      (evil-ret)))
+
+  (defun my-org-evil-insert-heading-respect-content ()
+    (interactive)
+    (evil-end-of-line)
+    (org-insert-heading-respect-content)
+    (evil-append 0))
+
   :config
   (add-hook
    'org-mode-hook
@@ -362,7 +386,12 @@ using `org-meta-return' though."
        (org-bullets-mode 1)
        (text-scale-increase 1))))
   (add-hook 'post-command-hook 'my-org-set-list-item-p-fill-prefix)
+  (evil-define-key 'insert org-mode-map
+    (kbd "<S-return>") 'org-meta-return)
   (evil-define-key 'normal org-mode-map
+    (kbd "<return>") 'my-org-evil-meta-return-below
+    (kbd "<C-return>") 'my-org-evil-insert-heading-respect-content
+    (kbd "<S-return>") 'my-org-evil-meta-return-above
     (kbd "SPC tl") 'org-toggle-link-display))
 
 ;; Third Party Major Modes
