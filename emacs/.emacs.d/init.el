@@ -407,8 +407,12 @@ using `org-meta-return' though."
        (setq-local line-spacing '0.2)
        (setq-local paragraph-start "\f\\|[ 	]*$")
        (setq-local paragraph-separate "[ 	\f]*$")
-       (org-bullets-mode 1)
-       (text-scale-increase 1))))
+       (face-remap-add-relative 'default :height 1.2)
+       (face-remap-add-relative 'org-document-title :height 1.2)
+       (face-remap-add-relative 'org-level-1 :height 1.15)
+       (face-remap-add-relative 'org-level-2 :height 1.1)
+       (face-remap-add-relative 'org-level-3 :height 1.05)
+       (org-bullets-mode 1))))
   (add-hook 'post-command-hook 'my-org-set-list-item-p-fill-prefix)
 
   ;; Prettier unordered list item bullets.
