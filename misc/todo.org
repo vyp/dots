@@ -25,7 +25,7 @@
 - Use xelatex in latex/pdf export instead of pdflatex.
 
 ** Keybindings
-- Allow `gg` in ibuffer by removing `g` for refresh.
+- Allow =gg= in ibuffer by removing =g= for refresh.
 - "Completion List", "Packages", "Compile-log", "Messages", "Backtrace" buffers.
 
 ** Appearance
