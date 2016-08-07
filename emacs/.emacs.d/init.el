@@ -384,6 +384,13 @@ using `org-meta-return' though."
   (evil-define-key 'insert org-mode-map
     (kbd "<S-return>") 'org-meta-return)
   (evil-define-key 'normal org-mode-map
+    (kbd "K") 'org-shiftright
+    (kbd "M-h") 'org-metaleft
+    (kbd "M-j") 'org-metadown
+    (kbd "M-k") 'org-metaup
+    (kbd "M-l") 'org-metaright
+    (kbd "M-H") 'org-shiftmetaleft
+    (kbd "M-L") 'org-shiftmetaright
     (kbd "<return>") 'my-org-evil-meta-return-below
     (kbd "<C-return>") 'my-org-evil-insert-heading-respect-content
     (kbd "<S-return>") 'my-org-evil-meta-return-above

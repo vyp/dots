@@ -17,7 +17,6 @@
 - Highlight TODOs.
 
 *** Org
-- Arrow-less keybindings for list/header manipulation/movement.
 - 'Focus' the outline/folding (around point).
 - Preview images inline.
 - Use xelatex in latex/pdf export instead of pdflatex.
