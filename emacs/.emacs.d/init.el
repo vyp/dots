@@ -393,6 +393,8 @@ using `org-meta-return' though."
      (progn
        (turn-off-fci-mode)
        (setq-local line-spacing '0.2)
+       (setq-local paragraph-start "\f\\|[ 	]*$")
+       (setq-local paragraph-separate "[ 	\f]*$")
        (org-bullets-mode 1)
        (text-scale-increase 1))))
   (add-hook 'post-command-hook 'my-org-set-list-item-p-fill-prefix)
