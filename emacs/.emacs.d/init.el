@@ -145,7 +145,8 @@
     (evil-previous-line))
 
   (advice-add 'evil-command-window-ex :after #'my-previous-line-advice)
-  (advice-add 'evil-command-window-search-forward :after #'my-previous-line-advice)
+  (advice-add
+   'evil-command-window-search-forward :after #'my-previous-line-advice)
 
   (require 'my-custom-evil-keybindings)
   (evil-mode t))
