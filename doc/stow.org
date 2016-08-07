@@ -35,9 +35,9 @@ directory if you wanted to.
 
 * Uninstallation
 
-#+BEGIN_SRC shell-script
+#+begin_src shell-script
 $ stow -D <directory>
-#+END_SRC
+#+end_src
 
 * Ignoring
 
