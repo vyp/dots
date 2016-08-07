@@ -329,6 +329,7 @@
         org-catch-invisible-edits 'smart
         org-ellipsis "…"
         org-hide-emphasis-markers t
+        org-list-use-circular-motion t
         org-src-fontify-natively t
         org-startup-folded 'nofold
         org-startup-indented t)
