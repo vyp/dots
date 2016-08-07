@@ -356,19 +356,13 @@ using `org-meta-return' though."
 
   (defun my-org-evil-meta-return-above ()
     (interactive)
-    (if (org-at-heading-or-item-p)
-        (progn
-          (evil-insert-line 0)
-          (org-meta-return))
-      (call-interactively 'org-table-copy-down)))
+    (evil-insert-line 0)
+    (org-meta-return))
 
   (defun my-org-evil-meta-return-below ()
     (interactive)
-    (if (org-at-heading-or-item-p)
-        (progn
-          (evil-append-line 0)
-          (org-meta-return))
-      (evil-ret)))
+    (evil-append-line 0)
+    (org-meta-return))
 
   (defun my-org-evil-insert-heading-respect-content ()
     (interactive)
