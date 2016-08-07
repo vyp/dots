@@ -415,6 +415,8 @@ using `org-meta-return' though."
     (kbd "<return>") 'my-org-evil-meta-return-below
     (kbd "<C-return>") 'my-org-evil-insert-heading-respect-content
     (kbd "<S-return>") 'my-org-evil-meta-return-above
+    (kbd "SPC co") 'org-content
+    (kbd "SPC cl") 'show-all
     (kbd "SPC tl") 'org-toggle-link-display))
 
 ;; Third Party Major Modes
