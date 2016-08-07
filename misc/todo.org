@@ -7,20 +7,20 @@
 
 * Emacs
 ** Behaviour
-- Check out [[https://github.com/mrkkrp/vimish-fold]]
-- Expand region.
-- Emmet.
 - lispyville.
-- Highlight trailing newlines.
-- Highlight TODOs.
+- embrace.el and evil-embrace.el
+- general.el
 - Transposing (including words).
-- wellle/targets.vim
+- Expand region.
+- Check out [[https://github.com/mrkkrp/vimish-fold]]
+- Emmet.
+- Highlight TODOs.
 
 *** Org
-- Enable auto-complete.
 - Arrow-less keybindings for list/header manipulation/movement.
 - 'Focus' the outline/folding (around point).
 - "M-o" and "M-O" keybindings for entering new heading/list item.
+- bind "S-RET" to "M-RET" and bind "SPC tc" to =org-table-copy-down=.
 - Preview images inline.
 - Use xelatex in latex/pdf export instead of pdflatex.
 
@@ -31,6 +31,8 @@
 ** Appearance
 - Total number of lines in mode line.
 - Anzu and evil-anzu.
+- Switch theme keybinding/function.
+  - Use sanityinc's elisp to fix fci-mode colour when switching.
 
 ** Special
 - Filesystem navigation, opening files, managing buffers etc.

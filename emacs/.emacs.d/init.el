@@ -187,6 +187,7 @@
   :config
   (add-to-list
    'ac-dictionary-directories "~/ui/vendor/emacs/auto-complete/dict")
+  (add-to-list 'ac-modes 'org-mode)
   (ac-config-default)
   (define-key ac-completing-map "\r" nil)
   (define-key ac-menu-map "\r" nil)
