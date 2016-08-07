@@ -393,8 +393,16 @@ using `org-meta-return' though."
        (org-bullets-mode 1)
        (text-scale-increase 1))))
   (add-hook 'post-command-hook 'my-org-set-list-item-p-fill-prefix)
+
   (evil-define-key 'insert org-mode-map
+    (kbd "M-h") 'org-metaleft
+    (kbd "M-j") 'org-metadown
+    (kbd "M-k") 'org-metaup
+    (kbd "M-l") 'org-metaright
+    (kbd "M-H") 'org-shiftmetaleft
+    (kbd "M-L") 'org-shiftmetaright
     (kbd "<S-return>") 'org-meta-return)
+
   (evil-define-key 'normal org-mode-map
     (kbd "co") 'fi/org-collapse
     (kbd "K") 'org-shiftright
