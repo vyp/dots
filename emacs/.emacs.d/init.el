@@ -371,6 +371,18 @@ using `org-meta-return' though."
     (org-insert-heading-respect-content)
     (evil-append 0))
 
+  (defun fi/org-collapse ()
+    "'Focus' current level/subtree."
+    (interactive)
+    (hide-other)
+    (save-excursion
+      (while (progn
+               (show-entry)
+               (show-branches)
+               (condition-case nil
+                   (outline-up-heading 1)
+                 (error nil))))))
+
   :config
   (add-hook
    'org-mode-hook
@@ -384,6 +396,7 @@ using `org-meta-return' though."
   (evil-define-key 'insert org-mode-map
     (kbd "<S-return>") 'org-meta-return)
   (evil-define-key 'normal org-mode-map
+    (kbd "co") 'fi/org-collapse
     (kbd "K") 'org-shiftright
     (kbd "M-h") 'org-metaleft
     (kbd "M-j") 'org-metadown
