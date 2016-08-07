@@ -399,6 +399,22 @@ using `org-meta-return' though."
        (text-scale-increase 1))))
   (add-hook 'post-command-hook 'my-org-set-list-item-p-fill-prefix)
 
+  ;; Prettier unordered list item bullets.
+  (font-lock-add-keywords
+   'org-mode
+   '(("^ *\\([-]\\) "
+      (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "•"))))))
+
+  (font-lock-add-keywords
+   'org-mode
+   '(("^ *\\([+]\\) "
+      (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "◦"))))))
+
+  (font-lock-add-keywords
+   'org-mode
+   '(("^ +\\([*]\\) "
+      (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "∙"))))))
+
   (evil-define-key 'insert org-mode-map
     (kbd "M-h") 'org-metaleft
     (kbd "M-j") 'org-metadown
