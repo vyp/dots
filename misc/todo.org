@@ -29,6 +29,8 @@
 - Anzu and evil-anzu.
 - Switch theme keybinding/function.
   - Use sanityinc's elisp to fix fci-mode colour when switching.
+  - Also to be able to put all elisp in one file, select initial theme by
+    environment variable rather than file.
 
 ** Special
 - Filesystem navigation, opening files, managing buffers etc.
