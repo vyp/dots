@@ -185,6 +185,7 @@
         ac-show-menu-immediately-on-auto-complete t
         ac-use-menu-map t
         ac-use-quick-help nil)
+
   :preface
   ;; Disable fci-mode during auto-complete popups to stop buggy display of
   ;; popups.
@@ -206,11 +207,13 @@
                (null popup-instances))
       (setq sanityinc/fci-mode-suppressed nil)
       (turn-on-fci-mode)))
+
   :config
   (add-to-list
    'ac-dictionary-directories "~/ui/vendor/emacs/auto-complete/dict")
   (add-to-list 'ac-modes 'org-mode)
   (ac-config-default)
+
   (define-key ac-completing-map "\r" nil)
   (define-key ac-menu-map "\r" nil)
   (define-key ac-menu-map (kbd "S-<iso-lefttab>") 'ac-previous)
