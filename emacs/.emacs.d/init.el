@@ -387,6 +387,16 @@ using `org-meta-return' though."
                    (outline-up-heading 1)
                  (error nil))))))
 
+  (defun my-outline-next-heading-collapse ()
+    (interactive)
+    (outline-next-heading)
+    (fi/org-collapse))
+
+  (defun my-outline-previous-heading-collapse ()
+    (interactive)
+    (outline-previous-heading)
+    (fi/org-collapse))
+
   :config
   (add-hook
    'org-mode-hook
@@ -434,6 +444,10 @@ using `org-meta-return' though."
     (kbd "M-l") 'org-metaright
     (kbd "M-H") 'org-shiftmetaleft
     (kbd "M-L") 'org-shiftmetaright
+    (kbd "M-i") 'outline-next-heading
+    (kbd "M-o") 'outline-previous-heading
+    (kbd "M-I") 'my-outline-next-heading-collapse
+    (kbd "M-O") 'my-outline-previous-heading-collapse
     (kbd "<return>") 'my-org-evil-meta-return-below
     (kbd "<C-return>") 'my-org-evil-insert-heading-respect-content
     (kbd "<S-return>") 'my-org-evil-meta-return-above
