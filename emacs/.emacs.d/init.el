@@ -341,10 +341,7 @@ using `org-meta-return' though."
        (text-scale-increase 1))))
   (add-hook 'post-command-hook 'my-org-set-list-item-p-fill-prefix)
   (evil-define-key 'normal org-mode-map
-    (kbd "SPC tl") 'org-toggle-link-display)
-  (set-face-bold 'org-level-1 t)
-  (set-face-bold 'org-level-2 t)
-  (set-face-bold 'org-level-3 t))
+    (kbd "SPC tl") 'org-toggle-link-display))
 
 ;; Third Party Major Modes
 ;; =======================
