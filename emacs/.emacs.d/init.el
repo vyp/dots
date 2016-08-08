@@ -458,7 +458,6 @@ using `org-meta-return' though."
     (kbd "<S-return>") 'org-meta-return)
 
   (evil-define-key 'normal org-mode-map
-    (kbd "co") 'fi/org-collapse
     (kbd "K") 'org-shiftright
     (kbd "M-h") 'org-metaleft
     (kbd "M-j") 'org-metadown
@@ -473,8 +472,9 @@ using `org-meta-return' though."
     (kbd "<return>") 'my-org-evil-meta-return-below
     (kbd "<C-return>") 'my-org-evil-insert-heading-respect-content
     (kbd "<S-return>") 'my-org-evil-meta-return-above
-    (kbd "SPC co") 'org-content
-    (kbd "SPC cl") 'show-all
+    (kbd "SPC cc") 'org-content
+    (kbd "SPC co") 'fi/org-collapse
+    (kbd "SPC cx") 'show-all
     (kbd "SPC tl") 'org-toggle-link-display))
 
 ;; Third Party Major Modes
