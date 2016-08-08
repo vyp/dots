@@ -425,9 +425,8 @@ using `org-meta-return' though."
        (setq-local paragraph-separate "[ 	\f]*$")
        (face-remap-add-relative 'default :height 1.2)
        (face-remap-add-relative 'org-document-title :height 1.2)
-       (face-remap-add-relative 'org-level-1 :height 1.15)
-       (face-remap-add-relative 'org-level-2 :height 1.1)
-       (face-remap-add-relative 'org-level-3 :height 1.05)
+       (face-remap-add-relative 'org-level-1 :height 1.1)
+       (face-remap-add-relative 'org-level-2 :height 1.05)
        (org-bullets-mode 1))))
   (add-hook 'post-command-hook 'my-org-set-list-item-p-fill-prefix)
 
