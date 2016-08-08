@@ -93,7 +93,7 @@
   :init
   (setq blink-cursor-mode nil)
   ;; Actually part of window.el but window.el does not provide 'window..
-  (setq recenter-positions '(0.25)))
+  (setq recenter-positions '(0 0.25 0.5 0.75)))
 
 (use-package fringe
   :demand t :config (fringe-mode '(0 . nil)))

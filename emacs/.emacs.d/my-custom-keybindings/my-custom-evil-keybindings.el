@@ -98,11 +98,17 @@ takes a second \\[keyboard-quit] to abort the minibuffer."
   (interactive)
   (just-one-space 0))
 
+(defun my-recenter-quarter-ish ()
+  (interactive)
+  (recenter 15))
+
 ;; Required for the following motion state maps that start with space.
 (define-key evil-motion-state-map " " nil)
 
-(define-key evil-motion-state-map (kbd "SPC SPC") 'recenter-top-bottom)
-(define-key evil-normal-state-map (kbd "SPC SPC") 'recenter-top-bottom)
+(define-key evil-motion-state-map (kbd "U") 'recenter-top-bottom)
+(define-key evil-normal-state-map (kbd "U") 'recenter-top-bottom)
+(define-key evil-motion-state-map (kbd "SPC SPC") 'my-recenter-quarter-ish)
+(define-key evil-normal-state-map (kbd "SPC SPC") 'my-recenter-quarter-ish)
 (define-key evil-motion-state-map (kbd "SPC ei")  'my-evil-edit-dot-emacs)
 (define-key evil-normal-state-map (kbd "SPC ei")  'my-evil-edit-dot-emacs)
 (define-key evil-normal-state-map (kbd "SPC ds")  'just-one-space)
