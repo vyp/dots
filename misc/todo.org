@@ -18,6 +18,7 @@
 
 *** Org
 - Preview images inline.
+- Learn how to use org tables.
 - Use xelatex in latex/pdf export instead of pdflatex.
 
 ** Keybindings

@@ -94,6 +94,10 @@ takes a second \\[keyboard-quit] to abort the minibuffer."
   (interactive)
   (evil-edit "~/ui/emacs/.emacs.d/init.el"))
 
+(defun my-delete-whitespace-around-point ()
+  (interactive)
+  (just-one-space 0))
+
 ;; Required for the following motion state maps that start with space.
 (define-key evil-motion-state-map " " nil)
 
@@ -102,6 +106,8 @@ takes a second \\[keyboard-quit] to abort the minibuffer."
 (define-key evil-motion-state-map (kbd "SPC ei")  'my-evil-edit-dot-emacs)
 (define-key evil-normal-state-map (kbd "SPC ei")  'my-evil-edit-dot-emacs)
 (define-key evil-normal-state-map (kbd "SPC ds")  'just-one-space)
+(define-key evil-normal-state-map
+  (kbd "SPC dw") 'my-delete-whitespace-around-point)
 (define-key evil-normal-state-map (kbd "SPC f")   'fill-paragraph)
 (define-key evil-motion-state-map (kbd "SPC h")   'help)
 (define-key evil-normal-state-map (kbd "SPC h")   'help)
