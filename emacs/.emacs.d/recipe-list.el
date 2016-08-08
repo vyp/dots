@@ -57,10 +57,10 @@
     :fetcher file
     :path "~/ui/vendor/emacs/haskell-mode")
 
-   ;; (nyan-mode
-   ;;  :fetcher file
-   ;;  :files ("nyan-mode.el" "img" "mus")
-   ;;  :path "~/ui/vendor/emacs/nyan-mode")
+   (nyan-mode
+    :fetcher file
+    :files ("nyan-mode.el" "img" "mus")
+    :path "~/ui/vendor/emacs/nyan-mode")
 
    (org-bullets
     :fetcher file
@@ -87,7 +87,7 @@
    (quelpa
     :fetcher file
     :files ("quelpa.el")
-    :path "~/ui/vendor/emacs/quelpa")
+    :path "~/gh/quelpa")
 
    (quelpa-use-package
     :fetcher file

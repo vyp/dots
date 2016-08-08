@@ -1,7 +1,6 @@
 (dolist (path
          '("~/ui/emacs/.emacs.d/my-custom-keybindings"
-           "~/.emacs.d/lisp"
-           "~/ui/vendor/emacs/nyan-mode"))
+           "~/.emacs.d/lisp"))
   (add-to-list 'load-path path))
 
 ;; Packages
@@ -245,7 +244,7 @@
   (my-global-fci-mode t))
 
 (use-package nyan-mode
-  :demand t ; :quelpa
+  :demand t :quelpa
   :config (nyan-mode t))
 
 (use-package spaceline-config
