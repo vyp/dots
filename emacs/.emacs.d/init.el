@@ -347,10 +347,12 @@
         org-bullets-bullet-list '("▣" "◉" "✱" "➤")
         org-catch-invisible-edits 'smart
         org-ellipsis "↴" ; …
+        org-entities-ascii-explanatory t
         org-export-with-smart-quotes t
         org-hide-emphasis-markers t
         org-list-allow-alphabetical t
         org-list-use-circular-motion t
+        org-pretty-entities t
         org-src-fontify-natively t
         org-startup-folded 'nofold
         org-startup-indented t)
