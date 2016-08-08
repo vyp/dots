@@ -354,6 +354,7 @@
         org-list-use-circular-motion t
         org-pretty-entities t
         org-src-fontify-natively t
+        org-src-preserve-indentation t
         org-startup-folded 'nofold
         org-startup-indented t)
 
