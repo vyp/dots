@@ -73,6 +73,22 @@
         require-final-newline  t
         version-control        t))
 
+(use-package font-lock
+  :demand t
+  :init
+  ;; Fixes the following errors when using emacs daemon (being logged in
+  ;; *Messages* buffer):
+  ;;
+  ;;     Invalid face reference: font-lock-comment-delimiter-face
+  ;;     Invalid face reference: font-lock-comment-face [5 times]
+  ;;
+  (when (daemonp)
+    (global-font-lock-mode 0)
+    (add-hook 'after-make-frame-functions
+              (lambda (frame)
+                (with-selected-frame frame
+                  (global-font-lock-mode 1))))))
+
 (use-package frame
   :demand t
   :init
