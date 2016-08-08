@@ -475,6 +475,7 @@ using `org-meta-return' though."
     (kbd "SPC cc") 'org-content
     (kbd "SPC co") 'fi/org-collapse
     (kbd "SPC cx") 'show-all
+    (kbd "SPC te") 'org-toggle-pretty-entities
     (kbd "SPC tl") 'org-toggle-link-display))
 
 ;; Third Party Major Modes
