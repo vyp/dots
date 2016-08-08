@@ -346,7 +346,7 @@
   (setq org-adapt-indentation t
         org-bullets-bullet-list '("▣" "◉" "✱" "➤")
         org-catch-invisible-edits 'smart
-        org-ellipsis "…"
+        org-ellipsis "↴" ; …
         org-export-with-smart-quotes t
         org-hide-emphasis-markers t
         org-list-allow-alphabetical t
