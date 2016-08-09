@@ -356,6 +356,7 @@
         org-src-fontify-natively t
         org-src-preserve-indentation t
         org-startup-folded 'nofold
+        org-startup-with-inline-images t
         org-startup-indented t)
 
   :preface
@@ -477,6 +478,7 @@ using `org-meta-return' though."
     (kbd "SPC co") 'fi/org-collapse
     (kbd "SPC cx") 'show-all
     (kbd "SPC te") 'org-toggle-pretty-entities
+    (kbd "SPC ti") 'org-toggle-inline-images
     (kbd "SPC tl") 'org-toggle-link-display))
 
 ;; Third Party Major Modes
