@@ -350,6 +350,7 @@
         org-export-with-smart-quotes t
         org-hide-emphasis-markers t
         org-hide-leading-stars t
+        org-latex-packages-alist '(("" "grffile" t))
         org-list-allow-alphabetical t
         org-list-use-circular-motion t
         org-pretty-entities t
