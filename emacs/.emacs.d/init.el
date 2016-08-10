@@ -35,14 +35,20 @@
 
 ;; Libraries
 ;; =========
-(use-package dash        :defer t :quelpa)
-(use-package fuzzy       :defer t :quelpa)
-(use-package org-bullets :defer t :quelpa)
-(use-package ov          :defer t :quelpa)
-(use-package popup       :defer t :quelpa)
-(use-package powerline   :defer t :quelpa)
-(use-package spaceline   :defer t :quelpa)
-(use-package s           :defer t :quelpa)
+(use-package auto-complete :defer t :quelpa)
+(use-package bind-key      :defer t :quelpa)
+(use-package dash          :defer t :quelpa)
+(use-package diminish      :defer t :quelpa)
+(use-package fuzzy         :defer t :quelpa)
+(use-package goto-chg      :defer t :quelpa)
+(use-package org-bullets   :defer t :quelpa)
+(use-package ov            :defer t :quelpa)
+(use-package popup         :defer t :quelpa)
+(use-package powerline     :defer t :quelpa)
+(use-package s             :defer t :quelpa)
+(use-package undo-tree     :defer t :quelpa)
+
+(use-package spaceline :defer t :quelpa)
 
 ;; Built-in Minor Modes
 ;; ====================
@@ -96,15 +102,21 @@
   (setq recenter-positions '(0 0.25 0.5 0.75)))
 
 (use-package fringe
-  :demand t :config (fringe-mode '(0 . nil)))
+  :demand t
+  :config
+  (fringe-mode '(0 . nil)))
 
 (use-package hl-line
-  :demand t :config (global-hl-line-mode t))
+  :demand t
+  :config
+  (global-hl-line-mode t))
 
 (use-package paren
   :demand t
-  :init (setq show-paren-delay 0)
-  :config (show-paren-mode t))
+  :init
+  (setq show-paren-delay 0)
+  :config
+  (show-paren-mode t))
 
 (use-package simple
   :demand t
@@ -125,12 +137,15 @@
 
 (use-package vc-hooks
   :demand t
-  :init (setq vc-follow-symlinks t))
+  :init
+  (setq vc-follow-symlinks t))
 
 (use-package whitespace
   :demand t
-  :init (setq whitespace-style '(face empty tabs trailing))
-  :config (global-whitespace-mode t))
+  :init
+  (setq whitespace-style '(face empty tabs trailing))
+  :config
+  (global-whitespace-mode t))
 
 ;; Evil
 ;; ====
@@ -259,7 +274,8 @@
 
 (use-package yasnippet
   :disabled t :quelpa
-  :init (setq yas-snippet-dirs '("~/ui/vendor/emacs/yasnippet-snippets"))
+  :init
+  (setq yas-snippet-dirs '("~/ui/vendor/emacs/yasnippet-snippets"))
   :config
   (yas-global-mode t)
   (require 'my-custom-yasnippet-keybindings))
@@ -268,50 +284,10 @@
 ;; ====================
 (use-package erc
   :commands erc
-  :init (setq erc-header-line-format nil)
+  :init
+  (setq erc-header-line-format nil)
   :config
-  (add-hook 'erc-mode-hook (lambda () (setq-local auto-fill-function nil)))
-  ;; Michael Markert has some good urgency hint settings:
-  ;; Source: <https://github.com/cofi/dotfiles/blob/master/emacs.d/config/cofi-erc.el>
-  ;; (defun cofi/erc-find-erc-frame ()
-  ;;   (cl-find-if (p (string= (frame-parameter x 'name) "ERC")) (frame-list)))
-
-  ;; (defun cofi/erc-frame-urgency (&rest ignore)
-  ;;   (x-urgency-hint (cofi/erc-find-erc-frame) t)
-  ;;   nil)
-
-  ;; (add-hook 'erc-text-matched-hook #'cofi/erc-frame-urgency)
-
-  ;; (defun cofi/erc-urgency-on-nick ()
-  ;;   (let ((s (buffer-substring-no-properties (point-min) (point-max))))
-  ;;     (when (string-match-p (format "\\b%s\\b" (erc-current-nick)) s)
-  ;;       (cofi/erc-frame-urgency))))
-
-  ;; (setq ercn-notify-rules
-  ;;       '((current-nick . all)
-  ;;         (keyword . all)
-  ;;         (query-buffer . all)))
-
-  ;; (add-hook 'ercn-notify 'cofi/erc-frame-urgency)
-  ;; (add-hook 'erc-insert-post-hook #'cofi/erc-urgency-on-nick)
-
-  ;; TODO: Logging.
-  ;; TODO: Don't automatically scroll down on new message.
-  ;; TODO: Comment color non-messages (people joining/quiting).
-  ;; TODO: Urgency hint and highlight on nick mentions.
-  ;; TODO: Place miscellaneous functions like this as a separate library file
-  ;; that use-package loads as a library when needed.
-  ;; (defun x-urgency-hint (frame arg &optional source)
-  ;;   "Enable or disables urgency hint for the frame FRAME.
-  ;; Set ARG to non-nil to enable urgency hint, nil to disable."
-  ;;   (let* ((wm-hints (append (x-window-property
-  ;;                             "WM_HINTS" frame "WM_HINTS" source nil t) nil))
-  ;;          (flags (car wm-hints)))
-  ;;     (setcar wm-hints (if arg
-  ;;                          (logior flags #x100)
-  ;;                        (logand flags (lognot #x100))))
-  ;;     (x-change-window-property "WM_HINTS" wm-hints frame "WM_HINTS" 32 t)))
-  )
+  (add-hook 'erc-mode-hook (lambda () (setq-local auto-fill-function nil))))
 
 (use-package ibuffer
   :commands ibuffer
@@ -490,44 +466,6 @@ using `org-meta-return' though."
 (use-package rust-mode
   :defer t :quelpa
   :mode ("\\.rs\\'" . rust-mode))
-
-;; (use-package pdf-tools
-;;   :disabled t
-;;   :mode ("\\.pdf\\'" . pdf-view-mode)
-;;   :config (pdf-tools-install))
-
-;; (use-package magit
-;;  :disabled t
-;;  :quelpa
-;;  :commands magit-status
-;;
-;;  :config
-;;  ;; TODO: Change the appropriate modes to start at motion state.
-;;  (evil-set-initial-state 'magit-mode 'normal)
-;;  (evil-set-initial-state 'magit-blame-mode 'normal)
-;;  (evil-set-initial-state 'magit-diff-mode 'normal)
-;;  (evil-set-initial-state 'magit-log-mode 'normal)
-;;  (evil-set-initial-state 'magit-log-select-mode 'normal)
-;;  (evil-set-initial-state 'magit-refs-mode 'normal)
-;;  (evil-set-initial-state 'magit-status-mode 'normal)
-;;  (evil-set-initial-state 'git-commit-mode 'normal)
-;;  (evil-set-initial-state 'git-rebase-mode 'normal)
-;;  (evil-set-initial-state 'with-editor-mode 'normal)
-;;
-;;  (evil-set-initial-state 'magit-file-section 'normal)
-;;  (evil-set-initial-state 'magit-hunk-section 'normal)
-;;  (evil-set-initial-state 'magit-unstaged-section 'normal)
-;;  (evil-set-initial-state 'magit-staged-section 'normal)
-;;  (evil-set-initial-state 'magit-commit-section 'normal)
-;;  (evil-set-initial-state 'magit-module-commit-section 'normal)
-;;  (evil-set-initial-state 'magit-stashes-section 'normal)
-;;  (evil-set-initial-state 'magit-stash-section 'normal)
-;;  (evil-set-initial-state 'magit-untracked-section 'normal)
-;;  (evil-set-initial-state 'magit-branch-section 'normal)
-;;  (evil-set-initial-state 'magit-remote-section 'normal)
-;;  (evil-set-initial-state 'magit-tag-section 'normal)
-;;
-;;  (require 'my-custom-magit-keybindings))
 
 ;; Theme
 ;; _____
