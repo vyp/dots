@@ -395,7 +395,7 @@ using `org-meta-return' though."
     (org-insert-heading-respect-content)
     (evil-append 0))
 
-  (defun fi/org-collapse ()
+  (defun fi/outline-focus ()
     "'Focus' current level/subtree."
     (interactive)
     (hide-other)
@@ -410,12 +410,12 @@ using `org-meta-return' though."
   (defun my-outline-next-heading-collapse ()
     (interactive)
     (outline-next-heading)
-    (fi/org-collapse))
+    (fi/outline-focus))
 
   (defun my-outline-previous-heading-collapse ()
     (interactive)
     (outline-previous-heading)
-    (fi/org-collapse))
+    (fi/outline-focus))
 
   :config
   (add-hook
@@ -474,7 +474,7 @@ using `org-meta-return' though."
     (kbd "<C-return>") 'my-org-evil-insert-heading-respect-content
     (kbd "<S-return>") 'my-org-evil-meta-return-above
     (kbd "SPC cc") 'org-content
-    (kbd "SPC co") 'fi/org-collapse
+    (kbd "SPC co") 'fi/outline-focus
     (kbd "SPC cx") 'show-all
     (kbd "SPC te") 'org-toggle-pretty-entities
     (kbd "SPC ti") 'org-toggle-inline-images

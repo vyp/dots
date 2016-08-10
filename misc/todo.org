@@ -19,9 +19,7 @@
 - Highlight TODOs.
 
 *** Org
-- Rename =fi/org-collapse= to =fi/outline-focus=.
 - Learn how to use org tables.
-- Use xelatex in latex/pdf export instead of pdflatex.
 
 ** Keybindings
 - Allow =gg= in ibuffer by removing =g= for refresh.
