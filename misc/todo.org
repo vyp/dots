@@ -7,17 +7,19 @@
 
 * Emacs
 ** Behaviour
+- custom.el
+- aggressive indent.
+- origami.el
 - lispyville.
 - embrace.el and evil-embrace.el
 - general.el
 - Transposing (including words).
 - Expand region.
-- Check out [[https://github.com/mrkkrp/vimish-fold]]
 - Emmet.
 - Highlight TODOs.
 
 *** Org
-- Preview images inline.
+- Rename =fi/org-collapse= to =fi/outline-focus=.
 - Learn how to use org tables.
 - Use xelatex in latex/pdf export instead of pdflatex.
 

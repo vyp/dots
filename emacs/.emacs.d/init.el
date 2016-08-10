@@ -346,11 +346,9 @@
         org-bullets-bullet-list '("▣" "◉" "✱" "➤")
         org-catch-invisible-edits 'smart
         org-ellipsis "↴" ; …
-        org-entities-ascii-explanatory t
-        org-export-with-smart-quotes t
         org-hide-emphasis-markers t
         org-hide-leading-stars t
-        org-latex-packages-alist '(("" "grffile" t))
+        org-export-async-init-file (expand-file-name "~/ui/emacs/ox.el")
         org-list-allow-alphabetical t
         org-list-use-circular-motion t
         org-pretty-entities t
