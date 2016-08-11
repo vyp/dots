@@ -97,9 +97,10 @@
 (use-package frame
   :demand t
   :init
-  (setq blink-cursor-mode nil)
   ;; Actually part of window.el but window.el does not provide 'window..
-  (setq recenter-positions '(0 0.25 0.5 0.75)))
+  (setq recenter-positions '(0 0.25 0.5 0.75))
+  :config
+  (blink-cursor-mode 0))
 
 (use-package fringe
   :demand t
