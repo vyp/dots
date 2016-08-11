@@ -54,29 +54,37 @@
 ;; ====================
 (use-package avoid
   :demand t
-  :config
+  :init
   ;; Moves mouse to the bottom right corner of the emacs window.
-  (mouse-avoidance-mode 'banish)
-  (custom-set-variables
-   '(mouse-avoidance-banish-position
-     '((frame-or-window . frame)
-       (side . right)
-       (side-pos . 0)
-       (top-or-bottom . bottom)
-       (top-or-bottom-pos . 0)))))
+  (setq mouse-avoidance-banish-position
+        '((frame-or-window . frame)
+          (side . right)
+          (side-pos . 0)
+          (top-or-bottom . bottom)
+          (top-or-bottom-pos . 0)))
+  :config
+  (mouse-avoidance-mode 'banish))
+
+(use-package cus-edit
+  :demand t
+  :init
+  (setq custom-file (expand-file-name "~/ui/emacs/.emacs.d/.custom.el"))
+  :config
+  (load custom-file))
 
 (use-package files
   :demand t
   :init
-  (setq auto-save-default      nil
-        backup-directory-alist `(("." . "~/.backup"))
-        backup-by-copying      t
-        create-lockfiles       nil
-        delete-old-versions    t
-        kept-new-versions      6
-        kept-old-versions      2
-        require-final-newline  t
-        version-control        t))
+  (setq auto-save-default          nil
+        backup-directory-alist     `(("." . "~/.backup"))
+        backup-by-copying          t
+        create-lockfiles           nil
+        delete-old-versions        t
+        kept-new-versions          6
+        kept-old-versions          2
+        require-final-newline      t
+        safe-local-variable-values '((fi/org-export-to-pdf-on-save . t))
+        version-control            t))
 
 (use-package font-lock
   :demand t

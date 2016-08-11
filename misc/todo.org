@@ -7,7 +7,6 @@
 
 * Emacs
 ** Behaviour
-- custom.el
 - aggressive indent.
 - origami.el
 - lispyville.
