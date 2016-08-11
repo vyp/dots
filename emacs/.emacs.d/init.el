@@ -336,6 +336,7 @@
         org-startup-indented t)
 
   :preface
+  (defvar-local fi/org-export-to-pdf-on-save nil)
   (defvar-local my-org-list-item-fill-last-line-number 0)
 
   (defun my-org-set-list-item-p-fill-prefix ()
@@ -408,7 +409,15 @@ using `org-meta-return' though."
        (face-remap-add-relative 'org-level-1 :height 1.1)
        (face-remap-add-relative 'org-level-2 :height 1.05)
        (org-bullets-mode 1))))
+
   (add-hook 'post-command-hook 'my-org-set-list-item-p-fill-prefix)
+
+  (add-hook
+   'after-save-hook
+   (lambda ()
+     (when (and (eq 'org-mode major-mode)
+                fi/org-export-to-pdf-on-save)
+       (org-latex-export-to-pdf t))))
 
   ;; Prettier unordered list item bullets.
   (font-lock-add-keywords
