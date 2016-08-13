@@ -52,7 +52,7 @@ git clone 'https://github.com/vyp/gruvbox-emacs'
 git clone 'https://github.com/vyp/redbelly'
 
 cd $root
-./misc/dl-hg-packages
+./misc/download-mercurial-elisp-packages
 git submodule update --init --recursive
 ln -s ~/ui/vendor/vim/vim-plug/plug.vim ~/.vim/autoload/plug.vim
 xmonad --recompile

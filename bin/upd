@@ -32,17 +32,17 @@ update_log="${root}/update-log"
 third_party_packages="${root}/vendor"
 emacs_packages_dir="${third_party_packages}/emacs"
 
-dl_hg_packages="${root}/misc/dl-hg-packages"
+dl_hg_el_pkgs="${root}/misc/download-mercurial-elisp-packages"
 cd "${emacs_packages_dir}/evil"
 
 if hg incoming -q; then
   hg pull -u
   new_id="$(hg --debug id -i)"
   origin='https://bitbucket.org/lyro/evil'
-  echo '#!/usr/bin/env bash' > "$dl_hg_packages"
+  echo '#!/usr/bin/env bash' > "$dl_hg_el_pkgs"
   printf \
     "cd ${emacs_packages_dir/$HOME/\~}\nhg clone -r $new_id ${origin}\n" >> \
-    "$dl_hg_packages"
+    "$dl_hg_el_pkgs"
 fi
 
 cd "$root"
