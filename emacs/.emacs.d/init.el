@@ -106,7 +106,7 @@
   :demand t
   :init
   ;; Actually part of window.el but window.el does not provide 'window..
-  (setq recenter-positions '(0 0.25 0.5 0.75))
+  (setq recenter-positions '(0.2))
   :config
   (blink-cursor-mode 0))
 

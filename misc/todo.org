@@ -23,6 +23,7 @@
 ** Keybindings
 - Allow =gg= in ibuffer by removing =g= for refresh.
 - "Completion List", "Packages", "Compile-log", "Messages", "Backtrace" buffers.
+- Eval'ing, eval region.
 
 ** Appearance
 - Total number of lines in mode line.
