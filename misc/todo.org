@@ -1,4 +1,5 @@
 * Documentation
+
 - installation
   - installed packages
 - maintainence
@@ -7,6 +8,7 @@
 
 * Emacs
 ** Behaviour
+
 - aggressive indent.
 - origami.el
 - lispyville.
@@ -18,14 +20,17 @@
 - Highlight TODOs.
 
 *** Org
+
 - Learn how to use org tables.
 
 ** Keybindings
+
 - Allow =gg= in ibuffer by removing =g= for refresh.
 - "Completion List", "Packages", "Compile-log", "Messages", "Backtrace" buffers.
 - Eval'ing, eval region.
 
 ** Appearance
+
 - Total number of lines in mode line.
 - Anzu and evil-anzu.
 - Switch theme keybinding/function.
@@ -34,6 +39,7 @@
     environment variable rather than file.
 
 ** Special
+
 - Filesystem navigation, opening files, managing buffers etc.
 - Magit.
 - Ido.
@@ -49,6 +55,7 @@
 
 * Themes
 ** Gruvbox-light
+
 - *qutebrowser*
   - move qutebrowser theme to themes directory => Makefile.
     - this can probably only happen after
@@ -57,9 +64,9 @@
       [colors] section will be re-added after every update anyway.
   - remove coloured backgrounds from different status bar types, and make
     them coloured foregrounds instead.
-- *pentadactyl*
 
 * Other
+
 - use environment variables for theme settings, as much as possible.
   - xmonad and the panel's settings have gruvbox-light theme settings
     hardcoded into them.
