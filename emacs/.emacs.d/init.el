@@ -10,6 +10,14 @@
       quelpa-update-melpa-p nil
       quelpa-upgrade-p t)
 
+;; Prevent quelpa from cloning melpa.
+(let* ((quelpa-melpa-dir (expand-file-name "~/.emacs.d/quelpa/melpa"))
+      (quelpa-melpa-git-location (expand-file-name ".git" quelpa-melpa-dir)))
+  (unless (file-exists-p quelpa-melpa-git-location)
+    (make-directory quelpa-melpa-dir t)
+    ;; Create empty file instead of empty directory because it seems 'cleaner'.
+    (write-region "" nil quelpa-melpa-git-location)))
+
 (require 'package)
 (package-initialize)
 
