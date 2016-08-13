@@ -50,7 +50,7 @@ alias cpr='cp -r'
 # `nl` apparently more standard than `cat -n`.
 alias ds='dirs -p | tail -n +2 | nl'
 alias dt='dirs -c'
-alias e='emacsclient -c'
+alias e='emacsclient -c; [[ $? -eq 1 ]] && emacs --daemon'
 alias er='emacsclient -e "(kill-emacs)"; emacs --daemon'
 alias et='emacsclient'
 alias f='file'

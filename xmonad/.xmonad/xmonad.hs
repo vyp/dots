@@ -28,7 +28,7 @@ myKeys c = mkKeymap c $
     , ("M-x",                     kill)
     , ("M-r",                     sendMessage NextLayout)
     , ("M-C-r",                   setLayout $ XMonad.layoutHook c)
-    , ("M-e",                     spawn "emacsclient -c")
+    , ("M-e",                     spawn "emacsclient -c --alternate-editor=''")
     , ("M-f",                     sendMessage $ Toggle NBFULL)
     , ("M-m",                     windows W.focusMaster)
     , ("M-S-m",                   windows W.swapMaster)

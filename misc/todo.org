@@ -77,3 +77,4 @@
   located in: [[http://stackoverflow.com/a/246128/4093264]] ?
   - OR, use environment variables instead ??
 - pandoc and latex templates.
+- fzf looks very useful.
