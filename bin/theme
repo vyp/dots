@@ -3,7 +3,7 @@
 cd ~/ui
 
 if [[ $# -eq 0 ]]; then
-  echo 'Usage: set-theme theme'
+  echo 'Usage: theme <theme>'
   exit 1
 elif [[ -d "./themes/$1" ]]; then
   stow --override='.*' -t ~ -d themes "$1"

@@ -71,7 +71,6 @@
 
 * Other
 
-- Rename =set-theme= and =set-font= scripts to =theme= and =font= respectively.
 - Rename =my-*= variables with =fi/= prefix instead.
 - use environment variables for theme settings, as much as possible.
   - xmonad and the panel's settings have gruvbox-light theme settings

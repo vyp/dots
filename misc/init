@@ -25,8 +25,8 @@ mkdir -pv ~/.vim/autoload
 mkdir -pv ~/.xmonad
 mkdir -pv ~/.Xresources.d
 
-./bin/set-theme gruvbox-light
-./bin/set-font input-9
+./bin/theme gruvbox-light
+./bin/font input-9
 
 make
 for dir in */ ; do stow "${dir}"; done

@@ -13,7 +13,7 @@ it provides a declarative way to set colours.
 
 * How
 
-[[/bin/set-theme]]
+[[/bin/theme]]
 
 The idea is to stow config files which only have theme-specific settings, and
 then the main configuration files will 'source'/'import' (or similar) the
