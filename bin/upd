@@ -17,9 +17,10 @@
 # normal files, but rather you have to run `git reset --hard HEAD@{1}` from the
 # directory of the submodule.
 #
-# TODO: Detect if there's any changes to the recipes used in recipe-list.el and
-# the ones used by melpa, and figure out a way to guarantee that the existence
-# of any such differences is made aware of to the user.
+# TODO: Detect if there's any changes to the recipes used in the emacs init file
+# and the ones used by melpa, and figure out a way to guarantee that the
+# existence of any such differences is made aware of to the user.
+
 #     - This will obviously need to be done in elisp, most likely.
 #
 # TODO: Only update emacs packages if there's changes to the files under :files.
