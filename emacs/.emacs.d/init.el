@@ -296,10 +296,10 @@
             (lambda () (setq evil-shift-width python-indent-offset)))
 
   :preface
-  (defun my-previous-line-advice (&optional CURRENT-COMMAND)
+  (defun fi/previous-line-advice (&optional CURRENT-COMMAND)
     (evil-previous-line))
 
-  (defun my-minibuffer-keyboard-quit ()
+  (defun fi/minibuffer-keyboard-quit ()
     "Abort recursive edit.
 In Delete Selection mode, if the mark is active, just deactivate it. Then it
 takes a second \\[keyboard-quit] to abort the minibuffer."
@@ -309,7 +309,7 @@ takes a second \\[keyboard-quit] to abort the minibuffer."
       (when (get-buffer "*Completions*") (delete-windows-on "*Completions*"))
       (abort-recursive-edit)))
 
-  (defun my-exit-evil-command-window ()
+  (defun fi/exit-evil-command-window ()
     "Exit evil command window."
     (interactive)
     ;; For whatever reason, moving to the previous window and back again means
@@ -320,25 +320,25 @@ takes a second \\[keyboard-quit] to abort the minibuffer."
     (kill-this-buffer)
     (evil-window-delete))
 
-  (defun my-evil-yank-to-end-of-line ()
+  (defun fi/evil-yank-to-end-of-line ()
     "Yank from cursor position to end of line."
     (interactive)
     (evil-yank (point) (point-at-eol)))
 
-  (defun my-insert-two-spaces ()
+  (defun fi/insert-two-spaces ()
     (interactive)
     (insert "  "))
 
-  (defun my-insert-one-space ()
+  (defun fi/insert-one-space ()
     (interactive)
     (insert " "))
 
-  (defun my-evil-edit-dot-emacs ()
+  (defun fi/evil-edit-dot-emacs ()
     "Edit emacs init file."
     (interactive)
     (evil-edit "~/ui/emacs/.emacs.d/init.el"))
 
-  (defun my-delete-whitespace-around-point ()
+  (defun fi/delete-whitespace-around-point ()
     (interactive)
     (just-one-space 0))
 
@@ -352,25 +352,25 @@ takes a second \\[keyboard-quit] to abort the minibuffer."
             (lambda () (setq-local global-hl-line-mode t)))
 
   ;; Move up one line when doing q: and q/.
-  (advice-add 'evil-command-window-ex :after #'my-previous-line-advice)
+  (advice-add 'evil-command-window-ex :after #'fi/previous-line-advice)
   (advice-add
-   'evil-command-window-search-forward :after #'my-previous-line-advice)
+   'evil-command-window-search-forward :after #'fi/previous-line-advice)
 
   ;; Escape quits emacs things as a vim user would expect.
   (define-key evil-motion-state-map [escape] 'keyboard-quit)
   (define-key evil-normal-state-map [escape] 'keyboard-quit)
   (define-key evil-visual-state-map [escape] 'keyboard-quit)
-  (define-key minibuffer-local-map [escape] 'my-minibuffer-keyboard-quit)
-  (define-key minibuffer-local-ns-map [escape] 'my-minibuffer-keyboard-quit)
+  (define-key minibuffer-local-map [escape] 'fi/minibuffer-keyboard-quit)
+  (define-key minibuffer-local-ns-map [escape] 'fi/minibuffer-keyboard-quit)
   (define-key
-    minibuffer-local-completion-map [escape] 'my-minibuffer-keyboard-quit)
+    minibuffer-local-completion-map [escape] 'fi/minibuffer-keyboard-quit)
   (define-key
-    minibuffer-local-must-match-map [escape] 'my-minibuffer-keyboard-quit)
+    minibuffer-local-must-match-map [escape] 'fi/minibuffer-keyboard-quit)
   (define-key
-    minibuffer-local-isearch-map [escape] 'my-minibuffer-keyboard-quit)
+    minibuffer-local-isearch-map [escape] 'fi/minibuffer-keyboard-quit)
   (global-set-key [escape] 'evil-exit-emacs-state)
   (evil-define-key
-    'normal evil-command-window-mode-map [escape] 'my-exit-evil-command-window)
+    'normal evil-command-window-mode-map [escape] 'fi/exit-evil-command-window)
 
   (define-key evil-motion-state-map "\\" 'evil-switch-to-windows-last-buffer)
   (define-key evil-normal-state-map "\\" 'evil-switch-to-windows-last-buffer)
@@ -412,12 +412,12 @@ takes a second \\[keyboard-quit] to abort the minibuffer."
   (define-key evil-normal-state-map "'" 'evil-ex)
   (define-key evil-visual-state-map "'" 'evil-ex)
   (define-key evil-normal-state-map "gs" 'evil-write)
-  (define-key evil-motion-state-map "Y"  'my-evil-yank-to-end-of-line)
-  (define-key evil-normal-state-map "Y"  'my-evil-yank-to-end-of-line)
-  (define-key evil-normal-state-map (kbd "C-SPC") 'my-insert-two-spaces)
-  (define-key evil-insert-state-map (kbd "C-SPC") 'my-insert-two-spaces)
-  (define-key evil-normal-state-map (kbd "M-SPC") 'my-insert-one-space)
-  (define-key evil-insert-state-map (kbd "M-SPC") 'my-insert-one-space)
+  (define-key evil-motion-state-map "Y"  'fi/evil-yank-to-end-of-line)
+  (define-key evil-normal-state-map "Y"  'fi/evil-yank-to-end-of-line)
+  (define-key evil-normal-state-map (kbd "C-SPC") 'fi/insert-two-spaces)
+  (define-key evil-insert-state-map (kbd "C-SPC") 'fi/insert-two-spaces)
+  (define-key evil-normal-state-map (kbd "M-SPC") 'fi/insert-one-space)
+  (define-key evil-insert-state-map (kbd "M-SPC") 'fi/insert-one-space)
 
   ;; Leader layer.
   ;; Required for the following motion state maps that start with space.
@@ -425,11 +425,11 @@ takes a second \\[keyboard-quit] to abort the minibuffer."
 
   (define-key evil-motion-state-map (kbd "SPC SPC") 'recenter-top-bottom)
   (define-key evil-normal-state-map (kbd "SPC SPC") 'recenter-top-bottom)
-  (define-key evil-motion-state-map (kbd "SPC ei")  'my-evil-edit-dot-emacs)
-  (define-key evil-normal-state-map (kbd "SPC ei")  'my-evil-edit-dot-emacs)
+  (define-key evil-motion-state-map (kbd "SPC ei")  'fi/evil-edit-dot-emacs)
+  (define-key evil-normal-state-map (kbd "SPC ei")  'fi/evil-edit-dot-emacs)
   (define-key evil-normal-state-map (kbd "SPC ds")  'just-one-space)
   (define-key evil-normal-state-map
-    (kbd "SPC dw") 'my-delete-whitespace-around-point)
+    (kbd "SPC dw") 'fi/delete-whitespace-around-point)
   (define-key evil-normal-state-map (kbd "SPC f")   'fill-paragraph)
   (define-key evil-motion-state-map (kbd "SPC h")   'help)
   (define-key evil-normal-state-map (kbd "SPC h")   'help)
@@ -463,10 +463,10 @@ takes a second \\[keyboard-quit] to abort the minibuffer."
     "Unconditionally turn on evil-quick-scope-mode."
     (evil-quick-scope-mode t))
 
-  (define-globalized-minor-mode my-global-evil-quick-scope-mode
+  (define-globalized-minor-mode fi/global-evil-quick-scope-mode
     evil-quick-scope-mode turn-on-evil-quick-scope-mode)
 
-  (my-global-evil-quick-scope-mode t))
+  (fi/global-evil-quick-scope-mode t))
 
 (use-package evil-surround
   :quelpa :config (global-evil-surround-mode t))
@@ -524,8 +524,8 @@ takes a second \\[keyboard-quit] to abort the minibuffer."
   :demand t :quelpa
   :init (setq-default fill-column 80)
   :config
-  (define-globalized-minor-mode my-global-fci-mode fci-mode turn-on-fci-mode)
-  (my-global-fci-mode t))
+  (define-globalized-minor-mode fi/global-fci-mode fci-mode turn-on-fci-mode)
+  (fi/global-fci-mode t))
 
 (use-package nyan-mode
   :demand t :quelpa
@@ -759,9 +759,9 @@ takes a second \\[keyboard-quit] to abort the minibuffer."
 
   :preface
   (defvar-local fi/org-export-to-pdf-on-save nil)
-  (defvar-local my-org-list-item-fill-last-line-number 0)
+  (defvar-local fi/org-list-item-fill-last-line-number 0)
 
-  (defun my-org-set-list-item-p-fill-prefix ()
+  (defun fi/org-set-list-item-fill-prefix ()
     "Sets fill-prefix accordingly so that auto-fill properly
 hanging indents long list lines.
 
@@ -769,7 +769,7 @@ Will not work when typing in a new list item from scratch without
 using `org-meta-return' though."
     (when (eq 'org-mode major-mode)
       (let ((ln (line-number-at-pos)))
-        (when (not (eq my-org-list-item-fill-last-line-number ln))
+        (when (not (eq fi/org-list-item-fill-last-line-number ln))
           (save-excursion
             (if (or (org-at-item-p)
                     (if (eq nil (condition-case nil
@@ -783,19 +783,19 @@ using `org-meta-return' though."
                    fill-prefix
                    (make-string (length (match-string-no-properties 0 l)) ?\s)))
               (setq-local fill-prefix nil))
-            (setq-local my-org-list-item-fill-last-line-number ln))))))
+            (setq-local fi/org-list-item-fill-last-line-number ln))))))
 
-  (defun my-org-evil-meta-return-above ()
+  (defun fi/org-evil-meta-return-above ()
     (interactive)
     (evil-insert-line 0)
     (org-meta-return))
 
-  (defun my-org-evil-meta-return-below ()
+  (defun fi/org-evil-meta-return-below ()
     (interactive)
     (evil-append-line 0)
     (org-meta-return))
 
-  (defun my-org-evil-insert-heading-respect-content ()
+  (defun fi/org-evil-insert-heading-respect-content ()
     (interactive)
     (evil-end-of-line)
     (org-insert-heading-respect-content)
@@ -813,12 +813,12 @@ using `org-meta-return' though."
                    (outline-up-heading 1)
                  (error nil))))))
 
-  (defun my-outline-next-heading-collapse ()
+  (defun fi/outline-next-heading-collapse ()
     (interactive)
     (outline-next-heading)
     (fi/outline-focus))
 
-  (defun my-outline-previous-heading-collapse ()
+  (defun fi/outline-previous-heading-collapse ()
     (interactive)
     (outline-previous-heading)
     (fi/outline-focus))
@@ -838,7 +838,7 @@ using `org-meta-return' though."
        (face-remap-add-relative 'org-level-2 :height 1.05)
        (org-bullets-mode 1))))
 
-  (add-hook 'post-command-hook 'my-org-set-list-item-p-fill-prefix)
+  (add-hook 'post-command-hook 'fi/org-set-list-item-fill-prefix)
 
   (add-hook
    'after-save-hook
@@ -883,11 +883,11 @@ using `org-meta-return' though."
     (kbd "M-L") 'org-shiftmetaright
     (kbd "M-i") 'outline-next-heading
     (kbd "M-o") 'outline-previous-heading
-    (kbd "M-I") 'my-outline-next-heading-collapse
-    (kbd "M-O") 'my-outline-previous-heading-collapse
-    (kbd "<return>") 'my-org-evil-meta-return-below
-    (kbd "<C-return>") 'my-org-evil-insert-heading-respect-content
-    (kbd "<S-return>") 'my-org-evil-meta-return-above
+    (kbd "M-I") 'fi/outline-next-heading-collapse
+    (kbd "M-O") 'fi/outline-previous-heading-collapse
+    (kbd "<return>") 'fi/org-evil-meta-return-below
+    (kbd "<C-return>") 'fi/org-evil-insert-heading-respect-content
+    (kbd "<S-return>") 'fi/org-evil-meta-return-above
     (kbd "SPC cl") 'org-content
     (kbd "SPC co") 'fi/outline-focus
     (kbd "SPC cx") 'show-all
