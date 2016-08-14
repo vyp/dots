@@ -723,21 +723,39 @@ takes a second \\[keyboard-quit] to abort the minibuffer."
 (use-package org
   :defer t
   :init
-  (setq org-adapt-indentation t
-        org-bullets-bullet-list '("▣" "◉" "✱" "➤")
-        org-catch-invisible-edits 'smart
-        org-ellipsis "↴" ; …
-        org-hide-emphasis-markers t
-        org-hide-leading-stars t
-        org-export-async-init-file (expand-file-name "~/ui/emacs/ox.el")
-        org-list-allow-alphabetical t
-        org-list-use-circular-motion t
-        org-pretty-entities t
-        org-src-fontify-natively t
-        org-src-preserve-indentation t
-        org-startup-folded 'nofold
-        org-startup-with-inline-images t
-        org-startup-indented t)
+  ;; NOTE: This :init form is special in that "/emacs/ox.el" evaluates it for
+  ;; asynchronous export purposes. Therefore it is wrapped in a `progn' and it
+  ;; *probably* should not use variables defined from elsewhere, because they
+  ;; would be undefined in ox.el.
+  (progn
+    (setq org-adapt-indentation t
+          org-bullets-bullet-list '("▣" "◉" "✱" "➤")
+          org-catch-invisible-edits 'smart
+          org-ellipsis "↴" ; …
+          org-entities-ascii-explanatory t
+          org-export-async-init-file (expand-file-name "~/ui/emacs/ox.el")
+          org-export-with-smart-quotes t
+          org-hide-emphasis-markers t
+          org-hide-leading-stars t
+          org-latex-packages-alist '(("" "grffile" t))
+          org-latex-pdf-process
+          (append
+           (make-list
+            3 "lualatex -interaction nonstopmode -output-directory %o %f")
+           '("mv %o%b.pdf %o.%b.pdf"
+             "mv %o%b.tex %o.%b.tex"
+             "rm %o%b.aux"
+             "rm %o%b.log"
+             "rm %o%b.out"
+             "rm %o%b.toc"))
+          org-list-allow-alphabetical t
+          org-list-use-circular-motion t
+          org-pretty-entities t
+          org-src-fontify-natively t
+          org-src-preserve-indentation t
+          org-startup-folded 'nofold
+          org-startup-with-inline-images t
+          org-startup-indented t))
 
   :preface
   (defvar-local fi/org-export-to-pdf-on-save nil)

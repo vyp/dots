@@ -9,6 +9,7 @@
 * Emacs
 ** Behaviour
 
+- Use epl library to check dependencies to help with removing packages.
 - aggressive indent.
 - origami.el
 - lispyville.
@@ -25,6 +26,7 @@
 
 ** Keybindings
 
+- Swap =<return>= and =<S-return>= in org mode insert state.
 - Hydra!
 - Eval'ing, eval region.
 - Better keybinding to evaluate elisp in status line.
