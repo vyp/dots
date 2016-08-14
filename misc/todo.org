@@ -16,6 +16,9 @@
 - embrace.el and evil-embrace.el
 - general.el
   - Remember this allows to rebind "SPC co" to just "co" (see the readme).
+    - After this happens, =org-content= keybinding could probably become "SPC co"
+      instead, so it gives more incentive to get this done earlier so that the
+      fingers don't get too used to the current bindings!
 - Transposing (including words).
 - Expand region.
 - Emmet.
@@ -27,7 +30,6 @@
 
 ** Keybindings
 
-- Change "SPC cc" to "SPC cl".
 - Hydra!
 - Eval'ing, eval region.
 - Better keybinding to evaluate elisp in minibuffer.
