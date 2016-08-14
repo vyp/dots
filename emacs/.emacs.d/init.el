@@ -770,14 +770,20 @@ using `org-meta-return' though."
     (when (eq 'org-mode major-mode)
       (let ((ln (line-number-at-pos)))
         (when (not (eq my-org-list-item-fill-last-line-number ln))
-          (if (org-at-item-p)
-              (let ((l (thing-at-point 'line t)))
-                (string-match org-list-full-item-re l)
-                (setq-local
-                 fill-prefix
-                 (make-string (length (match-string-no-properties 0 l)) ?\s)))
-            (setq-local fill-prefix nil))
-          (setq-local my-org-list-item-fill-last-line-number ln)))))
+          (save-excursion
+            (if (or (org-at-item-p)
+                    (if (eq nil (condition-case nil
+                                    (org-beginning-of-item)
+                                  (error nil)))
+                        nil
+                      t))
+                (let ((l (thing-at-point 'line t)))
+                  (string-match org-list-full-item-re l)
+                  (setq-local
+                   fill-prefix
+                   (make-string (length (match-string-no-properties 0 l)) ?\s)))
+              (setq-local fill-prefix nil))
+            (setq-local my-org-list-item-fill-last-line-number ln))))))
 
   (defun my-org-evil-meta-return-above ()
     (interactive)
