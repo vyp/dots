@@ -25,9 +25,11 @@
 
 ** Keybindings
 
+- Hydra!
+- Eval'ing, eval region.
+- Better keybinding to evaluate elisp in status line.
 - Allow =gg= in ibuffer by removing =g= for refresh.
 - "Completion List", "Packages", "Compile-log", "Messages", "Backtrace" buffers.
-- Eval'ing, eval region.
 
 ** Appearance
 
@@ -37,21 +39,18 @@
   - Use sanityinc's elisp to fix fci-mode colour when switching.
   - Also to be able to put all elisp in one file, select initial theme by
     environment variable rather than file.
+- Refactor out the common parts of the theme.el file somehow.
 
 ** Special
 
-- Filesystem navigation, opening files, managing buffers etc.
-- Magit.
-- Ido.
-- Helm.
+- Ibuffer
+- Ranger/deer/dired.
+- Ido or helm?
 - Terminal/eshell/zsh.
-- Pandoc mode.
 - MPD client.
 - Image viewer.
-- IRC.
 - Mail.
 - RSS.
-- Bittorrent client.
 
 * Themes
 ** Gruvbox-light
@@ -67,9 +66,16 @@
 
 * Other
 
+- Rename =set-theme= and =set-font= scripts to =theme= and =font= respectively.
+- Rename =my-*= variables with =fi/= prefix instead.
 - use environment variables for theme settings, as much as possible.
   - xmonad and the panel's settings have gruvbox-light theme settings
     hardcoded into them.
+  - Actually don't think that environment variables will work because some sort
+    of state is still needed to set the environment variables. But then the
+    commands to set the environment variables would have to be outside the
+    repository, meaning that it would be harder to reproduce than just using the
+    current file stow-symlinking system.
 - copy over the patch and generic.nix files for custom rustc nix expressions?
 - qutebrowser git clone in bootstrap script should somehow correspond/checkout
   to the correct commit.
