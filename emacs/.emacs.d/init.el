@@ -813,12 +813,12 @@ using `org-meta-return' though."
                    (outline-up-heading 1)
                  (error nil))))))
 
-  (defun fi/outline-next-heading-collapse ()
+  (defun fi/outline-next-heading-focus ()
     (interactive)
     (outline-next-heading)
     (fi/outline-focus))
 
-  (defun fi/outline-previous-heading-collapse ()
+  (defun fi/outline-previous-heading-focus ()
     (interactive)
     (outline-previous-heading)
     (fi/outline-focus))
@@ -883,8 +883,8 @@ using `org-meta-return' though."
     (kbd "M-L") 'org-shiftmetaright
     (kbd "M-i") 'outline-next-heading
     (kbd "M-o") 'outline-previous-heading
-    (kbd "M-I") 'fi/outline-next-heading-collapse
-    (kbd "M-O") 'fi/outline-previous-heading-collapse
+    (kbd "M-I") 'fi/outline-next-heading-focus
+    (kbd "M-O") 'fi/outline-previous-heading-focus
     (kbd "<return>") 'fi/org-evil-meta-return-below
     (kbd "<C-return>") 'fi/org-evil-insert-heading-respect-content
     (kbd "<S-return>") 'fi/org-evil-meta-return-above
