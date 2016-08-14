@@ -8,5 +8,3 @@
                 (with-selected-frame frame
                   (load-theme 'gruvbox-light t))))
   (load-theme 'gruvbox-light t))
-
-(provide 'my-currently-chosen-theme)

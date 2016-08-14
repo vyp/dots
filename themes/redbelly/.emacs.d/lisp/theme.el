@@ -8,5 +8,3 @@
                 (with-selected-frame frame
                   (load-theme 'redbelly t))))
   (load-theme 'redbelly t))
-
-(provide 'my-currently-chosen-theme)

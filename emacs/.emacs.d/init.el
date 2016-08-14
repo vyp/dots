@@ -1,11 +1,128 @@
-(dolist (path
-         '("~/ui/emacs/.emacs.d/my-custom-keybindings"
-           "~/.emacs.d/lisp"))
-  (add-to-list 'load-path path))
-
 ;; Packages
 ;; ________
 ;;
+(defvar fi/recipes
+  '((auto-complete
+     :fetcher file
+     :files ("*.el")
+     :path "~/ui/vendor/emacs/auto-complete")
+
+    (bind-key
+     :fetcher file
+     :files ("bind-key.el")
+     :path "~/ui/vendor/emacs/use-package")
+
+    (dash
+     :fetcher file
+     :files ("dash.el")
+     :path "~/ui/vendor/emacs/dash.el")
+
+    (diminish
+     :fetcher file
+     :path "~/ui/vendor/emacs/diminish.el")
+
+    (evil
+     :fetcher file
+     :path "~/ui/vendor/emacs/evil")
+
+    (evil-matchit
+     :fetcher file
+     :path "~/ui/vendor/emacs/evil-matchit")
+
+    (evil-nerd-commenter
+     :fetcher file
+     :path "~/ui/vendor/emacs/evil-nerd-commenter")
+
+    (evil-quick-scope
+     :fetcher file
+     :path "~/gh/evil-quick-scope")
+
+    (evil-surround
+     :fetcher file
+     :path "~/ui/vendor/emacs/evil-surround")
+
+    (fill-column-indicator
+     :fetcher file
+     :files ("fill-column-indicator.el")
+     :path "~/ui/vendor/emacs/Fill-Column-Indicator")
+
+    (fuzzy
+     :fetcher file
+     :files ("fuzzy.el")
+     :path "~/ui/vendor/emacs/fuzzy-el")
+
+    (goto-chg
+     :fetcher file
+     :path "~/ui/vendor/emacs/goto-chg")
+
+    (haskell-mode
+     :fetcher file
+     :path "~/ui/vendor/emacs/haskell-mode")
+
+    (nyan-mode
+     :fetcher file
+     :files ("nyan-mode.el" "img" "mus")
+     :path "~/ui/vendor/emacs/nyan-mode")
+
+    (org-bullets
+     :fetcher file
+     :path "~/ui/vendor/emacs/org-bullets")
+
+    (ov
+     :fetcher file
+     :path "~/ui/vendor/emacs/ov.el")
+
+    (package-build
+     :fetcher file
+     :files ("package-build.el")
+     :path "~/ui/vendor/emacs/package-build")
+
+    (popup
+     :fetcher file
+     :files ("popup.el")
+     :path "~/ui/vendor/emacs/popup-el")
+
+    (powerline
+     :fetcher file
+     :path "~/ui/vendor/emacs/powerline")
+
+    (quelpa
+     :fetcher file
+     :files ("quelpa.el")
+     :path "~/ui/vendor/emacs/quelpa")
+
+    (quelpa-use-package
+     :fetcher file
+     :path "~/ui/vendor/emacs/quelpa-use-package")
+
+    (rust-mode
+     :fetcher file
+     :files ("rust-mode.el")
+     :path "~/ui/vendor/emacs/rust-mode")
+
+    (s
+     :fetcher file
+     :files ("s.el")
+     :path "~/ui/vendor/emacs/s.el")
+
+    (spaceline
+     :fetcher file
+     :path "~/ui/vendor/emacs/spaceline")
+
+    (undo-tree
+     :fetcher file
+     :path "~/ui/vendor/emacs/undo-tree")
+
+    (use-package
+     :fetcher file
+     :files ("use-package.el")
+     :path "~/ui/vendor/emacs/use-package")
+
+    (yasnippet
+     :fetcher file
+     :files ("yasnippet.el")
+     :path "~/ui/vendor/emacs/yasnippet")))
+
 (setq package-archives nil
       quelpa-update-melpa-p nil
       quelpa-upgrade-p t)
@@ -31,8 +148,7 @@
   (load-file
    (expand-file-name "~/ui/vendor/emacs/quelpa/quelpa.el")))
 
-(load-file (expand-file-name "~/ui/emacs/.emacs.d/recipe-list.el"))
-(add-to-list 'quelpa-melpa-recipe-stores recipe-list)
+(setq quelpa-melpa-recipe-stores (list fi/recipes))
 
 (quelpa 'package-build)
 (quelpa 'quelpa)
@@ -176,7 +292,55 @@
         evil-vsplit-window-right t)
 
   ;; Change default shift-width for some specific modes.
-  (add-hook 'python-mode-hook (lambda () (setq evil-shift-width python-indent)))
+  (add-hook 'python-mode-hook
+            (lambda () (setq evil-shift-width python-indent-offset)))
+
+  :preface
+  (defun my-previous-line-advice (&optional CURRENT-COMMAND)
+    (evil-previous-line))
+
+  (defun my-minibuffer-keyboard-quit ()
+    "Abort recursive edit.
+In Delete Selection mode, if the mark is active, just deactivate it. Then it
+takes a second \\[keyboard-quit] to abort the minibuffer."
+    (interactive)
+    (if (and delete-selection-mode transient-mark-mode mark-active)
+        (setq deactivate-mark  t)
+      (when (get-buffer "*Completions*") (delete-windows-on "*Completions*"))
+      (abort-recursive-edit)))
+
+  (defun my-exit-evil-command-window ()
+    "Exit evil command window."
+    (interactive)
+    ;; For whatever reason, moving to the previous window and back again means
+    ;; after quitting this command window, it will properly go back to the
+    ;; previous window. Otherwise it seems to go to some other unintuitive window.
+    (other-window -1)
+    (other-window 1)
+    (kill-this-buffer)
+    (evil-window-delete))
+
+  (defun my-evil-yank-to-end-of-line ()
+    "Yank from cursor position to end of line."
+    (interactive)
+    (evil-yank (point) (point-at-eol)))
+
+  (defun my-insert-two-spaces ()
+    (interactive)
+    (insert "  "))
+
+  (defun my-insert-one-space ()
+    (interactive)
+    (insert " "))
+
+  (defun my-evil-edit-dot-emacs ()
+    "Edit emacs init file."
+    (interactive)
+    (evil-edit "~/ui/emacs/.emacs.d/init.el"))
+
+  (defun my-delete-whitespace-around-point ()
+    (interactive)
+    (just-one-space 0))
 
   :config
   (evil-declare-ignore-repeat 'recenter-top-bottom)
@@ -188,14 +352,102 @@
             (lambda () (setq-local global-hl-line-mode t)))
 
   ;; Move up one line when doing q: and q/.
-  (defun my-previous-line-advice (&optional CURRENT-COMMAND)
-    (evil-previous-line))
-
   (advice-add 'evil-command-window-ex :after #'my-previous-line-advice)
   (advice-add
    'evil-command-window-search-forward :after #'my-previous-line-advice)
 
-  (require 'my-custom-evil-keybindings)
+  ;; Escape quits emacs things as a vim user would expect.
+  (define-key evil-motion-state-map [escape] 'keyboard-quit)
+  (define-key evil-normal-state-map [escape] 'keyboard-quit)
+  (define-key evil-visual-state-map [escape] 'keyboard-quit)
+  (define-key minibuffer-local-map [escape] 'my-minibuffer-keyboard-quit)
+  (define-key minibuffer-local-ns-map [escape] 'my-minibuffer-keyboard-quit)
+  (define-key
+    minibuffer-local-completion-map [escape] 'my-minibuffer-keyboard-quit)
+  (define-key
+    minibuffer-local-must-match-map [escape] 'my-minibuffer-keyboard-quit)
+  (define-key
+    minibuffer-local-isearch-map [escape] 'my-minibuffer-keyboard-quit)
+  (global-set-key [escape] 'evil-exit-emacs-state)
+  (evil-define-key
+    'normal evil-command-window-mode-map [escape] 'my-exit-evil-command-window)
+
+  (define-key evil-motion-state-map "\\" 'evil-switch-to-windows-last-buffer)
+  (define-key evil-normal-state-map "\\" 'evil-switch-to-windows-last-buffer)
+
+  (define-key evil-motion-state-map (kbd "C-h") 'evil-window-left)
+  (define-key evil-normal-state-map (kbd "C-h") 'evil-window-left)
+  (define-key evil-motion-state-map (kbd "C-j") 'evil-window-down)
+  (define-key evil-normal-state-map (kbd "C-j") 'evil-window-down)
+  (define-key evil-motion-state-map (kbd "C-k") 'evil-window-up)
+  (define-key evil-normal-state-map (kbd "C-k") 'evil-window-up)
+  (define-key evil-motion-state-map (kbd "C-l") 'evil-window-right)
+  (define-key evil-normal-state-map (kbd "C-l") 'evil-window-right)
+
+  (define-key evil-motion-state-map   "H" 'evil-first-non-blank)
+  (define-key evil-normal-state-map   "H" 'evil-first-non-blank)
+  (define-key evil-operator-state-map "H" 'evil-jump-item)
+  (define-key evil-visual-state-map   "H" 'evil-first-non-blank)
+  (define-key evil-motion-state-map   "L" 'evil-end-of-line)
+  (define-key evil-normal-state-map   "L" 'evil-end-of-line)
+  (define-key evil-operator-state-map "L" 'evil-end-of-line)
+  (define-key evil-visual-state-map   "L" 'evil-end-of-line)
+  (define-key evil-motion-state-map   "M" 'evil-jump-item)
+  (define-key evil-normal-state-map   "M" 'evil-jump-item)
+  (define-key evil-operator-state-map "M" 'evil-jump-item)
+  (define-key evil-visual-state-map   "M" 'evil-jump-item)
+
+  (define-key
+    evil-motion-state-map (vconcat "z" [return]) 'evil-scroll-line-to-top)
+  (define-key
+    evil-normal-state-map (vconcat "z" [return]) 'evil-scroll-line-to-top)
+  (define-key
+    evil-visual-state-map (vconcat "z" [return]) 'evil-scroll-line-to-top)
+
+  (define-key evil-motion-state-map "+" 'text-scale-increase)
+  (define-key evil-normal-state-map "+" 'text-scale-increase)
+  (define-key evil-motion-state-map "-" 'text-scale-decrease)
+  (define-key evil-normal-state-map "-" 'text-scale-decrease)
+  (define-key evil-motion-state-map "'" 'evil-ex)
+  (define-key evil-normal-state-map "'" 'evil-ex)
+  (define-key evil-visual-state-map "'" 'evil-ex)
+  (define-key evil-normal-state-map "gs" 'evil-write)
+  (define-key evil-motion-state-map "Y"  'my-evil-yank-to-end-of-line)
+  (define-key evil-normal-state-map "Y"  'my-evil-yank-to-end-of-line)
+  (define-key evil-normal-state-map (kbd "C-SPC") 'my-insert-two-spaces)
+  (define-key evil-insert-state-map (kbd "C-SPC") 'my-insert-two-spaces)
+  (define-key evil-normal-state-map (kbd "M-SPC") 'my-insert-one-space)
+  (define-key evil-insert-state-map (kbd "M-SPC") 'my-insert-one-space)
+
+  ;; Leader layer.
+  ;; Required for the following motion state maps that start with space.
+  (define-key evil-motion-state-map " " nil)
+
+  (define-key evil-motion-state-map (kbd "SPC SPC") 'recenter-top-bottom)
+  (define-key evil-normal-state-map (kbd "SPC SPC") 'recenter-top-bottom)
+  (define-key evil-motion-state-map (kbd "SPC ei")  'my-evil-edit-dot-emacs)
+  (define-key evil-normal-state-map (kbd "SPC ei")  'my-evil-edit-dot-emacs)
+  (define-key evil-normal-state-map (kbd "SPC ds")  'just-one-space)
+  (define-key evil-normal-state-map
+    (kbd "SPC dw") 'my-delete-whitespace-around-point)
+  (define-key evil-normal-state-map (kbd "SPC f")   'fill-paragraph)
+  (define-key evil-motion-state-map (kbd "SPC h")   'help)
+  (define-key evil-normal-state-map (kbd "SPC h")   'help)
+  (define-key evil-normal-state-map (kbd "SPC ;")   'evil-command-window-ex)
+  (define-key evil-visual-state-map (kbd "SPC ;")   'evil-command-window-ex)
+  (define-key evil-motion-state-map (kbd "SPC we")  'balance-windows)
+  (define-key evil-normal-state-map (kbd "SPC we")  'balance-windows)
+  (define-key evil-motion-state-map (kbd "SPC wo")  'delete-other-windows)
+  (define-key evil-normal-state-map (kbd "SPC wo")  'delete-other-windows)
+  (define-key evil-motion-state-map (kbd "SPC x")   'execute-extended-command)
+  (define-key evil-normal-state-map (kbd "SPC x")   'execute-extended-command)
+  (define-key evil-visual-state-map (kbd "SPC x")   'execute-extended-command)
+
+  ;; Generic special.
+  (define-key evil-motion-state-map (kbd "SPC l") 'ibuffer)
+  (define-key evil-normal-state-map (kbd "SPC l") 'ibuffer)
+  (define-key evil-normal-state-map "gcc" 'evilnc-comment-or-uncomment-lines)
+  (define-key evil-visual-state-map "gc" 'comment-or-uncomment-region)
   (evil-mode t))
 
 (use-package evil-matchit
@@ -295,7 +547,14 @@
   (setq yas-snippet-dirs '("~/ui/vendor/emacs/yasnippet-snippets"))
   :config
   (yas-global-mode t)
-  (require 'my-custom-yasnippet-keybindings))
+
+  (evil-define-key 'insert yas-minor-mode-map (kbd "C-s") 'yas-expand)
+  (evil-define-key 'insert yas-minor-mode-map (kbd "C-n") 'yas-next-field)
+  (evil-define-key 'insert yas-minor-mode-map (kbd "C-p") 'yas-prev-field)
+
+  ;; Disable default mappings.
+  (define-key yas-minor-mode-map (kbd "<tab>") nil)
+  (define-key yas-minor-mode-map (kbd "TAB") nil))
 
 ;; Built-in Major Modes
 ;; ====================
@@ -330,7 +589,136 @@
                 (size-h 9 -1 :right) "  " (mode 16 16 :left :elide) " "
                 filename-and-process)))
 
-  (require 'my-custom-ibuffer-keybindings))
+  (evil-define-key 'motion ibuffer-mode-map
+    (kbd "h") 'evil-backward-char
+    (kbd "l") 'evil-forward-char
+    (kbd "0") 'digit-argument
+    (kbd "1") 'digit-argument
+    (kbd "2") 'digit-argument
+    (kbd "3") 'digit-argument
+    (kbd "4") 'digit-argument
+    (kbd "5") 'digit-argument
+    (kbd "6") 'digit-argument
+    (kbd "7") 'digit-argument
+    (kbd "8") 'digit-argument
+    (kbd "9") 'digit-argument
+
+    (kbd "m") 'ibuffer-mark-forward
+    (kbd "SPC t") 'ibuffer-toggle-marks
+    (kbd "u") 'ibuffer-unmark-forward
+    (kbd "=") 'ibuffer-diff-with-file
+    (kbd "J") 'ibuffer-jump-to-buffer
+    ;; (kbd "M-s a C-s") 'ibuffer-do-isearch
+    ;; (kbd "M-s a M-C-s") 'ibuffer-do-isearch-regexp
+    ;; (kbd "M-s a C-o") 'ibuffer-do-occur
+    (kbd "DEL") 'ibuffer-unmark-backward
+    (kbd "* *") 'ibuffer-unmark-all
+    (kbd "* M") 'ibuffer-mark-by-mode
+    (kbd "* m") 'ibuffer-mark-modified-buffers
+    (kbd "* u") 'ibuffer-mark-unsaved-buffers
+    (kbd "* s") 'ibuffer-mark-special-buffers
+    (kbd "* r") 'ibuffer-mark-read-only-buffers
+    (kbd "* /") 'ibuffer-mark-dired-buffers
+    (kbd "* e") 'ibuffer-mark-dissociated-buffers
+    (kbd "* h") 'ibuffer-mark-help-buffers
+    (kbd "* z") 'ibuffer-mark-compressed-file-buffers
+    (kbd ".") 'ibuffer-mark-old-buffers
+
+    (kbd "d") 'ibuffer-mark-for-delete
+    (kbd "x") 'ibuffer-do-kill-on-deletion-marks
+
+    ;; Immediate operations.
+    (kbd "C-f") 'ibuffer-forward-next-marked
+    (kbd "C-s") 'ibuffer-backwards-next-marked
+    (kbd "g") 'ibuffer-update
+    "`" 'ibuffer-switch-format
+    "-" 'ibuffer-add-to-tmp-hide
+    "+" 'ibuffer-add-to-tmp-show
+    "D" 'ibuffer-bury-buffer
+    (kbd "s t") 'ibuffer-toggle-sorting-mode
+    (kbd "s i") 'ibuffer-invert-sorting
+    (kbd "s a") 'ibuffer-do-sort-by-alphabetic
+    (kbd "s v") 'ibuffer-do-sort-by-recency
+    (kbd "s s") 'ibuffer-do-sort-by-size
+    (kbd "s f") 'ibuffer-do-sort-by-filename/process
+    (kbd "s m") 'ibuffer-do-sort-by-major-mode
+
+    (kbd "SPC f m") 'ibuffer-filter-by-used-mode
+    (kbd "SPC f M") 'ibuffer-filter-by-derived-mode
+    (kbd "SPC f n") 'ibuffer-filter-by-name
+    (kbd "SPC f c") 'ibuffer-filter-by-content
+    (kbd "SPC f e") 'ibuffer-filter-by-predicate
+    (kbd "SPC f f") 'ibuffer-filter-by-filename
+    (kbd "SPC f >") 'ibuffer-filter-by-size-gt
+    (kbd "SPC f <") 'ibuffer-filter-by-size-lt
+    (kbd "SPC f r") 'ibuffer-switch-to-saved-filters
+    (kbd "SPC f a") 'ibuffer-add-saved-filters
+    (kbd "SPC f x") 'ibuffer-delete-saved-filters
+    (kbd "SPC f d") 'ibuffer-decompose-filter
+    (kbd "SPC f s") 'ibuffer-save-filters
+    (kbd "SPC f p") 'ibuffer-pop-filter
+    (kbd "SPC f !") 'ibuffer-negate-filter
+    (kbd "SPC f t") 'ibuffer-exchange-filters
+    (kbd "SPC f TAB") 'ibuffer-exchange-filters
+    (kbd "SPC f o") 'ibuffer-or-filter
+    (kbd "SPC f g") 'ibuffer-filters-to-filter-group
+    (kbd "SPC f P") 'ibuffer-pop-filter-group
+    (kbd "SPC f D") 'ibuffer-decompose-filter-group
+    (kbd "SPC f /") 'ibuffer-filter-disable
+
+    (kbd "C-n") 'ibuffer-forward-filter-group
+    (kbd "C-p") 'ibuffer-backward-filter-group
+    (kbd "SPC j") 'ibuffer-jump-to-filter-group
+    (kbd "C-y") 'ibuffer-yank
+    (kbd "SPC f S") 'ibuffer-save-filter-groups
+    (kbd "SPC f R") 'ibuffer-switch-to-saved-filter-groups
+    (kbd "SPC f X") 'ibuffer-delete-saved-filter-groups
+    (kbd "SPC f \\") 'ibuffer-clear-filter-groups
+
+    [escape] 'ibuffer-quit
+    (kbd "q") 'ibuffer-quit
+    "SPC ." 'describe-mode
+
+    (kbd "SPC r n") 'ibuffer-mark-by-name-regexp
+    (kbd "SPC r m") 'ibuffer-mark-by-mode-regexp
+    (kbd "SPC r f") 'ibuffer-mark-by-file-name-regexp
+
+    (kbd "C-t") 'ibuffer-visit-tags-table
+
+    (kbd "|") 'ibuffer-do-shell-command-pipe
+    (kbd "!") 'ibuffer-do-shell-command-file
+    (kbd "~") 'ibuffer-do-toggle-modified
+
+    ;; Marked operations.
+    (kbd "A") 'ibuffer-do-view
+    (kbd "D") 'ibuffer-do-delete
+    ;; (kbd "E") 'ibuffer-do-eval
+    ;; (kbd "F") 'ibuffer-do-shell-command-file
+    (kbd "I") 'ibuffer-do-query-replace-regexp
+    (kbd "N") 'ibuffer-do-shell-command-pipe-replace
+    (kbd "O") 'ibuffer-do-occur
+    (kbd "P") 'ibuffer-do-print
+    (kbd "Q") 'ibuffer-do-query-replace
+    (kbd "R") 'ibuffer-do-rename-uniquely
+    (kbd "S") 'ibuffer-do-save
+    ;; (kbd "T") 'ibuffer-do-toggle-read-only
+    (kbd "U") 'ibuffer-do-replace-regexp
+    ;; (kbd "V") 'ibuffer-do-revert
+    ;; (kbd "W") 'ibuffer-do-view-and-eval
+    (kbd "X") 'ibuffer-do-shell-command-pipe
+
+    ;; 'ibuffer-do-kill-lines is the function deleted here.
+    (kbd "SPC c") 'ibuffer-copy-filename-as-kill
+
+    (kbd "RET") 'ibuffer-visit-buffer
+    ;; (kbd "C-x C-f") 'ibuffer-find-file
+    ;; (kbd "C-o") 'ibuffer-visit-buffer-other-window-noselect
+    ;; (kbd "M-o") 'ibuffer-visit-buffer-1-window
+    ;; (kbd "C-x v") 'ibuffer-do-view-horizontally
+    ;; (kbd "C-c C-a") 'ibuffer-auto-mode
+    ;; (kbd "C-x 4 RET") 'ibuffer-visit-buffer-other-window
+    ;; (kbd "C-x 5 RET") 'ibuffer-visit-buffer-other-frame)
+    (kbd "o") 'ibuffer-visit-buffer-other-window))
 
 (use-package org
   :defer t
@@ -496,7 +884,7 @@ using `org-meta-return' though."
 ;; Theme
 ;; _____
 ;;
-(require 'my-currently-chosen-theme)
+(load-file "~/.emacs.d/lisp/theme.el")
 
 ;; Faces
 ;; _____
