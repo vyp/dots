@@ -864,7 +864,8 @@ using `org-meta-return' though."
     (kbd "M-l") 'org-metaright
     (kbd "M-H") 'org-shiftmetaleft
     (kbd "M-L") 'org-shiftmetaright
-    (kbd "<S-return>") 'org-meta-return)
+    (kbd "<return>") 'org-meta-return
+    (kbd "<S-return>") 'evil-ret)
 
   (evil-define-key 'normal org-mode-map
     (kbd "K") 'org-shiftright

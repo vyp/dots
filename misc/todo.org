@@ -15,6 +15,7 @@
 - lispyville.
 - embrace.el and evil-embrace.el
 - general.el
+  - Remember this allows to rebind "SPC co" to just "co" (see the readme).
 - Transposing (including words).
 - Expand region.
 - Emmet.
@@ -26,10 +27,10 @@
 
 ** Keybindings
 
-- Swap =<return>= and =<S-return>= in org mode insert state.
+- Change "SPC cc" to "SPC cl".
 - Hydra!
 - Eval'ing, eval region.
-- Better keybinding to evaluate elisp in status line.
+- Better keybinding to evaluate elisp in minibuffer.
 - Allow =gg= in ibuffer by removing =g= for refresh.
 - "Completion List", "Packages", "Compile-log", "Messages", "Backtrace" buffers.
 
