@@ -761,6 +761,15 @@ takes a second \\[keyboard-quit] to abort the minibuffer."
   (defvar-local fi/org-export-to-pdf-on-save nil)
   (defvar-local fi/org-list-item-fill-last-line-number 0)
 
+  (defun fi/org-at-item-p ()
+    ;; NOTE: Should probably wrap any calls to this with `save-excursion'.
+    (or (org-at-item-p)
+        (if (eq nil (condition-case nil
+                        (org-beginning-of-item)
+                      (error nil)))
+            nil
+          t)))
+
   (defun fi/org-set-list-item-fill-prefix ()
     "Sets fill-prefix accordingly so that auto-fill properly
 hanging indents long list lines.
@@ -771,12 +780,7 @@ using `org-meta-return' though."
       (let ((ln (line-number-at-pos)))
         (when (not (eq fi/org-list-item-fill-last-line-number ln))
           (save-excursion
-            (if (or (org-at-item-p)
-                    (if (eq nil (condition-case nil
-                                    (org-beginning-of-item)
-                                  (error nil)))
-                        nil
-                      t))
+            (if (fi/org-at-item-p)
                 (let ((l (thing-at-point 'line t)))
                   (string-match org-list-full-item-re l)
                   (setq-local
@@ -822,6 +826,13 @@ using `org-meta-return' though."
     (interactive)
     (outline-previous-heading)
     (fi/outline-focus))
+
+  (defun fi/org-ret ()
+    (interactive)
+    (if (or (org-at-heading-p)
+            (save-excursion (fi/org-at-item-p)))
+        (org-meta-return)
+      (evil-ret)))
 
   :config
   (add-hook
@@ -870,7 +881,7 @@ using `org-meta-return' though."
     (kbd "M-l") 'org-metaright
     (kbd "M-H") 'org-shiftmetaleft
     (kbd "M-L") 'org-shiftmetaright
-    (kbd "<return>") 'org-meta-return
+    (kbd "<return>") 'fi/org-ret
     (kbd "<S-return>") 'evil-ret)
 
   (evil-define-key 'normal org-mode-map

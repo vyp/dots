@@ -23,6 +23,7 @@
 - Expand region.
 - Emmet.
 - Highlight TODOs.
+- outshine.
 
 *** Org
 
@@ -30,9 +31,6 @@
 
 ** Keybindings
 
-- Set =<return>= to =org-meta-return= if in list item, otherwise do =evil-ret= if not.
-  - Have to factor out and make own =fi/org-at-item-p= function which uses
-    =org-beginning-of-item= for this.
 - Hydra!
 - Eval'ing, eval region.
 - Better keybinding to evaluate elisp in minibuffer.
