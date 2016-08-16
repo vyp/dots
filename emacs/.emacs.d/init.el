@@ -124,6 +124,7 @@
      :path "~/ui/vendor/emacs/yasnippet")))
 
 (setq package-archives nil
+      quelpa-melpa-recipe-stores (list fi/recipes)
       quelpa-update-melpa-p nil
       quelpa-upgrade-p t)
 
@@ -147,8 +148,6 @@
 (unless (require 'quelpa nil t)
   (load-file
    (expand-file-name "~/ui/vendor/emacs/quelpa/quelpa.el")))
-
-(setq quelpa-melpa-recipe-stores (list fi/recipes))
 
 (quelpa 'package-build)
 (quelpa 'quelpa)
