@@ -747,18 +747,32 @@ takes a second \\[keyboard-quit] to abort the minibuffer."
 \\usepackage{marvosym}
 \\usepackage{wasysym}
 \\usepackage{amssymb}
-\\usepackage{hyperref}
-\\tolerance=1000
 \\usepackage{grffile}
 \\usepackage[dvipsnames]{xcolor}
+\\usepackage{lastpage}
+\\usepackage{fancyhdr}
+\\usepackage{parskip}
+\\usepackage{hyperref}
+
+[EXTRA]
+
+\\tolerance=1000
+
+\\setmainfont{Linux Libertine G}
+
+\\setlength{\\parskip}{3mm plus1mm minus1mm}
+
+\\pagestyle{fancy}
+\\renewcommand{\\headrulewidth}{0pt}
+\\fancyhead{}
+\\fancyfoot[C]{\\thepage\\ of \\pageref{LastPage}}
+
 \\hypersetup{
   colorlinks = true,
   citecolor  = {YellowOrange!85!black},
-  linkcolor  = {CadetBlue!85!black},
+  linkcolor  = {darkgray!85!black},
   urlcolor   = {MidnightBlue!85!black}
-}
-[EXTRA]
-\\setmainfont{Linux Libertine G}"
+}"
        ("\\section{%s}" . "\\section*{%s}")
        ("\\subsection{%s}" . "\\subsection*{%s}")
        ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
