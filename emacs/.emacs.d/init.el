@@ -752,6 +752,7 @@ takes a second \\[keyboard-quit] to abort the minibuffer."
 \\usepackage{lastpage}
 \\usepackage{fancyhdr}
 \\usepackage{parskip}
+\\usepackage{tocloft}
 \\usepackage{hyperref}
 
 [EXTRA]
@@ -759,6 +760,8 @@ takes a second \\[keyboard-quit] to abort the minibuffer."
 \\tolerance=1000
 
 \\setmainfont{Linux Libertine G}
+
+\\renewcommand\\cftaftertoctitle{\\par\\noindent\\hrulefill\\par}
 
 \\setlength{\\parskip}{3mm plus1mm minus1mm}
 
@@ -801,6 +804,8 @@ while [[ $? -eq 0 ]]; do sleep 2s; ps cax | grep -q lualatex; done"
             "rm -f %o%b.toc"
             "rm -f texput.log"
             "rm -f *~")
+          org-latex-toc-command "\\tableofcontents
+\\noindent\\hrulefill"
           org-list-allow-alphabetical t
           org-list-use-circular-motion t
           org-pretty-entities t
