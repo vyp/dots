@@ -750,6 +750,13 @@ takes a second \\[keyboard-quit] to abort the minibuffer."
 \\usepackage{hyperref}
 \\tolerance=1000
 \\usepackage{grffile}
+\\usepackage[dvipsnames]{xcolor}
+\\hypersetup{
+  colorlinks = true,
+  citecolor  = {YellowOrange!85!black},
+  linkcolor  = {CadetBlue!85!black},
+  urlcolor   = {MidnightBlue!85!black}
+}
 [EXTRA]
 \\setmainfont{Linux Libertine G}"
        ("\\section{%s}" . "\\section*{%s}")
