@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 # Dependencies:
+#
 # - youtube-dl.
 # - ffmpeg.
 # - lltag.

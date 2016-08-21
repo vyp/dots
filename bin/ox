@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+
+# Dependencies:
+#
+# - dropbox_uploader.
+# - inotify-tools (inotifywait).
+
+if [[ $# -lt 1 ]]; then
+  echo 'Usage: ox <n>'
+  exit 1
+fi
+
+upload_dir=$(cut -f4- -d'/' <<< $PWD)
+
+upload () {
+  for file in .${1}.*.pdf ${1}.*.org .${1}.*.tex; do
+    dropbox-uploader upload "$file" "$upload_dir" &
+  done
+
+  if stat -t .${1}.*.png >/dev/null 2>&1; then
+    for file in .${1}.*.png ; do
+      dropbox-uploader upload "$file" "$upload_dir" &
+    done
+  fi
+
+  wait
+}
+
+inotifywait -m -e close_write,moved_to,create . | \
+  while read -r dir events file; do
+    [[ "$file" == .${1}.*.pdf ]] && upload $1
+  done
