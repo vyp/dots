@@ -5,14 +5,14 @@
 # - dropbox_uploader.
 # - inotify-tools (inotifywait).
 
-if [[ $# -lt 1 ]]; then
-  echo 'Usage: ox <n>'
+usage () {
+  echo 'Usage: ox [o] <n>'
   exit 1
-fi
-
-upload_dir=$(cut -f4- -d'/' <<< $PWD)
+}
 
 upload () {
+  upload_dir=$(cut -f4- -d'/' <<< $PWD)
+
   for file in .${1}.*.pdf ${1}.*.org .${1}.*.tex; do
     dropbox-uploader upload "$file" "$upload_dir" &
   done
@@ -26,7 +26,24 @@ upload () {
   wait
 }
 
-inotifywait -m -e close_write,moved_to,create . | \
-  while read -r dir events file; do
-    [[ "$file" == .${1}.*.pdf ]] && upload $1
-  done
+main () {
+  if [[ $# -lt 1 ]]; then
+    usage
+
+  elif [[ $1 == 'o' ]]; then
+    if [[ $# -eq 1 ]]; then
+      usage
+
+    else
+      upload $2
+    fi
+
+  else
+    inotifywait -m -e close_write,moved_to,create . | \
+      while read -r dir events file; do
+        [[ "$file" == .${1}.*.pdf ]] && upload $1
+      done
+  fi
+}
+
+main $@
