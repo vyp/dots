@@ -770,6 +770,15 @@ takes a second \\[keyboard-quit] to abort the minibuffer."
 \\fancyhead{}
 \\fancyfoot[C]{\\thepage\\ of \\pageref{LastPage}}
 
+\\makeatletter
+\\renewcommand\\paragraph{\\@startsection{paragraph}{4}{\\z@}
+            {-2.5ex\\@plus -1ex \\@minus -.25ex}
+            {1.25ex \\@plus .25ex}
+            {\\normalfont\\normalsize\\bfseries}}
+\\makeatother
+\\setcounter{secnumdepth}{4}
+\\setcounter{tocdepth}{4}
+
 \\hypersetup{
   colorlinks = true,
   citecolor  = {YellowOrange!85!black},
@@ -787,6 +796,7 @@ takes a second \\[keyboard-quit] to abort the minibuffer."
           org-ellipsis "↴" ; …
           org-entities-ascii-explanatory t
           org-export-async-init-file (expand-file-name "~/ui/emacs/ox.el")
+          org-export-headline-levels 4
           org-export-with-smart-quotes t
           org-hide-emphasis-markers t
           org-hide-leading-stars t
