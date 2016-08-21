@@ -727,6 +727,36 @@ takes a second \\[keyboard-quit] to abort the minibuffer."
   ;; *probably* should not use variables defined from elsewhere, because they
   ;; would be undefined in ox.el.
   (progn
+    (unless (boundp 'org-latex-classes)
+      (setq org-latex-classes nil))
+    (add-to-list
+     'org-latex-classes
+     '("article"
+       "\\documentclass[a4paper,12pt]{article}
+[NO-DEFAULT-PACKAGES]
+[NO-PACKAGES]
+\\usepackage{fontspec}
+\\usepackage{fixltx2e}
+\\usepackage{graphicx}
+\\usepackage{longtable}
+\\usepackage{float}
+\\usepackage{wrapfig}
+\\usepackage{rotating}
+\\usepackage[normalem]{ulem}
+\\usepackage{amsmath}
+\\usepackage{marvosym}
+\\usepackage{wasysym}
+\\usepackage{amssymb}
+\\usepackage{hyperref}
+\\tolerance=1000
+\\usepackage{grffile}
+[EXTRA]
+\\setmainfont{Linux Libertine G}"
+       ("\\section{%s}" . "\\section*{%s}")
+       ("\\subsection{%s}" . "\\subsection*{%s}")
+       ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
+       ("\\paragraph{%s}" . "\\paragraph*{%s}")
+       ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
     (setq org-adapt-indentation t
           org-bullets-bullet-list '("▣" "◉" "✱" "➤")
           org-catch-invisible-edits 'smart
@@ -736,17 +766,20 @@ takes a second \\[keyboard-quit] to abort the minibuffer."
           org-export-with-smart-quotes t
           org-hide-emphasis-markers t
           org-hide-leading-stars t
-          org-latex-packages-alist '(("" "grffile" t))
           org-latex-pdf-process
-          (append
-           (make-list
-            3 "lualatex -interaction nonstopmode -output-directory %o %f")
-           '("mv %o%b.pdf %o.%b.pdf"
-             "mv %o%b.tex %o.%b.tex"
-             "rm %o%b.aux"
-             "rm %o%b.log"
-             "rm %o%b.out"
-             "rm %o%b.toc"))
+          '("sleep 1s;
+while [[ $? -eq 0 ]]; do sleep 2s; ps cax | grep -q lualatex; done"
+            "lualatex -interaction nonstopmode -output-directory %o %f"
+            "lualatex -interaction nonstopmode -output-directory %o %f"
+            "lualatex -interaction nonstopmode -output-directory %o %f"
+            "mv %o%b.pdf %o.%b.pdf"
+            "mv %o%b.tex %o.%b.tex"
+            "rm -f %o%b.aux"
+            "rm -f %o%b.log"
+            "rm -f %o%b.out"
+            "rm -f %o%b.toc"
+            "rm -f texput.log"
+            "rm -f *~")
           org-list-allow-alphabetical t
           org-list-use-circular-motion t
           org-pretty-entities t
