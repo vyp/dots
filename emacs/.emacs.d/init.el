@@ -772,7 +772,7 @@ takes a second \\[keyboard-quit] to abort the minibuffer."
 \\renewcommand{\\maketitlehookb}{\\large\\itshape\\color{DimGray}}
 \\renewcommand{\\maketitlehookc}{\\normalsize\\color{gray}}
 
-\\renewcommand{\\cfttoctitlefont}{\\Large\\sffamily\\bfseries\\color{DimGray}}
+\\renewcommand{\\cfttoctitlefont}{\\Large}
 \\renewcommand{\\cftchapfont}{\\large\\bfseries\\sffamily}
 \\renewcommand{\\cftsecfont}{\\bfseries\\sffamily}
 \\renewcommand{\\cftsubsecfont}{\\sffamily}
