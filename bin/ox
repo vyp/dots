@@ -41,7 +41,7 @@ main () {
   else
     inotifywait -m -e close_write,moved_to,create . | \
       while read -r dir events file; do
-        [[ "$file" == .${1}.*.pdf ]] && upload $1
+        [[ "$file" == .${1}.*.pdf ]] && upload $1 && date
       done
   fi
 }
