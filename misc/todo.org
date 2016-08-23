@@ -27,6 +27,7 @@
 
 *** Org
 
+- Latex export change list item bullets to star, then dash.
 - Learn how to use org tables.
 
 ** Keybindings

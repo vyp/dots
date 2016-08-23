@@ -747,37 +747,79 @@ takes a second \\[keyboard-quit] to abort the minibuffer."
 \\usepackage{marvosym}
 \\usepackage{wasysym}
 \\usepackage{amssymb}
+
 \\usepackage{grffile}
-\\usepackage[dvipsnames]{xcolor}
+\\usepackage[dvipsnames,svgnames]{xcolor}
 \\usepackage{lastpage}
 \\usepackage{fancyhdr}
 \\usepackage{parskip}
 \\usepackage{tocloft}
+\\usepackage{sectsty}
+\\usepackage{titling}
+\\usepackage{titlesec}
 \\usepackage{hyperref}
 
 [EXTRA]
 
 \\tolerance=1000
 
+\\defaultfontfeatures{Ligatures=TeX}
 \\setmainfont{Linux Libertine G}
+\\setsansfont{Alegreya Sans}
+\\setmonofont{Input}
+\\newfontfamily\\headingfont{IM FELL DW Pica}
+\\renewcommand{\\maketitlehooka}{\\Huge\\headingfont}
+\\renewcommand{\\maketitlehookb}{\\large\\itshape\\color{DimGray}}
+\\renewcommand{\\maketitlehookc}{\\normalsize\\color{gray}}
 
-\\renewcommand\\cftaftertoctitle{\\par\\noindent\\hrulefill\\par}
+\\renewcommand{\\cfttoctitlefont}{\\Large\\sffamily\\bfseries\\color{DimGray}}
+\\renewcommand{\\cftchapfont}{\\large\\bfseries\\sffamily}
+\\renewcommand{\\cftsecfont}{\\bfseries\\sffamily}
+\\renewcommand{\\cftsubsecfont}{\\sffamily}
+\\renewcommand{\\cftsubsubsecfont}{\\cftsubsecfont}
+\\renewcommand{\\cftparafont}{\\cftsubsecfont}
+\\renewcommand{\\cftsubparafont}{\\cftsubsecfont}
+\\renewcommand\\cftaftertoctitle{\\par\\noindent{\\color{lightgray}
+\\hrulefill}\\vspace{-0.5em}}
 
-\\setlength{\\parskip}{3mm plus1mm minus1mm}
-
-\\pagestyle{fancy}
-\\renewcommand{\\headrulewidth}{0pt}
-\\fancyhead{}
-\\fancyfoot[C]{\\thepage\\ of \\pageref{LastPage}}
+\\makeatletter
+\\renewcommand\\subsection{\\@startsection{subsection}{2}{\\z@}
+  {-3.25ex\\@plus -1ex \\@minus -.2ex}
+  {1.5ex \\@plus .2ex}
+  {\\large\\bfseries
+  \\ifnum\\value{subsection}>1
+  \\else \\addtocontents{toc}{\\protect\\addvspace{0.4em}}\\fi}}
+\\makeatother
 
 \\makeatletter
 \\renewcommand\\paragraph{\\@startsection{paragraph}{4}{\\z@}
-            {-2.5ex\\@plus -1ex \\@minus -.25ex}
-            {1.25ex \\@plus .25ex}
-            {\\normalfont\\normalsize\\bfseries}}
+  {-2.5ex\\@plus -1ex \\@minus -.25ex}
+  {1.25ex \\@plus .25ex}
+  {\\normalfont\\normalsize\\bfseries}}
 \\makeatother
 \\setcounter{secnumdepth}{4}
 \\setcounter{tocdepth}{4}
+
+\\makeatletter
+\\def\\@seccntformat#1{\\sffamily\\color{gray}
+\\llap{\\csname the#1\\endcsname\\quad}}
+\\makeatother
+% \\makeatletter
+% \\renewcommand\\@seccntformat[1]{\\sffamily\\color{gray}
+%   {\\csname the#1\\endcsname}\\hspace{0.5em}}
+% \\makeatother
+
+\\fancypagestyle{plain}{
+  \\renewcommand{\\headrulewidth}{0pt}
+  \\fancyhead{}
+  \\fancyfoot[C]{\\color{DimGray}\\thepage\\ of \\pageref*{LastPage}}
+}
+\\pagestyle{fancy}
+\\renewcommand{\\headrulewidth}{0pt}
+\\fancyhead{}
+\\fancyfoot[C]{\\color{DimGray}\\thepage\\ of \\pageref*{LastPage}}
+
+\\setlength{\\parskip}{3mm plus1mm minus1mm}
 
 \\hypersetup{
   colorlinks = true,
@@ -815,7 +857,7 @@ while [[ $? -eq 0 ]]; do sleep 2s; ps cax | grep -q lualatex; done"
             "rm -f texput.log"
             "rm -f *~")
           org-latex-toc-command "\\tableofcontents
-\\noindent\\hrulefill"
+\\vspace{-1em}\\noindent{\\color{lightgray}\\hrulefill}"
           org-list-allow-alphabetical t
           org-list-use-circular-motion t
           org-pretty-entities t
