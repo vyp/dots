@@ -804,10 +804,6 @@ takes a second \\[keyboard-quit] to abort the minibuffer."
 \\def\\@seccntformat#1{\\sffamily\\color{gray}
 \\llap{\\csname the#1\\endcsname\\quad}}
 \\makeatother
-% \\makeatletter
-% \\renewcommand\\@seccntformat[1]{\\sffamily\\color{gray}
-%   {\\csname the#1\\endcsname}\\hspace{0.5em}}
-% \\makeatother
 
 \\fancypagestyle{plain}{
   \\renewcommand{\\headrulewidth}{0pt}
@@ -820,6 +816,8 @@ takes a second \\[keyboard-quit] to abort the minibuffer."
 \\fancyfoot[C]{\\color{DimGray}\\thepage\\ of \\pageref*{LastPage}}
 
 \\setlength{\\parskip}{3mm plus1mm minus1mm}
+
+\\renewcommand{\\labelitemiii}{$\\star$}
 
 \\hypersetup{
   colorlinks = true,

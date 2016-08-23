@@ -27,7 +27,6 @@
 
 *** Org
 
-- Latex export change list item bullets to star, then dash.
 - Learn how to use org tables.
 
 ** Keybindings
@@ -73,6 +72,7 @@
 
 * Other
 
+- Add im fell dw pica and alegreya sans to ui-bin.
 - use environment variables for theme settings, as much as possible.
   - xmonad and the panel's settings have gruvbox-light theme settings
     hardcoded into them.
