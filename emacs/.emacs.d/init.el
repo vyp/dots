@@ -757,6 +757,8 @@ takes a second \\[keyboard-quit] to abort the minibuffer."
 \\usepackage{sectsty}
 \\usepackage{titling}
 \\usepackage{titlesec}
+\\usepackage{enumitem}
+
 \\usepackage{hyperref}
 
 [EXTRA]
@@ -817,7 +819,15 @@ takes a second \\[keyboard-quit] to abort the minibuffer."
 
 \\setlength{\\parskip}{3mm plus1mm minus1mm}
 
-\\renewcommand{\\labelitemiii}{$\\star$}
+\\newcommand{\\sbt}
+{\\begin{picture}(-1,1)(-1,-3)\\circle*{4}\\end{picture}\\hspace{0.4em}}
+\\setlistdepth{5}
+\\setlist[itemize,1]{label=\\sbt}
+\\setlist[itemize,2]{label=\\textbullet}
+\\setlist[itemize,3]{label=\\textperiodcentered}
+\\setlist[itemize,4]{label=\\normalfont\\bfseries\\textendash}
+\\setlist[itemize,5]{label=$\\star$}
+\\renewlist{itemize}{itemize}{9}
 
 \\hypersetup{
   colorlinks = true,
