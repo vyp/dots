@@ -758,6 +758,8 @@ takes a second \\[keyboard-quit] to abort the minibuffer."
 \\usepackage{titling}
 \\usepackage{titlesec}
 \\usepackage{enumitem}
+% \\usepackage[object=vectorian]{pgfornament}
+\\usepackage{tikz}
 
 \\usepackage{hyperref}
 
@@ -766,6 +768,28 @@ takes a second \\[keyboard-quit] to abort the minibuffer."
 \\tolerance=1000
 
 \\defaultfontfeatures{Ligatures=TeX}
+
+% % For when pgfornament becomes available... :(
+%
+% \\newcommand{\\sectionlinetwo}[2]{
+%   \\nointerlineskip \\vspace{.5\\baselineskip}\\hspace{\\fill}
+%   {\\resizebox{0.5\\linewidth}{1.2ex}{\\pgfornament[color = #1]{#2}}}
+%     \\hspace{\\fill}\\par\\nointerlineskip \\vspace{.5\\baselineskip}}
+
+% \\newcommand{\\sectionlinetwo}[2]{%
+%   \\nointerlineskip \\vspace{.5\\baselineskip}\\hspace{\\fill}
+%   {\\color{#1}
+%     \\resizebox{0.5\\linewidth}{2ex}
+%     {{%
+%     {\\begin{tikzpicture}
+%     \\node  (C) at (0,0) {};
+%     \\node (D) at (9,0) {};
+%     \\path (C) to [ornament=#2] (D);
+%     \\end{tikzpicture}}}}}%
+%     \\hspace{\\fill}
+%     \\par\\nointerlineskip \\vspace{.5\\baselineskip}
+%   }
+
 \\setmainfont{Linux Libertine G}
 \\setsansfont{Alegreya Sans}
 \\setmonofont{Input}
