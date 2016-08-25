@@ -760,6 +760,9 @@ takes a second \\[keyboard-quit] to abort the minibuffer."
 \\usepackage{enumitem}
 % \\usepackage[object=vectorian]{pgfornament}
 \\usepackage{tikz}
+\\usepackage{array}
+\\usepackage{tabularx}
+\\usepackage{calc}
 
 \\usepackage{hyperref}
 
@@ -853,6 +856,12 @@ takes a second \\[keyboard-quit] to abort the minibuffer."
 \\setlist[itemize,5]{label=$\\star$}
 \\renewlist{itemize}{itemize}{9}
 
+\\newlength{\\conditionwd}
+\\newenvironment{conditions}[1][Where:]
+  {#1\\tabularx{\\textwidth-\\widthof{#1}}[t]{
+     >{$}l<{$} @{${}={}$} X@{}}}
+  {\\endtabularx\\\\[\\belowdisplayskip]}
+
 \\hypersetup{
   colorlinks = true,
   citecolor  = {YellowOrange!85!black},
@@ -896,8 +905,8 @@ while [[ $? -eq 0 ]]; do sleep 2s; ps cax | grep -q lualatex; done"
           org-src-fontify-natively t
           org-src-preserve-indentation t
           org-startup-folded 'nofold
-          org-startup-with-inline-images t
-          org-startup-indented t))
+          org-startup-indented t
+          org-startup-with-inline-images t))
 
   :preface
   (defvar-local fi/org-export-to-pdf-on-save nil)
