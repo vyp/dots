@@ -902,7 +902,7 @@ while [[ $? -eq 0 ]]; do sleep 2s; ps cax | grep -q lualatex; done"
             "rm -f texput.log"
             "rm -f *~")
           org-latex-toc-command "\\tableofcontents
-\\vspace{-1em}\\noindent{\\color{lightgray}\\hrulefill}\\\\"
+\\vspace{-1em}\\noindent{\\color{lightgray}\\hrulefill}\\\\\\\\"
           org-list-allow-alphabetical t
           org-list-use-circular-motion t
           org-pretty-entities t
