@@ -793,21 +793,25 @@ takes a second \\[keyboard-quit] to abort the minibuffer."
 %     \\par\\nointerlineskip \\vspace{.5\\baselineskip}
 %   }
 
-\\setmainfont{Linux Libertine G}
-\\setsansfont{Alegreya Sans}
+\\setmainfont{GaramondNo8}
 \\setmonofont{Input}
-\\newfontfamily\\headingfont{IM FELL DW Pica}
-\\renewcommand{\\maketitlehooka}{\\Huge\\headingfont}
+\\newfontfamily\\titlefont{IM FELL DW Pica}
+\\newfontfamily\\headingnumberfont{EB Garamond}
+\\renewcommand{\\maketitlehooka}{\\Huge\\titlefont}
 \\renewcommand{\\maketitlehookb}{\\large\\itshape\\color{DimGray}}
-\\renewcommand{\\maketitlehookc}{\\normalsize\\color{gray}}
+\\renewcommand{\\maketitlehookc}{\\small\\upshape\\color{gray}}
 
 \\renewcommand{\\cfttoctitlefont}{\\Large}
-\\renewcommand{\\cftchapfont}{\\large\\bfseries\\sffamily}
-\\renewcommand{\\cftsecfont}{\\bfseries\\sffamily}
-\\renewcommand{\\cftsubsecfont}{\\sffamily}
+\\renewcommand{\\cftchapfont}{\\large\\bfseries}
+\\renewcommand{\\cftsecfont}{\\bfseries}
+\\renewcommand{\\cftsubsecfont}{\\headingnumberfont}
 \\renewcommand{\\cftsubsubsecfont}{\\cftsubsecfont}
 \\renewcommand{\\cftparafont}{\\cftsubsecfont}
 \\renewcommand{\\cftsubparafont}{\\cftsubsecfont}
+\\renewcommand{\\cftsubsecpagefont}{\\footnotesize}
+\\renewcommand{\\cftsubsubsecpagefont}{\\cftsubsecpagefont}
+\\renewcommand{\\cftparapagefont}{\\cftsubsecpagefont}
+\\renewcommand{\\cftsubparapagefont}{\\cftsubsecpagefont}
 \\renewcommand\\cftaftertoctitle{\\par\\noindent{\\color{lightgray}
 \\hrulefill}\\vspace{-0.5em}}
 
@@ -830,27 +834,27 @@ takes a second \\[keyboard-quit] to abort the minibuffer."
 \\setcounter{tocdepth}{4}
 
 \\makeatletter
-\\def\\@seccntformat#1{\\sffamily\\color{gray}
+\\def\\@seccntformat#1{\\headingnumberfont\\color{gray}
 \\llap{\\csname the#1\\endcsname\\quad}}
 \\makeatother
 
 \\fancypagestyle{plain}{
   \\renewcommand{\\headrulewidth}{0pt}
   \\fancyhead{}
-  \\fancyfoot[C]{\\color{DimGray}\\thepage\\ of \\pageref*{LastPage}}
+  \\fancyfoot[C]{\\footnotesize\\color{DimGray}\\thepage\\ of \\pageref*{LastPage}}
 }
 \\pagestyle{fancy}
 \\renewcommand{\\headrulewidth}{0pt}
 \\fancyhead{}
-\\fancyfoot[C]{\\color{DimGray}\\thepage\\ of \\pageref*{LastPage}}
+\\fancyfoot[C]{\\footnotesize\\color{DimGray}\\thepage\\ of \\pageref*{LastPage}}
 
 \\setlength{\\parskip}{3mm plus1mm minus1mm}
 
 \\newcommand{\\sbt}
-{\\begin{picture}(-1,1)(-1,-3)\\circle*{4}\\end{picture}\\hspace{0.4em}}
+{\\begin{picture}(-1,1)(-1,-3)\\circle*{3}\\end{picture}\\hspace{0.4em}}
 \\setlistdepth{5}
-\\setlist[itemize,1]{label=\\sbt}
-\\setlist[itemize,2]{label=\\textbullet}
+\\setlist[itemize,1]{label=\\textbullet}
+\\setlist[itemize,2]{label=\\sbt}
 \\setlist[itemize,3]{label=\\textperiodcentered}
 \\setlist[itemize,4]{label=\\normalfont\\bfseries\\textendash}
 \\setlist[itemize,5]{label=$\\star$}
