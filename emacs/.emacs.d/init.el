@@ -763,6 +763,7 @@ takes a second \\[keyboard-quit] to abort the minibuffer."
 \\usepackage{array}
 \\usepackage{tabularx}
 \\usepackage{calc}
+\\usepackage{colortbl}
 
 \\usepackage{hyperref}
 
@@ -865,6 +866,8 @@ takes a second \\[keyboard-quit] to abort the minibuffer."
   {#1\\tabularx{\\textwidth-\\widthof{#1}}[t]{
      >{$}l<{$} @{${}={}$} X@{}}}
   {\\endtabularx\\\\[\\belowdisplayskip]}
+
+\\arrayrulecolor{lightgray}
 
 \\hypersetup{
   colorlinks = true,
