@@ -313,7 +313,8 @@ takes a second \\[keyboard-quit] to abort the minibuffer."
     (interactive)
     ;; For whatever reason, moving to the previous window and back again means
     ;; after quitting this command window, it will properly go back to the
-    ;; previous window. Otherwise it seems to go to some other unintuitive window.
+    ;; previous window. Otherwise it seems to go to some other unintuitive
+    ;; window.
     (other-window -1)
     (other-window 1)
     (kill-this-buffer)
@@ -842,12 +843,14 @@ takes a second \\[keyboard-quit] to abort the minibuffer."
 \\fancypagestyle{plain}{
   \\renewcommand{\\headrulewidth}{0pt}
   \\fancyhead{}
-  \\fancyfoot[C]{\\footnotesize\\color{DimGray}\\thepage\\ of \\pageref*{LastPage}}
+  \\fancyfoot[C]{\\footnotesize
+\\color{DimGray}\\thepage\\ of \\pageref*{LastPage}}
 }
 \\pagestyle{fancy}
 \\renewcommand{\\headrulewidth}{0pt}
 \\fancyhead{}
-\\fancyfoot[C]{\\footnotesize\\color{DimGray}\\thepage\\ of \\pageref*{LastPage}}
+\\fancyfoot[C]{\\footnotesize
+\\color{DimGray}\\thepage\\ of \\pageref*{LastPage}}
 
 \\setlength{\\parskip}{3mm plus1mm minus1mm}
 
