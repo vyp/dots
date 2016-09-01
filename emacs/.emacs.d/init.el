@@ -95,6 +95,10 @@
      :fetcher file
      :path "~/ui/vendor/emacs/quelpa-use-package")
 
+    (rainbow-delimiters
+     :fetcher file
+     :path "~/ui/vendor/emacs/rainbow-delimiters")
+
     (rust-mode
      :fetcher file
      :files ("rust-mode.el")
@@ -530,6 +534,11 @@ takes a second \\[keyboard-quit] to abort the minibuffer."
 (use-package nyan-mode
   :demand t :quelpa
   :config (nyan-mode t))
+
+(use-package rainbow-delimiters
+  :defer t :quelpa
+  :init
+  (add-hook 'prog-mode-hook #'rainbow-delimiters-mode))
 
 (use-package spaceline-config
   :demand t :quelpa

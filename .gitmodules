@@ -100,3 +100,6 @@
 [submodule "vendor/emacs/org-bullets"]
 	path = vendor/emacs/org-bullets
 	url = https://github.com/sabof/org-bullets
+[submodule "vendor/emacs/rainbow-delimiters"]
+	path = vendor/emacs/rainbow-delimiters
+	url = https://github.com/Fanael/rainbow-delimiters
