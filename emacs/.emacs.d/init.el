@@ -4,7 +4,6 @@
 (defvar fi/recipes
   '((auto-complete
      :fetcher file
-     :files ("*.el")
      :path "~/ui/vendor/emacs/auto-complete")
 
     (bind-key
@@ -78,7 +77,6 @@
 
     (package-build
      :fetcher file
-     :files ("package-build.el")
      :path "~/ui/vendor/emacs/package-build")
 
     (popup
@@ -105,7 +103,6 @@
 
     (rust-mode
      :fetcher file
-     :files ("rust-mode.el")
      :path "~/ui/vendor/emacs/rust-mode")
 
     (s
