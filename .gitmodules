@@ -103,3 +103,6 @@
 [submodule "vendor/emacs/rainbow-delimiters"]
 	path = vendor/emacs/rainbow-delimiters
 	url = https://github.com/Fanael/rainbow-delimiters
+[submodule "vendor/emacs/epl"]
+	path = vendor/emacs/epl
+	url = https://github.com/cask/epl

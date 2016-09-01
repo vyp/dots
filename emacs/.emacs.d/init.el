@@ -21,6 +21,10 @@
      :fetcher file
      :path "~/ui/vendor/emacs/diminish.el")
 
+    (epl
+     :fetcher file
+     :path "~/ui/vendor/emacs/epl")
+
     (evil
      :fetcher file
      :path "~/ui/vendor/emacs/evil")
@@ -166,6 +170,7 @@
 (use-package bind-key      :defer t :quelpa)
 (use-package dash          :defer t :quelpa)
 (use-package diminish      :defer t :quelpa)
+(use-package epl           :defer t :quelpa)
 (use-package fuzzy         :defer t :quelpa)
 (use-package goto-chg      :defer t :quelpa)
 (use-package org-bullets   :defer t :quelpa)
