@@ -528,14 +528,16 @@ takes a second \\[keyboard-quit] to abort the minibuffer."
 
 (use-package fill-column-indicator
   :demand t :quelpa
-  :init (setq-default fill-column 80)
+  :init
+  (setq-default fill-column 80)
   :config
   (define-globalized-minor-mode fi/global-fci-mode fci-mode turn-on-fci-mode)
   (fi/global-fci-mode t))
 
 (use-package nyan-mode
   :demand t :quelpa
-  :config (nyan-mode t))
+  :config
+  (nyan-mode t))
 
 (use-package rainbow-delimiters
   :defer t :quelpa
