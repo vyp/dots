@@ -20,7 +20,8 @@
   (string-append root "/tmp" (number->string pid)))
 
 (define (find-download-stage root)
-  (unless (file-exists? root) (mkdir root))
+  (unless (file-exists? root)
+    (mkdir root))
   (let ((pid 1))
     (while (file-exists? (download-stage root pid))
       (set! pid (1+ pid)))
