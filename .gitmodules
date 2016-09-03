@@ -106,3 +106,6 @@
 [submodule "vendor/emacs/epl"]
 	path = vendor/emacs/epl
 	url = https://github.com/cask/epl
+[submodule "vendor/emacs/geiser"]
+	path = vendor/emacs/geiser
+	url = https://github.com/jaor/geiser

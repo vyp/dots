@@ -54,6 +54,14 @@
      :files ("fuzzy.el")
      :path "~/ui/vendor/emacs/fuzzy-el")
 
+    (geiser
+     :fetcher file
+     :files ("elisp/*.el" "elisp/geiser-version.el.in"
+             "doc/*.texi"
+             ("bin" "bin/*") (:exclude "bin/Makefile.am")
+             ("scheme" "scheme/*") (:exclude "scheme/Makefile.am"))
+     :path "~/ui/vendor/emacs/geiser")
+
     (goto-chg
      :fetcher file
      :path "~/ui/vendor/emacs/goto-chg")
@@ -533,6 +541,12 @@ takes a second \\[keyboard-quit] to abort the minibuffer."
   :config
   (define-globalized-minor-mode fi/global-fci-mode fci-mode turn-on-fci-mode)
   (fi/global-fci-mode t))
+
+(use-package geiser
+  :defer t :quelpa
+  :init
+  (setq geiser-active-implementations '(guile))
+  (add-hook 'scheme-mode-hook #'geiser-mode))
 
 (use-package nyan-mode
   :demand t :quelpa
