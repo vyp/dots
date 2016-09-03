@@ -109,3 +109,6 @@
 [submodule "vendor/emacs/geiser"]
 	path = vendor/emacs/geiser
 	url = https://github.com/jaor/geiser
+[submodule "vendor/emacs/ac-geiser"]
+	path = vendor/emacs/ac-geiser
+	url = https://github.com/xiaohanyu/ac-geiser

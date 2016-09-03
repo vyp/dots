@@ -2,7 +2,11 @@
 ;; ________
 ;;
 (defvar fi/recipes
-  '((auto-complete
+  '((ac-geiser
+     :fetcher file
+     :path "~/ui/vendor/emacs/ac-geiser")
+
+    (auto-complete
      :fetcher file
      :path "~/ui/vendor/emacs/auto-complete")
 
@@ -524,7 +528,10 @@ takes a second \\[keyboard-quit] to abort the minibuffer."
   :config
   (add-to-list
    'ac-dictionary-directories "~/ui/vendor/emacs/auto-complete/dict")
-  (add-to-list 'ac-modes 'org-mode)
+  (mapc
+   (lambda (mode)
+     (add-to-list 'ac-modes mode))
+   '(org-mode geiser-repl-mode))
   (ac-config-default)
 
   (define-key ac-completing-map "\r" nil)
@@ -547,6 +554,13 @@ takes a second \\[keyboard-quit] to abort the minibuffer."
   :init
   (setq geiser-active-implementations '(guile))
   (add-hook 'scheme-mode-hook #'geiser-mode))
+
+(use-package ac-geiser
+  :defer t :quelpa
+  :init
+  (mapc
+   (lambda (hook) (add-hook hook 'ac-geiser-setup))
+   '(geiser-mode-hook geiser-repl-mode-hook)))
 
 (use-package nyan-mode
   :demand t :quelpa
