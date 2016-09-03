@@ -11,17 +11,19 @@
 (define (edit . files)
   (system (string-append editor " " (string-join files))))
 
-(define (enter-dir dir)
+(define (mkdir-p dir)
   (unless (file-exists? dir)
-    (mkdir dir))
+    (mkdir dir)))
+
+(define (enter-dir dir)
+  (mkdir-p dir)
   (chdir dir))
 
 (define (download-stage root pid)
   (string-append root "/tmp" (number->string pid)))
 
 (define (find-download-stage root)
-  (unless (file-exists? root)
-    (mkdir root))
+  (mkdir-p root)
   (let ((pid 1))
     (while (file-exists? (download-stage root pid))
       (set! pid (1+ pid)))
