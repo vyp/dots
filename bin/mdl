@@ -13,6 +13,7 @@
 ;; NOTE: Runs `mpc update' if applicable after adding music to library.
 ;;
 ;; TODO: Remove `sed' dependency.
+;; TODO: Remove `fold' dependency.
 
 (use-modules (ice-9 ftw))
 (use-modules (ice-9 match))
@@ -64,6 +65,8 @@
   (display "add"))
 
 (define (prune-todo)
+  ;; TODO: Remember to first check if any other `mdl' process is running, and
+  ;; fail if there is, to avoid data races.
   (display "del"))
 
 (define (create-playlists-file)
