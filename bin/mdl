@@ -6,11 +6,17 @@
 ;;
 ;; - youtube-dl
 ;; - ffmpeg
+;; - fold (coreutils)
+;; - sed
 ;;
 ;; NOTE: Also uses mpv and $EDITOR environment variable.
-;; NOTE: Runs `mpc update` if applicable after adding music to library.
+;; NOTE: Runs `mpc update' if applicable after adding music to library.
+;;
+;; TODO: Remove `sed' dependency.
 
+(use-modules (ice-9 ftw))
 (use-modules (ice-9 match))
+(use-modules (rnrs sorting))
 
 (define home (getenv "HOME"))
 (define editor (getenv "EDITOR"))
@@ -34,6 +40,16 @@
   (mkdir-p dir)
   (chdir dir))
 
+(define remove-stat
+  ;; Remove the `stat' object the `file-system-tree' provides for each file in
+  ;; the tree.
+  (match-lambda
+    ;; Flat file.
+    ((name stat) name)
+    ;; Directory.
+    ((name stat children ...)
+     (list name (map remove-stat children)))))
+
 (define (stage-path root pid)
   (string-append root "/stage" (number->string pid)))
 
@@ -50,6 +66,25 @@
 (define (prune-todo)
   (display "del"))
 
+(define (create-playlists-file)
+  (call-with-output-file "playlists-unwrapped"
+    (lambda (out)
+      (newline out)
+      (display
+       (string-join
+        (list-sort string<?
+                   (filter
+                    (lambda (playlist) (not (or (string=? playlist "all")
+                                                (string->number playlist))))
+                    (map (lambda (playlist) (basename playlist ".m3u"))
+                         (cadr (remove-stat
+                                (file-system-tree
+                                 (home-path
+                                  ".config/mpd/playlists")))))))) out)
+      (newline out)))
+  (system "fold -s playlists-unwrapped | sed 's/ *$//' > playlists")
+  (delete-file "playlists-unwrapped"))
+
 (define (main args)
   (let* ((store (home-path "dl/music"))
          (stage (find-new-stage store))
@@ -58,15 +93,13 @@
          (lib (home-path "music")))
     (if (> (length args) 1)
         (match (cadr args)
-          ("add" (begin-adding-to-library))
-          ("del" (prune-todo))
+          ("a" (begin-adding-to-library))
+          ("d" (prune-todo))
           (string
            (append-to-file
             (string-append (string-join (cdr args)) "\n") todo)))
-        (system* editor todo))
+        (edit todo))
     (enter-dir stage)
+    (create-playlists-file)
     ;; (system* "youtube-dl" "-f" "43" "--no-part" (cadr args))
-    (call-with-output-file "playlists"
-      (lambda (out)
-        (display "hi" out)
-        (newline out)))))
+    ))
