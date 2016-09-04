@@ -2,11 +2,26 @@
 -e main -s
 !#
 
+;; $PATH dependencies:
+;;
+;; - youtube-dl
+;; - ffmpeg
+;;
+;; NOTE: Also uses mpv and $EDITOR environment variable.
+;; NOTE: Runs `mpc update` if applicable after adding music to library.
+
+(use-modules (ice-9 match))
+
 (define home (getenv "HOME"))
 (define editor (getenv "EDITOR"))
 
 (define (home-path path)
   (string-append home "/" path))
+
+(define (append-to-file text path)
+  (let ((file (open-file path "a")))
+    (display text file)
+    (close-output-port file)))
 
 (define (edit . files)
   (system (string-append editor " " (string-join files))))
@@ -19,22 +34,38 @@
   (mkdir-p dir)
   (chdir dir))
 
-(define (download-stage root pid)
-  (string-append root "/tmp" (number->string pid)))
+(define (stage-path root pid)
+  (string-append root "/stage" (number->string pid)))
 
-(define (find-download-stage root)
+(define (find-new-stage root)
   (mkdir-p root)
   (let ((pid 1))
-    (while (file-exists? (download-stage root pid))
+    (while (file-exists? (stage-path root pid))
       (set! pid (1+ pid)))
-    (download-stage root pid)))
+    (stage-path root pid)))
+
+(define (begin-adding-to-library)
+  (display "add"))
+
+(define (prune-todo)
+  (display "del"))
 
 (define (main args)
-  (let ((download-location (home-path "dl/music"))
-        (mpd-pid (home-path ".config/mpd/pid"))
-        (music-store (home-path "music"))
-        (playlists-location (home-path ".config/mpd/playlists")))
-    (enter-dir (find-download-stage download-location))
+  (let* ((store (home-path "dl/music"))
+         (stage (find-new-stage store))
+         (todo (string-append store "/todo"))
+         (done (string-append store "/done"))
+         (lib (home-path "music")))
+    (if (> (length args) 1)
+        (match (cadr args)
+          ("add" (begin-adding-to-library))
+          ("del" (prune-todo))
+          (string
+           (append-to-file
+            (string-append (string-join (cdr args)) "\n") todo)))
+        (system* editor todo))
+    (enter-dir stage)
+    ;; (system* "youtube-dl" "-f" "43" "--no-part" (cadr args))
     (call-with-output-file "playlists"
       (lambda (out)
         (display "hi" out)
