@@ -17,7 +17,9 @@
 
 (use-modules (ice-9 ftw))
 (use-modules (ice-9 match))
+(use-modules (ice-9 rdelim))
 (use-modules (rnrs sorting))
+(use-modules (srfi srfi-1))
 
 (define home (getenv "HOME"))
 (define editor (getenv "EDITOR"))
@@ -29,6 +31,27 @@
   (let ((file (open-file path "a")))
     (display text file)
     (close-output-port file)))
+
+(define (read-lines file)
+  (let ((lst '()))
+    (with-input-from-file file
+      (lambda ()
+        (do ((line (read-line) (read-line)))
+            ((eof-object? line))
+          (set! lst (cons line lst)))
+        (reverse lst)))))
+
+(define (lset-difference-using-equal list1 . rest)
+  ;; Like `lset-difference' but uses `equal?' instead of `=' to be able to
+  ;; compare strings too.
+  (if (null? rest)
+      list1
+      (let lp ((l list1) (acc '()))
+        (if (null? l)
+            (reverse! acc)
+            (if (any (lambda (ll) (member (car l) ll equal?)) rest)
+                (lp (cdr l) acc)
+                (lp (cdr l) (cons (car l) acc)))))))
 
 (define (edit . files)
   (system (string-append editor " " (string-join files))))
@@ -104,5 +127,8 @@
         (edit todo))
     (enter-dir stage)
     (create-playlists-file)
+    (let ((todo-list (read-lines todo))
+          (done-list (read-lines done)))
+      (display (lset-difference-using-equal todo-list done-list)))
     ;; (system* "youtube-dl" "-f" "43" "--no-part" (cadr args))
     ))
