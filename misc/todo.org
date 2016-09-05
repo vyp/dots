@@ -25,10 +25,6 @@
 - Highlight TODOs.
 - outshine.
 
-*** Org
-
-- Learn how to use org tables.
-
 ** Keybindings
 
 - Hydra!

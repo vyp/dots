@@ -41,18 +41,6 @@
           (set! lst (cons line lst)))
         (reverse lst)))))
 
-(define (lset-difference-using-equal list1 . rest)
-  ;; Like `lset-difference' but uses `equal?' instead of `=' to be able to
-  ;; compare strings too.
-  (if (null? rest)
-      list1
-      (let lp ((l list1) (acc '()))
-        (if (null? l)
-            (reverse! acc)
-            (if (any (lambda (ll) (member (car l) ll equal?)) rest)
-                (lp (cdr l) acc)
-                (lp (cdr l) (cons (car l) acc)))))))
-
 (define (edit . files)
   (system (string-append editor " " (string-join files))))
 
@@ -129,6 +117,6 @@
     (create-playlists-file)
     (let ((todo-list (read-lines todo))
           (done-list (read-lines done)))
-      (display (lset-difference-using-equal todo-list done-list)))
+      (display (lset-difference equal? todo-list done-list)))
     ;; (system* "youtube-dl" "-f" "43" "--no-part" (cadr args))
     ))
