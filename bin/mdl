@@ -27,6 +27,9 @@
 (define (home-path path)
   (string-append home "/" path))
 
+(define (bell)
+  (system* "echo" "-e" "\a"))
+
 (define (append-to-file text path)
   (let ((file (open-file path "a")))
     (display text file)
@@ -80,9 +83,11 @@
   ;; fail if there is, to avoid data races.
   (display "del"))
 
-(define (create-playlists-file)
+(define (create-playlists-file playlists)
   (call-with-output-file "playlists-unwrapped"
     (lambda (out)
+      (when (not (null? playlists))
+        (display (string-join playlists) out))
       (newline out)
       (display
        (string-join
@@ -99,24 +104,47 @@
   (system "fold -s playlists-unwrapped | sed 's/ *$//' > playlists")
   (delete-file "playlists-unwrapped"))
 
+(define (find-pending todo done)
+  (unless (file-exists? done)
+    (call-with-output-file done
+      (lambda (out)
+        (display "" out))))
+  (lset-difference
+   (lambda (s1 s2) (string-prefix? s2 s1))
+   (read-lines todo)
+   (read-lines done)))
+
+(define (download-pending store todo done)
+  (let ((pending (find-pending todo done)))
+    (when (not (null? pending))
+      (let* ((track (string-split (car pending) #\space))
+             (url (car track))
+             (playlists (cdr track)))
+        (enter-dir (find-new-stage store))
+        (create-playlists-file playlists)
+        (system* "youtube-dl" "-f" "43" "--no-part" url)
+        ;; TODO: Get title of url and put that in `name' file.
+        (append-to-file (string-append url "\n") done)
+        (download-pending store todo done)))))
+
+(define (begin-downloading edit? store todo done)
+  (when edit?
+    (edit todo))
+  (download-pending store todo done)
+  (bell))
+
 (define (main args)
   (let* ((store (home-path "dl/music"))
-         (stage (find-new-stage store))
          (todo (string-append store "/todo"))
          (done (string-append store "/done"))
          (lib (home-path "music")))
     (if (> (length args) 1)
         (match (cadr args)
-          ("a" (begin-adding-to-library))
+          ("s" (begin-adding-to-library))
           ("d" (prune-todo))
           (string
-           (append-to-file
-            (string-append (string-join (cdr args)) "\n") todo)))
-        (edit todo))
-    (enter-dir stage)
-    (create-playlists-file)
-    (let ((todo-list (read-lines todo))
-          (done-list (read-lines done)))
-      (display (lset-difference equal? todo-list done-list)))
-    ;; (system* "youtube-dl" "-f" "43" "--no-part" (cadr args))
-    ))
+           (begin
+             (append-to-file
+              (string-append (string-join (cdr args)) "\n") todo)
+             (begin-downloading #f store todo done))))
+        (begin-downloading #t store todo done))))
