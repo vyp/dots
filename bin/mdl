@@ -17,6 +17,7 @@
 
 (use-modules (ice-9 ftw))
 (use-modules (ice-9 match))
+(use-modules (ice-9 popen))
 (use-modules (ice-9 rdelim))
 (use-modules (rnrs sorting))
 (use-modules (srfi srfi-1))
@@ -114,16 +115,30 @@
    (read-lines todo)
    (read-lines done)))
 
+;; TODO: Define generic `system-with-output-to-string' command instead?
+(define (get-name url)
+  (let* ((port (open-input-pipe
+                (string-append "youtube-dl --get-title '" url "'")))
+         (name (read-line port)))
+    (close-pipe port)
+    name))
+
 (define (download-pending store todo done)
   (let ((pending (find-pending todo done)))
     (when (not (null? pending))
       (let* ((track (string-split (car pending) #\space))
              (url (car track))
-             (playlists (cdr track)))
+             (playlists (cdr track))
+             (name (get-name url)))
         (enter-dir (find-new-stage store))
+        (call-with-output-file "name"
+          (lambda (out)
+            (display name out)
+            (newline out)))
         (create-playlists-file playlists)
-        (system* "youtube-dl" "-f" "43" "--no-part" url)
-        ;; TODO: Get title of url and put that in `name' file.
+        (system* "youtube-dl" "-f" "43" "--no-part"
+                 "-o" (string-append name ".webm")
+                 url)
         (append-to-file (string-append url "\n") done)
         (download-pending store todo done)))))
 
