@@ -135,6 +135,10 @@
         (call-with-output-file "name"
           (lambda (out)
             (display name out)))
+        (call-with-output-file "url"
+          (lambda (out)
+            (display url out)
+            (newline out)))
         (create-playlists-file playlists)
         (system* "youtube-dl" "-f" "43" "--no-part"
                  "-o" (string-append name ".webm")
