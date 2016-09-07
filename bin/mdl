@@ -115,13 +115,13 @@
    (read-lines todo)
    (read-lines done)))
 
-;; TODO: Define generic `system-with-output-to-string' command instead?
-(define (get-name url)
-  (let* ((port (open-input-pipe
-                (string-append "youtube-dl --get-title '" url "'")))
-         (name (read-line port)))
+(define (system-with-output-to-string command)
+  (let* ((port (open-input-pipe command))
+         (output (read-delimited "" port)))
     (close-pipe port)
-    name))
+    (if (eof-object? output)
+        ""
+        output)))
 
 (define (download-pending store todo done)
   (let ((pending (find-pending todo done)))
@@ -129,12 +129,12 @@
       (let* ((track (string-split (car pending) #\space))
              (url (car track))
              (playlists (cdr track))
-             (name (get-name url)))
+             (name (system-with-output-to-string
+                    (string-append "youtube-dl --get-title '" url "'"))))
         (enter-dir (find-new-stage store))
         (call-with-output-file "name"
           (lambda (out)
-            (display name out)
-            (newline out)))
+            (display name out)))
         (create-playlists-file playlists)
         (system* "youtube-dl" "-f" "43" "--no-part"
                  "-o" (string-append name ".webm")
