@@ -38,6 +38,9 @@
 (define (bell)
   (system* "echo" "-e" "\a"))
 
+(define (play file)
+  (system* "mpv" "--no-video" "--loop=inf" file))
+
 (define (append-to-file text path)
   (let ((file (open-file path "a")))
     (display text file)
@@ -156,21 +159,76 @@
   ;; fail if there is, to avoid data races.
   (display "del"))
 
-(define (add store lib)
-  (let ((stages (scandir store
-                         (lambda (name) (string-prefix? "stage" name)))))
-    (when (not (null? stages))
-      (let ((stage (car stages)))
-        (chdir (string-append store "/" stage))
-        (match (readline
-                (string-append
-                 "Next is '" (car (read-lines "name")) "', continue? "))
-          ((or "y" "")
-           (display "yes\n"))
-          ("s"
-           (display "skip\n"))
-          ("q"
-           (display "quit\n")))))))
+(define (skip stage)
+  (chdir "..")
+  (rename-file stage (string-append "." stage)))
+
+(define (cleanup store)
+  (chdir store)
+  (let ((skipped
+         (scandir store (lambda (name) (string-prefix? ".stage" name)))))
+    (when (not (null? skipped))
+      (rename-file (car skipped) (find-new-stage store))
+      (cleanup store))))
+
+(define (get-file ext)
+  (let ((results
+         (scandir "." (lambda (name)
+                        (string-suffix? (string-append "." ext) name)))))
+    (if (null? results)
+        ""
+        (car results))))
+
+(define (convert track . trims)
+  (let ((webm (get-file "webm")))
+    (if (= (length trims) 0)
+        )
+    )
+  )
+
+(define (process track)
+  (let ((lib (home-path "music")))
+    )
+  )
+
+(define (add store)
+  (let ((stages
+         (scandir store (lambda (name) (string-prefix? "stage" name)))))
+    (if (null? stages)
+        (cleanup store)
+        (let ((stage (car stages)))
+          (chdir (string-append store "/" stage))
+          (match (readline
+                  (string-append
+                   "Next is '" (car (read-lines "name")) "', continue? "))
+            ((or "y" "")
+             (let ((good? #f))
+               (while (not good?)
+                 (play (get-file "webm"))
+                 (edit "name" "playlists")
+                 (let* ((track-info (read-lines "name"))
+                        (trim (cdr track-info))
+                        (ogg (string-append (car track-info) ".ogg")))
+                   (if (null? trim)
+                       (begin
+                         (convert ogg)
+                         (set! good? #t))
+                       (match trim
+                         ("-" (begin
+                                (skip stage)
+                                (add store)))
+                         (_ (begin
+                              (convert ogg (string-split trim #\-))
+                              (play ogg)
+                              (if (equal? (readline "Is it good? ") "y")
+                                  (set! good? #t)
+                                  (delete-file ogg))))))))
+               (process (get-file "ogg"))
+               (add store)))
+            ("s" (begin
+                   (skip stage)
+                   (add store)))
+            ("q" (cleanup store)))))))
 
 (define (main args)
   (let* ((store (home-path "dl/music"))
@@ -178,7 +236,7 @@
          (done (string-append store "/done")))
     (if (> (length args) 1)
         (match (cadr args)
-          ("s" (add store (home-path "music")))
+          ("s" (add store))
           ("d" (prune-todo todo done))
           (string
            (begin
