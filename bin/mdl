@@ -28,6 +28,12 @@
 (define (home-path path)
   (string-append home "/" path))
 
+(define (substring-end str n)
+  (substring str 0 (- (string-length str) n)))
+
+(define (substring-length str start end)
+  (substring str start (- (string-length str) end)))
+
 (define (bell)
   (system* "echo" "-e" "\a"))
 
@@ -141,8 +147,7 @@
             (newline out)))
         (create-playlists-file playlists)
         (system* "youtube-dl" "-f" "43" "--no-part"
-                 "-o" (string-append
-                       (substring name 0 (- (string-length name) 1)) ".webm")
+                 "-o" (string-append (substring-end name 1) ".webm")
                  url)
         (append-to-file (string-append url "\n") done)
         (download-pending store todo done)))))
