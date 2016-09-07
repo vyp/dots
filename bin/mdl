@@ -141,7 +141,8 @@
             (newline out)))
         (create-playlists-file playlists)
         (system* "youtube-dl" "-f" "43" "--no-part"
-                 "-o" (string-append name ".webm")
+                 "-o" (string-append
+                       (substring name 0 (- (string-length name) 1)) ".webm")
                  url)
         (append-to-file (string-append url "\n") done)
         (download-pending store todo done)))))
