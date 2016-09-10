@@ -66,15 +66,14 @@
   (mkdir-p dir)
   (chdir dir))
 
-(define remove-stat
-  ;; Remove the `stat' object the `file-system-tree' provides for each file in
-  ;; the tree.
+(define remove-stat-from-file-system-tree
   (match-lambda
-    ;; Flat file.
     ((name stat) name)
-    ;; Directory.
     ((name stat children ...)
-     (list name (map remove-stat children)))))
+     (list name (map remove-stat-from-file-system-tree children)))))
+
+(define (fs-tree path)
+  (remove-stat-from-file-system-tree (file-system-tree path)))
 
 (define (stage-path root pid)
   (string-append root "/stage" (number->string pid)))
@@ -99,10 +98,8 @@
                     (lambda (playlist) (not (or (string=? playlist "all")
                                                 (string->number playlist))))
                     (map (lambda (playlist) (basename playlist ".m3u"))
-                         (cadr (remove-stat
-                                (file-system-tree
-                                 (home-path
-                                  ".config/mpd/playlists")))))))) out)
+                         (cadr (fs-tree (home-path
+                                         ".config/mpd/playlists"))))))) out)
       (newline out)))
   (system "fold -s playlists-unwrapped | sed 's/ *$//' > playlists")
   (delete-file "playlists-unwrapped"))
