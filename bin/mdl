@@ -207,26 +207,30 @@
                  (let* ((track-info (read-lines "name"))
                         (trim (cdr track-info))
                         (ogg (string-append (car track-info) ".ogg")))
-                   (if (null? trim)
-                       (begin
-                         (convert ogg)
-                         (set! good? #t))
-                       (match trim
-                         ("-" (begin
-                                (skip stage)
-                                (add store)))
-                         (_ (begin
-                              (convert ogg (string-split trim #\-))
-                              (play ogg)
-                              (if (equal? (readline "Is it good? ") "y")
-                                  (set! good? #t)
-                                  (delete-file ogg))))))))
+                   (match trim
+                     (()
+                      (begin
+                        (convert ogg)
+                        (set! good? #t)))
+                     (("-")
+                      (begin
+                        (skip stage)
+                        (add store)))
+                     (_
+                      (begin
+                        (convert ogg (string-split trim #\-))
+                        (play ogg)
+                        (if (equal? (readline "Is it good? (y/N) ") "y")
+                            (set! good? #t)
+                            (delete-file ogg)))))))
                (process (get-file "ogg"))
                (add store)))
-            ("s" (begin
-                   (skip stage)
-                   (add store)))
-            ("q" (cleanup store)))))))
+            ("s"
+             (begin
+               (skip stage)
+               (add store)))
+            ("q"
+             (cleanup store)))))))
 
 (define (main args)
   (let* ((store (home-path "dl/music"))
