@@ -201,12 +201,12 @@
                              "-to" (prepend-hours (cadr trims))
                              "-vn" "-acodec" "copy" track)))))))
 
-(define (process track)
+(define (add track)
   (let ((lib (home-path "music")))
     )
   )
 
-(define (add store)
+(define (process store)
   (let ((stages
          (scandir store (lambda (name) (string-prefix? "stage" name)))))
     (if (null? stages)
@@ -232,7 +232,7 @@
                      (("-")
                       (begin
                         (skip stage)
-                        (add store)))
+                        (process store)))
                      (_
                       (begin
                         (convert ogg (string-split trim #\-))
@@ -240,12 +240,12 @@
                         (if (equal? (readline "Is it good? (y/N) ") "y")
                             (set! good? #t)
                             (delete-file ogg)))))))
-               (process (get-file "ogg"))
-               (add store)))
+               (add (get-file "ogg"))
+               (process store)))
             ("s"
              (begin
                (skip stage)
-               (add store)))
+               (process store)))
             ("q"
              (cleanup store)))))))
 
@@ -255,7 +255,7 @@
          (done (string-append store "/done")))
     (if (> (length args) 1)
         (match (cadr args)
-          ("s" (add store))
+          ("s" (process store))
           ("d" (prune-todo todo done))
           (string
            (begin
