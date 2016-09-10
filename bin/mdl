@@ -58,6 +58,14 @@
 (define (edit . files)
   (system (string-append editor " " (string-join files))))
 
+(define (get-file ext)
+  (let ((results
+         (scandir "." (lambda (name)
+                        (string-suffix? (string-append "." ext) name)))))
+    (if (null? results)
+        ""
+        (car results))))
+
 (define (mkdir-p dir)
   (unless (file-exists? dir)
     (mkdir dir)))
@@ -68,12 +76,21 @@
 
 (define remove-stat-from-file-system-tree
   (match-lambda
-    ((name stat) name)
+    ((name stat)
+     name)
     ((name stat children ...)
      (list name (map remove-stat-from-file-system-tree children)))))
 
 (define (fs-tree path)
   (remove-stat-from-file-system-tree (file-system-tree path)))
+
+(define (system-with-output-to-string command)
+  (let* ((port (open-input-pipe command))
+         (output (read-delimited "" port)))
+    (close-pipe port)
+    (if (eof-object? output)
+        ""
+        output)))
 
 (define (stage-path root pid)
   (string-append root "/stage" (number->string pid)))
@@ -113,14 +130,6 @@
    (lambda (s1 s2) (string-prefix? s2 s1))
    (read-lines todo)
    (read-lines done)))
-
-(define (system-with-output-to-string command)
-  (let* ((port (open-input-pipe command))
-         (output (read-delimited "" port)))
-    (close-pipe port)
-    (if (eof-object? output)
-        ""
-        output)))
 
 (define (download-pending store todo done)
   (let ((pending (find-pending todo done)))
@@ -167,14 +176,6 @@
     (when (not (null? skipped))
       (rename-file (car skipped) (find-new-stage store))
       (cleanup store))))
-
-(define (get-file ext)
-  (let ((results
-         (scandir "." (lambda (name)
-                        (string-suffix? (string-append "." ext) name)))))
-    (if (null? results)
-        ""
-        (car results))))
 
 (define (convert track . trims)
   (let ((webm (get-file "webm")))
