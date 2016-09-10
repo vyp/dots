@@ -193,7 +193,7 @@
              (if trim-end? (prepend-hours (cadr trims)) "")
              "-vn" "-acodec" "copy" track)))
 
-(define (add track)
+(define (add stage)
   (let ((lib (home-path "music")))
     )
   )
@@ -232,7 +232,7 @@
                         (if (equal? (readline "Is it good? (y/N) ") "y")
                             (set! good? #t)
                             (delete-file ogg)))))))
-               (add (get-file "ogg"))
+               (add stage)
                (process store)))
             ("s"
              (begin
