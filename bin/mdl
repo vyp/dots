@@ -177,12 +177,29 @@
       (rename-file (car skipped) (find-new-stage store))
       (cleanup store))))
 
+(define (prepend-hours time)
+  (string-append "00:" time))
+
 (define (convert track . trims)
+  ;; TODO: Refactor into one call to `system*' instead?
   (let ((webm (get-file "webm")))
-    (if (= (length trims) 0)
-        )
-    )
-  )
+    (case (length trims)
+      ((0) => (begin
+                (system* "ffmpeg" "-y" "-i" webm
+                         "-vn" "-acodec" "copy" track)))
+      ((1) => (begin
+                (system* "ffmpeg" "-y" "-i" webm
+                         "-ss" (prepend-hours (car trims))
+                         "-vn" "-acodec" "copy" track)))
+      ((2) => (begin
+                (if (string-null? (car trims))
+                    (system* "ffmpeg" "-y" "-i" webm
+                             "-to" (prepend-hours (cadr trims))
+                             "-vn" "-acodec" "copy" track)
+                    (system* "ffmpeg" "-y" "-i" webm
+                             "-ss" (prepend-hours (car trims))
+                             "-to" (prepend-hours (cadr trims))
+                             "-vn" "-acodec" "copy" track)))))))
 
 (define (process track)
   (let ((lib (home-path "music")))
