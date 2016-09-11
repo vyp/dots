@@ -55,6 +55,11 @@
           (set! lst (cons line lst)))
         (reverse lst)))))
 
+(define (delete-files . files)
+  (map (lambda (file)
+         (when (file-exists? file)
+           (delete-file file))) files))
+
 (define (edit . files)
   (system (string-append editor " " (string-join files))))
 
