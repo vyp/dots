@@ -66,6 +66,13 @@
         ""
         (car results))))
 
+(define (sort-file file)
+  (let ((contents (read-lines file)))
+    (call-with-output-file file
+      (lambda (out)
+        (display (string-join
+                  (list-sort string<? contents) "\n" 'suffix) out)))))
+
 (define (mkdir-p dir)
   (unless (file-exists? dir)
     (mkdir dir)))
