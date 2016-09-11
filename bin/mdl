@@ -205,6 +205,10 @@
     (list (substring name 0 artist-end)
           (substring name (+ 3 artist-end)))))
 
+(define (add-to-playlist playlist name)
+  (append-to-file playlist name)
+  (sort-file playlist))
+
 (define (add stage)
   (let ((lib (home-path "music")))
     )
