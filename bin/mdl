@@ -200,6 +200,11 @@
              (if trim-end? (prepend-hours (cadr trims)) "")
              "-vn" "-acodec" "copy" track)))
 
+(define (get-artist-and-title name)
+  (let ((artist-end (string-contains name " - ")))
+    (list (substring name 0 artist-end)
+          (substring name (+ 3 artist-end)))))
+
 (define (add stage)
   (let ((lib (home-path "music")))
     )
