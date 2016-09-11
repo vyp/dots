@@ -41,7 +41,7 @@
 (define (play file)
   (system* "mpv" "--no-video" "--loop=inf" file))
 
-(define (append-to-file text path)
+(define (append-to-file path text)
   (let ((file (open-file path "a")))
     (display text file)
     (close-output-port file)))
@@ -151,7 +151,7 @@
         (system* "youtube-dl" "-f" "43" "--no-part"
                  "-o" (string-append (substring-end name 1) ".webm")
                  url)
-        (append-to-file (string-append url "\n") done)
+        (append-to-file done (string-append url "\n"))
         (download-pending store todo done)))))
 
 (define (begin-downloading edit? store todo done)
@@ -251,7 +251,6 @@
           ("d" (prune-todo todo done))
           (string
            (begin
-             (append-to-file
-              (string-append (string-join (cdr args)) "\n") todo)
+             (append-to-file todo (string-append (string-join (cdr args)) "\n"))
              (begin-downloading #f store todo done))))
         (begin-downloading #t store todo done))))
