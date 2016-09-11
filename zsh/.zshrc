@@ -75,6 +75,7 @@ alias ge='git status --short | while read first rest; do if [[ $first == *"M"* ]
 alias gi='grep -i --color=always'
 alias gir='grep -ir --color=always'
 alias gl='git log'
+alias gld='git log -p'
 # List authors/contributors and their email addresses for a git repository.
 alias glem='git log --format="%an %ae" | sort | uniq'
 alias gm='git merge'
