@@ -104,6 +104,9 @@
         ""
         output)))
 
+(define playlists-directory
+  (home-path ".config/mpd/playlists"))
+
 (define (stage-path root pid)
   (string-append root "/stage" (number->string pid)))
 
@@ -127,8 +130,7 @@
                     (lambda (playlist) (not (or (string=? playlist "all")
                                                 (string->number playlist))))
                     (map (lambda (playlist) (basename playlist ".m3u"))
-                         (cadr (fs-tree (home-path
-                                         ".config/mpd/playlists"))))))) out)
+                         (cadr (fs-tree playlists-directory)))))) out)
       (newline out)))
   (system "fold -s playlists-unwrapped | sed 's/ *$//' > playlists")
   (delete-file "playlists-unwrapped"))
@@ -211,13 +213,33 @@
           (substring name (+ 3 artist-end)))))
 
 (define (add-to-playlist playlist name)
-  (append-to-file playlist name)
+  (append-to-file playlist (string-append name ".ogg\n"))
   (sort-file playlist))
 
 (define (add stage)
-  (let ((lib (home-path "music")))
-    )
-  )
+  (let* ((track (car (read-lines "name")))
+         (track-info (get-artist-and-title track))
+         (artist (car track-info))
+         (title (cadr track-info))
+         (ogg (get-file "ogg")))
+    (system* "ffmpeg" "-y" "-i" ogg
+             "-metadata" (string-append "artist=" artist)
+             "-metadata" (string-append "title=" title)
+             "-c:a" "copy" "out.ogg")
+    (rename-file "out.ogg" ogg)
+    (map (lambda (playlist)
+           (add-to-playlist
+            (string-append playlists-directory "/" playlist ".m3u") track))
+         (append '("all")
+                 (filter (lambda (playlist) (not (string-null? playlist)))
+                         (string-split
+                          (car (read-lines "playlists")) #\space))))
+    (rename-file ogg (string-append (home-path "music/") ogg))
+    (delete-files (get-file "webm") "name" "playlists" "url")
+    (chdir "..")
+    (rmdir stage)
+    (when (file-exists? (home-path ".config/mpd/pid"))
+      (system* "mpc" "update"))))
 
 (define (process store)
   (let ((stages
