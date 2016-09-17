@@ -194,18 +194,29 @@
 (define (prepend-hours time)
   (string-append "00:" time))
 
-(define (convert track . trims)
-  (let* ((len (length trims))
-         (trim-end? (= len 2))
-         (trim-both? (and trim-end?
-                          (not (string-null? (car trims)))))
-         (trim-start? (or (= len 1) trim-both?)))
-    (system* "ffmpeg" "-y" "-i" (get-file "webm")
-             (if trim-start? "-ss" "")
-             (if trim-start? (prepend-hours (car trims)) "")
-             (if trim-end? "-to" "")
-             (if trim-end? (prepend-hours (cadr trims)) "")
-             "-vn" "-acodec" "copy" track)))
+(define* (convert track #:optional trims)
+  (let ((webm (get-file "webm")))
+    (if trims
+        (case (length trims)
+          ((0) (begin
+                 (system* "ffmpeg" "-y" "-i" webm
+                          "-vn" "-acodec" "copy" track)))
+          ((1) (begin
+                 (system* "ffmpeg" "-y" "-i" webm
+                          "-ss" (prepend-hours (car trims))
+                          "-vn" "-acodec" "copy" track)))
+          ((2) (begin
+                 (if (string-null? (car trims))
+                     (system* "ffmpeg" "-y" "-i" webm
+                              "-to" (prepend-hours (cadr trims))
+                              "-vn" "-acodec" "copy" track)
+                     (system* "ffmpeg" "-y" "-i" webm
+                              "-ss" (prepend-hours (car trims))
+                              "-to" (prepend-hours (cadr trims))
+                              "-vn" "-acodec" "copy" track)))))
+        (begin
+          (system* "ffmpeg" "-y" "-i" webm
+                   "-vn" "-acodec" "copy" track)))))
 
 (define (get-artist-and-title name)
   (let ((artist-end (string-contains name " - ")))
