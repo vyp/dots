@@ -270,7 +270,7 @@
                         (process store)))
                      (_
                       (begin
-                        (convert ogg (string-split trim #\-))
+                        (convert ogg (string-split (car trim) #\-))
                         (play ogg)
                         (if (equal? (readline "Is it good? (y/N) ") "y")
                             (set! good? #t)
