@@ -180,9 +180,27 @@
   (bell))
 
 (define (prune-todo todo done)
-  ;; TODO: Remember to first check if any other `mdl' process is running, and
-  ;; fail if there is, to avoid data races.
-  (display "del"))
+  (let* ((current-pid (getpid))
+         (pids (filter
+                (lambda (pid) (not (eq? pid current-pid)))
+                (map string->number
+                     (filter string->number
+                             (string-split
+                              (system-with-output-to-string
+                               "ps cax | grep mdl | grep -o '^[]*[0-9]*'")
+                              #\newline))))))
+    (if (not (null? pids))
+        (begin
+          (display "Another `mdl' process already running!")
+          (newline)
+          (exit 1))
+        (let ((pending (find-pending todo done)))
+          (call-with-output-file todo
+            (lambda (out)
+              (display (string-join pending "\n" 'suffix) out)))
+          (call-with-output-file done
+            (lambda (out)
+              (display "" out)))))))
 
 (define (skip stage)
   (chdir "..")
