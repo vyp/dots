@@ -151,17 +151,22 @@
       (let* ((track (string-split (car pending) #\space))
              (url (car track))
              (playlists (cdr track))
+             (trims (filter (lambda (str) (string-index str #\:)) playlists))
              (name (system-with-output-to-string
                     (string-append "youtube-dl --get-title '" url "'"))))
         (enter-dir (find-new-stage store))
         (call-with-output-file "name"
           (lambda (out)
-            (display name out)))
+            (display name out)
+            (when trims
+              (display (string-join trims) out)
+              (newline out))))
         (call-with-output-file "url"
           (lambda (out)
             (display url out)
             (newline out)))
-        (create-playlists-file playlists)
+        (create-playlists-file
+         (filter (lambda (str) (not (string-index str #\:))) playlists))
         (system* "youtube-dl" "-f" "43" "--no-part"
                  "-o" (string-append (substring-end name 1) ".webm")
                  url)
