@@ -38,9 +38,6 @@
 (define (bell)
   (system* "echo" "-e" "\a"))
 
-(define (play file)
-  (system* "mpv" "--no-video" "--loop=inf" file))
-
 (define (append-to-file path text)
   (let ((file (open-file path "a")))
     (display text file)
@@ -103,6 +100,9 @@
     (if (eof-object? output)
         ""
         output)))
+
+(define (play file)
+  (system* "mpv" "--no-video" "--loop=inf" file))
 
 (define playlists-directory
   (home-path ".config/mpd/playlists"))
