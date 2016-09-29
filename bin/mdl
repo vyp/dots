@@ -158,7 +158,7 @@
         (call-with-output-file "name"
           (lambda (out)
             (display name out)
-            (when trims
+            (when (not (null? trims))
               (display (string-join trims) out)
               (newline out))))
         (call-with-output-file "url"
