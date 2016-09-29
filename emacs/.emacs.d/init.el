@@ -774,7 +774,7 @@ takes a second \\[keyboard-quit] to abort the minibuffer."
     (add-to-list
      'org-latex-classes
      '("article"
-       "\\documentclass[a4paper,12pt]{article}
+       "\\documentclass[a4paper,11pt]{article}
 [NO-DEFAULT-PACKAGES]
 [NO-PACKAGES]
 \\usepackage{fontspec}
