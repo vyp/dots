@@ -806,6 +806,7 @@ takes a second \\[keyboard-quit] to abort the minibuffer."
 \\usepackage{tabularx}
 \\usepackage{calc}
 \\usepackage{colortbl}
+\\usepackage[font=footnotesize,labelfont=bf,margin=1.5cm]{caption}
 
 \\usepackage{hyperref}
 
