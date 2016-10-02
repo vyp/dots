@@ -5,13 +5,6 @@
   #:use-module (ice-9 rdelim)
   #:use-module (rnrs sorting))
 
-(define remove-stat-from-file-system-tree
-  (match-lambda
-    ((name stat)
-     name)
-    ((name stat children ...)
-     (list name (map remove-stat-from-file-system-tree children)))))
-
 (define-public (append-to-file path text)
   (let ((file (open-file path "a")))
     (display text file)
@@ -31,6 +24,13 @@
 (define-public (enter-dir dir)
   (mkdir-p dir)
   (chdir dir))
+
+(define remove-stat-from-file-system-tree
+  (match-lambda
+    ((name stat)
+     name)
+    ((name stat children ...)
+     (list name (map remove-stat-from-file-system-tree children)))))
 
 (define-public (fs-tree path)
   (remove-stat-from-file-system-tree (file-system-tree path)))
