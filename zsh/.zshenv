@@ -2,6 +2,7 @@ typeset -U path
 path=(~/sc/bin ~/ui/bin $path)
 export BROWSER=firefox
 export EDITOR=vim
+export GUILE_LOAD_PATH=$HOME/ui/guile
 export SUDO_EDITOR=rvim
 export VISUAL=$EDITOR
 # export GUIX_PACKAGE_PATH=$HOME/ui/guix/recipes/active

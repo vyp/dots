@@ -15,97 +15,20 @@
 ;; TODO: Remove `sed' dependency.
 ;; TODO: Remove `fold' dependency.
 
+(use-modules (personal scripting))
+(use-modules (personal string))
+
 (use-modules (ice-9 ftw))
 (use-modules (ice-9 match))
-(use-modules (ice-9 popen))
-(use-modules (ice-9 rdelim))
 (use-modules (ice-9 readline))
 (use-modules (rnrs sorting))
 (use-modules (srfi srfi-1))
 
-(define home (getenv "HOME"))
-(define editor (getenv "EDITOR"))
-
-(define (home-path path)
-  (string-append home "/" path))
-
-(define (substring-end str n)
-  (substring str 0 (- (string-length str) n)))
-
-(define (substring-length str start end)
-  (substring str start (- (string-length str) end)))
-
-(define (bell)
-  (system* "echo" "-e" "\a"))
-
-(define (append-to-file path text)
-  (let ((file (open-file path "a")))
-    (display text file)
-    (close-output-port file)))
-
-(define (read-lines file)
-  (let ((lst '()))
-    (with-input-from-file file
-      (lambda ()
-        (do ((line (read-line) (read-line)))
-            ((eof-object? line))
-          (set! lst (cons line lst)))
-        (reverse lst)))))
-
-(define (delete-files . files)
-  (map (lambda (file)
-         (when (file-exists? file)
-           (delete-file file))) files))
-
-(define (edit . files)
-  (system (string-append editor " " (string-join files))))
-
-(define (get-file ext)
-  (let ((results
-         (scandir "." (lambda (name)
-                        (string-suffix? (string-append "." ext) name)))))
-    (if (null? results)
-        ""
-        (car results))))
-
-(define (sort-file file)
-  (let ((contents (read-lines file)))
-    (call-with-output-file file
-      (lambda (out)
-        (display (string-join
-                  (list-sort string<? contents) "\n" 'suffix) out)))))
-
-(define (mkdir-p dir)
-  (unless (file-exists? dir)
-    (mkdir dir)))
-
-(define (enter-dir dir)
-  (mkdir-p dir)
-  (chdir dir))
-
-(define remove-stat-from-file-system-tree
-  (match-lambda
-    ((name stat)
-     name)
-    ((name stat children ...)
-     (list name (map remove-stat-from-file-system-tree children)))))
-
-(define (fs-tree path)
-  (remove-stat-from-file-system-tree (file-system-tree path)))
-
-(define (system-with-output-to-string command)
-  (let* ((port (open-input-pipe command))
-         (output (read-delimited "" port)))
-    (close-pipe port)
-    (if (eof-object? output)
-        ""
-        output)))
+(define playlists-directory
+  (home-path ".config/mpd/playlists"))
 
 (define (play file)
   (system* "mpv" "--no-video" "--loop=inf" file))
-
-(define playlists-directory
-  (home-path ".config/mpd/playlists"))
 
 (define (stage-path root pid)
   (string-append root "/stage" (number->string pid)))
@@ -152,7 +75,7 @@
              (url (car track))
              (playlists (cdr track))
              (trims (filter (lambda (str) (string-index str #\:)) playlists))
-             (name (system-with-output-to-string
+             (name (system-output
                     (string-append "youtube-dl --get-title '" url "'"))))
         (enter-dir (find-new-stage store))
         (call-with-output-file "name"
@@ -186,7 +109,7 @@
                 (map string->number
                      (filter string->number
                              (string-split
-                              (system-with-output-to-string
+                              (system-output
                                "ps cax | grep mdl | grep -o '^[]*[0-9]*'")
                               #\newline))))))
     (if (not (null? pids))
