@@ -5,3 +5,9 @@
 
 (define-public (substring-length str start end)
   (substring str start (- (string-length str) end)))
+
+(define-public (substring-from str n)
+  (let ((len (string-length str)))
+    (if (= len 0)
+        ""
+        (substring str (- len n) len))))
