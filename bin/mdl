@@ -17,6 +17,7 @@
 
 (use-modules (personal scripting))
 (use-modules (personal string))
+(use-modules (site pipe))
 
 (use-modules (ice-9 ftw))
 (use-modules (ice-9 match))
@@ -46,14 +47,13 @@
       (when (not (null? playlists))
         (display (string-join playlists) out))
       (newline out)
-      (display
-       (string-join
-        (list-sort string<?
-                   (filter
-                    (lambda (playlist) (not (or (string=? playlist "all")
-                                                (string->number playlist))))
-                    (map (lambda (playlist) (basename playlist ".m3u"))
-                         (cadr (fs-tree playlists-directory)))))) out)
+      (display (->> (cadr (fs-tree playlists-directory))
+                    (map (lambda (playlist) (basename playlist ".m3u")))
+                    (filter (lambda (playlist)
+                              (not (or (string=? playlist "all")
+                                       (string->number playlist)))))
+                    (list-sort string<?)
+                    (string-join)) out)
       (newline out)))
   (system "fold -s playlists-unwrapped | sed 's/ *$//' > playlists")
   (delete-file "playlists-unwrapped"))
@@ -104,14 +104,12 @@
 
 (define (prune-todo todo done)
   (let* ((current-pid (getpid))
-         (pids (filter
-                (lambda (pid) (not (eq? pid current-pid)))
-                (map string->number
-                     (filter string->number
-                             (string-split
-                              (system-output
-                               "ps cax | grep mdl | grep -o '^[]*[0-9]*'")
-                              #\newline))))))
+         (pids (->> (string-split (system-output
+                                   "ps cax | grep mdl | grep -o '^[]*[0-9]*'")
+                                  #\newline)
+                    (filter string->number)
+                    (map string->number)
+                    (filter (lambda (pid) (not (eq? pid current-pid)))))))
     (if (not (null? pids))
         (begin
           (display "Another `mdl' process already running!")
@@ -178,13 +176,12 @@
              "-metadata" (string-append "title=" title)
              "-c:a" "copy" "out.ogg")
     (rename-file "out.ogg" ogg)
-    (map (lambda (playlist)
-           (add-to-playlist
-            (string-append playlists-directory "/" playlist ".m3u") track))
-         (append '("all")
-                 (filter (lambda (playlist) (not (string-null? playlist)))
-                         (string-split
-                          (car (read-lines "playlists")) #\space))))
+    (->> (string-split (car (read-lines "playlists")) #\space)
+         (filter (lambda (playlist) (not (string-null? playlist))))
+         (append '("all"))
+         (map (lambda (playlist) (add-to-playlist (string-append
+                                                   playlists-directory "/"
+                                                   playlist ".m3u") track))))
     (rename-file ogg (string-append (home-path "music/") ogg))
     (delete-files (get-file "webm") "name" "playlists" "url")
     (chdir "..")
