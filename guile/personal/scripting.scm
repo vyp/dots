@@ -23,6 +23,10 @@
 (define-public (edit . files)
   (system (string-append (getenv "EDITOR") " " (string-join files))))
 
+(define-public (mkdir-p dir)
+  (unless (file-exists? dir)
+    (mkdir dir)))
+
 (define-public (enter-dir dir)
   (mkdir-p dir)
   (chdir dir))
@@ -73,10 +77,6 @@
 
 (define-public (home-path path)
   (string-append (getenv "HOME") "/" path))
-
-(define-public (mkdir-p dir)
-  (unless (file-exists? dir)
-    (mkdir dir)))
 
 (define-public (read-lines file)
   (let ((lst '()))
