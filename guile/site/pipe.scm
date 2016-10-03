@@ -22,7 +22,7 @@
 ;; The first s-expression will be inserted as the last argument of the next
 ;; s-expesssion.
 ;;
-;; Example: (-> 100 (/ 10) (/ 5)) becomes (/ 5 (/ 10 100))
+;; Example: (->> 100 (/ 10) (/ 5)) becomes (/ 5 (/ 10 100))
 
 (define-syntax ->>
   (syntax-rules ()
