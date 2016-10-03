@@ -3,7 +3,7 @@
 
 ;; Thread first macro.
 ;;
-;; The first s-expression will be inserted as the firts argument of the next
+;; The first s-expression will be inserted as the first argument of the next
 ;; s-expesssion.
 ;;
 ;; Example: (-> 100 (/ 10) (/ 5)) becomes (/ (/ 100 10) 5)
