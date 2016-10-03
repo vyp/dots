@@ -1,9 +1,11 @@
 (define-module (personal scripting)
+  #:use-module (personal string)
   #:use-module (ice-9 ftw)
   #:use-module (ice-9 match)
   #:use-module (ice-9 popen)
   #:use-module (ice-9 rdelim)
-  #:use-module (rnrs sorting))
+  #:use-module (rnrs sorting)
+  #:use-module (srfi srfi-1))
 
 (define-public (append-to-file path text)
   (let ((file (open-file path "a")))
@@ -24,6 +26,32 @@
 (define-public (enter-dir dir)
   (mkdir-p dir)
   (chdir dir))
+
+(define (fold-line word acc)
+  (let* ((len (string-length word))
+         (next-position (+ len (cdr acc))))
+    (if (> next-position 80)
+        (cons (string-append (car acc) "\n" word) len)
+        (cons (string-append (car acc)
+                             (if (string=? (car acc) "") "" " ")
+                             word)
+              next-position))))
+
+(define (fold-lines line acc)
+  (let ((maxlen (- 80 (cdr acc))))
+    (if (<= (string-length line) maxlen)
+        (cons (string-append (car acc)
+                             (if (string-index (substring-from (car acc) 1)
+                                               #\newline) "" " ") line "\n") 0)
+        (let ((folded-line (fold fold-line (cons "" 0)
+                                 (string-split line #\space))))
+          (cons (string-append (car acc) (car folded-line))
+                (cdr folded-line))))))
+
+(define-public (fold-file file)
+  ;; NOTE: Currently only a failed attempt.
+  (let ((contents (read-lines file)))
+    (display (car (fold fold-lines (cons "" 0) contents)))))
 
 (define remove-stat-from-file-system-tree
   (match-lambda
