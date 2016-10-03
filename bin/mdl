@@ -9,21 +9,20 @@
 ;; - fold (coreutils)
 ;; - sed
 ;;
-;; NOTE: Also uses mpv and $EDITOR environment variable.
+;; NOTE: Uses `mpv' to play media files.
 ;; NOTE: Runs `mpc update' if applicable after adding music to library.
 ;;
 ;; TODO: Remove `sed' dependency.
 ;; TODO: Remove `fold' dependency.
 
-(use-modules (personal scripting))
-(use-modules (personal string))
-(use-modules (site pipe))
-
-(use-modules (ice-9 ftw))
-(use-modules (ice-9 match))
-(use-modules (ice-9 readline))
-(use-modules (rnrs sorting))
-(use-modules (srfi srfi-1))
+(use-modules (personal scripting)
+             (personal string)
+             (site pipe)
+             (ice-9 ftw)
+             (ice-9 match)
+             (ice-9 readline)
+             (rnrs sorting)
+             (srfi srfi-1))
 
 (define playlists-directory
   (home-path ".config/mpd/playlists"))
