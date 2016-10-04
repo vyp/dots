@@ -31,51 +31,6 @@
   (mkdir-p dir)
   (chdir dir))
 
-;; Folding/wrapping file contents.
-;; ===============================
-;;
-;; Read in file contents as list of lines.
-;;
-;; A line could be:
-;;   - Empty: ""
-;;   - Less than the wanted wrap width.
-;;   - Greater than the wanted wrap width.
-;;       - We want to split only at whitespace, so also a line could be greater
-;;         wanted wrap width, but it might not have any place to split at
-;;         whitespace. Also, even after a split the next line could still be
-;;         bigger without any place to split.
-;;
-;; In the case of an empty line, append '"\n" + line + "\n"' to the and reset
-;; the position to 0.
-;;
-;; In the case of a line less than the wanted wrap width,
-
-(define (fold-line word acc)
-  (let* ((len (string-length word))
-         (next-position (+ len (cdr acc))))
-    (if (> next-position 80)
-        (cons (string-append (car acc) "\n" word) len)
-        (cons (string-append (car acc)
-                             (if (string=? (car acc) "") "" " ")
-                             word)
-              next-position))))
-
-(define (fold-lines line acc)
-  (let ((maxlen (- 80 (cdr acc))))
-    (if (<= (string-length line) maxlen)
-        (cons (string-append (car acc)
-                             (if (string-index (substring-from (car acc) 1)
-                                               #\newline) "" " ") line "\n") 0)
-        (let ((folded-line (fold fold-line (cons "" 0)
-                                 (string-split line #\space))))
-          (cons (string-append (car acc) (car folded-line))
-                (cdr folded-line))))))
-
-(define-public (fold-file file)
-  ;; NOTE: Currently only a failed attempt.
-  (let ((contents (read-lines file)))
-    (display (car (fold fold-lines (cons "" 0) contents)))))
-
 (define remove-stat-from-file-system-tree
   (match-lambda
     ((name stat)

@@ -13,7 +13,6 @@
 ;; NOTE: Runs `mpc update' if applicable after adding music to library.
 ;;
 ;; TODO: Remove `sed' dependency.
-;; TODO: Remove `fold' dependency.
 
 (use-modules (personal scripting)
              (personal string)
