@@ -31,6 +31,25 @@
   (mkdir-p dir)
   (chdir dir))
 
+;; Folding/wrapping file contents.
+;; ===============================
+;;
+;; Read in file contents as list of lines.
+;;
+;; A line could be:
+;;   - Empty: ""
+;;   - Less than the wanted wrap width.
+;;   - Greater than the wanted wrap width.
+;;       - We want to split only at whitespace, so also a line could be greater
+;;         wanted wrap width, but it might not have any place to split at
+;;         whitespace. Also, even after a split the next line could still be
+;;         bigger without any place to split.
+;;
+;; In the case of an empty line, append '"\n" + line + "\n"' to the and reset
+;; the position to 0.
+;;
+;; In the case of a line less than the wanted wrap width,
+
 (define (fold-line word acc)
   (let* ((len (string-length word))
          (next-position (+ len (cdr acc))))
