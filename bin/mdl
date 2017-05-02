@@ -30,12 +30,6 @@
                     (available . ,(home-path "music/store/status/available"))
                     (importing . ,(home-path "music/store/status/importing"))))
 
-;; TODO: Put this under (personal scripting).
-(define (flock-open mode . files)
-  (let ((ports (map (lambda (file) (open-file file mode)) files)))
-    (map (lambda (port) (flock port LOCK_EX)) ports)
-    ports))
-
 (define (flock-store mode)
   (flock-open mode
               (assoc-ref store 'wishlist)

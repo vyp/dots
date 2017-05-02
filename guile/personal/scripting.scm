@@ -32,6 +32,11 @@
   (mkdir-p dir)
   (chdir dir))
 
+(define-public (flock-open mode . files)
+  (let ((ports (map (lambda (file) (open-file file mode)) files)))
+    (map (lambda (port) (flock port LOCK_EX)) ports)
+    ports))
+
 (define remove-stat-from-file-system-tree
   (match-lambda
     ((name stat)
