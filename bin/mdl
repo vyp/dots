@@ -31,11 +31,11 @@
                     (importing . ,(home-path "music/store/status/importing"))))
 
 (define (flock-store mode)
-  (flock-open mode
-              (assoc-ref store 'wishlist)
-              (assoc-ref store 'granting)
-              (assoc-ref store 'available)
-              (assoc-ref store 'importing)))
+  (flocks mode
+          (assoc-ref store 'wishlist)
+          (assoc-ref store 'granting)
+          (assoc-ref store 'available)
+          (assoc-ref store 'importing)))
 
 (define (phase-edit)
   (let ((ports (flock-store "r")))

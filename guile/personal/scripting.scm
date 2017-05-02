@@ -35,7 +35,7 @@
     (display text port)
     (close-port port)))
 
-(define-public (flock-open mode . files)
+(define-public (flocks mode . files)
   (let ((ports (map (lambda (file) (open-file file mode)) files)))
     (map (lambda (port) (flock port LOCK_EX)) ports)
     ports))
