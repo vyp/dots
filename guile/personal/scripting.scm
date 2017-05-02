@@ -7,12 +7,6 @@
   #:use-module (rnrs sorting)
   #:use-module (srfi srfi-1))
 
-;; TODO: Fix function and argument names.
-(define-public (append-to-file path text)
-  (let ((file (open-file path "a")))
-    (display text file)
-    (close-port file)))
-
 (define-public (bell)
   (system* "echo" "-e" "\a"))
 
@@ -35,6 +29,11 @@
 (define-public (enter-dir dir)
   (mkdir-p dir)
   (chdir dir))
+
+(define-public (file-append file text)
+  (let ((port (open-file file "a")))
+    (display text port)
+    (close-port port)))
 
 (define-public (flock-open mode . files)
   (let ((ports (map (lambda (file) (open-file file mode)) files)))
