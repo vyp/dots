@@ -27,9 +27,10 @@
 (define-public (edit . files)
   (system (string-append (getenv "EDITOR") " " (string-join files))))
 
-(define-public (mkdir-p dir)
-  (unless (file-exists? dir)
-    (mkdir dir)))
+(define-public (mkdir-p . dirs)
+  (map (lambda (dir)
+         (unless (file-exists? dir)
+           (mkdir dir))) dirs))
 
 (define-public (enter-dir dir)
   (mkdir-p dir)
