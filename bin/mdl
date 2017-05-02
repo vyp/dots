@@ -1,0 +1,33 @@
+#!/usr/bin/guile \
+-e main -s
+!#
+
+;; $PATH dependencies:
+;;
+;; - youtube-dl
+;; - ffmpeg
+;; - AtomicParsley
+;;
+;; (Optionally) Also uses (some) $EDITOR, mpv and mpc.
+
+(use-modules (personal scripting)
+             (personal string)
+             (site pipe)
+             (ice-9 ftw)
+             (ice-9 match)
+             (ice-9 readline)
+             (rnrs sorting)
+             (srfi srfi-1))
+
+(define lib                       (home-path "music/lib"))
+(define artwork                   (home-path "music/artwork"))
+(define playlists `((genres    . ,(home-path "music/playlists/genres"))
+                    (shuffle   . ,(home-path "music/playlists/shuffle"))
+                    (vault     . ,(home-path "music/playlists/vault"))))
+(define store     `((root      . ,(home-path "music/store"))
+                    (wishlist  . ,(home-path "music/store/status/wishlist"))
+                    (granting  . ,(home-path "music/store/status/granting"))
+                    (available . ,(home-path "music/store/status/available"))
+                    (importing . ,(home-path "music/store/status/importing"))))
+
+(define (main args))
