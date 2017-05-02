@@ -87,3 +87,10 @@
     (if (eof-object? output)
         ""
         output)))
+
+(define-public (touch . files)
+  (map (lambda (file)
+         (unless (file-exists? file)
+           (let ((port (open-file file "w")))
+             (display "" port)
+             (close-port port)))) files))

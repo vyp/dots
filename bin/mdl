@@ -25,6 +25,7 @@
                     (shuffle   . ,(home-path "music/playlists/shuffle"))
                     (vault     . ,(home-path "music/playlists/vault"))))
 (define store     `((root      . ,(home-path "music/store"))
+                    (status    . ,(home-path "music/store/status"))
                     (wishlist  . ,(home-path "music/store/status/wishlist"))
                     (granting  . ,(home-path "music/store/status/granting"))
                     (available . ,(home-path "music/store/status/available"))
@@ -47,7 +48,16 @@
   (display "Starting downloads.\n"))
 
 (define (main args)
-  ;; TODO: Begin by making/touching all the needed directories/files.
+  (mkdir-p lib artwork
+           (assoc-ref playlists 'genres)
+           (assoc-ref playlists 'shuffle)
+           (assoc-ref playlists 'vault)
+           (assoc-ref store     'root)
+           (assoc-ref store     'status))
+  (touch   (assoc-ref store     'wishlist)
+           (assoc-ref store     'granting)
+           (assoc-ref store     'available)
+           (assoc-ref store     'importing))
   (if (> (length args) 1)
       (let ((ports (flock-store "a")))
         (display (string-append (string-join (cdr args)) "\n")
