@@ -16,6 +16,9 @@
 (define-public (bell)
   (system* "echo" "-e" "\a"))
 
+(define-public (close-ports ports)
+  (map close-port ports))
+
 (define-public (delete-files . files)
   (map (lambda (file)
          (when (file-exists? file)
@@ -75,9 +78,6 @@
       (lambda (out)
         (display (string-join
                   (list-sort string<? contents) "\n" 'suffix) out)))))
-
-(define-public (close-ports ports)
-  (map close-port ports))
 
 (define-public (system-output command)
   (let* ((port (open-input-pipe command))
