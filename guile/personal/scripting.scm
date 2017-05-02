@@ -10,7 +10,7 @@
 (define-public (append-to-file path text)
   (let ((file (open-file path "a")))
     (display text file)
-    (close-output-port file)))
+    (close-port file)))
 
 (define-public (bell)
   (system* "echo" "-e" "\a"))
