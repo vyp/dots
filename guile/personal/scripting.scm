@@ -61,8 +61,7 @@
 (define-public (home-path path)
   (string-append (getenv "HOME") "/" path))
 
-;; TODO: Rename to `read-file' and make `read-lines' use a port.
-(define-public (read-lines file)
+(define-public (read-file file)
   (let ((lst '()))
     (with-input-from-file file
       (lambda ()
@@ -70,6 +69,14 @@
             ((eof-object? line))
           (set! lst (cons line lst)))
         (reverse lst)))))
+
+(define-public (read-lines port)
+  (let ((lst '()))
+    (lambda ()
+      (do ((line (read-line port) (read-line port)))
+          ((eof-object? line))
+        (set! lst (cons line lst)))
+      (reverse lst))))
 
 ;; TODO: Make equivalent `sort-port' function.
 (define-public (sort-file file)
