@@ -1,0 +1,5 @@
+! vim: ft=xdefaults
+URxvt*font:       xft:Input:style=Regular:size=10.5,\
+                  -wuncon-siji-medium-r-normal--10-100-75-75-c-80-iso10646-1
+URxvt*italicFont: xft:Input:style=Regular:size=10.5
+URxvt*boldFont:   xft:Input:style=Bold:size=10.5

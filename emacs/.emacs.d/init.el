@@ -1139,4 +1139,4 @@ using `org-meta-return' though."
 ;; Font
 ;; ____
 ;;
-(add-to-list 'default-frame-alist '(font . "Input-9"))
+(add-to-list 'default-frame-alist '(font . "Input-10.5"))
