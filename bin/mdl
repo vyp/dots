@@ -2,13 +2,13 @@
 -e main -s
 !#
 
-;; $PATH dependencies:
+;; $PATH requirements:
 ;;
 ;; - youtube-dl
 ;; - ffmpeg
 ;; - AtomicParsley
 ;;
-;; (Optionally) Also uses (some) $EDITOR, mpv and mpc.
+;; (Optionally) Also uses $EDITOR, mpv and mpc.
 
 (use-modules (personal scripting)
              (personal string)
@@ -30,4 +30,34 @@
                     (available . ,(home-path "music/store/status/available"))
                     (importing . ,(home-path "music/store/status/importing"))))
 
-(define (main args))
+;; TODO: Put this under (personal scripting).
+(define (flock-open mode . files)
+  (let ((ports (map (lambda (file) (open-file file mode)) files)))
+    (map (lambda (port) (flock port LOCK_EX)) ports)
+    ports))
+
+(define (flock-store mode)
+  (flock-open mode
+              (assoc-ref store 'wishlist)
+              (assoc-ref store 'granting)
+              (assoc-ref store 'available)
+              (assoc-ref store 'importing)))
+
+(define (phase-edit)
+  (let ((ports (flock-store "r")))
+    (edit (assoc-ref store 'wishlist))
+    (close-ports ports))
+  (phase-download))
+
+(define (phase-download)
+  (display "Starting downloads.\n"))
+
+(define (main args)
+  ;; TODO: Begin by making/touching all the needed directories/files.
+  (if (> (length args) 1)
+      (let ((ports (flock-store "a")))
+        (display (string-append (string-join (cdr args)) "\n")
+                 (car ports))
+        (close-ports ports)
+        (phase-edit))
+      (phase-edit)))

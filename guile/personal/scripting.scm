@@ -7,6 +7,7 @@
   #:use-module (rnrs sorting)
   #:use-module (srfi srfi-1))
 
+;; TODO: Fix function and argument names.
 (define-public (append-to-file path text)
   (let ((file (open-file path "a")))
     (display text file)
@@ -52,6 +53,7 @@
 (define-public (home-path path)
   (string-append (getenv "HOME") "/" path))
 
+;; TODO: Rename to `read-file' and make `read-lines' use a port.
 (define-public (read-lines file)
   (let ((lst '()))
     (with-input-from-file file
@@ -61,12 +63,16 @@
           (set! lst (cons line lst)))
         (reverse lst)))))
 
+;; TODO: Make equivalent `sort-port' function.
 (define-public (sort-file file)
   (let ((contents (read-lines file)))
     (call-with-output-file file
       (lambda (out)
         (display (string-join
                   (list-sort string<? contents) "\n" 'suffix) out)))))
+
+(define-public (close-ports ports)
+  (map close-port ports))
 
 (define-public (system-output command)
   (let* ((port (open-input-pipe command))
