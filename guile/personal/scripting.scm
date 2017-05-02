@@ -78,13 +78,18 @@
         (set! lst (cons line lst)))
       (reverse lst))))
 
-;; TODO: Make equivalent `sort-port' function.
 (define-public (sort-file file)
   (let ((contents (read-lines file)))
     (call-with-output-file file
       (lambda (out)
         (display (string-join
                   (list-sort string<? contents) "\n" 'suffix) out)))))
+
+(define-public (sort-port port)
+  ;; Remember that port has to be opened in "w" mode!
+  (let ((contents (read-lines port)))
+    (display (string-join
+              (list-sort string<? contents) "\n" 'suffix) port)))
 
 (define-public (system-output command)
   (let* ((port (open-input-pipe command))
