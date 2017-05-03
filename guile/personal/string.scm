@@ -1,5 +1,11 @@
 (define-module (personal string))
 
+(define-public (first-word str)
+  (let ((multiple-words? (string-index str #\space)))
+    (if multiple-words?
+        (substring str 0 multiple-words?)
+        str)))
+
 (define-public (first-words contents)
   (map (lambda (line)
          (let ((multiple-words? (string-index line #\space)))
