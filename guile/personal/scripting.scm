@@ -72,11 +72,10 @@
 
 (define-public (read-lines port)
   (let ((lst '()))
-    (lambda ()
-      (do ((line (read-line port) (read-line port)))
-          ((eof-object? line))
-        (set! lst (cons line lst)))
-      (reverse lst))))
+    (do ((line (read-line port) (read-line port)))
+        ((eof-object? line))
+      (set! lst (cons line lst)))
+    (reverse lst)))
 
 (define-public (sort-file file)
   (let ((contents (read-lines file)))
