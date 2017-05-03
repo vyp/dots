@@ -44,7 +44,26 @@
   (phase-download))
 
 (define (phase-download)
-  (display "Starting downloads.\n"))
+  (match (readline "Download? (Y/n/q) ")
+    ("n" (phase-import))
+    ("q" (exit))
+    (_ (let* ((ports (flock-store "a+"))
+              (wishlist (read-lines (car ports)))
+              (granting (read-lines (cadr ports)))
+              (available (read-lines (list-ref ports 2)))
+              (grants (lset-difference equal? wishlist granting available)))
+         (if (null? grants)
+             (begin
+               (close-ports ports)
+               (phase-import))
+             (begin
+               (display (string-join grants "\n" 'suffix) granting)
+               (close-ports ports)
+               (download grants)
+               (phase-import)))))))
+
+(define (phase-import)
+  (display "Phase import.\n"))
 
 (define (main args)
   (touch (assoc-ref store 'wishlist)
