@@ -57,7 +57,7 @@
                (close-ports ports)
                (phase-import))
              (begin
-               (display (string-join grants "\n" 'suffix) granting)
+               (display (string-join grants "\n" 'suffix) (cadr ports))
                (close-ports ports)
                (download grants)
                (phase-import)))))))
