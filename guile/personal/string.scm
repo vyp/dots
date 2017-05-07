@@ -7,11 +7,7 @@
         str)))
 
 (define-public (first-words contents)
-  (map (lambda (line)
-         (let ((multiple-words? (string-index line #\space)))
-           (if multiple-words?
-               (substring line 0 multiple-words?)
-               line))) contents))
+  (map first-word contents))
 
 (define-public (substring-end str n)
   (substring str 0 (- (string-length str) n)))
