@@ -43,6 +43,78 @@
     (close-ports ports))
   (phase-download))
 
+(define (split-name title-string)
+  (let ((hyphen? (string-contains title-string " - ")))
+    (if hyphen?
+        (string-join
+         (list (substring title-string 0 hyphen?)
+               (substring title-string (+ 3 hyphen?))) "\n")
+        title-string)))
+
+(define (stage pid)
+  (string-append (assoc-ref store 'root) "/" (number->string pid)))
+
+(define (download grants)
+  (map (lambda (grant)
+         (let ((ports (flock-store "r"))
+               (pid 1))
+           (while (file-exists? (stage pid))
+             (set! pid (1+ pid)))
+           (enter-dir (stage pid))
+           (close-ports ports)
+           (call-with-output-file "url"
+             (lambda (out)
+               (display (string-append (first-word grant) "\n") out)))
+           (call-with-output-file "name"
+             (lambda (out)
+               (display
+                (split-name
+                 (system-output (string-append "youtube-dl --get-title '"
+                                               (first-word grant) "'"))) out)))
+           (touch "album" "lyrics")
+           (call-with-output-file "rating"
+             (lambda (out)
+               (display (string-join (map number->string (iota 5 5 -1))
+                                     "\n" 'suffix) out)))
+           (call-with-output-file "genre"
+             (lambda (out)
+               (display (string-join
+                         '("Classical" "Electronic" "Epic" "Folk" "House" "Pop"
+                           "Rap" "RnB" "Rock" "Trap") "\n" 'suffix) out)))
+           (if (list? (fs-tree (assoc-ref playlists 'shuffle)))
+               (call-with-output-file "playlists"
+                 (lambda (out)
+                   (display
+                    (string-join (->>
+                                  (cadr
+                                   (fs-tree (assoc-ref playlists 'shuffle)))
+                                  (map (lambda (playlist)
+                                         (basename playlist ".m3u")))
+                                  (filter (lambda (playlist)
+                                            (not (string=? playlist "All")))))
+                                 "\n" 'suffix) out)))
+               (touch "playlists"))
+           (system* "youtube-dl" "-f" "140" "-o" "original.m4a"
+                    (first-word grant))
+           (let* ((ports (flock-store "r"))
+                  (granting (read-lines (cadr ports)))
+                  (available (read-lines (list-ref ports 2))))
+             (close-ports ports)
+             (let ((lock-ports (flocks "r"
+                                       (assoc-ref store 'wishlist)
+                                       (assoc-ref store 'importing)))
+                   (write-ports (flocks "w"
+                                        (assoc-ref store 'granting)
+                                        (assoc-ref store 'available))))
+               (display
+                (string-join
+                 (lset-difference equal? granting (list grant)) "\n" 'suffix)
+                (car write-ports))
+               (display
+                (string-join (append available (list grant)) "\n" 'suffix)
+                (cadr write-ports))
+               (close-ports (append lock-ports write-ports)))))) grants))
+
 (define (phase-download)
   (match (readline "Download? (Y/n/q) ")
     ("n" (phase-import))
