@@ -29,6 +29,8 @@ tramp
 # Nix.
 result
 result-*
+# For now, until it's added as a submodule.
+nixos/nixpkgs
 
 # Vim.
 .*.s[a-w][a-z]
