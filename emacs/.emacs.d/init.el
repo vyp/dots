@@ -1123,18 +1123,48 @@ using `org-meta-return' though."
 ;; Theme
 ;; _____
 ;;
-(load-file "~/.emacs.d/lisp/theme.el")
+;; (load-file "~/.emacs.d/lisp/theme.el")
+(add-to-list 'custom-theme-load-path "~/sc/store/moe-theme.el")
+;; (add-to-list 'custom-theme-load-path "~/sc/store/emacs-leuven-theme")
+
+;; (let ((theme-path "~/sc/store/color-theme-sanityinc-tomorrow"))
+;;   (dolist (list '(load-path custom-theme-load-path))
+;;     (add-to-list list theme-path)))
+;; (require 'color-theme-sanityinc-tomorrow)
+
+(if (daemonp)
+    (add-hook 'after-make-frame-functions
+              (lambda (frame)
+                (with-selected-frame frame
+                  (load-theme 'moe-light t))))
+  (load-theme 'moe-light t))
+
+(set-face-attribute 'mode-line-buffer-id nil :background nil :foreground "#1c1c1c")
+(set-face-attribute 'mode-line-inactive nil :background "#b2b2b2" :foreground "#ffffff")
+(set-face-attribute 'powerline-active2 nil :background "#585858" :foreground "#ffffff")
+(set-face-attribute 'powerline-inactive1 nil :background "#c6c6c6" :foreground "#585858")
+(set-face-attribute 'powerline-inactive2 nil :background "#e4e4e4" :foreground "#585858")
+(set-face-attribute 'mode-line nil :background "#5fafd7" :foreground "#ffffff")
+(set-face-attribute 'powerline-active1 nil :background "#afd7ff" :foreground "#005faf")
+
+;; (set-face-attribute 'mode-line-buffer-id nil :background nil :foreground "#080808")
+;; (set-face-attribute 'mode-line-inactive nil :background "#4e4e4e" :foreground "#9e9e9e")
+;; (set-face-attribute 'powerline-active2 nil :background "#ffffff" :foreground "#3a3a3a")
+;; (set-face-attribute 'powerline-inactive1 nil :background "#626262" :foreground "#eeeeee")
+;; (set-face-attribute 'powerline-inactive2 nil :background "#767676" :foreground "#e4e4e4")
+;; (set-face-attribute 'mode-line nil :background "#5fafd7" :foreground "#ffffff")
+;; (set-face-attribute 'powerline-active1 nil :background "#afd7ff" :foreground "#005faf")
 
 ;; Faces
 ;; _____
 ;;
-(set-face-attribute 'mode-line nil :box nil)
-(set-face-attribute 'mode-line-inactive nil :box nil)
+;; (set-face-attribute 'mode-line nil :box nil)
+;; (set-face-attribute 'mode-line-inactive nil :box nil)
 
 ;; Disable underlines.
-(mapc (lambda (face)
-        (set-face-attribute face nil :underline nil))
-      (face-list))
+;; (mapc (lambda (face)
+;;         (set-face-attribute face nil :underline nil))
+;;       (face-list))
 
 ;; Font
 ;; ____
