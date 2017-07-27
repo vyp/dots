@@ -134,8 +134,35 @@
                (download grants)
                (phase-import)))))))
 
+(define (find-stage)
+  (let ((ports (flock-store "r"))
+        (root (fs-tree (assoc-ref store 'root))))
+    (if (> (length root) 1)
+        (let ((stages (lset-difference
+                       =
+                       (->> (cadr root)
+                            (map car)
+                            (filter string->number)
+                            (map string->number))
+                       (map string->number
+                            (read-lines (list-ref ports 3))))))
+          (close-ports ports)
+          (if (null? stages)
+              #f
+              (car stages)))
+        (begin
+          (close-ports ports)
+          #f))))
+
+(define (import stage)
+  (enter-dir (string-append
+              (assoc-ref store 'root) "/" (number->string stage)))
+  (readline (string-append "Next is " ", continue? (Y\n)"))
+  )
+
 (define (phase-import)
-  (display "Phase import.\n"))
+  (while (find-stage)
+    (import (find-stage))))
 
 (define (main args)
   (touch (assoc-ref store 'wishlist)
