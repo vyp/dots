@@ -1,13 +1,4 @@
 # -*- mode: gitignore; -*-
-# Evil mode because it is using hg instead of git.
-/vendor/emacs/evil
-
-# Generated configs (via `make`).
-/zathura/.config/zathura/zathurarc
-
-# Logs.
-/update-log
-
 # Emacs.
 *~
 \#*\#
@@ -29,17 +20,15 @@ tramp
 /eshell/history
 /eshell/lastdir
 
-## Elpa packages.
-/elpa/
-
 ## Reftex files.
 *.rel
 
 ## AUCTeX auto folder.
 /auto/
 
-## Cask packages.
-.cask/
+# Nix.
+result
+result-*
 
 # Vim.
 .*.s[a-w][a-z]
