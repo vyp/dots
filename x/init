@@ -1,0 +1,37 @@
+#!/bin/sh
+
+xrdb ~/env/x/resources
+
+# Keycode 135 is the Menu key.
+# setxkbmap -option ''
+# setxkbmap -option 'ctrl:nocaps'
+# xmodmap -e 'keycode 36 = Super_R'
+# xmodmap -e 'keycode any = Return'
+# ~/env/nixos/pkgs/xcape/result/bin/xcape -e 'Super_R=Return'
+# ~/env/nixos/pkgs/xcape/result/bin/xcape -e 'Control_L=Escape'
+# ~/env/nixos/pkgs/xcape/result/bin/xcape -e 'Control_R=Escape'
+# xcape -e 'Control_L=Escape'
+# xcape -e 'Control_R=Escape'
+
+# xmodmap -e 'keycode any = F20'
+# xmodmap -e 'keycode 135 = Super_R'
+# xmodmap -e 'keycode any = Menu'
+# xcape -e 'Super_R=F20'
+# xcape -e 'Super_L=F20'
+
+# xcape -e 'Super_R=Menu'
+# xcape -e 'Super_L=Menu'
+# xcape -e 'Control_L=Escape'
+# xcape -e 'Control_R=Escape'
+
+# I used to have the following to make the enter key act as super when held
+# down as part of a chord, but it doesn't work anymore. As in there are
+# bugs/issues with registering a normal Return keypress in some/most
+# applications, where you have to press Return about 3 times before the presses
+# register all at once! :(
+#
+#     xmodmap -e 'keycode 36 = Super_R'
+#     xmodmap -e 'keycode any = Return'
+#     xcape -e 'Super_R=Return'
+
+sxhkd &
