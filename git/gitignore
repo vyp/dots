@@ -20,17 +20,15 @@ tramp
 /eshell/history
 /eshell/lastdir
 
-## Elpa packages.
-/elpa/
-
 ## Reftex files.
 *.rel
 
 ## AUCTeX auto folder.
 /auto/
 
-## Cask packages.
-.cask/
+# Nix.
+result
+result-*
 
 # Vim.
 .*.s[a-w][a-z]

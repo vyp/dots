@@ -4,7 +4,7 @@
 
 [core]
   editor = vim
-  excludesfile = '~/.gitignore.global'
+  excludesfile = '~/dots/git/gitignore'
 
 [push]
   default = matching
@@ -15,3 +15,11 @@
   smtpUser = elisp.vim@gmail.com
   smtpServerPort = 587
   suppresscc = self
+
+[alias]
+  amend = commit --amend
+  # TODO: Implement 'edit' alias.
+  # edit = '!f() { }; f'
+  rl = relflog
+  rollback = reset --hard HEAD@{1}
+  undo = reset HEAD~1
