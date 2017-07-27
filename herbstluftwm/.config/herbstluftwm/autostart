@@ -1,0 +1,66 @@
+#!/usr/bin/env bash
+
+herbstclient emit_hook reload
+herbstclient keyunbind --all
+herbstclient mouseunbind --all
+herbstclient mousebind Mod4-Button1 move
+herbstclient mousebind Mod4-Button2 resize
+herbstclient mousebind Mod4-Button3 zoom
+
+herbstclient rename default 1 || true
+herbstclient add 2
+herbstclient add 3
+herbstclient add 4
+herbstclient add 5
+herbstclient add 6
+herbstclient add 7
+herbstclient add 8
+herbstclient add 9
+herbstclient add 0
+
+# Focus previously focused window, bind to `herbstclient emit_hook lastwin'.
+# Credit: @ypnos @t-wissmann (GitHub)
+herbstclient -i '(focus_changed|lastwin|reload)' | \
+while read hook winid title; do
+  case "$hook" in
+    focus_changed)
+      if [[ "$winid" != "0x0" ]]; then
+        [[ -n "${curwin}" ]] && lastwin=$curwin
+        curwin=$winid
+      fi
+      ;;
+    lastwin)
+      [[ -n "${lastwin}" ]] && herbstclient jumpto $lastwin
+      ;;
+    reload)
+      # Note that the idling herbstclient still lives until the next time a
+      # hook arrives, and then quits because it cannot write to stdout anymore.
+      break
+      ;;
+  esac
+done &
+
+herbstclient set always_show_frame 0
+herbstclient set default_direction_external_only 0
+herbstclient set default_frame_layout 1
+herbstclient set gapless_grid 0
+herbstclient set focus_follows_mouse 1
+herbstclient set raise_on_click 1
+herbstclient set smart_frame_surroundings 0
+herbstclient set smart_window_surroundings 0
+herbstclient set snap_distance 12
+herbstclient set snap_gap 12
+
+herbstclient set frame_gap 0
+herbstclient set frame_padding 0
+herbstclient set frame_border_width 0
+herbstclient set frame_bg_transparent 1
+herbstclient set frame_transparent_width 0
+
+herbstclient set window_gap 12
+herbstclient set window_border_width 5
+herbstclient set window_border_inner_width 0
+
+herbstclient set window_border_active_color '#ff4ea3'
+herbstclient set window_border_normal_color '#d18aff'
+herbstclient set window_border_urgent_color '#ef2929'
