@@ -1,0 +1,217 @@
+# WM Independent Keybindings
+# ==========================
+
+# Reload sxhkd configuration file (i.e. probably this file).
+#
+# NOTE: There should be at least one `Menu ; _' binding like this otherwise
+# pressing super sends key sequences (I don't know what exactly) to the focused
+# window. (Menu is bound to super when tapped once, see x/init.)
+Menu ; r
+  pkill --signal USR1 -x sxhkd
+
+super + Return
+  st
+
+# Reload xresources settings for st.
+Menu ; t
+  xrdb $HOME/env/x/resources && pkill --signal USR1 -x st
+
+# super + slash
+#   rofi mode
+
+# super + e
+#   emacs
+
+# super + w
+#   wallpaper mode
+
+# super + v
+#   volume etc mode
+#   {_,shift + }j/k : volume up/down
+#   {_,shift + }u/d : brightness up/down
+#   m : toggle mute
+#   n/p : next/prev mpd
+#   space: play/pause mpd
+#   r : toggle repeat/repeatone modes
+#   s/i : toggle shuffle/single mode mpd
+#   {_,shift + }f/b : seek forward/backward mpd
+#   slash : search current playlist mpd (via rofi?)
+#
+# various xf86 media keys
+
+# Herbstluftwm Keybindings
+# ========================
+
+# Due to changes using xmodmap and xcape (see x/init), if focus is on the root
+# window, the `super + Return' keybinding only executes it's command after
+# another window gets focused, for whatever reason. :(
+#
+# `super + Super_R' (the same physical key chord) however does execute it's
+# command as normal whether focus is on the root window or not. But we cannot
+# just solely use this instead of `super + Return' because it also inserts a
+# Return character into the currently focued window. This is not a problem if
+# it's the root window, but obviously it's undesirable if focus is on a window.
+# So having a keybinding for `super + Return' as well masks this side effect.
+#
+# $(herbstclient attr clients.focus) outputs information about the currently
+# focused window, but otherwise has no output if focus is on the root window
+# (i.e. no 'client' has focus). 
+# super + Return
+#   [[ $(herbstclient attr clients.focus) ]] && xterm
+#
+# super + Super_R
+#   [[ $(herbstclient attr clients.focus) ]] || xterm
+
+Menu ; shift + {q,r}
+  herbstclient {quit,reload}
+
+super + x
+  herbstclient close
+
+super + {a,s,d}
+  herbstclient split {auto,right,bottom}
+
+super + c
+  herbstclient remove
+
+super + space
+  herbstclient cycle_layout 1 vertical horizontal
+
+# Cycle between layouts, except for grid layout if there's 2 windows in the
+# current frame.
+super + alt +  space
+  herbstclient or , and . compare tags.focus.curframe_wcount = 2 \
+                        . cycle_layout +1 vertical horizontal max \
+                  , cycle_layout +1
+
+Menu ; {s,d,f,g}
+  herbstclient set_layout {horizontal,vertical,max,grid}
+
+super + {_,shift + }{h,j,k,l}
+  herbstclient {focus,shift} {left,down,up,right}
+
+# Next/previous window/frame on current tag.
+super + {semicolon,comma}
+  herbstclient cycle_all {_,-}1
+
+# Next/previous window in current frame.
+super + {bracketright,bracketleft}
+  herbstclient cycle {_,-}1
+
+Menu ; Menu
+  herbstclient emit_hook lastwin
+
+super + Tab
+  herbstclient emit_hook lastwin
+
+super + u
+  herbstclient jumpto urgent
+
+super + f
+  herbstclient fullscreen
+
+# super + b
+#   balancing
+
+super + r : {h,j,k,l}
+  herbstclient resize {left,down,up,right} +0.01
+
+super + r : shift + {h,j,k,l}
+  herbstclient resize {left,down,up,right} +0.04
+
+# Toggle last tag if `super + n' is the current tag.
+# NOTE: zsh-specific syntax!
+# Herbstluftwm tag indices start at 0; so index 0 is actually tag 1.
+super + {1-9,0}
+  herbstclient tag_status | read 1 2 3 4 5 6 7 8 9 0; \
+  key={1-9,0}; \
+  if [[ $\{(P)key:0:1\} == '#' ]]; then \
+    herbstclient use_previous; \
+  else \
+    [[ $key -eq 0 ]] && \
+    herbstclient use_index 9 || herbstclient use_index $((key - 1)); \
+  fi
+
+super + shift + {1-9,0}
+  herbstclient move_index {0-8,9}
+
+super + {_,shift + }{n,p}
+  herbstclient {use,move}_index {+1,-1}
+
+super + alt + n
+  herbstclient move_index +1; \
+  herbstclient use_index +1
+
+super + alt + p
+  herbstclient move_index -1; \
+  herbstclient use_index -1
+
+# Next free/occupied tag.
+super + {_,shift + ,alt + }{i,o}
+  hlwm-ws {use,move,both} {free,occupied}
+
+super + backslash
+  herbstclient use_previous
+
+# StumpWM Keybindings
+# ===================
+
+# super + s
+#   stumpish 'eval (run-commands "hsplit")'
+# 
+# super + d
+#   stumpish 'eval (run-commands "vsplit")'
+# 
+# super + g
+#   stumpish 'eval (run-commands "remove")'
+# 
+# super + {h,j,k,l}
+#   stumpish 'eval (run-commands "move-focus '{'left','down','up','right'}'")'
+#  
+# Menu ; Menu
+#   stumpish 'eval (run-commands "other-window")'
+# 
+# super + Tab
+#   stumpish 'eval (run-commands "other-in-frame")'
+# 
+# super + space
+#   stumpish 'eval (run-commands "next-in-frame")'
+# 
+# super + semicolon
+#   stumpish 'eval (run-commands "next")'
+# 
+# super + comma
+#   stumpish 'eval (run-commands "prev")'
+# 
+# super + w
+#   stumpish 'eval (run-commands "fselect")'
+# 
+# super + u
+#   stumpish 'eval (run-commands "next-urgent")'
+# 
+# super + shift + {h,j,k,l}
+#   stumpish 'eval (run-commands "exchange-direction '{'left','down','up','right'}'")'
+# 
+# super + m : {h,j,k,l}
+#   stumpish 'eval (run-commands "move-window '{'left','down','up','right'}'")'
+# 
+# super + f
+#   stumpish 'eval (run-commands "toggle-gaps" "fullscreen")'
+# 
+# super + r
+#   stumpish 'eval (run-commands "iresize")'
+#  
+# super + b
+#   stumpish 'eval (run-commands "balance-frames")'
+# 
+# Menu ; b
+#   stumpish 'eval (run-commands "banish")'
+#  
+# Menu ; m
+#   stumpish 'eval (run-commands "lastmsg")'
+# 
+# super + x
+#   stumpish 'eval (run-commands "delete-window")'
+# 
+# Menu ; x
+#   stumpish 'eval (run-commands "kill-window")'
