@@ -145,16 +145,10 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 inoremap <C-l> <Esc>l%%a
 
-" cnoremap <C-t> <C-e>
-" cnoremap <C-e> <Down>
-
 " Allows opening files from the directory of the currently opened buffer
 " quickly.
 " From <http://vimcasts.org/episodes/the-edit-command/>.
-" cnoremap %% <C-R>=fnameescape(expand('%:h')).'/'<cr>
 nnoremap <leader>ew :e <C-R>=fnameescape(expand('%:h')).'/'<cr>
-" nnoremap <leader>es :sp <C-R>=fnameescape(expand('%:h')).'/'<cr>
-" nnoremap <leader>ev :vsp <C-R>=fnameescape(expand('%:h')).'/'<cr>
 
 xnoremap <leader>cp "*y
 xnoremap <leader>co "+y
