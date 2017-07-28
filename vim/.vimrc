@@ -41,6 +41,7 @@ set mouse=a
 set ruler
 set cursorline
 set showcmd
+set scrolloff=5
 
 " See `:help wildmode` for more.
 set wildmenu
