@@ -155,6 +155,8 @@ bindkey -M viins '^k' go-up
 bindkey -M viins '^u' reverse-menu-complete
 bindkey -M vicmd '^o' run-term-em
 bindkey -M viins '^o' run-term-em
+bindkey -M vicmd 'H'  vi-beginning-of-line
+bindkey -M vicmd 'L'  vi-end-of-line
 
 # Aliases
 # =======
