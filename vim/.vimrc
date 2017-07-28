@@ -1,3 +1,5 @@
+" vim: foldmethod=marker
+
 " Change cursor shape based on vim mode:
 "
 "   - Block for normal mode.
@@ -21,7 +23,7 @@ if &term =~ "xterm\\|rxvt\\|st"
     \ endif
 endif
 
-" Basic {{{1
+" Basic Settings {{{1
 filetype plugin indent on
 set encoding=utf-8
 set ff=unix
@@ -182,6 +184,34 @@ set statusline+=%-14(%l,%c%V%)
 " File position.
 set statusline+=%<%P
 
+" Folds {{{1
+set fillchars="fold: "
+set foldmethod=syntax
+set foldlevel=99
+set foldlevelstart=99
+
+function! FoldText()
+  let line = ' ' . substitute(getline(v:foldstart),
+                              \ '^\s*"\?\s*\|\s*"\?\s*{{' . '{\d*\s*', '', 'g')
+  let lines_count = v:foldend - v:foldstart + 1
+  let lines_count_text = printf("%10s", lines_count)
+  let foldtextstart = '+' . repeat('-', v:foldlevel*2) . line
+  let rightalignby = winwidth(0) - 80
+
+  if rightalignby < 0
+    let rightalignby = 1
+  endif
+
+  let foldtextend = lines_count_text . repeat(' ', rightalignby)
+  let foldtextlength = strlen(substitute(foldtextstart .
+                                         \ foldtextend, '.', 'x', 'g'))
+                       \ + &foldcolumn
+
+  return foldtextstart . repeat(' ', winwidth(0)-foldtextlength) . foldtextend
+endfunction
+
+set foldtext=FoldText()
+
 " Filetype {{{1
 " Gitcommit {{{2
 function GitcommitOptions()
@@ -190,6 +220,7 @@ endfunction
 
 au filetype gitcommit call GitcommitOptions()
 
+" Python {{{2
 function PythonOptions()
   setl ts=4 sw=4 sts=4
 endfunction
