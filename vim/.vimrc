@@ -35,9 +35,6 @@ syntax enable
 " au InsertEnter * :set number norelativenumber
 " au InsertLeave * :set number relativenumber
 
-" Disable faux bold.
-set t_md=
-
 " Enable mouse in all modes.
 set mouse=a
 
