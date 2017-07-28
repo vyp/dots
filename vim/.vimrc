@@ -130,7 +130,6 @@ nnoremap ZQ <nop>
 nnoremap <C-n> :bn<CR>
 nnoremap <C-p> :bp<CR>
 nnoremap <leader>l :ls<CR>:b<space>
-" nnoremap <leader>bs :cex []<BAR>bufdo vimgrepadd @@g %<BAR>cw<s-left><s-left><right>
 nnoremap <leader>f mmvipgq`m
 
 nnoremap <leader>wo :only<CR>
@@ -216,12 +215,9 @@ endfun
 
 " When switching buffers, preserve window view.
 " From <http://vim.wikia.com/wiki/Avoid_scrolling_when_switch_buffers>.
-if v:version >= 700
-  au BufLeave * if !&diff | let b:winview = winsaveview() | endif
-  au BufEnter * if exists('b:winview') && !&diff | call winrestview(b:winview) | unlet! b:winview | endif
-endif
+au BufLeave * if !&diff | let b:winview = winsaveview() | endif
+au BufEnter * if exists('b:winview') && !&diff | call winrestview(b:winview) |
+  \ unlet! b:winview | endif
 
 " Highlight group under cursor {{{2
 command! SynName echo synIDattr(synID(line("."), col("."), 1), "name")
-command! SynStack echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
-command! SynTrans echo synIDattr(synIDtrans(synID(line('.'), col('.'), 1)), "name")
