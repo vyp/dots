@@ -207,7 +207,6 @@ alias zz='. ~/.zshrc'
 
 # Theming
 # =======
-# ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
 # Disable underlines.
 ZSH_HIGHLIGHT_STYLES[precommand]='fg=green'
 ZSH_HIGHLIGHT_STYLES[path]=none
