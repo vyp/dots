@@ -20,6 +20,6 @@
   amend = commit --amend
   # TODO: Implement 'edit' alias.
   # edit = '!f() { }; f'
-  rl = relflog
+  rl = reflog
   rollback = reset --hard HEAD@{1}
   undo = reset HEAD~1
