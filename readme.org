@@ -11,11 +11,11 @@ As a moral imperative, the setup should be 100% /free as in freedom/.
 
 /Featuring:/
 
-- [[https://www.gnu.org/gnu/gnu.en.html][GNU]]
+- *[[https://www.gnu.org/gnu/gnu.en.html][GNU]]*
 
 ** Reproducibility
 
-The setup should be easy to *reliably* replicate /exactly/.
+The setup should be easy to reliably replicate.
 
 The [[https://www.gnu.org/philosophy/free-sw.en.html][four essential freedoms]]
 of free software is a requirement for this because nonfree software by
@@ -23,18 +23,18 @@ definition limits the reproducibility of software.
 
 /Featuring:/
 
-- [[https://nixos.org][*NixOS*]]
+- *[[https://nixos.org][NixOS]]*
 
 ** Mouseless Workflow
 
-The setup should be able to be controlled 100% via /comfortable/ vim-inspired
+The setup should be 100% controllable through /comfortable/ vim-inspired
 keybindings.
 
 /Featuring:/
 
-- [[http://www.herbstluftwm.org][*herbstluftwm*]]
-- [[https://www.gnu.org/software/emacs/][*Emacs*]] with
-  [[https://github.com/emacs-evil/evil][*Evil Mode*]].
+- *[[http://www.herbstluftwm.org][herbstluftwm]]*
+- *[[https://www.gnu.org/software/emacs/][Emacs]]* with
+  *[[https://github.com/emacs-evil/evil][*Evil Mode*]]*
 
 ** Rice
 
