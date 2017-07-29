@@ -54,11 +54,10 @@
     file
     git
     guile
+    htop
     imv
     mediainfo
     polybar
-    pythonPackages.glances
-    rxvt_unicode-with-plugins
     setroot
     stow
     sxhkd
@@ -67,7 +66,6 @@
     unzip
     vimHugeX
     wget
-    xcape
     xlsfonts
     xorg.mkfontdir
     xorg.mkfontscale
