@@ -33,4 +33,4 @@ keybindings.
 
 ** Rice
 
-It should look /nice/. 😉
+It should look nice. 😉
