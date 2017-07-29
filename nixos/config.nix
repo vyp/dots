@@ -139,9 +139,4 @@
     isNormalUser = true;
     uid = 1000;
   };
-
-  # The NixOS release to be compatible with for stateful data such as
-  # databases.
-  # TODO: This should probably go under hardware configuration.
-  system.stateVersion = "17.09";
 }
