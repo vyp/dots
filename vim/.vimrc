@@ -60,8 +60,8 @@ set scrolloff=5
 " See `:help wildmode` for more.
 set wildmenu
 
-" To be able to remap as <Down> in command mode.
-set wildcharm=<Tab>
+" To be able to remap as <down> in command mode.
+set wildcharm=<tab>
 
 set hidden
 set splitbelow
@@ -109,7 +109,7 @@ set ttimeoutlen=10
 set viminfo='0,@0,f0
 
 " Main Mappings {{{1
-nnoremap <Bslash> <C-^>
+nnoremap <bslash> <c-^>
 let mapleader=" "
 
 nnoremap ' :
@@ -122,8 +122,8 @@ xnoremap + -
 nnoremap q; q:k
 xnoremap q; q:k
 nnoremap q/ q/k
-nnoremap gs :w<CR>
-nnoremap <silent> <leader>s :set<space>hlsearch!<CR>
+nnoremap gs :w<cr>
+nnoremap <silent> <leader>s :set<space>hlsearch!<cr>
 
 nnoremap <leader>k H
 nnoremap <leader>j L
@@ -139,36 +139,36 @@ nnoremap Y y$
 nnoremap ZZ <nop>
 nnoremap ZQ <nop>
 
-nnoremap <C-n> :bn<CR>
-nnoremap <C-p> :bp<CR>
-nnoremap <leader>l :ls<CR>:b<space>
+nnoremap <c-n> :bn<cr>
+nnoremap <c-p> :bp<cr>
+nnoremap <leader>l :ls<cr>:b<space>
 nnoremap <leader>f mmvipgq`m
 
-nnoremap <leader>wo :only<CR>
-nnoremap <leader>we <C-w>=
+nnoremap <leader>wo :only<cr>
+nnoremap <leader>we <c-w>=
 
-nnoremap <leader>re <C-l>
-nnoremap <leader>ri <C-a>
-nnoremap <leader>rd <C-x>
-nnoremap <C-h> <C-w>h
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-l> <C-w>l
-inoremap <C-l> <Esc>l%%a
+nnoremap <leader>re <c-l>
+nnoremap <leader>ri <c-a>
+nnoremap <leader>rd <c-x>
+nnoremap <c-h> <c-w>h
+nnoremap <c-j> <c-w>j
+nnoremap <c-k> <c-w>k
+nnoremap <c-l> <c-w>l
+inoremap <c-l> <esc>l%%a
 
 " Allows opening files from the directory of the currently opened buffer
 " quickly.
 " From <http://vimcasts.org/episodes/the-edit-command/>.
-nnoremap <leader>ew :e <C-R>=fnameescape(expand('%:h')).'/'<cr>
+nnoremap <leader>ew :e <c-r>=fnameescape(expand('%:h')).'/'<cr>
 
 xnoremap <leader>cp "*y
 xnoremap <leader>co "+y
 nnoremap <leader>p "*p
 nnoremap <leader>o "+p
 
-nnoremap <leader>eh :edit $HISTFILE<CR>
-nnoremap <leader>vc :edit ~/.vimrc<CR>
-nnoremap <leader>vz :edit ~/.zshrc<CR>
+nnoremap <leader>eh :edit $HISTFILE<cr>
+nnoremap <leader>vc :edit ~/.vimrc<cr>
+nnoremap <leader>vz :edit ~/.zshrc<cr>
 
 " Status Line {{{1
 set statusline=
