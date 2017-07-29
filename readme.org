@@ -34,7 +34,7 @@ keybindings.
 
 - *[[http://www.herbstluftwm.org][herbstluftwm]]*
 - *[[https://www.gnu.org/software/emacs/][Emacs]]* with
-  *[[https://github.com/emacs-evil/evil][*Evil Mode*]]*
+  *[[https://github.com/emacs-evil/evil][Evil Mode]]*
 
 ** Rice
 
