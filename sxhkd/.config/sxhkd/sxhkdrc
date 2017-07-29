@@ -14,7 +14,7 @@ super + Return
 
 # Reload xresources settings for st.
 Menu ; t
-  xrdb $HOME/env/x/resources && pkill --signal USR1 -x st
+  xrdb $HOME/dots/x/resources && pkill --signal USR1 -x st
 
 # super + slash
 #   rofi mode
