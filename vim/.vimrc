@@ -4,23 +4,35 @@
 "
 "   - Block for normal mode.
 "   - Bar for insert mode.
+"   - Underline for replace mode if possible.
 "
-if &term =~ "xterm\\|rxvt\\|st"
-  " Insert mode shape.
-  " let &t_SI = "\x1b[\x36 q"
-  " Normal mode shape.
-  " let &t_EI = "\x1b[\x32 q"
+" Restricted mode doesn't allow shell commands.
+let s:isRestricted = 0
 
-  " The above is simpler but this also changes shape to underline for replace
-  " mode.
-  autocmd VimEnter,InsertLeave *
-    \ silent execute '!echo -ne "\x1b[\x32 q"' | redraw!
-  autocmd InsertEnter,InsertChange *
-    \ if v:insertmode == 'i' |
-      \ silent execute '!echo -ne "\x1b[\x36 q"' | redraw! |
-    \ elseif v:insertmode == 'r' |
-      \ silent execute '!echo -ne "\x1b[\x34 q"' | redraw! |
-    \ endif
+try
+  call system('')
+catch /E145/
+  let s:isRestricted = 1
+endtry
+
+if &term =~ "xterm\\|rxvt\\|st"
+  if s:isRestricted
+    " Insert mode shape.
+    let &t_SI = "\x1b[\x36 q"
+    " Normal mode shape.
+    let &t_EI = "\x1b[\x32 q"
+  else
+    " The above is simpler but this also changes shape to underline for replace
+    " mode.
+    autocmd VimEnter,InsertLeave *
+      \ silent execute '!echo -ne "\x1b[\x32 q"' | redraw!
+    autocmd InsertEnter,InsertChange *
+      \ if v:insertmode == 'i' |
+        \ silent execute '!echo -ne "\x1b[\x36 q"' | redraw! |
+      \ elseif v:insertmode == 'r' |
+        \ silent execute '!echo -ne "\x1b[\x34 q"' | redraw! |
+      \ endif
+    endif
 endif
 
 " Basic Settings {{{1
