@@ -1,3 +1,0 @@
-[submodule "nixos/nixpkgs"]
-	path = nixos/nixpkgs
-	url = https://github.com/nixos/nixpkgs
