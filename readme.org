@@ -1,10 +1,5 @@
 * #goals
 
-1. *Free Software*
-2. *Reproducibility*
-3. *Mouseless Workflow*
-4. *Rice*
-
 ** Free Software
 
 As a moral imperative, the setup should be 100% /free as in freedom/.
