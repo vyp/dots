@@ -148,7 +148,7 @@ super + alt + p
 
 # Next free/occupied tag.
 super + {_,shift + ,alt + }{i,o}
-  hlwm-ws {use,move,both} {free,occupied}
+  hlwm-tag {use,move,both} {free,occupied}
 
 super + backslash
   herbstclient use_previous
