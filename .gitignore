@@ -1,7 +1,4 @@
 # -*- mode: gitignore; -*-
-# NixOS.
-nixos/nixpkgs
-
 # Emacs.
 *~
 \#*\#
