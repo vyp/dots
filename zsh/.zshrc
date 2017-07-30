@@ -1,3 +1,8 @@
+# STTY
+# ====
+# Disable start/stop signals (therefore allows to use ^s in keybindings).
+stty -ixon
+
 # Loads
 # =====
 autoload edit-command-line
@@ -152,6 +157,12 @@ bindkey -M vicmd '^h' go-home
 bindkey -M viins '^h' go-home
 bindkey -M vicmd '^k' go-up
 bindkey -M viins '^k' go-up
+bindkey -M vicmd '^s' history-incremental-search-backward
+bindkey -M viins '^s' history-incremental-search-backward
+bindkey -M vicmd '/'  history-incremental-search-backward
+bindkey -M vicmd '^f' history-incremental-search-forward
+bindkey -M viins '^f' history-incremental-search-forward
+bindkey -M vicmd '?'  history-incremental-search-forward
 bindkey -M viins '^u' reverse-menu-complete
 bindkey -M vicmd '^o' run-term-em
 bindkey -M viins '^o' run-term-em
