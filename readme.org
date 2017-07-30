@@ -33,9 +33,7 @@ keybindings.
 
 ** Rice
 
-#+BEGIN_EXPORT html
 <details>
   <summary>It should look nice. 😉</summary>
   TODO: Add screenshots here.
 </details>
-#+END_EXPORT
