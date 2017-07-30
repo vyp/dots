@@ -172,7 +172,7 @@ function! FoldText()
   let lines_count = v:foldend - v:foldstart + 1
   let lines_count_text = printf("%10s", lines_count)
   let foldtextstart = '+' . repeat('-', v:foldlevel*2) . line
-  let rightalignby = winwidth(0) - 80
+  let rightalignby = winwidth(0) - 79
 
   if rightalignby < 0
     let rightalignby = 1
