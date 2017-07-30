@@ -2,4 +2,8 @@
 
 xrdb ~/dots/x/resources
 
+wpd &
+wpc .
+wpc +
+
 sxhkd &
