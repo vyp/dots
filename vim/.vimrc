@@ -17,7 +17,10 @@ syntax enable
 set mouse=a
 
 set ruler
-set cursorline
+" I normally have this, but it looks ugly using this without a proper
+" colorscheme or changing it's highlight. But I can't be bothered to do those
+" (yet), so I just don't turn it on. 🤷
+" set cursorline
 set showcmd
 set scrolloff=5
 
