@@ -1,9 +1,5 @@
 #!/bin/sh
 
 xrdb ~/dots/x/resources
-
-wpd &
-wpc .
-wpc +
-
+compton --config ~/dots/compton/compton.conf -b
 sxhkd &
