@@ -172,6 +172,7 @@ bindkey -M vicmd 'L'  vi-end-of-line
 # Aliases
 # =======
 alias ab='acpi -b'
+alias am='alsamixer'
 alias bl='bell'
 alias c='cat'
 alias cp='cp -v'
