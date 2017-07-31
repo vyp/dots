@@ -5,6 +5,7 @@ stty -ixon
 
 # Loads
 # =====
+autoload -U colors && colors
 autoload edit-command-line
 autoload -Uz vcs_info
 
@@ -222,6 +223,18 @@ alias vc='vim ~/.vimrc'
 alias vn='vim ~/dots/nixos/config.nix'
 alias vz='vim ~/.zshrc'
 alias zz='. ~/.zshrc'
+
+# Prompt
+# ======
+# Other potentially useful prompt characters: > » ≻ ➤ ⯈ ⮞ ❯ ─ ━
+precmd () {
+  vcs_info
+}
+
+local rsc="%{$reset_color%}"
+PROMPT="$rsc %B%(?.%{$fg[green]%}.%{$fg[red]%})━━━➤$rsc%b "
+RPROMPT='$rsc${BGJOBS}%(1j.%j.) $rsc%{$fg[magenta]%}${vcs_info_msg_0_} \
+$rsc%B%{$fg[blue]%}%~%b$rsc'
 
 # Theming
 # =======
