@@ -3,6 +3,7 @@ st.font:        Input:size=9
 st.bold_font:   1
 st.cursorshape: 2
 
+! TODO: Fix bold magenta and cyan colours.
 st.foreground: #5f5f5f
 st.background: #fdfde7
 st.color0:     #5f5f5f
