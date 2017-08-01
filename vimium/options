@@ -1,0 +1,113 @@
+# Key Mappings
+# ============
+unmap ^
+map \ visitPreviousTab
+unmap <a-p>
+map <c-p> togglePinTab
+unmap <<
+unmap >>
+map < moveTabLeft
+map > moveTabRight
+unmap <a-f>
+map R LinkHints.activateModeWithQueue
+unmap H
+unmap L
+unmap h
+unmap l
+map H scrollLeft
+map L scrollRight
+map h previousTab
+map l nextTab
+map , goBack
+map . goForward
+unmap J
+unmap K
+unmap gt
+unmap gT
+map J scrollFullPageDown
+map K scrollFullPageUp
+unmap <c-e>
+unmap <c-y>
+unmap t
+unmap T
+unmap O
+unmap ge
+unmap gE
+map <c-t> createTab
+map O Vomnibar.activateEditUrl
+map t Vomnibar.activateInNewTab
+map T Vomnibar.activateEditUrlInNewTab
+map s Vomnibar.activateTabSelection
+unmap zH
+unmap zL
+map zh scrollToLeft
+map zl scrollToRight
+unmap gf
+unmap gF
+map gn nextFrame
+map gm mainFrame
+unmap g0
+unmap g$
+map gh firstTab
+map gl lastTab
+unmap X
+map U restoreTab
+
+# Search Engines
+# ==============
+w: http://www.wikipedia.org/w/index.php?title=Special:Search&search=%s Wikipedia
+g: http://www.google.com/search?q=%s Google
+y: http://www.youtube.com/results?search_query=%s Youtube
+gm: https://www.google.com/maps?q=%s Google maps
+b: https://www.bing.com/search?q=%s Bing
+d: https://duckduckgo.com/?q=%s DuckDuckGo
+
+# Link Hints Characters
+# =====================
+jkdflsahg
+
+# Miscellaneous Options
+# =====================
+[x] Use smooth scrolling
+[x] Don't let pages steal focus on load
+
+# New Tab URL
+# ===========
+https://www.google.com
+
+# Wasavi
+# ======
+Uncheck open home page on update.
+
+# Stylish
+Fix GitHub monospace font:
+
+URLS on the domain github.com
+```css
+.pre,
+pre,
+.code,
+code,
+.blob-code,
+.blob-code-inner,
+.blob-num,
+.commit-tease-sha,
+.commit-ref,
+.file-info {
+  font-family: Input !important;
+}
+
+body,
+input,
+select,
+textarea,
+button,
+.markdown-body,
+h2,
+.number,
+#last-update,
+.blog-content,
+.intgrs-page .main-content {
+  font-family: sans-serif !important;
+}
+```
