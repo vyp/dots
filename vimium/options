@@ -61,6 +61,7 @@ y: http://www.youtube.com/results?search_query=%s Youtube
 gm: https://www.google.com/maps?q=%s Google maps
 b: https://www.bing.com/search?q=%s Bing
 d: https://duckduckgo.com/?q=%s DuckDuckGo
+gh: https://github.com/search?&q=%s GitHub
 
 # Link Hints Characters
 # =====================
