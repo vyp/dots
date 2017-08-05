@@ -21,9 +21,10 @@ can imagine the world would be a *much* worse place if he did not! 👏👏👏
 - I should be able to easily but flexibly use exactly the same setup across my
   various machines. 🖥️💻👩‍💻
 
-**[NixOS]** is really the only available choice because containerization sucks.
-Thanks to **[@edolstra]** for creating Nix, which is what NixOS uses to perform
-it's magic. ✨
+**[NixOS]** is the chosen distribution because of it's clean, functional and
+declarative approach to package and configuration management. Thanks to
+**[@edolstra]** for creating Nix, which is the package manager that NixOS uses
+to perform it's magic. ✨
 
 I think that the world would be a much better place if more people used Nix!
 
@@ -33,12 +34,16 @@ Shoutout to **[@civodul]** who created **[Guix]** (and GuixSD), which I think
 is better than Nix because it uses Scheme (**[Guile]**) instead of the Nix
 expression language.
 
-I would use GuixSD instead of NixOS if it had all the packages I use, and if I
-didn't have to build so many things from GuixSD. I regularly use small laptops
-with limited RAM that simply run out of memory before being able to upgrade all
-packages on GuixSD, because Guix tends to require building so many things,
-making it impossible to use on these machines. Nix on the other hand very
-rarely requires it. 🤷‍
+<details>
+  <summary>Excuses excuses... 😒
+
+  I would use GuixSD instead of NixOS if it had all the packages I use, and if
+  I didn't have to build so many things from GuixSD. I regularly use small
+  laptops with limited RAM that simply run out of memory before being able to
+  upgrade all packages on GuixSD, because Guix tends to require building so
+  many things, making it impossible to use on these machines. Nix on the other
+  hand very rarely requires it. 🤷‍
+</details>
 
 [@civodul]:  https://github.com/civodul
 [@edolstra]: https://github.com/edolstra
