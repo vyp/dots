@@ -108,7 +108,7 @@ Software       | Author (maintainers/team/contributors)
 [herbstluftwm]:  http://www.herbstluftwm.org
 [NixOS]:         https://nixos.org
 [rms]:           https://stallman.org/
-[Vi:             https://en.wikipedia.org/wiki/Vi
+[Vi]:            https://en.wikipedia.org/wiki/Vi
 [Vim]:           http://www.vim.org/
 
 ## Shoutouts
