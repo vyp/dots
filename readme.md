@@ -1,6 +1,6 @@
 <!-- vim: syntax=off
 -->
-# #goals
+# ⚽ #goals
 
 ## 🚀 Free Software
 
