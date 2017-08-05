@@ -33,6 +33,7 @@ set wildcharm=<tab>
 set hidden
 set splitbelow
 set splitright
+
 set ignorecase
 set smartcase
 set incsearch
