@@ -35,7 +35,7 @@ is better than Nix because it uses Scheme (**[Guile]**) instead of the Nix
 expression language.
 
 <details>
-  <summary>Excuses excuses... 😒
+  <summary>Excuses excuses... 😒</summary>
 
   I would use GuixSD instead of NixOS if it had all the packages I use, and if
   I didn't have to build so many things from GuixSD. I regularly use small
