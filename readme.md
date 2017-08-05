@@ -69,7 +69,7 @@ keybindings thanks to **Evil mode**. 😈
 
 ## ♻️ Minimalism
 
-- I should not be wasting time with unnecessary stuff. ⏳
+- I should not have to waste time with unnecessary or superfluous stuff. ⏳
 
 # Credits
 
