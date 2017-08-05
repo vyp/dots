@@ -110,7 +110,8 @@ being vim than vim itself! 😈
 
 ## 💄 Rice
 
-- I should be looking at a pretty screen, especially as I look at it a lot. 😍
+- I should be looking at a pretty screen, especially since I look at it a lot.
+  😍
 
 <details>
   <summary>Obviously this is highly subjective, but click me for some samples.
