@@ -2,7 +2,7 @@
 -->
 # #goals
 
-## Free Software 🚀
+## 🚀 Free Software
 
 - I should be able to use, study, modify, and share my modifications of all the
   software used in the setup. 🙈🙉🙊
@@ -16,7 +16,7 @@ can imagine the world would be a *much* worse place if he did not! 👏👏👏
 [GNU]:     https://www.gnu.org/gnu/gnu.en.html
 [rms]:     https://stallman.org/
 
-## Reproducibility 🥗
+## 🥗 Reproducibility
 
 - I should be able to easily but flexibly use exactly the same setup across my
   various machines. 🖥️💻👩‍💻
@@ -46,7 +46,7 @@ rarely requires it. 🤷‍
 [Guix]:      https://www.gnu.org/software/guix/
 [NixOS]:     https://nixos.org
 
-## Mouseless Workflow 💅
+## 💅 Mouseless Workflow
 
 - I should be (physically) comfortable and safe when using my setup. 🛋️💆‍♀️
 
@@ -69,8 +69,8 @@ thank you to **[@t-wissmann]** for creating it, and to the rest of the team
 (**[@The-Compiler]** and **[@ypnos]**) for helping with it's continued
 development. 👍
 
-TODO: Add comparison to other popular window managers and explain why
-herbstluftwm was chosen over them.
+*TODO: Add comparison to other popular window managers and explain why
+herbstluftwm was chosen over them.*
 
 ### Editor ✒️
 
@@ -102,7 +102,7 @@ better than vim! 😈
 [Vim]:           http://www.vim.org/
 [@ypnos]:        https://github.com/ypnos
 
-## Rice 💄
+## 💄 Rice
 
 - I should be looking at a pretty screen, especially as I look at it a lot. 😍
 
@@ -113,6 +113,6 @@ better than vim! 😈
   *TODO: Add screenshots here.*
 </details>
 
-## Minimalism ♻️
+## ♻️ Minimalism
 
 - I should not be wasting time with unnecessary stuff. ⏳
