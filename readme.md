@@ -93,7 +93,7 @@ editing. However, it makes extended use of chorded keybindings by default. 😕
 But not to worry! Dr. Richard Stallman made emacs so powerful that, unbeknownst
 to him, it could emulate just about all of vim.. before vim was even created!
 And that's exactly what **[@epsil]** did when he created **[Evil mode]**. So I
-actually use emacs as my *real* `$EDITOR`, because it does a better job of
+actually use emacs as my *real* `$EDITOR`, because it does a better job at
 being vim than vim itself! 😈
 
 [Bill Joy]:      https://en.wikipedia.org/wiki/Bill_Joy
