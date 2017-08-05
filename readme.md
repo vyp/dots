@@ -62,8 +62,9 @@ action in my usual workflow.
 
 That means having keyboard shortcuts to do everything (instead of requiring
 mouse or touchpad usage). Additionally, the keyboard shortcuts should be
-composable and/or modal instead of requiring extensive chording, in the spirit
-of the **[Vi editor][vi]** from **[Bill Joy]**.
+composable and/or modal instead of requiring extensive chording (in the spirit
+of the **[Vi editor][vi]** from **[Bill Joy]**), so that they remain
+comfortable to press.
 
 ### 🏨 Window Manager
 
@@ -84,16 +85,16 @@ follow the above goals is paramount. **[@brammool]** created **[Vim]**, an
 essentially 'modernized' version of Vi, which I have as my `$EDTIOR`.
 
 But text editing is only so much in my typical workflow, so Vim is not enough.
-**[Emacs]** is a text editor created by the great Dr. Richard Stallman that can
-do a lot more than just text editing, and as such is perfect for providing an
-integrated keyboard-controlled environment for many things not limited to just
-text editing. However, it makes extensive use of chorded keybindings. 😕
+**[Emacs]** is a text editor created by Dr. Richard Stallman that can do a lot
+more than just text editing, and as such is perfect for providing an integrated
+keyboard-controlled environment for many things not limited to just text
+editing. However, it makes extended use of chorded keybindings by default. 😕
 
-But not to worry! The great Dr. Richard Stallman made emacs so powerful that,
-unbeknownst to him, it could emulate just about all of vim.. before vim was
-even created! And that's exactly what **[@epsil]** did when he created **[Evil
-mode]**. So I actually use emacs as my *real* `$EDITOR`, because it does vim
-better than vim! 😈
+But not to worry! Dr. Richard Stallman made emacs so powerful that, unbeknownst
+to him, it could emulate just about all of vim.. before vim was even created!
+And that's exactly what **[@epsil]** did when he created **[Evil mode]**. So I
+actually use emacs as my *real* `$EDITOR`, because it does a better job of
+being vim than vim itself! 😈
 
 [Bill Joy]:      https://en.wikipedia.org/wiki/Bill_Joy
 [@brammool]:     https://github.com/brammool
