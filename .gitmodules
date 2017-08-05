@@ -1,3 +1,6 @@
 [submodule "nixos/nixpkgs"]
 	path = nixos/nixpkgs
 	url = https://github.com/nixos/nixpkgs
+[submodule "vendor/vim/disco.vim"]
+	path = vendor/vim/disco.vim
+	url = https://github.com/jsit/disco.vim
