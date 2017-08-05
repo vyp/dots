@@ -85,8 +85,8 @@ integrated keyboard-controlled environment for many things not limited to just
 text editing. However, it makes extensive use of chorded keybindings. 😕
 
 But not to worry! The great Dr. Richard Stallman made emacs so powerful that,
-unbeknownst to him, it could emulate just about all of vim, before vim was even
-created! And that's exactly what **[@epsil]** did when he created **[Evil
+unbeknownst to him, it could emulate just about all of vim.. before vim was
+even created! And that's exactly what **[@epsil]** did when he created **[Evil
 mode]**. So I actually use emacs as my *real* `$EDITOR`, because it does vim
 better than vim! 😈
 
