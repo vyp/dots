@@ -60,7 +60,7 @@ mouse or touchpad usage). And additionally, the keyboard shortcuts should be
 composable and/or modal instead of requiring extensive chording, in the spirit
 of the **[Vi editor][vi]** from **[Bill Joy]**.
 
-### Window Manager 🏨
+### 🏨 Window Manager
 
 The first point of interaction after logging in is usually the window manager.
 I've found that **[herbstluftwm]'s** model of window management is the perfect
@@ -72,7 +72,7 @@ development. 👍
 *TODO: Add comparison to other popular window managers and explain why
 herbstluftwm was chosen over them.*
 
-### Editor ✒️
+### ✒️ Editor
 
 Because typing is so prominent in my workflow, having a decent text editor to
 follow the above goals is paramount. **[@brammool]** created **[Vim]**, an
