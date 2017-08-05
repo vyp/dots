@@ -28,8 +28,6 @@ to perform it's magic. ✨
 
 I think that the world would be a much better place if more people used Nix!
 
----
-
 Shoutout to **[@civodul]** who created **[Guix]** (and GuixSD), which I think
 is better than Nix because it uses Scheme (**[Guile]**) instead of the Nix
 expression language.
