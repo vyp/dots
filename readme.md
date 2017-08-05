@@ -56,7 +56,7 @@ home row as much as possible as typing is the principle and most frequent
 action in my usual workflow.
 
 That means having keyboard shortcuts to do everything (instead of requiring
-mouse or touchpad usage). And additionally, the keyboard shortcuts should be
+mouse or touchpad usage). Additionally, the keyboard shortcuts should be
 composable and/or modal instead of requiring extensive chording, in the spirit
 of the **[Vi editor][vi]** from **[Bill Joy]**.
 
