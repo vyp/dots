@@ -63,7 +63,7 @@ of the **[Vi editor][vi]** from **[Bill Joy]**.
 ### 🏨 Window Manager
 
 The first point of interaction after logging in is usually the window manager.
-I've found that **[herbstluftwm]'s** model of window management is the perfect
+I've found that **[herbstluftwm]**'s model of window management is the perfect
 balance of manual and automatic tiling window management *for me*. A very big
 thank you to **[@t-wissmann]** for creating it, and to the rest of the team
 (**[@The-Compiler]** and **[@ypnos]**) for helping with it's continued
