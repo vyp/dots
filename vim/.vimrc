@@ -48,6 +48,7 @@ set softtabstop=2
 
 set textwidth=79
 set colorcolumn=80
+set nojoinspaces
 
 " Always show status line.
 set laststatus=2
