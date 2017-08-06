@@ -113,14 +113,8 @@ Software       | Author (maintainers/team/contributors)
 
 ## Shoutouts
 
-### Emacs Community
-
 ### Free Software Community
 
 - Eben Moglen and [@bkuhn] for being copyleft champions.
 
 [@bkuhn]: https://github.com/bkuhn
-
-### Ricing Community
-
-### Vim Community
