@@ -67,7 +67,7 @@ keybindings thanks to **Evil mode**. 😈
   *TODO: Add screenshots here.*
 </details>
 
-## ♻️ Minimalism
+## 💋 Minimalism
 
 - I should not have to waste time with superfluous stuff. ⏳
 
