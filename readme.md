@@ -73,7 +73,7 @@ keybindings thanks to **Evil mode**. 😈
 
 # Credits
 
-I've probably missed some people, which I apologize in advance for. It'd be
+I've probably missed some people, which I apologize for in advance. It'd be
 close to impossible to list *everyone* who deserves credit anyway. 😕
 
 Software       | Author (maintainers/team/contributors)
