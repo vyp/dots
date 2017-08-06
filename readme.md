@@ -19,7 +19,7 @@ imagine the world would be a *much* worse place if he did not! 👏👏👏
 - I should be able to easily but flexibly use exactly the same setup across my
   various machines. 🖥️💻👩‍💻
 
-**NixOS** is the chosen distribution because of it's clean, functional and
+**NixOS** is the chosen GNU distribution because of it's clean, functional and
 declarative approach to package and configuration management. I think that the
 world would be a much better place if more people used Nix! ✨
 
