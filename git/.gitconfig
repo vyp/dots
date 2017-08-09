@@ -23,3 +23,6 @@
   rl = reflog
   rollback = reset --hard HEAD@{1}
   undo = reset HEAD~1
+
+[commit]
+  template = ~/dots/git/commit-template
