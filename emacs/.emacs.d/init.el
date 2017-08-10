@@ -75,7 +75,15 @@
 ;; involved with configuring keybindings, it should be installed and configured
 ;; next.
 (use-package evil
-  :demand t)
+  :demand t
+  :init
+  (setq evil-cross-lines         t
+        evil-shift-width         2
+        evil-split-window-below  t
+        evil-vsplit-window-right t
+        evil-want-C-u-scroll     t)
+  :config
+  (evil-mode t))
 
 ;; Remaining Minor Modes
 ;; =====================
