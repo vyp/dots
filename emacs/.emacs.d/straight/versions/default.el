@@ -1,7 +1,12 @@
 (("circe" . "47bbcf4268602688f90c08ce64ec93226fc3f894")
  ("diminish.el" . "d5c61a14e1a5590a65f83c099a5bd42fcadff24d")
  ("epkgs" . "a805077922499ab878d8b9b8f6b60a92935918cd")
+ ("evil" . "45712ad214b0ad2257814705d6baa3f9120574cd")
+ ("general.el" . "00efad765a3ace42a2833c65a169d96c7925623b")
+ ("goto-chg" . "79fdd52dff5422d8191e34bf4c9cb86213d07211")
+ ("hydra" . "ab67b29835ed550427b75e94784b63d98a00c0e0")
  ("melpa" . "6d9ae1e58a1f214a9b88627a2d3254ce7de50740")
  ("straight.el" . "5aad7999ab7d3682cf061d718286ae27837639a4")
+ ("undo-tree" . "e9a9102f515acd7523158f20e83f300600374989")
  ("use-package" . "7b055494e39efba8b237202b7c97f40aa19e2579"))
 :venus
