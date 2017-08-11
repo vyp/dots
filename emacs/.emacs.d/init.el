@@ -1,9 +1,7 @@
 ;; Startup
 ;; =======
 ;;
-;; Code that doesn't fit in any use-package form (except for code under Theme
-;; and Font sections)... mainly only code that configures the Emacs startup
-;; sequence.
+;; Code that configures the Emacs startup sequence.
 
 ;; Prevent Emacs from creating "~/.emacs.d/auto-save-list" directory on
 ;; startup.
@@ -37,43 +35,90 @@
       (eval-print-last-sexp)))
   (load bootstrap-file nil 'nomessage))
 
-;; Feature Organization Helper - use-package
-;; =========================================
+;; Init Organization - use-package
+;; ===============================
 ;;
-;; use-package is a macro that helps you keep a modular configuration for the
-;; features that you use and customize, which also results in minimal Emacs
-;; startup time.
-;;
-;; It is the next most important package to install as the goal is to have
-;; everything in the init file be encapsulated in use-package forms.
+;; The goal is to have as much init file code as possible encapsulated in
+;; use-package forms. Therefore it's the next most important package to
+;; install.
 (straight-use-package 'use-package)
 (setq use-package-always-ensure t)
 
-;; Libraries
-;; =========
+;; Exposed Code
+;; ============
 ;;
-;; Declare any libraries that may be used in the init file itself so that they
-;; are available to use.
+;; Rest of all the code that doesn't fit in any use-package forms (except for
+;; the code under the Theme and Font sections)... mainly because they're
+;; defined in C source code and therefore are not from any provided features to
+;; appropriately wrap under.
 
-;; Keybinding Related Libraries
-;; ----------------------------
-;;
+;;; buffer.c
+(setq-default fill-column 79
+              tab-width   2)
+
+;;; indent.c
+;; Do not insert tabs when indenting.
+(setq-default indent-tabs-mode nil)
+
+;;; xdisp.c
+;; Vertical cursor padding.
+(setq scroll-margin 5)
+
+;; Third Party Libraries
+;; =====================
+
+;; Keybinding Related
+;; ------------------
 ;; Because Emacs relies so heavily on keyboard shortcuts for it's usage,
 ;; keybinding configuration is likely going to be in a lot of places.
-;; Therefore, any additional third party packages that provide functionality
-;; for configuring keybindings should be installed next in the init file.
-
-;; :demand t allows :general keyword to be used in use-package forms.
+;; Therefore, any additional features that provide functionality for
+;; configuring keybindings should be 'demanded' for the init file itself, I
+;; think.
 (use-package general :demand t)
-(use-package hydra   :defer  t)
+(use-package hydra   :demand t)
 
-;; Evil Mode
-;; =========
+;; Minor Modes
+;; ===========
 ;;
-;; Evil mode is a special keybinding related package that brings Vim-like
-;; modality to Emacs as a global minor mode. As it is global and also heavily
-;; involved with configuring keybindings, it should be installed and configured
-;; next.
+;; Minor modes are usually activated over a variety of buffer types, and are
+;; commonly even global. Hence it makes sense to configure them next.
+
+;; Built-in
+;; --------
+(use-package cus-edit
+  :demand t
+  :ensure nil
+  :init
+  (setq custom-file (expand-file-name "~/dots/emacs/custom.el"))
+  :config
+  (load custom-file))
+
+(use-package files
+  :ensure nil
+  :init
+  (setq auto-save-default     nil
+        ;; Pretty much only use one instance of Emacs at a time anyway (or use
+        ;; Emacs server), so lockfiles to prevent editing collisions are almost
+        ;; always unnecessary.
+        create-lockfiles      nil
+        make-backup-files     nil
+        require-final-newline t))
+
+(use-package simple
+  :demand t
+  :ensure nil
+  :init
+  (setq-default auto-fill-function 'do-auto-fill)
+  ;; Make `gj`/`gk` work across visually wrapped lines.
+  (setq-default line-move-visual nil)
+  ;; Show fringe indicators for visually wrapped lines.
+  (setq visual-line-fringe-indicators '(left-curly-arrow right-curly-arrow))
+  :config
+  ;; Visually wrap long lines.
+  (global-visual-line-mode t))
+
+;; Thirdy Party
+;; ------------
 (use-package evil
   :demand t
   :init
@@ -84,25 +129,6 @@
         evil-want-C-u-scroll     t)
   :config
   (evil-mode t))
-
-;; Remaining Minor Modes
-;; =====================
-;;
-;; Minor modes are usually activated over a variety of buffer types, and are
-;; commonly even global. Hence it makes sense to configure them next.
-
-;; Built-in
-;; --------
-(use-package cus-edit
-  :ensure nil
-  :demand t
-  :init
-  (setq custom-file (expand-file-name "~/dots/emacs/custom.el"))
-  :config
-  (load custom-file))
-
-;; Thirdy Party
-;; ------------
 
 ;; Major Modes
 ;; ===========
