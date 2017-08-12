@@ -62,7 +62,8 @@
 
 ;;; xdisp.c
 ;; Vertical cursor padding.
-(setq scroll-margin 5)
+(setq scroll-margin 5
+      scroll-step   1)
 
 ;; Third Party Libraries
 ;; =====================
