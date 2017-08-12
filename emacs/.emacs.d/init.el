@@ -131,8 +131,8 @@
   :config
   (global-whitespace-mode t))
 
-;; Thirdy Party
-;; ------------
+;; Third Party
+;; -----------
 (use-package evil
   :demand t
   :init
@@ -150,8 +150,8 @@
 ;; Built-in
 ;; --------
 
-;; Thirdy Party
-;; ------------
+;; Third Party
+;; -----------
 (use-package circe
   :init
   (setq lui-scroll-behavior nil))
