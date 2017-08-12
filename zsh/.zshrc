@@ -214,6 +214,7 @@ alias lh='ls -lh'
 alias md='mkdir -pv'
 alias mi='mediainfo'
 alias mv='mv -v'
+alias nixpaste="curl -F 'text=<-' http://nixpaste.lbr.uno"
 alias pn='ping-google 3'
 alias rm='rm -vI'
 alias rmdir='rmdir -v'
