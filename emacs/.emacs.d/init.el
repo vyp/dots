@@ -118,6 +118,19 @@
   ;; Visually wrap long lines.
   (global-visual-line-mode t))
 
+(use-package vc-hooks
+  :ensure nil
+  :init
+  (setq vc-follow-symlinks t))
+
+(use-package whitespace
+  :demand t
+  :ensure nil
+  :init
+  (setq whitespace-style '(face empty tabs trailing))
+  :config
+  (global-whitespace-mode t))
+
 ;; Thirdy Party
 ;; ------------
 (use-package evil
