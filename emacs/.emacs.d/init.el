@@ -139,7 +139,9 @@
 
 ;; Thirdy Party
 ;; ------------
-(use-package circe)
+(use-package circe
+  :init
+  (setq lui-scroll-behavior nil))
 
 ;; Font
 ;; ====
