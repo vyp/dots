@@ -242,7 +242,35 @@
   (defun my/circe-message-option-bot (nick &rest ignored)
     (when (member nick my/circe-bot-list)
       '((text-properties . (face circe-fool-face)))))
-  (add-hook 'circe-message-option-functions 'my/circe-message-option-bot))
+  (add-hook 'circe-message-option-functions 'my/circe-message-option-bot)
+
+  ;; Don't show names list upon joining a channel.
+  ;; Taken from:
+  ;; https://github.com/jorgenschaefer/circe/issues/298#issuecomment-262912703
+  (circe-set-display-handler "353" 'circe-display-ignore)
+  (circe-set-display-handler "366" 'circe-display-ignore)
+
+  ;; But create custom command to list nicks.
+  (defvar my/circe-names-width 79)
+
+  (defun my/string-ci-< (a b)
+    (string< (downcase a) (downcase b)))
+
+  (defun my/nicks-to-lines (nicks line-length)
+    (with-temp-buffer
+      (setq fill-column line-length)
+      (insert (mapconcat 'identity nicks " "))
+      (goto-char (point-min))
+      (fill-paragraph)
+      (split-string (buffer-string) "\n")))
+
+  (defun my/circe-display-nicks ()
+    (interactive)
+    (when (eq major-mode 'circe-channel-mode)
+      (let* ((nicks (sort (circe-channel-nicks) 'my/string-ci-<))
+             (nick-lines (my/nicks-to-lines nicks my/circe-names-width)))
+        (dolist (nick-line nick-lines)
+          (circe-display-server-message nick-line))))))
 
 ;; Theme
 ;; =====
