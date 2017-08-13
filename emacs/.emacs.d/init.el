@@ -229,6 +229,18 @@
     (circe "irc.freenode.net" :port '(6667 . 6697)))
 
   :config
+  ;; Going to have to change these into an alists for multiple servers because
+  ;; at the moment they just work for one server (Freenode).
+  (defvar my/circe-nick "xd1le")
+  (defvar my/circe-channels '("#emacs" "#emacs-circe" "##linux"))
+
+  (defun circe-command-ID (passwd)
+    (circe-command-NICK my/circe-nick)
+    (circe-command-MSG (concat "nickserv identify " passwd)))
+
+  (defun circe-command-CHANS (&optional ignored)
+    (mapc 'circe-command-JOIN my/circe-channels))
+
   ;; Colorize nicks.
   (require 'circe-color-nicks)
   (enable-circe-color-nicks)
