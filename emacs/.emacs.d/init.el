@@ -178,7 +178,38 @@
 ;; -----------
 (use-package circe
   :init
-  (setq lui-scroll-behavior nil))
+        ;; Align messages.
+  (setq ; circe-format-say          "<{nick:-7s}> {body}"
+        ;; Show diff when topic is changed (esp. helpful when topic is long).
+        circe-format-server-topic
+        "*** Topic change by {userhost}: {topic-diff}"
+        circe-reduce-lurker-spam  t
+        lui-fill-column           fill-column
+        lui-logging-directory     (expand-file-name "~/archive/irc")
+        lui-scroll-behavior       nil
+        lui-time-stamp-position   nil)
+
+  :config
+  ;; Colorize nicks.
+  (require 'circe-color-nicks)
+  (enable-circe-color-nicks)
+
+  ;; Ask for using a paste service when pasting 3 or more lines.
+  (require 'lui-autopaste)
+  (add-hook 'circe-channel-mode-hook 'enable-lui-autopaste)
+
+  (load "lui-logging" nil t)
+  (enable-lui-logging-globally)
+
+  ;; Gray out bots.
+  (defvar my/circe-bot-list '("NixOS_GitHub"))
+  (defun my/circe-message-option-bot (nick &rest ignored)
+    (when (member nick my/circe-bot-list)
+      '((text-properties . (face circe-fool-face)))))
+  (add-hook 'circe-message-option-functions 'my/circe-message-option-bot))
+
+;; Theme
+;; =====
 
 ;; Font
 ;; ====
