@@ -105,6 +105,18 @@
         make-backup-files     nil
         require-final-newline t))
 
+(use-package frame
+  :demand t
+  :ensure nil
+  :config
+  (blink-cursor-mode -1))
+
+(use-package menu-bar
+  :demand t
+  :ensure nil
+  :config
+  (menu-bar-mode -1))
+
 (use-package simple
   :demand t
   :ensure nil
@@ -117,6 +129,18 @@
   :config
   ;; Visually wrap long lines.
   (global-visual-line-mode t))
+
+(use-package scroll-bar
+  :demand t
+  :ensure nil
+  :config
+  (toggle-scroll-bar -1))
+
+(use-package tool-bar
+  :demand t
+  :ensure nil
+  :config
+  (tool-bar-mode -1))
 
 (use-package vc-hooks
   :ensure nil

@@ -6,13 +6,6 @@ st.font:        Input:size=9
 st.bold_font:   1
 st.cursorshape: 2
 
-! Emacs
-! =====
-emacs.cursorBlink:        off
-emacs.menuBar:            off
-emacs.toolBar:            off
-emacs.verticalScrollBars: off
-
 ! Colors
 ! ======
 ! TODO: Fix bold magenta and cyan colours.
