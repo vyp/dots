@@ -270,7 +270,13 @@
       (let* ((nicks (sort (circe-channel-nicks) 'my/string-ci-<))
              (nick-lines (my/nicks-to-lines nicks my/circe-names-width)))
         (dolist (nick-line nick-lines)
-          (circe-display-server-message nick-line))))))
+          (circe-display-server-message nick-line)))))
+
+  ;; Custom prompt.
+  (defun my/circe-prompt ()
+    (lui-set-prompt
+     (concat (propertize "━━━" 'face 'circe-prompt-face) " ")))
+  (add-hook 'circe-chat-mode-hook 'my/circe-prompt))
 
 ;; Theme
 ;; =====
