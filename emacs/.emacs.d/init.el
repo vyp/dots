@@ -61,13 +61,13 @@
 ;; ============
 ;;
 ;; Rest of all the code that doesn't fit in any use-package forms (except for
-;; the code under the Theme, Hooks and Font sections).
+;; the code under the Hooks, Theme and Font sections).
 
 ;; Options from C Code
 ;; -------------------
 ;; Code for configuring options provided by C source code which cannot be
-;; wrapped under any appropriate feature via use-package (because C code
-;; doesn't provide features like elisp does).
+;; placed under any appropriate use-package form (because C code doesn't
+;; provide features like elisp does).
 
 ;;; buffer.c
 (setq-default fill-column 79
