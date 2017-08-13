@@ -201,6 +201,7 @@
 ;; Third Party
 ;; -----------
 (use-package circe
+  :defer t
   :init
   (setq circe-channel-killed-confirmation nil
         circe-server-killed-confirmation  nil
@@ -220,6 +221,12 @@
         lui-logging-directory      (expand-file-name "~/archive/irc")
         lui-scroll-behavior        nil
         lui-time-stamp-position    nil)
+
+  :preface
+  (defun irc ()
+    "Connect to IRC."
+    (interactive)
+    (circe "irc.freenode.net" :port '(6667 . 6697)))
 
   :config
   ;; Colorize nicks.
