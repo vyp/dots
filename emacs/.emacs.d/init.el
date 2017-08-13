@@ -233,6 +233,10 @@
   (load "lui-logging" nil t)
   (enable-lui-logging-globally)
 
+  ;; Last reading position.
+  (enable-lui-track-bar)
+  (add-hook 'focus-out-hook 'lui-track-bar-move)
+
   ;; Gray out bots.
   (defvar my/circe-bot-list '("NixOS_GitHub"))
   (defun my/circe-message-option-bot (nick &rest ignored)
