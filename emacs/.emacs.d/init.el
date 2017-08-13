@@ -44,6 +44,19 @@
 (straight-use-package 'use-package)
 (setq use-package-always-ensure t)
 
+;; Third Party Libraries
+;; =====================
+
+;; Keybinding Related
+;; ------------------
+;; Because Emacs relies so heavily on keyboard shortcuts for it's usage,
+;; keybinding configuration is likely going to be in a lot of places.
+;; Therefore, any additional features that provide functionality for
+;; configuring keybindings should be 'demanded' for the init file itself, I
+;; think.
+(use-package general :demand t)
+(use-package hydra   :demand t)
+
 ;; Exposed Code
 ;; ============
 ;;
@@ -71,19 +84,6 @@
 
 ;; Personal
 ;; --------
-
-;; Third Party Libraries
-;; =====================
-
-;; Keybinding Related
-;; ------------------
-;; Because Emacs relies so heavily on keyboard shortcuts for it's usage,
-;; keybinding configuration is likely going to be in a lot of places.
-;; Therefore, any additional features that provide functionality for
-;; configuring keybindings should be 'demanded' for the init file itself, I
-;; think.
-(use-package general :demand t)
-(use-package hydra   :demand t)
 
 ;; Minor Modes
 ;; ===========
