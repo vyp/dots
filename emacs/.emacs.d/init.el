@@ -155,12 +155,9 @@
   (setq vc-follow-symlinks t))
 
 (use-package whitespace
-  :demand t
   :ensure nil
   :init
-  (setq whitespace-style '(face empty tabs trailing))
-  :config
-  (global-whitespace-mode t))
+  (setq whitespace-style '(face empty tabs trailing)))
 
 ;; Third Party
 ;; -----------
@@ -174,6 +171,26 @@
         evil-want-C-u-scroll     t)
   :config
   (evil-mode t))
+
+;; Hooks
+;; =====
+;;
+;; Now that all minor modes have hopefully been loaded or autoloaded, we can
+;; setup their hooks (as in, if they're not already globally enabled).
+;;
+;; I find this a little cleaner and more 'declarative' than having multiple
+;; `add-hook's around in various use-package forms.
+;;
+;; The idea is taken from: https://emacs.stackexchange.com/a/5384
+
+(defun my/text-mode-hook ()
+  (whitespace-mode 1))
+
+(defun my/prog-mode-hook ()
+  (whitespace-mode 1))
+
+(add-hook 'text-mode-hook 'my/text-mode-hook)
+(add-hook 'prog-mode-hook 'my/prog-mode-hook)
 
 ;; Major Modes
 ;; ===========
