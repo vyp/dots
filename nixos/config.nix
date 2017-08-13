@@ -58,8 +58,10 @@
     guile
     htop
     imv
+    maim
     mediainfo
     polybar
+    scrot
     setroot
     stow
     sxhkd
