@@ -276,8 +276,9 @@
     (when (eq major-mode 'circe-channel-mode)
       (let* ((nicks (sort (circe-channel-nicks) 'my/string-ci-<))
              (nick-lines (my/nicks-to-lines nicks my/circe-names-width)))
-        (dolist (nick-line nick-lines)
-          (circe-display-server-message nick-line)))))
+        (with-output-to-temp-buffer "*circe-nicks*"
+          (mapc 'princ nick-lines)
+          (switch-to-buffer "*circe-nicks*")))))
 
   ;; Custom prompt.
   (defun my/circe-prompt ()
