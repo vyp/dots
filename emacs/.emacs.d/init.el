@@ -84,6 +84,30 @@
 
 ;; Personal
 ;; --------
+(defun my/x-urgency-hint (frame arg &optional source)
+  "Set the x-urgency hint for the frame to arg:
+
+- If arg is nil, unset the urgency.
+- If arg is any other value, set the urgency."
+  (let* ((wm-hints (append
+                    (x-window-property "WM_HINTS" frame "WM_HINTS"
+                                       source nil t)
+                    nil))
+         (flags (car wm-hints)))
+    (setcar wm-hints
+            (if arg
+                (logior flags #x00000100)
+              (logand flags #x1ffffeff)))
+    (x-change-window-property "WM_HINTS" wm-hints frame "WM_HINTS" 32 t)))
+
+(defun my/x-urgent (&optional arg)
+  "Mark the current emacs frame as requiring urgent attention.
+
+With a prefix argument which does not equal a boolean value of nil, remove the
+urgency flag."
+  (interactive "P")
+  (let (frame (car (car (cdr (current-frame-configuration)))))
+    (my/x-urgency-hint frame (not arg))))
 
 ;; Minor Modes
 ;; ===========
