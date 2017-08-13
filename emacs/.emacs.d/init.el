@@ -126,6 +126,7 @@ urgency flag."
   (load custom-file))
 
 (use-package files
+  :defer t
   :ensure nil
   :init
   (setq auto-save-default     nil
@@ -174,11 +175,13 @@ urgency flag."
   (tool-bar-mode -1))
 
 (use-package vc-hooks
+  :defer t
   :ensure nil
   :init
   (setq vc-follow-symlinks t))
 
 (use-package whitespace
+  :defer t
   :ensure nil
   :init
   (setq whitespace-style '(face empty tabs trailing)))
