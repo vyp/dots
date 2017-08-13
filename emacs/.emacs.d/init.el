@@ -48,9 +48,13 @@
 ;; ============
 ;;
 ;; Rest of all the code that doesn't fit in any use-package forms (except for
-;; the code under the Theme and Font sections)... mainly because they're
-;; defined in C source code and therefore are not from any provided features to
-;; appropriately wrap under.
+;; the code under the Theme, Hooks and Font sections).
+
+;; Options from C Code
+;; -------------------
+;; Code for configuring options provided by C source code which cannot be
+;; wrapped under any appropriate feature via use-package (because C code
+;; doesn't provide features like elisp does).
 
 ;;; buffer.c
 (setq-default fill-column 79
@@ -64,6 +68,9 @@
 ;; Vertical cursor padding.
 (setq scroll-margin 5
       scroll-step   1)
+
+;; Personal
+;; --------
 
 ;; Third Party Libraries
 ;; =====================
