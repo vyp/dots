@@ -202,16 +202,23 @@
 ;; -----------
 (use-package circe
   :init
+  (setq circe-channel-killed-confirmation nil
+        circe-server-killed-confirmation  nil
+        circe-default-quit-message        "Toodaloo padawans! 👣"
         ;; Align messages.
-  (setq ; circe-format-say          "<{nick:-7s}> {body}"
+        circe-format-action      "{nick:-16s} ❯ {body}"
+        circe-format-say         "{nick:-16s} ┃ {body}"
+        circe-format-self-say    "       ━━━       ┃ {body}"
+        circe-format-self-action "       ━━━       ❯ {body}"
         ;; Show diff when topic is changed (esp. helpful when topic is long).
         circe-format-server-topic
         "*** Topic change by {userhost}: {topic-diff}"
-        circe-reduce-lurker-spam  t
-        lui-fill-column           fill-column
-        lui-logging-directory     (expand-file-name "~/archive/irc")
-        lui-scroll-behavior       nil
-        lui-time-stamp-position   nil)
+        circe-reduce-lurker-spam t
+        lui-fill-column          fill-column
+        lui-fill-type            "                 ┃ "
+        lui-logging-directory    (expand-file-name "~/archive/irc")
+        lui-scroll-behavior      nil
+        lui-time-stamp-position  nil)
 
   :config
   ;; Colorize nicks.
