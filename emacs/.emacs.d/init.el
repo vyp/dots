@@ -263,8 +263,8 @@ urgency flag."
   "#chromium-support" "#conservancy" "#elm" "#emacs" "#emacs-circe" "#firefox"
   "#fsf" "#fsfe" "#github" "#gnu" "#gnulinuxlovers" "#guile" "#guix" "#haskell"
   "#herbstluftwm" "#idris" "#julia" "#latex" "#nixos" "#org-mode"
-  "#qutebrowser" "##rust" "#scheme" "#space" "#syncthing" "##vegan" "#webkit"
-  "#zsh"))
+  "#qutebrowser" "##rust" "#scheme" "#space" "#syncthing" "##vegan" "#vim"
+  "#webkit" "#zsh"))
 
   (defun circe-command-ID (passwd)
     (circe-command-NICK my/circe-nick)
