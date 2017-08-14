@@ -6,6 +6,7 @@
  ("goto-chg" . "79fdd52dff5422d8191e34bf4c9cb86213d07211")
  ("hydra" . "ab67b29835ed550427b75e94784b63d98a00c0e0")
  ("melpa" . "6d9ae1e58a1f214a9b88627a2d3254ce7de50740")
+ ("rainbow-delimiters" . "93cd2dc873e7fedca7abc599cd97d46db4376ac7")
  ("straight.el" . "5aad7999ab7d3682cf061d718286ae27837639a4")
  ("undo-tree" . "e9a9102f515acd7523158f20e83f300600374989")
  ("use-package" . "7b055494e39efba8b237202b7c97f40aa19e2579"))

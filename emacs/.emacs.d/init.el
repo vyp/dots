@@ -200,6 +200,9 @@ urgency flag."
   :config
   (evil-mode t))
 
+(use-package rainbow-delimiters
+  :defer t)
+
 ;; Hooks
 ;; =====
 ;;
@@ -215,6 +218,7 @@ urgency flag."
   (whitespace-mode 1))
 
 (defun my/prog-mode-hook ()
+  (rainbow-delimiters-mode 1)
   (whitespace-mode 1))
 
 (add-hook 'text-mode-hook 'my/text-mode-hook)
