@@ -259,7 +259,12 @@ urgency flag."
   ;; Going to have to change these into an alists for multiple servers because
   ;; at the moment they just work for one server (Freenode).
   (defvar my/circe-nick "xd1le")
-  (defvar my/circe-channels '("#emacs" "#emacs-circe" "##linux"))
+  (defvar my/circe-channels '("#ai" "#blink" "#chromium" "#chromium-extensions"
+  "#chromium-support" "#conservancy" "#elm" "#emacs" "#emacs-circe" "#firefox"
+  "#fsf" "#fsfe" "#github" "#gnu" "#gnulinuxlovers" "#guile" "#guix" "#haskell"
+  "#herbstluftwm" "#idris" "#julia" "#latex" "#nixos" "#org-mode"
+  "#qutebrowser" "##rust" "#scheme" "#space" "#syncthing" "##vegan" "#webkit"
+  "#zsh"))
 
   (defun circe-command-ID (passwd)
     (circe-command-NICK my/circe-nick)
