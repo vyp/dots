@@ -134,6 +134,7 @@ urgency flag."
         ;; Emacs server), so lockfiles to prevent editing collisions are almost
         ;; always unnecessary.
         create-lockfiles      nil
+        ;; TODO: Change this to make backup files at ~/archive/backup.
         make-backup-files     nil
         require-final-newline t))
 
