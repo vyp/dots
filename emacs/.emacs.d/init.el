@@ -70,7 +70,7 @@
 ;; provide features like elisp does).
 
 ;;; buffer.c
-(setq-default fill-column 79
+(setq-default fill-column 80
               tab-width   2)
 
 ;;; indent.c
