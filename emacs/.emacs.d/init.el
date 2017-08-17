@@ -252,7 +252,11 @@ urgency flag."
         lui-fill-type              "             ┃ "
         lui-logging-directory      (expand-file-name "~/archive/irc")
         lui-scroll-behavior        nil
-        lui-time-stamp-position    nil)
+        lui-time-stamp-position    nil
+        tracking-ignored-buffers
+        (mapcar (lambda (channel) (list channel 'circe-highlight-nick-face))
+                '("#emacs$" "#haskell$" "irc.freenode.net" "nickserv"
+                  "#vim$")))
 
   :preface
   (defun irc ()
@@ -264,12 +268,13 @@ urgency flag."
   ;; Going to have to change these into an alists for multiple servers because
   ;; at the moment they just work for one server (Freenode).
   (defvar my/circe-nick "xd1le")
-  (defvar my/circe-channels '("#ai" "#blink" "#chromium" "#chromium-extensions"
-  "#chromium-support" "#conservancy" "#elm" "#emacs" "#emacs-circe" "#firefox"
-  "#fsf" "#fsfe" "#github" "#gnu" "#gnulinuxlovers" "#guile" "#guix" "#haskell"
-  "#herbstluftwm" "#idris" "#julia" "#latex" "#nixos" "#org-mode"
-  "#qutebrowser" "##rust" "#scheme" "#space" "#syncthing" "##vegan" "#vim"
-  "#webkit" "#zsh"))
+  (defvar my/circe-channels
+    '("#ai" "#blink" "#chromium" "#chromium-extensions" "#chromium-support"
+      "#conservancy" "#elm" "#emacs" "#emacs-circe" "#firefox" "#freepost"
+      "#fsf" "#fsfe" "#github" "#gnu" "#gnulinuxlovers" "#guile" "#guix"
+      "#haskell" "#herbstluftwm" "#idris" "#julia" "#latex" "#nixos"
+      "#org-mode" "#qutebrowser" "##rust" "#scheme" "#space" "#syncthing"
+      "##vegan" "#vim" "#webkit" "#zsh"))
 
   (defun circe-command-ID (passwd)
     (circe-command-NICK my/circe-nick)
@@ -286,8 +291,14 @@ urgency flag."
   (require 'lui-autopaste)
   (add-hook 'circe-channel-mode-hook 'enable-lui-autopaste)
 
+  ;; Logging.
   (load "lui-logging" nil t)
-  (enable-lui-logging-globally)
+
+  (defun my/lui-enable-tracked-logging ()
+    (unless (tracking-ignored-p (current-buffer) '(circe-highlight-nick-face))
+      (enable-lui-logging)))
+
+  (add-hook 'lui-mode-hook 'my/lui-enable-tracked-logging)
 
   ;; Last reading position.
   (enable-lui-track-bar)
@@ -333,7 +344,17 @@ urgency flag."
   (defun my/circe-prompt ()
     (lui-set-prompt
      (concat (propertize "━━━" 'face 'circe-prompt-face) " ")))
-  (add-hook 'circe-chat-mode-hook 'my/circe-prompt))
+  (add-hook 'circe-chat-mode-hook 'my/circe-prompt)
+
+  ;; Auto-track ignored channels on talk.
+  (defadvice circe-command-SAY (after my/circe-unignore-target)
+    (let ((ignored (tracking-ignored-p
+                    (current-buffer) '(circe-highlight-nick-face))))
+      (when ignored
+        (setq tracking-ignored-buffers
+              (remove ignored tracking-ignored-buffers))
+        (my/lui-enable-tracked-logging))))
+  (ad-activate 'circe-command-SAY))
 
 ;; Theme
 ;; =====
