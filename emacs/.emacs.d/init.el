@@ -204,8 +204,8 @@ urgency flag."
 (use-package rainbow-delimiters
   :defer t)
 
-;; Hooks
-;; =====
+;; Basic Major Mode Hooks
+;; ======================
 ;;
 ;; Now that all minor modes have hopefully been loaded or autoloaded, we can
 ;; setup their hooks (as in, if they're not already globally enabled).
