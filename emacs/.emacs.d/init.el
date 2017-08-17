@@ -185,7 +185,8 @@ urgency flag."
   :defer t
   :ensure nil
   :init
-  (setq whitespace-style '(face empty tabs trailing)))
+  (setq whitespace-line-column fill-column
+        whitespace-style       '(face empty lines-tail tabs trailing)))
 
 ;; Third Party
 ;; -----------
