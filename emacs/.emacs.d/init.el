@@ -268,6 +268,8 @@ urgency flag."
   :config
   ;; Going to have to change these into an alists for multiple servers because
   ;; at the moment they just work for one server (Freenode).
+  ;;
+  ;; TODO: Figure out how to set urgency hint when nick is mentioned.
   (defvar my/circe-nick "xd1le")
   (defvar my/circe-channels
     '("#ai" "#blink" "#chromium" "#chromium-extensions" "#chromium-support"
