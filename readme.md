@@ -1,8 +1,8 @@
 <!-- vim: syntax=off
 -->
-# ⚽ #goals
+# #goals ⚽
 
-## 🚀 Free Software
+## Free Software 🚀
 
 - I should be able to use, study, modify, and share my modifications of all the
   software used in the setup. 🙈🙉🙊
@@ -14,7 +14,7 @@ imagine the world would be a *much* worse place if he did not! 👏👏👏
 
 [free-sw]: https://www.gnu.org/philosophy/free-sw.en.html
 
-## 🥗 Reproducibility
+## Reproducibility 🥗
 
 - I should be able to easily but flexibly use exactly the same setup across my
   various machines. 🖥️💻👩‍💻
@@ -23,7 +23,7 @@ imagine the world would be a *much* worse place if he did not! 👏👏👏
 declarative approach to package and configuration management. I think that the
 world would be a much better place if more people used Nix! ✨
 
-## 💅 Mouseless Workflow
+## Mouseless Workflow 💅
 
 - I should be (physically) comfortable and safe when using my setup. 🛋️💆‍♀️
 
@@ -37,7 +37,7 @@ mouse or touchpad usage). Additionally, the keyboard shortcuts should be
 composable and/or modal instead of requiring extensive chording (in the spirit
 of **Vi**), so that they remain comfortable to press.
 
-### 🏨 Window Manager
+### Window Manager 🏨
 
 The first point of interaction after logging in is usually the window manager.
 I've found that **herbstluftwm**'s model of window management is the perfect
@@ -46,7 +46,7 @@ balance of manual and automatic tiling window management *for me*.
 *TODO: Add comparison to other popular window managers and explain why
 herbstluftwm was chosen over them.*
 
-### ✒️ Editor
+### Editor ✒️
 
 Because typing is so prominent in my workflow, having a decent text editor to
 follow the above goals is paramount.
@@ -55,7 +55,7 @@ I chose **Emacs** over Vim because Emacs provides a much more capable and
 integrated environment that can still be controlled completely with vim-style
 keybindings thanks to **Evil mode**. 😈
 
-## 💄 Rice
+## Rice 💄
 
 - I should be looking at a pretty screen, especially since I look at it a lot.
   😍
@@ -67,7 +67,7 @@ keybindings thanks to **Evil mode**. 😈
   *TODO: Add screenshots here.*
 </details>
 
-## 💋 Minimalism
+## Minimalism 💋
 
 - I should not have to waste time with superfluous stuff. ⏳
 
