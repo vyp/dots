@@ -17,7 +17,7 @@ imagine the world would be a *much* worse place if he did not! 👏👏👏
 ## Reproducibility
 
 - I should be able to easily but flexibly use exactly the same setup across my
-  various machines. 🖥️💻👩‍💻
+  various machines.
 
 **NixOS** is the chosen GNU distribution because of it's clean, functional and
 declarative approach to package and configuration management. I think that the
@@ -58,23 +58,22 @@ keybindings thanks to **Evil mode**. 😈
 ## Rice
 
 - I should be looking at a pretty screen, especially since I look at it a lot.
-  😍
 
 <details>
   <summary>Obviously this is highly subjective, but click me for some samples.
-  😎</summary>
+  </summary>
 
   *TODO: Add screenshots here.*
 </details>
 
 ## Minimalis
 
-- I should not have to waste time with superfluous stuff. ⏳
+- I should not have to waste time with superfluous stuff.
 
 # Credits
 
 I've probably missed some people, which I apologize for in advance. It'd be
-close to impossible to list *everyone* who deserves credit anyway. 😕
+close to impossible to list *everyone* who deserves credit anyway.
 
 Software       | Author (maintainers/team/contributors)
 --------       | --------------------------------------
