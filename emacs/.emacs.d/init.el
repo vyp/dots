@@ -275,7 +275,7 @@ urgency flag."
     '("#ai" "#blink" "#chromium" "#chromium-extensions" "#chromium-support"
       "#conservancy" "#elm" "#emacs" "#emacs-circe" "#firefox" "#freepost"
       "#fsf" "#fsfe" "#github" "#gnu" "#gnulinuxlovers" "#guile" "#guix"
-      "#haskell" "#herbstluftwm" "#idris" "#julia" "#latex" "#nixos"
+      "#haskell" "#herbstluftwm" "#idris" "#julia" "#krebs" "#latex" "#nixos"
       "#org-mode" "#qutebrowser" "##rust" "#scheme" "#space" "#syncthing"
       "##vegan" "#vim" "#webkit" "#zsh"))
 
