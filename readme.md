@@ -78,7 +78,7 @@ credit anyway.
 - Tom Lord for creating [guile].
   - And [@jimblandy], [@othermaciej], Mikael Djurfeldt, [@mvollmer],
     [@neiljerram], [@civodul] and [@wingo] for maintaining it over the years.
-- [@ypnos] for helping me with creating a better solution to move the last
+- [@ypnos] for helping me with creating a better solution to move to the last
   focused window:
   https://github.com/herbstluftwm/herbstluftwm/issues/98#issuecomment-316330616
 
