@@ -22,36 +22,36 @@ Empty for now.
 
 1. **Free Software:**
 
-  - I should be able to use, study, modify, and share my modifications of all
-    the software used in the setup. 🙈🙉🙊
+   - I should be able to use, study, modify, and share my modifications of all
+     the software used in the setup. 🙈🙉🙊
 
-    Many many thanks to **Dr. Richard Stallman** for creating the entire [free
-    software][free-sw] ideology and culture, including **[GNU]**. I can imagine
-    the world would be a *much* worse place if he did not. 🙇‍♀️
+     Many many thanks to **Dr. Richard Stallman** for creating the entire [free
+     software][free-sw] ideology and culture, including **[GNU]**. I can imagine
+     the world would be a *much* worse place if he did not. 🙇‍♀️
 
 2. **Reproducibility:**
 
-  - I should be able to easily but flexibly use exactly the same setup across my
-    various machines.
+   - I should be able to easily but flexibly use exactly the same setup across
+     my various machines.
 
-    **[NixOS]** naturally plays an extremely integral part here because of it's
-    clean, functional and declarative approach to package and configuration
-    management.
+     **[NixOS]** naturally plays an extremely integral part here because of it's
+     clean, functional and declarative approach to package and configuration
+     management.
 
-    I think that the world would be a much better place if more people used Nix!
-    So please check it out! ✨
+     I think that the world would be a much better place if more people used
+     Nix! So please check it out! ✨
 
 3. **Comfort and Safety:**
 
-  - I should be physically comfortable and safe when using my setup. 💆
+   - I should be physically comfortable and safe when using my setup. 💆
 
 4. **Rice:**
 
-  - I should be viewing a 'modern' looking system.
+   - I should be viewing a 'modern' looking system.
 
 5. **Minimalism:**
 
-  - I should not have to waste time or energy with superfluous stuff.
+   - I should not have to waste time or energy with superfluous stuff.
 
 [free-sw]: https://www.gnu.org/philosophy/free-sw.en.html
 [GNU]:     https://www.gnu.org/gnu/gnu.en.html
