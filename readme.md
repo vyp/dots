@@ -1,16 +1,35 @@
 <!-- vim: syntax=off
 -->
+# Screenshots 📸
+
+## Preview 🖼
+
+*Empty for now.*
+
+## Archive
+
+*Also empty.*
+
+<details>
+  <summary>Click me to see. 👈
+  </summary>
+
+  👀
+</details>
+
 # #goals
+
+📢 This is just an outline, for expanded thoughts and reasoning, see
+[doc/choices.org].
 
 ## Free Software
 
 - I should be able to use, study, modify, and share my modifications of all the
   software used in the setup. 🙈🙉🙊
 
-**GNU** is the chosen OS due to it's unequivocal commitment to [free
-software][free-sw]. Grand acclamation to **Dr. Richard Stallman** for creating
-it and for creating the entire free software ideology and culture. I can
-imagine the world would be a *much* worse place if he did not! 👏👏👏
+Many many thanks to **Dr. Richard Stallman** for creating the entire [free
+software][free-sw] ideology and culture, including **[GNU]**. I can imagine the
+world would be a *much* worse place if he did not. 🙇‍♀️
 
 [free-sw]: https://www.gnu.org/philosophy/free-sw.en.html
 
@@ -19,74 +38,51 @@ imagine the world would be a *much* worse place if he did not! 👏👏👏
 - I should be able to easily but flexibly use exactly the same setup across my
   various machines.
 
-**NixOS** is the chosen GNU distribution because of it's clean, functional and
-declarative approach to package and configuration management. I think that the
-world would be a much better place if more people used Nix! ✨
+**[NixOS]** naturally plays an extremely integral part here because of it's
+clean, functional and declarative approach to package and configuration
+management. I think that the world would be a much better place if more people
+used Nix! So please check it out! ✨
 
-## Mouseless Workflow
+[NixOS]: https://nixos.org
 
-- I should be (physically) comfortable and safe when using my setup. 💆
+## Comfort and Safety
 
-Obviously this highly depends on *you* and what you normally use a (general
-purpose) computer for. For me, this means being able to keep my fingers on the
-home row as much as possible as typing is the principle and most frequent
-action in my usual workflow.
-
-That means having keyboard shortcuts to do everything (instead of requiring
-mouse or touchpad usage). Additionally, the keyboard shortcuts should be
-composable and/or modal instead of requiring extensive chording (in the spirit
-of **Vi**), so that they remain comfortable to press.
-
-### Window Manager
-
-The first point of interaction after logging in is usually the window manager.
-I've found that **herbstluftwm**'s model of window management is the perfect
-balance of manual and automatic tiling window management *for me*.
-
-*TODO: Add comparison to other popular window managers and explain why
-herbstluftwm was chosen over them.*
-
-### Editor
-
-Because typing is so prominent in my workflow, having a decent text editor to
-follow the above goals is paramount.
-
-I chose **Emacs** over Vim because Emacs provides a much more capable and
-integrated environment that can still be controlled completely with vim-style
-keybindings thanks to **Evil mode**. 😈
+- I should be physically comfortable and safe when using my setup. 💆
 
 ## Rice
 
-- I should be looking at a pretty screen, especially since I look at it a lot.
+- I should be viewing a 'modern' looking system.
 
-<details>
-  <summary>Obviously this is highly subjective, but click me for some samples.
-  </summary>
+## Minimalism
 
-  *TODO: Add screenshots here.*
-</details>
+- I should not have to waste time or energy with superfluous stuff.
 
-## Minimalis
+# Shoutouts
 
-- I should not have to waste time with superfluous stuff.
+❕ I've probably missed some people, which I apologize for in advance.
+Unfortunately, it would be close to impossible to list *everyone* who deserves
+credit anyway.
 
-# Credits
+- Bill Joy for creating [vi] and it's unique but extremely effective model of
+  editing, which inspires many aspects of this setup.
+- [@brammool] for creating [vim], which is my fallback editor. It's like a
+  'modern' more usable version of vi.
+- [@civodul] for creating [guix].
+- [Dr. Richard Stallman][rms] for creating [emacs] and [GNU].
+- Eben Moglen and [@bkuhn] for being copyleft champions.
+- [@edolstra] for creating [NixOS].
+- [@epsil] for creating [evil mode].
+- [@t-wissmann] for creating [herbstluftwm].
+  - Also helped me with creating a solution to move to the last focused window:
+    https://github.com/herbstluftwm/herbstluftwm/issues/98#issuecomment-316342968
+- Tom Lord for creating [guile].
+  - And [@jimblandy], [@othermaciej], Mikael Djurfeldt, [@mvollmer],
+    [@neiljerram], [@civodul] and [@wingo] for maintaining it over the years.
+- [@ypnos] for helping me with creating a better solution to move the last
+  focused window:
+  https://github.com/herbstluftwm/herbstluftwm/issues/98#issuecomment-316330616
 
-I've probably missed some people, which I apologize for in advance. It'd be
-close to impossible to list *everyone* who deserves credit anyway.
-
-Software       | Author (maintainers/team/contributors)
---------       | --------------------------------------
-[Emacs]        | [Dr. Richard Stallman][rms]
-[Evil mode]    | [@epsil]
-[GNU]          | [Dr. Richard Stallman][rms]
-[Guile]        | Tom Lord ([@jimblandy], [@othermaciej], Mikael Djurfeldt, [@mvollmer], [@neiljerram], [@civodul], [@wingo])
-[Guix]         | [@civodul]
-[herbstluftwm] | [@t-wissmann] ([@The-Compiler], [@ypnos])
-[NixOS]        | [@edolstra]
-[Vi]           | Bill Joy
-[Vim]          | [@brammool]
-
+[@bkuhn]:        https://github.com/bkuhn
 [@brammool]:     https://github.com/brammool
 [@civodul]:      https://github.com/civodul
 [@edolstra]:     https://github.com/edolstra
@@ -96,24 +92,14 @@ Software       | Author (maintainers/team/contributors)
 [@neiljerram]:   https://github.com/neiljerram
 [@othermaciej]:  https://github.com/othermaciej
 [@t-wissmann]:   https://github.com/t-wissmann
-[@The-Compiler]: https://github.com/The-Compiler
 [@wingo]:        https://github.com/wingo
 [@ypnos]:        https://github.com/ypnos
-[Emacs]:         https://www.gnu.org/software/emacs
-[Evil Mode]:     https://github.com/emacs-evil/evil
+[emacs]:         https://www.gnu.org/software/emacs
+[evil mode]:     https://github.com/emacs-evil/evil
 [GNU]:           https://www.gnu.org/gnu/gnu.en.html
-[Guile]:         https://www.gnu.org/software/guile/
-[Guix]:          https://www.gnu.org/software/guix/
+[guile]:         https://www.gnu.org/software/guile/
+[guix]:          https://www.gnu.org/software/guix/
 [herbstluftwm]:  http://www.herbstluftwm.org
-[NixOS]:         https://nixos.org
 [rms]:           https://stallman.org/
-[Vi]:            https://en.wikipedia.org/wiki/Vi
-[Vim]:           http://www.vim.org/
-
-## Shoutouts
-
-### Free Software Community
-
-- Eben Moglen and [@bkuhn] for being copyleft champions.
-
-[@bkuhn]: https://github.com/bkuhn
+[vi]:            https://en.wikipedia.org/wiki/Vi
+[vim]:           http://www.vim.org/
