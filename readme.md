@@ -27,7 +27,7 @@ Empty for now.
 
      Many many thanks to **Dr. Richard Stallman** for creating the entire [free
      software][free-sw] ideology and culture, including **[GNU]**. I can imagine
-     the world would be a *much* worse place if he did not. 🙇‍♀️
+     the world would be a *much worse* place if he did not. 🙇‍♀️
 
 2. **Reproducibility:**
 
