@@ -8,58 +8,58 @@
 
 ## Archive
 
-*Also empty.*
-
 <details>
-  <summary>Click me to see. 👈
+  <summary>Click me to open. 👈
   </summary>
 
-  👀
+  *Also empty.* 👀
 </details>
 
 # #goals
 
 📢 This is just an outline, for expanded thoughts and reasoning, see
-[doc/choices.org].
+[doc/choices.org]. 📢
 
-## Free Software
+- **Free Software:**
 
-- I should be able to use, study, modify, and share my modifications of all the
-  software used in the setup. 🙈🙉🙊
+  - I should be able to use, study, modify, and share my modifications of all
+    the software used in the setup. 🙈🙉🙊
 
-Many many thanks to **Dr. Richard Stallman** for creating the entire [free
-software][free-sw] ideology and culture, including **[GNU]**. I can imagine the
-world would be a *much* worse place if he did not. 🙇‍♀️
+  - Many many thanks to **Dr. Richard Stallman** for creating the entire [free
+    software][free-sw] ideology and culture, including **[GNU]**. I can imagine
+    the world would be a *much* worse place if he did not. 🙇‍♀️
+
+- **Reproducibility:**
+
+  - I should be able to easily but flexibly use exactly the same setup across my
+    various machines.
+
+  - **[NixOS]** naturally plays an extremely integral part here because of it's
+    clean, functional and declarative approach to package and configuration
+    management.
+
+    - I think that the world would be a much better place if more people used
+      Nix! So please check it out! ✨
+
+- **Comfort and Safety:**
+
+  - I should be physically comfortable and safe when using my setup. 💆
+
+- **Rice:**
+
+  - I should be viewing a 'modern' looking system.
+
+- **Minimalism:**
+
+  - I should not have to waste time or energy with superfluous stuff.
 
 [free-sw]: https://www.gnu.org/philosophy/free-sw.en.html
-
-## Reproducibility
-
-- I should be able to easily but flexibly use exactly the same setup across my
-  various machines.
-
-**[NixOS]** naturally plays an extremely integral part here because of it's
-clean, functional and declarative approach to package and configuration
-management. I think that the world would be a much better place if more people
-used Nix! So please check it out! ✨
-
-[NixOS]: https://nixos.org
-
-## Comfort and Safety
-
-- I should be physically comfortable and safe when using my setup. 💆
-
-## Rice
-
-- I should be viewing a 'modern' looking system.
-
-## Minimalism
-
-- I should not have to waste time or energy with superfluous stuff.
+[GNU]:     https://www.gnu.org/gnu/gnu.en.html
+[NixOS]:   https://nixos.org
 
 # Shoutouts
 
-❕ I've probably missed some people, which I apologize for in advance.
+❕❕ I've probably missed some people, which I apologize for in advance.
 Unfortunately, it would be close to impossible to list *everyone* who deserves
 credit anyway.
 
@@ -82,24 +82,23 @@ credit anyway.
   focused window:
   https://github.com/herbstluftwm/herbstluftwm/issues/98#issuecomment-316330616
 
-[@bkuhn]:        https://github.com/bkuhn
-[@brammool]:     https://github.com/brammool
-[@civodul]:      https://github.com/civodul
-[@edolstra]:     https://github.com/edolstra
-[@epsil]:        https://github.com/epsil
-[@jimblandy]:    https://github.com/jimblandy
-[@mvollmer]:     https://github.com/mvollmer
-[@neiljerram]:   https://github.com/neiljerram
-[@othermaciej]:  https://github.com/othermaciej
-[@t-wissmann]:   https://github.com/t-wissmann
-[@wingo]:        https://github.com/wingo
-[@ypnos]:        https://github.com/ypnos
-[emacs]:         https://www.gnu.org/software/emacs
-[evil mode]:     https://github.com/emacs-evil/evil
-[GNU]:           https://www.gnu.org/gnu/gnu.en.html
-[guile]:         https://www.gnu.org/software/guile/
-[guix]:          https://www.gnu.org/software/guix/
-[herbstluftwm]:  http://www.herbstluftwm.org
-[rms]:           https://stallman.org/
-[vi]:            https://en.wikipedia.org/wiki/Vi
-[vim]:           http://www.vim.org/
+[@bkuhn]:       https://github.com/bkuhn
+[@brammool]:    https://github.com/brammool
+[@civodul]:     https://github.com/civodul
+[@edolstra]:    https://github.com/edolstra
+[@epsil]:       https://github.com/epsil
+[@jimblandy]:   https://github.com/jimblandy
+[@mvollmer]:    https://github.com/mvollmer
+[@neiljerram]:  https://github.com/neiljerram
+[@othermaciej]: https://github.com/othermaciej
+[@t-wissmann]:  https://github.com/t-wissmann
+[@wingo]:       https://github.com/wingo
+[@ypnos]:       https://github.com/ypnos
+[emacs]:        https://www.gnu.org/software/emacs
+[evil mode]:    https://github.com/emacs-evil/evil
+[guile]:        https://www.gnu.org/software/guile/
+[guix]:         https://www.gnu.org/software/guix/
+[herbstluftwm]: http://www.herbstluftwm.org
+[rms]:          https://stallman.org/
+[vi]:           https://en.wikipedia.org/wiki/Vi
+[vim]:          http://www.vim.org/
