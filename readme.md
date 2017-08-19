@@ -17,8 +17,8 @@ Empty for now.
 
 # #goals
 
-📢 This is just an outline, for expanded thoughts and reasoning, see
-[doc/choices.org]. 📢
+❕❕ This is just an outline, for expanded thoughts and reasoning, see
+[doc/choices.org].
 
 1. **Free Software:**
 
@@ -57,7 +57,7 @@ Empty for now.
 [GNU]:     https://www.gnu.org/gnu/gnu.en.html
 [NixOS]:   https://nixos.org
 
-# Shoutouts
+# 📢 Shoutouts 📢
 
 ❕❕ I've probably missed some people, which I apologize for in advance.
 Unfortunately, it would be close to impossible to list *everyone* who deserves
