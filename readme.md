@@ -25,7 +25,7 @@ world would be a much better place if more people used Nix! ✨
 
 ## Mouseless Workflow
 
-- I should be (physically) comfortable and safe when using my setup. 🛋️💆‍♀️
+- I should be (physically) comfortable and safe when using my setup. 💆
 
 Obviously this highly depends on *you* and what you normally use a (general
 purpose) computer for. For me, this means being able to keep my fingers on the
