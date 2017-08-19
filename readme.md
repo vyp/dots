@@ -4,7 +4,7 @@
 
 ## Preview 🖼
 
-*Empty for now.*
+Empty for now.
 
 ## Archive
 
@@ -12,7 +12,7 @@
   <summary>Click me to open. 👈
   </summary>
 
-  *Also empty.* 👀
+  Also empty. 👀
 </details>
 
 # #goals
@@ -20,36 +20,36 @@
 📢 This is just an outline, for expanded thoughts and reasoning, see
 [doc/choices.org]. 📢
 
-- **Free Software:**
+1. **Free Software:**
 
   - I should be able to use, study, modify, and share my modifications of all
     the software used in the setup. 🙈🙉🙊
 
-  - Many many thanks to **Dr. Richard Stallman** for creating the entire [free
+    Many many thanks to **Dr. Richard Stallman** for creating the entire [free
     software][free-sw] ideology and culture, including **[GNU]**. I can imagine
     the world would be a *much* worse place if he did not. 🙇‍♀️
 
-- **Reproducibility:**
+2. **Reproducibility:**
 
   - I should be able to easily but flexibly use exactly the same setup across my
     various machines.
 
-  - **[NixOS]** naturally plays an extremely integral part here because of it's
+    **[NixOS]** naturally plays an extremely integral part here because of it's
     clean, functional and declarative approach to package and configuration
     management.
 
-    - I think that the world would be a much better place if more people used
-      Nix! So please check it out! ✨
+    I think that the world would be a much better place if more people used Nix!
+    So please check it out! ✨
 
-- **Comfort and Safety:**
+3. **Comfort and Safety:**
 
   - I should be physically comfortable and safe when using my setup. 💆
 
-- **Rice:**
+4. **Rice:**
 
   - I should be viewing a 'modern' looking system.
 
-- **Minimalism:**
+5. **Minimalism:**
 
   - I should not have to waste time or energy with superfluous stuff.
 
