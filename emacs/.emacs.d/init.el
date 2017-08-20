@@ -281,7 +281,8 @@ urgency flag."
 
   (defun circe-command-ID (passwd)
     (circe-command-NICK my/circe-nick)
-    (circe-command-MSG (concat "nickserv identify " passwd)))
+    (circe-command-MSG (concat "nickserv identify " passwd))
+    (setq-default circe-server-inhibit-auto-reconnect-p t))
 
   (defun circe-command-CHANS (&optional ignored)
     (mapc 'circe-command-JOIN my/circe-channels))
