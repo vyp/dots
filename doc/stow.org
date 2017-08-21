@@ -14,8 +14,8 @@ everything in the =vim= directory to the directory /above/ the /current/
 directory. For example, if your dotfiles repository is at =~/dotfiles=, stow
 will symlink =~/dotfiles/vim/.vimrc= to =~/.vimrc=.
 
-/This is not to be confused for thinking that the =~/dotfiles/vim= directory
-will be symlinked to =~/vim=./
+⚠ This is not to be confused for thinking that the =~/dotfiles/vim= directory
+will be symlinked to =~/vim=.
 
 * Advantages
 
