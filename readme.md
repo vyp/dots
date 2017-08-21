@@ -17,8 +17,7 @@ Empty for now.
 
 # #goals
 
-‼ This is just an outline, for expanded thoughts and reasoning, see
-[./doc/choices.org].
+‼ This is just an outline, for expanded thoughts and reasoning, see [choices].
 
 1. **Free Software:**
 
@@ -53,6 +52,7 @@ Empty for now.
 
    - I should not have to waste time or energy with superfluous stuff.
 
+[choices]: doc/choices.org
 [free-sw]: https://www.gnu.org/philosophy/free-sw.en.html
 [GNU]:     https://www.gnu.org/gnu/gnu.en.html
 [NixOS]:   https://nixos.org
