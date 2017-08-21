@@ -18,7 +18,7 @@ Empty for now.
 # #goals
 
 ‼ This is just an outline, for expanded thoughts and reasoning, see
-<doc/choices.org>.
+[/doc/choices.org].
 
 1. **Free Software:**
 
