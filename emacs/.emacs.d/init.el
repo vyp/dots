@@ -271,6 +271,8 @@ urgency flag."
   ;;
   ;; TODO: Figure out how to set urgency hint when nick is mentioned.
   (defvar my/circe-nick "xd1le")
+  ;; TODO: Separate this big list into a smaller core part, and an extended
+  ;; interest part.
   (defvar my/circe-channels
     '("#ai" "#blink" "#chromium" "#chromium-extensions" "#chromium-support"
       "#conservancy" "#elm" "#emacs" "#emacs-circe" "#firefox" "#freepost"
