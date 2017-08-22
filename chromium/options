@@ -1,5 +1,8 @@
+# Vimium
+# ======
+
 # Key Mappings
-# ============
+# ------------
 unmap ^
 map \ visitPreviousTab
 unmap <a-p>
@@ -54,7 +57,7 @@ unmap X
 map U restoreTab
 
 # Search Engines
-# ==============
+# --------------
 w: http://www.wikipedia.org/w/index.php?title=Special:Search&search=%s Wikipedia
 g: http://www.google.com/search?q=%s Google
 y: http://www.youtube.com/results?search_query=%s Youtube
@@ -64,11 +67,11 @@ d: https://duckduckgo.com/?q=%s DuckDuckGo
 gh: https://github.com/search?&q=%s GitHub
 
 # Link Hints Characters
-# =====================
+# ---------------------
 jkdflsahg
 
 # Miscellaneous Options
-# =====================
+# ---------------------
 [x] Use smooth scrolling
 [x] Don't let pages steal focus on load
 
