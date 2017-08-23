@@ -234,12 +234,12 @@ if &term =~ "xterm\\|rxvt\\|st"
     " The above is simpler but this also changes shape to underline for replace
     " mode.
     autocmd VimEnter,InsertLeave *
-      \ silent execute '!echo -ne "\x1b[\x32 q"' | redraw!
+      \ silent execute '!echo -ne "\x1b[\x32 q"'
     autocmd InsertEnter,InsertChange *
       \ if v:insertmode == 'i' |
-        \ silent execute '!echo -ne "\x1b[\x36 q"' | redraw! |
+        \ silent execute '!echo -ne "\x1b[\x36 q"' |
       \ elseif v:insertmode == 'r' |
-        \ silent execute '!echo -ne "\x1b[\x34 q"' | redraw! |
+        \ silent execute '!echo -ne "\x1b[\x34 q"' |
       \ endif
     endif
 endif
