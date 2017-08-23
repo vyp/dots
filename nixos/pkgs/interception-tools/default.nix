@@ -36,6 +36,8 @@ in stdenv.mkDerivation {
     CMakeLists.txt
   '';
 
+  patches = [ ./0001-remove-some-BUS-stuff.patch ];
+
   meta = {
     homepage = "https://gitlab.com/interception/linux/tools";
     description = "A minimal composable infrastructure on top of libudev and libevdev";
