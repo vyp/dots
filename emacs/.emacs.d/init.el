@@ -277,9 +277,9 @@ urgency flag."
     '("#ai" "#blink" "#chromium" "#chromium-extensions" "#chromium-support"
       "#conservancy" "#elm" "#emacs" "#emacs-circe" "#firefox" "#freepost"
       "#fsf" "#fsfe" "#github" "#gnu" "#gnulinuxlovers" "#guile" "#guix"
-      "#haskell" "#herbstluftwm" "#idris" "#julia" "#krebs" "#latex" "#nixos"
-      "#nixos-dev" "#org-mode" "#qutebrowser" "##rust" "#scheme" "#space"
-      "#syncthing" "##vegan" "#vim" "#webkit" "#zsh"))
+      "#haskell" "#herbstluftwm" "#idris" "#imv" "#julia" "#krebs" "#latex"
+      "#nixos" "#nixos-dev" "#org-mode" "#qutebrowser" "##rust" "#scheme"
+      "#space" "#syncthing" "##vegan" "#vim" "#webkit" "#zsh"))
 
   (defun circe-command-ID (passwd)
     (circe-command-NICK my/circe-nick)
