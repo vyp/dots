@@ -37,8 +37,8 @@ in stdenv.mkDerivation {
   '';
 
   meta = {
-    homepage = "https://gitlab.com/interception/linux/tools";
     description = "A minimal composable infrastructure on top of libudev and libevdev";
+    homepage = "https://gitlab.com/interception/linux/tools";
     license = stdenv.lib.licenses.gpl3;
     platforms = stdenv.lib.platforms.linux;
   };
