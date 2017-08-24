@@ -15,14 +15,14 @@ let
     buildInputs = [ cmake ];
   });
 
-  version = "0.1.0";
+  version = "0.1.1";
   baseName = "interception-tools";
 in stdenv.mkDerivation {
   name = "${baseName}-${version}";
 
   src = fetchurl {
     url = "https://gitlab.com/interception/linux/tools/repository/v${version}/archive.tar.gz";
-    sha256 = "0xyr7w2r5bcy1kmfqlbw7c9rvi7ia9lcsa3851dpm1k99hf523vr";
+    sha256 = "14g4pphvylqdb922va322z1pbp12ap753hcf7zf9sii1ikvif83j";
   };
 
   nativeBuildInputs = [ pkgconfig ];
@@ -35,8 +35,6 @@ in stdenv.mkDerivation {
     | sed 's/\//\\\//g')"'"/g' \
     CMakeLists.txt
   '';
-
-  patches = [ ./0001-remove-some-BUS-stuff.patch ];
 
   meta = {
     homepage = "https://gitlab.com/interception/linux/tools";
