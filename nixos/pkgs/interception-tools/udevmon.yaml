@@ -1,4 +1,4 @@
-- JOB: "dots/nixos/pkgs/interception-tools/result/bin/intercept -g $DEVNODE | dots/nixos/pkgs/caps2esc.interception-tools/result/bin/caps2esc | dots/nixos/pkgs/interception-tools/result/bin/uinput -d $DEVNODE"
+- JOB: "dots/nixos/pkgs/interception-tools/result/bin/intercept -g $DEVNODE | dots/nixos/pkgs/caps2esc/result/bin/caps2esc | dots/nixos/pkgs/interception-tools/result/bin/uinput -d $DEVNODE"
   DEVICE:
     EVENTS:
       EV_KEY: [KEY_CAPSLOCK, KEY_ESC]
