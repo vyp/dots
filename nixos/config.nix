@@ -6,6 +6,7 @@
   imports =
     [
       /etc/nixos/hardware-configuration.modified.nix
+      ./modules/interception-tools.nix
     ];
 
   # Examples
@@ -96,6 +97,10 @@
   # ========
   services.openssh.enable = true;
   services.printing.enable = true;
+
+  # Interception Tools
+  # ------------------
+  services.interception-tools.enable = true;
 
   # X Windows
   # ---------
