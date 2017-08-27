@@ -235,14 +235,38 @@ urgency flag."
 ;; -----------
 (use-package circe
   :defer t
+  :preface
+  (defun irc ()
+    "Connect to IRC."
+    (interactive)
+    (circe "irc.freenode.net" :port '(6667 . 6697)))
+
+  (defun my/circe-format-truncated-nick (sep args)
+    (let ((nick (plist-get args :nick))
+          (body (plist-get args :body))
+          (maxlen 12))
+      (when (> (length nick) maxlen)
+        (setq nick (substring nick 0 maxlen)))
+      (format (concat "%-" (number-to-string maxlen) "s %s %s")
+              nick sep body)))
+
+  (defun my/circe-format-action (&rest args)
+    (my/circe-format-truncated-nick "❯" args))
+
+  (defun my/circe-format-notice (&rest args)
+    (my/circe-format-truncated-nick "╋" args))
+
+  (defun my/circe-format-say (&rest args)
+    (my/circe-format-truncated-nick "┃" args))
+
   :init
   (setq circe-channel-killed-confirmation nil
         circe-server-killed-confirmation  nil
         circe-default-quit-message "Toodaloo padawans! 👣"
         ;; Align messages.
-        circe-format-action        "{nick:-12s} ❯ {body}"
-        circe-format-notice        "{nick:-12s} ╋ {body}"
-        circe-format-say           "{nick:-12s} ┃ {body}"
+        circe-format-action        'my/circe-format-action
+        circe-format-notice        'my/circe-format-notice
+        circe-format-say           'my/circe-format-say
         circe-format-self-say      "     ━━━     ┃ {body}"
         circe-format-self-action   "     ━━━     ❯ {body}"
         ;; Show diff when topic is changed (esp. helpful when topic is long).
@@ -258,12 +282,6 @@ urgency flag."
         (mapcar (lambda (channel) (list channel 'circe-highlight-nick-face))
                 '("#emacs$" "#haskell$" "irc.freenode.net" "nickserv"
                   "#vim$")))
-
-  :preface
-  (defun irc ()
-    "Connect to IRC."
-    (interactive)
-    (circe "irc.freenode.net" :port '(6667 . 6697)))
 
   :config
   ;; Going to have to change these into an alists for multiple servers because
