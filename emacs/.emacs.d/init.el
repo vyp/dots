@@ -293,10 +293,10 @@ urgency flag."
   ;; interest part.
   (defvar my/circe-channels
     '("#ai" "#blink" "#chromium" "#chromium-extensions" "#chromium-support"
-      "#conservancy" "#elm" "#emacs" "#emacs-circe" "#firefox" "#freepost"
-      "#fsf" "#fsfe" "#github" "#gnu" "#gnulinuxlovers" "#guile" "#guix"
-      "#haskell" "#herbstluftwm" "#idris" "#imv" "#julia" "#krebs" "#latex"
-      "#nixos" "#nixos-dev" "#org-mode" "#qutebrowser" "##rust" "#scheme"
+      "#conservancy" "#elm" "#emacs" "#emacs-circe" "#firefox" "#fsf" "#fsfe"
+      "#github" "#gnu" "#gnulinuxlovers" "#guile" "#guix" "#haskell"
+      "#herbstluftwm" "#idris" "#imv" "#julia" "#krebs" "#latex" "#nixos"
+      "#nixos-dev" "#org-mode" "#peers" "#qutebrowser" "##rust" "#scheme"
       "#space" "#syncthing" "##vegan" "#vim" "#webkit" "#zsh"))
 
   (defun circe-command-ID (passwd)
