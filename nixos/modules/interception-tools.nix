@@ -9,14 +9,12 @@ in {
     enable = mkOption {
       type = types.bool;
       default = false;
-      example = true;
       description = "Whether to enable the interception tools service.";
     };
 
     plugins = mkOption {
       type = types.listOf types.package;
       default = [ (import ../pkgs/caps2esc) ];
-      example = [ pkgs.caps2esc ];
       description = ''
         A list of interception tools plugins that will be made available to use
         inside the udevmon configuration.
