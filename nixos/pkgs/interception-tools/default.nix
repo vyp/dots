@@ -36,6 +36,8 @@ in stdenv.mkDerivation {
     CMakeLists.txt
   '';
 
+  patches = [ ./0001-fix-udevmon-configuration-job-path.patch ];
+
   meta = {
     description = "A minimal composable infrastructure on top of libudev and libevdev";
     homepage = "https://gitlab.com/interception/linux/tools";

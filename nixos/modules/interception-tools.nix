@@ -48,13 +48,14 @@ in {
   config = mkIf cfg.enable {
     systemd.services.interception-tools = {
       description = ''
-        Starts a udevmon process with the specified configuration.
+        Minimal composable infrastructure on top of libudev and libevdev
       '';
-      path = [ (import ../pkgs/interception-tools) ] ++ cfg.plugins;
+      path = [ pkgs.bash (import ../pkgs/interception-tools) ] ++ cfg.plugins;
       script = ''
         nice -n -20 udevmon -c \
-        ${pkgs.writeText "udevmon.yaml" "${cfg.udevmonConfig}"}
+        ${pkgs.writeText "udevmon.yaml" cfg.udevmonConfig}
       '';
+      wantedBy = [ "multi-user.target" ];
     };
   };
 }
