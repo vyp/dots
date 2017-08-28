@@ -21,9 +21,8 @@ in {
       '';
     };
 
-    # TODO: Make this /either/ a string or path to yaml file.
     udevmonConfig = mkOption {
-      type = types.str;
+      type = types.either types.str types.path;
       default = ''
         - JOB: "intercept -g $DEVNODE | caps2esc | uinput -d $DEVNODE"
           DEVICE:
@@ -51,7 +50,9 @@ in {
       path = [ pkgs.bash (import ../pkgs/interception-tools) ] ++ cfg.plugins;
       script = ''
         nice -n -20 udevmon -c \
-        ${pkgs.writeText "udevmon.yaml" cfg.udevmonConfig}
+        ${if builtins.isString cfg.udevmonConfig
+        then pkgs.writeText "udevmon.yaml" cfg.udevmonConfig
+        else cfg.udevmonConfig}
       '';
       wantedBy = [ "multi-user.target" ];
     };
