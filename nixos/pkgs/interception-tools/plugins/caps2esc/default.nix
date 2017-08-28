@@ -2,7 +2,7 @@ with import <nixpkgs> {};
 
 let
   version = "0.1.0";
-  pname = "caps2esc-interception-tools";
+  pname = "interception-tools-caps2esc";
 in stdenv.mkDerivation {
   name = "${pname}-${version}";
 
