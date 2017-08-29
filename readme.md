@@ -9,50 +9,58 @@ Empty for now.
 ## Archive
 
 <details>
-  <summary>Click me to open. 👈
-  </summary>
+  <summary>Click me to open. 👈</summary>
 
   Also empty. 👀
 </details>
 
 # #goals
 
-‼ This is just an outline, for expanded thoughts and reasoning, see [choices].
-
 1. **Free Software:**
 
-   - I should be able to use, study, modify, and share my modifications of all
-     the software used in the setup. 🙈🙉🙊
+   <details>
+   <summary>I should be able to use, study, modify, and share my modifications
+   of all the software used in the setup. 🙈🙉🙊</summary>
 
-     Many many thanks to **Dr. Richard Stallman** for creating the entire [free
-     software][free-sw] ideology and culture, including **[GNU]**. I can imagine
-     the world would be a *much worse* place if he did not. 🙇‍♀️
+   Many many thanks to **Dr. Richard Stallman** for creating the entire [free
+   software][free-sw] ideology and culture, including **[GNU]**. I can imagine
+   the world would be a *much worse* place if he did not. 🙇‍♀️
+   </details>
 
 2. **Reproducibility:**
 
-   - I should be able to easily but flexibly use exactly the same setup across
-     my various machines.
+   <details>
+   <summary>I should be able to easily but flexibly use exactly the same setup
+   across my various machines.</summary>
 
-     **[NixOS]** naturally plays an extremely integral part here because of it's
-     clean, functional and declarative approach to package and configuration
-     management.
+   **[NixOS]** naturally plays an extremely integral part here because of it's
+   clean, functional and declarative approach to package and configuration
+   management.
 
-     I think that the world would be a much better place if more people used
-     Nix! So please check it out! ✨
+   I think that the world would be a much better place if more people used Nix!
+   So please check it out! ✨
+   </details>
 
 3. **Comfort and Safety:**
 
-   - I should be physically comfortable and safe when using my setup. 💆
+   <details>
+   <summary>I should be physically comfortable and safe when using my setup.
+   💆</summary>
+   </details>
 
 4. **Rice:**
 
-   - I should be viewing a 'modern' looking system.
+   <details>
+   <summary>I should be viewing a 'modern' looking system.</summary>
+   </details>
 
 5. **Minimalism:**
 
-   - I should not have to waste time or energy with superfluous stuff.
+   <details>
+   <summary>I should not have to waste time or energy with superfluous
+   stuff.</summary>
+   </details>
 
-[choices]: doc/choices.org
 [free-sw]: https://www.gnu.org/philosophy/free-sw.en.html
 [GNU]:     https://www.gnu.org/gnu/gnu.en.html
 [NixOS]:   https://nixos.org
