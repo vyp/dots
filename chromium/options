@@ -96,6 +96,7 @@ code,
 .blob-code,
 .blob-code-inner,
 .blob-num,
+.sha-block,
 .commit-tease-sha,
 .commit-ref,
 .file-info {
