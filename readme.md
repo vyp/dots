@@ -9,7 +9,7 @@ Empty for now.
 ## Archive
 
 <details>
-  <summary>Click me to open. 👈</summary>
+  <summary>Click me to open. 👈</summary><br>
 
   Also empty. 👀
 </details>
@@ -20,7 +20,7 @@ Empty for now.
 
    <details>
    <summary>I should be able to use, study, modify, and share my modifications
-   of all the software used in the setup. 🙈🙉🙊</summary>
+   of all the software used in the setup. 🙈🙉🙊</summary><br>
 
    Many many thanks to **Dr. Richard Stallman** for creating the entire [free
    software][free-sw] ideology and culture, including **[GNU]**. I can imagine
@@ -31,7 +31,7 @@ Empty for now.
 
    <details>
    <summary>I should be able to easily but flexibly use exactly the same setup
-   across my various machines.</summary>
+   across my various machines.</summary><br>
 
    **[NixOS]** naturally plays an extremely integral part here because of it's
    clean, functional and declarative approach to package and configuration
@@ -45,20 +45,20 @@ Empty for now.
 
    <details>
    <summary>I should be physically comfortable and safe when using my setup.
-   💆</summary>
+   💆</summary><br>
    </details>
 
 4. **Rice:**
 
    <details>
-   <summary>I should be viewing a 'modern' looking system.</summary>
+   <summary>I should be viewing a 'modern' looking system.</summary><br>
    </details>
 
 5. **Minimalism:**
 
    <details>
    <summary>I should not have to waste time or energy with superfluous
-   stuff.</summary>
+   stuff.</summary><br>
    </details>
 
 [free-sw]: https://www.gnu.org/philosophy/free-sw.en.html
