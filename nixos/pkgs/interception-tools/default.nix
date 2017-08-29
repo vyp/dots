@@ -3,13 +3,13 @@ with import <nixpkgs> {};
 let
   libyamlcppWithoutBoost = libyamlcpp.overrideAttrs (oldAttrs: rec {
     name = "libyaml-cpp-${version}";
-    version = "2017-07-25";
+    version = "2017-08-25";
 
     src = fetchFromGitHub {
       owner = "jbeder";
       repo = "yaml-cpp";
-      rev = "e2818c423e5058a02f46ce2e519a82742a8ccac9";
-      sha256 = "0v2b0lxysxncqnm4k9by815a6w72k3f1fpprsnw46pwiv3id54cb";
+      rev = "beb44b872c07c74556314e730c6f20a00b32e8e5";
+      sha256 = "1qkr3i5lin6m36w5rbimc7pjx3nx686xnjb6lw00xf67iqrl4h4m";
     };
 
     buildInputs = [ cmake ];
