@@ -17,6 +17,7 @@ in stdenv.mkDerivation {
     homepage = "https://gitlab.com/interception/linux/plugins/caps2esc";
     description = "Transforming the most useless key ever into the most useful one";
     license = stdenv.lib.licenses.mit;
+    maintainers = stdenv.lib.maintainers.vyp;
     platforms = stdenv.lib.platforms.linux;
   };
 }
