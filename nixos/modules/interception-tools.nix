@@ -50,9 +50,9 @@ in {
       path = [ pkgs.bash (import ../pkgs/interception-tools) ] ++ cfg.plugins;
       script = ''
         nice -n -20 udevmon -c \
-        ${if builtins.isString cfg.udevmonConfig
-        then pkgs.writeText "udevmon.yaml" cfg.udevmonConfig
-        else cfg.udevmonConfig}
+        ${if builtins.typeOf cfg.udevmonConfig == "path"
+        then cfg.udevmonConfig
+        else pkgs.writeText "udevmon.yaml" cfg.udevmonConfig}
       '';
       wantedBy = [ "multi-user.target" ];
     };
