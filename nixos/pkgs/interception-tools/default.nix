@@ -29,14 +29,12 @@ in stdenv.mkDerivation {
   buildInputs = [ cmake libevdev libudev libyamlcppWithoutBoost ];
 
   prePatch = ''
-    sed -i 's/"\/usr\/include\/libevdev-1.0"/"'\
-    "$(pkg-config --cflags libevdev \
-    | cut -c 3- \
-    | sed 's/\//\\\//g')"'"/g' \
-    CMakeLists.txt
+    substituteInPlace CMakeLists.txt --replace \
+      "\"/usr/include/libevdev-1.0\"" \
+      "\"$(pkg-config --cflags libevdev | cut -c 3-)\""
   '';
 
-  patches = [ ./0001-fix-udevmon-configuration-job-path.patch ];
+  patches = [ ./fix-udevmon-configuration-job-path.patch ];
 
   meta = {
     description = "A minimal composable infrastructure on top of libudev and libevdev";
