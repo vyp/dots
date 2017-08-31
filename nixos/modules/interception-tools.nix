@@ -48,12 +48,15 @@ in {
         Minimal composable infrastructure on top of libudev and libevdev
       '';
       path = [ pkgs.bash (import ../pkgs/interception-tools) ] ++ cfg.plugins;
-      script = ''
-        nice -n -20 udevmon -c \
-        ${if builtins.typeOf cfg.udevmonConfig == "path"
-        then cfg.udevmonConfig
-        else pkgs.writeText "udevmon.yaml" cfg.udevmonConfig}
-      '';
+      serviceConfig = {
+        ExecStart = ''
+          ${(import ../pkgs/interception-tools)}/bin/udevmon -c \
+          ${if builtins.typeOf cfg.udevmonConfig == "path"
+          then cfg.udevmonConfig
+          else pkgs.writeText "udevmon.yaml" cfg.udevmonConfig}
+        '';
+        Nice = -20;
+      };
       wantedBy = [ "multi-user.target" ];
     };
   };
