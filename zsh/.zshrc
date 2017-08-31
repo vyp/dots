@@ -6,7 +6,7 @@ stty -ixon
 # Loads
 # =====
 autoload -U colors && colors
-# autoload -U deer
+autoload -U deer
 autoload edit-command-line
 autoload -Uz vcs_info
 
@@ -143,7 +143,7 @@ run-term-em () {
 }
 
 zle -N edit-command-line
-# zle -N deer
+zle -N deer
 zle -N zle-keymap-select
 zle -N zle-line-init
 zle -N go-home
@@ -153,8 +153,8 @@ zle -N run-term-em
 
 # Key Bindings
 # ============
-# bindkey -M vicmd '^g' deer
-# bindkey -M viins '^g' deer
+bindkey -M vicmd '^g' deer
+bindkey -M viins '^g' deer
 bindkey -M vicmd 'v'  edit-command-line
 bindkey -M vicmd '^j' go-back
 bindkey -M viins '^j' go-back

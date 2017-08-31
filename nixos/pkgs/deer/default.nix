@@ -1,7 +1,7 @@
 with import <nixpkgs> {};
 
 let
-  version = "2016-06-19";
+  version = "1.4";
   name = "deer-${version}";
 in stdenv.mkDerivation {
   inherit name;
@@ -9,11 +9,19 @@ in stdenv.mkDerivation {
   src = fetchFromGitHub {
     owner = "Vifon";
     repo = "deer";
-    rev = "2668477e04c6978ca2cdcb1651b17f119f752ce9";
-    sha256 = "02ag2dkay1rk3r3wrx65jwd7azxad4l9hszr0jlmgzyy0pl3yn59";
+    rev = "v${version}";
+    sha256 = "1xnbnbi0zk2xsyn8dqsmyxqlfnl36pb1wwibnlp0dxixw6sfymyl";
   };
 
-  propagatedBuildInputs = [ perl python ];
+  propagatedBuildInputs = [ perl ];
+
+  prePatch = ''
+    sed -i '157s/perl/'\
+    "$(echo ${perl}/bin/perl | sed 's/\//\\\//g')"'/' \
+    deer
+  '';
+
+  patches = [ ./realpath.patch ];
 
   installPhase = ''
     mkdir -p $out/share/zsh/site-functions/
@@ -22,8 +30,9 @@ in stdenv.mkDerivation {
 
   meta = with stdenv.lib; {
     description = "Ranger-like file navigation for zsh";
-    homepage = https://github.com/Vifon/deer;
+    homepage = "https://github.com/Vifon/deer";
     license = licenses.gpl3Plus;
+    maintainers = maintainers.vyp;
     platforms = platforms.unix;
   };
 }

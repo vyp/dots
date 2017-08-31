@@ -51,7 +51,7 @@
     chromium
     compton
     curl
-    # (import ./pkgs/deer)
+    (import ./pkgs/deer)
     emacs
     evtest
     file
