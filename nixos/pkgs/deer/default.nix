@@ -13,8 +13,6 @@ in stdenv.mkDerivation {
     sha256 = "1xnbnbi0zk2xsyn8dqsmyxqlfnl36pb1wwibnlp0dxixw6sfymyl";
   };
 
-  propagatedBuildInputs = [ perl ];
-
   prePatch = ''
     sed -i '157s/perl/'\
     "$(echo ${perl}/bin/perl | sed 's/\//\\\//g')"'/' \
