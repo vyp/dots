@@ -14,9 +14,9 @@ in stdenv.mkDerivation {
   };
 
   prePatch = ''
-    sed -i '157s/perl/'\
-    "$(echo ${perl}/bin/perl | sed 's/\//\\\//g')"'/' \
-    deer
+    substituteInPlace deer --replace \
+      "| perl -pe " \
+      "| ${perl}/bin/perl -pe "
   '';
 
   patches = [ ./realpath.patch ];
