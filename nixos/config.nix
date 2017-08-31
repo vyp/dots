@@ -61,6 +61,7 @@
     imv
     maim
     mediainfo
+    nix-repl
     polybar
     scrot
     setroot
