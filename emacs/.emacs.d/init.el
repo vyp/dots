@@ -247,8 +247,9 @@ urgency flag."
           (maxlen 12))
       (when (> (length nick) maxlen)
         (setq nick (substring nick 0 maxlen)))
-      (format (concat "%-" (number-to-string maxlen) "s %s %s")
-              nick sep body)))
+      (lui-format (concat "{nick:" (number-to-string maxlen) "s} "
+                          sep " {body}")
+                  :nick nick :body body)))
 
   (defun my/circe-format-action (&rest args)
     (my/circe-format-truncated-nick "❯" args))
