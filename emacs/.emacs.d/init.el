@@ -268,8 +268,8 @@ urgency flag."
         circe-format-action        'my/circe-format-action
         circe-format-notice        'my/circe-format-notice
         circe-format-say           'my/circe-format-say
-        circe-format-self-say      "     ━━━     ┃ {body}"
-        circe-format-self-action   "     ━━━     ┣❯{body}"
+        circe-format-self-say      "         ━━━ ┃ {body}"
+        circe-format-self-action   "         ━━━ ┣❯{body}"
         ;; Show diff when topic is changed (esp. helpful when topic is long).
         circe-format-server-topic
         "*** Topic change by {nick} ({userhost}): {topic-diff}"
