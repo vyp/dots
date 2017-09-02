@@ -252,7 +252,7 @@ urgency flag."
                   :nick nick :body body)))
 
   (defun my/circe-format-action (&rest args)
-    (my/circe-format-truncated-nick "❯" args))
+    (my/circe-format-truncated-nick "┣❯" args))
 
   (defun my/circe-format-notice (&rest args)
     (my/circe-format-truncated-nick "╋" args))
@@ -269,7 +269,7 @@ urgency flag."
         circe-format-notice        'my/circe-format-notice
         circe-format-say           'my/circe-format-say
         circe-format-self-say      "     ━━━     ┃ {body}"
-        circe-format-self-action   "     ━━━     ❯ {body}"
+        circe-format-self-action   "     ━━━     ┣❯{body}"
         ;; Show diff when topic is changed (esp. helpful when topic is long).
         circe-format-server-topic
         "*** Topic change by {nick} ({userhost}): {topic-diff}"
