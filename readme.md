@@ -67,7 +67,8 @@ Empty for now.
 
 # Installation
 
-## TL;DR
+<details>
+<summary**TL;DR**</summary>
 
 1.  Download latest nixos-unstable image from
     https://nixos.org/channels/nixos-unstable
@@ -151,6 +152,7 @@ Empty for now.
 15. Logout with ctrl+d and login as your user in the virtual tty still, and run
     `fc-cache -fv` to setup fonts. Logout with ctrl+d again and switch back to X
     with ctrl+alt+f7 and login normally! ☺️
+</details>
 
 ## Bootable Image
 
