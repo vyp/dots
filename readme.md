@@ -88,22 +88,25 @@ Empty for now.
 
 7.  *(optional)* Activate swap device: `swapon <device>`.
 
-8.  ``` shell
+8.  Generate `/etc/hardware-configuration.nix`:
+
+    ``` shell
     nixos-generate-config --root /mnt
     ```
 
-9.  ``` shell
+9.  Backup `/etc/hardware-configuration.nix`:
+
+    ``` shell
     cp /mnt/etc/nixos/hardware-configuration.nix \
        /mnt/etc/nixos/hardware-configuration.modified.nix
     ```
 
-    and edit `hardware-configuration.modified.nix` as necessary.
+    and edit `hardware-configuration.modified.nix` if necessary.
 
-10. ``` shell
+10. Retrieve this repository:
+
+    ``` shell
     nix-env -i git stow
-    ```
-
-11. ``` shell
     mkdir -pv /mnt/home/u
     cd /mnt/home/u
     git clone --recursive https://github.com/vyp/dots
@@ -112,7 +115,7 @@ Empty for now.
     This may take a little while as the nixpkgs repository is a submodule and at
     the time of writing it's about 500MB in size.
 
-12. Add nixpkgs-channels as a remote:
+11. Add nixpkgs-channels as a remote:
 
     ``` shell
     cd dots/nixos/nixpkgs
@@ -124,10 +127,12 @@ Empty for now.
     any potentially new package definitions not available in unstable. So it is
     a bit more flexible I suppose.
 
-13. Run the init script which essentially stows all the dotfiles (doesn't exist
+12. Run the init script which essentially stows all the dotfiles (doesn't exist
     yet).
 
-14. ``` shell
+13. Initiate main installation command:
+
+    ``` shell
     nixos-install -I nixos-config=/mnt/home/u/dots/nixos/config.nix \
                   -I nixpkgs=/mnt/home/u/dots/nixos/nixpkgs
     ```
@@ -138,12 +143,12 @@ Empty for now.
     it will not. Have to try it out. If it does fail, the solution would be to
     simply use a relative path, which would work regardless.
 
-15. Reboot, but before you can login you need to set a password for your user.
+14. Reboot, but before you can login you need to set a password for your user.
     Press ctrl+alt+f1 at the login screen to switch to a virtual tty, login as
     root (the previous step will have prompted you to set a root password), and
     run `passwd u` to set a password for user "u".
 
-16. Logout with ctrl+d and login as your user in the virtual tty still, and run
+15. Logout with ctrl+d and login as your user in the virtual tty still, and run
     `fc-cache -fv` to setup fonts. Logout with ctrl+d again and switch back to X
     with ctrl+alt+f7 and login normally! ☺️
 
