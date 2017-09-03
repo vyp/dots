@@ -65,6 +65,98 @@ Empty for now.
 [GNU]:     https://www.gnu.org/gnu/gnu.en.html
 [NixOS]:   https://nixos.org
 
+# Installation
+
+## TL;DR
+
+1.  Download latest nixos-unstable image from
+    https://nixos.org/channels/nixos-unstable
+
+2.  Make a bootable usb:
+
+    ``` shell
+    dd if=path/to/image of=/dev/sdb
+    ```
+
+3.  Boot into live image and log in as root with empty password.
+
+4.  Get internet access.
+
+5.  Partition and format disks.
+
+6.  Mount target filesystems under `/mnt`.
+
+7.  *(optional)* Activate swap device: `swapon <device>`.
+
+8.  ``` shell
+    nixos-generate-config --root /mnt
+    ```
+
+9.  ``` shell
+    cp /mnt/etc/nixos/hardware-configuration.nix \
+       /mnt/etc/nixos/hardware-configuration.modified.nix
+    ```
+
+    and edit `hardware-configuration.modified.nix` as necessary.
+
+10. ``` shell
+    nix-env -i git stow
+    ```
+
+11. ``` shell
+    mkdir -pv /mnt/home/u
+    cd /mnt/home/u
+    git clone --recursive https://github.com/vyp/dots
+    ```
+
+    This may take a little while as the nixpkgs repository is a submodule and at
+    the time of writing it's about 500MB in size.
+
+12. Add nixpkgs-channels as a remote:
+
+    ``` shell
+    cd dots/nixos/nixpkgs
+    git remote add channels https://github.com/nixos/nixpkgs-channels
+    ```
+
+    The reason nixpkgs is used as a submodule and not nixpkgs-channels directly
+    is that the former allows cherry picking commits from latest master to get
+    any potentially new package definitions not available in unstable. So it is
+    a bit more flexible I suppose.
+
+13. Run the init script which essentially stows all the dotfiles (doesn't exist
+    yet).
+
+14. ``` shell
+    nixos-install -I nixos-config=/mnt/home/u/dots/nixos/config.nix \
+                  -I nixpkgs=/mnt/home/u/dots/nixos/nixpkgs
+    ```
+
+    This may actually fail because `config.nix` imports from absolute path
+    `/etc/hardware-configuration.modified.nix` instead of a relative path.
+    However, --root /mnt is implicit to nixos-install (if unspecified), so maybe
+    it will not. Have to try it out. If it does fail, the solution would be to
+    simply use a relative path, which would work regardless.
+
+15. Reboot, but before you can login you need to set a password for your user.
+    Press ctrl+alt+f1 at the login screen to switch to a virtual tty, login as
+    root (the previous step will have prompted you to set a root password), and
+    run `passwd u` to set a password for user "u".
+
+16. Logout with ctrl+d and login as your user in the virtual tty still, and run
+    `fc-cache -fv` to setup fonts. Logout with ctrl+d again and switch back to X
+    with ctrl+alt+f7 and login normally! ☺️
+
+## Bootable Image
+
+## Internet Access
+
+## Hardware Setup
+
+## Magic ✨
+
+## Initialization
+
 # 📢 Shoutouts 📢
 
 ‼ I've probably missed some people, which I apologize for in advance.
