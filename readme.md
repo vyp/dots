@@ -48,19 +48,6 @@ Empty for now.
    💆</summary><br>
    </details>
 
-4. **Rice:**
-
-   <details>
-   <summary>I should be viewing a 'modern' looking system.</summary><br>
-   </details>
-
-5. **Minimalism:**
-
-   <details>
-   <summary>I should not have to waste time or energy with superfluous
-   stuff.</summary><br>
-   </details>
-
 [free-sw]: https://www.gnu.org/philosophy/free-sw.en.html
 [GNU]:     https://www.gnu.org/gnu/gnu.en.html
 [NixOS]:   https://nixos.org
