@@ -142,23 +142,23 @@ Empty for now.
 </details>
 <br>
 
-1. <details><summary><strong>Bootable Image:</strong></summary><br>
+1. <details><summary><strong>Bootable Image</strong></summary><br>
 
    </details>
 
-2. <details><summary><strong>Internet Access:</strong></summary><br>
+2. <details><summary><strong>Internet Access</strong></summary><br>
 
    </details>
 
-3. <details><summary><strong>Hardware Setup:</strong></summary><br>
+3. <details><summary><strong>Hardware Setup</strong></summary><br>
 
    </details>
 
-4. <details><summary><strong>Magic ✨:</strong></summary><br>
+4. <details><summary><strong>Magic ✨</strong></summary><br>
 
    </details>
 
-5. <details><summary><strong>Initialization:</strong></summary><br>
+5. <details><summary><strong>Initialization</strong></summary><br>
 
    </details>
 
