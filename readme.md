@@ -54,111 +54,109 @@ Empty for now.
 
 # Installation
 
-<details>
-<summary>TL;DR</summary>
+0. <details><summary><strong>TL;DR</strong></summary>
 
-1.  Download latest nixos-unstable image from
-    https://nixos.org/channels/nixos-unstable
+   1.  Download latest nixos-unstable image from
+       https://nixos.org/channels/nixos-unstable
 
-2.  Make a bootable usb:
+   2.  Make a bootable usb:
 
-    ``` shell
-    dd if=path/to/image of=/dev/sdb
-    ```
+       ``` shell
+       dd if=path/to/image of=/dev/sdb
+       ```
 
-3.  Boot into live image and log in as root with empty password.
+   3.  Boot into live image and log in as root with empty password.
 
-4.  Get internet access.
+   4.  Get internet access.
 
-5.  Partition and format disks.
+   5.  Partition and format disks.
 
-6.  Mount target filesystems under `/mnt`.
+   6.  Mount target filesystems under `/mnt`.
 
-7.  *(optional)* Activate swap device: `swapon <device>`.
+   7.  *(optional)* Activate swap device: `swapon <device>`.
 
-8.  Generate `/etc/hardware-configuration.nix`:
+   8.  Generate `/etc/hardware-configuration.nix`:
 
-    ``` shell
-    nixos-generate-config --root /mnt
-    ```
+       ``` shell
+       nixos-generate-config --root /mnt
+       ```
 
-9.  Backup `/etc/hardware-configuration.nix`:
+   9.  Backup `/etc/hardware-configuration.nix`:
 
-    ``` shell
-    cp /mnt/etc/nixos/hardware-configuration.nix \
-       /mnt/etc/nixos/hardware-configuration.modified.nix
-    ```
+       ``` shell
+       cp /mnt/etc/nixos/hardware-configuration.nix \
+          /mnt/etc/nixos/hardware-configuration.modified.nix
+       ```
 
-    and edit `hardware-configuration.modified.nix` if necessary.
+       and edit `hardware-configuration.modified.nix` if necessary.
 
-10. Retrieve this repository:
+   10. Retrieve this repository:
 
-    ``` shell
-    nix-env -i git stow
-    mkdir -pv /mnt/home/u
-    cd /mnt/home/u
-    git clone --recursive https://github.com/vyp/dots
-    ```
+       ``` shell
+       nix-env -i git stow
+       mkdir -pv /mnt/home/u
+       cd /mnt/home/u
+       git clone --recursive https://github.com/vyp/dots
+       ```
 
-    This may take a little while as the nixpkgs repository is a submodule and at
-    the time of writing it's about 500MB in size.
+       This may take a little while as the nixpkgs repository is a submodule and at
+       the time of writing it's about 500MB in size.
 
-11. Add nixpkgs-channels as a remote:
+   11. Add nixpkgs-channels as a remote:
 
-    ``` shell
-    cd dots/nixos/nixpkgs
-    git remote add channels https://github.com/nixos/nixpkgs-channels
-    ```
+       ``` shell
+       cd dots/nixos/nixpkgs
+       git remote add channels https://github.com/nixos/nixpkgs-channels
+       ```
 
-    The reason nixpkgs is used as a submodule and not nixpkgs-channels directly
-    is that the former allows cherry picking commits from latest master to get
-    any potentially new package definitions not available in unstable. So it is
-    a bit more flexible I suppose.
+       The reason nixpkgs is used as a submodule and not nixpkgs-channels directly
+       is that the former allows cherry picking commits from latest master to get
+       any potentially new package definitions not available in unstable. So it is
+       a bit more flexible I suppose.
 
-12. Run the init script which essentially stows all the dotfiles (doesn't exist
-    yet).
+   12. Run the init script which essentially stows all the dotfiles (doesn't exist
+       yet).
 
-13. Initiate main installation command:
+   13. Initiate main installation command:
 
-    ``` shell
-    nixos-install -I nixos-config=/mnt/home/u/dots/nixos/config.nix \
-                  -I nixpkgs=/mnt/home/u/dots/nixos/nixpkgs
-    ```
+       ``` shell
+       nixos-install -I nixos-config=/mnt/home/u/dots/nixos/config.nix \
+                     -I nixpkgs=/mnt/home/u/dots/nixos/nixpkgs
+       ```
 
-    This may actually fail because `config.nix` imports from absolute path
-    `/etc/hardware-configuration.modified.nix` instead of a relative path.
-    However, --root /mnt is implicit to nixos-install (if unspecified), so maybe
-    it will not. Have to try it out. If it does fail, the solution would be to
-    simply use a relative path, which would work regardless.
+       This may actually fail because `config.nix` imports from absolute path
+       `/etc/hardware-configuration.modified.nix` instead of a relative path.
+       However, --root /mnt is implicit to nixos-install (if unspecified), so maybe
+       it will not. Have to try it out. If it does fail, the solution would be to
+       simply use a relative path, which would work regardless.
 
-14. Reboot, but before you can login you need to set a password for your user.
-    Press ctrl+alt+f1 at the login screen to switch to a virtual tty, login as
-    root (the previous step will have prompted you to set a root password), and
-    run `passwd u` to set a password for user "u".
+   14. Reboot, but before you can login you need to set a password for your user.
+       Press ctrl+alt+f1 at the login screen to switch to a virtual tty, login as
+       root (the previous step will have prompted you to set a root password), and
+       run `passwd u` to set a password for user "u".
 
-15. Logout with ctrl+d and login as your user in the virtual tty still, and run
-    `fc-cache -fv` to setup fonts. Logout with ctrl+d again and switch back to X
-    with ctrl+alt+f7 and login normally! ☺️
-</details>
-<br>
+   15. Logout with ctrl+d and login as your user in the virtual tty still, and run
+       `fc-cache -fv` to setup fonts. Logout with ctrl+d again and switch back to X
+       with ctrl+alt+f7 and login normally! ☺️
+   </details>
 
-1. <details><summary><strong>Bootable Image</strong></summary><br>
+1. <details><summary><strong>Bootable Image</strong></summary>
 
    </details>
 
-2. <details><summary><strong>Internet Access</strong></summary><br>
+2. <details><summary><strong>Internet Access</strong></summary>
 
    </details>
 
-3. <details><summary><strong>Hardware Setup</strong></summary><br>
+3. <details><summary><strong>Hardware Setup</strong></summary>
 
    </details>
 
-4. <details><summary><strong>Magic ✨</strong></summary><br>
+4. <details><summary><strong>Magic ✨</strong></summary>
 
    </details>
 
-5. <details><summary><strong>Initialization</strong></summary><br>
+5. <details><summary><strong>Initialization</strong></summary>
 
    </details>
 
