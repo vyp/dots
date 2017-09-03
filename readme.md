@@ -68,7 +68,9 @@ Empty for now.
 # Installation
 
 <details>
-<summary>**TL;DR**</summary>
+<summary>
+**TL;DR**
+</summary>
 
 1.  Download latest nixos-unstable image from
     https://nixos.org/channels/nixos-unstable
