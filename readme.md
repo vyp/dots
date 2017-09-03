@@ -141,15 +141,25 @@ Empty for now.
     with ctrl+alt+f7 and login normally! ☺️
 </details>
 
-## Bootable Image
+1. <details><summary><strong>Bootable Image:</strong></summary><br>
 
-## Internet Access
+   </details>
 
-## Hardware Setup
+2. <details><summary><strong>Internet Access:</strong></summary><br>
 
-## Magic ✨
+   </details>
 
-## Initialization
+3. <details><summary><strong>Hardware Setup:</strong></summary><br>
+
+   </details>
+
+4. <details><summary><strong>Magic ✨:</strong></summary><br>
+
+   </details>
+
+5. <details><summary><strong>Initialization:</strong></summary><br>
+
+   </details>
 
 # 📢 Shoutouts 📢
 
