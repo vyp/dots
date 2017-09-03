@@ -55,7 +55,7 @@ Empty for now.
 # Installation
 
 <details>
-<summary><strong>TL;DR</strong></summary>
+<summary>TL;DR</summary>
 
 1.  Download latest nixos-unstable image from
     https://nixos.org/channels/nixos-unstable
@@ -140,6 +140,7 @@ Empty for now.
     `fc-cache -fv` to setup fonts. Logout with ctrl+d again and switch back to X
     with ctrl+alt+f7 and login normally! ☺️
 </details>
+<br>
 
 1. <details><summary><strong>Bootable Image:</strong></summary><br>
 
