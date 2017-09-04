@@ -164,7 +164,8 @@ Empty for now.
 
 ‼ I've probably missed some people, which I apologize for in advance.
 Unfortunately, it would be close to impossible to list *everyone* who deserves
-credit anyway.
+credit anyway, because we're all really standing on the shoulders of enormous
+giants in the first place.
 
 - Bill Joy for creating [vi] and it's unique but extremely effective model of
   editing, which inspires many aspects of this setup.
