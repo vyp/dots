@@ -16,9 +16,9 @@ let
   });
 
   version = "0.1.1";
-  baseName = "interception-tools";
+  name = "interception-tools-${version}";
 in stdenv.mkDerivation {
-  name = "${baseName}-${version}";
+  inherit name;
 
   src = fetchurl {
     url = "https://gitlab.com/interception/linux/tools/repository/v${version}/archive.tar.gz";
@@ -36,11 +36,11 @@ in stdenv.mkDerivation {
 
   patches = [ ./fix-udevmon-configuration-job-path.patch ];
 
-  meta = {
+  meta = with stdenv.lib; {
     description = "A minimal composable infrastructure on top of libudev and libevdev";
     homepage = "https://gitlab.com/interception/linux/tools";
-    license = stdenv.lib.licenses.gpl3;
-    maintainers = stdenv.lib.maintainers.vyp;
-    platforms = stdenv.lib.platforms.linux;
+    license = licenses.gpl3;
+    maintainers = with maintainers; [ vyp ];
+    platforms = platforms.linux;
   };
 }

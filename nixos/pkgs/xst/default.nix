@@ -19,10 +19,11 @@ in stdenv.mkDerivation {
     TERMINFO=$out/share/terminfo make install PREFIX=$out
   '';
 
-  meta = {
+  meta = with stdenv.lib; {
     homepage = "https://github.com/neeasade/xst";
     description = "Simple terminal fork that can load config from Xresources";
-    license = stdenv.lib.licenses.mit;
-    platforms = stdenv.lib.platforms.linux;
+    license = licenses.mit;
+    maintainers = with maintainers; [ vyp ];
+    platforms = platforms.linux;
   };
 }

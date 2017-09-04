@@ -1,8 +1,10 @@
 with import <nixpkgs> {};
 
-stdenv.mkDerivation rec {
+let
   version = "2.0.1";
   name = "setroot-${version}";
+in stdenv.mkDerivation rec {
+  inherit name;
 
   src = fetchFromGitHub {
     owner = "ttzhou";
@@ -21,6 +23,7 @@ stdenv.mkDerivation rec {
     description = "Simple X background setter inspired by imlibsetroot and feh";
     homepage = https://github.com/ttzhou/setroot;
     license = licenses.gpl3Plus;
+    maintainers = with maintainers; [ vyp ];
     platforms = platforms.unix;
   };
 }
