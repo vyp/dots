@@ -20,8 +20,8 @@ in stdenv.mkDerivation {
   '';
 
   meta = with stdenv.lib; {
-    homepage = "https://github.com/neeasade/xst";
     description = "Simple terminal fork that can load config from Xresources";
+    homepage = "https://github.com/neeasade/xst";
     license = licenses.mit;
     maintainers = with maintainers; [ vyp ];
     platforms = platforms.linux;
