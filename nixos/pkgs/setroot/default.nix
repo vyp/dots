@@ -3,7 +3,7 @@ with import <nixpkgs> {};
 let
   version = "2.0.1";
   name = "setroot-${version}";
-in stdenv.mkDerivation rec {
+in stdenv.mkDerivation {
   inherit name;
 
   src = fetchFromGitHub {
