@@ -8,8 +8,8 @@ in stdenv.mkDerivation {
   src = ./.;
 
   buildPhase = ''
-    gcc caps2ctrl.c -o caps2ctrl
-    gcc nocaps.c -o nocaps
+    gcc -o caps2ctrl caps2ctrl.c event.c
+    gcc -o nocaps nocaps.c
   '';
 
   installPhase = ''
