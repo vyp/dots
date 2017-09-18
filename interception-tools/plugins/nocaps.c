@@ -61,9 +61,11 @@ int main(void) {
                 esc_give_up = 1;
                 write_event(&ctrl_down);
             }
-        } else if (equal(&input, &capslock_down)) {
-            capslock_is_down = 1;
-            continue;
+        } else {
+            if (equal(&input, &capslock_down)) {
+                capslock_is_down = 1;
+                continue;
+            }
         }
 
         write_event(&input);
