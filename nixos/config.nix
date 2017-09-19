@@ -6,7 +6,7 @@
   imports =
     [
       /etc/nixos/hardware-configuration.modified.nix
-      ./modules/interception-tools.nix
+      # ./modules/interception-tools.nix
     ];
 
   # Examples
