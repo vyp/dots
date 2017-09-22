@@ -57,6 +57,7 @@
     file
     git
     guile
+    haskellPackages.idris
     htop
     imv
     maim
