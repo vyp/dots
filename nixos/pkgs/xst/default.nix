@@ -1,8 +1,8 @@
 with import <nixpkgs> {};
 
 let
-  version = "0.7.1";
   name = "xst-${version}";
+  version = "0.7.1";
 in stdenv.mkDerivation {
   inherit name;
 

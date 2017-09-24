@@ -2,8 +2,8 @@
 with import <nixpkgs> {};
 
 let
-  version = "1.0.0";
   name = "guile-fibers-${version}";
+  version = "1.0.0";
 in stdenv.mkDerivation {
   inherit name;
 

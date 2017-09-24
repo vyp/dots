@@ -1,8 +1,8 @@
 with import <nixpkgs> {};
 
 let
-  version = "1.4";
   name = "deer-${version}";
+  version = "1.4";
 in stdenv.mkDerivation {
   inherit name;
 

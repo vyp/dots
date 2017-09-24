@@ -1,8 +1,8 @@
 with import <nixpkgs> {};
 
 let
-  version = "2.0.1";
   name = "setroot-${version}";
+  version = "2.0.1";
 in stdenv.mkDerivation {
   inherit name;
 

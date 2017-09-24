@@ -15,8 +15,8 @@ let
     buildInputs = [ cmake ];
   });
 
-  version = "0.1.1";
   name = "interception-tools-${version}";
+  version = "0.1.1";
 in stdenv.mkDerivation {
   inherit name;
 
