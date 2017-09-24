@@ -65,7 +65,7 @@
     nix-repl
     polybar
     scrot
-    setroot
+    (import ./pkgs/setroot)
     stow
     sxhkd
     sxiv
@@ -84,8 +84,7 @@
     xorg.xrdb
     xorg.xset
     xorg.xsetroot
-    xst
-    # (import ./pkgs/xst)
+    (import ./pkgs/xst)
   ];
 
   # Shell
