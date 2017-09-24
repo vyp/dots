@@ -16,9 +16,7 @@ in stdenv.mkDerivation {
 
   buildInputs = [ autoreconfHook pkgconfig guile texinfo ];
 
-  autoreconfPhase = ''
-    ./autogen.sh
-  '';
+  autoreconfPhase = "./autogen.sh";
 
   meta = with stdenv.lib; {
     description = "Concurrent ML-like concurrency for Guile";
