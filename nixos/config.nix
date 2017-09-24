@@ -57,6 +57,7 @@
     file
     git
     guile
+    (import ./pkgs/guile-fibers)
     haskellPackages.idris
     htop
     imv
