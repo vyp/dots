@@ -1,10 +1,9 @@
-with import <nixpkgs> {};
+{ stdenv }:
 
-let
+stdenv.mkDerivation rec {
+  name = "interception-tools-plugins-${version}";
   version = "2017-09-18";
-  pname = "interception-tools-plugins";
-in stdenv.mkDerivation {
-  name = "${pname}-${version}";
+
   src = ./.;
 
   buildPhase = ''

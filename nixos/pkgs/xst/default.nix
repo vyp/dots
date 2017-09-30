@@ -1,18 +1,20 @@
-with import <nixpkgs> {};
+{ stdenv, fetchFromGitHub, pkgconfig, libX11, ncurses, libXext, libXft
+, fontconfig
+}:
 
-let
+stdenv.mkDerivation rec {
   name = "xst-${version}";
   version = "0.7.1";
-in stdenv.mkDerivation {
-  inherit name;
 
-  src = fetchurl {
-    url = "https://github.com/neeasade/xst/archive/v${version}.tar.gz";
-    sha256 = "19ayx1753f2s6k7f6yn256bsssm20ggffs1diakgjqwcyjcxxn7q";
+  src = fetchFromGitHub {
+    owner = "neeasade";
+    repo = "xst";
+    rev = "v${version}";
+    sha256 = "1fh4y2w0icaij99kihl3w8j5d5b38d72afp17c81pi57f43ss6pc";
   };
 
   buildInputs = [
-    pkgconfig xorg.libX11 ncurses xorg.libXext xorg.libXft fontconfig
+    pkgconfig libX11 ncurses libXext libXft fontconfig
   ];
 
   installPhase = ''

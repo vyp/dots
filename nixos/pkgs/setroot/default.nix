@@ -1,10 +1,10 @@
-with import <nixpkgs> {};
+{ stdenv, fetchFromGitHub, libX11, imlib2
+, enableXinerama ? true, libXinerama ? null
+}:
 
-let
+stdenv.mkDerivation rec {
   name = "setroot-${version}";
   version = "2.0.1";
-in stdenv.mkDerivation {
-  inherit name;
 
   src = fetchFromGitHub {
     owner = "ttzhou";
@@ -13,9 +13,11 @@ in stdenv.mkDerivation {
     sha256 = "01krjfc3xpp0wbqz9nvf1n34gkpd41gysn289sj1wcjxia4n4gsi";
   };
 
-  buildInputs = [ xorg.libX11 imlib2 xorg.libXinerama ];
+  buildInputs = [ libX11 imlib2 ]
+    ++ stdenv.lib.optional enableXinerama libXinerama;
 
-  buildFlags = "CC=cc xinerama=1";
+  buildFlags = "CC=cc "
+    + (if enableXinerama then "xinerama=1" else "xinerama=0");
 
   installFlags = "DESTDIR=$(out) PREFIX=";
 

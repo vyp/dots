@@ -1,11 +1,8 @@
-# { stdenv, fetchFromGitHub, autoreconfHook, pkgconfig, guile, texinfo }:
-with import <nixpkgs> {};
+{ stdenv, fetchFromGitHub, autoreconfHook, pkgconfig, guile, texinfo }:
 
-let
+stdenv.mkDerivation rec {
   name = "guile-fibers-${version}";
   version = "1.0.0";
-in stdenv.mkDerivation {
-  inherit name;
 
   src = fetchFromGitHub {
     owner = "wingo";
@@ -16,7 +13,9 @@ in stdenv.mkDerivation {
 
   buildInputs = [ autoreconfHook pkgconfig guile texinfo ];
 
-  autoreconfPhase = "./autogen.sh";
+  autoreconfPhase = ''
+    ./autogen.sh
+  '';
 
   meta = with stdenv.lib; {
     description = "Concurrent ML-like concurrency for Guile";

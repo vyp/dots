@@ -1,10 +1,8 @@
-with import <nixpkgs> {};
+{ stdenv, fetchurl, cmake }:
 
-let
+stdenv.mkDerivation rec {
   version = "0.1.0";
   name = "interception-tools-caps2esc-${version}";
-in stdenv.mkDerivation {
-  inherit name;
 
   src = fetchurl {
     url = "https://gitlab.com/interception/linux/plugins/caps2esc/repository/v${version}/archive.tar.gz";

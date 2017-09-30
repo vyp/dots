@@ -1,24 +1,10 @@
-with import <nixpkgs> {};
+{ stdenv, fetchurl, fetchFromGitHub, pkgconfig, cmake, libyamlcppWithoutBoost
+, libevdev, libudev
+}:
 
-let
-  libyamlcppWithoutBoost = libyamlcpp.overrideAttrs (oldAttrs: rec {
-    name = "libyaml-cpp-${version}";
-    version = "2017-08-25";
-
-    src = fetchFromGitHub {
-      owner = "jbeder";
-      repo = "yaml-cpp";
-      rev = "beb44b872c07c74556314e730c6f20a00b32e8e5";
-      sha256 = "1qkr3i5lin6m36w5rbimc7pjx3nx686xnjb6lw00xf67iqrl4h4m";
-    };
-
-    buildInputs = [ cmake ];
-  });
-
+stdenv.mkDerivation rec {
   name = "interception-tools-${version}";
   version = "0.1.1";
-in stdenv.mkDerivation {
-  inherit name;
 
   src = fetchurl {
     url = "https://gitlab.com/interception/linux/tools/repository/v${version}/archive.tar.gz";

@@ -6,7 +6,6 @@
   imports =
     [
       /etc/nixos/hardware-configuration.modified.nix
-      # ./modules/interception-tools.nix
     ];
 
   # Examples
@@ -40,8 +39,12 @@
   # Nix Packages
   # ============
   nix.nixPath = [
-    "nixpkgs=/home/u/dots/nixos/nixpkgs"
     "nixos-config=/home/u/dots/nixos/config.nix"
+    "nixpkgs=/home/u/dots/nixos/nixpkgs"
+  ];
+
+  nixpkgs.overlays = [
+    (import ./overlays/pkgs.nix)
   ];
 
   # Packages
@@ -51,13 +54,12 @@
     chromium
     compton
     curl
-    (import ./pkgs/deer)
+    deer
     emacs
     evtest
     file
     git
     guile
-    (import ./pkgs/guile-fibers)
     haskellPackages.idris
     htop
     imv
@@ -66,7 +68,7 @@
     nix-repl
     polybar
     scrot
-    (import ./pkgs/setroot)
+    setroot
     stow
     sxhkd
     sxiv
@@ -85,7 +87,7 @@
     xorg.xrdb
     xorg.xset
     xorg.xsetroot
-    (import ./pkgs/xst)
+    xst
   ];
 
   # Shell
@@ -104,7 +106,7 @@
   # ------------------
   services.interception-tools.enable = true;
   services.interception-tools.plugins =
-    [ (import ../interception-tools/plugins) ];
+    [ (pkgs.callPackage ../interception-tools/plugins { }) ];
   services.interception-tools.udevmonConfig =
     ../interception-tools/udevmon.yaml;
 

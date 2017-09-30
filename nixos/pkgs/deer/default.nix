@@ -1,10 +1,8 @@
-with import <nixpkgs> {};
+{ stdenv, fetchFromGitHub, perl }:
 
-let
+stdenv.mkDerivation rec {
   name = "deer-${version}";
   version = "1.4";
-in stdenv.mkDerivation {
-  inherit name;
 
   src = fetchFromGitHub {
     owner = "Vifon";
