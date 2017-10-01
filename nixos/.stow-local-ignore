@@ -1,1 +1,5 @@
-.*
+/config\.nix
+/modules
+/nixpkgs
+/overlays
+/pkgs
