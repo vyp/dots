@@ -6,12 +6,12 @@
 #include "event.h"
 
 const struct input_event
-esc_up          = {.type = EV_KEY, .code = KEY_ESC,      .value = 0},
-ctrl_up         = {.type = EV_KEY, .code = KEY_LEFTCTRL, .value = 0},
-esc_down        = {.type = EV_KEY, .code = KEY_ESC,      .value = 1},
-ctrl_down       = {.type = EV_KEY, .code = KEY_LEFTCTRL, .value = 1},
-esc_repeat      = {.type = EV_KEY, .code = KEY_ESC,      .value = 2},
-ctrl_repeat     = {.type = EV_KEY, .code = KEY_LEFTCTRL, .value = 2};
+esc_up      = {.type = EV_KEY, .code = KEY_ESC,      .value = 0},
+ctrl_up     = {.type = EV_KEY, .code = KEY_LEFTCTRL, .value = 0},
+esc_down    = {.type = EV_KEY, .code = KEY_ESC,      .value = 1},
+ctrl_down   = {.type = EV_KEY, .code = KEY_LEFTCTRL, .value = 1},
+esc_repeat  = {.type = EV_KEY, .code = KEY_ESC,      .value = 2},
+ctrl_repeat = {.type = EV_KEY, .code = KEY_LEFTCTRL, .value = 2};
 
 int main(void) {
     int ctrl_is_down = 0, esc_give_up = 0;

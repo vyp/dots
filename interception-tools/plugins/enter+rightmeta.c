@@ -6,12 +6,12 @@
 #include "event.h"
 
 const struct input_event
-enter_up        = {.type = EV_KEY, .code = KEY_ENTER,     .value = 0},
-meta_up         = {.type = EV_KEY, .code = KEY_RIGHTMETA, .value = 0},
-enter_down      = {.type = EV_KEY, .code = KEY_ENTER,     .value = 1},
-meta_down       = {.type = EV_KEY, .code = KEY_RIGHTMETA, .value = 1},
-enter_repeat    = {.type = EV_KEY, .code = KEY_ENTER,     .value = 2},
-meta_repeat     = {.type = EV_KEY, .code = KEY_RIGHTMETA, .value = 2};
+enter_up     = {.type = EV_KEY, .code = KEY_ENTER,     .value = 0},
+meta_up      = {.type = EV_KEY, .code = KEY_RIGHTMETA, .value = 0},
+enter_down   = {.type = EV_KEY, .code = KEY_ENTER,     .value = 1},
+meta_down    = {.type = EV_KEY, .code = KEY_RIGHTMETA, .value = 1},
+enter_repeat = {.type = EV_KEY, .code = KEY_ENTER,     .value = 2},
+meta_repeat  = {.type = EV_KEY, .code = KEY_RIGHTMETA, .value = 2};
 
 int main(void) {
     int enter_is_down = 0, meta_give_up = 0;
