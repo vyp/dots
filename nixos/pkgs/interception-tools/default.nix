@@ -1,6 +1,4 @@
-{ stdenv, fetchurl, fetchFromGitHub, pkgconfig, cmake, libyamlcppWithoutBoost
-, libevdev, libudev
-}:
+with import <nixpkgs> {};
 
 stdenv.mkDerivation rec {
   name = "interception-tools-${version}";

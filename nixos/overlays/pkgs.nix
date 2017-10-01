@@ -1,17 +1,17 @@
 self: super:
 
 {
-  deer = super.callPackage ../pkgs/deer { };
+  deer = import ../pkgs/deer;
 
-  guile-fibers = super.callPackage ../pkgs/guile-fibers { };
+  guile-fibers = import ../pkgs/guile-fibers;
 
-  interception-tools = super.callPackage ../pkgs/interception-tools { };
+  interception-tools = import ../pkgs/interception-tools;
 
   interception-tools-plugins = {
-    caps2esc = super.callPackage ../pkgs/interception-tools/caps2esc.nix { };
+    caps2esc = import ../pkgs/interception-tools/caps2esc.nix;
   };
 
-  setroot = super.callPackage ../pkgs/setroot { };
+  setroot = import ../pkgs/setroot;
 
-  xst = super.callPackage ../pkgs/xst { };
+  xst = import ../pkgs/xst;
 }

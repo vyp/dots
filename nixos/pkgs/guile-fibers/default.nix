@@ -1,4 +1,4 @@
-{ stdenv, fetchFromGitHub, autoreconfHook, pkgconfig, guile, texinfo }:
+with import <nixpkgs> {};
 
 stdenv.mkDerivation rec {
   name = "guile-fibers-${version}";

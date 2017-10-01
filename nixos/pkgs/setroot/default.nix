@@ -1,8 +1,9 @@
-{ stdenv, fetchFromGitHub, libX11, imlib2
-, enableXinerama ? true, libXinerama ? null
-}:
+with import <nixpkgs> {};
+with xorg;
 
-stdenv.mkDerivation rec {
+let
+  enableXinerama = true;
+in stdenv.mkDerivation rec {
   name = "setroot-${version}";
   version = "2.0.1";
 

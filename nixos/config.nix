@@ -106,7 +106,7 @@
   # ------------------
   services.interception-tools.enable = true;
   services.interception-tools.plugins =
-    [ (pkgs.callPackage ../interception-tools/plugins { }) ];
+    [ (import ../interception-tools/plugins) ];
   services.interception-tools.udevmonConfig =
     ../interception-tools/udevmon.yaml;
 

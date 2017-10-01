@@ -1,4 +1,4 @@
-{ stdenv, fetchurl, cmake }:
+with import <nixpkgs> {};
 
 stdenv.mkDerivation rec {
   version = "0.1.0";
