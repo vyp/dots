@@ -36,11 +36,13 @@ int main(void) {
 
             if (equal(&input, &capslock_up)) {
                 capslock_is_down = 0;
+
                 if (esc_give_up) {
                     esc_give_up = 0;
                     write_event(&ctrl_up);
                     continue;
                 }
+
                 write_event(&esc_down);
                 write_event(&esc_up);
                 continue;

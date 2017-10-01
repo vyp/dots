@@ -1,4 +1,4 @@
-- JOB: "intercept -g $DEVNODE | caps2leftctrl+esc | leftctrl+esc | rightctrl+esc | uinput -d $DEVNODE"
+- JOB: "intercept -g $DEVNODE | caps2leftctrl+esc | leftctrl+esc | rightctrl+esc | enter+rightmeta | uinput -d $DEVNODE"
   DEVICE:
     EVENTS:
-      EV_KEY: [KEY_CAPSLOCK, KEY_LEFTCTRL, KEY_RIGHTCTRL, KEY_ESC]
+      EV_KEY: [KEY_CAPSLOCK, KEY_LEFTCTRL, KEY_RIGHTCTRL, KEY_ESC, KEY_ENTER, KEY_RIGHTMETA]
