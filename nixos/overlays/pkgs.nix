@@ -9,6 +9,7 @@ self: super:
 
   interception-tools-plugins = {
     caps2esc = import ../pkgs/interception-tools/caps2esc.nix;
+    personal = import ../../interception-tools/plugins;
   };
 
   setroot = import ../pkgs/setroot;
