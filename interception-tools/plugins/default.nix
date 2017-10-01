@@ -10,6 +10,7 @@ stdenv.mkDerivation rec {
     gcc -o caps2leftctrl+esc caps2leftctrl+esc.c event.c
     gcc -o enter+rightmeta enter+rightmeta.c event.c
     gcc -o leftctrl+esc leftctrl+esc.c event.c
+    gcc -o leftmeta+compose leftmeta+compose.c event.c
     gcc -o nocaps nocaps.c event.c
     gcc -o rightctrl+esc rightctrl+esc.c event.c
   '';
@@ -19,6 +20,7 @@ stdenv.mkDerivation rec {
     cp caps2leftctrl+esc $out/bin
     cp enter+rightmeta $out/bin
     cp leftctrl+esc $out/bin
+    cp leftmeta+compose $out/bin
     cp nocaps $out/bin
     cp rightctrl+esc $out/bin
   '';
