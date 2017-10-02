@@ -137,6 +137,7 @@ nnoremap <leader>o "+p
 
 nnoremap <leader>eh :edit $HISTFILE<cr>
 nnoremap <leader>vc :edit ~/.vimrc<cr>
+nnoremap <leader>vn :edit ~/dots/nixos/config.nix<cr>
 nnoremap <leader>vz :edit ~/.zshrc<cr>
 
 " Status Line {{{1
