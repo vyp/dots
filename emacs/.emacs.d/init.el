@@ -7,21 +7,9 @@
 ;; startup.
 (setq auto-save-list-file-prefix nil)
 
-;; Bootstrap Primary Elisp Package Manager - straight.el
-;; =====================================================
+;; Bootstrap Elisp Package Manager - straight.el
+;; =============================================
 ;;
-;; Since the majority of Emacs packages I use are pure elisp, i.e. do not
-;; require any other external dependencies (apart from potentially other elisp
-;; packages, which may not be pure elisp), I consider it acceptable (for now)
-;; to use a package manager separate from Nix to manage them.
-;;
-;; The main reason I want to do this is because it is more straightforward to
-;; update packages compared to using Nix, where you would have to generate a
-;; completely new set of Nix expressions for each Emacs package, on every
-;; update.
-;;
-;; "Non-pure" Emacs packages would of course still be managed with Nix though.
-
 ;; Taken from: https://github.com/raxod502/straight.el#getting-started
 (let ((bootstrap-file (concat user-emacs-directory "straight/bootstrap.el"))
       (bootstrap-version 2))
