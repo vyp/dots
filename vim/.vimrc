@@ -214,35 +214,12 @@ au filetype python call PythonOptions()
 "
 "   - Block for normal mode.
 "   - Bar for insert mode.
-"   - Underline for replace mode if possible.
-"
-" Restricted mode doesn't allow shell commands.
-let s:isRestricted = 0
-
-try
-  call system('')
-catch /E145/
-  let s:isRestricted = 1
-endtry
 
 if &term =~ "xterm\\|rxvt\\|st"
-  if s:isRestricted
-    " Insert mode shape.
-    let &t_SI = "\x1b[\x36 q"
-    " Normal mode shape.
-    let &t_EI = "\x1b[\x32 q"
-  else
-    " The above is simpler but this also changes shape to underline for replace
-    " mode.
-    autocmd VimEnter,InsertLeave *
-      \ silent execute '!echo -ne "\x1b[\x32 q"'
-    autocmd InsertEnter,InsertChange *
-      \ if v:insertmode == 'i' |
-        \ silent execute '!echo -ne "\x1b[\x36 q"' |
-      \ elseif v:insertmode == 'r' |
-        \ silent execute '!echo -ne "\x1b[\x34 q"' |
-      \ endif
-    endif
+  " Insert mode shape.
+  let &t_SI = "\x1b[\x36 q"
+  " Normal mode shape.
+  let &t_EI = "\x1b[\x32 q"
 endif
 
 " Allows to `:q` when opening multiple files via the command line without
