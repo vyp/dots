@@ -1,0 +1,24 @@
+#! /usr/bin/env nix-shell
+#! nix-shell -i bash -p bash git stow
+
+stow-subdirs-in () {
+  cd "$1"
+  for dir in */; do stow --no-folding "$dir"; done
+}
+
+# Make sure to exit this script on any failure.
+set -e
+
+# Make sure we start off in the directory where this script is located.
+cd $(dirname "$(readlink -f "$0")")
+
+# Get some more necessary repositories.
+#
+# Note that these will rightfully fail if the directories they will be cloned
+# into already exist and are not empty.
+git clone https://github.com/vyp/env ../env
+git clone https://github.com/vyp/scripts ../dev/scripts
+
+# Finally stow now that we have everything we should need.
+stow-subdirs-in .
+stow-subdirs-in ../env
