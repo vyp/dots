@@ -75,6 +75,9 @@
     udisks
     unzip
     vimHugeX
+    vimPlugins.commentary
+    vimPlugins.repeat
+    vimPlugins.surround
     wget
     xlsfonts
     xorg.mkfontdir
