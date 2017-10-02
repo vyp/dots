@@ -4,3 +4,6 @@
 [submodule "vim/vendor/disco.vim"]
 	path = vim/vendor/disco.vim
 	url = https://github.com/jsit/disco.vim
+[submodule "emacs/vendor/moe-theme.el"]
+	path = emacs/vendor/moe-theme.el
+	url = https://github.com/kuanyui/moe-theme.el

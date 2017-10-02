@@ -371,7 +371,7 @@ urgency flag."
 
 ;; Theme
 ;; =====
-(add-to-list 'custom-theme-load-path "~/dots/vendor/emacs/moe-theme.el")
+(add-to-list 'custom-theme-load-path "~/dots/emacs/vendor/moe-theme.el")
 (load-theme 'moe-light 'no-confirm)
 (set-face-italic 'font-lock-comment-face nil)
 (set-face-italic 'font-lock-comment-delimiter-face nil)
