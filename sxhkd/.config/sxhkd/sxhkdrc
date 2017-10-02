@@ -2,10 +2,6 @@
 # ==========================
 
 # Reload sxhkd configuration file (i.e. probably this file).
-#
-# NOTE: There should be at least one `Menu ; _' binding like this otherwise
-# pressing super sends key sequences (I don't know what exactly) to the focused
-# window. (Menu is bound to super when tapped once, see x/init.)
 Menu ; r
   pkill --signal USR1 -x sxhkd
 
@@ -41,26 +37,6 @@ Menu ; t
 
 # Herbstluftwm Keybindings
 # ========================
-
-# Due to changes using xmodmap and xcape (see x/init), if focus is on the root
-# window, the `super + Return' keybinding only executes it's command after
-# another window gets focused, for whatever reason. :(
-#
-# `super + Super_R' (the same physical key chord) however does execute it's
-# command as normal whether focus is on the root window or not. But we cannot
-# just solely use this instead of `super + Return' because it also inserts a
-# Return character into the currently focued window. This is not a problem if
-# it's the root window, but obviously it's undesirable if focus is on a window.
-# So having a keybinding for `super + Return' as well masks this side effect.
-#
-# $(herbstclient attr clients.focus) outputs information about the currently
-# focused window, but otherwise has no output if focus is on the root window
-# (i.e. no 'client' has focus). 
-# super + Return
-#   [[ $(herbstclient attr clients.focus) ]] && xterm
-#
-# super + Super_R
-#   [[ $(herbstclient attr clients.focus) ]] || xterm
 
 Menu ; shift + {q,r}
   herbstclient {quit,reload}
