@@ -82,11 +82,9 @@
     xlsfonts
     xorg.mkfontdir
     xorg.mkfontscale
-    xorg.setxkbmap
     xorg.xbacklight
     xorg.xev
     xorg.xkill
-    xorg.xmodmap
     xorg.xrdb
     xorg.xset
     xorg.xsetroot
