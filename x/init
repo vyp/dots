@@ -1,5 +1,6 @@
 #!/bin/sh
 
+xset -b
 xrdb ~/dots/x/resources
 compton --config ~/dots/compton/compton.conf -b
 sxhkd &
