@@ -1,9 +1,6 @@
 [submodule "nixos/nixpkgs"]
 	path = nixos/nixpkgs
 	url = https://github.com/nixos/nixpkgs
-[submodule "vim/vendor/disco.vim"]
-	path = vim/vendor/disco.vim
-	url = https://github.com/jsit/disco.vim
 [submodule "vendor/emacs/moe-theme.el"]
 	path = vendor/emacs/moe-theme.el
 	url = https://github.com/kuanyui/moe-theme.el
