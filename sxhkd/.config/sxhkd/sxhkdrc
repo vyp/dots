@@ -35,6 +35,15 @@ Menu ; t
 #
 # various xf86 media keys
 
+Menu ; b : {j,k}
+  xbacklight -{dec,inc} 1
+
+Menu ; b : {d,u}
+  xbacklight -{dec,inc} 5
+
+Menu ; b : {0-9}
+  xbacklight -set {0-9}0
+
 # Herbstluftwm Keybindings
 # ========================
 
