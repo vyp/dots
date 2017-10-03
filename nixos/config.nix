@@ -66,6 +66,7 @@
     maim
     mediainfo
     nix-repl
+    nixUnstable
     polybar
     scrot
     setroot
