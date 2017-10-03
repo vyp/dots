@@ -17,8 +17,8 @@ cd $(dirname "$(readlink -f "$0")")
 #
 # Note that these will rightfully fail if the directories they will be cloned
 # into already exist and are not empty.
-git clone https://github.com/vyp/env ../env
 git clone https://github.com/vyp/scripts ../dev/scripts
+git clone https://github.com/vyp/env ../env
 
 # Finally stow now that we have everything we should need.
 stow-subdirs-in .
