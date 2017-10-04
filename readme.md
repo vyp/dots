@@ -71,7 +71,11 @@ Empty for now.
 
    5.  Partition and format disks.
 
-   6.  Mount target filesystems under `/mnt`.
+   6.  Mount target filesystems under `/mnt`:
+
+       ``` shell
+       mount /dev/disk/by-label/nixos /mnt
+       ```
 
    7.  *(optional)* Activate swap device: `swapon <device>`.
 
@@ -88,36 +92,26 @@ Empty for now.
           /mnt/etc/nixos/hardware-configuration.modified.nix
        ```
 
-       and edit `hardware-configuration.modified.nix` if necessary.
+       and put `system.stateVersion` from `/mnt/etc/nixos/configuration.nix`
+       into `hardware-configuration.modified.nix` and edit the latter further if
+       necessary.
 
    10. Retrieve this repository:
 
        ``` shell
-       nix-env -i git stow
        mkdir -pv /mnt/home/u
        cd /mnt/home/u
-       git clone --recursive https://github.com/vyp/dots
+       nix-env -i git
+       git clone --recursive https://vyp@github.com/vyp/dots
        ```
 
-       This may take a little while as the nixpkgs repository is a submodule and at
-       the time of writing it's about 500MB in size.
+       This may take a little while as the nixpkgs repository is a submodule and
+       at the time of writing it's about 500MB in size.
 
-   11. Add nixpkgs-channels as a remote:
+   11. Run the init script which essentially stows all the dotfiles (doesn't
+       exist yet).
 
-       ``` shell
-       cd dots/nixos/nixpkgs
-       git remote add channels https://github.com/nixos/nixpkgs-channels
-       ```
-
-       The reason nixpkgs is used as a submodule and not nixpkgs-channels directly
-       is that the former allows cherry picking commits from latest master to get
-       any potentially new package definitions not available in unstable. So it is
-       a bit more flexible I suppose.
-
-   12. Run the init script which essentially stows all the dotfiles (doesn't exist
-       yet).
-
-   13. Initiate main installation command:
+   12. Initiate main installation command:
 
        ``` shell
        nixos-install -I nixos-config=/mnt/home/u/dots/nixos/config.nix \
@@ -126,18 +120,18 @@ Empty for now.
 
        This may actually fail because `config.nix` imports from absolute path
        `/etc/hardware-configuration.modified.nix` instead of a relative path.
-       However, --root /mnt is implicit to nixos-install (if unspecified), so maybe
-       it will not. Have to try it out. If it does fail, the solution would be to
-       simply use a relative path, which would work regardless.
+       However, --root /mnt is implicit to nixos-install (if unspecified), so
+       maybe it will not. Have to try it out. If it does fail, the solution
+       would be to simply use a relative path, which would work regardless.
 
-   14. Reboot, but before you can login you need to set a password for your user.
-       Press ctrl+alt+f1 at the login screen to switch to a virtual tty, login as
-       root (the previous step will have prompted you to set a root password), and
-       run `passwd u` to set a password for user "u".
+   13. Reboot, but before you can login you need to set a password for your
+       user. Press ctrl+alt+f1 at the login screen to switch to a virtual tty,
+       login as root (the previous step will have prompted you to set a root
+       password), and run `passwd u` to set a password for user "u".
 
-   15. Logout with ctrl+d and login as your user in the virtual tty still, and run
-       `fc-cache -fv` to setup fonts. Logout with ctrl+d again and switch back to X
-       with ctrl+alt+f7 and login normally! ☺️
+   14. Logout with ctrl+d and login as your user in the virtual tty still, and
+       run `fc-cache -fv` to setup fonts. Logout with ctrl+d again and switch
+       back to X with ctrl+alt+f7 and login normally! ☺️
    </details>
 
 1. <details><summary><strong>Bootable Image</strong></summary>
@@ -146,10 +140,25 @@ Empty for now.
 
 2. <details><summary><strong>Internet Access</strong></summary>
 
+   1. `ip a` will bring up a list of network interfaces.
+
+   2. `iwlist <interface> scan | less` to see if your wifi is available.
+
+   3. Edit `/etc/wpa_supplicant.conf` with your network details.
+
+   4. `wpa_supplicant -B -i<interface> -c/etc/wpa_supplicant.conf -Dwext`.
+
+   5. `dhclient <interface>` or `dhcpcd <interface>` if `dhclient` command
+      doesn't exist.
    </details>
 
 3. <details><summary><strong>Hardware Setup</strong></summary>
 
+   1. `lsblk -f` lists your devices.
+
+   2. `mkfs.ext4 -L nixos <device>` to format a device.
+
+   3. Similarly, `mkswap -L swap <device>` to make a swap partition.
    </details>
 
 4. <details><summary><strong>Magic ✨</strong></summary>
@@ -158,6 +167,18 @@ Empty for now.
 
 5. <details><summary><strong>Initialization</strong></summary>
 
+   1. Add some remotes to local nixpkgs repository:
+
+      ``` shell
+      cd ~/dots/nixos/nixpkgs
+      git remote add channels https://github.com/nixos/nixpkgs-channels
+      git remote add fork https://vyp@github.com/vyp/nixpkgs
+      ```
+
+      The reason nixpkgs is used as the submodule and not nixpkgs-channels
+      directly is that the former allows cherry picking commits from latest
+      master to get any potentially new package definitions not available in
+      unstable. So it is a bit more flexible I suppose.
    </details>
 
 # 📢 Shoutouts 📢
