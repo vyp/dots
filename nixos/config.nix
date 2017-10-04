@@ -97,7 +97,6 @@
   programs.zsh.enable = true;
   programs.zsh.syntaxHighlighting.enable = true;
   programs.zsh.syntaxHighlighting.highlighters = [ "main" "brackets" ];
-  users.defaultUserShell = pkgs.zsh;
 
   # Services
   # ========
@@ -150,6 +149,7 @@
 
   # Users
   # =====
+  users.defaultUserShell = pkgs.zsh;
   users.extraUsers.u = {
     createHome = true;
     extraGroups = [ "wheel" ];
