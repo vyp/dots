@@ -44,6 +44,18 @@ Menu ; b : {d,u}
 Menu ; b : {0-9}
   xbacklight -set {0-9}0
 
+Menu ; v : {j,k}
+  amixer sset Master 1%{-,+}
+
+Menu ; v : {d,u}
+  amixer sset Master 5%{-,+}
+
+Menu ; v : {0-9}
+  amixer sset Master {0-9}0%
+
+Menu ; v : m
+  amixer sset Master toggle
+
 # Herbstluftwm Keybindings
 # ========================
 
