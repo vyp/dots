@@ -115,8 +115,7 @@ Empty for now.
 
        ``` shell
        cd /mnt/etc/nixos
-       nixos-install \
-       -I nixos-config=https://github.com/vyp/dots/raw/master/nixos/minimal.nix
+       nixos-install -I nixos-config=https://raw.githubusercontent.com/vyp/dots/master/nixos/minimal.nix
        ```
 
    12. Reboot and login with root and set password for user "u":
