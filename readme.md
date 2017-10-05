@@ -62,6 +62,7 @@ Empty for now.
    2.  Make a bootable usb:
 
        ``` shell
+       # As root.
        dd if=path/to/image of=/dev/sdb
        ```
 
@@ -77,9 +78,11 @@ Empty for now.
        mount /dev/disk/by-label/nixos /mnt
        ```
 
-   7.  *(optional)* Activate swap device: `swapon <device>`.
+   7.  Mount the boot partition under `/mnt/boot` if doing a UEFI installation.
 
-   8.  Copy `wpa_supplicant.conf` to target filesystem:
+   8.  *(optional)* Activate swap device: `swapon <device>`.
+
+   9.  Copy `wpa_supplicant.conf` to target filesystem:
 
        ``` shell
        cp /etc/wpa_supplicant.conf /mnt/etc
@@ -88,13 +91,13 @@ Empty for now.
        This allows wpa_supplicant to automatically connect to internet when
        rebooting into the installed system.
 
-   9.  Generate `/etc/hardware-configuration.nix`:
+   10  Generate `/etc/hardware-configuration.nix`:
 
        ``` shell
        nixos-generate-config --root /mnt
        ```
 
-   10. Backup `/etc/hardware-configuration.nix`:
+   11. Backup `/etc/hardware-configuration.nix`:
 
        ``` shell
        cp /mnt/etc/nixos/hardware-configuration.nix \
@@ -111,20 +114,20 @@ Empty for now.
        `configuration.nix` to see if one of the options was already put there
        can also give a hint on which one to choose.
 
-   11. Run `nixos-install` with `minimal.nix`:
+   12. Run `nixos-install` with `minimal.nix`:
 
        ``` shell
        cd /mnt/etc/nixos
        nixos-install -I nixos-config=https://raw.githubusercontent.com/vyp/dots/master/nixos/minimal.nix
        ```
 
-   12. Reboot and login with root and set password for user "u":
+   13. Reboot and login with root and set password for user "u":
 
        ``` shell
        passwd u
        ```
 
-   13. Login as user and retrieve this repository:
+   14. Login as user and retrieve this repository:
 
        ``` shell
        nix-env -i git
@@ -134,13 +137,13 @@ Empty for now.
        This may take a little while as the nixpkgs repository is a submodule and
        at the time of writing it's about 500MB in size.
 
-   14. Run the bootstrap script which essentially stows all the dotfiles:
+   15. Run the bootstrap script which essentially stows all the dotfiles:
 
        ``` shell
        ./dots/bootstrap
        ```
 
-   15. `sudo nixos-rebuild boot` and reboot (`sudo shutdown now`).
+   16. `sudo nixos-rebuild boot` and reboot (`sudo shutdown now`).
    </details>
 
 1. <details><summary><strong>Bootable Image</strong></summary>
