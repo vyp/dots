@@ -5,7 +5,7 @@
   # ======================
   imports =
     [
-      /etc/nixos/hardware-configuration.modified.nix
+      ../../../../etc/nixos/hardware-configuration.modified.nix
     ];
 
   # Examples
@@ -151,10 +151,7 @@
   # =====
   users.defaultUserShell = pkgs.zsh;
   users.extraUsers.u = {
-    createHome = true;
     extraGroups = [ "wheel" ];
-    group = "users";
-    home = "/home/u";
     isNormalUser = true;
     uid = 1000;
   };

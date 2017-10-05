@@ -24,6 +24,9 @@ git clone https://vyp@github.com/vyp/env ../env
 stow-subdirs-in .
 stow-subdirs-in ../env
 
+# Lastly, reset the font cache to setup fonts:
+fc-cache -fv
+
 # Local Variables:
 # mode: sh-mode
 # End:

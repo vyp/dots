@@ -79,13 +79,22 @@ Empty for now.
 
    7.  *(optional)* Activate swap device: `swapon <device>`.
 
-   8.  Generate `/etc/hardware-configuration.nix`:
+   8.  Copy `wpa_supplicant.conf` to target filesystem:
+
+       ``` shell
+       cp /etc/wpa_supplicant.conf /mnt/etc
+       ```
+
+       This allows wpa_supplicant to automatically connect to internet when
+       rebooting into the installed system.
+
+   9.  Generate `/etc/hardware-configuration.nix`:
 
        ``` shell
        nixos-generate-config --root /mnt
        ```
 
-   9.  Backup `/etc/hardware-configuration.nix`:
+   10. Backup `/etc/hardware-configuration.nix`:
 
        ``` shell
        cp /mnt/etc/nixos/hardware-configuration.nix \
@@ -96,11 +105,29 @@ Empty for now.
        into `hardware-configuration.modified.nix` and edit the latter further if
        necessary.
 
-   10. Retrieve this repository:
+       Also don't forget to set the bootloader in
+       `hardware-configuration.modified.nix`, see `nixos/config.nix` for
+       examples near the beginning of the file. Inspecting the generated
+       `configuration.nix` to see if one of the options was already put there
+       can also give a hint on which one to choose.
+
+   11. Run `nixos-install` with `minimal.nix`:
 
        ``` shell
-       mkdir -pv /mnt/home/u
-       cd /mnt/home/u
+       cd /mnt/etc/nixos
+       nixos-install \
+       -I nixos-config=https://github.com/vyp/dots/raw/master/nixos/minimal.nix
+       ```
+
+   12. Reboot and login with root and set password for user "u":
+
+       ``` shell
+       passwd u
+       ```
+
+   13. Login as user and retrieve this repository:
+
+       ``` shell
        nix-env -i git
        git clone --recursive https://vyp@github.com/vyp/dots
        ```
@@ -108,30 +135,13 @@ Empty for now.
        This may take a little while as the nixpkgs repository is a submodule and
        at the time of writing it's about 500MB in size.
 
-   11. Run the init script which essentially stows all the dotfiles (doesn't
-       exist yet).
-
-   12. Initiate main installation command:
+   14. Run the bootstrap script which essentially stows all the dotfiles:
 
        ``` shell
-       nixos-install -I nixos-config=/mnt/home/u/dots/nixos/config.nix \
-                     -I nixpkgs=/mnt/home/u/dots/nixos/nixpkgs
+       ./dots/bootstrap
        ```
 
-       This may actually fail because `config.nix` imports from absolute path
-       `/etc/hardware-configuration.modified.nix` instead of a relative path.
-       However, --root /mnt is implicit to nixos-install (if unspecified), so
-       maybe it will not. Have to try it out. If it does fail, the solution
-       would be to simply use a relative path, which would work regardless.
-
-   13. Reboot, but before you can login you need to set a password for your
-       user. Press ctrl+alt+f1 at the login screen to switch to a virtual tty,
-       login as root (the previous step will have prompted you to set a root
-       password), and run `passwd u` to set a password for user "u".
-
-   14. Logout with ctrl+d and login as your user in the virtual tty still, and
-       run `fc-cache -fv` to setup fonts. Logout with ctrl+d again and switch
-       back to X with ctrl+alt+f7 and login normally! ☺️
+   15. `sudo nixos-rebuild boot` and reboot (`sudo shutdown now`).
    </details>
 
 1. <details><summary><strong>Bootable Image</strong></summary>

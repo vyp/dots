@@ -1,4 +1,5 @@
 /config\.nix
+/minimal\.nix
 /modules
 /nixpkgs
 /overlays
