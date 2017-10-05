@@ -19,6 +19,7 @@
 
   nix.nixPath = [
     "nixos-config=/home/u/dots/nixos/config.nix"
+    "nixpkgs=/home/u/dots/nixos/nixpkgs"
   ];
 
   users.extraUsers.u = {
