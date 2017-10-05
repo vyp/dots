@@ -176,18 +176,6 @@ Empty for now.
 
 5. <details><summary><strong>Initialization</strong></summary>
 
-   1. Add some remotes to local nixpkgs repository:
-
-      ``` shell
-      cd ~/dots/nixos/nixpkgs
-      git remote add channels https://github.com/nixos/nixpkgs-channels
-      git remote add fork https://vyp@github.com/vyp/nixpkgs
-      ```
-
-      The reason nixpkgs is used as the submodule and not nixpkgs-channels
-      directly is that the former allows cherry picking commits from latest
-      master to get any potentially new package definitions not available in
-      unstable. So it is a bit more flexible I suppose.
    </details>
 
 # 📢 Shoutouts 📢
