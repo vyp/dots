@@ -22,9 +22,9 @@ Empty for now.
    <summary>I should be able to use, study, modify, and share my modifications
    of all the software used in the setup. 🙈🙉🙊</summary><br>
 
-   Many many thanks to **Dr. Richard Stallman** for creating the entire [free
-   software][free-sw] ideology and culture, including **[GNU]**. I can imagine
-   the world would be a *much worse* place if he did not. 🙇‍♀️
+   Many many thanks to [**Dr. Richard Stallman**][rms] for creating the entire
+   [free software][free-sw] ideology and culture, including **[GNU]**. I can
+   imagine the world would be a *much worse* place if he did not. 🙌
    </details>
 
 2. **Reproducibility:**
@@ -51,6 +51,7 @@ Empty for now.
 [free-sw]: https://www.gnu.org/philosophy/free-sw.en.html
 [GNU]:     https://www.gnu.org/gnu/gnu.en.html
 [NixOS]:   https://nixos.org
+[rms]:     https://stallman.org/
 
 # Installation
 
@@ -154,50 +155,3 @@ Empty for now.
 
 18. `sudo nixos-rebuild boot` and reboot (`sudo shutdown now`).
 </details>
-
-# 📢 Shoutouts 📢
-
-‼ I've probably missed some people, which I apologize for in advance.
-Unfortunately, it would be close to impossible to list *everyone* who deserves
-credit anyway, because we're all really standing on the shoulders of enormous
-giants in the first place.
-
-- Bill Joy for creating [vi] and it's unique but extremely effective model of
-  editing, which inspires many aspects of this setup.
-- [@brammool] for creating [vim], which is my fallback editor. It's like a
-  'modern' more usable version of vi.
-- [@civodul] for creating [guix].
-- [Dr. Richard Stallman][rms] for creating [emacs] and [GNU].
-- Eben Moglen and [@bkuhn] for being copyleft champions.
-- [@edolstra] for creating [NixOS].
-- [@epsil] for creating [evil mode].
-- [@t-wissmann] for creating [herbstluftwm].
-  - Also helped me with creating a solution to move to the last focused window:
-    https://github.com/herbstluftwm/herbstluftwm/issues/98#issuecomment-316342968
-- Tom Lord for creating [guile].
-  - And [@jimblandy], [@othermaciej], Mikael Djurfeldt, [@mvollmer],
-    [@neiljerram], [@civodul] and [@wingo] for maintaining it over the years.
-- [@ypnos] for helping me with creating a better solution to move to the last
-  focused window:
-  https://github.com/herbstluftwm/herbstluftwm/issues/98#issuecomment-316330616
-
-[@bkuhn]:       https://github.com/bkuhn
-[@brammool]:    https://github.com/brammool
-[@civodul]:     https://github.com/civodul
-[@edolstra]:    https://github.com/edolstra
-[@epsil]:       https://github.com/epsil
-[@jimblandy]:   https://github.com/jimblandy
-[@mvollmer]:    https://github.com/mvollmer
-[@neiljerram]:  https://github.com/neiljerram
-[@othermaciej]: https://github.com/othermaciej
-[@t-wissmann]:  https://github.com/t-wissmann
-[@wingo]:       https://github.com/wingo
-[@ypnos]:       https://github.com/ypnos
-[emacs]:        https://www.gnu.org/software/emacs
-[evil mode]:    https://github.com/emacs-evil/evil
-[guile]:        https://www.gnu.org/software/guile/
-[guix]:         https://www.gnu.org/software/guix/
-[herbstluftwm]: http://www.herbstluftwm.org
-[rms]:          https://stallman.org/
-[vi]:           https://en.wikipedia.org/wiki/Vi
-[vim]:          http://www.vim.org/
