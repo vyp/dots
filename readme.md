@@ -132,7 +132,7 @@ Empty for now.
        ```
 
        This may take a little while as the nixpkgs repository is a submodule and
-       at the time of writing it's about 500MB in size.
+       at the time of writing it's about 590MB in size.
 
    17. `./dots/bootstrap`.
 
