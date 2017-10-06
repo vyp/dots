@@ -91,7 +91,7 @@ Empty for now.
        This allows wpa_supplicant to automatically connect to internet when
        rebooting into the installed system.
 
-   10  Generate `/etc/hardware-configuration.nix`:
+   10. Generate `/etc/hardware-configuration.nix`:
 
        ``` shell
        nixos-generate-config --root /mnt
