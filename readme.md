@@ -54,125 +54,106 @@ Empty for now.
 
 # Installation
 
-0. <details><summary><strong>TL;DR</strong></summary>
+<details><summary>👢</summary>
 
-   1.  Download latest nixos-unstable image from
-       https://nixos.org/channels/nixos-unstable
+1.  Download latest nixos-unstable image from
+    <https://nixos.org/channels/nixos-unstable>.
 
-   2.  Make a bootable usb:
+2.  Make a bootable usb:
 
-       ``` shell
-       # As root.
-       dd if=path/to/image of=/dev/sdb
-       ```
+    ``` shell
+    # As root.
+    dd if=path/to/image of=/dev/sdb
+    ```
 
-   3.  Boot into live image and log in as root with empty password (if it
-       doesn't automatically log you in).
+3.  Boot into live image and log in as root with empty password (if it doesn't
+    automatically log you in).
 
-   4.  Get internet access.
+4.  Get internet access.
 
-   5.  Partition and format disks.
+    1. `ip a` will bring up a list of network interfaces.
 
-   6.  *(optional)* Activate swap device: `swapon <device>`.
+    2. `iwlist <interface> scan | less` to see if your wifi is available.
 
-   7.  Mount target filesystems under `/mnt`:
+    3. Edit `/etc/wpa_supplicant.conf` with your network details.
 
-       ``` shell
-       mount /dev/disk/by-label/nixos /mnt
-       ```
+    4. `wpa_supplicant -B -i<interface> -c/etc/wpa_supplicant.conf -Dwext`.
 
-   8.  Generate `/etc/nixos` configuration files:
+    5. `dhclient <interface>` or `dhcpcd <interface>` if `dhclient` command
+       doesn't exist.
 
-       ``` shell
-       nixos-generate-config --root /mnt
-       ```
+5.  Partition and format disks.
 
-   9.  Inspect the generated `/mnt/etc/configuration.nix` to see if any
-       bootloader options were put in there to hint on which bootloader options
-       to use.
+    - `lsblk -f` lists your devices.
 
-   10. If using systemd-boot, mount the boot partition under `/mnt/boot` and
-       perform step 8 again to get an updated `hardware-configuration.nix` with
-       the `/mnt/boot` filesystem entry.
+    - `mkfs.ext4 -L nixos <device>` to format a device.
 
-   11. Backup `hardware-configuration.nix`:
+    - `mkswap -L swap <device>` to make a swap partition.
 
-       ``` shell
-       cp /mnt/etc/nixos/hardware-configuration.nix \
-          /mnt/etc/nixos/hardware-configuration.modified.nix
-       ```
+6.  *(optional)* Activate swap device: `swapon <device>`.
 
-   12. Edit `hardware-configuration.modified.nix` to put the correct bootloader
-       options in it, and also put `system.stateVersion` from
-       `configuration.nix` into `hardware-configuration.modified.nix`.
+7.  Mount target filesystems under `/mnt`:
 
-   13. Copy `wpa_supplicant.conf` to target filesystem:
+    ``` shell
+    mount /dev/disk/by-label/nixos /mnt
+    ```
 
-       ``` shell
-       cp /etc/wpa_supplicant.conf /mnt/etc
-       ```
+8.  Generate `/etc/nixos` configuration files:
 
-       This allows wpa_supplicant to automatically connect to internet when
-       rebooting into the installed system.
+    ``` shell
+    nixos-generate-config --root /mnt
+    ```
 
-   14. `nixos-install -I
-       nixos-config=https://raw.githubusercontent.com/vyp/dots/master/nixos/minimal.nix`.
+9.  Inspect the generated `/mnt/etc/configuration.nix` to see if any bootloader
+    options were put in there to hint on which bootloader options to use.
 
-   15. Reboot and login with root and set password for user "u":
+10. If using systemd-boot, mount the boot partition under `/mnt/boot` and
+    perform step 8 again to get an updated `hardware-configuration.nix` with the
+    `/mnt/boot` filesystem entry.
 
-       ``` shell
-       passwd u
-       ```
+11. Backup `hardware-configuration.nix`:
 
-   16. Login as user and retrieve this repository:
+    ``` shell
+    cp /mnt/etc/nixos/hardware-configuration.nix \
+       /mnt/etc/nixos/hardware-configuration.modified.nix
+    ```
 
-       ``` shell
-       nix-env -i git
-       git clone --recursive https://vyp@github.com/vyp/dots
-       ```
+12. Edit `hardware-configuration.modified.nix` to put the correct bootloader
+    options in it, and also put `system.stateVersion` from `configuration.nix`
+    into `hardware-configuration.modified.nix`.
 
-       This may take a little while as the nixpkgs repository is a submodule and
-       at the time of writing it's about 590MB in size.
+13. Copy `wpa_supplicant.conf` to target filesystem:
 
-   17. `./dots/bootstrap`.
+    ``` shell
+    cp /etc/wpa_supplicant.conf /mnt/etc
+    ```
 
-   18. `sudo nixos-rebuild boot` and reboot (`sudo shutdown now`).
-   </details>
+    This allows wpa_supplicant to automatically connect to internet when
+    rebooting into the installed system.
 
-1. <details><summary><strong>Bootable Image</strong></summary>
+14. `nixos-install -I
+    nixos-config=https://raw.githubusercontent.com/vyp/dots/master/nixos/minimal.nix`.
 
-   </details>
+15. Reboot and login with root and set password for user "u":
 
-2. <details><summary><strong>Internet Access</strong></summary>
+    ``` shell
+    passwd u
+    ```
 
-   1. `ip a` will bring up a list of network interfaces.
+16. Login as user and retrieve this repository:
 
-   2. `iwlist <interface> scan | less` to see if your wifi is available.
+    ``` shell
+    nix-env -i git
+    git clone --recursive https://vyp@github.com/vyp/dots
+    ```
 
-   3. Edit `/etc/wpa_supplicant.conf` with your network details.
+    This may take a little while as the nixpkgs repository is a submodule and at
+    the time of writing it's about 590MB in size.
 
-   4. `wpa_supplicant -B -i<interface> -c/etc/wpa_supplicant.conf -Dwext`.
+17. `./dots/bootstrap`.
 
-   5. `dhclient <interface>` or `dhcpcd <interface>` if `dhclient` command
-      doesn't exist.
-   </details>
-
-3. <details><summary><strong>Hardware Setup</strong></summary>
-
-   1. `lsblk -f` lists your devices.
-
-   2. `mkfs.ext4 -L nixos <device>` to format a device.
-
-   3. Similarly, `mkswap -L swap <device>` to make a swap partition.
-   </details>
-
-4. <details><summary><strong>Magic ✨</strong></summary>
-
-   </details>
-
-5. <details><summary><strong>Initialization</strong></summary>
-
-   </details>
+18. `sudo nixos-rebuild boot` and reboot (`sudo shutdown now`).
+</details>
 
 # 📢 Shoutouts 📢
 
