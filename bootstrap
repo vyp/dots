@@ -13,16 +13,16 @@ set -e
 # Make sure we start off in the directory where this script is located.
 cd $(dirname "$(readlink -f "$0")")
 
-# Add some remotes to our local nixpkgs clone:
+# Add some remotes to our local nixpkgs clone.
 cd nixos/nixpkgs
 git remote add channels https://github.com/nixos/nixpkgs-channels
 git remote add fork https://vyp@github.com/vyp/nixpkgs
 cd -
 
+# Get out of detached head state for submodule checkouts.
+git submodule foreach 'git checkout master && git reset --hard $sha1'
+
 # Get some more necessary repositories.
-#
-# Note that these will rightfully fail if the directories they will be cloned
-# into already exist and are not empty.
 git clone https://vyp@github.com/vyp/scripts ../dev/scripts
 git clone https://vyp@github.com/vyp/env ../env
 
@@ -30,7 +30,7 @@ git clone https://vyp@github.com/vyp/env ../env
 stow-subdirs-in .
 stow-subdirs-in ../env
 
-# Lastly, reset the font cache to setup fonts:
+# Lastly, reset the font cache to setup fonts.
 fc-cache -fv
 
 # Local Variables:
