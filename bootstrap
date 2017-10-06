@@ -13,14 +13,14 @@ set -e
 # Make sure we start off in the directory where this script is located.
 cd $(dirname "$(readlink -f "$0")")
 
+# Get out of detached head state for submodule checkouts.
+git submodule foreach 'git checkout master && git reset --hard $sha1'
+
 # Add some remotes to our local nixpkgs clone.
 cd nixos/nixpkgs
 git remote add channels https://github.com/nixos/nixpkgs-channels
 git remote add fork https://vyp@github.com/vyp/nixpkgs
 cd -
-
-# Get out of detached head state for submodule checkouts.
-git submodule foreach 'git checkout master && git reset --hard $sha1'
 
 # Get some more necessary repositories.
 git clone https://vyp@github.com/vyp/scripts ../dev/scripts
