@@ -3,7 +3,7 @@
 {
   imports =
     [
-      ./hardware-configuration.modified.nix
+      /mnt/etc/nixos/hardware-configuration.modified.nix
     ];
 
   networking.hostName = "nixos";

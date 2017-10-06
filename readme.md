@@ -114,12 +114,8 @@ Empty for now.
        `configuration.nix` to see if one of the options was already put there
        can also give a hint on which one to choose.
 
-   12. Run `nixos-install` with `minimal.nix`:
-
-       ``` shell
-       cd /mnt/etc/nixos
-       nixos-install -I nixos-config=https://raw.githubusercontent.com/vyp/dots/master/nixos/minimal.nix
-       ```
+   12. `nixos-install -I
+       nixos-config=https://raw.githubusercontent.com/vyp/dots/master/nixos/minimal.nix`
 
    13. Reboot and login with root and set password for user "u":
 
