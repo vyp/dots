@@ -66,23 +66,47 @@ Empty for now.
        dd if=path/to/image of=/dev/sdb
        ```
 
-   3.  Boot into live image and log in as root with empty password.
+   3.  Boot into live image and log in as root with empty password (if it
+       doesn't automatically log you in).
 
    4.  Get internet access.
 
    5.  Partition and format disks.
 
-   6.  Mount target filesystems under `/mnt`:
+   6.  *(optional)* Activate swap device: `swapon <device>`.
+
+   7.  Mount target filesystems under `/mnt`:
 
        ``` shell
        mount /dev/disk/by-label/nixos /mnt
        ```
 
-   7.  Mount the boot partition under `/mnt/boot` if doing a UEFI installation.
+   8.  Generate `/etc/nixos` configuration files:
 
-   8.  *(optional)* Activate swap device: `swapon <device>`.
+       ``` shell
+       nixos-generate-config --root /mnt
+       ```
 
-   9.  Copy `wpa_supplicant.conf` to target filesystem:
+   9.  Inspect the generated `/mnt/etc/configuration.nix` to see if any
+       bootloader options were put in there to hint on which bootloader options
+       to use.
+
+   10. If using systemd-boot, mount the boot partition under `/mnt/boot` and
+       perform step 8 again to get an updated `hardware-configuration.nix` with
+       the `/mnt/boot` filesystem entry.
+
+   11. Backup `hardware-configuration.nix`:
+
+       ``` shell
+       cp /mnt/etc/nixos/hardware-configuration.nix \
+          /mnt/etc/nixos/hardware-configuration.modified.nix
+       ```
+
+   12. Edit `hardware-configuration.modified.nix` to put the correct bootloader
+       options in it, and also put `system.stateVersion` from
+       `configuration.nix` into `hardware-configuration.modified.nix`.
+
+   13. Copy `wpa_supplicant.conf` to target filesystem:
 
        ``` shell
        cp /etc/wpa_supplicant.conf /mnt/etc
@@ -91,39 +115,16 @@ Empty for now.
        This allows wpa_supplicant to automatically connect to internet when
        rebooting into the installed system.
 
-   10. Generate `/etc/nixos` configuration files:
-
-       ``` shell
-       nixos-generate-config --root /mnt
-       ```
-
-   11. Backup `/etc/nixos/hardware-configuration.nix`:
-
-       ``` shell
-       cp /mnt/etc/nixos/hardware-configuration.nix \
-          /mnt/etc/nixos/hardware-configuration.modified.nix
-       ```
-
-       and put `system.stateVersion` from `/mnt/etc/nixos/configuration.nix`
-       into `hardware-configuration.modified.nix` and edit the latter further if
-       necessary.
-
-       Also don't forget to set the bootloader in
-       `hardware-configuration.modified.nix`, see `nixos/config.nix` for
-       examples near the beginning of the file. Inspecting the generated
-       `configuration.nix` to see if one of the options was already put there
-       can also give a hint on which one to choose.
-
-   12. `nixos-install -I
+   14. `nixos-install -I
        nixos-config=https://raw.githubusercontent.com/vyp/dots/master/nixos/minimal.nix`.
 
-   13. Reboot and login with root and set password for user "u":
+   15. Reboot and login with root and set password for user "u":
 
        ``` shell
        passwd u
        ```
 
-   14. Login as user and retrieve this repository:
+   16. Login as user and retrieve this repository:
 
        ``` shell
        nix-env -i git
@@ -133,9 +134,9 @@ Empty for now.
        This may take a little while as the nixpkgs repository is a submodule and
        at the time of writing it's about 500MB in size.
 
-   15. `./dots/bootstrap`.
+   17. `./dots/bootstrap`.
 
-   16. `sudo nixos-rebuild boot` and reboot (`sudo shutdown now`).
+   18. `sudo nixos-rebuild boot` and reboot (`sudo shutdown now`).
    </details>
 
 1. <details><summary><strong>Bootable Image</strong></summary>
