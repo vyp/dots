@@ -115,7 +115,7 @@ Empty for now.
        can also give a hint on which one to choose.
 
    12. `nixos-install -I
-       nixos-config=https://raw.githubusercontent.com/vyp/dots/master/nixos/minimal.nix`
+       nixos-config=https://raw.githubusercontent.com/vyp/dots/master/nixos/minimal.nix`.
 
    13. Reboot and login with root and set password for user "u":
 
@@ -133,11 +133,7 @@ Empty for now.
        This may take a little while as the nixpkgs repository is a submodule and
        at the time of writing it's about 500MB in size.
 
-   15. Run the bootstrap script which essentially stows all the dotfiles:
-
-       ``` shell
-       ./dots/bootstrap
-       ```
+   15. `./dots/bootstrap`.
 
    16. `sudo nixos-rebuild boot` and reboot (`sudo shutdown now`).
    </details>
