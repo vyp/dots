@@ -53,8 +53,9 @@ Empty for now.
 [NixOS]:   https://nixos.org
 [rms]:     https://stallman.org/
 
-<details><summary><h1>Installation</h1></summary>
+# Installation
 
+<details>
 1.  Download latest nixos-unstable image from
     <https://nixos.org/channels/nixos-unstable>.
 
