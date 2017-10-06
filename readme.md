@@ -56,6 +56,7 @@ Empty for now.
 # Installation
 
 <details><summary></summary>
+
 1.  Download latest nixos-unstable image from
     <https://nixos.org/channels/nixos-unstable>.
 
