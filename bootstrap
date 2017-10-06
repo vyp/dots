@@ -10,7 +10,7 @@ stow-subdirs-in () {
 # Make sure to exit this script on any failure.
 set -e
 
-# Make sure we start off in the directory where this script is located.
+# Go to where this script is located.
 cd $(dirname "$(readlink -f "$0")")
 
 # Get out of detached head state for submodule checkouts.
