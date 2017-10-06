@@ -5,6 +5,7 @@
 stow-subdirs-in () {
   cd "$1"
   for dir in */; do stow --no-folding "$dir"; done
+  cd -
 }
 
 # Make sure to exit this script on any failure.
