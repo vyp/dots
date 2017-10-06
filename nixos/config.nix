@@ -47,6 +47,12 @@
     (import ./overlays/pkgs.nix)
   ];
 
+  # Shell
+  # -----
+  programs.zsh.enable = true;
+  programs.zsh.syntaxHighlighting.enable = true;
+  programs.zsh.syntaxHighlighting.highlighters = [ "main" "brackets" ];
+
   # Packages
   # --------
   environment.systemPackages = with pkgs; [
@@ -91,12 +97,6 @@
     xorg.xsetroot
     xst
   ];
-
-  # Shell
-  # -----
-  programs.zsh.enable = true;
-  programs.zsh.syntaxHighlighting.enable = true;
-  programs.zsh.syntaxHighlighting.highlighters = [ "main" "brackets" ];
 
   # Services
   # ========
