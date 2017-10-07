@@ -14,5 +14,7 @@ self: super:
 
   setroot = import ../pkgs/setroot;
 
+  sxhkd = import ../pkgs/sxhkd;
+
   xst = import ../pkgs/xst;
 }
