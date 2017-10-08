@@ -60,10 +60,13 @@ Empty for now.
 1.  Download latest nixos-unstable image from
     <https://nixos.org/channels/nixos-unstable>.
 
-2.  Make a bootable usb:
+2.  Make a bootable usb. For example:
 
     ``` shell
     # As root.
+    # Obviously run `lsblk -f` first to get the correct 'of' path to your usb.
+    # NOTE: Not using the correct 'of' path could erase your hard drive so be
+    # very careful to use the right one!
     dd if=path/to/image of=/dev/sdb
     ```
 
