@@ -79,6 +79,7 @@
     stow
     sxhkd
     sxiv
+    tree
     udisks
     unzip
     vimHugeX
