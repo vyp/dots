@@ -47,6 +47,12 @@
     (import ./overlays/pkgs.nix)
   ];
 
+  # Fonts
+  # -----
+  fonts.fonts = with pkgs; [
+    font-awesome-ttf
+  ];
+
   # Shell
   # -----
   programs.zsh.enable = true;
