@@ -1,5 +1,9 @@
 [bar/mybar]
+width = ${env:POLYBAR_WIDTH:1366}
+height = 30
 modules-right = date
+offset-x = 12
+offset-y = 12
 
 [module/date]
 type = internal/date

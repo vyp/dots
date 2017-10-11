@@ -69,7 +69,7 @@ herbstclient set window_border_active_color '#ff4ea3'
 herbstclient set window_border_normal_color '#d18aff'
 herbstclient set window_border_urgent_color '#ef2929'
 
-herbstclient pad 0 27
+herbstclient pad 0 42
 
 herbstclient rule \
   windowtype~'_NET_WM_WINDOW_TYPE_(NOTIFICATION|DOCK)' manage=off
