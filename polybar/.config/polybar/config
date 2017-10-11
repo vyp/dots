@@ -1,0 +1,8 @@
+[bar/mybar]
+modules-right = date
+
+[module/date]
+type = internal/date
+interval = 1.0
+date = %Y-%m-%d
+time = %H:%M

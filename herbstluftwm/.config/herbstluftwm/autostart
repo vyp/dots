@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+single-run () {
+  pgrep -fx "$1" || $1 &
+}
+
 herbstclient emit_hook reload
 herbstclient keyunbind --all
 herbstclient mouseunbind --all
@@ -64,3 +68,10 @@ herbstclient set window_border_inner_width 0
 herbstclient set window_border_active_color '#ff4ea3'
 herbstclient set window_border_normal_color '#d18aff'
 herbstclient set window_border_urgent_color '#ef2929'
+
+herbstclient pad 0 27
+
+herbstclient rule \
+  windowtype~'_NET_WM_WINDOW_TYPE_(NOTIFICATION|DOCK)' manage=off
+
+single-run 'polybar mybar'
