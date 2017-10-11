@@ -51,6 +51,7 @@
   # -----
   fonts.fonts = with pkgs; [
     font-awesome-ttf
+    noto-fonts
   ];
 
   # Shell
