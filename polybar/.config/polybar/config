@@ -1,12 +1,39 @@
+; vim: ft=dosini
+
+[colors]
+foreground = ${xrdb:polybar.foreground}
+background = ${xrdb:polybar.background}
+color0     = ${xrdb:polybar.color0}
+color1     = ${xrdb:polybar.color1}
+color2     = ${xrdb:polybar.color2}
+color3     = ${xrdb:polybar.color3}
+color4     = ${xrdb:polybar.color4}
+color5     = ${xrdb:polybar.color5}
+color6     = ${xrdb:polybar.color6}
+color7     = ${xrdb:polybar.color7}
+color8     = ${xrdb:polybar.color8}
+color9     = ${xrdb:polybar.color9}
+color10    = ${xrdb:polybar.color10}
+color11    = ${xrdb:polybar.color11}
+color12    = ${xrdb:polybar.color12}
+color13    = ${xrdb:polybar.color13}
+color14    = ${xrdb:polybar.color14}
+color15    = ${xrdb:polybar.color15}
+
 [bar/mybar]
 width = ${env:POLYBAR_WIDTH:1366}
 height = 30
 offset-x = 12
 offset-y = 12
 padding = 2
+; Rounded corners.
+radius = 2.5
 
 font-0 = "Noto Sans:size=9;2"
 font-1 = "FontAwesome:size=10.5;1"
+
+background = ${colors.background}
+foreground = ${colors.foreground}
 
 modules-right = date
 
