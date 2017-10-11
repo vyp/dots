@@ -35,7 +35,8 @@ font-1 = "FontAwesome:size=10.5;1"
 background = ${colors.background}
 foreground = ${colors.foreground}
 
-modules-right = date
+modules-right = battery date
+module-margin = 2
 
 [module/date]
 type = internal/date
@@ -46,3 +47,25 @@ label =    %date%        %time%
 
 format-background = ${colors.date-bg}
 format-padding = 3
+
+[module/battery]
+type = internal/battery
+battery = BAT0
+adapter = AC0
+poll-interval = 90
+
+time-format = %H:%M
+
+label-charging = %percentage%%       %time%
+label-discharging = %percentage%%       %time%
+label-full = %percentage%%    
+
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
+
+format-charging =    <ramp-capacity>  <label-charging>
+format-discharging = <ramp-capacity>  <label-discharging>
+format-full = <ramp-capacity>  <label-full>
