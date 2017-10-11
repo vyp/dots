@@ -35,7 +35,6 @@ st.cursorshape: 2
 
 #define FOREGROUND  #5f5f5f
 #define BACKGROUND  #fdfde7
-#define PBACKGROUND #bffdfde7
 #define COLOR0      #5f5f5f
 #define COLOR1      #ef2929
 #define COLOR2      #00af00
@@ -53,24 +52,29 @@ st.cursorshape: 2
 #define COLOR14     #ff4ea3
 #define COLOR15     #fdfde7
 
-polybar.foreground: FOREGROUND
-polybar.background: PBACKGROUND
-polybar.color0:     COLOR0
-polybar.color1:     COLOR1
-polybar.color2:     COLOR2
-polybar.color3:     COLOR3
-polybar.color4:     COLOR4
-polybar.color5:     COLOR5
-polybar.color6:     COLOR6
-polybar.color7:     COLOR7
-polybar.color8:     COLOR8
-polybar.color9:     COLOR9
-polybar.color10:    COLOR10
-polybar.color11:    COLOR11
-polybar.color12:    COLOR12
-polybar.color13:    COLOR13
-polybar.color14:    COLOR14
-polybar.color15:    COLOR15
+#define POLYBAR_BACKGROUND      #99fdfde7
+#define POLYBAR_DATE_BACKGROUND #ccfdfde7
+
+polybar.foreground:      FOREGROUND
+polybar.background:      POLYBAR_BACKGROUND
+polybar.date_background: POLYBAR_DATE_BACKGROUND
+
+polybar.color0:  COLOR0
+polybar.color1:  COLOR1
+polybar.color2:  COLOR2
+polybar.color3:  COLOR3
+polybar.color4:  COLOR4
+polybar.color5:  COLOR5
+polybar.color6:  COLOR6
+polybar.color7:  COLOR7
+polybar.color8:  COLOR8
+polybar.color9:  COLOR9
+polybar.color10: COLOR10
+polybar.color11: COLOR11
+polybar.color12: COLOR12
+polybar.color13: COLOR13
+polybar.color14: COLOR14
+polybar.color15: COLOR15
 
 ! TODO: Fix bold magenta and cyan colours.
 st.foreground: FOREGROUND

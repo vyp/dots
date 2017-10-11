@@ -3,6 +3,7 @@
 [colors]
 foreground = ${xrdb:polybar.foreground}
 background = ${xrdb:polybar.background}
+date-bg    = ${xrdb:polybar.date_background}
 color0     = ${xrdb:polybar.color0}
 color1     = ${xrdb:polybar.color1}
 color2     = ${xrdb:polybar.color2}
@@ -25,7 +26,6 @@ width = ${env:POLYBAR_WIDTH:1366}
 height = 30
 offset-x = 12
 offset-y = 12
-padding = 2
 ; Rounded corners.
 radius = 2.5
 
@@ -43,3 +43,6 @@ interval = 1.0
 date = %a %e %b
 time = %T
 label =    %date%        %time%
+
+format-background = ${colors.date-bg}
+format-padding = 3
