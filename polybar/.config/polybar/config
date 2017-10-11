@@ -37,8 +37,6 @@ foreground = ${colors.foreground}
 
 modules-right = date
 
-dim-value = 0.5
-
 [module/date]
 type = internal/date
 interval = 1.0
