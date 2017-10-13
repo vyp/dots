@@ -70,6 +70,7 @@
     deer
     emacs
     evtest
+    ffmpeg
     file
     git
     guile
@@ -78,6 +79,7 @@
     imv
     maim
     mediainfo
+    mpv
     nix-repl
     nixUnstable
     polybar
@@ -104,6 +106,7 @@
     xorg.xset
     xorg.xsetroot
     xst
+    youtube-dl
   ];
 
   # Services
