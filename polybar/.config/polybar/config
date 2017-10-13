@@ -101,6 +101,7 @@ label-active-underline = ${colors.foreground}
 label-occupied = "   %icon%   "
 
 label-urgent = "   %icon%   "
+label-urgent-foreground = ${colors.color1}
 label-urgent-underline = ${colors.color1}
 
 label-empty = "   %icon%   "
