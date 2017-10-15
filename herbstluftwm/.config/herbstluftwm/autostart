@@ -24,7 +24,7 @@ herbstclient add 0
 
 # Focus previously focused window, bind to `herbstclient emit_hook lastwin'.
 # Credit: @ypnos @t-wissmann (GitHub)
-herbstclient -i '(focus_changed|lastwin|reload)' | \
+herbstclient -i '(focus_changed|lastwin|tag_changed|tag_flags|reload)' | \
 while read hook winid title; do
   case "$hook" in
     focus_changed)
@@ -35,6 +35,12 @@ while read hook winid title; do
       ;;
     lastwin)
       [[ -n "${lastwin}" ]] && herbstclient jumpto $lastwin
+      ;;
+    tag_changed)
+      polybar-msg hook hlwm 1
+      ;;
+    tag_flags)
+      polybar-msg hook hlwm 1
       ;;
     reload)
       # Note that the idling herbstclient still lives until the next time a

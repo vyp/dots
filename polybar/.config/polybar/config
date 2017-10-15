@@ -39,9 +39,11 @@ font-2 = "FontAwesome:size=10.5;1"
 background = ${colors.background}
 foreground = ${colors.foreground}
 
-modules-left = ewmh
+modules-left = hlwm
 modules-right = battery date
 module-margin = 2
+
+enable-ipc = true
 
 [module/date]
 type = internal/date
@@ -75,35 +77,6 @@ format-charging =    <ramp-capacity>  <label-charging>
 format-discharging = <ramp-capacity>  <label-discharging>
 format-full = <ramp-capacity>  <label-full>
 
-[module/ewmh]
-type = internal/xworkspaces
-
-pin-workspaces = false
-enable-click = false
-enable-scroll = false
-
-icon-0 = 1;
-icon-1 = 2;
-icon-2 = 3;
-icon-3 = 4;
-icon-4 = 5;
-icon-5 = 6;
-icon-6 = 7;
-icon-7 = 8;
-icon-8 = 9;
-icon-9 = 0;
-icon-default = 
-
-label-active = "   %icon%   "
-label-active-background = ${colors.date-bg}
-label-active-underline = ${colors.foreground}
-
-label-occupied = "   %icon%   "
-
-label-urgent = "   %icon%   "
-label-urgent-foreground = ${colors.color1}
-label-urgent-underline = ${colors.color1}
-
-label-empty = "   %icon%   "
-
-format = <label-state>
+[module/hlwm]
+type = custom/ipc
+hook-0 = hlwm-polybar
