@@ -107,6 +107,7 @@
     xorg.xsetroot
     xst
     youtube-dl
+    zathura
   ];
 
   # Services
