@@ -52,12 +52,14 @@ st.cursorshape: 2
 #define COLOR14     #ff4ea3
 #define COLOR15     #fdfde7
 
-#define POLYBAR_BACKGROUND      #99fdfde7
-#define POLYBAR_DATE_BACKGROUND #ccfdfde7
+#define POLYBAR_FADED_FOREGROUND #805f5f5f
+#define POLYBAR_BACKGROUND       #99fdfde7
+#define POLYBAR_DATE_BACKGROUND  #ccfdfde7
 
-polybar.foreground:      FOREGROUND
-polybar.background:      POLYBAR_BACKGROUND
-polybar.date_background: POLYBAR_DATE_BACKGROUND
+polybar.foreground:       FOREGROUND
+polybar.faded_foreground: POLYBAR_FADED_FOREGROUND
+polybar.background:       POLYBAR_BACKGROUND
+polybar.date_background:  POLYBAR_DATE_BACKGROUND
 
 polybar.color0:  COLOR0
 polybar.color1:  COLOR1
