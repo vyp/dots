@@ -2,7 +2,7 @@
  ("diminish.el" . "d5c61a14e1a5590a65f83c099a5bd42fcadff24d")
  ("epkgs" . "099e906cbb0459e207f9701afb33581e9cfcbd54")
  ("evil" . "ca6e155878c4a398fa4c297ea8b6a329cfc40ca9")
- ("general.el" . "00efad765a3ace42a2833c65a169d96c7925623b")
+ ("general.el" . "133317f3421cdf1193a5788308800389859c1f60")
  ("goto-chg" . "81fca94d2592cf32bab451c39a9cd2d9b03fbd6b")
  ("hydra" . "df3025f7e3cf3899168ae8ced1e9b734df2b32a0")
  ("melpa" . "1802b22e4fa3cf339d343d3fc3df98776cd1db6e")

@@ -42,7 +42,8 @@
 ;; Therefore, any additional features that provide functionality for
 ;; configuring keybindings should be 'demanded' for the init file itself, I
 ;; think.
-(use-package general :demand t)
+(use-package general :demand t
+  :recipe (:host github :repo "noctuid/general.el" :branch "buttercup"))
 (use-package hydra   :demand t)
 
 ;; Exposed Code
