@@ -7,9 +7,16 @@
 ;; startup.
 (setq auto-save-list-file-prefix nil)
 
-;; Bootstrap Elisp Package Manager - straight.el
+;; Bootstrap Emacs Package Manager - straight.el
 ;; =============================================
 ;;
+(setq straight-recipe-overrides
+      '((nil . ((straight
+                 :type git :host github
+                 :repo "raxod502/straight.el"
+                 :branch "develop"
+                 :files ("straight.el"))))))
+
 ;; Taken from: https://github.com/raxod502/straight.el#getting-started
 (let ((bootstrap-file (concat user-emacs-directory "straight/bootstrap.el"))
       (bootstrap-version 2))
