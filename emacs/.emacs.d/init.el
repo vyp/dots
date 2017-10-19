@@ -171,6 +171,8 @@ urgency flag."
   ('motion
    :prefix my/leader
    "SPC" 'execute-extended-command
+   ;; TODO: Figure out why some keybindings, such as "SPC SPC" and "-" do not
+   ;; work in Buffer Menu mode.
    "l"   'buffer-menu)
 
   ('normal
@@ -218,7 +220,9 @@ urgency flag."
   (setq visual-line-fringe-indicators '(left-curly-arrow right-curly-arrow))
   :config
   ;; Visually wrap long lines.
-  (global-visual-line-mode t))
+  (global-visual-line-mode t)
+  ;; Do not visually wrap long lines for the buffer menu. (Doesn't work.)
+  (add-hook 'Buffer-menu-mode-hook (lambda () (visual-line-mode nil))))
 
 (use-package scroll-bar
   :demand t
