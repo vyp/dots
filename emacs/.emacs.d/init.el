@@ -206,6 +206,14 @@ urgency flag."
   :config
   (menu-bar-mode -1))
 
+(use-package paren
+  :demand t
+  :ensure nil
+  :init
+  (setq show-paren-delay 0)
+  :config
+  (show-paren-mode t))
+
 (use-package rainbow-delimiters
   :defer t)
 
