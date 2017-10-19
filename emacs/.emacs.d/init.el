@@ -143,6 +143,12 @@ urgency flag."
   (advice-add 'evil-command-window-ex :after #'evil-previous-line)
   (advice-add 'evil-command-window-search-forward :after #'evil-previous-line)
 
+  ;; Disable hl-line-mode in evil visual state.
+  (add-hook 'evil-visual-state-entry-hook
+            (lambda () (setq-local global-hl-line-mode nil)))
+  (add-hook 'evil-visual-state-exit-hook
+            (lambda () (setq-local global-hl-line-mode t)))
+
   (evil-mode t)
 
   :general
@@ -199,6 +205,12 @@ urgency flag."
   :ensure nil
   :config
   (blink-cursor-mode -1))
+
+(use-package hl-line
+  :demand t
+  :ensure nil
+  :config
+  (global-hl-line-mode t))
 
 (use-package menu-bar
   :demand t
