@@ -149,7 +149,7 @@ urgency flag."
   ;; TODO: Make "ESC" quit minibuffer completion stuff?
 
   ('insert
-   "S-SPC" 'my/insert-two-spaces)
+   "C-SPC" 'my/insert-two-spaces)
 
   ('motion
    ;; Has to be unset so that Emacs can make prefix bindings with non-prefix
