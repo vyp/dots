@@ -247,6 +247,7 @@ urgency flag."
                           sep " {body}")
                   :nick nick :body body)))
 
+  ;; TODO: Change the format to not use a solid line, but just be a blank gap.
   (defun my/circe-format-action (&rest args)
     (my/circe-format-truncated-nick "┣❯" args))
 
