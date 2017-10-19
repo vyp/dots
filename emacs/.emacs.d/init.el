@@ -9,7 +9,7 @@
 
 ;; Bootstrap Emacs Package Manager - straight.el
 ;; =============================================
-;;
+
 (setq straight-recipe-overrides
       '((nil . ((straight
                  :type git :host github
@@ -111,8 +111,6 @@ urgency flag."
 ;; Minor modes are usually activated over a variety of buffer types, and are
 ;; commonly even global. Hence it makes sense to configure them next.
 
-;; Built-in
-;; --------
 (use-package cus-edit
   :demand t
   :ensure nil
@@ -120,6 +118,17 @@ urgency flag."
   (setq custom-file (expand-file-name "~/dots/emacs/custom.el"))
   :config
   (load custom-file))
+
+(use-package evil
+  :demand t
+  :init
+  (setq evil-cross-lines         t
+        evil-shift-width         2
+        evil-split-window-below  t
+        evil-vsplit-window-right t
+        evil-want-C-u-scroll     t)
+  :config
+  (evil-mode t))
 
 (use-package files
   :defer t
@@ -145,6 +154,9 @@ urgency flag."
   :ensure nil
   :config
   (menu-bar-mode -1))
+
+(use-package rainbow-delimiters
+  :defer t)
 
 (use-package simple
   :demand t
@@ -184,22 +196,6 @@ urgency flag."
   (setq whitespace-line-column fill-column
         whitespace-style       '(face empty lines-tail tabs trailing)))
 
-;; Third Party
-;; -----------
-(use-package evil
-  :demand t
-  :init
-  (setq evil-cross-lines         t
-        evil-shift-width         2
-        evil-split-window-below  t
-        evil-vsplit-window-right t
-        evil-want-C-u-scroll     t)
-  :config
-  (evil-mode t))
-
-(use-package rainbow-delimiters
-  :defer t)
-
 ;; Basic Major Mode Hooks
 ;; ======================
 ;;
@@ -224,11 +220,6 @@ urgency flag."
 ;; Major Modes
 ;; ===========
 
-;; Built-in
-;; --------
-
-;; Third Party
-;; -----------
 (use-package circe
   :defer t
   :preface
