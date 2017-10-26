@@ -69,6 +69,7 @@
     curl
     deer
     emacs
+    escrotum
     evtest
     ffmpeg
     file
