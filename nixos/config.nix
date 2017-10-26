@@ -81,6 +81,7 @@
     maim
     mediainfo
     mpv
+    mytexlive
     nix-repl
     nixUnstable
     polybar
