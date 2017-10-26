@@ -301,25 +301,28 @@ urgency flag."
     (interactive)
     (circe "irc.freenode.net" :port '(6667 . 6697)))
 
-  (defun my/circe-format-truncated-nick (sep args)
-    (let ((nick (plist-get args :nick))
-          (body (plist-get args :body))
-          (maxlen 12))
+  (defun my/circe-format-truncated-nick (type args)
+    (let* ((nick (plist-get args :nick))
+           (body (plist-get args :body))
+           (maxlen (if (eq type 'action) 11 12))
+           (lui-nick (concat "{nick:" (number-to-string maxlen) "s}")))
       (when (> (length nick) maxlen)
         (setq nick (substring nick 0 maxlen)))
-      (lui-format (concat "{nick:" (number-to-string maxlen) "s} "
-                          sep " {body}")
-                  :nick nick :body body)))
+      (lui-format
+       (pcase type
+         ('say (concat lui-nick " {body}"))
+         ('action (concat "*" lui-nick " {body}*"))
+         ('notice (concat lui-nick " ‼ {body} ‼")))
+       :nick nick :body body)))
 
-  ;; TODO: Change the format to not use a solid line, but just be a blank gap.
   (defun my/circe-format-action (&rest args)
-    (my/circe-format-truncated-nick "┣❯" args))
+    (my/circe-format-truncated-nick 'action args))
 
   (defun my/circe-format-notice (&rest args)
-    (my/circe-format-truncated-nick "╋" args))
+    (my/circe-format-truncated-nick 'notice args))
 
   (defun my/circe-format-say (&rest args)
-    (my/circe-format-truncated-nick "┃" args))
+    (my/circe-format-truncated-nick 'say args))
 
   :init
   (setq circe-channel-killed-confirmation nil
@@ -329,14 +332,14 @@ urgency flag."
         circe-format-action        'my/circe-format-action
         circe-format-notice        'my/circe-format-notice
         circe-format-say           'my/circe-format-say
-        circe-format-self-say      "         ━━━ ┃ {body}"
-        circe-format-self-action   "         ━━━ ┣❯{body}"
+        circe-format-self-say      "         ━━━ {body}"
+        circe-format-self-action   "         ━━━ *{body}*"
         ;; Show diff when topic is changed (esp. helpful when topic is long).
         circe-format-server-topic
         "*** Topic change by {nick} ({userhost}): {topic-diff}"
         circe-reduce-lurker-spam   t
         lui-fill-column            fill-column
-        lui-fill-type              "             ┃ "
+        lui-fill-type              "             "
         lui-logging-directory      (expand-file-name "~/archive/irc")
         lui-scroll-behavior        nil
         lui-time-stamp-position    nil
