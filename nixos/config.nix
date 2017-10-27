@@ -65,6 +65,7 @@
   # --------
   environment.systemPackages = with pkgs; [
     acpi
+    bibutils
     chromium
     compton
     curl
