@@ -38,7 +38,8 @@ self: super:
     collection-mathextra
     collection-pictures
     collection-publishers
-    collection-science;
+    collection-science
+    etoolbox;
   });
 
   setroot = import ../pkgs/setroot;
