@@ -3,6 +3,8 @@ self: super:
 {
   deer = import ../pkgs/deer;
 
+  eb-garamond12 = import ../pkgs/eb-garamond12;
+
   guile-fibers = import ../pkgs/guile-fibers;
 
   interception-tools = import ../pkgs/interception-tools;
