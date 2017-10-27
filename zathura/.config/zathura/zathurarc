@@ -1,0 +1,8 @@
+set font "Input 11"
+
+map d scroll half-down
+map u scroll half-up
+
+set page-padding    0
+set recolor         "false"
+set recolor-keephue "true"
