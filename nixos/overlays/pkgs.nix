@@ -20,19 +20,6 @@ self: super:
     collection-binextra
     collection-fontsextra
     collection-fontsrecommended
-    collection-games
-    collection-humanities
-    collection-langarabic
-    collection-langchinese
-    collection-langcjk
-    collection-langenglish
-    collection-langfrench
-    collection-langjapanese
-    collection-langkorean
-    collection-langother
-    collection-langpolish
-    collection-langportuguese
-    collection-langspanish
     collection-latexrecommended
     collection-luatex
     collection-mathextra
