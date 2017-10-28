@@ -79,7 +79,7 @@ tw () {
   { fd -e tex -d 1; fd -e png; fd -e jpg; } \
     | entr -s 'latexmk -lualatex \
       && (mv -u .aux/*.pdf . >/dev/null 2>&1 || true) \
-      && ln -s $(readlink -f *.pdf) .aux/. >/dev/null 2>&1'
+      && (ln -s $(readlink -f *.pdf) .aux/. >/dev/null 2>&1 || true)'
 }
 
 # Zle
