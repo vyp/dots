@@ -74,6 +74,7 @@
     entr
     escrotum
     evtest
+    fd
     ffmpeg
     file
     git
