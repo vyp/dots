@@ -233,6 +233,7 @@ alias v='vim'
 alias vc='vim ~/.vimrc'
 alias vn='vim ~/dots/nixos/config.nix'
 alias vz='vim ~/.zshrc'
+alias z='zathura --fork'
 alias zz='. ~/.zshrc'
 
 # Prompt
