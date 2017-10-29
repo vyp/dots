@@ -52,6 +52,7 @@
   fonts.fonts = with pkgs; [
     eb-garamond12
     font-awesome-ttf
+    lato
     noto-fonts
   ];
 
