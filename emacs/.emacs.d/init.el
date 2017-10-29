@@ -454,4 +454,4 @@ urgency flag."
 
 ;; Font
 ;; ====
-(add-to-list 'default-frame-alist '(font . "Input-9"))
+(add-to-list 'default-frame-alist '(font . "Input-10.5"))
