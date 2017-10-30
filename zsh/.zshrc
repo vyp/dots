@@ -233,6 +233,7 @@ alias sd='sudo shutdown now'
 alias se='sudoedit'
 # I basically only use stow to manage dotfiles.
 alias stow='stow -t ~ --no-folding'
+alias tar-extract='tar -xzvf'
 # The single quotes in the search patterns ensure that the line itself is not
 # listed in the search results.
 alias todo='git grep -I -A 2 -e T''ODO: -e F''IXME:'
