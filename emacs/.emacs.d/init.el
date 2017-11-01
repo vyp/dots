@@ -187,6 +187,11 @@ urgency flag."
    ;; being in motion state map.
    "Y"  'my/evil-yank-to-end-of-line))
 
+(use-package evil-surround
+  :demand t
+  :config
+  (global-evil-surround-mode 1))
+
 (use-package files
   :defer t
   :ensure nil

@@ -2,6 +2,7 @@
  ("diminish.el" . "565a983a39d2e2cffab5df13b34f3b6116723208")
  ("epkgs" . "40b53437b7d49497c172764a8080443464542d4f")
  ("evil" . "6ca96e8df9fb957c423ae4738e6229106861d6b5")
+ ("evil-surround" . "822a0f61c3fd7c55cda4e04c8590ae5144401c26")
  ("general.el" . "b516a34d97536fef1c2402cdf7253ee6ee932b7a")
  ("goto-chg" . "81fca94d2592cf32bab451c39a9cd2d9b03fbd6b")
  ("hydra" . "df3025f7e3cf3899168ae8ced1e9b734df2b32a0")
