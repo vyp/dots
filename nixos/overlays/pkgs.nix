@@ -26,7 +26,8 @@ self: super:
     collection-pictures
     collection-publishers
     collection-science
-    etoolbox;
+    etoolbox
+    filehook;
   });
 
   setroot = import ../pkgs/setroot;
