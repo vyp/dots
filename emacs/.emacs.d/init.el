@@ -288,10 +288,15 @@ urgency flag."
 (defun my/text-mode-hook ()
   (whitespace-mode 1))
 
+(defun my/prettify-symbols-hook ()
+  (setq prettify-symbols-alist '(("lambda" . 955)))
+  (prettify-symbols-mode 1))
+
 (defun my/prog-mode-hook ()
   (rainbow-delimiters-mode 1)
   (whitespace-mode 1))
 
+(add-hook 'scheme-mode-hook 'my/prettify-symbols-hook)
 (add-hook 'text-mode-hook 'my/text-mode-hook)
 (add-hook 'prog-mode-hook 'my/prog-mode-hook)
 
