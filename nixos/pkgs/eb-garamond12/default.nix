@@ -2,7 +2,7 @@ with import <nixpkgs> {};
 
 let
   version = "2017-10-27";
-in fetchzip rec {
+in fetchzip {
   name = "eb-garamond12-${version}";
 
   url = "https://github.com/octaviopardo/EBGaramond12/archive/19f27c58d8c5a5e2e863c36eaaf6988f9de83b20.zip";
