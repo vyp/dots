@@ -83,6 +83,7 @@
     haskellPackages.idris
     htop
     imv
+    julia
     maim
     mediainfo
     mpv
