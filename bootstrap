@@ -35,5 +35,5 @@ stow-subdirs-in ../env
 fc-cache -fv
 
 # Local Variables:
-# mode: sh-mode
+# mode: sh
 # End:
