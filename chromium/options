@@ -100,7 +100,7 @@ code,
 .commit-tease-sha,
 .commit-ref,
 .file-info {
-  font-family: Input !important;
+  font-family: monospace !important;
 }
 
 body,
