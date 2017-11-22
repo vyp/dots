@@ -459,9 +459,7 @@ urgency flag."
 ;; =====
 (add-to-list 'custom-theme-load-path "~/dots/emacs/vendor/moe-theme.el")
 (load-theme 'moe-light 'no-confirm)
-(set-face-italic 'font-lock-comment-face nil)
-(set-face-italic 'font-lock-comment-delimiter-face nil)
 
 ;; Font
 ;; ====
-(add-to-list 'default-frame-alist '(font . "Input-10.5"))
+(add-to-list 'default-frame-alist '(font . "Iosevka-12"))

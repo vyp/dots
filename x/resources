@@ -2,7 +2,7 @@
 
 ! st
 ! ==
-st.font:        Input:size=10.5
+st.font:        Iosevka:size=12
 st.bold_font:   1
 st.cursorshape: 2
 
