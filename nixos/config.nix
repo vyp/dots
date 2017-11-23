@@ -53,7 +53,6 @@
     eb-garamond12
     font-awesome-ttf
     inconsolata
-    iosevka
     lato
     noto-fonts
   ];
