@@ -30,6 +30,8 @@ self: super:
     filehook;
   });
 
+  otfcc = import ../pkgs/otfcc;
+
   setroot = import ../pkgs/setroot;
 
   sxhkd = import ../pkgs/sxhkd;
