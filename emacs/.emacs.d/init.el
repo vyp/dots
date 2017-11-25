@@ -470,3 +470,4 @@ urgency flag."
 ;; Font
 ;; ====
 (add-to-list 'default-frame-alist '(font . "Iosevka-12"))
+(set-face-font 'variable-pitch "Noto Sans-11")
