@@ -522,16 +522,16 @@ urgency flag."
 ;; The idea is taken from: https://emacs.stackexchange.com/a/5384
 
 (defun my/elisp-prettify-symbols ()
-  (setq prettify-symbols-alist
-        (append '(("lambda" . 955)
-                  ("defun"  . 10765))
-                prettify-symbols-alist)))
+  (setq-local prettify-symbols-alist
+              (append '(("lambda" . 955)
+                        ("defun"  . 10765))
+                      prettify-symbols-alist)))
 
 (defun my/scheme-prettify-symbols ()
-  (setq prettify-symbols-alist
-        (append '(("lambda" . 955)
-                  ("define" . 10765))
-                prettify-symbols-alist)))
+  (setq-local prettify-symbols-alist
+              (append '(("lambda" . 955)
+                        ("define" . 10765))
+                      prettify-symbols-alist)))
 
 (defun my/text-mode-hook ()
   (whitespace-mode 1))
