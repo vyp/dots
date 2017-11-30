@@ -12,6 +12,12 @@ super + Return
 Menu ; t
   xrdb $HOME/dots/x/resources && pkill --signal USR1 -x st
 
+super + grave
+  xsel | xvkbd -xsendevent -file -
+
+Menu ; grave
+  printf "'$(xsel)'" | xvkbd -xsendevent -file -
+
 # super + slash
 #   rofi mode
 

@@ -114,7 +114,9 @@
     xorg.xrdb
     xorg.xset
     xorg.xsetroot
+    xsel
     xst
+    xvkbd
     youtube-dl
     zathura
   ];
