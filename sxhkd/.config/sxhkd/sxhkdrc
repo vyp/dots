@@ -54,10 +54,10 @@ Menu ; v : {j,k}
   amixer sset Master 1%{-,+}
 
 super + {minus,equal}
-  amixer sset Master 3%{-,+}
+  amixer sset Master 2%{-,+}
 
 Menu ; v : {d,u}
-  amixer sset Master 5%{-,+}
+  amixer sset Master 4%{-,+}
 
 Menu ; v : {0-9}
   amixer sset Master {0-9}0%
