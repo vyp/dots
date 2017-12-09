@@ -97,6 +97,7 @@
     stow
     sxhkd
     sxiv
+    syncthing
     tree
     udisks
     unzip
