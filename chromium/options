@@ -101,6 +101,7 @@ code,
 .commit-ref,
 .file-info {
   font-family: monospace !important;
+  font-size: 16px !important;
 }
 
 body,
