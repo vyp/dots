@@ -91,6 +91,7 @@
     mytexlive
     nix-repl
     nixUnstable
+    p7zip
     polybar
     scrot
     setroot
