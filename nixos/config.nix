@@ -87,6 +87,7 @@
     julia
     maim
     mediainfo
+    mplayer
     mpv
     mytexlive
     nix-repl
@@ -119,6 +120,7 @@
     xsel
     xst
     xvkbd
+    xwinwrap
     youtube-dl
     zathura
   ];
