@@ -8,6 +8,9 @@ Menu ; r
 super + Return
   st
 
+Menu ; c
+  st
+
 # Reload xresources settings for st.
 Menu ; t
   xrdb $HOME/dots/x/resources && pkill --signal USR1 -x st
@@ -17,6 +20,12 @@ super + grave
 
 Menu ; grave
   printf "'$(xsel)'" | xvkbd -xsendevent -file -
+
+Print
+  escrotum $HOME/pics/screenshots/$(date +%Y-%m-%d+%H:%M:%S).png
+
+Menu ; Print
+  escrotum -s $HOME/pics/screenshots/$(date +%Y-%m-%d+%H:%M:%S).png
 
 # super + slash
 #   rofi mode
