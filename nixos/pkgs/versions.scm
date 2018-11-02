@@ -23,7 +23,7 @@
   (date . "2017-08-22")
   (commit
     .
-    "c1b69bf1b000355feb8a59f67919e1253dda28fd"))
+    "a7b530791da060fa9484f38625ec6e342eea1953"))
  ((url .
        "https://gitlab.com/interception/linux/plugins/caps2esc.git")
   (tag . "v0.1.3")
@@ -36,7 +36,7 @@
   (date . "2017-09-28")
   (commit
     .
-    "32251fffc9cf929a42964eb669c4bf7636a2889b"))
+    "ac4ecec6def77673a078e6552f23364f258d3dc9"))
  ((url . "https://github.com/ttzhou/setroot")
   (tag . "v2.0.1")
   (date . "2017-01-22")
