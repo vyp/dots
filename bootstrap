@@ -14,18 +14,16 @@ set -e
 # Go to where this script is located.
 cd $(dirname "$(readlink -f "$0")")
 
-# Get out of detached head state for submodule checkouts.
-git submodule foreach 'git checkout master && git reset --hard $sha1'
-
 # Add some remotes to our local nixpkgs clone.
-cd nixos/nixpkgs
+git clone https://vyp@github.com/vyp/nixpkgs ../pkgs
+cd ../pkgs
 git remote add channels https://github.com/nixos/nixpkgs-channels
-git remote add fork https://vyp@github.com/vyp/nixpkgs
+git remote add main https://github.com/nixos/nixpkgs
 cd -
 
 # Get some more necessary repositories.
-git clone https://vyp@github.com/vyp/scripts ../dev/scripts
-git clone https://vyp@github.com/vyp/env ../env
+git clone https://vyp@github.com/vyp/scripts ../code/scripts
+git clone https://vyp@github.com/vyp/data ../data
 
 # Finally stow now that we have everything we should need.
 stow-subdirs-in .
