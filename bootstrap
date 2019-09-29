@@ -27,7 +27,7 @@ git clone https://vyp@github.com/vyp/data ../data
 
 # Finally stow now that we have everything we should need.
 stow-subdirs-in .
-stow-subdirs-in ../env
+stow-subdirs-in ../data
 
 # Lastly, reset the font cache to setup fonts.
 fc-cache -fv
