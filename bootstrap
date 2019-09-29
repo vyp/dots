@@ -1,5 +1,4 @@
-#! /usr/bin/env nix-shell
-#! nix-shell -i bash -p bash git stow
+#! /usr/bin/env bash
 # vim: ft=sh
 
 # Make sure to exit this script on any failure.

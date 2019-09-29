@@ -19,7 +19,13 @@
 
   nix.nixPath = [
     "nixos-config=/home/u/dots/nixos/config.nix"
-    "nixpkgs=/home/u/dots/nixos/nixpkgs"
+    "nixpkgs=/home/u/pkgs"
+  ];
+
+  environment.systemPackages = with pkgs; [
+    # The packages that ../bootstrap script needs.
+    git
+    stow
   ];
 
   users.extraUsers.u = {
