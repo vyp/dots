@@ -14,8 +14,8 @@ stow-subdirs-in () {
 cd $(dirname "$(readlink -f "$0")")
 
 # Add some remotes to our local nixpkgs clone.
-git clone https://vyp@github.com/vyp/nixpkgs ../pkgs
-cd ../pkgs
+git clone https://vyp@github.com/vyp/nixpkgs ../nixpkgs
+cd ../nixpkgs
 git remote add channels https://github.com/nixos/nixpkgs-channels
 git remote add main https://github.com/nixos/nixpkgs
 cd -

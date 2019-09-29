@@ -40,18 +40,19 @@
   # ============
   nix.nixPath = [
     "nixos-config=/home/u/dots/nixos/config.nix"
-    "nixpkgs=/home/u/dots/nixos/nixpkgs"
+    "nixpkgs=/home/u/nixpkgs"
   ];
 
-  nixpkgs.overlays = [
-    (import ./overlays/pkgs.nix)
-  ];
+  # Disable this for now.
+  # nixpkgs.overlays = [
+  #   (import ./overlays/pkgs.nix)
+  # ];
 
   # Fonts
   # -----
   fonts.fonts = with pkgs; [
-    eb-garamond12
-    font-awesome-ttf
+    # Might be from overlays.
+    # eb-garamond12
     inconsolata
     lato
     noto-fonts
@@ -67,6 +68,7 @@
   # --------
   environment.systemPackages = with pkgs; [
     acpi
+    aria
     bibutils
     chromium
     compton
@@ -80,27 +82,33 @@
     ffmpeg
     file
     git
+    gnumake
     guile
-    haskellPackages.idris
+    idris
     htop
     imv
-    julia
     maim
     mediainfo
     mplayer
     mpv
-    mytexlive
-    nix-repl
+    # Overlay.
+    # mytexlive
     nixUnstable
+    nodejs
+    nodePackages.typescript
     p7zip
     polybar
+    purescript
     scrot
     setroot
     stow
     sxhkd
     sxiv
     syncthing
+    termite
+    tor-browser-bundle-bin
     tree
+    udiskie
     udisks
     unzip
     vimHugeX
@@ -121,6 +129,7 @@
     xst
     xvkbd
     xwinwrap
+    yarn
     youtube-dl
     zathura
   ];
@@ -128,15 +137,21 @@
   # Services
   # ========
   services.openssh.enable = true;
+  programs.ssh.askPassword = "";
   services.printing.enable = true;
+
+  # Enable sound.
+  sound.enable = true;
+  hardware.pulseaudio.enable = true;
 
   # Interception Tools
   # ------------------
   services.interception-tools.enable = true;
-  services.interception-tools.plugins =
-    [ pkgs.interception-tools-plugins.personal ];
-  services.interception-tools.udevmonConfig =
-    ../interception-tools/udevmon.yaml;
+  # Overlays.
+  # services.interception-tools.plugins =
+  #   [ pkgs.interception-tools-plugins.personal ];
+  # services.interception-tools.udevmonConfig =
+  #   ../interception-tools/udevmon.yaml;
 
   # X Windows
   # ---------

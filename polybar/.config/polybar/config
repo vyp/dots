@@ -24,10 +24,10 @@ color15    = ${xrdb:polybar.color15}
 [bar/mybar]
 width = ${env:POLYBAR_WIDTH:1366}
 height = 30
-offset-x = 12
-offset-y = 12
-; Rounded corners.
-radius = 2.5
+; offset-x = 12
+; offset-y = 12
+; ; Rounded corners.
+; radius = 2.5
 
 line-size = 3
 line-color = ${colors.foreground}
@@ -57,8 +57,10 @@ format-padding = 3
 
 [module/battery]
 type = internal/battery
-battery = BAT0
-adapter = AC0
+; battery = BAT0
+battery = BAT1
+; adapter = AC0
+adapter = ACAD
 poll-interval = 90
 
 time-format = %H:%M

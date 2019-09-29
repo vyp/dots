@@ -146,7 +146,7 @@ go-up () {
 # For opening a new terminal emulator in the current directory.
 run-term-em () {
   # `&!' is a convenient shortcut for `& disown'.
-  [[ $TERM != "linux" ]] && ${TERM%%-*} >/dev/null 2>&1 &!
+  [[ $TERM != "linux" ]] && ${TERMINAL} >/dev/null 2>&1 &!
 }
 
 zle -N edit-command-line

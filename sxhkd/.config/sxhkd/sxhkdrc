@@ -6,10 +6,10 @@ Menu ; r
   pkill --signal USR1 -x sxhkd
 
 super + Return
-  st
+  $TERMINAL
 
 Menu ; c
-  st
+  $TERMINAL
 
 # Reload xresources settings for st.
 Menu ; t

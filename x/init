@@ -3,5 +3,4 @@
 xset -b
 xsetroot -cursor_name left_ptr
 xrdb ~/dots/x/resources
-compton --config ~/dots/compton/compton.conf -b
 sxhkd &

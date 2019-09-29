@@ -203,6 +203,13 @@ endfunction
 
 au filetype gitcommit call GitcommitOptions()
 
+" JavaScript {{{2
+
+if filereadable('./node_modules/.bin/prettier-standard')
+  au filetype javascript nnoremap <buffer> <leader><leader> :%!./node_modules/.bin/prettier-standard<cr>
+  au filetype typescript nnoremap <buffer> <leader><leader> :%!./node_modules/.bin/prettier-standard --parser typescript<cr>
+endif
+
 " Python {{{2
 function PythonOptions()
   setl ts=4 sw=4 sts=4
@@ -247,5 +254,6 @@ au BufEnter * if exists('b:winview') && !&diff | call winrestview(b:winview) |
 command! SynName echo synIDattr(synID(line("."), col("."), 1), "name")
 
 " Colors {{{1
-source ~/dots/vim/vendor/disco.vim/colors/disco.vim
+source ~/dl/repos/disco.vim/colors/disco.vim
 hi cursorline cterm=NONE
+hi comment cterm=NONE

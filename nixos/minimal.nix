@@ -19,7 +19,7 @@
 
   nix.nixPath = [
     "nixos-config=/home/u/dots/nixos/config.nix"
-    "nixpkgs=/home/u/pkgs"
+    "nixpkgs=/home/u/nixpkgs"
   ];
 
   environment.systemPackages = with pkgs; [
