@@ -2,14 +2,14 @@
 #! nix-shell -i bash -p bash git stow
 # vim: ft=sh
 
+# Make sure to exit this script on any failure.
+set -e
+
 stow-subdirs-in () {
   cd "$1"
   for dir in */; do stow --no-folding "$dir"; done
   cd -
 }
-
-# Make sure to exit this script on any failure.
-set -e
 
 # Go to where this script is located.
 cd $(dirname "$(readlink -f "$0")")
