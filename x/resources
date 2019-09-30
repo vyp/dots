@@ -58,8 +58,11 @@ st.cursorshape: 2
 
 polybar.foreground:       FOREGROUND
 polybar.faded_foreground: POLYBAR_FADED_FOREGROUND
-polybar.background:       POLYBAR_BACKGROUND
-polybar.date_background:  POLYBAR_DATE_BACKGROUND
+! polybar.background:       POLYBAR_BACKGROUND
+! polybar.date_background:  POLYBAR_DATE_BACKGROUND
+
+polybar.background:      #dce5e7
+polybar.date_background: #f2f4f6
 
 polybar.color0:  COLOR0
 polybar.color1:  COLOR1
