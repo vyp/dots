@@ -11,16 +11,6 @@ super + Return
 Menu ; c
   $TERMINAL
 
-# Reload xresources settings for st.
-Menu ; t
-  xrdb $HOME/dots/x/resources && pkill --signal USR1 -x st
-
-super + grave
-  xsel | xvkbd -xsendevent -file -
-
-Menu ; grave
-  printf "'$(xsel)'" | xvkbd -xsendevent -file -
-
 Print
   escrotum $HOME/pics/screenshots/$(date +%Y-%m-%d+%H:%M:%S).png
 
