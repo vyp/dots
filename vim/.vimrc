@@ -257,3 +257,4 @@ command! SynName echo synIDattr(synID(line("."), col("."), 1), "name")
 source ~/dl/repos/disco.vim/colors/disco.vim
 hi cursorline cterm=NONE
 hi comment cterm=NONE
+hi colorcolumn ctermbg=NONE ctermfg=red
