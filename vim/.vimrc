@@ -47,7 +47,7 @@ set shiftwidth=2
 set softtabstop=2
 
 set textwidth=80
-set colorcolumn=81
+set colorcolumn=+1
 set nojoinspaces
 
 " Always show status line.
