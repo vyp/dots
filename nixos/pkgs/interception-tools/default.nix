@@ -10,7 +10,7 @@ stdenv.mkDerivation rec {
   };
 
   nativeBuildInputs = [ pkgconfig ];
-  buildInputs = [ cmake libevdev libudev libyamlcppWithoutBoost ];
+  buildInputs = [ cmake libevdev libudev libyamlcpp ];
 
   prePatch = ''
     substituteInPlace CMakeLists.txt --replace \

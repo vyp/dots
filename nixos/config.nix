@@ -43,10 +43,9 @@
     "nixpkgs=/home/u/nixpkgs"
   ];
 
-  # Disable this for now.
-  # nixpkgs.overlays = [
-  #   (import ./overlays/pkgs.nix)
-  # ];
+  nixpkgs.overlays = [
+    (import ./overlays/pkgs.nix)
+  ];
 
   # Fonts
   # -----
@@ -91,7 +90,6 @@
     mediainfo
     mplayer
     mpv
-    # Overlay.
     # mytexlive
     nixUnstable
     nodejs
@@ -147,11 +145,10 @@
   # Interception Tools
   # ------------------
   services.interception-tools.enable = true;
-  # Overlays.
-  # services.interception-tools.plugins =
-  #   [ pkgs.interception-tools-plugins.personal ];
-  # services.interception-tools.udevmonConfig =
-  #   ../interception-tools/udevmon.yaml;
+  services.interception-tools.plugins =
+    [ pkgs.interception-tools-plugins.personal ];
+  services.interception-tools.udevmonConfig =
+    ../interception-tools/udevmon.yaml;
 
   # X Windows
   # ---------
