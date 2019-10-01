@@ -84,6 +84,7 @@
     gnumake
     guile
     idris
+    heroku
     htop
     imv
     maim
