@@ -81,6 +81,7 @@
     ffmpeg
     file
     git
+    ghc
     gnumake
     guile
     idris
@@ -100,6 +101,7 @@
     purescript
     scrot
     setroot
+    stack
     stow
     sxhkd
     sxiv
