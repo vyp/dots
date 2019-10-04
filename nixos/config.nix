@@ -98,6 +98,7 @@
     nodePackages.typescript
     p7zip
     polybar
+    pqiv
     purescript
     scrot
     setroot
