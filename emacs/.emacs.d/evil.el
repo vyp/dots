@@ -58,6 +58,7 @@
   ('motion
    :prefix my/leader
    "SPC" 'execute-extended-command
+   "x"   'execute-extended-command
    ;; TODO: Figure out why some keybindings, such as "SPC SPC" and "-" do not
    ;; work in Buffer Menu mode.
    "l"   'buffer-menu)
