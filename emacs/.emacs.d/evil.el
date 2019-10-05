@@ -15,6 +15,8 @@
         evil-split-window-below  t
         evil-vsplit-window-right t
         evil-want-C-u-scroll     t
+        evil-want-integration    t
+        evil-want-keybinding     nil
         my/leader                "SPC")
 
   :config
@@ -28,7 +30,7 @@
   (add-hook 'evil-visual-state-exit-hook
             (lambda () (setq-local global-hl-line-mode t)))
 
-  (evil-mode t)
+  (evil-mode 1)
 
   :general
   ;; TODO: Make "ESC" quit minibuffer completion stuff?
@@ -65,3 +67,14 @@
    ;; For some reason needs to be in normal state map as well, despite already
    ;; being in motion state map.
    "Y"  'my/evil-yank-to-end-of-line))
+
+(use-package evil-collection
+  :after evil
+  :config
+  (evil-collection-init))
+
+(use-package evil-surround
+  :after evil
+  :demand t
+  :config
+  (global-evil-surround-mode 1))

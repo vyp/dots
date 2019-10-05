@@ -83,10 +83,4 @@
 (straight-use-package 'use-package)
 (use-package general :demand t)
 (load-file (expand-file-name "evil.el" user-emacs-directory))
-
-(use-package evil-surround
-  :demand t
-  :config
-  (global-evil-surround-mode 1))
-
 (use-package rainbow-delimiters :defer t)
