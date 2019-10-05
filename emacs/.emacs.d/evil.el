@@ -38,6 +38,8 @@
   ('insert
    "C-SPC" 'my/insert-two-spaces)
 
+  ;; TODO: Motion state might be useless/bad to use, see noctuid/evil-guide on
+  ;; github.
   ('motion
    ;; Has to be unset so that Emacs can make prefix bindings with non-prefix
    ;; keys. Make sure this is the same as `my/leader`.
