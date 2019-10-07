@@ -7,6 +7,24 @@ self: super:
 
   # guile-fibers = import ../pkgs/guile-fibers;
 
+  emacs = self.emacs27;
+
+  emacs27 = with self; stdenv.lib.overrideDerivation
+    (self.emacs26.override { srcRepo = true; }) (attrs: rec {
+      name = "emacs-${version}${versionModifier}";
+      version = "27.0";
+      versionModifier = ".50";
+      src = fetchGit {
+        url = "git://git.sv.gnu.org/emacs.git";
+        rev = "9d829b8be5b86668d5165b9d0c0cdc392b558dd3";
+      };
+
+      patches = [];
+      buildInputs = super.emacs.buildInputs ++
+        [ super.jansson super.harfbuzz.dev super.cairo ];
+      configureFlags = super.emacs.configureFlags ++ [ "--with-cairo" ];
+    });
+
   interception-tools = import ../pkgs/interception-tools;
 
   interception-tools-plugins = {
