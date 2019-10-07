@@ -55,6 +55,7 @@
     inconsolata
     lato
     noto-fonts
+    noto-fonts-emoji
   ];
 
   # Shell
