@@ -1,6 +1,7 @@
 ;; Font
 ;; ====
 (add-to-list 'default-frame-alist '(font . "Iosevka-12"))
+(set-fontset-font "fontset-default" 'unicode "Noto Color Emoji")
 (set-face-font 'variable-pitch "Noto Sans-11")
 
 ;; Theme
