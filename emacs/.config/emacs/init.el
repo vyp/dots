@@ -88,5 +88,10 @@
 
 (use-package telephone-line
   :demand t
+  :init
+  (setq telephone-line-primary-left-separator 'telephone-line-flat
+        telephone-line-primary-right-separator 'telephone-line-flat
+        telephone-line-secondary-left-separator 'telephone-line-flat
+        telephone-line-secondary-right-separator 'telephone-line-flat)
   :config
   (telephone-line-mode 1))

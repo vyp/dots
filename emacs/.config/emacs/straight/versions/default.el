@@ -1,7 +1,7 @@
 (("annalist.el" . "e0601539c9ac0171a684ea3ff6266d215d1d08e6")
  ("cl-generic" . "5fdc275eca6d0c5fce54b86997dea2f50f70df47")
  ("cl-lib" . "e79686c4a26959c0ecba0951a7e335ed28035386")
- ("emacsmirror-mirror" . "c31546f458bc9ab59f964bfc83615ca06196fc60")
+ ("emacsmirror-mirror" . "71bd732a8d447b0c9e6f6b0d6fbafe4fc6a8eab5")
  ("evil" . "874beba2cb243c325eca08fb7badff567f3c9494")
  ("evil-collection" . "4ef326ea87da264e2aaf4e1a72a5f8e3fa7090e9")
  ("evil-surround" . "5ad01dfa86424c4b22cd1dfa375f13bd8c656f43")
