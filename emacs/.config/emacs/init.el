@@ -85,3 +85,8 @@
 (use-package general :demand t)
 (load-file (expand-file-name "evil.el" user-emacs-directory))
 (use-package rainbow-delimiters :defer t)
+
+(use-package telephone-line
+  :demand t
+  :config
+  (telephone-line-mode 1))
