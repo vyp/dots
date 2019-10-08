@@ -76,6 +76,14 @@
   :config
   (evil-collection-init))
 
+(use-package evil-commentary
+  :after evil
+  :demand t
+  :general
+  ('normal
+   "gc" 'evil-commentary
+   "gy" 'evil-commentary-yank))
+
 (use-package evil-surround
   :after evil
   :demand t

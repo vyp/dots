@@ -4,6 +4,7 @@
  ("emacsmirror-mirror" . "71bd732a8d447b0c9e6f6b0d6fbafe4fc6a8eab5")
  ("evil" . "874beba2cb243c325eca08fb7badff567f3c9494")
  ("evil-collection" . "4ef326ea87da264e2aaf4e1a72a5f8e3fa7090e9")
+ ("evil-commentary" . "395f91014b69844b81660c155f42eb9b1b3d199d")
  ("evil-surround" . "5ad01dfa86424c4b22cd1dfa375f13bd8c656f43")
  ("general.el" . "f38fb2294bd29261374b772f765730f2fa168b3e")
  ("gnu-elpa-mirror" . "01001b660cd3677228e25a6f544d579b56845c37")
