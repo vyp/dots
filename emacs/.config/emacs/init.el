@@ -56,9 +56,11 @@
 ;; The idea is taken from: https://emacs.stackexchange.com/a/5384
 
 (defun my/text-mode-hook ()
+  (hl-line-mode)
   (whitespace-mode 1))
 
 (defun my/prog-mode-hook ()
+  (hl-line-mode)
   (rainbow-delimiters-mode 1)
   (whitespace-mode 1))
 

@@ -23,9 +23,9 @@
 
   ;; Disable hl-line-mode in evil visual state.
   (add-hook 'evil-visual-state-entry-hook
-            (lambda () (setq-local global-hl-line-mode nil)))
+            (lambda () (hl-line-mode -1)))
   (add-hook 'evil-visual-state-exit-hook
-            (lambda () (setq-local global-hl-line-mode t)))
+            (lambda () (hl-line-mode)))
 
   (evil-mode 1)
 
