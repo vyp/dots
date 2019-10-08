@@ -1,10 +1,6 @@
 (use-package evil
   :demand t
   :preface
-  (defun my/evil-yank-to-end-of-line ()
-    (interactive)
-    (evil-yank (point) (point-at-eol)))
-
   (defun my/insert-two-spaces ()
     (interactive)
     (insert "  "))
@@ -17,6 +13,7 @@
         evil-want-C-u-scroll     t
         evil-want-integration    t
         evil-want-keybinding     nil
+        evil-want-Y-yank-to-eol  t
         my/leader                "SPC")
 
   :config
@@ -54,8 +51,7 @@
    "-"  'text-scale-decrease
    "H"  'evil-first-non-blank
    "L"  'evil-end-of-line
-   "M"  'evil-jump-item
-   "Y"  'my/evil-yank-to-end-of-line)
+   "M"  'evil-jump-item)
 
   ('motion
    :prefix my/leader
@@ -66,10 +62,7 @@
    "l"   'buffer-menu)
 
   ('normal
-   "gs" 'evil-write
-   ;; For some reason needs to be in normal state map as well, despite already
-   ;; being in motion state map.
-   "Y"  'my/evil-yank-to-end-of-line))
+   "gs" 'evil-write))
 
 (use-package evil-collection
   :after evil
@@ -79,6 +72,8 @@
 (use-package evil-commentary
   :after evil
   :demand t
+  ;; I don't use the minor mode since it sets a super key binding which I don't
+  ;; like.
   :general
   ('normal
    "gc" 'evil-commentary

@@ -45,7 +45,7 @@
 (tool-bar-mode -1)
 (toggle-scroll-bar -1)
 
-  ;; Visually wrap long lines.
+;; Visually wrap long lines.
 (global-visual-line-mode t)
 ;; Do not visually wrap long lines for the buffer menu. (Doesn't work.)
 (add-hook 'Buffer-menu-mode-hook (lambda () (visual-line-mode nil)))
