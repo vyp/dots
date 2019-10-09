@@ -31,6 +31,7 @@
       require-final-newline t
       show-paren-delay 0
       straight-use-package-by-default t
+      use-package-always-defer t
       vc-follow-symlinks t
       ;; Show fringe indicators for visually wrapped lines.
       visual-line-fringe-indicators '(left-curly-arrow right-curly-arrow)
@@ -98,3 +99,35 @@
         telephone-line-secondary-right-separator 'telephone-line-flat)
   :config
   (telephone-line-mode 1))
+
+(load-file
+ (expand-file-name "fix-calculate-lisp-indent.el" user-emacs-directory))
+
+(use-package lispy
+  :ghook 'emacs-lisp-mode-hook)
+
+(use-package lispyville
+  :after (evil lispy)
+  :ghook 'lispy-mode-hook
+  :init
+  (setq lispyville-motions-put-into-special t)
+
+  :config
+  (lispyville-set-key-theme
+   '(operators c-w prettify (atom-motions t) slurp/barf-cp escape))
+
+  :general
+  ('normal lispyville-mode-map
+           "gc" #'lispyville-comment-or-uncomment
+           "gy" #'lispyville-comment-and-clone-dwim
+           "M-p" #'lispyville-wrap-round
+           "M-[" #'lispyville-wrap-brackets
+           "M-b" #'lispyville-wrap-braces)
+
+  ('motion lispyville-mode-map
+           "[" #'lispyville-previous-opening
+           "]" #'lispyville-next-closing
+           "{" #'lispyville-next-opening
+           "}" #'lispyville-previous-closing
+           "(" #'lispyville-backward-up-list
+           ")" #'lispyville-up-list))
