@@ -40,12 +40,8 @@
 
 (load-file custom-file)
 
-;; TODO: Disabling some of these gui features in early-init may be faster.
 (blink-cursor-mode -1)
-(menu-bar-mode -1)
 (show-paren-mode t)
-(tool-bar-mode -1)
-(toggle-scroll-bar -1)
 
 ;; Visually wrap long lines.
 (global-visual-line-mode t)
