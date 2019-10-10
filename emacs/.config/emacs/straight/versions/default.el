@@ -19,7 +19,7 @@
  ("rainbow-delimiters" . "e561cff4abf97d00d9b2b5f10256d417182e2772")
  ("seq" . "095fb15a3baa082079799dd36b6caccdb062cb90")
  ("straight.el" . "b0d455f4364c6d3a91f3ae7bde6b31c1212c04e7")
- ("swiper" . "a1bb702112f6437c03fb1e400ad9b4e95692eec9")
+ ("swiper" . "881cbc516a7355226731f6772b5284fd12c55c1c")
  ("telephone-line" . "408e05e105e8e521735221f4c98fc358e007df3b")
  ("undo-tree" . "d54ef13e3c69655e39f977b8bf75399a6d2b5e42")
  ("use-package" . "4714d73b61bdb378f6e9e3f3838cae1abbf65ea0")
