@@ -6,15 +6,16 @@
     (insert "  "))
 
   :init
-  (setq evil-cross-lines         t
-        evil-shift-width         2
-        evil-split-window-below  t
+  (setq evil-cross-lines t
+        evil-shift-width 2
+        evil-split-window-below t
         evil-vsplit-window-right t
-        evil-want-C-u-scroll     t
-        evil-want-integration    t
-        evil-want-keybinding     nil
-        evil-want-Y-yank-to-eol  t
-        my/leader                "SPC")
+        evil-want-C-u-scroll t
+        evil-want-integration t
+        evil-want-keybinding nil
+        evil-want-Y-yank-to-eol t
+
+        my/leader "SPC")
 
   :config
   ;; Move up one line when doing `q:` and `q/`.
@@ -66,6 +67,7 @@
 
 (use-package evil-collection
   :after evil
+  :demand t
   :config
   (evil-collection-init))
 

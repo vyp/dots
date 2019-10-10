@@ -1,14 +1,18 @@
-;; Font
-;; ====
-(add-to-list 'default-frame-alist '(font . "Iosevka-12"))
+;; Other Fonts
+;; ===========
+
+;; Main font is set in `early-init.el`.
 (set-fontset-font "fontset-default" 'unicode "Noto Color Emoji")
 (set-face-font 'variable-pitch "Noto Sans-11")
 
 ;; Theme
 ;; =====
-(add-to-list 'custom-theme-load-path "~/dl/repos/moe-theme.el")
-(load-theme 'moe-light 'no-confirm)
+(when (display-graphic-p)
+  (add-to-list 'custom-theme-load-path "~/dl/repos/moe-theme.el")
+  (load-theme 'moe-light 'no-confirm))
 
+;; Vanilla Options
+;; ===============
 (setq-default auto-fill-function 'do-auto-fill
               fill-column 80
               ;; Do not insert tabs when indenting.
@@ -30,8 +34,6 @@
       make-backup-files nil
       require-final-newline t
       show-paren-delay 0
-      straight-use-package-by-default t
-      use-package-always-defer t
       vc-follow-symlinks t
       ;; Show fringe indicators for visually wrapped lines.
       visual-line-fringe-indicators '(left-curly-arrow right-curly-arrow)
@@ -39,34 +41,19 @@
       whitespace-style '(face empty lines-tail tabs trailing))
 
 (load-file custom-file)
-
 (blink-cursor-mode -1)
 (show-paren-mode t)
 
-;; Visually wrap long lines.
-(global-visual-line-mode t)
-;; Do not visually wrap long lines for the buffer menu. (Doesn't work.)
-(add-hook 'Buffer-menu-mode-hook (lambda () (visual-line-mode nil)))
-
-;; I find this a little cleaner and more 'declarative' than having multiple
-;; `add-hook's around in various use-package forms.
+;; Essential Packages
+;; ==================
 ;;
-;; The idea is taken from: https://emacs.stackexchange.com/a/5384
+;; These are essential packages that affect the rest of the init configuration,
+;; and therefore need to be loaded early.
 
-(defun my/text-mode-hook ()
-  (hl-line-mode)
-  (whitespace-mode 1))
+(setq straight-use-package-by-default t
+      use-package-always-defer t)
 
-(defun my/prog-mode-hook ()
-  (hl-line-mode)
-  (rainbow-delimiters-mode 1)
-  (whitespace-mode 1))
-
-(add-hook 'text-mode-hook 'my/text-mode-hook)
-(add-hook 'prog-mode-hook 'my/prog-mode-hook)
-
-;; Bootstrap Emacs Package Manager - straight.el
-;; =============================================
+;; https://github.com/raxod502/straight.el#getting-started
 (let ((bootstrap-file
        (expand-file-name "straight/repos/straight.el/bootstrap.el"
                          user-emacs-directory))
@@ -84,8 +71,9 @@
 (straight-use-package 'use-package)
 (use-package general :demand t)
 (load-file (expand-file-name "evil.el" user-emacs-directory))
-(use-package rainbow-delimiters :defer t)
 
+;; Mode Line
+;; =========
 (use-package telephone-line
   :demand t
   :init
@@ -96,6 +84,11 @@
   :config
   (telephone-line-mode 1))
 
+;; Buffers
+;; =======
+
+;; Lisp Languages
+;; ==============
 (load-file
  (expand-file-name "fix-calculate-lisp-indent.el" user-emacs-directory))
 
@@ -127,3 +120,27 @@
            "}" #'lispyville-previous-closing
            "(" #'lispyville-backward-up-list
            ")" #'lispyville-up-list))
+
+;; Not necessarily only for lisp languages but main use case is for lisp
+;; languages where this really helps.
+(use-package rainbow-delimiters)
+
+;; Text and Prog Mode Hooks
+;; ========================
+;;
+;; I find this a little cleaner and more 'declarative' than having multiple
+;; `add-hook's around in various places.
+;;
+;; The idea is taken from: https://emacs.stackexchange.com/a/5384
+
+(defun my/text-mode-hook ()
+  (hl-line-mode)
+  (visual-line-mode)
+  (whitespace-mode 1))
+
+(defun my/prog-mode-hook ()
+  (my/text-mode-hook)
+  (rainbow-delimiters-mode 1))
+
+(add-hook 'text-mode-hook 'my/text-mode-hook)
+(add-hook 'prog-mode-hook 'my/prog-mode-hook)
