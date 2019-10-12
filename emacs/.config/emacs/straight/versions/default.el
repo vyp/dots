@@ -3,6 +3,7 @@
  ("avy" . "87394c9a880104a08d0f0e2d4149ac2d70cc192f")
  ("cl-generic" . "5fdc275eca6d0c5fce54b86997dea2f50f70df47")
  ("cl-lib" . "e79686c4a26959c0ecba0951a7e335ed28035386")
+ ("diminish.el" . "565a983a39d2e2cffab5df13b34f3b6116723208")
  ("emacsmirror-mirror" . "71bd732a8d447b0c9e6f6b0d6fbafe4fc6a8eab5")
  ("evil" . "874beba2cb243c325eca08fb7badff567f3c9494")
  ("evil-collection" . "34d515e99e911f368b335bbccc026b71b42a9821")
