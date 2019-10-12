@@ -195,9 +195,6 @@
 
 ;; Lisp Languages
 ;; ==============
-;; (load-file
-;;  (expand-file-name "fix-calculate-lisp-indent.el" user-emacs-directory))
-
 (use-package lispy
   :ghook #'emacs-lisp-mode-hook)
 
