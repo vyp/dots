@@ -81,6 +81,8 @@ set viminfo='0,@0,f0
 nnoremap <bslash> <c-^>
 let mapleader=" "
 
+" xnoremap means only map for visual mode. (vnoremap remaps for both visual and
+" select mode.)
 nnoremap ' :
 xnoremap ' :
 
