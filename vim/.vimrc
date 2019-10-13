@@ -86,6 +86,9 @@ let mapleader=" "
 nnoremap ' :
 xnoremap ' :
 
+" Basically for allowing `vv` in normal mode to copy character under cursor.
+xnoremap v y<esc>
+
 nnoremap - +
 nnoremap + -
 xnoremap - +
