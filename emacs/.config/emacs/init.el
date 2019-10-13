@@ -46,7 +46,7 @@
   (defalias 'gsetq-default #'general-setq-default))
 
 (general-create-definer general-my/leader
-  :states 'normal
+  :states '(normal visual)
   :keymaps 'override
   :prefix "SPC")
 
@@ -127,16 +127,21 @@
   ;;  "C-SPC" 'my/insert-two-spaces)
   )
 
-(general-def 'motion
+(general-def '(normal visual)
   ;; TODO: Figure out how to make this work.
   ;; "z RET" 'evil-scroll-line-to-top
   "\\" #'evil-switch-to-windows-last-buffer
-  "'"  #'evil-ex
-  "+"  #'text-scale-increase
-  "-"  #'text-scale-decrease
-  "H"  #'evil-first-non-blank
-  "L"  #'evil-end-of-line
-  "M"  #'evil-jump-item)
+  "'" #'evil-ex
+  ;; Mapping under non-prefix keys like q has to be done like this using
+  ;; `general-key-dispatch', see:
+  ;; https://github.com/noctuid/general.el#mapping-under-non-prefix-keys
+  "q" (general-key-dispatch 'evil-record-macro
+        "'" #'evil-command-window-ex)
+  "+" #'text-scale-increase
+  "-" #'text-scale-decrease
+  "H" #'evil-first-non-blank
+  "L" #'evil-end-of-line
+  "M" #'evil-jump-item)
 
 (general-def 'normal
   "Q" "@q"
@@ -144,8 +149,8 @@
 
 (general-my/leader
   "SPC" #'execute-extended-command
-  "x"   #'execute-extended-command
-  "l"   #'ibuffer)
+  "x" #'execute-extended-command
+  "l" #'ibuffer)
 
 ;; Escape everywhere.
 (general-def 'emacs "<escape>" #'evil-normal-state)
@@ -192,6 +197,7 @@
 
 ;; Buffers
 ;; =======
+(general-add-hook 'ibuffer-mode-hook #'ibuffer-auto-mode)
 
 ;; Lisp Languages
 ;; ==============
@@ -209,17 +215,17 @@
    '(operators c-w prettify (atom-motions t) slurp/barf-cp escape))
 
   (general-def 'normal lispyville-mode-map
-    "gc"  #'lispyville-comment-or-uncomment
-    "gy"  #'lispyville-comment-and-clone-dwim
+    "gc" #'lispyville-comment-or-uncomment
+    "gy" #'lispyville-comment-and-clone-dwim
     "M-p" #'lispyville-wrap-round
     "M-[" #'lispyville-wrap-brackets
     "M-b" #'lispyville-wrap-braces
-    "["   #'lispyville-previous-opening
-    "]"   #'lispyville-next-closing
-    "{"   #'lispyville-previous-closing
-    "}"   #'lispyville-next-opening
-    "("   #'lispyville-backward-up-list
-    ")"   #'lispyville-up-list)
+    "[" #'lispyville-previous-opening
+    "]" #'lispyville-next-closing
+    "{" #'lispyville-previous-closing
+    "}" #'lispyville-next-opening
+    "(" #'lispyville-backward-up-list
+    ")" #'lispyville-up-list)
 
   ;; I still prefer having the paragraph motions for visual selection.
   (general-def 'visual lispyville-mode-map
