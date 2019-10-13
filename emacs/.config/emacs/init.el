@@ -39,6 +39,7 @@
 (use-package diminish :demand t)
 (use-package general :demand t)
 (general-auto-unbind-keys)
+(general-override-mode)
 
 (eval-and-compile
   (defalias 'gsetq #'general-setq)
@@ -99,6 +100,7 @@
          evil-shift-width 2
          evil-split-window-below t
          evil-vsplit-window-right t
+         evil-want-C-d-scroll t
          evil-want-C-u-scroll t
          evil-want-integration t
          evil-want-keybinding nil
@@ -127,7 +129,7 @@
   ;;  "C-SPC" 'my/insert-two-spaces)
   )
 
-(general-def '(normal visual)
+(general-def '(normal visual) 'override
   ;; TODO: Figure out how to make this work.
   ;; "z RET" 'evil-scroll-line-to-top
   "\\" #'evil-switch-to-windows-last-buffer
