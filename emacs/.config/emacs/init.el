@@ -221,6 +221,7 @@
     "("   #'lispyville-backward-up-list
     ")"   #'lispyville-up-list)
 
+  ;; I still prefer having the paragraph motions for visual selection.
   (general-def 'visual lispyville-mode-map
     "{" #'evil-backward-paragraph
     "}" #'evil-forward-paragraph))
