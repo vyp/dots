@@ -115,7 +115,7 @@ nnoremap ZQ <nop>
 
 nnoremap <c-n> :bn<cr>
 nnoremap <c-p> :bp<cr>
-nnoremap <leader>l :ls<cr>:b<space>
+nnoremap gl :ls<cr>:b<space>
 nnoremap <leader>f mmvipgq`m
 
 nnoremap <leader>wo :only<cr>
