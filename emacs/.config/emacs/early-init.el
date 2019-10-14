@@ -1,4 +1,7 @@
-(setq package-enable-at-startup nil)
+;; Prevent Emacs from creating "~/.emacs.d/auto-save-list" directory on
+;; startup.
+(setq auto-save-default nil
+      package-enable-at-startup nil)
 
 ;; Disable some gui elements.
 (push '(tool-bar-lines . 0) default-frame-alist)

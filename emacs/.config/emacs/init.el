@@ -74,10 +74,7 @@
                scroll-step 1
                tab-width 2)
 
-;; Prevent Emacs from creating "~/.emacs.d/auto-save-list" directory on
-;; startup.
-(gsetq auto-save-default nil
-       auto-save-list-file-prefix nil
+(gsetq auto-save-list-file-prefix nil
        create-lockfiles nil
        custom-file (expand-file-name "~/dots/emacs/custom.el")
        ;; TODO: Change this to make backup files at ~/archive/backup.
