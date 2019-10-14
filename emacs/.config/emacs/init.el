@@ -140,13 +140,13 @@
     ;; TODO: Figure out how to make this work.
     ;; "z RET" 'evil-scroll-line-to-top
     "\\" #'evil-switch-to-windows-last-buffer
-    "'" #'execute-extended-command
+    "'" #'evil-ex
     ;; Mapping under non-prefix keys like q has to be done like this using
     ;; `general-key-dispatch', see:
     ;; https://github.com/noctuid/general.el#mapping-under-non-prefix-keys
     "q" (general-key-dispatch 'evil-record-macro
           "'" #'evil-command-window-ex)
-    "g'" #'evil-ex
+    "g'" #'execute-extended-command
     "+" #'text-scale-increase
     "-" #'text-scale-decrease
     "H" #'evil-first-non-blank
