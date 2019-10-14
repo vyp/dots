@@ -118,8 +118,8 @@
 
   :config
   ;; Move up one line when doing `q:` and `q/`.
-  (general-advice-add 'evil-command-window-ex :after #'evil-previous-line)
-  (general-advice-add 'evil-command-window-search-forward
+  (general-add-advice 'evil-command-window-ex :after #'evil-previous-line)
+  (general-add-advice 'evil-command-window-search-forward
                       :after #'evil-previous-line)
 
   ;; Disable hl-line-mode in evil visual state.
