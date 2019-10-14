@@ -219,7 +219,16 @@
 
 ;; Buffers
 ;; =======
+(gsetq ibuffer-expert t
+       kill-buffer-query-functions
+       (remq 'process-kill-buffer-query-function
+             kill-buffer-query-functions))
+
 (general-add-hook 'ibuffer-mode-hook #'ibuffer-auto-mode)
+(general-with-eval-after-load 'ibuffer
+  (general-def 'normal ibuffer-mode-map
+    "x" #'ibuffer-do-delete
+    "K" #'ibuffer-do-kill-on-deletion-marks))
 
 ;; Lisp Languages
 ;; ==============
