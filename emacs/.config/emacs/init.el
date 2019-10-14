@@ -57,8 +57,9 @@
 ;; ---------------------------
 ;;
 ;; Now that general.el is configured, we can declare our own utility functions.
-(defun my/edit-file (file)
-  (find-file (expand-file-name file user-emacs-directory)))
+(defun my/edit-init-file ()
+  (interactive)
+  (find-file (expand-file-name "init.el" user-emacs-directory)))
 
 ;; Vanilla Options
 ;; ---------------
@@ -168,7 +169,7 @@
 
   (general-my/leader
     "ee" #'eval-expression
-    "ei" (lambda () (interactive) (my/edit-file "init.el")))
+    "ei" #'my/edit-init-file)
 
   ;; Escape everywhere.
   (general-def 'emacs "<escape>" #'evil-normal-state)
