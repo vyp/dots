@@ -134,53 +134,51 @@
 
   ;; (general-def 'insert
   ;;  "C-SPC" 'my/insert-two-spaces)
-  )
 
-(general-def '(normal visual) 'override
-  ;; TODO: Figure out how to make this work.
-  ;; "z RET" 'evil-scroll-line-to-top
-  "\\" #'evil-switch-to-windows-last-buffer
-  "'" #'evil-ex
-  ;; Mapping under non-prefix keys like q has to be done like this using
-  ;; `general-key-dispatch', see:
-  ;; https://github.com/noctuid/general.el#mapping-under-non-prefix-keys
-  "q" (general-key-dispatch 'evil-record-macro
-        "'" #'evil-command-window-ex)
-  "g'" #'execute-extended-command
-  "+" #'text-scale-increase
-  "-" #'text-scale-decrease
-  "H" #'evil-first-non-blank
-  "L" #'evil-end-of-line
-  "M" #'evil-jump-item
-  ;; "l" as in "list" buffers.
-  "gl" #'ibuffer
-  "C-n" #'next-buffer
-  "C-p" #'previous-buffer)
+  (general-def '(normal visual) 'override
+    ;; TODO: Figure out how to make this work.
+    ;; "z RET" 'evil-scroll-line-to-top
+    "\\" #'evil-switch-to-windows-last-buffer
+    "'" #'execute-extended-command
+    ;; Mapping under non-prefix keys like q has to be done like this using
+    ;; `general-key-dispatch', see:
+    ;; https://github.com/noctuid/general.el#mapping-under-non-prefix-keys
+    "q" (general-key-dispatch 'evil-record-macro
+          "'" #'evil-command-window-ex)
+    "g'" #'evil-ex
+    "+" #'text-scale-increase
+    "-" #'text-scale-decrease
+    "H" #'evil-first-non-blank
+    "L" #'evil-end-of-line
+    "M" #'evil-jump-item
+    ;; "l" as in "list" buffers.
+    "gl" #'ibuffer
+    "C-n" #'next-buffer
+    "C-p" #'previous-buffer)
 
-(general-def 'normal 'override
-  "C-k" #'kill-this-buffer)
+  (general-def 'normal 'override
+    "C-k" #'kill-this-buffer)
 
-(general-def 'insert 'override
-  "C-l" #'forward-char)
+  (general-def 'insert 'override
+    "C-l" #'forward-char)
 
-(general-def 'normal
-  "Q" "@q"
-  "gs" #'evil-write)
+  (general-def 'normal
+    "Q" "@q"
+    "gs" #'evil-write)
 
-(general-my/leader
-  "ee" #'eval-expression
-  ;; "ei" (lambda () (my/edit-file "init.el"))
-  )
+  (general-my/leader
+    "ee" #'eval-expression
+    "ei" (lambda () (interactive) (my/edit-file "init.el")))
 
-;; Escape everywhere.
-(general-def 'emacs "<escape>" #'evil-normal-state)
-(general-def '(minibuffer-local-map
-               minibuffer-local-ns-map
-               minibuffer-local-completion-map
-               minibuffer-local-must-match-map
-               minibuffer-local-isearch-map)
+  ;; Escape everywhere.
+  (general-def 'emacs "<escape>" #'evil-normal-state)
+  (general-def '(minibuffer-local-map
+                 minibuffer-local-ns-map
+                 minibuffer-local-completion-map
+                 minibuffer-local-must-match-map
+                 minibuffer-local-isearch-map)
 
-  "<escape>" #'keyboard-escape-quit)
+    "<escape>" #'keyboard-escape-quit))
 
 (use-package evil-collection
   :after evil
