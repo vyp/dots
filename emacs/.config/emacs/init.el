@@ -36,22 +36,32 @@
 
 (straight-use-package 'use-package)
 (use-package diminish :demand t)
-(use-package general :demand t)
-(general-auto-unbind-keys)
-(general-override-mode)
 
-(eval-and-compile
-  (defalias 'gsetq #'general-setq)
-  (defalias 'gsetq-local #'general-setq-local)
-  (defalias 'gsetq-default #'general-setq-default))
+(use-package general
+  :demand t
+  :config
+  (general-auto-unbind-keys)
+  (general-override-mode)
 
-(general-create-definer general-my/leader
-  :states '(normal visual)
-  :keymaps 'override
-  :prefix "SPC")
+  (eval-and-compile
+    (defalias 'gsetq #'general-setq)
+    (defalias 'gsetq-local #'general-setq-local)
+    (defalias 'gsetq-default #'general-setq-default))
+
+  (general-create-definer general-my/leader
+    :states '(normal visual)
+    :keymaps 'override
+    :prefix "SPC"))
+
+;; Custom Function Definitions
+;; ---------------------------
+;;
+;; Now that general.el is configured, we can declare our own utility functions.
+(defun my/edit-file (file)
+  (find-file (expand-file-name file user-emacs-directory)))
 
 ;; Vanilla Options
-;; ===============
+;; ---------------
 (gsetq-default auto-fill-function 'do-auto-fill
                fill-column 80
                ;; Do not insert tabs when indenting.
@@ -84,8 +94,6 @@
 (load-file custom-file)
 (show-paren-mode t)
 
-;; Evil
-;; ----
 (use-package evil
   :demand t
   ;; :preface
@@ -138,20 +146,31 @@
   ;; https://github.com/noctuid/general.el#mapping-under-non-prefix-keys
   "q" (general-key-dispatch 'evil-record-macro
         "'" #'evil-command-window-ex)
+  "g'" #'execute-extended-command
   "+" #'text-scale-increase
   "-" #'text-scale-decrease
   "H" #'evil-first-non-blank
   "L" #'evil-end-of-line
-  "M" #'evil-jump-item)
+  "M" #'evil-jump-item
+  ;; "l" as in "list" buffers.
+  "gl" #'ibuffer
+  "C-n" #'next-buffer
+  "C-p" #'previous-buffer)
+
+(general-def 'normal 'override
+  "C-k" #'kill-this-buffer)
+
+(general-def 'insert 'override
+  "C-l" #'forward-char)
 
 (general-def 'normal
   "Q" "@q"
   "gs" #'evil-write)
 
 (general-my/leader
-  "SPC" #'execute-extended-command
-  "x" #'execute-extended-command
-  "l" #'ibuffer)
+  "ee" #'eval-expression
+  ;; "ei" (lambda () (my/edit-file "init.el"))
+  )
 
 ;; Escape everywhere.
 (general-def 'emacs "<escape>" #'evil-normal-state)
@@ -160,6 +179,7 @@
                minibuffer-local-completion-map
                minibuffer-local-must-match-map
                minibuffer-local-isearch-map)
+
   "<escape>" #'keyboard-escape-quit)
 
 (use-package evil-collection
@@ -203,7 +223,10 @@
 ;; Lisp Languages
 ;; ==============
 (use-package lispy
-  :ghook #'emacs-lisp-mode-hook)
+  :ghook #'emacs-lisp-mode-hook
+  :config
+  (general-def 'normal lispy-mode-map
+    ":" #'eval-last-sexp))
 
 (use-package lispyville
   :after (evil lispy)
