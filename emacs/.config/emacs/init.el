@@ -169,7 +169,9 @@
 
   (general-my/leader
     "ee" #'eval-expression
-    "ei" #'my/edit-init-file)
+    "ei" #'my/edit-init-file
+    "sf" #'straight-freeze-versions
+    "su" #'straight-pull-all)
 
   ;; Escape everywhere.
   (general-def 'emacs "<escape>" #'evil-normal-state)
