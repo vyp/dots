@@ -4,12 +4,6 @@
 (set-fontset-font "fontset-default" 'unicode "Noto Color Emoji")
 (set-face-font 'variable-pitch "Noto Sans-11")
 
-;; Theme
-;; =====
-(when (display-graphic-p)
-  (add-to-list 'custom-theme-load-path "~/dl/repos/moe-theme.el")
-  (load-theme 'moe-light 'no-confirm))
-
 ;; Essential Packages
 ;; ==================
 ;;
@@ -60,6 +54,12 @@
 (defun my/edit-init-file ()
   (interactive)
   (find-file (expand-file-name "init.el" user-emacs-directory)))
+
+;; https://emacs.stackexchange.com/questions/3112/how-to-reset-color-theme
+(defun my/undo-themes (&rest _)
+  (mapc #'disable-theme custom-enabled-themes))
+
+(general-add-advice 'load-theme :before #'my/undo-themes)
 
 ;; Vanilla Options
 ;; ---------------
@@ -289,3 +289,9 @@
 
 (add-hook 'text-mode-hook 'my/text-mode-hook)
 (add-hook 'prog-mode-hook 'my/prog-mode-hook)
+
+;; Theme
+;; =====
+(when (display-graphic-p)
+  (add-to-list 'custom-theme-load-path "~/dl/repos/moe-theme.el")
+  (load-theme 'moe-light 'no-confirm))
