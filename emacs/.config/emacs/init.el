@@ -101,6 +101,8 @@
 
 ;; Keybinding Related
 ;; ==================
+(use-package defrepeater :demand t)
+
 (use-package evil
   ;; :preface
   ;; (defun my/insert-two-spaces ()
@@ -138,6 +140,25 @@
          evil-emacs-state-modes nil
          evil-motion-state-modes nil)
 
+  ;; Make the window resizing commands repeatable.
+  ;;
+  ;; The disadvantage of defrepeater compared to a hydra is that it only works
+  ;; one command at a time, i.e. wanting to use another command with the same
+  ;; prefix sequence requires starting the sequence again.
+  ;;
+  ;; But the advantage here is the rest of evil-window-map commands exit
+  ;; automatically, which is better for one off commands.
+  (defrepeater #'evil-window-increase-height)
+  (defrepeater #'evil-window-decrease-height)
+  (defrepeater #'evil-window-increase-width)
+  (defrepeater #'evil-window-decrease-width)
+
+  (general-def
+    [remap evil-window-increase-height] #'evil-window-increase-height-repeat
+    [remap evil-window-decrease-height] #'evil-window-decrease-height-repeat
+    [remap evil-window-increase-width] #'evil-window-increase-width-repeat
+    [remap evil-window-decrease-width] #'evil-window-decrease-width-repeat)
+
   ;; (general-def 'insert
   ;;  "C-SPC" 'my/insert-two-spaces)
 
@@ -160,23 +181,33 @@
     ;; "l" as in "list" buffers.
     "gl" #'ibuffer
     "C-n" #'next-buffer
-    "C-p" #'previous-buffer)
+    "C-p" #'previous-buffer
+    "C-h" #'evil-window-left
+    "C-j" #'evil-window-down
+    "C-k" #'evil-window-up
+    "C-l" #'evil-window-right)
 
-  (general-def 'normal 'override
-    "C-k" #'kill-this-buffer)
+  (general-def evil-window-map
+    "d" #'evil-window-delete)
 
   (general-def 'insert 'override
+    "C-h" #'help-command
     "C-l" #'forward-char)
 
+  (general-def 'normal 'override
+    "Q" #'kill-this-buffer)
+
   (general-def 'normal
-    "Q" "@q"
     "gs" #'evil-write)
 
   (general-my/leader
+    "SPC" #'help-command
     "ee" #'eval-expression
     "ei" #'my/edit-init-file
+    "q" "@q"
     "sf" #'straight-freeze-versions
-    "su" #'straight-pull-all)
+    "su" #'straight-pull-all
+    "w" #'evil-window-map)
 
   ;; Escape everywhere.
   (general-def 'emacs "<escape>" #'evil-normal-state)
@@ -185,7 +216,6 @@
                  minibuffer-local-completion-map
                  minibuffer-local-must-match-map
                  minibuffer-local-isearch-map)
-
     "<escape>" #'keyboard-escape-quit))
 
 (use-package evil-collection
