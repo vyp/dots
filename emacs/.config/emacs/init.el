@@ -80,6 +80,7 @@
        ;; TODO: Change this to make backup files at ~/archive/backup.
        make-backup-files nil
        require-final-newline t
+       sentence-end-double-space nil
        show-paren-delay 0
        vc-follow-symlinks t
        ;; Show fringe indicators for visually wrapped lines.
