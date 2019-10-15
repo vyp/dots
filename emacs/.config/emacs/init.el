@@ -296,6 +296,7 @@
 
 ;; Theme
 ;; =====
-(when (display-graphic-p)
-  (add-to-list 'custom-theme-load-path "~/dl/repos/moe-theme.el")
-  (load-theme 'moe-light 'no-confirm))
+(use-package moe-theme
+  :init
+  (when (display-graphic-p)
+    (load-theme 'moe-light 'no-confirm)))

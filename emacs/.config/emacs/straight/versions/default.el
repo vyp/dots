@@ -18,6 +18,7 @@
  ("lispy" . "f40f3f4a7ef581c6e0be64caea35382a8c3de67e")
  ("lispyville" . "56198f1c4488a52a0d0512c717dff36e8b9fbfd0")
  ("melpa" . "6b515386c3969b8d79e14b506bc0d9e1ec3097c4")
+ ("moe-theme.el" . "6e086d855d6bb446bbd1090742815589a81a915f")
  ("rainbow-delimiters" . "e561cff4abf97d00d9b2b5f10256d417182e2772")
  ("seq" . "095fb15a3baa082079799dd36b6caccdb062cb90")
  ("straight.el" . "b0d455f4364c6d3a91f3ae7bde6b31c1212c04e7")
