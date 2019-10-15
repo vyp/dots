@@ -90,12 +90,11 @@
 (blink-cursor-mode -1)
 (global-subword-mode)
 (load-file custom-file)
-(show-paren-mode t)
+(show-paren-mode)
 
 ;; Keybinding Related
 ;; ==================
 (use-package evil
-  :demand t
   ;; :preface
   ;; (defun my/insert-two-spaces ()
   ;;   (interactive)
@@ -184,41 +183,36 @@
 
 (use-package evil-collection
   :after evil
-  :demand t
-  :config
+  :init
   (evil-collection-init))
 
 (use-package evil-commentary
   :after evil
   :demand t
   :config
-  ;; I don't use the minor mode since it sets a super key binding which I don't
-  ;; like.
+  ;; Not using minor mode since it sets a super key binding which I don't like.
+  ;; But it means these become global keybindings.
   (general-def 'normal
     "gc" #'evil-commentary
     "gy" #'evil-commentary-yank))
 
 (use-package evil-surround
   :after evil
-  :demand t
-  :config
-  (global-evil-surround-mode 1))
+  :init
+  (global-evil-surround-mode))
 
 (use-package which-key
-  :demand t
   :init
   (which-key-mode))
 
 ;; Mode Line
 ;; =========
 (use-package telephone-line
-  :demand t
   :init
   (gsetq telephone-line-primary-left-separator 'telephone-line-flat
          telephone-line-primary-right-separator 'telephone-line-flat
          telephone-line-secondary-left-separator 'telephone-line-flat
          telephone-line-secondary-right-separator 'telephone-line-flat)
-  :config
   (telephone-line-mode))
 
 ;; Buffers
@@ -265,7 +259,7 @@
     "(" #'lispyville-backward-up-list
     ")" #'lispyville-up-list)
 
-  ;; I still prefer having the paragraph motions for visual selection.
+  ;; Still prefer having the paragraph motions for visual selection.
   (general-def 'visual lispyville-mode-map
     "{" #'evil-backward-paragraph
     "}" #'evil-forward-paragraph))
@@ -285,11 +279,11 @@
 (defun my/text-mode-hook ()
   (hl-line-mode)
   (visual-line-mode)
-  (whitespace-mode 1))
+  (whitespace-mode))
 
 (defun my/prog-mode-hook ()
   (my/text-mode-hook)
-  (rainbow-delimiters-mode 1))
+  (rainbow-delimiters-mode))
 
 (add-hook 'text-mode-hook 'my/text-mode-hook)
 (add-hook 'prog-mode-hook 'my/prog-mode-hook)
