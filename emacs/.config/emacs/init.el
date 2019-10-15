@@ -267,28 +267,26 @@
 
 ;; Lisp Languages
 ;; ==============
-(use-package lispy
-  :ghook #'emacs-lisp-mode-hook
-  :config
-  (general-def 'normal lispy-mode-map
-    ":" #'eval-last-sexp))
-
 (use-package lispyville
-  :after (evil lispy)
-  :ghook #'lispy-mode-hook
-  :init
-  (gsetq lispyville-motions-put-into-special t)
-
+  :after evil
+  :ghook #'emacs-lisp-mode-hook
   :config
   (lispyville-set-key-theme
    '(operators c-w prettify (atom-motions t) slurp/barf-cp escape))
 
+  (general-def 'insert lispyville-mode-map
+    "(" #'lispy-parens
+    "[" #'lispy-brackets
+    "{" #'lispy-braces
+    "\"" #'lispy-quotes)
+
   (general-def 'normal lispyville-mode-map
+    ":" #'eval-last-sexp
     "gc" #'lispyville-comment-or-uncomment
     "gy" #'lispyville-comment-and-clone-dwim
-    "M-p" #'lispyville-wrap-round
-    "M-[" #'lispyville-wrap-brackets
-    "M-b" #'lispyville-wrap-braces
+    "C-b" #'lispyville-wrap-round
+    "C-]" #'lispyville-wrap-brackets
+    "C-}" #'lispyville-wrap-braces
     "[" #'lispyville-previous-opening
     "]" #'lispyville-next-closing
     "{" #'lispyville-previous-closing
