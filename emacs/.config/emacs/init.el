@@ -79,6 +79,11 @@
        custom-file (expand-file-name "~/dots/emacs/custom.el")
        ;; TODO: Change this to make backup files at ~/archive/backup.
        make-backup-files nil
+       mouse-avoidance-banish-position '((frame-or-window . frame)
+                                         (side . right)
+                                         (side-pos . 0)
+                                         (top-or-bottom . bottom)
+                                         (top-or-bottom-pos . 0))
        require-final-newline t
        sentence-end-double-space nil
        show-paren-delay 0
@@ -91,6 +96,7 @@
 (blink-cursor-mode -1)
 (global-subword-mode)
 (load-file custom-file)
+(mouse-avoidance-mode 'banish)
 (show-paren-mode)
 
 ;; Keybinding Related
