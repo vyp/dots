@@ -142,12 +142,14 @@
 
   ;; Make the window resizing commands repeatable.
   ;;
-  ;; The disadvantage of defrepeater compared to a hydra is that it only works
-  ;; one command at a time, i.e. wanting to use another command with the same
-  ;; prefix sequence requires starting the sequence again.
+  ;; The disadvantage of defrepeater compared to a hydra [1] is that it only
+  ;; works one command at a time, i.e. wanting to use another command with the
+  ;; same prefix sequence requires starting the sequence again.
   ;;
   ;; But the advantage here is the rest of evil-window-map commands exit
   ;; automatically, which is better for one off commands.
+  ;;
+  ;; [1]: https://github.com/abo-abo/hydra
   (defrepeater #'evil-window-increase-height)
   (defrepeater #'evil-window-decrease-height)
   (defrepeater #'evil-window-increase-width)
