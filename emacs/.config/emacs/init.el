@@ -280,7 +280,8 @@
     "(" #'lispy-parens
     "[" #'lispy-brackets
     "{" #'lispy-braces
-    "\"" #'lispy-quotes)
+    "\"" #'lispy-quotes
+    ";" #'lispy-comment)
 
   (general-def 'normal lispyville-mode-map
     ":" #'eval-last-sexp
