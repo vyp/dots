@@ -48,7 +48,7 @@
     :prefix "SPC"))
 
 ;; Custom Function Definitions
-;; ---------------------------
+;; ===========================
 ;;
 ;; Now that general.el is configured, we can declare our own utility functions.
 (defun my/edit-init-file ()
@@ -62,7 +62,7 @@
 (general-add-advice 'load-theme :before #'my/undo-themes)
 
 ;; Vanilla Options
-;; ---------------
+;; ===============
 (gsetq-default auto-fill-function 'do-auto-fill
                fill-column 80
                ;; Do not insert tabs when indenting.
@@ -92,6 +92,8 @@
 (load-file custom-file)
 (show-paren-mode t)
 
+;; Keybinding Related
+;; ==================
 (use-package evil
   :demand t
   ;; :preface
@@ -201,6 +203,11 @@
   :demand t
   :config
   (global-evil-surround-mode 1))
+
+(use-package which-key
+  :demand t
+  :init
+  (which-key-mode))
 
 ;; Mode Line
 ;; =========

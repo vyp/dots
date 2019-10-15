@@ -4,6 +4,7 @@
  ("cl-generic" . "5fdc275eca6d0c5fce54b86997dea2f50f70df47")
  ("cl-lib" . "e79686c4a26959c0ecba0951a7e335ed28035386")
  ("diminish.el" . "565a983a39d2e2cffab5df13b34f3b6116723208")
+ ("emacs-which-key" . "42a25055163141165aa0269dbca69735e704825c")
  ("emacsmirror-mirror" . "f448eb0b1f84e255baf31a0ca0a929a9d8f1ef8b")
  ("evil" . "874beba2cb243c325eca08fb7badff567f3c9494")
  ("evil-collection" . "75ba4b14bffe2522abaa8118b61dd9aa9af9cb6f")
