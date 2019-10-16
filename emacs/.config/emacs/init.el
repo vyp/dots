@@ -332,5 +332,11 @@
 ;; =====
 (use-package moe-theme
   :init
-  (when (display-graphic-p)
-    (load-theme 'moe-light 'no-confirm)))
+  (if (daemonp)
+      (general-add-hook 'after-make-frame-functions
+                        (lambda (frame)
+                          (with-selected-frame frame
+                            (when (display-graphic-p frame)
+                              (load-theme 'moe-light 'no-confirm)))))
+    (when (display-graphic-p)
+      (load-theme 'moe-light 'no-confirm))))
