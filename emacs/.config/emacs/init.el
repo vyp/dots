@@ -204,6 +204,7 @@
 
   (general-my/leader
     "SPC" #'help-command
+    "d" #'dired
     "ee" #'eval-expression
     "ei" #'my/edit-init-file
     "q" "@q"
