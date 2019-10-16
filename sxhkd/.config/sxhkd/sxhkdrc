@@ -20,8 +20,8 @@ Menu ; Print
 # super + slash
 #   rofi mode
 
-# super + e
-#   emacs
+super + e
+  emacs
 
 # super + w
 #   wallpaper mode
