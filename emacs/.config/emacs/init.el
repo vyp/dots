@@ -254,8 +254,8 @@
          telephone-line-secondary-right-separator 'telephone-line-flat)
   (telephone-line-mode))
 
-;; Buffers
-;; =======
+;; Buffer and File Related
+;; =======================
 (gsetq ibuffer-expert t
        kill-buffer-query-functions
        (remq 'process-kill-buffer-query-function
@@ -266,6 +266,8 @@
   (general-def 'normal ibuffer-mode-map
     "x" #'ibuffer-do-delete
     "K" #'ibuffer-do-kill-on-deletion-marks))
+
+(general-add-hook 'dired-mode-hook #'auto-revert-mode)
 
 ;; Lisp Languages
 ;; ==============
