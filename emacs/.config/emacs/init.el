@@ -332,12 +332,25 @@
 ;; Theme
 ;; =====
 (use-package moe-theme
-  :init
-  (if (daemonp)
-      (general-add-hook 'after-make-frame-functions
-                        (lambda (frame)
-                          (with-selected-frame frame
-                            (when (display-graphic-p frame)
-                              (load-theme 'moe-light 'no-confirm)))))
-    (when (display-graphic-p)
-      (load-theme 'moe-light 'no-confirm))))
+  ;; :init
+  ;; (if (daemonp)
+  ;;     (general-add-hook 'after-make-frame-functions
+  ;;                       (lambda (frame)
+  ;;                         (with-selected-frame frame
+  ;;                           (when (display-graphic-p frame)
+  ;;                             (load-theme 'moe-light 'no-confirm)))))
+  ;;   (when (display-graphic-p)
+  ;;     (load-theme 'moe-light 'no-confirm)))
+  )
+
+(custom-set-faces
+ '(rainbow-delimiters-depth-1-face ((t (:bold t :foreground "dark orange"))))
+ '(rainbow-delimiters-depth-2-face ((t (:bold t :foreground "deep pink"))))
+ '(rainbow-delimiters-depth-3-face ((t (:bold t :foreground "chartreuse"))))
+ '(rainbow-delimiters-depth-4-face ((t (:bold t :foreground "deep sky blue"))))
+ '(rainbow-delimiters-depth-5-face ((t (:bold t :foreground "goldenrod"))))
+ '(rainbow-delimiters-depth-6-face ((t (:bold t :foreground "orchid"))))
+ '(rainbow-delimiters-depth-7-face ((t (:bold t :foreground "spring green"))))
+ '(rainbow-delimiters-depth-8-face ((t (:bold t :foreground "sienna"))))
+ '(rainbow-delimiters-depth-9-face ((t (:bold t :foreground "red"))))
+ '(region ((t (:background "#666" :foreground "#fff")))))
