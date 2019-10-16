@@ -1,6 +1,7 @@
 ;; Fonts
 ;; =====
-;; Main font is set in `early-init.el`.
+
+;; Main font is set in `early-init.el'.
 (set-fontset-font "fontset-default" 'unicode "Noto Color Emoji")
 (set-face-font 'variable-pitch "Noto Sans-11")
 
@@ -67,7 +68,7 @@
                fill-column 80
                ;; Do not insert tabs when indenting.
                indent-tabs-mode nil
-               ;; Make `gj`/`gk` work across visually wrapped lines.
+               ;; Make gj/gk work across visually wrapped lines.
                line-move-visual nil
                ;; Vertical cursor padding.
                scroll-margin 5
@@ -124,12 +125,16 @@
   (evil-mode)
 
   :config
-  ;; Move up one line when doing `q:` and `q/`.
+  ;; Move up one line when doing q: and q/.
   (general-add-advice 'evil-command-window-ex :after #'evil-previous-line)
   (general-add-advice 'evil-command-window-search-forward
                       :after #'evil-previous-line)
 
   ;; Disable hl-line-mode in evil visual state.
+  ;;
+  ;; This has the side effect of enabling hl-line-mode in non-text/prog modes if
+  ;; visual state is ever entered then exited, but not really a big deal for me
+  ;; as visual state normally isn't even entered in those modes.
   (general-add-hook 'evil-visual-state-entry-hook (lambda () (hl-line-mode -1)))
   (general-add-hook 'evil-visual-state-exit-hook #'hl-line-mode)
 
@@ -169,11 +174,6 @@
     ;; "z RET" 'evil-scroll-line-to-top
     "\\" #'evil-switch-to-windows-last-buffer
     "'" #'evil-ex
-    ;; Mapping under non-prefix keys like q has to be done like this using
-    ;; `general-key-dispatch', see:
-    ;; https://github.com/noctuid/general.el#mapping-under-non-prefix-keys
-    "q" (general-key-dispatch 'evil-record-macro
-          "'" #'evil-command-window-ex)
     "g'" #'execute-extended-command
     "+" #'text-scale-increase
     "-" #'text-scale-decrease
@@ -209,8 +209,11 @@
     "ei" #'my/edit-init-file
     "q" "@q"
     "sf" #'straight-freeze-versions
+    "si" #'straight-use-package
     "su" #'straight-pull-all
-    "w" #'evil-window-map)
+    "t" #'load-theme
+    "w" #'evil-window-map
+    "x" #'evil-command-window-ex)
 
   ;; Escape everywhere.
   (general-def 'emacs "<escape>" #'evil-normal-state)
@@ -307,7 +310,31 @@
 
 ;; Not necessarily only for lisp languages but main use case is for lisp
 ;; languages where this really helps.
-(use-package rainbow-delimiters)
+(use-package rainbow-delimiters
+  :config
+  ;; Default rainbow delimiters colours do not differentiate themselves enough.
+  (unless custom-enabled-themes
+    (set-face-foreground 'rainbow-delimiters-depth-1-face "dark orange")
+    (set-face-foreground 'rainbow-delimiters-depth-2-face "deep pink")
+    (set-face-foreground 'rainbow-delimiters-depth-3-face "chartreuse")
+    (set-face-foreground 'rainbow-delimiters-depth-4-face "deep sky blue")
+    (set-face-foreground 'rainbow-delimiters-depth-5-face "goldenrod")
+    (set-face-foreground 'rainbow-delimiters-depth-6-face "orchid")
+    (set-face-foreground 'rainbow-delimiters-depth-7-face "spring green")
+    (set-face-foreground 'rainbow-delimiters-depth-8-face "sienna")
+    (set-face-foreground 'rainbow-delimiters-depth-9-face "red"))
+
+  ;; Always bold delimiters regardless of theme, as they are easier to see and
+  ;; identify for me.
+  (set-face-bold 'rainbow-delimiters-depth-1-face t)
+  (set-face-bold 'rainbow-delimiters-depth-2-face t)
+  (set-face-bold 'rainbow-delimiters-depth-3-face t)
+  (set-face-bold 'rainbow-delimiters-depth-4-face t)
+  (set-face-bold 'rainbow-delimiters-depth-5-face t)
+  (set-face-bold 'rainbow-delimiters-depth-6-face t)
+  (set-face-bold 'rainbow-delimiters-depth-7-face t)
+  (set-face-bold 'rainbow-delimiters-depth-8-face t)
+  (set-face-bold 'rainbow-delimiters-depth-9-face t))
 
 ;; Text and Prog Mode Hooks
 ;; ========================
@@ -331,26 +358,21 @@
 
 ;; Theme
 ;; =====
-(use-package moe-theme
-  ;; :init
-  ;; (if (daemonp)
-  ;;     (general-add-hook 'after-make-frame-functions
-  ;;                       (lambda (frame)
-  ;;                         (with-selected-frame frame
-  ;;                           (when (display-graphic-p frame)
-  ;;                             (load-theme 'moe-light 'no-confirm)))))
-  ;;   (when (display-graphic-p)
-  ;;     (load-theme 'moe-light 'no-confirm)))
-  )
+(use-package gotham-theme)
 
-(custom-set-faces
- '(rainbow-delimiters-depth-1-face ((t (:bold t :foreground "dark orange"))))
- '(rainbow-delimiters-depth-2-face ((t (:bold t :foreground "deep pink"))))
- '(rainbow-delimiters-depth-3-face ((t (:bold t :foreground "chartreuse"))))
- '(rainbow-delimiters-depth-4-face ((t (:bold t :foreground "deep sky blue"))))
- '(rainbow-delimiters-depth-5-face ((t (:bold t :foreground "goldenrod"))))
- '(rainbow-delimiters-depth-6-face ((t (:bold t :foreground "orchid"))))
- '(rainbow-delimiters-depth-7-face ((t (:bold t :foreground "spring green"))))
- '(rainbow-delimiters-depth-8-face ((t (:bold t :foreground "sienna"))))
- '(rainbow-delimiters-depth-9-face ((t (:bold t :foreground "red"))))
- '(region ((t (:background "#666" :foreground "#fff")))))
+(use-package material-theme
+  :init
+  (if (daemonp)
+      (general-add-hook 'after-make-frame-functions
+                        (lambda (frame)
+                          (with-selected-frame frame
+                            (when (display-graphic-p frame)
+                              (load-theme 'material-light 'no-confirm)))))
+    (when (display-graphic-p)
+      (load-theme 'material-light 'no-confirm))))
+
+(use-package moe-theme)
+
+;; Make selection stand out more for default theme.
+(unless custom-enabled-themes
+  (set-face-attribute 'region nil :background "#666" :foreground "#fff"))
