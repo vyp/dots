@@ -273,6 +273,10 @@
 
 (general-add-hook 'dired-mode-hook #'auto-revert-mode)
 
+;; Utility
+;; =======
+(use-package aggressive-indent)
+
 ;; Lisp Languages
 ;; ==============
 (use-package lispyville
@@ -351,6 +355,7 @@
 
 (defun my/prog-mode-hook ()
   (my/text-mode-hook)
+  (aggressive-indent-mode)
   (rainbow-delimiters-mode))
 
 (add-hook 'text-mode-hook 'my/text-mode-hook)

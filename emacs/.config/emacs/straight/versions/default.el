@@ -1,4 +1,5 @@
 (("ace-window" . "a5344925e399e1f015721cda6cf5db03c90ab87a")
+ ("aggressive-indent-mode" . "c28246ba09d53e32cd9d8cafb1830f50387d9985")
  ("annalist.el" . "e0601539c9ac0171a684ea3ff6266d215d1d08e6")
  ("avy" . "87394c9a880104a08d0f0e2d4149ac2d70cc192f")
  ("cl-generic" . "5fdc275eca6d0c5fce54b86997dea2f50f70df47")
