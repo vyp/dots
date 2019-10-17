@@ -2,8 +2,8 @@
 ;; =====
 
 ;; Main font is set in `early-init.el'.
-(set-fontset-font "fontset-default" 'unicode "Noto Color Emoji")
 (set-face-font 'variable-pitch "Noto Sans-11")
+(set-fontset-font t 'unicode "Noto Color Emoji")
 
 ;; Essential Packages
 ;; ==================
