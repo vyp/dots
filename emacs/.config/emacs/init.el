@@ -272,6 +272,7 @@
     "K" #'ibuffer-do-kill-on-deletion-marks))
 
 (general-add-hook 'dired-mode-hook #'auto-revert-mode)
+(put 'dired-find-alternate-file 'disabled nil)
 
 ;; Utility
 ;; =======
