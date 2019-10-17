@@ -310,6 +310,7 @@
 
   ;; Still prefer having the paragraph motions for visual selection.
   (general-def 'visual lispyville-mode-map
+    ":" #'eval-region
     "{" #'evil-backward-paragraph
     "}" #'evil-forward-paragraph))
 
