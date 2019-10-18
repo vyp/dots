@@ -62,6 +62,25 @@
 
 (general-add-advice 'load-theme :before #'my/undo-themes)
 
+;; Fix `describe-face' defaulting to hl-line face.
+;; https://emacs.stackexchange.com/a/45719/8693
+(defun my/face-at-point ()
+  (let ((face (get-text-property (point) 'face)))
+    (or (and (face-list-p face)
+             (car face))
+        (and (symbolp face)
+             face))))
+
+(defun my/describe-face (&rest ignore)
+  (interactive (list (read-face-name "Describe face"
+                                     (or (my/face-at-point) 'default)
+                                     t)))
+  ;; This only needs to change the `interactive` spec, so:
+  nil)
+
+(general-with-eval-after-load 'hl-line
+  (general-add-advice 'describe-face :before #'my/describe-face))
+
 ;; Vanilla Options
 ;; ===============
 (gsetq-default auto-fill-function 'do-auto-fill
