@@ -48,41 +48,8 @@
     :keymaps 'override
     :prefix "SPC"))
 
-;; Custom Function Definitions
-;; ===========================
-;;
-;; Now that general.el is configured, we can declare our own utility functions.
-(defun my/edit-init-file ()
-  (interactive)
-  (find-file (expand-file-name "init.el" user-emacs-directory)))
-
-;; https://emacs.stackexchange.com/questions/3112/how-to-reset-color-theme
-(defun my/undo-themes (&rest _)
-  (mapc #'disable-theme custom-enabled-themes))
-
-(general-add-advice 'load-theme :before #'my/undo-themes)
-
-;; Fix `describe-face' defaulting to hl-line face.
-;; https://emacs.stackexchange.com/a/45719/8693
-(defun my/face-at-point ()
-  (let ((face (get-text-property (point) 'face)))
-    (or (and (face-list-p face)
-             (car face))
-        (and (symbolp face)
-             face))))
-
-(defun my/describe-face (&rest ignore)
-  (interactive (list (read-face-name "Describe face"
-                                     (or (my/face-at-point) 'default)
-                                     t)))
-  ;; This only needs to change the `interactive` spec, so:
-  nil)
-
-(general-with-eval-after-load 'hl-line
-  (general-add-advice 'describe-face :before #'my/describe-face))
-
-;; Vanilla Options
-;; ===============
+;; Generic Editor Behaviour
+;; ========================
 (gsetq-default auto-fill-function 'do-auto-fill
                fill-column 80
                ;; Do not insert tabs when indenting.
@@ -119,16 +86,57 @@
 (mouse-avoidance-mode 'banish)
 (show-paren-mode)
 
+(defun my/text-mode-functions ()
+  (visual-line-mode)
+  (whitespace-mode))
+
+(general-add-hook 'text-mode-hook #'my/text-mode-functions)
+(general-add-hook 'prog-mode-hook #'my/text-mode-functions)
+
+(use-package aggressive-indent :ghook 'prog-mode-hook)
+
+(use-package hl-line
+  :after evil
+  :straight nil
+  :ghook
+  'text-mode-hook
+  'prog-mode-hook
+  :config
+  ;; Fix `describe-face' defaulting to hl-line face.
+  ;; https://emacs.stackexchange.com/a/45719/8693
+  (defun my/face-at-point ()
+    (let ((face (get-text-property (point) 'face)))
+      (or (and (face-list-p face)
+               (car face))
+          (and (symbolp face)
+               face))))
+
+  (defun my/describe-face (&rest ignore)
+    (interactive (list (read-face-name "Describe face"
+                                       (or (my/face-at-point) 'default)
+                                       t)))
+    ;; This only needs to change the `interactive` spec, so:
+    nil)
+
+  (general-add-advice 'describe-face :before #'my/describe-face)
+
+  ;; Disable hl-line-mode in evil visual state.
+  (general-add-hook 'evil-visual-state-entry-hook
+                    (lambda ()
+                      (when (or (derived-mode-p 'text-mode)
+                                (derived-mode-p 'prog-mode))
+                        (hl-line-mode -1))))
+  (general-add-hook 'evil-visual-state-exit-hook
+                    (lambda ()
+                      (when (or (derived-mode-p 'text-mode)
+                                (derived-mode-p 'prog-mode))
+                        (hl-line-mode)))))
+
 ;; Keybinding Related
 ;; ==================
 (use-package defrepeater :demand t)
 
 (use-package evil
-  ;; :preface
-  ;; (defun my/insert-two-spaces ()
-  ;;   (interactive)
-  ;;   (insert "  "))
-
   :init
   (gsetq evil-cross-lines t
          evil-overriding-maps nil
@@ -144,18 +152,18 @@
   (evil-mode)
 
   :config
+  ;; (defun my/insert-two-spaces ()
+  ;;   (interactive)
+  ;;   (insert "  "))
+
+  (defun my/edit-init-file ()
+    (interactive)
+    (find-file (expand-file-name "init.el" user-emacs-directory)))
+
   ;; Move up one line when doing q: and q/.
   (general-add-advice 'evil-command-window-ex :after #'evil-previous-line)
   (general-add-advice 'evil-command-window-search-forward
                       :after #'evil-previous-line)
-
-  ;; Disable hl-line-mode in evil visual state.
-  ;;
-  ;; This has the side effect of enabling hl-line-mode in non-text/prog modes if
-  ;; visual state is ever entered then exited, but not really a big deal for me
-  ;; as visual state normally isn't even entered in those modes.
-  (general-add-hook 'evil-visual-state-entry-hook (lambda () (hl-line-mode -1)))
-  (general-add-hook 'evil-visual-state-exit-hook #'hl-line-mode)
 
   ;; Set normal state as default state.
   ;; In :config as it references evil mode variables.
@@ -279,23 +287,24 @@
 
 ;; Buffer and File Related
 ;; =======================
-(gsetq ibuffer-expert t
-       kill-buffer-query-functions
-       (remq 'process-kill-buffer-query-function
-             kill-buffer-query-functions))
-
-(general-add-hook 'ibuffer-mode-hook #'ibuffer-auto-mode)
-(general-with-eval-after-load 'ibuffer
+(use-package ibuffer
+  :straight nil
+  :gfhook #'ibuffer-auto-mode
+  :init
+  (gsetq ibuffer-expert t
+         kill-buffer-query-functions
+         (remq 'process-kill-buffer-query-function
+               kill-buffer-query-functions))
+  :config
   (general-def 'normal ibuffer-mode-map
     "x" #'ibuffer-do-delete
     "K" #'ibuffer-do-kill-on-deletion-marks))
 
-(general-add-hook 'dired-mode-hook #'auto-revert-mode)
-(put 'dired-find-alternate-file 'disabled nil)
-
-;; Utility
-;; =======
-(use-package aggressive-indent)
+(use-package dired
+  :straight nil
+  :gfhook #'auto-revert-mode
+  :init
+  (put 'dired-find-alternate-file 'disabled nil))
 
 ;; Lisp Languages
 ;; ==============
@@ -336,51 +345,41 @@
 ;; Not necessarily only for lisp languages but main use case is for lisp
 ;; languages where this really helps.
 (use-package rainbow-delimiters
+  :ghook
+  'prog-mode-hook
   :config
-  ;; Default rainbow delimiters colours do not differentiate themselves enough.
-  (unless custom-enabled-themes
-    (set-face-foreground 'rainbow-delimiters-depth-1-face "dark orange")
-    (set-face-foreground 'rainbow-delimiters-depth-2-face "deep pink")
-    (set-face-foreground 'rainbow-delimiters-depth-3-face "chartreuse")
-    (set-face-foreground 'rainbow-delimiters-depth-4-face "deep sky blue")
-    (set-face-foreground 'rainbow-delimiters-depth-5-face "goldenrod")
-    (set-face-foreground 'rainbow-delimiters-depth-6-face "orchid")
-    (set-face-foreground 'rainbow-delimiters-depth-7-face "spring green")
-    (set-face-foreground 'rainbow-delimiters-depth-8-face "sienna")
-    (set-face-foreground 'rainbow-delimiters-depth-9-face "red"))
+  (defun my/rainbow-delimiters-default-faces (&rest _)
+    ;; Default rainbow delimiters colours do not differentiate themselves
+    ;; enough.
+    (unless custom-enabled-themes
+      (set-face-foreground 'rainbow-delimiters-depth-1-face "dark orange")
+      (set-face-foreground 'rainbow-delimiters-depth-2-face "deep pink")
+      (set-face-foreground 'rainbow-delimiters-depth-3-face "chartreuse")
+      (set-face-foreground 'rainbow-delimiters-depth-4-face "deep sky blue")
+      (set-face-foreground 'rainbow-delimiters-depth-5-face "goldenrod")
+      (set-face-foreground 'rainbow-delimiters-depth-6-face "orchid")
+      (set-face-foreground 'rainbow-delimiters-depth-7-face "spring green")
+      (set-face-foreground 'rainbow-delimiters-depth-8-face "sienna")
+      (set-face-foreground 'rainbow-delimiters-depth-9-face "red")))
 
-  ;; Always bold delimiters regardless of theme, as they are easier to see and
-  ;; identify for me.
-  (set-face-bold 'rainbow-delimiters-depth-1-face t)
-  (set-face-bold 'rainbow-delimiters-depth-2-face t)
-  (set-face-bold 'rainbow-delimiters-depth-3-face t)
-  (set-face-bold 'rainbow-delimiters-depth-4-face t)
-  (set-face-bold 'rainbow-delimiters-depth-5-face t)
-  (set-face-bold 'rainbow-delimiters-depth-6-face t)
-  (set-face-bold 'rainbow-delimiters-depth-7-face t)
-  (set-face-bold 'rainbow-delimiters-depth-8-face t)
-  (set-face-bold 'rainbow-delimiters-depth-9-face t))
+  (defun my/rainbow-delimiters-faces (&rest _)
+    ;; Always bold delimiters regardless of theme, as they are easier to see and
+    ;; identify for me.
+    (set-face-bold 'rainbow-delimiters-depth-1-face t)
+    (set-face-bold 'rainbow-delimiters-depth-2-face t)
+    (set-face-bold 'rainbow-delimiters-depth-3-face t)
+    (set-face-bold 'rainbow-delimiters-depth-4-face t)
+    (set-face-bold 'rainbow-delimiters-depth-5-face t)
+    (set-face-bold 'rainbow-delimiters-depth-6-face t)
+    (set-face-bold 'rainbow-delimiters-depth-7-face t)
+    (set-face-bold 'rainbow-delimiters-depth-8-face t)
+    (set-face-bold 'rainbow-delimiters-depth-9-face t))
 
-;; Text and Prog Mode Hooks
-;; ========================
-;;
-;; I find this a little cleaner and more 'declarative' than having multiple
-;; `add-hook's around in various places.
-;;
-;; The idea is taken from: https://emacs.stackexchange.com/a/5384
-
-(defun my/text-mode-hook ()
-  (hl-line-mode)
-  (visual-line-mode)
-  (whitespace-mode))
-
-(defun my/prog-mode-hook ()
-  (my/text-mode-hook)
-  (aggressive-indent-mode)
-  (rainbow-delimiters-mode))
-
-(add-hook 'text-mode-hook 'my/text-mode-hook)
-(add-hook 'prog-mode-hook 'my/prog-mode-hook)
+  (general-add-advice 'disable-theme
+                      :after #'my/rainbow-delimiters-default-faces)
+  (general-add-advice 'load-theme :after #'my/rainbow-delimiters-faces)
+  (my/rainbow-delimiters-default-faces)
+  (my/rainbow-delimiters-faces))
 
 ;; Theme
 ;; =====
@@ -397,8 +396,16 @@
     (when (display-graphic-p)
       (load-theme 'material-light 'no-confirm))))
 
-(use-package moe-theme)
+;; https://emacs.stackexchange.com/questions/3112/how-to-reset-color-theme
+(defun my/undo-themes (&rest _)
+  (mapc #'disable-theme custom-enabled-themes))
 
-;; Make selection stand out more for default theme.
-(unless custom-enabled-themes
-  (set-face-attribute 'region nil :background "#666" :foreground "#fff"))
+(general-add-advice 'load-theme :before #'my/undo-themes)
+
+(defun my/better-default-theme (&rest _)
+  (unless custom-enabled-themes
+    ;; Make selection stand out more for default theme.
+    (set-face-attribute 'region nil :background "#666" :foreground "#fff")))
+
+(general-add-advice 'disable-theme :after #'my/better-default-theme)
+(my/better-default-theme)
