@@ -101,6 +101,7 @@
     polybar
     pqiv
     purescript
+    racket
     scrot
     setroot
     stack
