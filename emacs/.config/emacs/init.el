@@ -489,12 +489,14 @@
   mode-line-buffer-identification
 
   ;; Insert spaces to right align rest.
-  ;; Works because max length of right aligned text (31) is known beforehand.
+  ;; Works because max length of right aligned text is known beforehand.
   '(:eval
     (propertize
      " "
      'display
-     '((space :align-to (- (+ right right-fringe right-margin) 31)))))
+     '((space :align-to (- (+ right right-fringe right-margin)
+                           ;; Max length of rhs.
+                           31)))))
 
   ;; Version control info, usually git branch.
   '(:eval
@@ -507,12 +509,11 @@
      12
      ?\s))
 
-  ;; Line number, left filled with 6 spaces to prevent flickering.
+  ;; Line number.
   "%06l:"
 
-  ;; Column number, right filled with 4 spaces to prevent flickering.
+  ;; Column number.
   '(:eval (my/str-fill (number-to-string (+ (current-column) 1)) 'right 4 ?\s))
 
-  ;; Buffer position, right filled with 6 spaces to prevent flickering as it
-  ;; accomodates the longest value "Bottom".
+  ;; Buffer position.
   " %06p "))
