@@ -1,10 +1,3 @@
-;; Fonts
-;; =====
-
-;; Main font is set in `early-init.el'.
-(set-face-font 'variable-pitch "Noto Sans-11")
-(set-fontset-font t 'unicode "Noto Color Emoji")
-
 ;; Essential Packages
 ;; ==================
 ;;
@@ -30,7 +23,6 @@
   (load bootstrap-file nil 'nomessage))
 
 (straight-use-package 'use-package)
-(use-package diminish :demand t)
 
 (use-package general
   :demand t
@@ -81,10 +73,12 @@
        whitespace-style '(face empty lines-tail tabs trailing))
 
 (blink-cursor-mode -1)
+(column-number-mode)
 (global-subword-mode)
 (load-file custom-file)
 (mouse-avoidance-mode 'banish)
 (show-paren-mode)
+(tooltip-mode -1)
 
 (defun my/text-mode-functions ()
   (visual-line-mode)
@@ -275,16 +269,6 @@
   :init
   (which-key-mode))
 
-;; Mode Line
-;; =========
-(use-package telephone-line
-  :init
-  (gsetq telephone-line-primary-left-separator 'telephone-line-flat
-         telephone-line-primary-right-separator 'telephone-line-flat
-         telephone-line-secondary-left-separator 'telephone-line-flat
-         telephone-line-secondary-right-separator 'telephone-line-flat)
-  (telephone-line-mode))
-
 ;; Buffer and File Related
 ;; =======================
 (use-package ibuffer
@@ -381,8 +365,38 @@
   (my/rainbow-delimiters-default-faces)
   (my/rainbow-delimiters-faces))
 
+;; Fonts
+;; =====
+(defun my/set-fonts ()
+  (set-face-font 'variable-pitch "Noto Sans-11")
+  (set-fontset-font t 'unicode "Noto Color Emoji"))
+
+;; Main font is set in `early-init.el'.
+(if (daemonp)
+    (general-add-hook 'after-make-frame-functions
+                      (lambda (frame)
+                        (with-selected-frame frame
+                          (when (display-graphic-p frame)
+                            (my/set-fonts)))))
+  (when (display-graphic-p)
+    (my/set-fonts)))
+
 ;; Theme
 ;; =====
+
+;; Make a variable that holds the current theme, for convenience.
+;; 'user is the name for the default theme.
+(defvar my/current-theme 'user)
+
+(defun my/update-current-theme (&optional arg &rest _)
+  (gsetq my/current-theme arg))
+
+(defun my/reset-current-theme (&rest _)
+  (gsetq my/current-theme 'user))
+
+(general-add-advice 'disable-theme :after #'my/reset-current-theme)
+(general-add-advice 'load-theme :after #'my/update-current-theme)
+
 (use-package gotham-theme)
 
 (use-package material-theme
@@ -409,3 +423,96 @@
 
 (general-add-advice 'disable-theme :after #'my/better-default-theme)
 (my/better-default-theme)
+
+;; Mode Line
+;; =========
+
+;; Themes setting a box for the mode line messes with emoji alignment when using
+;; emojis in mode line.
+(defun my/boxless-mode-line (&rest _)
+  (set-face-attribute 'mode-line nil :box nil)
+  (set-face-attribute 'mode-line-inactive nil :box nil))
+
+(general-add-advice 'load-theme :after #'my/boxless-mode-line)
+(my/boxless-mode-line)
+
+;; Helper for mode line text.
+(defun my/str-fill (str pos max char)
+  (let ((strlen (length str)))
+    (cond
+     ((= strlen max) str)
+     ((> strlen max) (substring str 0 max))
+     (t (let ((fillstr
+               (mapconcat 'identity
+                          (make-list (- max strlen) (string char))
+                          "")))
+          (if (eq pos 'left)
+              (concat fillstr str)
+            (concat str fillstr)))))))
+
+(gsetq-default
+ mode-line-format
+ (list
+  ;; Full memory error message.
+  " %e"
+
+  ;; Evil state.
+  ;;
+  ;; - Operator state is uniquely identified via cursor shape change.
+  ;;
+  ;; - Insert/emacs state identifiers are for differentiating between the two
+  ;;   since they both have the same I-beam style cursor shape.
+  '(:eval (cond
+           ((string= evil-mode-line-tag " <I> ") "✏️ ")
+           ((string= evil-mode-line-tag " <E> ") "✒️ ")
+           ((string= evil-mode-line-tag " <M> ") "👣 ")
+           ((string= evil-mode-line-tag " <V> ") "👀 ")
+           (t "     ")))
+
+  ;; Whether frame is an emacsclient instance or not.
+  (if (daemonp) "🖥️ " "")
+
+  ;; Major mode.
+  '(:eval (let ((mode (downcase mode-name)))
+            (cond
+             ((string= mode "emacs-lisp") "elisp")
+             ((string= mode "shell-script") "shell")
+             (t mode))))
+
+  ;; Space separator.
+  " "
+
+  ;; Read only indicator or modified indicator if not read only.
+  '(:eval (if buffer-read-only "🧐 " (if (buffer-modified-p) "💾 " "     ")))
+
+  ;; Buffer.
+  mode-line-buffer-identification
+
+  ;; Insert spaces to right align rest.
+  ;; Works because max length of right aligned text (31) is known beforehand.
+  '(:eval
+    (propertize
+     " "
+     'display
+     '((space :align-to (- (+ right right-fringe right-margin) 31)))))
+
+  ;; Version control info, usually git branch.
+  '(:eval
+    (my/str-fill
+     (if (or (string-prefix-p " Git:" vc-mode)
+             (string-prefix-p " Git-" vc-mode))
+         (substring vc-mode 5)
+       vc-mode)
+     'right
+     12
+     ?\s))
+
+  ;; Line number, left filled with 6 spaces to prevent flickering.
+  "%06l:"
+
+  ;; Column number, right filled with 4 spaces to prevent flickering.
+  '(:eval (my/str-fill (number-to-string (+ (current-column) 1)) 'right 4 ?\s))
+
+  ;; Buffer position, right filled with 6 spaces to prevent flickering as it
+  ;; accomodates the longest value "Bottom".
+  " %06p "))
