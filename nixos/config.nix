@@ -85,11 +85,12 @@
     ghc
     gnumake
     guile
-    idris
-    irssi
     heroku
     htop
+    idris
     imv
+    irssi
+    janet
     maim
     mediainfo
     mplayer
