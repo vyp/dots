@@ -456,21 +456,8 @@
   ;; Full memory error message.
   " %e"
 
-  ;; Evil state.
-  ;;
-  ;; - Operator state is uniquely identified via cursor shape change.
-  ;;
-  ;; - Insert/emacs state identifiers are for differentiating between the two
-  ;;   since they both have the same I-beam style cursor shape.
-  '(:eval (cond
-           ((string= evil-mode-line-tag " <I> ") "✏️ ")
-           ((string= evil-mode-line-tag " <E> ") "✒️ ")
-           ((string= evil-mode-line-tag " <M> ") "👣 ")
-           ((string= evil-mode-line-tag " <V> ") "👀 ")
-           (t "     ")))
-
   ;; Whether frame is an emacsclient instance or not.
-  (if (daemonp) "🖥️ " "")
+  (if (daemonp) "@ " "")
 
   ;; Major mode.
   '(:eval (let ((mode (downcase mode-name)))
@@ -483,7 +470,7 @@
   " "
 
   ;; Read only indicator or modified indicator if not read only.
-  '(:eval (if buffer-read-only "🧐 " (if (buffer-modified-p) "💾 " "     ")))
+  '(:eval (if buffer-read-only "# " (if (buffer-modified-p) "* " "  ")))
 
   ;; Buffer.
   mode-line-buffer-identification
