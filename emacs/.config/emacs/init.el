@@ -457,23 +457,29 @@
   " %e"
 
   ;; Whether frame is an emacsclient instance or not.
-  (if (daemonp) "@ " "")
-
-  ;; Major mode.
-  '(:eval (let ((mode (downcase mode-name)))
-            (cond
-             ((string= mode "emacs-lisp") "elisp")
-             ((string= mode "shell-script") "shell")
-             (t mode))))
-
-  ;; Space separator.
-  " "
+  (if (daemonp) " @ » " "")
 
   ;; Read only indicator or modified indicator if not read only.
-  '(:eval (if buffer-read-only "# " (if (buffer-modified-p) "* " "  ")))
+  '(:eval (if buffer-read-only
+              "[RO] » "
+            (if (buffer-modified-p)
+                "* » "
+              "    ")))
+
+  ;; Major mode.
+  '(:eval (propertize
+           (let ((mode (downcase mode-name)))
+             (cond
+              ((string= mode "emacs-lisp") "elisp")
+              ((string= mode "shell-script") "shell")
+              (t mode)))
+           'face 'italic))
+
+  ;; Separator.
+  " » "
 
   ;; Buffer.
-  mode-line-buffer-identification
+  '(:eval (propertize "%b" 'face 'bold))
 
   ;; Insert spaces to right align rest.
   ;; Works because max length of right aligned text is known beforehand.
@@ -481,26 +487,33 @@
     (propertize
      " "
      'display
-     '((space :align-to (- (+ right right-fringe right-margin)
+     `((space :align-to (- (+ right right-fringe right-margin)
                            ;; Max length of rhs.
-                           31)))))
+                           ,(if (null vc-mode) 21 36))))))
 
   ;; Version control info, usually git branch.
   '(:eval
-    (my/str-fill
-     (if (or (string-prefix-p " Git:" vc-mode)
-             (string-prefix-p " Git-" vc-mode))
-         (substring vc-mode 5)
-       vc-mode)
-     'right
-     12
-     ?\s))
+    (if (null vc-mode)
+        ""
+      (concat
+       (my/str-fill
+        (if (or (string-prefix-p " Git:" vc-mode)
+                (string-prefix-p " Git-" vc-mode))
+            (substring vc-mode 5)
+          vc-mode)
+        'left
+        12
+        ?\s)
+       " « ")))
 
   ;; Line number.
   "%06l:"
 
   ;; Column number.
-  '(:eval (my/str-fill (number-to-string (+ (current-column) 1)) 'right 4 ?\s))
+  '(:eval (my/str-fill (number-to-string (+ (current-column) 1)) 'right 3 ?\s))
+
+  ;; Separator.
+  " « "
 
   ;; Buffer position.
-  " %06p "))
+  "%06p "))
