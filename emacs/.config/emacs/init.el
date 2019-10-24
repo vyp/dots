@@ -427,15 +427,6 @@
 ;; Mode Line
 ;; =========
 
-;; Themes setting a box for the mode line messes with emoji alignment when using
-;; emojis in mode line.
-(defun my/boxless-mode-line (&rest _)
-  (set-face-attribute 'mode-line nil :box nil)
-  (set-face-attribute 'mode-line-inactive nil :box nil))
-
-(general-add-advice 'load-theme :after #'my/boxless-mode-line)
-(my/boxless-mode-line)
-
 ;; Helper for mode line text.
 (defun my/str-fill (str pos max char)
   (let ((strlen (length str)))
