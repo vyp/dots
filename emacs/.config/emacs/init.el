@@ -126,6 +126,65 @@
                                 (derived-mode-p 'prog-mode))
                         (hl-line-mode)))))
 
+;; Buffer and File Related
+;; =======================
+(use-package ibuffer
+  :straight nil
+  :gfhook #'ibuffer-auto-mode
+  :init
+  (gsetq ibuffer-expert t
+         kill-buffer-query-functions
+         (remq 'process-kill-buffer-query-function
+               kill-buffer-query-functions))
+  :config
+  (general-def 'normal ibuffer-mode-map
+    "x" #'ibuffer-do-delete
+    "K" #'ibuffer-do-kill-on-deletion-marks))
+
+(use-package dired
+  :straight nil
+  :gfhook #'auto-revert-mode
+  :init
+  (put 'dired-find-alternate-file 'disabled nil))
+
+(use-package ivy
+  :init
+  (gsetq ivy-count-format ""
+         ivy-wrap t)
+  (ivy-mode)
+
+  :config
+  ;; Copy pasted everything except last line of function from ivy.el.
+  (defun my/ivy-partial-or-next-line ()
+    "Complete the minibuffer text as much as possible.
+If the text hasn't changed as a result, forward to `ivy-next-line'."
+    (interactive)
+    (cond
+     ((and completion-cycle-threshold
+           (< (length ivy--all-candidates) completion-cycle-threshold))
+      (let ((ivy-wrap t))
+        (ivy-next-line)))
+     ((and (eq (ivy-state-collection ivy-last) #'read-file-name-internal)
+           (or (and (equal ivy--directory "/")
+                    (string-match-p "\\`[^/]+:.*\\'" ivy-text))
+               (= (string-to-char ivy-text) ?/)))
+      (let ((default-directory ivy--directory)
+            dir)
+        (minibuffer-complete)
+        (setq ivy-text (ivy--input))
+        (when (setq dir (ivy-expand-file-if-directory ivy-text))
+          (ivy--cd dir))))
+     (t
+      (or (ivy-partial)
+          (when (or (eq this-command last-command)
+                    (eq ivy--length 1))
+            (ivy-next-line))))))
+
+  (general-def ivy-minibuffer-map
+    "TAB" #'my/ivy-partial-or-next-line
+    ;; <backtab> is what emacs translates S-TAB to.
+    "<backtab>" #'ivy-previous-line))
+
 ;; Keybinding Related
 ;; ==================
 (use-package defrepeater :demand t)
@@ -268,27 +327,6 @@
 (use-package which-key
   :init
   (which-key-mode))
-
-;; Buffer and File Related
-;; =======================
-(use-package ibuffer
-  :straight nil
-  :gfhook #'ibuffer-auto-mode
-  :init
-  (gsetq ibuffer-expert t
-         kill-buffer-query-functions
-         (remq 'process-kill-buffer-query-function
-               kill-buffer-query-functions))
-  :config
-  (general-def 'normal ibuffer-mode-map
-    "x" #'ibuffer-do-delete
-    "K" #'ibuffer-do-kill-on-deletion-marks))
-
-(use-package dired
-  :straight nil
-  :gfhook #'auto-revert-mode
-  :init
-  (put 'dired-find-alternate-file 'disabled nil))
 
 ;; Lisp Languages
 ;; ==============
