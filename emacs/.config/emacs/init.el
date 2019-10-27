@@ -250,8 +250,6 @@ If the text hasn't changed as a result, forward to `ivy-next-line'."
   ;;  "C-SPC" 'my/insert-two-spaces)
 
   (general-def '(normal visual) 'override
-    ;; TODO: Figure out how to make this work.
-    ;; "z RET" 'evil-scroll-line-to-top
     "\\" #'evil-switch-to-windows-last-buffer
     "'" #'evil-ex
     "g'" #'execute-extended-command
