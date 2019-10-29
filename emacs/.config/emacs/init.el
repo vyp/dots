@@ -303,6 +303,7 @@ If the text hasn't changed as a result, forward to `ivy-next-line'."
     "gs" #'evil-write)
 
   (general-my/leader
+    "as" #'counsel-apropos
     ;; bl for 'buffer list'.
     "bl" #'ibuffer
     "df" #'counsel-describe-face
