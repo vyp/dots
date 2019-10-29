@@ -11,6 +11,7 @@
  ("evil-collection" . "75ba4b14bffe2522abaa8118b61dd9aa9af9cb6f")
  ("evil-commentary" . "395f91014b69844b81660c155f42eb9b1b3d199d")
  ("evil-surround" . "5ad01dfa86424c4b22cd1dfa375f13bd8c656f43")
+ ("flx" . "46040d0b096a0340d91235561f27a959a61d0fef")
  ("general.el" . "f38fb2294bd29261374b772f765730f2fa168b3e")
  ("gnu-elpa-mirror" . "01001b660cd3677228e25a6f544d579b56845c37")
  ("gotham-theme" . "5e97554d1f9639698faedb0660e63694be33bd84")

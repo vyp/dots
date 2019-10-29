@@ -90,7 +90,7 @@
 (use-package aggressive-indent :ghook 'prog-mode-hook)
 
 (use-package hl-line
-  :after evil
+  :after (evil ivy)
   :straight nil
   :ghook
   'text-mode-hook
@@ -113,6 +113,7 @@
     nil)
 
   (general-add-advice 'describe-face :before #'my/describe-face)
+  (general-add-advice 'counsel-describe-face :before #'my/describe-face)
 
   ;; Disable hl-line-mode in evil visual state.
   (general-add-hook 'evil-visual-state-entry-hook
@@ -147,9 +148,17 @@
   :init
   (put 'dired-find-alternate-file 'disabled nil))
 
+;; Transitive library dependency that ivy uses to sort completion candidates.
+(use-package flx :demand t)
+
 (use-package ivy
   :init
   (gsetq ivy-count-format ""
+         ;; Don't insert ^ at beginning of some ivy-related commands and let flx
+         ;; sort the entries.
+         ivy-initial-inputs-alist nil
+         ;; Use fuzzy matching everywhere.
+         ivy-re-builders-alist '((t . ivy--regex-fuzzy))
          ivy-wrap t)
   (ivy-mode)
 
@@ -183,7 +192,17 @@ If the text hasn't changed as a result, forward to `ivy-next-line'."
   (general-def ivy-minibuffer-map
     "TAB" #'my/ivy-partial-or-next-line
     ;; <backtab> is what emacs translates S-TAB to.
-    "<backtab>" #'ivy-previous-line))
+    "<backtab>" #'ivy-previous-line
+    "C-j" #'ivy-next-line
+    "C-k" #'ivy-previous-line
+    "C-d" #'ivy-scroll-down-command
+    "C-u" #'ivy-scroll-up-command)
+
+  (general-def ivy-reverse-i-search-map
+    "C-k" nil)
+
+  (general-def ivy-switch-buffer-map
+    "C-k" #'ivy-previous-line))
 
 ;; Keybinding Related
 ;; ==================
@@ -252,20 +271,23 @@ If the text hasn't changed as a result, forward to `ivy-next-line'."
   (general-def '(normal visual) 'override
     "\\" #'evil-switch-to-windows-last-buffer
     "'" #'evil-ex
-    "g'" #'execute-extended-command
+    "g'" #'counsel-M-x
+    "gp" #'counsel-git-grep
     "+" #'text-scale-increase
     "-" #'text-scale-decrease
     "H" #'evil-first-non-blank
     "L" #'evil-end-of-line
     "M" #'evil-jump-item
     ;; "l" as in "list" buffers.
-    "gl" #'ibuffer
+    "gl" #'ivy-switch-buffer
     "C-n" #'next-buffer
     "C-p" #'previous-buffer
+    "C-f" #'counsel-git
     "C-h" #'evil-window-left
     "C-j" #'evil-window-down
     "C-k" #'evil-window-up
-    "C-l" #'evil-window-right)
+    "C-l" #'evil-window-right
+    "C-/" #'help-command)
 
   (general-def evil-window-map
     "d" #'evil-window-delete)
@@ -281,15 +303,21 @@ If the text hasn't changed as a result, forward to `ivy-next-line'."
     "gs" #'evil-write)
 
   (general-my/leader
-    "SPC" #'help-command
-    "d" #'dired
+    ;; bl for 'buffer list'.
+    "bl" #'ibuffer
+    "df" #'counsel-describe-face
+    "di" #'dired
+    "dw" #'evil-window-delete
     "ee" #'eval-expression
     "ei" #'my/edit-init-file
+    "ff" #'counsel-find-file
+    "fj" #'counsel-file-jump
+    "gp" #'counsel-grep
     "q" "@q"
     "sf" #'straight-freeze-versions
     "si" #'straight-use-package
     "su" #'straight-pull-all
-    "t" #'load-theme
+    "t" #'counsel-load-theme
     "w" #'evil-window-map
     "x" #'evil-command-window-ex)
 
