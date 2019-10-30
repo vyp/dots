@@ -355,6 +355,13 @@ If the text hasn't changed as a result, forward to `ivy-next-line'."
   :init
   (which-key-mode))
 
+;; Autocompletion
+;; ==============
+(use-package company
+  :ghook
+  'text-mode-hook
+  'prog-mode-hook)
+
 ;; Lisp Languages
 ;; ==============
 (use-package lispyville

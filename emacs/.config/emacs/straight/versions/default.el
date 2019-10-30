@@ -3,6 +3,7 @@
  ("annalist.el" . "134fa3f0fb91a636a1c005c483516d4b64905a6d")
  ("avy" . "f9c15c573cf6e939e7e1524e79c06ed2144006b4")
  ("cl-lib" . "e79686c4a26959c0ecba0951a7e335ed28035386")
+ ("company-mode" . "65fd3685e627b9b45535c6251e633795c4cbd43d")
  ("defrepeater.el" . "9c027a2561fe141dcfb79f75fcaee36cd0386ec1")
  ("emacs-material-theme" . "b66838d220ad380a16da1d8878936974b26f815d")
  ("emacs-which-key" . "42a25055163141165aa0269dbca69735e704825c")
