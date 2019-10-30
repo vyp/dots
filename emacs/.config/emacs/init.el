@@ -313,6 +313,8 @@ If the text hasn't changed as a result, forward to `ivy-next-line'."
     "ei" #'my/edit-init-file
     "ff" #'counsel-find-file
     "fj" #'counsel-file-jump
+    ;; Locate doesn't seem to work.
+    ;; "fl" #'counsel-locate
     "gp" #'counsel-grep
     "q" "@q"
     "sf" #'straight-freeze-versions
