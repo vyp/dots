@@ -157,8 +157,6 @@
          ;; Don't insert ^ at beginning of some ivy-related commands and let flx
          ;; sort the entries.
          ivy-initial-inputs-alist nil
-         ;; Use fuzzy matching everywhere.
-         ivy-re-builders-alist '((t . ivy--regex-fuzzy))
          ivy-wrap t)
   (ivy-mode)
 
