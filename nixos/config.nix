@@ -88,6 +88,7 @@
     heroku
     htop
     idris
+    imagemagick
     imv
     irssi
     janet
