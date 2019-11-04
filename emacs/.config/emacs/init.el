@@ -364,9 +364,13 @@ If the text hasn't changed as a result, forward to `ivy-next-line'."
 
 ;; Lisp Languages
 ;; ==============
+(use-package racket-mode)
+
 (use-package lispyville
   :after evil
-  :ghook #'emacs-lisp-mode-hook
+  :ghook
+  #'emacs-lisp-mode-hook
+  #'racket-mode-hook
   :config
   (lispyville-set-key-theme
    '(operators c-w prettify (atom-motions t) slurp/barf-cp escape))
