@@ -68,6 +68,7 @@
   # --------
   environment.systemPackages = with pkgs; [
     acpi
+    alacritty
     aria
     bibutils
     chromium
