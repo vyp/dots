@@ -82,6 +82,7 @@
     fd
     ffmpeg
     file
+    firefox
     git
     ghc
     gnumake
