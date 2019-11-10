@@ -72,9 +72,9 @@ herbstclient set window_gap 0
 herbstclient set window_border_width 6
 herbstclient set window_border_inner_width 0
 
-herbstclient set window_border_active_color '#ff4ea3'
-herbstclient set window_border_normal_color '#d18aff'
-herbstclient set window_border_urgent_color '#ef2929'
+herbstclient set window_border_active_color '#d1d3d4'
+herbstclient set window_border_normal_color '#eeeeee'
+herbstclient set window_border_urgent_color '#d7005f'
 
 # herbstclient pad 0 42
 herbstclient pad 0 30

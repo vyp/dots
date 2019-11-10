@@ -228,7 +228,7 @@ au filetype python call PythonOptions()
 "   - Block for normal mode.
 "   - Bar for insert mode.
 
-if &term =~ "xterm\\|rxvt\\|st"
+if &term =~ "xterm\\|rxvt\\|st\\|alacritty"
   " Insert mode shape.
   let &t_SI = "\x1b[\x36 q"
   " Normal mode shape.
