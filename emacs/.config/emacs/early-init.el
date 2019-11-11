@@ -3,6 +3,8 @@
 (setq auto-save-default nil
       package-enable-at-startup nil)
 
+(setq-default major-mode 'text-mode)
+
 ;; Disable some gui elements.
 (push '(tool-bar-lines . 0) default-frame-alist)
 (push '(menu-bar-lines . 0) default-frame-alist)
