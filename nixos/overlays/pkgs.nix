@@ -1,6 +1,8 @@
 self: super:
 
 {
+  alacritty = import ../pkgs/alacritty;
+
   # deer = import ../pkgs/deer;
 
   # eb-garamond12 = import ../pkgs/eb-garamond12;
