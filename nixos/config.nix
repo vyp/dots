@@ -99,6 +99,7 @@
     mplayer
     mpv
     # mytexlive
+    next
     nixUnstable
     nodejs
     nodePackages.typescript
