@@ -86,6 +86,7 @@
     git
     ghc
     gnumake
+    gnupg
     guile
     heroku
     htop
@@ -100,6 +101,7 @@
     mpv
     # mytexlive
     next
+    nix-prefetch-github
     nixUnstable
     nodejs
     nodePackages.typescript
