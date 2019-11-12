@@ -1,0 +1,30 @@
+sanitise tridactyllocal tridactylsync
+
+bind d scrollpage 0.5
+bind u scrollpage -0.5
+bind D tabclose
+bind U undo
+bind <c-d> scrollpage 0.5
+
+bind h tabprev
+bind l tabnext
+
+bind ' fillcmdline_notrail
+
+bind \ tab #
+
+bind H scrollpx -50
+bind L scrollpx 50
+
+unbind <<
+unbind >>
+
+bind < tabmove -1
+bind > tabmove +1
+
+bind . forward
+bind , back
+
+bind <space> fillcmdline tab
+
+set smoothscroll true
