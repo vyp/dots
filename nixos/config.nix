@@ -43,6 +43,8 @@
     "nixpkgs=/home/u/nixpkgs"
   ];
 
+  nix.useSandbox = true;
+
   nixpkgs.overlays = [
     (import ./overlays/pkgs.nix)
   ];
