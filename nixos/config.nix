@@ -90,6 +90,7 @@
     gnumake
     gnupg
     guile
+    herbstluftwm
     heroku
     htop
     idris
@@ -173,20 +174,22 @@
 
   # Display Manager
   # ---------------
+  services.xserver.displayManager.startx.enable = true;
+
   # Put in a separate file so you don't have to do `nixos-rebuild' everytime
   # you change the session commands.
-  services.xserver.displayManager.sessionCommands = ". ~/dots/x/init";
-  services.xserver.displayManager.slim = {
-    enable = true;
-    # Removes ugly "Session: [...]" text by placing it out of screen.
-    extraConfig = "session_y 110%";
-    theme = pkgs.fetchFromGitHub {
-      owner = "naglis";
-      repo = "slim-minimal";
-      rev = "65759e026e8de1f957889e81ca6faf3b8c2167a7";
-      sha256 = "0ggkxgx5bdf3yvgfhs594v1h6nkjq6df4kfg5d51jpga0989c28y";
-    };
-  };
+  # services.xserver.displayManager.sessionCommands = ". ~/dots/x/init";
+  # services.xserver.displayManager.slim = {
+  #   enable = true;
+  #   # Removes ugly "Session: [...]" text by placing it out of screen.
+  #   extraConfig = "session_y 110%";
+  #   theme = pkgs.fetchFromGitHub {
+  #     owner = "naglis";
+  #     repo = "slim-minimal";
+  #     rev = "65759e026e8de1f957889e81ca6faf3b8c2167a7";
+  #     sha256 = "0ggkxgx5bdf3yvgfhs594v1h6nkjq6df4kfg5d51jpga0989c28y";
+  #   };
+  # };
 
   # Touchpad
   # --------
@@ -200,7 +203,7 @@
 
   # Window Manager
   # --------------
-  services.xserver.windowManager.herbstluftwm.enable = true;
+  # services.xserver.windowManager.herbstluftwm.enable = true;
 
   # Users
   # =====
