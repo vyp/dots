@@ -90,6 +90,7 @@
     gnumake
     gnupg
     guile
+    haskellPackages.hindent
     herbstluftwm
     heroku
     htop
