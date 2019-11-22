@@ -18,6 +18,7 @@
  ("gnu-elpa-mirror" . "aff85e0b92a41ee6efce6caf35277bc1ed11ff74")
  ("gotham-theme" . "02a7c7cd280747737792f4620b0df2e0b826e2c7")
  ("goto-chg" . "1829a13026c597e358f716d2c7793202458120b5")
+ ("haskell-mode" . "f63f315d538c3de6fbc05d872cd6fd733bbf19fc")
  ("hydra" . "d38c63d3d85a06fd34b28626d7ebd97bb05db48c")
  ("iedit" . "e2c100cdd67b7d82835d281ac2cd1bf4f374bc8f")
  ("lispy" . "1705e4931e8db8e43740a4dfc9ace104a6affc4f")
