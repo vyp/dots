@@ -90,7 +90,6 @@
     gnumake
     gnupg
     guile
-    haskellPackages.hindent
     herbstluftwm
     heroku
     htop
@@ -109,6 +108,7 @@
     nixUnstable
     nodejs
     nodePackages.typescript
+    ormolu
     p7zip
     polybar
     pqiv
