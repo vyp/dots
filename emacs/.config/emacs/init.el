@@ -87,7 +87,7 @@
 (general-add-hook 'text-mode-hook #'my/text-mode-functions)
 (general-add-hook 'prog-mode-hook #'my/text-mode-functions)
 
-(use-package aggressive-indent :ghook 'prog-mode-hook)
+(use-package aggressive-indent)
 
 (use-package hl-line
   :after (evil ivy)
@@ -371,6 +371,8 @@ If the text hasn't changed as a result, forward to `ivy-next-line'."
   :ghook
   #'emacs-lisp-mode-hook
   #'racket-mode-hook
+  :gfhook
+  #'aggressive-indent-mode
   :config
   (lispyville-set-key-theme
    '(operators c-w prettify (atom-motions t) slurp/barf-cp escape))
