@@ -441,6 +441,10 @@ If the text hasn't changed as a result, forward to `ivy-next-line'."
   (my/rainbow-delimiters-default-faces)
   (my/rainbow-delimiters-faces))
 
+;; Pure Functional Languages
+;; =========================
+(use-package haskell-mode)
+
 ;; Fonts
 ;; =====
 (defun my/set-fonts ()
