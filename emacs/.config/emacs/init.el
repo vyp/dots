@@ -541,10 +541,13 @@ If the text hasn't changed as a result, forward to `ivy-next-line'."
 
   ;; Major mode.
   '(:eval (propertize
-           (let ((mode (downcase mode-name)))
+           (let ((mode (downcase (if (listp mode-name)
+                                     (car mode-name)
+                                   mode-name))))
              (cond
               ((string= mode "emacs-lisp") "elisp")
               ((string= mode "shell-script") "shell")
+              ((string= mode "javascript") "js")
               (t mode)))
            'face 'italic))
 
