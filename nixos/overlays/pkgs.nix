@@ -15,10 +15,10 @@ self: super:
     (self.emacs26.override { srcRepo = true; }) (attrs: rec {
       name = "emacs-${version}${versionModifier}";
       version = "27.0";
-      versionModifier = ".50";
+      versionModifier = ".91";
       src = fetchGit {
         url = "git://git.sv.gnu.org/emacs.git";
-        rev = "9d829b8be5b86668d5165b9d0c0cdc392b558dd3";
+        rev = "c36c5a3dedbb2e0349be1b6c3b7567ea7b594f1c";
       };
 
       patches = [];
