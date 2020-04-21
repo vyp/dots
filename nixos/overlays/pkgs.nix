@@ -1,7 +1,7 @@
 self: super:
 
 {
-  alacritty = import ../pkgs/alacritty;
+  # alacritty = import ../pkgs/alacritty;
 
   # deer = import ../pkgs/deer;
 
