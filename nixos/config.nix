@@ -28,7 +28,7 @@
   # ====================
   console.font = "Lat2-Terminus16";
   console.keyMap = "us";
-  i18n.defaultLocale = "en_US.UTF-8";;
+  i18n.defaultLocale = "en_US.UTF-8";
 
   # Time Zone
   # =========
@@ -107,7 +107,7 @@
     nodejs
     nodePackages.typescript
     ormolu
-    p7zip
+    # p7zip # abandoned
     polybar
     pqiv
     purescript
@@ -116,6 +116,7 @@
     setroot
     stack
     stow
+    streamlink
     sxhkd
     sxiv
     syncthing
@@ -124,6 +125,7 @@
     tree
     udiskie
     udisks
+    unar
     unzip
     vimHugeX
     vimPlugins.commentary
