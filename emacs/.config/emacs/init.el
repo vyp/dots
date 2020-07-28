@@ -447,6 +447,13 @@ If the text hasn't changed as a result, forward to `ivy-next-line'."
 ;; =========================
 (use-package haskell-mode)
 
+;; Other Languages
+;; ===============
+(use-package js-mode
+  :straight nil
+  :init
+  (gsetq js-indent-level 2))
+
 ;; Fonts
 ;; =====
 (defun my/set-fonts ()
