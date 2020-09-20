@@ -1,12 +1,9 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, inputs, name, ... }:
 
 {
   # Hardware Configuration
   # ======================
-  imports =
-    [
-      ../../../../etc/nixos/hardware-configuration.modified.nix
-    ];
+  imports = [ (./devices + "/${name}.nix") ];
 
   # Examples
   # --------
@@ -21,8 +18,8 @@
 
   # Wireless
   # ========
-  networking.hostName = "nixos";
-  networking.wireless.enable = true;
+  # networking.hostName = "nixos";
+  # networking.wireless.enable = true;
 
   # Internationalisation
   # ====================
@@ -36,16 +33,23 @@
 
   # Nix Packages
   # ============
-  nix.nixPath = [
-    "nixos-config=/home/u/dots/nixos/config.nix"
-    "nixpkgs=/home/u/nixpkgs"
-  ];
+  # nix.nixPath = [
+  #   "nixos-config=/home/u/dots/nixos/config.nix"
+  #   "nixpkgs=/home/u/nixpkgs"
+  # ];
 
+  nix.extraOptions = ''
+    experimental-features = nix-command flakes
+  '';
+  nix.package = pkgs.nixUnstable;
+  # Pin nixpkgs to the version that built the system so that for example, `nix
+  # shell nixpkgs#<package>` will likely work more efficiently.
+  nix.registry.nixpkgs.flake = inputs.nixpkgs;
   nix.useSandbox = true;
 
-  nixpkgs.overlays = [
-    (import ./overlays/pkgs.nix)
-  ];
+  # nixpkgs.overlays = [
+  #   (import ./overlays/pkgs.nix)
+  # ];
 
   # Fonts
   # -----
@@ -53,6 +57,7 @@
     # Might be from overlays.
     # eb-garamond12
     inconsolata
+    iosevka
     lato
     noto-fonts
     noto-fonts-emoji
@@ -71,10 +76,10 @@
     alacritty
     aria
     bibutils
-    chromium
+    # chromium
     compton
     curl
-    deer
+    # deer
     emacs
     entr
     escrotum
@@ -95,7 +100,7 @@
     imagemagick
     imv
     irssi
-    janet
+    lm_sensors
     maim
     mediainfo
     mplayer
@@ -103,18 +108,17 @@
     # mytexlive
     next
     nix-prefetch-github
-    nixUnstable
-    nodejs
-    nodePackages.typescript
+    # nixUnstable
     ormolu
     # p7zip # abandoned
     polybar
     pqiv
     purescript
     racket
+    renpy
     scrot
     setroot
-    stack
+    # stack
     stow
     streamlink
     sxhkd
@@ -126,12 +130,14 @@
     udiskie
     udisks
     unar
+    ungoogled-chromium
     unzip
     vimHugeX
     vimPlugins.commentary
     vimPlugins.repeat
     vimPlugins.surround
     wget
+    wl-clipboard
     xlsfonts
     xorg.mkfontdir
     xorg.mkfontscale
@@ -162,20 +168,20 @@
 
   # Interception Tools
   # ------------------
-  services.interception-tools.enable = true;
-  services.interception-tools.plugins =
-    [ pkgs.interception-tools-plugins.personal ];
-  services.interception-tools.udevmonConfig =
-    ../interception-tools/udevmon.yaml;
+  # services.interception-tools.enable = true;
+  # services.interception-tools.plugins =
+  #   [ pkgs.interception-tools-plugins.personal ];
+  # services.interception-tools.udevmonConfig =
+  #   ../interception-tools/udevmon.yaml;
 
   # X Windows
   # ---------
-  services.xserver.enable = true;
-  services.xserver.layout = "us";
+  # services.xserver.enable = true;
+  # services.xserver.layout = "us";
 
   # Display Manager
   # ---------------
-  services.xserver.displayManager.startx.enable = true;
+  # services.xserver.displayManager.startx.enable = true;
 
   # Put in a separate file so you don't have to do `nixos-rebuild' everytime
   # you change the session commands.
@@ -194,24 +200,28 @@
 
   # Touchpad
   # --------
-  services.xserver.synaptics = {
-    enable = true;
-    twoFingerScroll = true;
-    horizontalScroll = true;
-    horizTwoFingerScroll = true;
-    vertTwoFingerScroll = true;
-  };
+  # services.xserver.synaptics = {
+  #   enable = true;
+  #   twoFingerScroll = true;
+  #   horizontalScroll = true;
+  #   horizTwoFingerScroll = true;
+  #   vertTwoFingerScroll = true;
+  # };
 
   # Window Manager
   # --------------
   # services.xserver.windowManager.herbstluftwm.enable = true;
+  programs.sway.enable = true;
 
   # Users
   # =====
   users.defaultUserShell = pkgs.zsh;
-  users.extraUsers.u = {
+  users.users.u = {
     extraGroups = [ "wheel" ];
     isNormalUser = true;
     uid = 1000;
   };
+
+  # Let `nixos-version --json` know about the Git revision of this flake.
+  # system.configurationRevision = inputs.nixpkgs.lib.mkIf (self ? rev) self.rev;
 }
