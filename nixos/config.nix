@@ -1,9 +1,9 @@
-{ config, pkgs, lib, inputs, name, ... }:
+{ config, pkgs, lib, flakeInputs, deviceName, ... }:
 
 {
   # Hardware Configuration
   # ======================
-  imports = [ (./devices + "/${name}.nix") ];
+  imports = [ (./devices + "/${deviceName}.nix") ];
 
   # Examples
   # --------
@@ -44,7 +44,7 @@
   nix.package = pkgs.nixUnstable;
   # Pin nixpkgs to the version that built the system so that for example, `nix
   # shell nixpkgs#<package>` will likely work more efficiently.
-  nix.registry.nixpkgs.flake = inputs.nixpkgs;
+  nix.registry.nixpkgs.flake = flakeInputs.nixpkgs;
   nix.useSandbox = true;
 
   # nixpkgs.overlays = [
@@ -221,7 +221,4 @@
     isNormalUser = true;
     uid = 1000;
   };
-
-  # Let `nixos-version --json` know about the Git revision of this flake.
-  # system.configurationRevision = inputs.nixpkgs.lib.mkIf (self ? rev) self.rev;
 }
