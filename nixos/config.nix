@@ -47,9 +47,9 @@
   nix.registry.nixpkgs.flake = flakeInputs.nixpkgs;
   nix.useSandbox = true;
 
-  # nixpkgs.overlays = [
-  #   (import ./overlays/pkgs.nix)
-  # ];
+  nixpkgs.overlays = [
+    (import ./overlay.nix)
+  ];
 
   # Fonts
   # -----
