@@ -1,4 +1,4 @@
-with import <nixpkgs> {};
+{ stdenv, gcc }:
 
 stdenv.mkDerivation rec {
   name = "interception-tools-plugins-${version}";

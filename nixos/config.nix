@@ -103,6 +103,7 @@
     lm_sensors
     maim
     mediainfo
+    megatools
     mplayer
     mpv
     # mytexlive
@@ -168,11 +169,11 @@
 
   # Interception Tools
   # ------------------
-  # services.interception-tools.enable = true;
-  # services.interception-tools.plugins =
-  #   [ pkgs.interception-tools-plugins.personal ];
-  # services.interception-tools.udevmonConfig =
-  #   ../interception-tools/udevmon.yaml;
+  services.interception-tools.enable = true;
+  services.interception-tools.plugins =
+    [ pkgs.interception-tools-plugins.personal ];
+  services.interception-tools.udevmonConfig =
+    ../interception-tools/udevmon.yaml;
 
   # X Windows
   # ---------

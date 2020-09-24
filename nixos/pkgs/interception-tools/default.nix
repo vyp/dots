@@ -1,4 +1,4 @@
-with import <nixpkgs> {};
+{ stdenv, fetchurl, pkgconfig, cmake, libyamlcpp, libevdev, udev }:
 
 stdenv.mkDerivation rec {
   name = "interception-tools-${version}";
@@ -9,8 +9,8 @@ stdenv.mkDerivation rec {
     sha256 = "14g4pphvylqdb922va322z1pbp12ap753hcf7zf9sii1ikvif83j";
   };
 
-  nativeBuildInputs = [ pkgconfig ];
-  buildInputs = [ cmake libevdev libudev libyamlcpp ];
+  nativeBuildInputs = [ cmake pkgconfig ];
+  buildInputs = [ libevdev udev libyamlcpp ];
 
   prePatch = ''
     substituteInPlace CMakeLists.txt --replace \
