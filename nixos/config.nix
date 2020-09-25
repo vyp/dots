@@ -76,6 +76,7 @@
     alacritty
     aria
     bibutils
+    chatterino2
     # chromium
     compton
     curl
