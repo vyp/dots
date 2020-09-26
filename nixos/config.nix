@@ -113,6 +113,7 @@
     # nixUnstable
     ormolu
     # p7zip # abandoned
+    poetry
     polybar
     pqiv
     purescript
