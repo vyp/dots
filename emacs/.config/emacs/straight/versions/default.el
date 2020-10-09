@@ -1,6 +1,7 @@
 (("ace-window" . "c7cb315c14e36fded5ac4096e158497ae974bec9")
  ("aggressive-indent-mode" . "b0ec0047aaae071ad1647159613166a253410a63")
  ("annalist.el" . "134fa3f0fb91a636a1c005c483516d4b64905a6d")
+ ("apheleia" . "38488e0ef9d75189076f76be295144353d25c58c")
  ("avy" . "bbf1e7339eba06784dfe86643bb0fbddf5bb0342")
  ("company-mode" . "d5912821e7798a51e15586cc75818c7c18c21b7d")
  ("defrepeater.el" . "9c027a2561fe141dcfb79f75fcaee36cd0386ec1")

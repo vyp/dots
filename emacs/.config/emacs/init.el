@@ -89,6 +89,13 @@
 
 (use-package aggressive-indent)
 
+(use-package apheleia
+  :straight (:host github :repo "raxod502/apheleia")
+  :init
+  (gsetq apheleia-formatters
+         '((prettier . ("prettier" "--no-semi" file))))
+  (apheleia-global-mode +1))
+
 (use-package hl-line
   :after (evil ivy)
   :straight nil

@@ -111,6 +111,7 @@
     next
     nix-prefetch-github
     # nixUnstable
+    nodePackages.prettier
     ormolu
     # p7zip # abandoned
     poetry
@@ -134,6 +135,7 @@
     udisks
     unar
     ungoogled-chromium
+    unrpa
     unzip
     vimHugeX
     vimPlugins.commentary
