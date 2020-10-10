@@ -93,8 +93,7 @@
   :straight (:host github :repo "raxod502/apheleia")
   :init
   (gsetq apheleia-formatters
-         '((prettier . ("prettier" "--no-semi" file))))
-  (apheleia-global-mode +1))
+         '((prettier . ("prettier" "--no-semi" "--single-quote" file)))))
 
 (use-package hl-line
   :after (evil ivy)
@@ -308,6 +307,7 @@ If the text hasn't changed as a result, forward to `ivy-next-line'."
     "gs" #'evil-write)
 
   (general-my/leader
+    "af" #'apheleia-format-buffer
     "as" #'counsel-apropos
     ;; bl for 'buffer list'.
     "bl" #'ibuffer
