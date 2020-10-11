@@ -93,7 +93,18 @@
   :straight (:host github :repo "raxod502/apheleia")
   :init
   (gsetq apheleia-formatters
-         '((prettier . ("prettier" "--no-semi" "--single-quote" file)))))
+         '((prettier
+            . ("npx"
+               "prettierx"
+               "--generator-star-spacing"
+               "--space-before-function-paren"
+               "--single-quote"
+               "--jsx-single-quote"
+               "--no-semi"
+               "--yield-star-spacing"
+               "--no-align-ternary-lines"
+               "--trailing-comma" "none"
+               file)))))
 
 (use-package hl-line
   :after (evil ivy)

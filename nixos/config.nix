@@ -111,7 +111,7 @@
     next
     nix-prefetch-github
     # nixUnstable
-    nodePackages.prettier
+    nodejs
     ormolu
     # p7zip # abandoned
     poetry
