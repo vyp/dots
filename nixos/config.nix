@@ -93,6 +93,7 @@
     ghc
     gnumake
     gnupg
+    grim
     guile
     herbstluftwm
     heroku
@@ -113,7 +114,7 @@
     # nixUnstable
     nodejs
     ormolu
-    # p7zip # abandoned
+    p7zip # abandoned
     poetry
     polybar
     pqiv
@@ -122,6 +123,7 @@
     renpy
     scrot
     setroot
+    slurp
     # stack
     stow
     streamlink

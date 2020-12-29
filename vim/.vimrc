@@ -259,7 +259,7 @@ au BufEnter * if exists('b:winview') && !&diff | call winrestview(b:winview) |
 command! SynName echo synIDattr(synID(line("."), col("."), 1), "name")
 
 " Colors {{{1
-source ~/dl/repos/disco.vim/colors/disco.vim
+" source ~/dl/repos/disco.vim/colors/disco.vim
 hi cursorline cterm=NONE
 hi comment cterm=NONE
 hi colorcolumn ctermbg=NONE ctermfg=red
