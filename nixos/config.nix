@@ -98,7 +98,7 @@
     herbstluftwm
     heroku
     htop
-    idris
+    # idris
     imagemagick
     imv
     irssi
@@ -109,7 +109,7 @@
     mplayer
     mpv
     # mytexlive
-    next
+    # next
     nix-prefetch-github
     # nixUnstable
     nodejs

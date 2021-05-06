@@ -1,7 +1,7 @@
 {
   description = "system config";
 
-  inputs.nixpkgs.url = github:nixos/nixpkgs-channels/nixos-unstable;
+  inputs.nixpkgs.url = github:nixos/nixpkgs/nixos-unstable;
 
   outputs = { nixpkgs, nix, self, ... }@inputs: {
     nixosConfigurations = with nixpkgs.lib;
