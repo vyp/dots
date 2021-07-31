@@ -18,6 +18,7 @@
   boot.loader.efi.canTouchEfiVariables = true;
   networking.hostName = "station";
   networking.wireless.enable = true;
+  networking.wireless.interfaces = [ "wlp3s0f0u4" ];
   networking.useDHCP = false;
   # networking.interfaces.enp34s0.useDHCP = true;
   networking.interfaces.wlp3s0f0u4.useDHCP = true;

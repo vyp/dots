@@ -1,4 +1,4 @@
-{ stdenv, fetchurl, pkgconfig, cmake, libyamlcpp, libevdev, udev }:
+{ lib, stdenv, fetchurl, pkgconfig, cmake, libyamlcpp, libevdev, udev }:
 
 stdenv.mkDerivation rec {
   name = "interception-tools-${version}";
@@ -20,7 +20,7 @@ stdenv.mkDerivation rec {
 
   patches = [ ./fix-udevmon-configuration-job-path.patch ];
 
-  meta = with stdenv.lib; {
+  meta = with lib; {
     description = "A minimal composable infrastructure on top of libudev and libevdev";
     homepage = "https://gitlab.com/interception/linux/tools";
     license = licenses.gpl3;
