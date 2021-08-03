@@ -113,6 +113,7 @@
     nix-prefetch-github
     # nixUnstable
     nodejs
+    nodePackages.node2nix
     ormolu
     p7zip # abandoned
     poetry
@@ -133,6 +134,7 @@
     termite
     tor-browser-bundle-bin
     tree
+    # ttfautohint
     udiskie
     udisks
     unar
