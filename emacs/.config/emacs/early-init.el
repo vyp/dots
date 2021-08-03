@@ -11,4 +11,4 @@
 (push '(vertical-scroll-bars) default-frame-alist)
 
 ;; Main monospace font.
-(push '(font . "Iosevka-12") default-frame-alist)
+(push '(font . "Iosevka Custom-12") default-frame-alist)
