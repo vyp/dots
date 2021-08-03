@@ -58,6 +58,7 @@
     # eb-garamond12
     inconsolata
     iosevka
+    iosevka-custom
     lato
     noto-fonts
     noto-fonts-emoji

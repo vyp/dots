@@ -34,6 +34,8 @@ self: super:
     personal = super.callPackage ../interception-tools/plugins { };
   };
 
+  iosevka-custom = super.callPackage ./pkgs/iosevka-custom { };
+
   # iosevka = super.iosevka.override {
   #   privateBuildPlan = {
   #     family = "Iosevka Custom";
