@@ -20,7 +20,7 @@ stdenv.mkDerivation rec {
 
   nativeBuildInputs = [ nodejs nodeIosevka ttfautohint-nox ];
 
-  buildPlan = builtins.readFile ./private-build-plans.toml;
+  buildPlan = builtins.readFile ../../../iosevka/private-build-plans.toml;
   passAsFile = [ "buildPlan" ];
 
   configurePhase = ''
