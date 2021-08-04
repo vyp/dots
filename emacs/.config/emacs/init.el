@@ -326,7 +326,7 @@ If the text hasn't changed as a result, forward to `ivy-next-line'."
     "df" #'counsel-describe-face
     "di" #'dired
     "dw" #'evil-window-delete
-    "ee" #'eval-expression
+    "ev" #'eval-expression
     "ei" #'my/edit-init-file
     "ff" #'counsel-find-file
     "fj" #'counsel-file-jump
