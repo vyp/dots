@@ -517,7 +517,7 @@ If the text hasn't changed as a result, forward to `ivy-next-line'."
 
 (defun my/custom-theme-overrides (&rest _)
   (pcase my/current-theme
-    ('punpun-dark
+    ((or 'punpun-dark 'punpun-light)
      (progn
        (set-face-attribute 'font-lock-function-name-face nil
                            :slant 'normal
@@ -528,7 +528,17 @@ If the text hasn't changed as a result, forward to `ivy-next-line'."
        (set-face-attribute 'font-lock-variable-name-face nil
                            :slant 'normal
                            :weight 'bold)
-       (set-face-foreground 'font-lock-comment-face "#3a3a3a")))
+       (if (eq my/current-theme 'punpun-dark)
+           (progn
+             (set-face-foreground 'font-lock-comment-face "#3a3a3a")
+             (set-face-attribute 'show-paren-match nil
+                                 :foreground "#080808"
+                                 :background "#949494"))
+         (progn
+           (set-face-foreground 'font-lock-comment-face "#b2b2b2")
+           (set-face-attribute 'show-paren-match nil
+                               :foreground "#eeeeee"
+                               :background "#585858")))))
     ('sexy-monochrome (set-face-foreground 'mode-line-inactive "#616161"))
     ('user nil)))
 
