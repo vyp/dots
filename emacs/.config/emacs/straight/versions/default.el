@@ -30,6 +30,7 @@
  ("melpa" . "2742abfd12a3d10c1149f867233dfa2b2ab0d1dd")
  ("notink-theme" . "6b58184bb51970b3e121d2db21eae8b4e941523d")
  ("pos-tip" . "179cc126b363f72ca12fab1e0dc462ce0ee79742")
+ ("punpun-theme" . "7026684cd568cb691af3ced5de14c375fe6f5a1a")
  ("racket-mode" . "ef9a3fed943495ec2b0c8258f8e00307d6434b17")
  ("rainbow-delimiters" . "d576e6694ad3a3e88b2bb1363305b38fa364c149")
  ("s.el" . "08661efb075d1c6b4fa812184c1e5e90c08795a9")

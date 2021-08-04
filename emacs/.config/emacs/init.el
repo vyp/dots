@@ -423,51 +423,10 @@ If the text hasn't changed as a result, forward to `ivy-next-line'."
     "{" #'evil-backward-paragraph
     "}" #'evil-forward-paragraph))
 
-;; Not necessarily only for lisp languages but main use case is for lisp
-;; languages where this really helps.
-(use-package rainbow-delimiters
-  :ghook
-  'prog-mode-hook
-  :config
-  (defun my/rainbow-delimiters-default-faces (&rest _)
-    ;; Default rainbow delimiters colours do not differentiate themselves
-    ;; enough.
-    (unless custom-enabled-themes
-      (set-face-foreground 'rainbow-delimiters-depth-1-face "dark orange")
-      (set-face-foreground 'rainbow-delimiters-depth-2-face "deep pink")
-      (set-face-foreground 'rainbow-delimiters-depth-3-face "chartreuse")
-      (set-face-foreground 'rainbow-delimiters-depth-4-face "deep sky blue")
-      (set-face-foreground 'rainbow-delimiters-depth-5-face "goldenrod")
-      (set-face-foreground 'rainbow-delimiters-depth-6-face "orchid")
-      (set-face-foreground 'rainbow-delimiters-depth-7-face "spring green")
-      (set-face-foreground 'rainbow-delimiters-depth-8-face "sienna")
-      (set-face-foreground 'rainbow-delimiters-depth-9-face "red")))
-
-  (defun my/rainbow-delimiters-faces (&rest _)
-    ;; Always bold delimiters regardless of theme, as they are easier to see and
-    ;; identify for me.
-    (set-face-bold 'rainbow-delimiters-depth-1-face t)
-    (set-face-bold 'rainbow-delimiters-depth-2-face t)
-    (set-face-bold 'rainbow-delimiters-depth-3-face t)
-    (set-face-bold 'rainbow-delimiters-depth-4-face t)
-    (set-face-bold 'rainbow-delimiters-depth-5-face t)
-    (set-face-bold 'rainbow-delimiters-depth-6-face t)
-    (set-face-bold 'rainbow-delimiters-depth-7-face t)
-    (set-face-bold 'rainbow-delimiters-depth-8-face t)
-    (set-face-bold 'rainbow-delimiters-depth-9-face t))
-
-  (general-add-advice 'disable-theme
-                      :after #'my/rainbow-delimiters-default-faces)
-  (general-add-advice 'load-theme :after #'my/rainbow-delimiters-faces)
-  (my/rainbow-delimiters-default-faces)
-  (my/rainbow-delimiters-faces))
-
-;; Pure Functional Languages
-;; =========================
-(use-package haskell-mode)
-
 ;; Other Languages
 ;; ===============
+(use-package haskell-mode)
+
 (use-package js-mode
   :straight nil
   :init
@@ -505,6 +464,76 @@ If the text hasn't changed as a result, forward to `ivy-next-line'."
 (general-add-advice 'disable-theme :after #'my/reset-current-theme)
 (general-add-advice 'load-theme :after #'my/update-current-theme)
 
+(use-package rainbow-delimiters
+  :ghook
+  'prog-mode-hook
+  :config
+  (defun my/rainbow-delimiters-default-faces (&rest _)
+    ;; Default rainbow delimiters colours do not differentiate themselves
+    ;; enough.
+    (unless custom-enabled-themes
+      (set-face-foreground 'rainbow-delimiters-depth-1-face "dark orange")
+      (set-face-foreground 'rainbow-delimiters-depth-2-face "deep pink")
+      (set-face-foreground 'rainbow-delimiters-depth-3-face "chartreuse")
+      (set-face-foreground 'rainbow-delimiters-depth-4-face "deep sky blue")
+      (set-face-foreground 'rainbow-delimiters-depth-5-face "goldenrod")
+      (set-face-foreground 'rainbow-delimiters-depth-6-face "orchid")
+      (set-face-foreground 'rainbow-delimiters-depth-7-face "spring green")
+      (set-face-foreground 'rainbow-delimiters-depth-8-face "sienna")
+      (set-face-foreground 'rainbow-delimiters-depth-9-face "red"))
+
+    (pcase my/current-theme
+      ('sexy-monochrome
+       (progn
+         (set-face-foreground 'rainbow-delimiters-depth-1-face "#93a8c6")
+         (set-face-foreground 'rainbow-delimiters-depth-2-face "#616161")
+         (set-face-foreground 'rainbow-delimiters-depth-3-face "#93a8c6")
+         (set-face-foreground 'rainbow-delimiters-depth-4-face "#616161")
+         (set-face-foreground 'rainbow-delimiters-depth-5-face "#93a8c6")
+         (set-face-foreground 'rainbow-delimiters-depth-6-face "#616161")
+         (set-face-foreground 'rainbow-delimiters-depth-7-face "#93a8c6")
+         (set-face-foreground 'rainbow-delimiters-depth-8-face "#616161")
+         (set-face-foreground 'rainbow-delimiters-depth-9-face "#93a8c6")))
+      ('user nil)))
+
+  (defun my/rainbow-delimiters-faces (&rest _)
+    ;; Always bold delimiters regardless of theme, as they are easier to see and
+    ;; identify for me.
+    (set-face-bold 'rainbow-delimiters-depth-1-face t)
+    (set-face-bold 'rainbow-delimiters-depth-2-face t)
+    (set-face-bold 'rainbow-delimiters-depth-3-face t)
+    (set-face-bold 'rainbow-delimiters-depth-4-face t)
+    (set-face-bold 'rainbow-delimiters-depth-5-face t)
+    (set-face-bold 'rainbow-delimiters-depth-6-face t)
+    (set-face-bold 'rainbow-delimiters-depth-7-face t)
+    (set-face-bold 'rainbow-delimiters-depth-8-face t)
+    (set-face-bold 'rainbow-delimiters-depth-9-face t))
+
+  (general-add-advice 'disable-theme
+                      :after #'my/rainbow-delimiters-default-faces)
+  (general-add-advice 'load-theme :after #'my/rainbow-delimiters-faces)
+  (my/rainbow-delimiters-default-faces)
+  (my/rainbow-delimiters-faces))
+
+(defun my/custom-theme-overrides (&rest _)
+  (pcase my/current-theme
+    ('punpun-dark
+     (progn
+       (set-face-attribute 'font-lock-function-name-face nil
+                           :slant 'normal
+                           :weight 'bold)
+       (set-face-attribute 'font-lock-constant-face nil
+                           :slant 'normal
+                           :weight 'bold)
+       (set-face-attribute 'font-lock-variable-name-face nil
+                           :slant 'normal
+                           :weight 'bold)
+       (set-face-foreground 'font-lock-comment-face "#3a3a3a")))
+    ('sexy-monochrome (set-face-foreground 'mode-line-inactive "#616161"))
+    ('user nil)))
+
+(general-add-advice 'load-theme :after #'my/custom-theme-overrides)
+
 (use-package almost-mono-themes)
 (use-package flucui-themes)
 (use-package gotham-theme)
@@ -512,17 +541,18 @@ If the text hasn't changed as a result, forward to `ivy-next-line'."
 (use-package metalheart-theme)
 (use-package notink-theme)
 
-(use-package sexy-monochrome-theme
+(use-package punpun-theme
   :init
   (if (daemonp)
       (general-add-hook 'after-make-frame-functions
                         (lambda (frame)
                           (with-selected-frame frame
                             (when (display-graphic-p frame)
-                              (load-theme 'sexy-monochrome 'no-confirm)))))
+                              (load-theme 'punpun-dark 'no-confirm)))))
     (when (display-graphic-p)
-      (load-theme 'sexy-monochrome 'no-confirm))))
+      (load-theme 'punpun-dark 'no-confirm))))
 
+(use-package sexy-monochrome-theme)
 (use-package sketch-themes)
 (use-package timu-spacegrey-theme)
 
