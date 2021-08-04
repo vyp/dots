@@ -505,18 +505,26 @@ If the text hasn't changed as a result, forward to `ivy-next-line'."
 (general-add-advice 'disable-theme :after #'my/reset-current-theme)
 (general-add-advice 'load-theme :after #'my/update-current-theme)
 
-(use-package material-theme)
+(use-package almost-mono-themes)
+(use-package flucui-themes)
+(use-package gotham-theme)
+(use-package hybrid-reverse-theme)
+(use-package metalheart-theme)
+(use-package notink-theme)
 
-(use-package gotham-theme
+(use-package sexy-monochrome-theme
   :init
   (if (daemonp)
       (general-add-hook 'after-make-frame-functions
                         (lambda (frame)
                           (with-selected-frame frame
                             (when (display-graphic-p frame)
-                              (load-theme 'gotham 'no-confirm)))))
+                              (load-theme 'sexy-monochrome 'no-confirm)))))
     (when (display-graphic-p)
-      (load-theme 'gotham 'no-confirm))))
+      (load-theme 'sexy-monochrome 'no-confirm))))
+
+(use-package sketch-themes)
+(use-package timu-spacegrey-theme)
 
 ;; https://emacs.stackexchange.com/questions/3112/how-to-reset-color-theme
 (defun my/undo-themes (&rest _)
