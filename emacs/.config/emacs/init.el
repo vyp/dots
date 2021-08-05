@@ -92,6 +92,10 @@
 (use-package apheleia
   :straight (:host github :repo "raxod502/apheleia")
   :init
+  ;; TODO: If using npx to run prettierx, why customize behaviour here? Either
+  ;; stick to the local project's behaviour (or customize behaviour at the local
+  ;; project level), or run prettierx from a global installation using OS
+  ;; package manager. This mix is confusing and may lead to complications.
   (gsetq apheleia-formatters
          '((prettier
             . ("npx"
