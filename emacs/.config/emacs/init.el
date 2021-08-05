@@ -545,26 +545,28 @@ If the text hasn't changed as a result, forward to `ivy-next-line'."
 (general-add-advice 'load-theme :after #'my/custom-theme-overrides)
 
 (use-package almost-mono-themes)
+(use-package base16-theme)
 (use-package flucui-themes)
 (use-package gotham-theme)
 (use-package hybrid-reverse-theme)
 (use-package metalheart-theme)
 (use-package notink-theme)
+(use-package punpun-theme)
+(use-package sexy-monochrome-theme)
+(use-package sketch-themes)
+(use-package timu-spacegrey-theme)
+(use-package tron-legacy-theme)
 
-(use-package punpun-theme
-  :init
+;; Set a theme on startup.
+(let ((my/startup-theme 'punpun-dark))
   (if (daemonp)
       (general-add-hook 'after-make-frame-functions
                         (lambda (frame)
                           (with-selected-frame frame
                             (when (display-graphic-p frame)
-                              (load-theme 'punpun-dark 'no-confirm)))))
+                              (load-theme my/startup-theme 'no-confirm)))))
     (when (display-graphic-p)
-      (load-theme 'punpun-dark 'no-confirm))))
-
-(use-package sexy-monochrome-theme)
-(use-package sketch-themes)
-(use-package timu-spacegrey-theme)
+      (load-theme my/startup-theme 'no-confirm))))
 
 ;; https://emacs.stackexchange.com/questions/3112/how-to-reset-color-theme
 (defun my/undo-themes (&rest _)
