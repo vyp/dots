@@ -576,6 +576,7 @@ If the text hasn't changed as a result, forward to `ivy-next-line'."
 (use-package base16-theme)
 (use-package flucui-themes)
 (use-package gotham-theme)
+(use-package gruvbox-theme)
 (use-package hybrid-reverse-theme)
 (use-package metalheart-theme)
 (use-package moe-theme)
