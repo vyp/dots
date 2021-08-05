@@ -397,7 +397,15 @@ If the text hasn't changed as a result, forward to `ivy-next-line'."
 (use-package company
   :ghook
   'text-mode-hook
-  'prog-mode-hook)
+  'prog-mode-hook
+
+  :config
+  (general-unbind company-active-map
+    [tab]
+    "TAB")
+  (general-def company-mode-map
+    "TAB" #'company-complete-common-or-cycle
+    "<backtab>" #'company-select-previous-or-abort))
 
 ;; Lisp Languages
 ;; ==============
