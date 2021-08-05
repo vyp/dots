@@ -550,12 +550,16 @@ If the text hasn't changed as a result, forward to `ivy-next-line'."
 (use-package gotham-theme)
 (use-package hybrid-reverse-theme)
 (use-package metalheart-theme)
+(use-package moe-theme)
 (use-package notink-theme)
+(use-package nord-theme)
+(use-package plan9-theme)
 (use-package punpun-theme)
 (use-package sexy-monochrome-theme)
 (use-package sketch-themes)
 (use-package timu-spacegrey-theme)
 (use-package tron-legacy-theme)
+(use-package zenburn-theme)
 
 ;; Set a theme on startup.
 (let ((my/startup-theme 'punpun-dark))
