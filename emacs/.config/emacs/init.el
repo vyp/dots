@@ -401,6 +401,17 @@ If the text hasn't changed as a result, forward to `ivy-next-line'."
 
 ;; Lisp Languages
 ;; ==============
+(use-package rainbow-delimiters
+  :ghook
+  'prog-mode-hook
+
+  :config
+  (general-add-advice 'disable-theme
+                      :after #'my/rainbow-delimiters-default-faces)
+  (general-add-advice 'load-theme :after #'my/rainbow-delimiters-overrides)
+  (my/rainbow-delimiters-default-faces)
+  (my/rainbow-delimiters-faces))
+
 (use-package racket-mode)
 
 (use-package lispyville
@@ -482,62 +493,23 @@ If the text hasn't changed as a result, forward to `ivy-next-line'."
 (general-add-advice 'disable-theme :after #'my/reset-current-theme)
 (general-add-advice 'load-theme :after #'my/update-current-theme)
 
-(use-package rainbow-delimiters
-  :ghook
-  'prog-mode-hook
-  :config
-  (defun my/rainbow-delimiters-default-faces (&rest _)
-    ;; Default rainbow delimiters colours do not differentiate themselves
-    ;; enough.
-    (unless custom-enabled-themes
-      (set-face-foreground 'rainbow-delimiters-depth-1-face "dark orange")
-      (set-face-foreground 'rainbow-delimiters-depth-2-face "deep pink")
-      (set-face-foreground 'rainbow-delimiters-depth-3-face "chartreuse")
-      (set-face-foreground 'rainbow-delimiters-depth-4-face "deep sky blue")
-      (set-face-foreground 'rainbow-delimiters-depth-5-face "goldenrod")
-      (set-face-foreground 'rainbow-delimiters-depth-6-face "orchid")
-      (set-face-foreground 'rainbow-delimiters-depth-7-face "spring green")
-      (set-face-foreground 'rainbow-delimiters-depth-8-face "sienna")
-      (set-face-foreground 'rainbow-delimiters-depth-9-face "red")))
-
-  (defun my/rainbow-delimiters-faces (&rest _)
-    ;; Always bold delimiters regardless of theme, as they are easier to see and
-    ;; identify for me.
-    (set-face-bold 'rainbow-delimiters-depth-1-face t)
-    (set-face-bold 'rainbow-delimiters-depth-2-face t)
-    (set-face-bold 'rainbow-delimiters-depth-3-face t)
-    (set-face-bold 'rainbow-delimiters-depth-4-face t)
-    (set-face-bold 'rainbow-delimiters-depth-5-face t)
-    (set-face-bold 'rainbow-delimiters-depth-6-face t)
-    (set-face-bold 'rainbow-delimiters-depth-7-face t)
-    (set-face-bold 'rainbow-delimiters-depth-8-face t)
-    (set-face-bold 'rainbow-delimiters-depth-9-face t))
-
-  (defun my/rainbow-delimiters-overrides (&rest _)
-    (pcase my/current-theme
-      ('notink
-       (progn
-         (set-face-foreground 'rainbow-delimiters-depth-8-face "#83919a")
-         (set-face-foreground 'rainbow-delimiters-depth-9-face "#4c5256")))
-      ('sexy-monochrome
-       (progn
-         (set-face-foreground 'rainbow-delimiters-depth-1-face "#93a8c6")
-         (set-face-foreground 'rainbow-delimiters-depth-2-face "#616161")
-         (set-face-foreground 'rainbow-delimiters-depth-3-face "#93a8c6")
-         (set-face-foreground 'rainbow-delimiters-depth-4-face "#616161")
-         (set-face-foreground 'rainbow-delimiters-depth-5-face "#93a8c6")
-         (set-face-foreground 'rainbow-delimiters-depth-6-face "#616161")
-         (set-face-foreground 'rainbow-delimiters-depth-7-face "#93a8c6")
-         (set-face-foreground 'rainbow-delimiters-depth-8-face "#616161")
-         (set-face-foreground 'rainbow-delimiters-depth-9-face "#93a8c6")))
-      ('user nil))
-    (my/rainbow-delimiters-faces))
-
-  (general-add-advice 'disable-theme
-                      :after #'my/rainbow-delimiters-default-faces)
-  (general-add-advice 'load-theme :after #'my/rainbow-delimiters-overrides)
-  (my/rainbow-delimiters-default-faces)
-  (my/rainbow-delimiters-faces))
+(use-package almost-mono-themes)
+(use-package base16-theme)
+(use-package flucui-themes)
+(use-package gotham-theme)
+(use-package gruvbox-theme)
+(use-package hybrid-reverse-theme)
+(use-package metalheart-theme)
+(use-package moe-theme)
+(use-package notink-theme)
+(use-package nord-theme)
+(use-package plan9-theme)
+(use-package punpun-theme)
+(use-package sexy-monochrome-theme)
+(use-package sketch-themes)
+(use-package timu-spacegrey-theme)
+(use-package tron-legacy-theme)
+(use-package zenburn-theme)
 
 (defun my/custom-theme-overrides (&rest _)
   (pcase my/current-theme
@@ -576,23 +548,52 @@ If the text hasn't changed as a result, forward to `ivy-next-line'."
 
 (general-add-advice 'load-theme :after #'my/custom-theme-overrides)
 
-(use-package almost-mono-themes)
-(use-package base16-theme)
-(use-package flucui-themes)
-(use-package gotham-theme)
-(use-package gruvbox-theme)
-(use-package hybrid-reverse-theme)
-(use-package metalheart-theme)
-(use-package moe-theme)
-(use-package notink-theme)
-(use-package nord-theme)
-(use-package plan9-theme)
-(use-package punpun-theme)
-(use-package sexy-monochrome-theme)
-(use-package sketch-themes)
-(use-package timu-spacegrey-theme)
-(use-package tron-legacy-theme)
-(use-package zenburn-theme)
+(defun my/rainbow-delimiters-default-faces (&rest _)
+  ;; Default rainbow delimiters colours do not differentiate themselves
+  ;; enough.
+  (unless custom-enabled-themes
+    (set-face-foreground 'rainbow-delimiters-depth-1-face "dark orange")
+    (set-face-foreground 'rainbow-delimiters-depth-2-face "deep pink")
+    (set-face-foreground 'rainbow-delimiters-depth-3-face "chartreuse")
+    (set-face-foreground 'rainbow-delimiters-depth-4-face "deep sky blue")
+    (set-face-foreground 'rainbow-delimiters-depth-5-face "goldenrod")
+    (set-face-foreground 'rainbow-delimiters-depth-6-face "orchid")
+    (set-face-foreground 'rainbow-delimiters-depth-7-face "spring green")
+    (set-face-foreground 'rainbow-delimiters-depth-8-face "sienna")
+    (set-face-foreground 'rainbow-delimiters-depth-9-face "red")))
+
+(defun my/rainbow-delimiters-faces (&rest _)
+  ;; Always bold delimiters regardless of theme, as they are easier to see and
+  ;; identify for me.
+  (set-face-bold 'rainbow-delimiters-depth-1-face t)
+  (set-face-bold 'rainbow-delimiters-depth-2-face t)
+  (set-face-bold 'rainbow-delimiters-depth-3-face t)
+  (set-face-bold 'rainbow-delimiters-depth-4-face t)
+  (set-face-bold 'rainbow-delimiters-depth-5-face t)
+  (set-face-bold 'rainbow-delimiters-depth-6-face t)
+  (set-face-bold 'rainbow-delimiters-depth-7-face t)
+  (set-face-bold 'rainbow-delimiters-depth-8-face t)
+  (set-face-bold 'rainbow-delimiters-depth-9-face t))
+
+(defun my/rainbow-delimiters-overrides (&rest _)
+  (pcase my/current-theme
+    ('notink
+     (progn
+       (set-face-foreground 'rainbow-delimiters-depth-8-face "#83919a")
+       (set-face-foreground 'rainbow-delimiters-depth-9-face "#4c5256")))
+    ('sexy-monochrome
+     (progn
+       (set-face-foreground 'rainbow-delimiters-depth-1-face "#93a8c6")
+       (set-face-foreground 'rainbow-delimiters-depth-2-face "#616161")
+       (set-face-foreground 'rainbow-delimiters-depth-3-face "#93a8c6")
+       (set-face-foreground 'rainbow-delimiters-depth-4-face "#616161")
+       (set-face-foreground 'rainbow-delimiters-depth-5-face "#93a8c6")
+       (set-face-foreground 'rainbow-delimiters-depth-6-face "#616161")
+       (set-face-foreground 'rainbow-delimiters-depth-7-face "#93a8c6")
+       (set-face-foreground 'rainbow-delimiters-depth-8-face "#616161")
+       (set-face-foreground 'rainbow-delimiters-depth-9-face "#93a8c6")))
+    ('user nil))
+  (my/rainbow-delimiters-faces))
 
 ;; Set a theme on startup.
 (let ((my/startup-theme 'punpun-dark))
