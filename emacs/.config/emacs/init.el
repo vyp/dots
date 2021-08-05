@@ -225,12 +225,26 @@ If the text hasn't changed as a result, forward to `ivy-next-line'."
 ;; ==================
 (use-package defrepeater :demand t)
 
+;; NOTE: Can maybe remove this once using emacs 28. See documentation for
+;; `evil-undo-system'.
+(use-package undo-tree
+  :init
+  ;; Necessary because `global-undo-tree-mode' does not enable undo-tree-mode if
+  ;; the default emacs undo/redo keybindings (C-/ and C-_) are rebound, which I
+  ;; do for evil-mode. See documentation for `turn-on-undo-tree-mode'.
+  (define-globalized-minor-mode my/global-undo-tree-mode undo-tree-mode
+    (lambda ()
+      (unless (memq major-mode '(term-mode))
+        (undo-tree-mode 1))))
+  (my/global-undo-tree-mode 1))
+
 (use-package evil
   :init
   (gsetq evil-cross-lines t
          evil-overriding-maps nil
          evil-shift-width 2
          evil-split-window-below t
+         evil-undo-system 'undo-tree
          evil-vsplit-window-right t
          evil-want-C-d-scroll t
          evil-want-C-u-scroll t
