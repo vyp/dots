@@ -543,14 +543,18 @@ If the text hasn't changed as a result, forward to `ivy-next-line'."
   (pcase my/current-theme
     ('notink
      (progn
+       (set-face-attribute 'font-lock-comment-face nil :slant 'normal)
        (set-face-attribute 'font-lock-constant-face nil :slant 'normal)
-       (set-face-attribute 'font-lock-keyword-face nil :slant 'normal)))
+       (set-face-attribute 'font-lock-keyword-face nil :slant 'normal)
+       (set-face-attribute 'font-lock-constant-face nil :weight 'bold)
+       (set-face-attribute 'font-lock-function-face nil :weight 'bold)
+       (set-face-attribute 'font-lock-variable-face nil :weight 'bold)))
     ((or 'punpun-dark 'punpun-light)
      (progn
-       (set-face-attribute 'font-lock-function-name-face nil
+       (set-face-attribute 'font-lock-constant-face nil
                            :slant 'normal
                            :weight 'bold)
-       (set-face-attribute 'font-lock-constant-face nil
+       (set-face-attribute 'font-lock-function-name-face nil
                            :slant 'normal
                            :weight 'bold)
        (set-face-attribute 'font-lock-variable-name-face nil
