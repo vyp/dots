@@ -480,8 +480,9 @@ If the text hasn't changed as a result, forward to `ivy-next-line'."
       (set-face-foreground 'rainbow-delimiters-depth-6-face "orchid")
       (set-face-foreground 'rainbow-delimiters-depth-7-face "spring green")
       (set-face-foreground 'rainbow-delimiters-depth-8-face "sienna")
-      (set-face-foreground 'rainbow-delimiters-depth-9-face "red"))
+      (set-face-foreground 'rainbow-delimiters-depth-9-face "red")))
 
+  (defun my/rainbow-delimiters-overrides (&rest _)
     (pcase my/current-theme
       ('sexy-monochrome
        (progn
@@ -494,6 +495,10 @@ If the text hasn't changed as a result, forward to `ivy-next-line'."
          (set-face-foreground 'rainbow-delimiters-depth-7-face "#93a8c6")
          (set-face-foreground 'rainbow-delimiters-depth-8-face "#616161")
          (set-face-foreground 'rainbow-delimiters-depth-9-face "#93a8c6")))
+      ('notink
+       (progn
+         (set-face-foreground 'rainbow-delimiters-depth-8-face "#83919a")
+         (set-face-foreground 'rainbow-delimiters-depth-9-face "#4c5256")))
       ('user nil)))
 
   (defun my/rainbow-delimiters-faces (&rest _)
@@ -511,12 +516,17 @@ If the text hasn't changed as a result, forward to `ivy-next-line'."
 
   (general-add-advice 'disable-theme
                       :after #'my/rainbow-delimiters-default-faces)
+  (general-add-advice 'load-theme :after #'my/rainbow-delimiters-overrides)
   (general-add-advice 'load-theme :after #'my/rainbow-delimiters-faces)
   (my/rainbow-delimiters-default-faces)
   (my/rainbow-delimiters-faces))
 
 (defun my/custom-theme-overrides (&rest _)
   (pcase my/current-theme
+    ('notink
+     (progn
+       (set-face-attribute 'font-lock-constant-face nil :slant 'normal)
+       (set-face-attribute 'font-lock-keyword-face nil :slant 'normal)))
     ((or 'punpun-dark 'punpun-light)
      (progn
        (set-face-attribute 'font-lock-function-name-face nil
