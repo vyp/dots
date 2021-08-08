@@ -132,7 +132,8 @@
     sxhkd
     sxiv
     syncthing
-    termite
+    # termite
+    tiny
     tor-browser-bundle-bin
     tree
     # ttfautohint
