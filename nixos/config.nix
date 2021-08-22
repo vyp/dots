@@ -129,6 +129,7 @@
     # stack
     stow
     streamlink
+    swaybg
     sxhkd
     sxiv
     syncthing
@@ -165,6 +166,7 @@
     yarn
     youtube-dl
     zathura
+    zig
   ];
 
   # Services
