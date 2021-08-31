@@ -103,6 +103,7 @@
     imagemagick
     imv
     irssi
+    janet
     lm_sensors
     maim
     mediainfo
