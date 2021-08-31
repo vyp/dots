@@ -36,6 +36,8 @@ self: super:
 
   iosevka-custom = super.callPackage ./pkgs/iosevka-custom { };
 
+  janet = super.callPackage ./pkgs/janet { };
+
   tiny = super.callPackage ./pkgs/tiny { };
 
   # iosevka = super.iosevka.override {
