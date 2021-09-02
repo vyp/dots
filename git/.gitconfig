@@ -6,6 +6,9 @@
   editor = vim
   excludesfile = '~/dots/git/gitignore'
 
+[init]
+  defaultBranch = main
+
 [push]
   default = matching
 
