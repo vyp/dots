@@ -485,8 +485,8 @@ If the text hasn't changed as a result, forward to `ivy-next-line'."
   (when (display-graphic-p)
     (my/set-fonts)))
 
-;; Theme
-;; =====
+;; Themes
+;; ======
 
 ;; Make a variable that holds the current theme, for convenience.
 ;; 'user is the name for the default theme.
@@ -502,6 +502,7 @@ If the text hasn't changed as a result, forward to `ivy-next-line'."
 (general-add-advice 'load-theme :after #'my/update-current-theme)
 
 (use-package almost-mono-themes)
+(use-package anti-zenburn-theme)
 (use-package base16-theme)
 (use-package flucui-themes)
 (use-package gotham-theme)
@@ -515,6 +516,7 @@ If the text hasn't changed as a result, forward to `ivy-next-line'."
 (use-package punpun-theme)
 (use-package sexy-monochrome-theme)
 (use-package sketch-themes)
+(use-package sorcery-theme)
 (use-package timu-spacegrey-theme)
 (use-package tron-legacy-theme)
 (use-package zenburn-theme)
