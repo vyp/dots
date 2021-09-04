@@ -462,6 +462,11 @@ If the text hasn't changed as a result, forward to `ivy-next-line'."
 
 ;; Other Languages
 ;; ===============
+(use-package cc-mode
+  :straight nil
+  :config
+  (general-add-advice 'c-update-modeline :around #'ignore))
+
 (use-package haskell-mode)
 
 (use-package js-mode
