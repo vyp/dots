@@ -506,28 +506,31 @@ If the text hasn't changed as a result, forward to `ivy-next-line'."
 (general-add-advice 'disable-theme :after #'my/reset-current-theme)
 (general-add-advice 'load-theme :after #'my/update-current-theme)
 
-(use-package almost-mono-themes)
 (use-package anti-zenburn-theme)
 (use-package base16-theme)
-(use-package flucui-themes)
 (use-package gotham-theme)
-(use-package gruvbox-theme)
-(use-package hybrid-reverse-theme)
+(use-package kaolin-themes)
+(use-package kosmos-theme)
 (use-package metalheart-theme)
+(use-package modus-themes)
 (use-package moe-theme)
 (use-package notink-theme)
 (use-package nord-theme)
 (use-package plan9-theme)
 (use-package punpun-theme)
-(use-package sexy-monochrome-theme)
-(use-package sketch-themes)
-(use-package sorcery-theme)
-(use-package timu-spacegrey-theme)
+(use-package tao-theme)
 (use-package tron-legacy-theme)
 (use-package zenburn-theme)
 
 (defun my/custom-theme-overrides (&rest _)
   (pcase my/current-theme
+    ('base16-black-metal-immortal
+     (progn
+       (set-face-foreground 'default "#888888")
+       (set-face-foreground 'font-lock-builtin-face "#888888")
+       (set-face-foreground 'font-lock-constant-face "#888888")
+       (set-face-foreground 'font-lock-keyword-face "#888888")
+       (set-face-foreground 'font-lock-function-name-face "#aaaaaa")))
     ('notink
      (progn
        (set-face-attribute 'font-lock-comment-face nil :slant 'normal)
@@ -544,6 +547,8 @@ If the text hasn't changed as a result, forward to `ivy-next-line'."
        (set-face-attribute 'font-lock-function-name-face nil
                            :slant 'normal
                            :weight 'bold)
+       (set-face-attribute 'font-lock-type-face nil
+                           :slant 'normal)
        (set-face-attribute 'font-lock-variable-name-face nil
                            :slant 'normal
                            :weight 'bold)
@@ -558,7 +563,10 @@ If the text hasn't changed as a result, forward to `ivy-next-line'."
            (set-face-attribute 'show-paren-match nil
                                :foreground "#eeeeee"
                                :background "#585858")))))
-    ('sexy-monochrome (set-face-foreground 'mode-line-inactive "#616161"))
+    ('kosmos
+     (progn
+       (set-face-foreground 'font-lock-keyword-face "#bdbdbd")
+       (set-face-attribute 'font-lock-function-name-face nil :weight 'bold)))
     ('user nil)))
 
 (general-add-advice 'load-theme :after #'my/custom-theme-overrides)
@@ -592,26 +600,26 @@ If the text hasn't changed as a result, forward to `ivy-next-line'."
 
 (defun my/rainbow-delimiters-overrides (&rest _)
   (pcase my/current-theme
+    ('base16-black-metal-immortal
+     (progn
+       (set-face-foreground 'rainbow-delimiters-depth-1-face "#333333")
+       (set-face-foreground 'rainbow-delimiters-depth-2-face "#556677")
+       (set-face-foreground 'rainbow-delimiters-depth-3-face "#333333")
+       (set-face-foreground 'rainbow-delimiters-depth-4-face "#556677")
+       (set-face-foreground 'rainbow-delimiters-depth-5-face "#333333")
+       (set-face-foreground 'rainbow-delimiters-depth-6-face "#556677")
+       (set-face-foreground 'rainbow-delimiters-depth-7-face "#333333")
+       (set-face-foreground 'rainbow-delimiters-depth-8-face "#556677")
+       (set-face-foreground 'rainbow-delimiters-depth-9-face "#333333")))
     ('notink
      (progn
        (set-face-foreground 'rainbow-delimiters-depth-8-face "#83919a")
        (set-face-foreground 'rainbow-delimiters-depth-9-face "#4c5256")))
-    ('sexy-monochrome
-     (progn
-       (set-face-foreground 'rainbow-delimiters-depth-1-face "#93a8c6")
-       (set-face-foreground 'rainbow-delimiters-depth-2-face "#616161")
-       (set-face-foreground 'rainbow-delimiters-depth-3-face "#93a8c6")
-       (set-face-foreground 'rainbow-delimiters-depth-4-face "#616161")
-       (set-face-foreground 'rainbow-delimiters-depth-5-face "#93a8c6")
-       (set-face-foreground 'rainbow-delimiters-depth-6-face "#616161")
-       (set-face-foreground 'rainbow-delimiters-depth-7-face "#93a8c6")
-       (set-face-foreground 'rainbow-delimiters-depth-8-face "#616161")
-       (set-face-foreground 'rainbow-delimiters-depth-9-face "#93a8c6")))
     ('user nil))
   (my/rainbow-delimiters-faces))
 
 ;; Set a theme on startup.
-(let ((my/startup-theme 'punpun-dark))
+(let ((my/startup-theme 'base16-black-metal-immortal))
   (if (daemonp)
       (general-add-hook 'after-make-frame-functions
                         (lambda (frame)
