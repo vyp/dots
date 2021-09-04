@@ -418,7 +418,7 @@ If the text hasn't changed as a result, forward to `ivy-next-line'."
                       :after #'my/rainbow-delimiters-default-faces)
   (general-add-advice 'load-theme :after #'my/rainbow-delimiters-overrides)
   (my/rainbow-delimiters-default-faces)
-  (my/rainbow-delimiters-faces))
+  (my/rainbow-delimiters-overrides))
 
 (use-package racket-mode)
 
