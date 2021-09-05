@@ -509,6 +509,7 @@ If the text hasn't changed as a result, forward to `ivy-next-line'."
 (use-package anti-zenburn-theme)
 (use-package base16-theme)
 (use-package gotham-theme)
+(use-package habamax-theme)
 (use-package kaolin-themes)
 (use-package kosmos-theme)
 (use-package metalheart-theme)
