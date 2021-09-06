@@ -179,6 +179,78 @@ font:
   # effect.
   #use_thin_strokes: true
 
+# # cemant
+# colors:
+#   # Default colors
+#   primary:
+#     background: '0xb9bdc5'
+#     foreground: '0x36383f'
+#
+#   # Colors the cursor will use if `custom_cursor_colors` is true
+#   cursor:
+#     text: '0xb9bdc5'
+#     cursor: '0x36383f'
+#
+#   # Normal colors
+#   normal:
+#     black:   '0x16161d'
+#     red:     '0xa32c2d'
+#     green:   '0x4b7d08'
+#     yellow:  '0x916814'
+#     blue:    '0x3c56aa'
+#     magenta: '0x91328c'
+#     cyan:    '0x237e6f'
+#     white:   '0x92959d'
+#
+#   # Bright colors
+#   bright:
+#     black:   '0x575a61'
+#     red:     '0xcf554d'
+#     green:   '0x72a336'
+#     yellow:  '0xba8d3b'
+#     blue:    '0x667ad3'
+#     magenta: '0xba59b3'
+#     cyan:    '0x4ea494'
+#     white:   '0xd2d6de'
+#
+# draw_bold_text_with_bright_colors: false
+
+# base16-black-metal-immortal
+colors:
+  # Default colors
+  primary:
+    background: '0x000000'
+    foreground: '0xc1c1c1'
+
+  # Colors the cursor will use if `custom_cursor_colors` is true
+  cursor:
+    text: '0x000000'
+    cursor: '0xc1c1c1'
+
+  # Normal colors
+  normal:
+    black:   '0x000000'
+    red:     '0x5f8787'
+    green:   '0x7799bb'
+    yellow:  '0x556677'
+    blue:    '0x888888'
+    magenta: '0x999999'
+    cyan:    '0xaaaaaa'
+    white:   '0xc1c1c1'
+
+  # Bright colors
+  bright:
+    black:   '0x333333'
+    red:     '0xaaaaaa'
+    green:   '0x121212'
+    yellow:  '0x222222'
+    blue:    '0x999999'
+    magenta: '0x999999'
+    cyan:    '0x444444'
+    white:   '0xc1c1c1'
+
+draw_bold_text_with_bright_colors: false
+
 # If `true`, bold text is drawn using the bright color variants.
 #draw_bold_text_with_bright_colors: true
 

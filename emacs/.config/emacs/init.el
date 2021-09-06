@@ -508,6 +508,7 @@ If the text hasn't changed as a result, forward to `ivy-next-line'."
 
 (use-package anti-zenburn-theme)
 (use-package base16-theme)
+;; (use-package cemant-theme :straight (:host github :repo "blobject/cemant"))
 (use-package gotham-theme)
 (use-package habamax-theme)
 (use-package kaolin-themes)
